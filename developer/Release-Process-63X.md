@@ -135,4 +135,4 @@ This task is only relevant when dealing with major or minor releases.
 
 ## Update Demos
 
-(Optional) A number of CAS demos today run on Heroku and are tracked in dedicated branches inside the codebase. Take a pass and updated each, when relevant.
+(Optional) A number of CAS demos today run on Heroku and are tracked in dedicated branches inside the codebase. Take a pass and update each, when relevant.
