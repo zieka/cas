@@ -68,6 +68,8 @@ skip this step and move on to next section to build and release.</p></div>
 
 ### GitHub Actions
 
+<div class="alert alert-warning"><strong>Remember</strong><p>You should do this only for major or minor releases, when new branches are created.</p></div>
+ 
 - Change `.github/workflows/cas-build.yml` to trigger and *only* build the newly-created release branch.
 - Examine all CI shell scripts under the `ci` folder to make sure nothing points to `development` or `master`. This is particularly applicable to how CAS documentation is published to the `gh-pages` branch.
 - Disable jobs in CI that report new dependency versions or update dependencies using Renovate, etc.
@@ -94,9 +96,9 @@ Next:
 
 - Create a tag for the released version, commit the change and push the tag to the upstream repository. (i.e. `v5.0.0-RC1`).
 
-If you did create a new release branch, you should also switch back to `master` and follow these steps:
+You should also switch back to the main development branch (i.e. `master`) and follow these steps:
 
-- In the project's `gradle.properties`, change the project version to the *next* development version (i.e. `5.0.0-RC2-SNAPSHOT`). 
+- In the project's `gradle.properties`, change the project version to the *next* development version (i.e. `5.0.0-SNAPSHOT`). 
 - Push your changes to the upstream repository. 
 
 ## Housekeeping
@@ -119,14 +121,14 @@ and if the release process here had you create a new branch.
 
 ## Update Documentation
 
-If you did create a new release branch as part of a new major/minor release:
+<div class="alert alert-warning"><strong>Remember</strong><p>You should do this only for major or minor releases, when new branches are created.</p></div>
 
 - Configure docs to point `current` to the latest available version [here](https://github.com/apereo/cas/blob/gh-pages/current/index.html).
 - Configure docs to include the new release in the list of [available versions](https://github.com/apereo/cas/blob/gh-pages/_layouts/default.html).
 - [Update docs](https://github.com/apereo/cas/edit/gh-pages/Older-Versions.md/) and add the newly released version.
 - Update the project's [`README.md` page](https://github.com/apereo/cas/blob/master/README.md) to list the new version, if necessary.
 - Update [the build process](https://apereo.github.io/cas/developer/Build-Process.html) to include any needed information on how to build the new release.
-- Update [the release notes](https://github.com/apereo/cas/tree/master/docs/cas-server-documentation/release_notes) and remove all previous entries (Only necessary if a new branch was created for the release).
+- Update [the release notes](https://github.com/apereo/cas/tree/master/docs/cas-server-documentation/release_notes) and remove all previous entries.
 
 ## Update Maintenance Policy
 
