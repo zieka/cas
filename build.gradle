@@ -3,10 +3,12 @@ buildscript {
         mavenLocal()
         jcenter()
         maven { url "https://repo.spring.io/libs-milestone" }
+        maven { url "https://repo.spring.io/libs-snapshot" }
+        maven { url "https://plugins.gradle.org/m2/" }         
     }
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.springBootVersion}"
-        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+        classpath "io.freefair.gradle:maven-plugin:${project.gradleMavenPluginVersion}"
     }
 }
 
@@ -20,25 +22,15 @@ repositories {
     maven { url "https://oss.jfrog.org/artifactory/oss-snapshot-local" }
 }
 
-apply from: "https://dl.bintray.com/scalding/generic/waroverlay.gradle"
-
+apply plugin: "io.freefair.war-overlay"
 apply plugin: "war"
 apply plugin: "org.springframework.boot"
-apply plugin: "io.spring.dependency-management"
-
-dependencyManagement {
-	imports {
-		mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
-        mavenBom "org.apereo.cas:cas-server-support-bom:${project.'cas.version'}"
-	}
-}
 
 configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
 war {
-    includeWarJars = true
     entryCompression = ZipEntryCompression.STORED
 }
 
@@ -47,19 +39,21 @@ springBoot {
 }
 
 bootWar {
-	if (project.hasProperty('executable')) {
-    	launchScript()
-	}
-
-	archiveName "cas-management.war"
+    entryCompression = ZipEntryCompression.STORED
+    archiveName "cas-management.war"
     baseName "cas-management"
-
     excludeDevtools = false
-}
-
-wrapper {
-    distributionType = Wrapper.DistributionType.BIN
-    gradleVersion = "${project.gradleVersion}"
+    overlays {
+        // https://docs.freefair.io/gradle-plugins/current/reference/#_io_freefair_war_overlay
+        // Note: The "excludes" property is only for files in the war dependency.
+        // If a jar is excluded from the war, it could be brought back into the final war as a dependency
+        // of non-war dependencies. Those should be excluded via normal gradle dependency exclusions.
+        cas {
+            from "org.apereo.cas:cas-mgmt-webapp${project.appServer}:${casMgmtServerVersion}@war"
+            provided = false
+            excludes = []
+        }
+    }    
 }
 
 dependencies {
