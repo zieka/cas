@@ -9,6 +9,9 @@
         <AsyncLogger name="org.apereo.cas" level="info" additivity="false">
             <AppenderRef ref="console"/>
         </AsyncLogger>
+        <AsyncLogger name="com.netflix.client.config" level="warn" additivity="false">
+            <AppenderRef ref="console"/>
+        </AsyncLogger>
         <AsyncLogger name="de.codecentric.boot.admin.client" level="info" additivity="false">
             <AppenderRef ref="console"/>
         </AsyncLogger>
