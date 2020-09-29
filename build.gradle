@@ -49,11 +49,11 @@ bootWar {
 
 dependencies {
     if (project.hasProperty("external")) {
-        compile group: "org.apereo.cas", name: "cas-server-webapp", version: "${project.'cas.version'}", changing: true
+        implementation group: "org.apereo.cas", name: "cas-server-webapp", version: "${project.'cas.version'}", changing: true
     } else {
-        compile group: "org.apereo.cas", name: "cas-server-webapp${project.appServer}", version: "${project.'cas.version'}", changing: true
+        implementation group: "org.apereo.cas", name: "cas-server-webapp${project.appServer}", version: "${project.'cas.version'}", changing: true
     }
-    compile group: "org.apereo.cas", name: "cas-server-support-bootadmin-client", version: "${project.'cas.version'}", changing: true
-    compile group: "org.apereo.cas", name: "cas-server-support-sleuth", version: "${project.'cas.version'}", changing: true
-    compile group: "org.apereo.cas", name: "cas-server-support-eureka-client", version: "${project.'cas.version'}", changing: true
+    implementation group: "org.apereo.cas", name: "cas-server-support-bootadmin-client", version: "${project.'cas.version'}", changing: true
+    implementation group: "org.apereo.cas", name: "cas-server-support-sleuth", version: "${project.'cas.version'}", changing: true
+    implementation group: "org.apereo.cas", name: "cas-server-support-eureka-client", version: "${project.'cas.version'}", changing: true
 }
