@@ -49,7 +49,7 @@ bootWar {
         // If a jar is excluded from the war, it could be brought back into the final war as a dependency
         // of non-war dependencies. Those should be excluded via normal gradle dependency exclusions.
         cas {
-            from "org.apereo.cas:cas-mgmt-webapp${project.appServer}:${casMgmtServerVersion}@war"
+            from "org.apereo.cas:cas-mgmt-webapp${project.appServer}:${project.'casmgmt.version'}@war"
             provided = false
             excludes = []
         }
