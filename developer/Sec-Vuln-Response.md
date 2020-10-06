@@ -25,6 +25,17 @@ To review the old archives of the application security working group, [please se
 
 <div class="alert alert-warning"><strong>List Etiquette</strong><p>The security team asks that you please <strong>DO NOT</strong> create publicly-viewable issues or posts to address the problem. There is no good sense in creating panic and chaos. All community members <strong>SHOULD</strong> ignore all such public announcements and reports.</p></div>
 
+### Report Format
+
+When you are preparing to communicate a security issue to the appropriate channel privately, please make sure your report contains enough diagnostics data to expedite reviews and feedback:
+
+- Indicate the exact CAS version numbers that exhibit the seemingly-faulty behavior.
+- Describe your deployment/development environment in sufficient relevant detail.
+- Include error logs, debug logs, screenshots and other useful snippets of your configuration.
+- Include steps to explain how the issue might be reproduced.
+- Include an overlay project that can duplicate the issue in practice.
+- If possible, prepare and share unit/integration tests to recreate the issue.
+
 ### Time to Fix
 
 Remember that activity on the mailing lists and all other support channels is entirely voluntary. There is no official meaning or sense of urgency built into the response model and as such, fixes to potential security issues are 100% dependent on individuals' availbility and willingness. We strongly recommend that you study the project's license for more information on this matter. If you are interested in contractual obligations, SLAs and a response model based on calculated levels of urgency, please consider negotiating a professional support agreement with Apereo commercial [service/support providers](/cas/Support.html).
