@@ -51,3 +51,6 @@ The following CAS releases will transition into a security-patch mode (SPM) only
 
 All previous releases absent in the above table are considered EOLed.
 
+## Security-Patch Mode (SPM)
+
+Once a CAS release transitions into an SPM phase, the release line and relevant milestones will be publicly closed. Patches and contributions must be communicated and reported via [desginated channels](/cas/Mailing-Lists.html) designed for security-related issues and reports. Such reports will be reviewed and analyzed per the [Security Vulnerability Response](/cas/developer/Sec-Vuln-Response.html). Please make sure your report has enough information and detail so the issue can be reproduced based on a concrete use case or one that truly in practice affects the inner workings of the Apereo CAS software in a real way. 
