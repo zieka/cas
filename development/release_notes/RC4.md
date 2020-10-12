@@ -48,17 +48,31 @@ cas.version=6.3.0-RC4
 
 The following items are new improvements and enhancements presented in this release.
 
+### JDK 15 Compatibility
+
+CAS is able to build and run successfully against the latest versions of JDK 15. The JDK baseline requirement 
+continues to be set at JDK 11, and this release is keeping up with JDK releases to ensure CAS 
+can correctly switch the baseline requirement when deemed necessary.
+
 ### Test Coverage via CodeCov
 
-CAS test coverage across all modules in the codebase has now reached `87%` and continues to climb. Additional validation rules are also applied 
+CAS test coverage across all modules in the codebase has now reached `88%` and continues to climb. Additional validation rules are also applied 
 to fail all pull requests that fall below this threshold. This area will be closely monitored and improved
 as progress is made with the goal of hopefully reaching at least `90%` before the final GA release. Of course, 
 this will not be a blocker for the final release.
 
 ## Other Stuff
 
+- Apereo CAS [Docker images](https://hub.docker.com/r/apereo/cas) are now automatically published for the `latest` tag.
+- CAS [Release Process](../developer/Release-Process.html) can now automatically close and publish releases on Sonatype. 
+
 ## Library Upgrades
 
-- Lettuce Redis Client
+- Lettuce
+- Apache Tomcat
+- Java Melody
+- Oshi
+- Gradle
+
 
 
