@@ -95,7 +95,7 @@ This is a low-traffic list to receive notifications about CAS releases including
 
 [View and/or subscribe](https://groups.google.com/a/apereo.org/forum/#!forum/cas-announce)
 
-## CAS Subscribers (cas-subs@apereo.org)
+## CAS Subscribers List (cas-subs@apereo.org)
 
 _Focus_: Trusted Contacts 
 
