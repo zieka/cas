@@ -95,6 +95,16 @@ This is a low-traffic list to receive notifications about CAS releases including
 
 [View and/or subscribe](https://groups.google.com/a/apereo.org/forum/#!forum/cas-announce)
 
+## CAS Subscribers (cas-subs@apereo.org)
+
+_Focus_: Trusted Contacts 
+
+This is a low-traffic list to receive security release notifications and details early about CAS releases. 
+This is a private list, reserved for Apereo Foundation members with an active subscription to the CAS project.
+Membership can be requested on-demand from the CAS PMC, once membership status is confirmed.
+
+[View and/or subscribe](https://groups.google.com/a/apereo.org/forum/#!forum/cas-subs)
+
 ## Security Lists
 
 The following mailing lists handle security announcements and vulnerabilities.
