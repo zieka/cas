@@ -38,6 +38,10 @@ In this context, maintenance strictly means that the release line and the target
   accept patches and <strong>contributions from the community</strong> and that there will be follow-up binary releases forthcoming until the designated dates. 
 </p></div>
 
+## What is EOL?
+
+"End-of-life" ("EOL") is a term used to describe that a given CAS release line (i.e. `6.1.x`, `6.2.x`, etc) is in the end of its useful life (from the project's point of view), and the project stops accepting, adding and/release patches of any kind once it reaches that designated date. The EOL release is considered dead and it will not receive any attention whatsoever regardless of impact or severity, unless absolutely warranted and justified by the [CAS PMC](Project-Commitee.html), subject to sufficient availability, project interest, resources and appropriate funding.
+
 ## EOL Schedule
 
 The following CAS releases will transition into a security-patch mode (SPM) only and will be EOLed at the indicated dates.
