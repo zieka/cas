@@ -25,6 +25,13 @@ To review the old archives of the application security working group, [please se
 
 <div class="alert alert-warning"><strong>List Etiquette</strong><p>The security team asks that you please <strong>DO NOT</strong> create publicly-viewable issues or posts to address the problem. There is no good sense in creating panic and chaos. All community members <strong>SHOULD</strong> ignore all such public announcements and reports.</p></div>
 
+### Dependency Upgrades
+
+Given the amount of effort involved in planning and releasing a security patch and disclosing the issue, communicating descriptions, intent,
+attack window and fixes, etc it is generally best to keep security releases reserved for issues that actually can be reproduced based on
+a concrete use case or those that truly and in practice affect the inner workings of the CAS software in a real way. If you could have such a
+use case at some point, please be sure to supply details and steps to reproduce issues. Supposed *vulnerabilities* that are picked up and reported by security scanners, static code analyzers and such affecting a third party library used by CAS generally do not qualify, unless there is solid evidence provided by the reporter to indicate a real, practical issue affecting CAS daily ops. Such warnings often appear superficial in the context of a CAS deployment. Usually, the best course of action would be to make the upgrades either locally to the installation script or switch to a more recent CAS version that might remove such warnings.
+
 ### Report Format
 
 When you are preparing to communicate a security issue to the appropriate channel privately, please make sure your report contains enough diagnostics data to expedite reviews and feedback:
