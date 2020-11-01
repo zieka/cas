@@ -40,9 +40,9 @@ management:
         enabled-by-default: true
         web:
             exposure:
-                include: *
+                include: '*'
 server:
-    port: $PORT
+    port: ${PORT:8221}
     ssl:
         enabled: false
 spring:
