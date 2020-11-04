@@ -1264,7 +1264,7 @@ Retrieve attributes from a JDBC source. Database settings for this feature are a
 
 ### Grouper
 
-This option reads all the groups from [a Grouper instance](http://www.internet2.edu/grouper/software.html) for the given CAS principal and adopts them
+This option reads all the groups from [a Grouper instance](https://incommon.org/software/grouper/) for the given CAS principal and adopts them
 as CAS attributes under a `grouperGroups` multi-valued attribute.
 To learn more about this topic, [please review this guide](../integration/Attribute-Resolution.html).
 
@@ -4056,9 +4056,12 @@ To learn more about this topic, [please review this guide](../ux/User-Interface-
 # cas.locale.default-value=en
 ```
 
-If the user changes the language, a special cookie is created by CAS to contain the selected language. Cookie settings for this feature are available [here](Configuration-Properties-Common.html#cookie-properties) under the configuration key `cas.locale.cookie`.
+If the user changes the language, a special cookie is created by CAS to contain the selected language. Cookie 
+settings for this feature are available [here](Configuration-Properties-Common.html#cookie-properties) under the configuration key `cas.locale.cookie`.
 
 ## Global SSO Behavior
+
+To learn more about this topic, [please review this guide](../installation/Configuring-SSO.html).
 
 ```properties
 # cas.sso.allow-missing-service-parameter=true
