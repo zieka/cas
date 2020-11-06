@@ -306,8 +306,8 @@ function generateDependencyLangFragments() {
     $artifactId = $xml.find("artifactId");
 
 	var activeVersion = getActiveDocumentationVersionInView(true)
-	var cfg = "compile";
-	if (activeVersion == "development" || parseFloat(activeVersion) >= 6.2) {
+  var cfg = "compile";
+	if (activeVersion == null || activeVersion == undefined || activeVersion == "development" || parseFloat(activeVersion) >= 6.2) {
 	    cfg = "implementation"
 	}
 	var gradleDep = "<span class='nt'>" + cfg + "</span> \"" + $groupId.text() + "<span class='p'>:</span>" + $artifactId.text() + "<span class='p'>:</span><span class='nt'>${project.'cas.version'}</span>\"";
@@ -324,9 +324,10 @@ function generateDependencyLangFragments() {
   <li class='nav-item'><a class='nav-link active' data-toggle='tab' href='#maven" + mavenId + "'>Maven</a></li> \
   <li class='nav-item'><a class='nav-link' data-toggle='tab' href='#gradle" + gradleId + "'>Gradle</a></li> \
   <li role='presentation' class='nav-item dropdown'> \
-      <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>Resources<span class='caret'></span></a> \
+      <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button'>Resources<span class='caret'></span></a> \
       <div class='dropdown-menu'> \
           <a class='dropdown-item' href='https://github.com/apereo/cas-overlay-template'>CAS Server WAR Overlay</a> \
+          <a class='dropdown-item' href=\"javascript:generateOverlay('" + $artifactId.text() + "');\">Generate CAS Server WAR Overlay</a> \
           <div class='dropdown-divider'></div> \
           <a class='dropdown-item' href='https://github.com/apereo/cas-management-overlay'>CAS Management WAR Overlay</a> \
 	  <div class='dropdown-divider'></div> \
@@ -365,7 +366,7 @@ function responsiveTables() {
 
 function copyButton() {
   $('pre.highlight').each(function () {
-    var btn = '<button class="copy-button hidden-md-down fa fa-clipboard" data-toggle="tooltip" title="Copy Code" />';
+    var btn = '<button class="copy-button hidden-md-down fa fa-clipboard" title="Copy" />';
     $(this).append(btn);
   });
 }
@@ -374,9 +375,24 @@ function enableBootstrapTooltips() {
   $('[data-toggle="tooltip"]').tooltip();
 }
 
+function generateOverlay(artifactId) {
+  var id = artifactId.replace("cas-server-", "")
+  
+  $("#overlayform").remove();
+  $('body').append(" \
+  <form id='overlayform' action='https://casinit.herokuapp.com/starter.zip' method='post'> \
+  <input type='submit' value='submit' /> \
+  <input type='hidden' name='dependencies' value='" + id + "' /> </form>");
+  $("#overlayform").submit();
+}
+
 var clipboard = new Clipboard('.copy-button', {
   text: function (trigger) {
-    var code = $(trigger).parent().find('td.rouge-code pre').text()
+    var code = $(trigger).parent().find('td.rouge-code pre').text();
+    if (code === "") {
+      code = $(trigger).parent().find('td.code pre').text();
+    }
+    console.log("Copied " + code);
     return code;
   }
 });
@@ -386,8 +402,6 @@ clipboard.on('success', function (e) {
 });
 
 $(function () {
-
-
   loadSidebarForActiveVersion();
   generatePageTOC();
   generateDependencyLangFragments();
