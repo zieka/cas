@@ -15,12 +15,19 @@ strategies (i.e. email, sms, etc) where the user is then expected to
 provide the token back to CAS in order to proceed. 
 
 <div class="alert alert-info"><strong>No Magic Link</strong><p>
-Presently, there is no support for magic links that would remove the task of providing the token back to CAS allowing the user to proceed automagically.
+Presently, there is no support for magic links that would remove the task of providing the token 
+back to CAS allowing the user to proceed automagically.
 This variant may be worked out in future releases.</p></div>
 
 In order to successfully implement this feature, configuration needs to be in place to contact 
 account stores that hold user records who qualify for passwordless authentication. 
-Similarly, CAS must be configured to manage issued tokens in order to execute find, validate, expire or save operations in appropriate data stores.
+Similarly, CAS must be configured to manage issued tokens in order to execute find, 
+validate, expire or save operations in appropriate data stores.
+
+## Passwordless Variants
+
+Passwordless authentication can also be activated using [QR Code Authentication](QRCode-Authentication.html),
+allowing end users to login by scanning a QR code using a mobile device.
 
 ## Overview
 
