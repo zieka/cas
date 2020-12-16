@@ -36,12 +36,15 @@ use case at some point, please be sure to supply details and steps to reproduce 
 
 When you are preparing to communicate a security issue to the appropriate channel privately, please make sure your report contains enough diagnostics data to expedite reviews and feedback:
 
-- Indicate the exact CAS version numbers that exhibit the seemingly-faulty behavior.
+- Indicate the *exact CAS version numbers* that exhibit the seemingly-faulty behavior.
 - Describe your deployment/development environment in sufficient relevant detail.
 - Include error logs, debug logs, screenshots and other useful snippets of your configuration.
 - Include steps to explain how the issue might be reproduced.
 - Include an overlay project that can duplicate the issue in practice.
 - If possible, prepare and share unit/integration tests to recreate the issue.
+
+Before posting a possible security issue, please make sure the affected CAS release line is still [under maintenance](Maintenance-Policy.html). Releases 
+that are considered EOL will not receive further updates and/or attention from designated project members.
 
 ### Time to Fix
 
@@ -67,16 +70,6 @@ Once the release is made available, the following procedure may be observed:
   - Affected CAS versions
   - Recommended guidelines for upgrades and applications of the patch.
 - At the end of a four-week grace period, a public security announcement is posted that should fully disclose the issue and nuances of the security patch or workarounds.
-
-An example notification message follows:
-
-```
-CAS x.y.z has been released. This release addresses a rather serious security issue where successfully exercising this vulnerability 
-may allow an adversary to gain insight into the running CAS server. If you have deployed **any version** of CAS x.y.z, you **MUST** 
-take action to upgrade. If you have deployed any **other** versions of CAS, disregard this issue.
-```
-
-[Keep it simple](https://www.wikiwand.com/en/KISS_principle).
 
 <div class="alert alert-info"><strong>Be Careful</strong><p>At the risk of stating the obvious, remember to only heed and accept community notifications about security fixes from <a href="Project-Commitee.html">trusted project contacts</a> and members. Posts detailing <i>security fixes</i> from random folks should entirely be ignored.</p></div>
 
