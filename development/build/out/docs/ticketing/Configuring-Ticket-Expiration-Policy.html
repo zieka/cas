@@ -1,0 +1,126 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-ticket-expiration-policy-componentscategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---configuring-ticket-expiration-policy-componentscategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Ticket Expiration Policy Components<br>
+category: Ticketing</h2>
+<h1>
+<a id="ticket-expiration-policies" class="anchor" href="#ticket-expiration-policies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ticket Expiration Policies</h1>
+<p>CAS supports a pluggable and extensible policy framework to control the expiration policy of ticket-granting<br>
+tickets (<code>TGT</code>), proxy-granting tickets (<code>PGT</code>), service tickets (<code>ST</code>) and proxy tickets (<code>PT</code>).</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="ticket-granting-ticket-policies" class="anchor" href="#ticket-granting-ticket-policies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ticket-Granting Ticket Policies</h2>
+<p>TGT expiration policy governs the time span during which an authenticated user may grant STs with a valid (non-expired) TGT without<br>
+having to re-authenticate. An attempt to grant an ST with an expired TGT would require the user to re-authenticate<br>
+to obtain a new (valid) TGT.</p>
+<h3>
+<a id="default" class="anchor" href="#default" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h3>
+<p>This is the default option, which provides a hard-time out as well as a sliding window.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#tgt-expiration-policy">review this guide</a>.</p>
+<h3>
+<a id="per-service" class="anchor" href="#per-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h3>
+<p>The expiration policy of ticket granting tickets can be conditionally decided on a per-application basis. The candidate service<br>
+whose ticket granting ticket expiration policy is to deviate from the default configuration must be designed as such:</p>
+<pre lang="json"><code>{
+    "@class" : "org.apereo.cas.services.RegexRegisteredService",
+    "serviceId" : "^https://.*",
+    "name" : "Sample",
+    "id" : 10,
+    "ticketGrantingTicketExpirationPolicy": {
+      "@class": "org.apereo.cas.services.DefaultRegisteredServiceTicketGrantingTicketExpirationPolicy",
+      "maxTimeToLiveInSeconds": 5
+    }
+}
+</code></pre>
+<h3>
+<a id="timeout" class="anchor" href="#timeout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Timeout</h3>
+<p>The expiration policy applied to TGTs provides for most-recently-used expiration policy, similar to a Web server session timeout.<br>
+For example, a 2-hour time span with this policy in effect would require a TGT to be used every 2 hours or less, otherwise<br>
+it would be marked as expired.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#tgt-expiration-policy">review this guide</a>.</p>
+<h3>
+<a id="hard-timeout" class="anchor" href="#hard-timeout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hard Timeout</h3>
+<p>The hard timeout policy provides for finite ticket lifetime as measured from the time of creation. For example, a 4-hour time span<br>
+for this policy means that a ticket created at 1PM may be used up until 5PM; subsequent attempts to use it will mark it expired<br>
+and the user will be forced to re-authenticate.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#tgt-expiration-policy">review this guide</a>.</p>
+<h3>
+<a id="throttled" class="anchor" href="#throttled" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Throttled</h3>
+<p>The throttled timeout policy extends the TimeoutExpirationPolicy with the concept of throttling where a ticket may be used at<br>
+most every N seconds. This policy was designed to thwart denial of service conditions where a rogue or misconfigured client<br>
+attempts to consume CAS server resources by requesting high volumes of service tickets in a short time.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#tgt-expiration-policy">review this guide</a>.</p>
+<h3>
+<a id="never" class="anchor" href="#never" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Never</h3>
+<p>The never expires policy allows tickets to exist indefinitely.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="service-ticket-policies" class="anchor" href="#service-ticket-policies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Ticket Policies</h2>
+<p>ST expiration policy governs the time span during which an authenticated user may attempt to validate an ST.</p>
+<h3>
+<a id="default-1" class="anchor" href="#default-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h3>
+<p>This is the default policy applied to service tickets where a ticket is expired after a fixed number of uses or after a maximum<br>
+period of inactivity elapses.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#service-tickets-behavior">review this guide</a>.</p>
+<h3>
+<a id="per-service-1" class="anchor" href="#per-service-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h3>
+<p>The expiration policy of service tickets can be conditionally decided on a per-application basis. The candidate service<br>
+whose service ticket expiration policy is to deviate from the default configuration must be designed as such:</p>
+<pre lang="json"><code>{
+    "@class" : "org.apereo.cas.services.RegexRegisteredService",
+    "serviceId" : "^https://.*",
+    "name" : "Sample",
+    "id" : 10,
+    "serviceTicketExpirationPolicy": {
+      "@class": "org.apereo.cas.services.DefaultRegisteredServiceServiceTicketExpirationPolicy",
+      "numberOfUses": 1,
+      "timeToLive": "10"
+    }
+}
+</code></pre>
+<h2>
+<a id="proxy-ticket-policies" class="anchor" href="#proxy-ticket-policies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proxy Ticket Policies</h2>
+<p>PT expiration policy governs the time span during which an authenticated user may attempt to validate an PT.</p>
+<h3>
+<a id="default-2" class="anchor" href="#default-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h3>
+<p>This is the default policy applied to proxy tickets where a ticket is expired after a fixed number of uses or after a maximum<br>
+period of inactivity elapses.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#proxy-tickets-behavior">review this guide</a>.</p>
+<h3>
+<a id="per-service-2" class="anchor" href="#per-service-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h3>
+<p>The expiration policy of proxy tickets can be conditionally decided on a per-application basis. The candidate service<br>
+whose proxy ticket expiration policy is to deviate from the default configuration must be designed as such:</p>
+<pre lang="json"><code>{
+    "@class" : "org.apereo.cas.services.RegexRegisteredService",
+    "serviceId" : "^https://.*",
+    "name" : "Sample",
+    "id" : 10,
+    "proxyTicketExpirationPolicy": {
+     "@class": "org.apereo.cas.services.DefaultRegisteredServiceProxyTicketExpirationPolicy",
+     "numberOfUses": 1,
+     "timeToLive": "30"
+    } 
+}
+</code></pre>
+<h2>
+<a id="proxy-granting-ticket-policies" class="anchor" href="#proxy-granting-ticket-policies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proxy-Granting Ticket Policies</h2>
+<p>PGT expiration policy governs the time span during which CAS may grant PTs with a valid (non-expired) PGT.</p>
+<h3>
+<a id="default-3" class="anchor" href="#default-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h3>
+<p>By default, the expiration policy assigned to proxy-granting tickets is controlled by the same policy assigned to ticket-granting tickets.</p>
+<h3>
+<a id="per-service-3" class="anchor" href="#per-service-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h3>
+<p>The expiration policy of proxy granting tickets can be conditionally decided on a per-application basis. The candidate service<br>
+whose proxy granting ticket expiration policy is to deviate from the default configuration must be designed as such:</p>
+<pre lang="json"><code>{
+    "@class" : "org.apereo.cas.services.RegexRegisteredService",
+    "serviceId" : "^https://.*",
+    "name" : "Sample",
+    "id" : 10,
+    "proxyGrantingTicketExpirationPolicy": {
+     "@class": "org.apereo.cas.services.DefaultRegisteredServiceProxyGrantingTicketExpirationPolicy",
+     "maxTimeToLiveInSeconds": 30
+    } 
+}
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#proxy-granting-tickets-behavior">review this guide</a>.</p>

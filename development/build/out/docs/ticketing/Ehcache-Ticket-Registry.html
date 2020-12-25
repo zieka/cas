@@ -1,0 +1,131 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---ehcache-ticket-registrycategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---ehcache-ticket-registrycategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Ehcache Ticket Registry<br>
+category: Ticketing</h2>
+<h1>
+<a id="ehcache-v3-ticket-registry" class="anchor" href="#ehcache-v3-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ehcache v3 Ticket Registry</h1>
+<p>Ehcache 3.x integration is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-ehcache3-ticket-registry&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>This registry stores tickets using the <a href="http://ehcache.org/">Ehcache 3.x</a> caching library<br>
+and <a href="https://www.ehcache.org/documentation/3.3/clustered-cache.html">an optional Terracotta cluster</a>.</p>
+<h2>
+<a id="in-memory-store-with-disk-persistence" class="anchor" href="#in-memory-store-with-disk-persistence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>In-memory store with disk persistence</h2>
+<p>Ehcache 3.x doesn't support distributing caching without Terracotta so using it without pointing at a Terracotta<br>
+server or cluster doesn't support using more than one CAS server at a time. The location and size of the disk caches<br>
+can be configured using the root-directory and per-cache-size-on-disk properties. If the persist-on-disk property<br>
+is set to true then the caches will survive a restart.</p>
+<h3>
+<a id="terracotta-clustering" class="anchor" href="#terracotta-clustering" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Terracotta Clustering</h3>
+<p>By pointing this Ehcache module at a Terracotta server then multiple CAS servers can share tickets. CAS uses <code>autocreate</code><br>
+to create the Terracotta cluster configuration. An easy way to run a Terracotta server is to use the <a href="https://github.com/Terracotta-OSS/docker">docker container</a>.</p>
+<pre lang="bash"><code>docker run --rm --name tc-server -p 9410:9410 -d \
+ --env OFFHEAP_RESOURCE1_NAME=main \
+ --env OFFHEAP_RESOURCE2_NAME=extra \
+ --env OFFHEAP_RESOURCE1_SIZE=256 \
+ --env OFFHEAP_RESOURCE2_SIZE=16 \
+terracotta/terracotta-server-oss:5.6.4
+</code></pre>
+<p>Running a Terracotta cluster on Kubernetes can be done easily using the Terracotta <a href="https://github.com/helm/charts/tree/master/stable/terracotta">helm chart</a>.</p>
+<h4>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h4>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ehcache-3-ticket-registry">review this guide</a>.<br>
+CAS currently doesn't support or require an XML configuration to configure Ehcache.</p>
+<h3>
+<a id="eviction-policy" class="anchor" href="#eviction-policy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Eviction Policy</h3>
+<p>Ehcache can be configured as "eternal" in which case CAS's regular cleaning process will remove expired tickets. If the<br>
+eternal property is set to false then storage timeouts will be set based on the metadata for the individual caches.</p>
+<h1>
+<a id="ehcache-v2-ticket-registry" class="anchor" href="#ehcache-v2-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ehcache v2 Ticket Registry</h1>
+<p>Due to the relatively unsupported status of the Ehcache 2.x code base, this module is deprecated and will likely be<br>
+removed in a future CAS release. Unlike the Ehcache 3.x library, it can replicate directly between CAS servers without<br>
+needing an external cache cluster (e.g. Terracotta in Ehcache 3.x).</p>
+<!-- raw HTML omitted -->
+<p>Ehcache integration is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-ehcache-ticket-registry&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>This registry stores tickets using <a href="http://ehcache.org/">Ehcache</a> version 2.x library.</p>
+<h2>
+<a id="distributed-cache" class="anchor" href="#distributed-cache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Distributed Cache</h2>
+<p>Distributed caches are recommended for HA architectures since they offer fault tolerance in the ticket storage<br>
+subsystem. A single cache instance is created to house all types of tickets, and is synchronously replicated<br>
+across the cluster of nodes that are defined in the configuration.</p>
+<h3>
+<a id="rmi-replication" class="anchor" href="#rmi-replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RMI Replication</h3>
+<p>Ehcache supports <a href="https://docs.oracle.com/javase/tutorial/rmi/index.html">RMI</a><br>
+replication for distributed caches composed of two or more nodes. To learn more about RMI<br>
+replication with Ehcache, <a href="https://www.ehcache.org/documentation/2.8/replication/rmi-replicated-caching.html">see this resource</a>.</p>
+<h4>
+<a id="configuration-1" class="anchor" href="#configuration-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h4>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ehcache-ticket-registry">review this guide</a>.</p>
+<p>The Ehcache configuration for <code>ehcache-replicated.xml</code> mentioned in the config follows.<br>
+Note that <code>${ehcache.otherServer}</code> would be replaced by a system property: <code>-Dehcache.otherserver=cas2</code>.</p>
+<pre lang="xml"><code>&lt;ehcache name="ehCacheTicketRegistryCache"
+    updateCheck="false"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd"&gt;
+
+    &lt;diskStore path="java.io.tmpdir/cas"/&gt;
+
+    &lt;!-- Automatic Peer Discovery
+    &lt;cacheManagerPeerProviderFactory
+    class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+    properties="peerDiscovery=automatic, multicastGroupAddress=230.0.0.1, multicastGroupPort=4446, timeToLive=32"
+    propertySeparator="," /&gt;
+    --&gt;
+
+    &lt;!-- Manual Peer Discovery --&gt;
+    &lt;cacheManagerPeerProviderFactory
+        class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+        properties="peerDiscovery=manual,rmiUrls=//${ehcache.otherServer}:41001/proxyGrantingTicketsCache| \
+            //${ehcache.otherServer}:41001/ticketGrantingTicketsCache|//${ehcache.otherServer}:41001/proxyTicketsCache| \
+            //${ehcache.otherServer}:41001/oauthCodesCache|//${ehcache.otherServer}:41001/samlArtifactsCache| \
+            //${ehcache.otherServer}:41001/oauthDeviceUserCodesCache|//${ehcache.otherServer}:41001/samlAttributeQueryCache| \
+            //${ehcache.otherServer}:41001/oauthAccessTokensCache|//${ehcache.otherServer}:41001/serviceTicketsCache| \
+            //${ehcache.otherServer}:41001/oauthRefreshTokensCache|//${ehcache.otherServer}:41001/transientSessionTicketsCache| \
+            //${ehcache.otherServer}:41001/oauthDeviceTokensCache" /&gt;
+
+    &lt;cacheManagerPeerListenerFactory
+        class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+        properties="port=41001,remoteObjectPort=41002" /&gt;
+&lt;/ehcache&gt;
+</code></pre>
+<h3>
+<a id="eviction-policy-1" class="anchor" href="#eviction-policy-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Eviction Policy</h3>
+<p>Ehcache manages the internal eviction policy of cached objects via the idle and alive settings.<br>
+These settings control the general policy of the cache that is used to store various ticket types. In general,<br>
+you need to ensure the cache is alive long enough to support the individual expiration policy of tickets, and let<br>
+CAS clean the tickets as part of its own cleaner.</p>
+<h3>
+<a id="troubleshooting-guidelines" class="anchor" href="#troubleshooting-guidelines" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting Guidelines</h3>
+<ul>
+<li>
+<p>You will need to ensure that network communication across CAS nodes is allowed and no firewall or other component<br>
+is blocking traffic.</p>
+</li>
+<li>
+<p>If you are running this on a server with active firewalls, you will probably need to specify<br>
+a fixed <code>remoteObjectPort</code>, within the <code>cacheManagerPeerListenerFactory</code>.</p>
+</li>
+<li>
+<p>Depending on environment settings and version of Ehcache used, you may also have to adjust the<br>
+<code>shared</code> setting .</p>
+</li>
+<li>
+<p>Ensure that each cache manager specified a name that matches the Ehcache configuration itself.</p>
+</li>
+<li>
+<p>You may also need to adjust your expiration policy to allow for a larger time span, specially<br>
+for service tickets depending on network traffic and communication delay across CAS nodes particularly<br>
+in the event that a node is trying to join the cluster.</p>
+</li>
+</ul>

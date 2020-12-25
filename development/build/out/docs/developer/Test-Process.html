@@ -1,0 +1,77 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---test-processcategory-developer" class="anchor" href="#layout-defaulttitle-cas---test-processcategory-developer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Test Process<br>
+category: Developer</h2>
+<h1>
+<a id="test-process" class="anchor" href="#test-process" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test Process</h1>
+<p>This page documents the steps that a CAS developer/contributor should take for testing a CAS server deployment during development. For additional<br>
+instructions and guidance on the general build process, please <a href="Build-Process.html">see this page</a>.</p>
+<h2>
+<a id="testing-modules" class="anchor" href="#testing-modules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Testing Modules</h2>
+<p>To test the functionality provided by a given CAS module, execute the following steps:</p>
+<ul>
+<li>For the tomcat, undertow or jetty webapp, add the module reference to the <code>webapp.gradle</code> build script of web application you intend to run:</li>
+</ul>
+<pre lang="gradle"><code>implementation project(":support:cas-server-support-modulename")
+</code></pre>
+<p>Alternatively, set a <code>casModules</code> property in the root project's <code>gradle.properties</code> or <code>~/.gradle/gradle.properties</code> to a<br>
+comma separated list of modules without the <code>cas-server-</code> prefix:</p>
+<p>For example:</p>
+<pre lang="properties"><code>casModules=monitor,\
+    ldap,\
+    x509,\
+    bootadmin-client
+</code></pre>
+<p>Or set the property on the command-line:</p>
+<pre lang="bash"><code>bc -PcasModules=ldap,x509
+</code></pre>
+<p>...where <code>bc</code> is an <a href="Build-Process.html#sample-build-aliases">alias for building CAS</a>.</p>
+<p>Prepare <a href="Build-Process.html#embedded-containers">the embedded container</a>, to run and deploy the web application.</p>
+<h2>
+<a id="unit--integration-testing" class="anchor" href="#unit--integration-testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unit / Integration Testing</h2>
+<p>To simplify the test execution process, you may take advantage of the <code>testcas.sh</code> script found at the root of the repository as such:</p>
+<pre lang="bash"><code># chmod +x ./testcas.sh
+./testcas.sh --category &lt;category&gt; [--test &lt;test-class&gt;] [--debug] [--with-coverage]
+</code></pre>
+<p>To learn more about the script, use:</p>
+<pre lang="bash"><code>./testcas.sh --help
+</code></pre>
+<p>All unit and integration tests are executed by the <a href="Test-Process.html#continuous-integration">continuous integration system</a>.</p>
+<h2>
+<a id="code-coverage--metrics" class="anchor" href="#code-coverage--metrics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Code Coverage &amp; Metrics</h2>
+<p>Code coverage metrics are collected and reported by the following platforms:</p>
+<p>| System                            | Badge<br>
+|-----------------------------------+---------------------------------------------------------------------------+<br>
+| Codacy           | <a href="https://www.codacy.com/gh/apereo/cas/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=apereo/cas&amp;utm_campaign=Badge_Coverage"><img src="https://app.codacy.com/project/badge/Coverage/29973e19266547dab7ab73f1a511c826" alt="Codacy Badge"></a><br>
+| SonarCloud           | <a href="https://sonarcloud.io/dashboard?id=org.apereo.cas%3Acas-server"><img src="https://sonarcloud.io/api/project_badges/measure?project=org.apereo.cas%3Acas-server&amp;metric=coverage" alt="Coverage"></a><br>
+| CodeCov           | <a href="https://codecov.io/gh/apereo/cas"><img src="https://codecov.io/gh/apereo/cas/branch/master/graph/badge.svg" alt="codecov"></a></p>
+<p>Quality metrics are collected and reported by the following platforms:</p>
+<p>| System                            | Badge<br>
+|-----------------------------------+---------------------------------------------------------------------------+<br>
+| Codacy           | <a href="https://www.codacy.com/gh/apereo/cas/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=apereo/cas&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/29973e19266547dab7ab73f1a511c826" alt="Codacy Badge"></a><br>
+| SonarCloud Quality Gate           | <a href="https://sonarcloud.io/dashboard?id=org.apereo.cas%3Acas-server"><img src="https://sonarcloud.io/api/project_badges/measure?project=org.apereo.cas%3Acas-server&amp;metric=alert_status" alt="Sonarqube Quality"></a><br>
+| SonarCloud Maintainability            | <a href="https://sonarcloud.io/dashboard?id=org.apereo.cas%3Acas-server"><img src="https://sonarcloud.io/api/project_badges/measure?project=org.apereo.cas%3Acas-server&amp;metric=sqale_rating" alt="Sonarqube Quality"></a></p>
+<h2>
+<a id="browser--functional-testing" class="anchor" href="#browser--functional-testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser &amp; Functional Testing</h2>
+<p>Automated browser testing is done via the <a href="https://pptr.dev/">Puppeteer framework</a>. Puppeteer is a Node library which provides a high-level<br>
+API to control Chrome or Chromium over the DevTools Protocol and runs headless by default.</p>
+<p>Functional tests start by generating a plain CAS overlay as a baseline that is able to run under HTTPS using a pre-generated keystore.<br>
+This overlay is supplied the test scenario configuration that explain the required modules, properties, etc to use when CAS is deployed<br>
+inside an embedded Apache Tomcat container. Once running, the Puppeteer script is executed by Node for the given test scenario to verify<br>
+specific functionality such as successful logins, generation of tickets, etc.</p>
+<p>All functional and browser tests are executed by the <a href="Test-Process.html#continuous-integration">continuous integration system</a>. If you<br>
+are adding a new batch of tests, make sure the scenario (i.e. test) name is included in the CI configuration.</p>
+<p>To help simplify the testing process, you may use the following bash function in your <code>.profile</code>:</p>
+<pre lang="bash"><code>function pupcas() {
+  scenario=$1
+  /path/to/cas/ci/tests/puppeteer/run.sh /path/to/cas/ci/tests/puppeteer/scenarios/"${scenario}"
+}
+</code></pre>
+<p>...which can later be invoked as:</p>
+<pre lang="bash"><code>pupcas &lt;scenario-name&gt;
+</code></pre>
+<p>To successfully run tests, you need to make <a href="https://stedolan.github.io/jq/">jq</a> is installed.</p>
+<h2>
+<a id="continuous-integration" class="anchor" href="#continuous-integration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Continuous Integration</h2>
+<p>Unit and integration tests are automatically executed by the CAS CI system, <a href="https://github.com/apereo/cas/actions">GitHub Actions</a>.</p>

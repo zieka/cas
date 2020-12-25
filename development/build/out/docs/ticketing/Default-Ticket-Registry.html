@@ -1,0 +1,15 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---default-ticket-registrycategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---default-ticket-registrycategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Default Ticket Registry<br>
+category: Ticketing</h2>
+<h1>
+<a id="default-ticket-registry" class="anchor" href="#default-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default Ticket Registry</h1>
+<p>The default registry uses a memory-backed internal concurrent map for ticket storage and retrieval, though there is also the option to use an implementation that is backed by a caching engine to gain slightly better performance when it comes to evicting expired tickets.</p>
+<p>This component does not preserve ticket state across restarts and is not a suitable solution<br>
+for clustered CAS environments that are deployed in active/active mode.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#inmemory-ticket-registry">review this guide</a>.</p>
+<h3>
+<a id="eviction-policy" class="anchor" href="#eviction-policy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Eviction Policy</h3>
+<p>This ticket registry relies on a background job that is automatically scheduled to clean up after the registry and remove expired tickets. The cleaner will periodically examine the state of the registry to identify expired tickets, remove them from the registry and then execute relevant logout operations.</p>
+<p>In the event that the ticket registry is configured to use caching engine, CAS configured the cache store automatically such that each ticket put into the cache is given the ability to automatically expire based on the expiration policies defined for each ticket. The cache is constantly on its own monitoring for eviction events and once an item is deemed expired and evicted, CAS will take over to run logout operations. This means that running the default registry in this mode does not require CAS to schedule and maintain a background job to look after ticket state given the cache cleans up after itself.</p>

@@ -1,0 +1,104 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---os-service-deploymentcategory-installation" class="anchor" href="#layout-defaulttitle-cas---os-service-deploymentcategory-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - OS Service Deployment<br>
+category: Installation</h2>
+<h1>
+<a id="os-service-deployment" class="anchor" href="#os-service-deployment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OS Service Deployment</h1>
+<p>CAS can be easily started as Unix/Linux services using either <code>init.d</code> or <code>systemd</code>. Windows support is also made available<br>
+via an external daemon. Note that most if not all of the below strategies attempt to run CAS via an embedded<br>
+servlet container whose configuration is <a href="Configuring-Servlet-Container.html#embedded">explained here</a>.</p>
+<h2>
+<a id="initd-service" class="anchor" href="#initd-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>init.d</code> Service</h2>
+<p>If CAS is built and run as <a href="Configuring-Servlet-Container.html">a fully executable web application</a>,<br>
+then it can be used as an <code>init.d</code> service. Simply <code>symlink</code> the web application file to <code>init.d</code><br>
+to support the standard <code>start</code>, <code>stop</code>, <code>restart</code> and <code>status</code> commands.</p>
+<p>The configuration built into CAS allows it to interact with the OS system configuration as such:</p>
+<ul>
+<li>Start the service as the user that owns the jar file</li>
+<li>Track CAS web applications' PID using <code>/var/run/cas/cas.pid</code>
+</li>
+<li>Write console logs to <code>/var/log/cas.log</code>
+</li>
+</ul>
+<p>To install CAS as an <code>init.d</code> service simply create a symlink:</p>
+<pre lang="bash"><code>sudo ln -s /path/to/cas.war /etc/init.d/cas
+service cas start
+</code></pre>
+<p>You can also flag the application to start automatically using your standard operating system tools. For example, on Debian:</p>
+<pre lang="bash"><code>update-rc.d myapp defaults &lt;priority&gt;
+</code></pre>
+<h3>
+<a id="security" class="anchor" href="#security" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Security</h3>
+<p>When executed as <code>root</code>, as is the case when <code>root</code> is being used to start an <code>init.d</code> service, the CAS default<br>
+executable script will run the web application as the user which owns the web application file. You should <strong>never</strong><br>
+run CAS as <code>root</code> so the web application file should never be owned by <code>root</code>. Instead, create a specific user to run<br>
+CAS and use <code>chown</code> to make it the owner of the file. For example:</p>
+<pre lang="bash"><code>chown bootapp:bootapp /path/to/cas.war
+</code></pre>
+<p>You may also take steps to prevent the modification of the CAS web application file. Firstly, configure<br>
+its permissions so that it cannot be written and can only be read or executed by its owner:</p>
+<pre lang="bash"><code>chmod 500 /path/to/cas.war
+</code></pre>
+<p>Additionally, you should also take steps to limit the damage if the CAS web application or<br>
+the account that’s running it is compromised. If an attacker does gain access, they could make the web application<br>
+file writable and change its contents. One way to protect against this is to make it immutable using <code>chattr</code>:</p>
+<pre lang="bash"><code>sudo chattr +i /path/to/cas.war
+</code></pre>
+<p>This will prevent any user, including <code>root</code>, from modifying the file.</p>
+<h2>
+<a id="systemd-service" class="anchor" href="#systemd-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>systemd</code> Service</h2>
+<p>To install CAS as a <code>systemd</code> service create a script named <code>cas.service</code> using the following example and place it in <code>/etc/systemd/system</code> directory:</p>
+<pre lang="ini"><code>[Unit]
+Description=CAS
+After=syslog.target
+
+[Service]
+User=bootapp
+ExecStart=/path/to/cas.war
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<!-- raw HTML omitted -->
+<p>The user that runs the CAS web application, PID file and console log file are managed by <code>systemd</code> itself and therefore must be configured using appropriate fields in <code>service</code> script. Consult <a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html">the service unit configuration man page</a> for more details.</p>
+<p>To flag the application to start automatically on system boot use the following command:</p>
+<pre lang="bash"><code>systemctl enable cas.service
+</code></pre>
+<p>Refer to <code>man systemctl</code> for more details.</p>
+<h2>
+<a id="upstart" class="anchor" href="#upstart" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Upstart</h2>
+<p><a href="http://upstart.ubuntu.com/">Upstart</a> is an event-based service manager, a potential replacement for the System V init that offers more control on the behavior of the different daemons. When using Ubuntu you probably have it installed and configured already (check if there are any jobs with a name starting with <code>cas</code> in <code>/etc/init</code>).</p>
+<p>We create a job <code>cas.conf</code> to start the CAS web application:</p>
+<pre lang="bash"><code># Place in /home/{user}/.config/cas
+description "CAS web application"
+# attempt service restart if stops abruptly
+respawn
+exec java -jar /path/to/cas.war
+</code></pre>
+<p>Now run <code>start cas</code> and your service will start. Upstart offers many job configuration options and you can find <a href="http://upstart.ubuntu.com/cookbook/">most of them here</a>.</p>
+<h2>
+<a id="windows-service" class="anchor" href="#windows-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows Service</h2>
+<h3>
+<a id="windows-service-wrapper" class="anchor" href="#windows-service-wrapper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Windows Service Wrapper</h3>
+<p>CAS may be started as Windows service using <a href="https://github.com/kohsuke/winsw">winsw</a>.</p>
+<p>Winsw provides programmatic means to <code>install/uninstall/start/stop</code> a service. In addition, it may be used to run any kind of executable as a service under Windows.</p>
+<p>Once you have downloaded the Winsw binaries, the <code>cas.xml</code> configuration file that defines our Windows service should look like this:</p>
+<pre lang="xml"><code>&lt;service&gt;
+    &lt;id&gt;cas&lt;/id&gt;
+    &lt;name&gt;CAS&lt;/name&gt;
+    &lt;description&gt;CAS web application.&lt;/description&gt;
+    &lt;executable&gt;java&lt;/executable&gt;
+    &lt;arguments&gt;-Xmx2048m -jar "path\to\cas.war"&lt;/arguments&gt;
+    &lt;logmode&gt;rotate&lt;/logmode&gt;
+&lt;/service&gt;
+</code></pre>
+<p>Finally, you have to rename the <code>winsw.exe</code> to <code>cas.exe</code> so that its name matches with the <code>cas.xml</code> configuration file. Thereafter you can install the service like so:</p>
+<pre lang="bash"><code>cas.exe install
+</code></pre>
+<p>Similarly, you may use <code>uninstall</code>, <code>start</code>, <code>stop</code>, etc.</p>
+<p>Refer to <a href="https://github.com/snicoll-scratches/spring-boot-daemon">this example</a> to learn more.</p>
+<h3>
+<a id="others" class="anchor" href="#others" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Others</h3>
+<p>CAS web applications may also be started as Windows service using <a href="http://commons.apache.org/proper/commons-daemon/procrun.html">Procrun</a> of the <a href="http://commons.apache.org/daemon/index.html">Apache Commons Daemon project</a>. Procrun is a set of applications that allow Windows users to wrap Java applications as Windows services. Such a service may be set to start automatically when the machine boots and will continue to run without any user being logged on.</p>

@@ -1,0 +1,131 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---cas-saml-protocolcategory-protocols" class="anchor" href="#layout-defaulttitle-cas---cas-saml-protocolcategory-protocols" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - CAS SAML Protocol<br>
+category: Protocols</h2>
+<h1>
+<a id="saml-protocol" class="anchor" href="#saml-protocol" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML Protocol</h1>
+<p>CAS has support for versions 1.1 and 2 of the SAML protocol to a specific extent.<br>
+This document deals with CAS-specific concerns.</p>
+<h2>
+<a id="saml2" class="anchor" href="#saml2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML2</h2>
+<p>CAS provides support for <a href="../installation/Configuring-SAML2-Authentication.html">SAML2 Authentication</a>, allowing CAS to act<br>
+as a SAML2 identity provider.</p>
+<h2>
+<a id="google-apps" class="anchor" href="#google-apps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Google Apps</h2>
+<!-- raw HTML omitted -->
+<p>CAS provides support for <a href="../integration/Google-Apps-Integration.html">Google Apps Integration</a>.</p>
+<h2>
+<a id="saml-11" class="anchor" href="#saml-11" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML 1.1</h2>
+<p>CAS supports the <a href="http://en.wikipedia.org/wiki/SAML_1.1">standardized SAML 1.1 protocol</a> primarily to:</p>
+<ul>
+<li>Support a method of <a href="../integration/Attribute-Release.html">attribute release</a>
+</li>
+<li><a href="../installation/Logout-Single-Signout.html">Single Logout</a></li>
+</ul>
+<p>A SAML 1.1 ticket validation response is obtained by validating a ticket via POST at the <code>/samlValidate URI</code>.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-saml&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h3>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>samlValidate</code></td>
+<td>Obtain a SAML 1.1 validation payload by supplying a <code>username</code>, <code>password</code> and <code>service</code> as parameters.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="sample-request" class="anchor" href="#sample-request" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Request</h3>
+<pre lang="xml"><code>POST /cas/samlValidate?ticket=
+Host: cas.example.com
+Content-Length: 491
+Content-Type: text/xml
+
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;SOAP-ENV:Header/&gt;
+  &lt;SOAP-ENV:Body&gt;
+    &lt;samlp:Request xmlns:samlp="urn:oasis:names:tc:SAML:1.0:protocol" MajorVersion="1"
+      MinorVersion="1" RequestID="_192.168.16.51.1024506224022"
+      IssueInstant="2002-06-19T17:03:44.022Z"&gt;
+      &lt;samlp:AssertionArtifact&gt;
+        ST-1-u4hrm3td92cLxpCvrjylcas.example.com
+      &lt;/samlp:AssertionArtifact&gt;
+    &lt;/samlp:Request&gt;
+  &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;
+</code></pre>
+<h3>
+<a id="sample-response" class="anchor" href="#sample-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Response</h3>
+<pre lang="xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;SOAP-ENV:Body&gt;
+    &lt;saml1p:Response xmlns:saml1p="urn:oasis:names:tc:SAML:1.0:protocol" InResponseTo="...." IssueInstant="2017-08-15T06:30:04.622Z" MajorVersion="1" MinorVersion="1" ResponseID="_bf6957bad275fc74a1c079a445581441"&gt;
+      &lt;saml1p:Status&gt;
+        &lt;saml1p:StatusCode Value="saml1p:Success" /&gt;
+      &lt;/saml1p:Status&gt;
+      &lt;saml1:Assertion xmlns:saml1="urn:oasis:names:tc:SAML:1.0:assertion" AssertionID="_d9673d8af414cc9612929480b58cb2a1" IssueInstant="2017-08-15T06:30:04.622Z" Issuer="testIssuer" MajorVersion="1" MinorVersion="1"&gt;
+        &lt;saml1:Conditions NotBefore="2017-08-15T06:30:04.622Z" NotOnOrAfter="2017-08-15T06:30:05.622Z"&gt;
+          &lt;saml1:AudienceRestrictionCondition&gt;
+            &lt;saml1:Audience&gt;https://google.com&lt;/saml1:Audience&gt;
+          &lt;/saml1:AudienceRestrictionCondition&gt;
+        &lt;/saml1:Conditions&gt;
+        &lt;saml1:AuthenticationStatement AuthenticationInstant="2017-08-15T06:46:43.585Z" AuthenticationMethod="urn:ietf:rfc:2246"&gt;
+          &lt;saml1:Subject&gt;
+            &lt;saml1:NameIdentifier&gt;testPrincipal&lt;/saml1:NameIdentifier&gt;
+            &lt;saml1:SubjectConfirmation&gt;
+              &lt;saml1:ConfirmationMethod&gt;urn:oasis:names:tc:SAML:1.0:cm:artifact&lt;/saml1:ConfirmationMethod&gt;
+            &lt;/saml1:SubjectConfirmation&gt;
+          &lt;/saml1:Subject&gt;
+        &lt;/saml1:AuthenticationStatement&gt;
+        &lt;saml1:AttributeStatement&gt;
+          &lt;saml1:Subject&gt;
+            &lt;saml1:NameIdentifier&gt;testPrincipal&lt;/saml1:NameIdentifier&gt;
+            &lt;saml1:SubjectConfirmation&gt;
+              &lt;saml1:ConfirmationMethod&gt;urn:oasis:names:tc:SAML:1.0:cm:artifact&lt;/saml1:ConfirmationMethod&gt;
+            &lt;/saml1:SubjectConfirmation&gt;
+          &lt;/saml1:Subject&gt;
+          &lt;saml1:Attribute AttributeName="testAttribute" AttributeNamespace="whatever"&gt;
+            &lt;saml1:AttributeValue&gt;testValue&lt;/saml1:AttributeValue&gt;
+          &lt;/saml1:Attribute&gt;
+          &lt;saml1:Attribute AttributeName="samlAuthenticationStatementAuthMethod" AttributeNamespace="whatever"&gt;
+            &lt;saml1:AttributeValue&gt;urn:ietf:rfc:2246&lt;/saml1:AttributeValue&gt;
+          &lt;/saml1:Attribute&gt;
+          &lt;saml1:Attribute AttributeName="testSamlAttribute" AttributeNamespace="whatever"&gt;
+            &lt;saml1:AttributeValue&gt;value&lt;/saml1:AttributeValue&gt;
+          &lt;/saml1:Attribute&gt;
+          &lt;saml1:Attribute AttributeName="testAttributeCollection" AttributeNamespace="whatever"&gt;
+            &lt;saml1:AttributeValue&gt;tac1&lt;/saml1:AttributeValue&gt;
+            &lt;saml1:AttributeValue&gt;tac2&lt;/saml1:AttributeValue&gt;
+          &lt;/saml1:Attribute&gt;
+        &lt;/saml1:AttributeStatement&gt;
+      &lt;/saml1:Assertion&gt;
+    &lt;/saml1p:Response&gt;
+  &lt;/SOAP-ENV:Body&gt;
+&lt;/SOAP-ENV:Envelope&gt;
+</code></pre>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-core">review this guide</a>.</p>
+<p>You may also need to declare the following repository in<br>
+your CAS Overlay to be able to resolve dependencies:</p>
+<pre lang="groovy"><code>repositories {
+    maven { 
+        mavenContent { releasesOnly() }
+        url "https://build.shibboleth.net/nexus/content/repositories/releases" 
+    }
+}
+</code></pre>

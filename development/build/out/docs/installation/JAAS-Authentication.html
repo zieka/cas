@@ -1,0 +1,172 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---jaas-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---jaas-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - JAAS Authentication<br>
+category: Authentication</h2>
+<h1>
+<a id="jaas-authentication" class="anchor" href="#jaas-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JAAS Authentication</h1>
+<p><a href="https://docs.oracle.com/javase/9/security/java-authentication-and-authorization-service-jaas1.htm">JAAS</a> is a Java standard<br>
+authentication and authorization API. JAAS is configured via externalized plain text configuration file.<br>
+Using JAAS with CAS allows modification of the authentication process without having to rebuild and redeploy CAS<br>
+and allows for PAM-style multi-module "stacked" authentication.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>JAAS components are provided in the CAS core module and require no additional dependencies to use.<br>
+The JAAS handler delegates to the built-in JAAS subsystem to perform authentication according to the<br>
+directives in the JAAS config file.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jaas-authentication">review this guide</a>.</p>
+<h2>
+<a id="jaas-configuration-file" class="anchor" href="#jaas-configuration-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JAAS Configuration File</h2>
+<p>The default JAAS configuration file is located at <code>$JRE_HOME/lib/security/java.security</code>. It's important to note<br>
+that JAAS configuration applies to the entire JVM. The path to the JAAS configuration file in effect may be altered<br>
+by setting the <code>java.security.auth.login.config</code> system property to an alternate file path (i.e. <code>file:/etc/cas/config/jaas.config</code>).</p>
+<p>A sample JAAS configuration file is provided for reference.</p>
+<pre><code>/**
+  * Login Configuration for JAAS with the realm name defined as CAS.
+  */
+CAS {
+  org.sample.jaas.login.SampleLoginModule sufficient
+    debug=FALSE;
+};
+</code></pre>
+<h2>
+<a id="login-modules" class="anchor" href="#login-modules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Login Modules</h2>
+<p>The following login modules are available with CAS:</p>
+<h3>
+<a id="jndi" class="anchor" href="#jndi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JNDI</h3>
+<p>The module prompts for a username and password and then verifies the password against the password stored in a directory service configured under JNDI.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.JndiLoginModule sufficient
+    user.provider.url=name_service_url
+    group.provider.url=name_service_url
+    debug=FALSE;
+};
+</code></pre>
+<p>The value of <code>name_service_url</code> specifies the directory service and path where this module can access the relevant user and group information. Because this module only performs one-level searches to find the relevant user information, the URL must point to a directory one level above where the user and group information is stored in the directory service.</p>
+<p>For a list of all other options and more comprehensive documentation, please see <a href="http://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/JndiLoginModule.html">this guide</a> for more info.</p>
+<h3>
+<a id="kerberos" class="anchor" href="#kerberos" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kerberos</h3>
+<p>This module authenticates users using Kerberos protocols. The configuration entry for module has several options that control the<br>
+authentication process and additions to the <code>Subject</code>'s private credential set. Irrespective of these options, the <code>Subject</code>'s principal set and private credentials set are updated only when commit is called. When commit is called, the <code>KerberosPrincipal</code> is added to the <code>Subject</code>'s principal set and KerberosTicket is added to the <code>Subject</code>'s private credentials.</p>
+<p>If the configuration entry for module has the option <code>storeKey</code> set to true, then <code>KerberosKey</code> will also be added to<br>
+the subject's private credentials. <code>KerberosKey</code>, the principal's key will be either obtained from the keytab or derived from user's password.</p>
+<p>This module also recognizes the <code>doNotPrompt</code> option. If set to true the user will not be prompted for the password.<br>
+The user can specify the location of the ticket cache by using the option <code>ticketCache</code> in the configuration entry. The user can specify the keytab location by using the option <code>keyTab</code> in the configuration entry.</p>
+<p>The principal name can be specified in the configuration entry by using the option <code>principal</code>. The principal name can<br>
+either be a simple user name or a service name such as <code>host/mission.eng.sun.com</code>. The principal can also be set using<br>
+the system property <code>sun.security.krb5.principal</code>. This property is checked during login. If this property is not set,<br>
+then the principal name from the configuration is used. In the case where the principal property is not set and the principal<br>
+entry also does not exist, the user is prompted for the name. When this property of entry is set, and <code>useTicketCache</code> is set to<br>
+true, only TGT belonging to this principal is used.</p>
+<p>Note that a valid <code>krb5.conf</code> must be supplied to the JVM for Kerberos auth via setting <code>-Djava.security.krb5.conf=/etc/krb5.conf</code>.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.Krb5LoginModule sufficient
+    refreshKrb5Config=TRUE/FALSE
+    useTicketCache=TRUE/FALSE
+    ticketCache=...
+    renewTGT=TRUE/FALSE
+    useKeyTab=TRUE/FALSE
+    doNotPrompt=TRUE/FALSE
+    keyTab=TRUE/FALSE
+    storeKey=TRUE/FALSE
+    principal=...
+    debug=FALSE;
+};
+</code></pre>
+<p>For a list of all other options and more comprehensive documentation, please see <a href="http://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/Krb5LoginModule.html">this guide</a> for more info.</p>
+<h3>
+<a id="unix" class="anchor" href="#unix" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>UNIX</h3>
+<p>This module imports a user's Unix Principal information (<code>UnixPrincipal</code>, <code>UnixNumericUserPrincipal</code>, and <code>UnixNumericGroupPrincipal</code>) and associates them with the current <code>Subject</code>.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.UnixLoginModule sufficient
+    debug=FALSE;
+};
+</code></pre>
+<p>For a list of all other options and more comprehensive documentation, please see <a href="http://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/UnixLoginModule.html">this guide</a> for more info.</p>
+<h3>
+<a id="nt" class="anchor" href="#nt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NT</h3>
+<p>This module renders a user's NT security information as some number of <code>Principal</code>s and associates them with a <code>Subject</code>.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.NTLoginModule sufficient
+    debugNative=TRUE
+    debug=FALSE;
+};
+</code></pre>
+<p>For a list of all other options and more comprehensive documentation, please see <a href="http://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/NTLoginModule.html">this guide</a> for more info.</p>
+<h3>
+<a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
+<p>This module performs LDAP-based authentication. A username and password is verified against the corresponding user credentials stored in an LDAP directory. If authentication is successful then a new <code>LdapPrincipal</code> is created using the user's distinguished name and a new <code>UserPrincipal</code> is created using the user's username and both are associated with the current <code>Subject</code>.</p>
+<p>For a list of all other options and more comprehensive documentation, please see <a href="http://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/LdapLoginModule.html">this guide</a> for more info.</p>
+<p>This module operates in one of three modes. A mode is selected by specifying a particular set of options:</p>
+<h4>
+<a id="search-first" class="anchor" href="#search-first" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Search First</h4>
+<p>In search-first mode, the LDAP directory is searched to determine the user's distinguished name and then authentication is attempted. An (anonymous) search is performed using the supplied username in conjunction with a specified search filter. If successful then authentication is attempted using the user's distinguished name and the supplied password. To enable this mode, set the <code>userFilter</code> option and omit the <code>authIdentity</code> option. Use <code>search-first</code> mode when the user's distinguished name is not known in advance.</p>
+<p>The example below identifies the LDAP server and specifies that users' entries be located by their <code>uid</code> and <code>objectClass</code> attributes. It also specifies that an identity based on the user's <code>employeeNumber</code> attribute should be created.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.LdapLoginModule REQUIRED
+    userProvider="ldap://ldap-svr/ou=people,dc=example,dc=com"
+    userFilter="(&amp;(uid={USERNAME})(objectClass=inetOrgPerson))"
+    authzIdentity="{EMPLOYEENUMBER}"
+    debug=true;
+};
+</code></pre>
+<h4>
+<a id="authentication-first" class="anchor" href="#authentication-first" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication First</h4>
+<p>In <code>authentication-first</code> mode, authentication is attempted using the supplied username and password and then the LDAP directory is searched. If authentication is successful then a search is performed using the supplied username in conjunction with a specified search filter. To enable this mode, set the <code>authIdentity</code> and the <code>userFilter</code> options. Use <code>authentication-first</code> mode when accessing an LDAP directory that has been configured to disallow anonymous searches.</p>
+<p>The example below requests that the LDAP server be located dynamically, that authentication be performed using the supplied username directly but without the protection of SSL and that users' entries be located by one of three naming attributes and their <code>objectClass</code> attribute.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.LdapLoginModule REQUIRED
+    userProvider="ldap:///cn=users,dc=example,dc=com"
+    authIdentity="{USERNAME}"
+    userFilter="(&amp;(|(samAccountName={USERNAME})(userPrincipalName={USERNAME})(cn={USERNAME}))(objectClass=user))"
+    useSSL=false
+    debug=true;
+};
+</code></pre>
+<h4>
+<a id="authentication-only" class="anchor" href="#authentication-only" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication Only</h4>
+<p>In <code>authentication-only</code> mode, authentication is attempted using the supplied username and password. The LDAP directory is not searched because the user's distinguished name is already known. To enable this mode, set the authIdentity option to a valid distinguished name and omit the userFilter option. Use authentication-only mode when the user's distinguished name is known in advance.</p>
+<p>The example below identifies alternative LDAP servers, it specifies the distinguished name to use for authentication and a fixed identity to use for authorization. No directory search is performed.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.LdapLoginModule REQUIRED
+    userProvider="ldap://ldap-svr1 ldap://ldap-svr2"
+    authIdentity="cn={USERNAME},ou=people,dc=example,dc=com"
+    authzIdentity="staff"
+    debug=true;
+  };
+</code></pre>
+<h3>
+<a id="ldaptive" class="anchor" href="#ldaptive" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ldaptive</h3>
+<p>Ldaptive provides several <a href="http://www.ldaptive.org/docs/guide/jaas.html">login modules for authentication and authorization</a> against an LDAP. Each module accepts properties that correspond to the setters on objects in the ldaptive code base. If you are looking to set a specific configuration option that is available as a setter, the chances are that it will be accepted on the module. Any unknown options will be passed to the provider as a generic property.</p>
+<p>In order to take advantage of the login modules provided by Ldaptive, the following dependency must be present and added to the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-ldap-core&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3>
+<a id="keystore" class="anchor" href="#keystore" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Keystore</h3>
+<p>This module prompts for a key store alias and populates the subject with the alias's principal and credentials. Stores an <code>X500Principal</code> for the subject distinguished name of the first certificate in the alias's credentials in the subject's principals, the alias's certificate path in the subject's public credentials, and a <code>X500PrivateCredential</code> whose certificate is the first certificate in the alias's certificate path and whose private key is the alias's private key in the subject's private credentials.</p>
+<pre><code>CAS {
+  com.sun.security.auth.module.KeyStoreLoginModule sufficient
+    keyStoreURL=...
+    keyStoreType=
+    keyStoreProvider=...
+    keyStoreAlias=...
+    keyStorePasswordURL=...
+    privateKeyPasswordURL=...
+    protected=...
+    debug=FALSE;
+};
+</code></pre>
+<p>For a list of all other options and more comprehensive documentation, please see <a href="http://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/KeyStoreLoginModule.html">this guide</a> for more info.</p>
+<h2>
+<a id="deployments" class="anchor" href="#deployments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deployments</h2>
+<p>If your deployment strategy ultimately uses an <a href="Configuring-Servlet-Container.html#embedded">embedded container</a>,<br>
+you can pass along the location of the JAAS configuration file in form of a system property as such:</p>
+<pre lang="bash"><code>java -Djava.security.auth.login.config=file:/etc/cas/config/jaas.config -jar ...
+</code></pre>
+<p>Alternatively, you may activate the login configuration type to be <code>JavaLoginConfig</code> in the CAS settings and simply specify the path<br>
+to the jaas configuration file there in the settings directly.</p>
+<p>For more information on configuration management, please <a href="../configuration/Configuration-Management.html">review this guide</a>.</p>

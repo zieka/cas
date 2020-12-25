@@ -1,0 +1,103 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---monitoringcategory-monitoring--statistics" class="anchor" href="#layout-defaulttitle-cas---monitoringcategory-monitoring--statistics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Monitoring<br>
+category: Monitoring &amp; Statistics</h2>
+<h1>
+<a id="cas-monitoring" class="anchor" href="#cas-monitoring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Monitoring</h1>
+<p>CAS monitors may be defined to report back the health status of the ticket registry and other underlying connections to systems that are in use by CAS. Spring Boot offers a number of monitors known as <code>HealthIndicator</code>s that are activated given the presence of specific settings (i.e. <code>spring.mail.*</code>). CAS itself providers a number of other monitors based on the same component that are listed below, whose action may require a combination of a particular dependency module and its relevant settings.</p>
+<h2>
+<a id="default" class="anchor" href="#default" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h2>
+<p>The default monitors report back brief memory and ticket stats.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-core-monitor&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#monitoring">review this guide</a><br>
+and <a href="../configuration/Configuration-Properties.html#memory">this guide</a>.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="memcached" class="anchor" href="#memcached" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Memcached</h2>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-memcached-monitor&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#memcached-monitors">review this guide</a>.</p>
+<p>The actual memcached implementation may be supported via one of the following options, expected to be defined in the overlay.</p>
+<h3>
+<a id="spymemcached" class="anchor" href="#spymemcached" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spymemcached</h3>
+<p>Enable support via the <a href="https://code.google.com/p/spymemcached/">spymemcached library</a>.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-memcached-spy&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3>
+<a id="aws-elasticache" class="anchor" href="#aws-elasticache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AWS ElastiCache</h3>
+<p>For clusters running the Memcached engine, ElastiCache supports Auto Discovery—the ability<br>
+for client programs to automatically identify all of the nodes in a cache cluster,<br>
+and to initiate and maintain connections to all of these nodes.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-memcached-aws-elasticache&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2>
+<a id="ehcache" class="anchor" href="#ehcache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ehcache</h2>
+<p>Monitor the status and state of a cache backed by Ehcache.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-ehcache-monitor&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#cache-monitors">review this guide</a>.</p>
+<h2>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h2>
+<p>Monitor the status and availability of a MongoDb database.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-mongo-monitor&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#mongodb-monitors">review this guide</a>.</p>
+<h2>
+<a id="hazelcast" class="anchor" href="#hazelcast" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hazelcast</h2>
+<p>Monitor the status and state of a cache backed by Hazelcast.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-hazelcast-monitor&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#cache-monitors">review this guide</a>.</p>
+<h2>
+<a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h2>
+<p>Monitor the status and availability of a relational SQL database.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-jdbc-monitor&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#database-monitoring">review this guide</a>.</p>
+<h2>
+<a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h2>
+<p>Monitor the status and availability of an LDAP server.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-ldap-monitor&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ldap-server-monitoring">review this guide</a>.</p>

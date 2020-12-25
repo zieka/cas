@@ -1,0 +1,48 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---ldap-service-registrycategory-services" class="anchor" href="#layout-defaulttitle-cas---ldap-service-registrycategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - LDAP Service Registry<br>
+category: Services</h2>
+<h1>
+<a id="ldap-service-registry" class="anchor" href="#ldap-service-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP Service Registry</h1>
+<p>Service registry implementation which stores the services in a LDAP Directory and attempts to <em>map</em> service records to LDAP entries in order to configure<br>
+settings for retrieval, search and persistence of service definitions. By default, entries are assigned the <code>objectclass</code> that is <code>casRegisteredService</code> attribute and are looked up by the <code>uid</code> attribute.</p>
+<p>Support is enabled by adding the following module into the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-ldap-service-registry&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>The default mapper has support for the following optional items:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Default Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>objectClass</code></td>
+<td>casRegisteredService</td>
+</tr>
+<tr>
+<td><code>serviceDefinitionAttribute</code></td>
+<td>description</td>
+</tr>
+<tr>
+<td><code>idAttribute</code></td>
+<td>uid</td>
+</tr>
+</tbody>
+</table>
+<p>Service definitions are by default stored inside the <code>serviceDefinitionAttribute</code> attribute as<br>
+JSON objects. The format and syntax of the JSON is identical to that of<br>
+<a href="JSON-Service-Management.html">JSON Service Registry</a>. That's all, as far as the schema goes.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ldap-service-registry">review this guide</a>.</p>
+<h2>
+<a id="auto-initialization" class="anchor" href="#auto-initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Auto Initialization</h2>
+<p>Upon startup and configuration permitting, the registry is able to auto initialize itself from default JSON service definitions available to CAS. See <a href="AutoInitialization-Service-Management.html">this guide</a> for more info.</p>

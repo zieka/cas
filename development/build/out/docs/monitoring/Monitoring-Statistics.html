@@ -1,0 +1,181 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---monitoring--statisticscategory-monitoring--statistics" class="anchor" href="#layout-defaulttitle-cas---monitoring--statisticscategory-monitoring--statistics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Monitoring &amp; Statistics<br>
+category: Monitoring &amp; Statistics</h2>
+<h1>
+<a id="monitoring--statistics" class="anchor" href="#monitoring--statistics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Monitoring / Statistics</h1>
+<p>Actuator endpoints used to monitor and diagnose the internal configuration of the CAS server are typically<br>
+exposed over the endpoint <code>/actuator</code>.</p>
+<h2>
+<a id="spring-boot-endpoints" class="anchor" href="#spring-boot-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring Boot Endpoints</h2>
+<p>The following endpoints are secured and available by<br>
+<a href="http://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html">Spring Boot actuators</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>autoconfig</code></td>
+<td>Describes how the CAS application context is auto-configured.</td>
+</tr>
+<tr>
+<td><code>beans</code></td>
+<td>Displays all CAS application context <strong>internal</strong> Spring beans.</td>
+</tr>
+<tr>
+<td><code>conditions</code></td>
+<td>Shows the conditions that were evaluated on configuration and auto-configuration classes and the reasons why they did or did not match.</td>
+</tr>
+<tr>
+<td><code>configprops</code></td>
+<td>List of <strong>internal</strong> configuration properties.</td>
+</tr>
+<tr>
+<td><code>threaddump</code></td>
+<td>Produces a thread dump for the running CAS server.</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>Produces a collection of all application properties.</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td>Reports back general health status of the system, produced by various monitors.</td>
+</tr>
+<tr>
+<td><code>info</code></td>
+<td>CAS version information and other system traits.</td>
+</tr>
+<tr>
+<td><code>metrics</code></td>
+<td>Runtime metrics and stats.</td>
+</tr>
+<tr>
+<td><code>httptrace</code></td>
+<td>Displays HTTP trace information (by default, the last 100 HTTP request-response exchanges).</td>
+</tr>
+<tr>
+<td><code>mappings</code></td>
+<td>Describes how requests are mapped and handled by CAS.</td>
+</tr>
+<tr>
+<td><code>scheduledtasks</code></td>
+<td>Displays the scheduled tasks in CAS.</td>
+</tr>
+<tr>
+<td><code>shutdown</code></td>
+<td>Shut down the application via a <code>POST</code>. Disabled by default.</td>
+</tr>
+<tr>
+<td><code>restart</code></td>
+<td>Restart the application via a <code>POST</code>. Disabled by default.</td>
+</tr>
+<tr>
+<td><code>refresh</code></td>
+<td>Refresh the application configuration via a <code>POST</code> to let components reload and recognize new values.</td>
+</tr>
+<tr>
+<td><code>heapdump</code></td>
+<td>Returns a GZip compressed hprof heap dump file.</td>
+</tr>
+<tr>
+<td><code>jolokia</code></td>
+<td>Exposes JMX beans over HTTP when Jolokia is configured and included in CAS.</td>
+</tr>
+<tr>
+<td><code>logfile</code></td>
+<td>Returns the contents of the log file if <code>logging.file</code> or <code>logging.path</code> properties are set with support for HTTP <code>Range</code> header.</td>
+</tr>
+<tr>
+<td><code>prometheus</code></td>
+<td>Exposes metrics in a format that can be scraped by a Prometheus server.</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>Actuator endpoints provided by Spring Boot can also be visually managed and monitored<br>
+via the <a href="Configuring-Monitoring-Administration.html">Spring Boot Administration Server</a>.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="cas-endpoints" class="anchor" href="#cas-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Endpoints</h2>
+<p>The default set of CAS actuator endpoints can be turned in by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-reports&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Note that certain CAS features present actuator endpoints of their own, and such endpoints only become active<br>
+once the feature is turned on and made available to CAS at runtime. For more information, refer to the specific<br>
+documentation page for the feature in question to learn more about administrative endpoints, etc.</p>
+<h2>
+<a id="metrics" class="anchor" href="#metrics" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Metrics</h2>
+<p>Metrics allow to gain insight into the running CAS software, and provide ways to measure the behavior of critical components.<br>
+See <a href="Configuring-Metrics.html">this guide</a> for more info.</p>
+<p>Navigating to <code>/actuator/metrics</code> displays a list of available meter names. You can drill down to view information about a<br>
+particular meter by providing its name as a selector, e.g. <code>/actuator/metrics/jvm.memory.max</code>.  The name you use here should match<br>
+the name used in the code, not the name after it has been naming-convention normalized for a monitoring system it is shipped to.</p>
+<p>You can also add any number of <code>tag=KEY:VALUE</code> query parameters to the end of the URL to dimensionally drill<br>
+down on a meter, e.g. <code>/actuator/metrics/jvm.memory.max?tag=area:nonheap</code></p>
+<p>The reported measurements are the sum of the statistics of all meters matching the meter name and any tags that have been applied.<br>
+So in the example above, the returned "Value" statistic is the sum of the maximum memory footprints of "Code Cache",<br>
+"Compressed Class Space", and "Metaspace" areas of the heap. If you just wanted to see the maximum size for the "Metaspace",<br>
+you could add an additional <code>tag=id:Metaspace</code>, i.e. <code>/actuator/metrics/jvm.memory.max?tag=area:nonheap&amp;tag=id:Metaspace</code>.</p>
+<h2>
+<a id="security" class="anchor" href="#security" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Security</h2>
+<p>Once endpoints are enabled and exposed, the security of all provided endpoints is handled<br>
+by <a href="https://spring.io/projects/spring-security">Spring Security</a>. Protection and access to each endpoint<br>
+is controlled via CAS settings individually such that you may decide a specific security level and method of authentication for each endpoint independently.</p>
+<p>If CAS is configured to <em>NOT</em> enforce endpoint security rules, then all endpoints are considered sensitive and require authentication, typically handled<br>
+via basic authentication with master credentials defined in CAS settings.</p>
+<p>If CAS is configured to enforce endpoint security rules, then each endpoint may be tagged with a specific security rule allowing access via authorized IP addresses,<br>
+basic credentials, roles and attributes, etc.</p>
+<p>Authentication credentials are typically controlled via CAS settings. For basic authentication, the default username is <code>casuser</code>. The password<br>
+may be automatically generated at startup and displayed in CAS logs if it is left undefined in CAS settings. Additional sources may also be defined<br>
+that would authenticate the request via JAAS, LDAP, JDBC, etc.</p>
+<p>Depending on method of access and the <code>content-type</code> that is negotiated between the caller and CAS, (i.e. web-based vs. command-line access),<br>
+credentials may be supplied in headers via <code>curl</code> and family or they may be entered into a web-based login form.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#actuator-management-endpoints">review this guide</a>.</p>
+<h3>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h3>
+<p>To enable additional logging, configure the log4j configuration file to add the following<br>
+levels:</p>
+<pre lang="xml"><code>...
+&lt;Logger name="org.pac4j" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+&lt;Logger name="org.springframework.security" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+...
+</code></pre>
+<h2>
+<a id="distributed-tracing" class="anchor" href="#distributed-tracing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Distributed Tracing</h2>
+<p>Support for distributed tracing of requests is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-sleuth&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><img src="https://cloud.githubusercontent.com/assets/1205228/24955152/8798ad9c-1f97-11e7-8b9d-fccc3c306c42.png" alt="image"></p>
+<p>For most users <a href="https://cloud.spring.io/spring-cloud-sleuth/">Sleuth</a> should be invisible, and all<br>
+interactions with external systems should be instrumented automatically.</p>
+<p>Trace data is captured automatically and passed along to <a href="https://github.com/openzipkin/zipkin">Zipkin</a>, which helps<br>
+gather timing data needed to troubleshoot latency problems.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#sleuth-distributed-tracing">review this guide</a>.</p>
+<h3>
+<a id="troubleshooting-1" class="anchor" href="#troubleshooting-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h3>
+<p>To enable additional logging, modify the logging configuration file to add the following:</p>
+<pre lang="xml"><code> &lt;Logger name="org.springframework.cloud" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="casConsole"/&gt;
+    &lt;AppenderRef ref="casFile"/&gt;
+&lt;/Logger&gt;
+</code></pre>

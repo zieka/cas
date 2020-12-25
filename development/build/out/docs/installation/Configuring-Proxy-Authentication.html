@@ -1,0 +1,116 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---proxy-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---proxy-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Proxy Authentication<br>
+category: Authentication</h2>
+<h1>
+<a id="proxy-authentication" class="anchor" href="#proxy-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proxy Authentication</h1>
+<p>Proxy authentication support for CAS v1+ protocols is enabled by default, thus it is entirely a matter of CAS<br>
+client configuration to leverage proxy authentication features.</p>
+<!-- raw HTML omitted -->
+<p>Disabling proxy authentication components is recommended for deployments that wish to strategically avoid proxy<br>
+authentication as a matter of security policy.</p>
+<h2>
+<a id="use-case" class="anchor" href="#use-case" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use Case</h2>
+<p>One of the more common use cases of proxy authentication is the ability to obtain a ticket for<br>
+a back-end [REST-based] service that is also protected by CAS. The scenario usually is:</p>
+<ul>
+<li>User is faced with application A which is protected by CAS.</li>
+<li>Application A on the backend needs to contact a service S to produce data.</li>
+<li>Service S itself is protected by CAS itself.</li>
+</ul>
+<p>Because A contacts service S via a server-to-service method where no browser is involved,<br>
+service S would not be able to recognize that an SSO session already exists. In these cases,<br>
+application A needs to exercise proxying in order to obtain a proxy ticket for service S. The proxy ticket<br>
+is passed to the relevant endpoint of service S so it can retrieve and validate it via CAS<br>
+and finally produce a response.</p>
+<p>The trace route may look like this:</p>
+<ol>
+<li>Browser navigates to A.</li>
+<li>A redirects to CAS.</li>
+<li>CAS authenticates and redirects back to A with an <code>ST</code>.</li>
+<li>A attempts to validate the <code>ST</code>, and asks for a <code>PGT</code>.</li>
+<li>CAS confirms <code>ST</code> validation, and issues a proxy-granting ticket <code>PGT</code>.</li>
+<li>A asks CAS to produce a <code>PT</code> for service S, supplying the <code>PGT</code> in its request.</li>
+<li>CAS produces a PT for service S.</li>
+<li>A contacts the service S endpoint, passing along <code>PT</code> in the request.</li>
+<li>Service S attempts to validate the <code>PT</code> via CAS.</li>
+<li>CAS validates the <code>PT</code> and produces a successful response.</li>
+<li>Service S receives the response, and produces data for A.</li>
+<li>A receives and displays the data in the browser.</li>
+</ol>
+<p>See the <a href="../protocol/CAS-Protocol.html">CAS Protocol</a> for more info.</p>
+<h2>
+<a id="handling-ssl-enabled-proxy-urls" class="anchor" href="#handling-ssl-enabled-proxy-urls" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Handling SSL-enabled Proxy URLs</h2>
+<p>By default, CAS ships with a bundled HTTP client that is partly responsible to callback the URL<br>
+for proxy authentication. Note that this URL need also be authorized by the CAS service registry<br>
+before the callback can be made. <a href="../services/Service-Management.html">See this guide</a> for more info.</p>
+<p>If the callback URL is authorized by the service registry, and if the endpoint is under HTTPS<br>
+and protected by an SSL certificate, CAS will also attempt to verify the validity of the endpoint's<br>
+certificate before it can establish a successful connection. If the certificate is invalid, expired,<br>
+missing a step in its chain, self-signed or otherwise, CAS will fail to execute the callback.</p>
+<p>The HTTP client of CAS does present a local trust store that is similar to that of the Java platform.<br>
+It is recommended that this trust store be used to handle the management of all certificates that need<br>
+to be imported into the platform to allow CAS to execute the callback URL successfully. While by default,<br>
+the local trust store to CAS is empty, CAS will still utilize <strong>both</strong> the default and the local trust store.<br>
+The local trust store should only be used for CAS-related functionality of course, and the trust store file<br>
+can be carried over across CAS and Java upgrades, and certainly managed by the source control system that should<br>
+host all CAS configuration.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#http-client">review this guide</a>.</p>
+<h2>
+<a id="pgt-in-validation-response" class="anchor" href="#pgt-in-validation-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PGT in Validation Response</h2>
+<p>In situations where using <code>CAS20ProxyHandler</code> may be undesirable, such that invoking a callback url to receive the proxy granting ticket is not feasible,<br>
+CAS may be configured to return the proxy-granting ticket id directly in the validation response. In order to successfully establish trust between the<br>
+CAS server and the application, private/public key pairs are generated by the client application and then <strong>the public key</strong> distributed and<br>
+configured inside CAS. CAS will use the public key to encrypt the proxy granting ticket id and will issue a new attribute <code>&lt;proxyGrantingTicketId&gt;</code><br>
+in the validation response, only if the service is authorized to receive it.</p>
+<p>Note that the return of the proxy granting ticket id is only carried out by the CAS validation response, provided the client<br>
+application issues a request to the <code>/p3/serviceValidate</code> endpoint (or <code>/p3/proxyValidate</code>). Other means of returning attributes to CAS, such as SAML1<br>
+will <strong>not</strong> support the additional returning of the proxy granting ticket.</p>
+<!-- raw HTML omitted -->
+<h3>
+<a id="register-service" class="anchor" href="#register-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register Service</h3>
+<p>Once you have received the public key from the client application owner, it must be first<br>
+registered inside the CAS server's service registry. The service that holds the public key above must also<br>
+be authorized to receive the PGT as an attribute for the given attribute release policy of choice.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "name" : "test",
+  "id" : 1,
+  "evaluationOrder" : 0,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "authorizedToReleaseProxyGrantingTicket" : true
+  },
+  "publicKey" : {
+    "@class" : "org.apereo.cas.services.RegisteredServicePublicKeyImpl",
+    "location" : "classpath:public.key",
+    "algorithm" : "RSA"
+  }
+}
+</code></pre>
+<p>The keypair must be generated by the application itself that wishes to obtain the PGT.<br>
+The public key is shared with CAS. The private key is used by the application to decrypt the PGT.<br>
+Sample instructions to generate the keypair follow:</p>
+<pre lang="bash"><code>openssl genrsa -out private.key 4096
+openssl rsa -pubout -in private.key -out public.key -inform PEM -outform DER
+openssl pkcs8 -topk8 -inform PER -outform DER -nocrypt -in private.key -out private.p8
+</code></pre>
+<p>Note that a large key size of <code>4096</code> may be required in order to allow CAS to encrypt<br>
+lengthy proxy-granting tickets. Choosing a small key size will may prevent CAS to correctly<br>
+encrypt the ticket as there is a limit to the lengths the encryption algorithm of a particular size can handle.</p>
+<h3>
+<a id="decrypt-pgt" class="anchor" href="#decrypt-pgt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Decrypt PGT</h3>
+<p>Once the client application has received the <code>proxyGrantingTicket</code> id attribute in the CAS validation response, it can decrypt it<br>
+via its own private key. Since the attribute is base64 encoded by default, it needs to be decoded first before<br>
+decryption can occur. Here's a sample code snippet:</p>
+<pre lang="java"><code>final Map&lt;?, ?&gt; attributes = ...
+final String encodedPgt = (String) attributes.get("proxyGrantingTicket");
+final PrivateKey privateKey = ...
+final Cipher cipher = Cipher.getInstance(privateKey.getAlgorithm());
+final byte[] cred64 = decodeBase64(encodedPgt);
+cipher.init(Cipher.DECRYPT_MODE, privateKey);
+final byte[] cipherData = cipher.doFinal(cred64);
+return new String(cipherData);
+</code></pre>

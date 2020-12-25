@@ -1,0 +1,33 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-principal-resolutioncategory-configuration" class="anchor" href="#layout-defaulttitle-cas---configuring-principal-resolutioncategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Principal Resolution<br>
+category: Configuration</h2>
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>Principal resolution converts information in the authentication credential into a security principal<br>
+that commonly contains additional<br>
+metadata attributes (i.e. user details such as affiliations, group membership, email, display name).</p>
+<p>A CAS principal contains a unique identifier by which the authenticated user will be known to all requesting<br>
+services. A principal also contains optional <a href="../integration/Attribute-Release.html">attributes that may be released</a><br>
+to services to support authorization and personalization. Principal resolution is a requisite part of the<br>
+authentication process that happens after credential authentication.</p>
+<p>CAS <code>AuthenticationHandler</code> components provide basic principal resolution machinery by default. For example,<br>
+the <code>LdapAuthenticationHandler</code> component supports fetching attributes and setting the principal ID attribute from<br>
+an LDAP query. In all cases principals are resolved from the same store as that which provides authentication.</p>
+<p>In many cases it is necessary to perform authentication by one means and resolve principals by another.<br>
+The <code>PrincipalResolver</code> component provides this functionality. A common use case for this this mix-and-match strategy<br>
+arises with X.509 authentication. It is common to store certificates in an LDAP directory and query the directory to<br>
+resolve the principal ID and attributes from directory attributes. The <code>X509CertificateAuthenticationHandler</code> may<br>
+be be combined with an LDAP-based principal resolver to accommodate this case.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>CAS uses the Person Directory library to provide a flexible principal resolution services against a number of data<br>
+sources. The key to configuring <code>PersonDirectoryPrincipalResolver</code> is the definition of an <code>IPersonAttributeDao</code> object.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#principal-resolution">review this guide</a>.</p>
+<h2>
+<a id="principalresolver-vs-authenticationhandler" class="anchor" href="#principalresolver-vs-authenticationhandler" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PrincipalResolver vs. AuthenticationHandler</h2>
+<p>The principal resolution machinery provided by <code>AuthenticationHandler</code> components should be used in preference to<br>
+<code>PrincipalResolver</code> in any situation where the former provides adequate functionality.<br>
+If the principal that is resolved by the authentication handler<br>
+suffices, then a <code>null</code> value may be passed in place of the resolver bean id in the final map.</p>

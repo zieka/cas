@@ -1,0 +1,37 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---geotracking-authentication-requestscategory-authentication" class="anchor" href="#layout-defaulttitle-cas---geotracking-authentication-requestscategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - GeoTracking Authentication Requests<br>
+category: Authentication</h2>
+<h1>
+<a id="geotracking-authentication-requests" class="anchor" href="#geotracking-authentication-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GeoTracking Authentication Requests</h1>
+<p>Authentication requests can be mapped and translated to physical locations.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-geolocation&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2>
+<a id="google-maps" class="anchor" href="#google-maps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Google Maps</h2>
+<p>Uses the <a href="https://developers.google.com/maps/documentation/geocoding/start">Google Maps Geocoding API</a> to translate<br>
+authentication requests into a geo-location.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-geolocation-googlemaps&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#googlemaps-geotracking">review this guide</a>.</p>
+<h2>
+<a id="maxmind" class="anchor" href="#maxmind" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Maxmind</h2>
+<p>Uses <a href="https://www.maxmind.com/en/home">Maxmind</a> to translate<br>
+authentication requests into a geo-location.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-geolocation-maxmind&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#maxmind-geotracking">review this guide</a>.</p>

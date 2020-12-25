@@ -1,0 +1,191 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-dynamic-themes---user-interface-customization---cascategory-user-interface" class="anchor" href="#layout-defaulttitle-dynamic-themes---user-interface-customization---cascategory-user-interface" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: Dynamic Themes - User Interface Customization - CAS<br>
+category: User Interface</h2>
+<h1>
+<a id="dynamic-themes" class="anchor" href="#dynamic-themes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dynamic Themes</h1>
+<p>With the introduction of <a href="../services/Service-Management.html">Service Management application</a>, deployers are now able to switch the themes based on<br>
+different services. For example, you may want to have different login screens (different styles) for staff applications and student applications, or you want to show two<br>
+layouts for day time and night time. This document could help you go through the basic settings to achieve this.</p>
+<h2>
+<a id="static-themes" class="anchor" href="#static-themes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Static Themes</h2>
+<p>CAS is configured to decorate views based on the <code>theme</code> property of a given registered service in the Service Registry. The theme that is activated via this method will still preserve the default views for CAS but will apply decorations such as CSS and Javascript to the views. The physical structure of views cannot be modified via this method.</p>
+<h3>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h3>
+<ul>
+<li>Add a <code>[theme_name].properties</code> placed to the root of <code>src/main/resources</code> folder.<br>
+Contents of this file should match the following:</li>
+</ul>
+<pre lang="properties"><code># Path to theme CSS file
+cas.standard.css.file=/themes/[theme_name]/css/cas.css
+
+# Path to theme JS file
+cas.standard.js.file=/themes/[theme_name]/js/cas.js
+
+# Path to theme logo to display via the common layout
+# cas.logo.file=/images/logo.png     
+
+# Decide whether drawer menu should be displayed
+# cas.drawer-menu.enabled=true                    
+
+# Theme name used in various titles/captions
+# cas.theme.name=Example Theme
+
+# Path to theme favicon file.
+# cas.favicon.file=/themes/example/images/favicon.ico
+
+# Enable and display the notifications menu
+# cas.notifications-menu.enabled=true
+
+# Enable and display the drawer menu
+# cas.drawer-menu.enabled=true
+</code></pre>
+<ul>
+<li>Create the directory <code>src/main/resources/static/themes/[theme_name]</code>. Put the theme-specific <code>cas.css</code> and <code>cas.js</code> inside the appropriate directories for <code>css</code> and <code>js</code>.</li>
+<li>Specify <code>[theme_name]</code> for the service definition under the <code>theme</code> property.</li>
+</ul>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://www.example.org",
+  "name" : "MyTheme",
+  "theme" : "[theme_name]",
+  "id" : 1000
+}
+</code></pre>
+<p>Values can use the <a href="../configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a> syntax.</p>
+<h2>
+<a id="themed-views" class="anchor" href="#themed-views" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Themed Views</h2>
+<p>CAS can also utilize a service's associated theme to selectively choose which set of UI views will be used to generate<br>
+the standard views (<code>casLoginView.html</code>, etc). This is specially useful in cases where the set of pages for a theme that are targeted<br>
+for a different type of audience are entirely different structurally that using a simple theme is not practical to augment the default views. In such cases, new view pages may be required.</p>
+<p>Views associated with a particular theme by default are expected to be found at: <code>src/main/resources/templates/&lt;theme-id&gt;</code>. Note that CAS<br>
+views and theme-based views may both be externalized out of the web application context. When externalized, themed views are expected to be found at the specified path via CAS properties under a<br>
+directory named after the theme. For instance, if the external path for CAS views is <code>/etc/cas/templates</code>, view template files for<br>
+theme <code>sample</code> may be located <code>/etc/cas/templates/sample/</code>.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#views">review this guide</a>.</p>
+<h3>
+<a id="configuration-1" class="anchor" href="#configuration-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h3>
+<ul>
+<li>Add a <code>[theme_name].properties</code> placed to the root of <code>src/main/resources</code> folder. Contents of this file should match the following:</li>
+</ul>
+<pre lang="properties"><code>cas.standard.css.file=/themes/[theme_name]/css/cas.css
+cas.standard.js.file=/themes/[theme_name]/js/cas.js
+</code></pre>
+<ul>
+<li>Clone the default set of view pages into a new directory based on the theme id (i.e. <code>src/main/resources/templates/&lt;theme-id&gt;</code>).</li>
+<li>Specify the name of your theme for the service definition under the <code>theme</code> property.</li>
+</ul>
+<h2>
+<a id="theme-collections" class="anchor" href="#theme-collections" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Theme Collections</h2>
+<p>CAS provides a module that presents a number of ready-made themes. The intention for each themes<br>
+to account for common and provide for common use cases when it comes to user interface modifications<br>
+and samples, and attempt to automate much of the configuration.</p>
+<p>Support is enabled by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-theme-collections&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>The following themes are provided by this module and can be assigned to service definitions:</p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>example</code></td>
+<td>A reference example theme that combines customized CSS, Javascript and views</td>
+</tr>
+</tbody>
+</table>
+<p>The collection of themes above can also serve as reference examples of how to define a theme with<br>
+custom CSS, Javascript and associated views and fragments.</p>
+<h2>
+<a id="groovy-themes" class="anchor" href="#groovy-themes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy Themes</h2>
+<p>If you have multiple themes defined, it may be desirable to dynamically determine a theme for a given service definition. In order to do, you may calculate the final theme name via a Groovy script of your own design. The theme assigned to the service definition needs to point to the location of the script:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://www.example.org",
+  "name" : "MyTheme",
+  "theme" : "file:///etc/cas/config/themes.groovy",
+  "id" : 1000
+}
+</code></pre>
+<p>The script itself may be designed as:</p>
+<pre lang="groovy"><code>import java.util.*
+
+def String run(final Object... args) {
+    def service = args[0]
+    def registeredService = args[1]
+    def queryStrings = args[2]
+    def headers = args[3]
+    def logger = args[4]
+
+    // Determine theme ...
+
+    return null
+}
+</code></pre>
+<p>Returning <code>null</code> or blank will have CAS switch to the default theme. The following parameters may be passed to a Groovy script:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service</code></td>
+<td>The object representing the requesting service.</td>
+</tr>
+<tr>
+<td><code>registeredService</code></td>
+<td>The object representing the matching registered service in the registry.</td>
+</tr>
+<tr>
+<td><code>queryStrings</code></td>
+<td>Textual representation of all query strings found in the request, if any.</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>
+<code>Map</code> of all request headers and their values found in the request, if any.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="restful-themes" class="anchor" href="#restful-themes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RESTful Themes</h2>
+<p>Somewhat similar to the above option, you may calculate the final theme name via a REST endpoint of your own design. The theme assigned to the service definition needs to point to the location of the REST API. Endpoints must be designed to accept/process <code>application/json</code> via <code>GET</code> requests. A returned status code <code>200</code> allows CAS to read the body of the response to determine the theme name. Empty response bodies will have CAS switch to the default theme.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://www.example.org",
+  "name" : "MyTheme",
+  "theme" : "https://themes.example.org",
+  "id" : 1000
+}
+</code></pre>
+<p>The following parameters may be passed to a Groovy script:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>service</code></td>
+<td>The requesting service identifier.</td>
+</tr>
+</tbody>
+</table>

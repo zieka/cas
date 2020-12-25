@@ -1,0 +1,34 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---custom-service-registrycategory-services" class="anchor" href="#layout-defaulttitle-cas---custom-service-registrycategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Custom Service Registry<br>
+category: Services</h2>
+<h1>
+<a id="custom-service-registry" class="anchor" href="#custom-service-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom Service Registry</h1>
+<p>If you wish to design your own implementation of a service registry, you will need to inject your implementation into CAS as such:</p>
+<pre lang="java"><code>package org.apereo.cas.support;
+
+@Configuration("myConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class MyConfiguration implements ServiceRegistryExecutionPlanConfigurer {
+
+  @Bean
+  @RefreshScope
+  public ServiceRegistryDao serviceRegistry() {
+      ...
+  }
+  
+  @Override
+  public void configureServiceRegistry(final ServiceRegistryExecutionPlan plan) {
+    plan.registerServiceRegistry(serviceRegistry());
+  }
+}
+</code></pre>
+<p>At a minimum, your overlay will need to include the following modules:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-core-services&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> to learn more about how to register configurations into the CAS runtime.</p>

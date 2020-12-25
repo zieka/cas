@@ -1,0 +1,74 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---shibboleth-integrationcategory-integration" class="anchor" href="#layout-defaulttitle-cas---shibboleth-integrationcategory-integration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Shibboleth Integration<br>
+category: Integration</h2>
+<h1>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h1>
+<p>CAS can be integrated with the <a href="http://shibboleth.net/">Shibboleth federated SSO platform</a> by a couple<br>
+different strategies. It is possible to designate CAS to serve as the authentication provider for the Shibboleth IdP.<br>
+With such a setup, when user is routed to the IdP, the following may take place:</p>
+<ul>
+<li>If the user has already authenticated to CAS and has a valid CAS SSO session, the IdP will transparently<br>
+perform the requested action, e.g. attribute release.</li>
+<li>If the user does not have a valid CAS SSO session, the user will be redirected to CAS and must<br>
+authenticate before the IdP proceeds with the requested action.</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2>
+<a id="sso-for-shibboleth-idp-external" class="anchor" href="#sso-for-shibboleth-idp-external" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SSO for Shibboleth IdP (External)</h2>
+<p>This is a Shibboleth IdP external authentication plugin that delegates<br>
+the authentication to CAS. This solution has the ability to<br>
+utilize a full range of native CAS protocol features such as <code>renew</code> and <code>gateway</code>.</p>
+<p>The plugin is available for both<br>
+Shibboleth Identity Provider <a href="https://github.com/Unicon/shib-cas-authn2">v2</a><br>
+and <a href="https://github.com/Unicon/shib-cas-authn3">v3</a> and <a href="https://github.com/Unicon/shib-cas-authn">v4</a>.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-shibboleth&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3>
+<a id="relying-party-entityid" class="anchor" href="#relying-party-entityid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relying Party EntityId</h3>
+<p>The authentication plugin is able to pass the relying party's entity ID over<br>
+to the CAS server upon authentication requests.<br>
+The entity ID is passed in form of a url parameter to the CAS server as such:</p>
+<pre><code>https://sso.example.org/cas/login?service=&lt;authentication-plugin-url&gt;&amp;entityId=&lt;relying-party-entity-id&gt;
+</code></pre>
+<p>You can also take advantage of the <code>entityId</code> parameter and treat it as a normal CAS service definition,<br>
+so it can be used for multifactor authentication and authorization.</p>
+<p>See <a href="../mfa/Configuring-Multifactor-Authentication-Triggers.html">this guide</a> for more info.</p>
+<h2>
+<a id="displaying-saml-mdui" class="anchor" href="#displaying-saml-mdui" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Displaying SAML MDUI</h2>
+<p>The CAS server is able to recognize the <code>entityId</code> parameter and display SAML MDUI on the login page,<br>
+that is provided by the metadata associated with the relying party.</p>
+<h3>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h3>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-saml-mdui&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3>
+<a id="relying-party-metadata" class="anchor" href="#relying-party-metadata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relying Party Metadata</h3>
+<p>You may allow CAS to recognize SAML MDUI directly from metadata documents that are fed to CAS via settings. If the metadata for the relying party matches the requested <code>entityId</code> and contains MDUI elements, those will be passed onto the login page for decorations. If MDUI is not available in the metadata, the relevant elements from the matching service in the service registry will be used all the same.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-ui">review this guide</a>.</p>
+<h3>
+<a id="service-registry-metadata" class="anchor" href="#service-registry-metadata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Registry Metadata</h3>
+<p>You may also register the relying party in the CAS service registry as a regular service application and simply specify a number of MDUI-like elements in the body of the registration record. An example follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "relying-party-entity-id",
+  "name" : "Test",
+  "id" : 100,
+  "description" : "This is the test application.",
+  "evaluationOrder" : 10000,
+  "logo": "images/logo.png",
+  "informationUrl": "https://test.example.org/info",
+  "privacyUrl": "https://test.example.org/privacy"
+}
+</code></pre>

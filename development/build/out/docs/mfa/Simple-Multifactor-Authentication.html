@@ -1,0 +1,33 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---simple-multifactor-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---simple-multifactor-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Simple Multifactor Authentication<br>
+category: Multifactor Authentication</h2>
+<h1>
+<a id="simple-multifactor-authentication" class="anchor" href="#simple-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple Multifactor Authentication</h1>
+<p>Allow CAS to act as a multifactor authentication provider on its own, issuing tokens and sending them to end-users via pre-defined communication<br>
+channels such as email or text messages. Tokens issued by CAS are tracked using the <a href="../ticketing/Configuring-Ticketing-Components.html">ticket registry</a><br>
+and are assigned a configurable expiration policy controlled via CAS settings.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Support is enabled by including the following module in the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-simple-mfa&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#simple-multifactor-authentication">review this guide</a>.</p>
+<h2>
+<a id="registration" class="anchor" href="#registration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Registration</h2>
+<p>Registration is expected to have occurred as an out-of-band process. Ultimately, CAS expects to fetch the necessary attributes<br>
+from configured attribute sources to determine communications channels for email and/or sms. The adopter is expected to have populated<br>
+user records with enough information to indicate a phone number and/or email address where CAS could then be configured to fetch and<br>
+examine those attributes to share generated tokens.</p>
+<h2>
+<a id="communication-strategy" class="anchor" href="#communication-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Communication Strategy</h2>
+<p>Users may be notified of CAS-issued tokens via text messages and/or email. The authenticated CAS principal is expected to carry enough attributes,<br>
+configurable via CAS settings, in order for CAS to properly send text messages and/or email to the end-user. Tokens may also be shared<br>
+via notification strategies back by platforms such as Google Firebase, etc.</p>
+<p>To learn more about available options, please <a href="../notifications/SMS-Messaging-Configuration.html">see this guide</a><br>
+or <a href="../notifications/Sending-Email-Configuration.html">this guide</a>, or <a href="../notifications/Notifications-Configuration.html">this guide</a>.</p>

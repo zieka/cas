@@ -1,0 +1,16 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---service-discoverycategory-high-availability" class="anchor" href="#layout-defaulttitle-cas---service-discoverycategory-high-availability" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Service Discovery<br>
+category: High Availability</h2>
+<h1>
+<a id="service-discovery" class="anchor" href="#service-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Discovery</h1>
+<p>Service Discovery is one of the key tenets of a microservice based architecture. This guide aims to describe built-in CAS supported options that can be used for locating nodes for the purpose of load balancing and failover.</p>
+<h2>
+<a id="eureka-server-discovery-service" class="anchor" href="#eureka-server-discovery-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Eureka Server Discovery Service</h2>
+<p><a href="https://github.com/Netflix/eureka">Eureka</a> is a REST-based service that is primarily  used for locating services for the purpose of load balancing and failover of middle-tier servers. CAS provides a Eureka-enabled service discovery server that is based on <a href="http://cloud.spring.io/spring-cloud-netflix">Spring Cloud Netflix</a> and bootstrapped via <a href="http://cloud.spring.io/spring-cloud-static/spring-cloud.html">Spring Cloud</a>.</p>
+<p><a href="Service-Discovery-Guide-Eureka.html">See this guide</a> for more info.</p>
+<h2>
+<a id="consul-server-discovery-service" class="anchor" href="#consul-server-discovery-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Consul Server Discovery Service</h2>
+<p><a href="https://www.consul.io">HashiCorp Consul</a> has multiple components, but as a whole, it is a tool for discovering and configuring services in your infrastructure. It provides key features such as service discovery, health checking and more.</p>
+<p><a href="Service-Discovery-Guide-Consul.html">See this guide</a> for more info.</p>

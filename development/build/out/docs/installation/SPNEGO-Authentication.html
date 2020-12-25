@@ -1,0 +1,206 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---spnego-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---spnego-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - SPNEGO Authentication<br>
+category: Authentication</h2>
+<h1>
+<a id="spnego-authentication" class="anchor" href="#spnego-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SPNEGO Authentication</h1>
+<p><a href="http://en.wikipedia.org/wiki/SPNEGO">SPNEGO</a> is an authentication technology that is primarily used to provide<br>
+transparent CAS authentication to browsers running on Windows running under Active Directory domain credentials.<br>
+There are three actors involved: the client, the CAS server, and the Active Directory Domain Controller/KDC.</p>
+<ol>
+<li>Client sends CAS:               HTTP <code>GET</code> to CAS for cas protected page</li>
+<li>CAS responds:                   HTTP <code>401</code> - Access Denied <code>WWW-Authenticate: Negotiate</code>
+</li>
+<li>Client sends ticket request:    Kerberos(<code>KRB_TGS_REQ</code>) Requesting ticket for <code>HTTP/cas.example.com@REALM</code>
+</li>
+<li>Kerberos KDC responds:          Kerberos(<code>KRB_TGS_REP</code>) Granting ticket for <code>HTTP/cas.example.com@REALM</code>
+</li>
+<li>Client sends CAS:               HTTP <code>GET</code> Authorization: Negotiate w/SPNEGO Token</li>
+<li>CAS responds:                   HTTP <code>200</code> - OK <code>WWW-Authenticate</code> w/SPNEGO response + requested page.</li>
+</ol>
+<p>The above interaction occurs only for the first request, when there is no CAS SSO session.<br>
+Once CAS grants a ticket-granting ticket, the SPNEGO process will not happen again until the CAS<br>
+ticket expires.</p>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+<ul>
+<li>Client is logged in to a Windows Active Directory domain.</li>
+<li>Supported browser.</li>
+<li>CAS is running MIT kerberos against the AD domain controller.</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2>
+<a id="components" class="anchor" href="#components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Components</h2>
+<p>SPNEGO support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-spnego-webflow&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>You may also need to declare the following repository in your CAS overlay to be able to resolve dependencies:</p>
+<pre lang="groovy"><code>repositories {
+    maven { 
+        mavenContent { releasesOnly() }
+        url "https://dl.bintray.com/uniconiam/maven" 
+    }
+}
+</code></pre>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>The following steps are required to turn on the SPNEGO functionality.</p>
+<h3>
+<a id="create-spn-account" class="anchor" href="#create-spn-account" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create SPN Account</h3>
+<p>Create an Active Directory account for the Service Principal Name (SPN) and record the username. Password will be overwritten by the next step.</p>
+<h3>
+<a id="create-keytab-file" class="anchor" href="#create-keytab-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Create Keytab File</h3>
+<p>The keytab file enables a trust link between the CAS server and the Key Distribution Center (KDC); an Active Directory<br>
+domain controller serves the role of KDC in this context.<br>
+The <a href="http://technet.microsoft.com/en-us/library/cc753771.aspx"><code>ktpass</code> tool</a> is used to generate the keytab file,<br>
+which contains a cryptographic key. Be sure to execute the command from an Active Directory domain controller as<br>
+administrator (a member of domain administrators will not be able to use <code>ktpass</code> successfully).</p>
+<p>Example:</p>
+<pre lang="bash"><code>C:\Users\administrator.DOMAIN&gt;ktpass /out myspnaccount.keytab /princ HTTP/cas.example.com@REALM /pass * /mapuser domain-account@YOUR.REALM /ptype KRB5_NT_PRINCIPAL /crypto RC4-HMAC-NT
+Targeting domain controller: DC.YOUR.REALM
+Successfully mapped HTTP/cas.example.com to domaine-account.
+Type the password for HTTP/cas.example.com:
+Type the password again to confirm:
+Password succesfully set!
+Key created.
+Output keytab to myspnaccount.keytab:
+Keytab version: 0x502
+keysize 69 HTTP/cas.example.com@REALM ptype 1 (KRB5_NT_PRINCIPAL) vno 3 etype 0x17 (RC4-HMAC) keylength 16
+(0x00112233445566778899aabbccddeeff)
+</code></pre>
+<p>Using <code>ktpass</code> requires Active Directory admin permissions. If that is not an option, you may be able to use <code>ktab.exe</code> from <code>%JAVA_HOME%\bin\ktab.exe</code> that<br>
+is provided by the JDK:</p>
+<pre lang="bash"><code>%JAVA_HOME%\bin\ktab.exe -a service_xxx -n 0 -k cas.keytab
+</code></pre>
+<p><code>-k</code> specifies key tab output file name and <code>-n 0</code> specifies the KNVO number if available and found for the user account. This value may match the <code>msDS-KeyVersionNumber</code> on the user account.</p>
+<p>Also note that the keytab file must be regenerated after password changes, if any.</p>
+<h3>
+<a id="test-spn-account" class="anchor" href="#test-spn-account" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test SPN Account</h3>
+<p>Install and configure MIT Kerberos V on the CAS server host(s). The following sample <code>krb5.conf</code> file may be used<br>
+as a reference.</p>
+<pre lang="ini"><code>[logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log
+
+[libdefaults]
+ ticket_lifetime = 24000
+ default_realm = YOUR.REALM.HERE
+ default_keytab_name = /home/cas/kerberos/myspnaccount.keytab
+ dns_lookup_realm = false
+ dns_lookup_kdc = false
+ default_tkt_enctypes = rc4-hmac
+ default_tgs_enctypes = rc4-hmac
+
+[realms]
+ YOUR.REALM.HERE = {
+  kdc = your.kdc.your.realm.here:88
+ }
+
+[domain_realm]
+ .your.realm.here = YOUR.REALM.HERE
+ your.realm.here = YOUR.REALM.HERE
+</code></pre>
+<p>It is important to note that <code>myspnaccount.keytab</code> is declared as default keytab, otherwise CAS may not be able to<br>
+find it and will raise an exception similar to</p>
+<pre lang="bash"><code>KrbException: Invalid argument (400) - Cannot find key of appropriate type to decrypt AP REP -RC4 with HMAC`
+</code></pre>
+<p>Then verify that your are able to <strong>read</strong> the keytab file:</p>
+<pre lang="bash"><code>klist -k
+Keytab name: FILE:/home/cas/kerberos/myspnaccount.keytab
+KVNO Principal
+---- --------------------------------------------------------------------------
+   3 HTTP/cas.example.com@REALM
+</code></pre>
+<p>Then verify that your are able to <strong>use</strong> the keytab file:</p>
+<pre lang="bash"><code>kinit -k HTTP/cas.example.com@REALM
+klist
+Ticket cache: FILE:/tmp/krb5cc_999
+Default principal: HTTP/cas.example.com@REALM
+
+Valid starting       Expires              Service principal
+12/08/2016 10:52:00  12/08/2016 20:52:00  krbtgt/REALM@REALM
+	renew until 12/08/2016 20:52:00
+</code></pre>
+<h3>
+<a id="browser-configuration" class="anchor" href="#browser-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser Configuration</h3>
+<ul>
+<li>Internet Explorer - Enable <code>Integrated Windows Authentication</code> and add the CAS server URL to the <code>Local Intranet</code><br>
+zone.</li>
+<li>Firefox - Set the <code>network.negotiate-auth.trusted-uris</code> configuration parameter in <code>about:config</code> to the CAS server<br>
+URL, e.g. <code>https://cas.example.com</code>.</li>
+</ul>
+<h3>
+<a id="authentication-configuration" class="anchor" href="#authentication-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication Configuration</h3>
+<p>Make sure you have at least specified the JCIFS Service Principal in the CAS configuration.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#spnego-authentication">review this guide</a>.<br>
+To see the relevant list of CAS properties that deal with NTLM authentication,<br>
+please <a href="../configuration/Configuration-Properties.html#ntlm-authentication">review this guide</a>.</p>
+<p>You may provide a JAAS <code>login.conf</code> file:</p>
+<pre lang="bash"><code>jcifs.spnego.initiate {
+   com.sun.security.auth.module.Krb5LoginModule required storeKey=true useKeyTab=true keyTab="/home/cas/kerberos/myspnaccount.keytab";
+};
+jcifs.spnego.accept {
+   com.sun.security.auth.module.Krb5LoginModule required storeKey=true useKeyTab=true keyTab="/home/cas/kerberos/myspnaccount.keytab";
+};
+</code></pre>
+<h2>
+<a id="client-selection-strategy" class="anchor" href="#client-selection-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Client Selection Strategy</h2>
+<p>CAS provides a set of components that attempt to activate the SPNEGO flow conditionally,<br>
+in case deployers need a configurable way to decide whether SPNEGO should be applied to the<br>
+current authentication/browser request. The state that is available to the webflow<br>
+is <code>evaluateClientRequest</code> which will attempt to start SPNEGO authentication<br>
+or resume normally, depending on the client action strategy chosen below.</p>
+<h3>
+<a id="by-remote-ip" class="anchor" href="#by-remote-ip" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>By Remote IP</h3>
+<p>Checks to see if the request's remote ip address matches a predefine pattern.<br>
+To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#spnego-authentication">review this guide</a>.</p>
+<h3>
+<a id="by-hostname" class="anchor" href="#by-hostname" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>By Hostname</h3>
+<p>Checks to see if the request's remote hostname matches a predefine pattern.<br>
+To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#spnego-authentication">review this guide</a>.</p>
+<h3>
+<a id="by-ldap-attribute" class="anchor" href="#by-ldap-attribute" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>By LDAP Attribute</h3>
+<p>Checks an LDAP instance for the remote hostname, to locate a pre-defined attribute whose mere existence<br>
+would allow the webflow to resume to SPNEGO.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#spnego-authentication">review this guide</a>.</p>
+<h2>
+<a id="logging" class="anchor" href="#logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logging</h2>
+<p>To enable additional logging, configure the log4j configuration file to add the following levels:</p>
+<pre lang="xml"><code>...
+&lt;Logger name="jcifs.spnego" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+...
+</code></pre>
+<h2>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h2>
+<ul>
+<li>Failure unspecified at GSS-API level</li>
+</ul>
+<pre lang="bash"><code>Caused by: GSSException: Failure unspecified at GSS-API level (Mechanism level: Invalid argument (400) - Cannot find key of appropriate type to decrypt AP REP - AES256 CTS mode with HMAC SHA1-96)
+        at sun.security.jgss.krb5.Krb5Context.acceptSecContext(Unknown Source)
+        at sun.security.jgss.GSSContextImpl.acceptSecContext(Unknown Source)
+        at sun.security.jgss.GSSContextImpl.acceptSecContext(Unknown Source)
+        ... 280 more
+Caused by: KrbException: Invalid argument (400) - Cannot find key of appropriate type to decrypt 
+AP REP - AES256 CTS mode with HMAC SHA1-96
+        at sun.security.krb5.KrbApReq.authenticate(Unknown Source)
+        at sun.security.krb5.KrbApReq.&lt;init&gt;(Unknown Source)
+        at sun.security.jgss.krb5.InitSecContextToken.&lt;init&gt;(Unknown Source)
+        ... 283 more
+</code></pre>
+<p>It's very likely that you have the wrong path to <code>.keytab</code> file. The KVNO in the keytab file must be identical with the KVNO stored in the Active Directory. Active Directory is raising the KVNO with every execution of ktpass, as part of its <code>msDS-KeyVersionNumber</code>.</p>
+<p>Other possible causes include:</p>
+<ol>
+<li>The service principal in the in the CAS configuration is not identical with that from the keytab. (param <code>/princ</code> from ktpass)</li>
+<li>There is no key for the <code>enctype</code> sent with the ticket by Active Directory. (param <code>/crypto</code> from <code>ktpass</code> and set in the <code>krb5.conf/permitted_enctypes+default_tkt_enctypes</code>).</li>
+<li>The KVNO from the ticket is different than the KVNO in the keytab (param <code>/kvno</code> from <code>ktpass</code>).</li>
+</ol>

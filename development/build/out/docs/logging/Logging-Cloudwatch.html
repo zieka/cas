@@ -1,0 +1,48 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---cloudwatch-logging-configurationcategory-logs--audits" class="anchor" href="#layout-defaulttitle-cas---cloudwatch-logging-configurationcategory-logs--audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Cloudwatch Logging Configuration<br>
+category: Logs &amp; Audits</h2>
+<h1>
+<a id="cloudwatch-logging" class="anchor" href="#cloudwatch-logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cloudwatch Logging</h1>
+<p>Log data can be automatically routed to <a href="https://aws.amazon.com/cloudwatch/">AWS CloudWatch</a>. Support is enabled by including the following module in the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-logging-config-cloudwatch&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>With the above module, you may then declare a specific appender to communicate with AWS CloudWatch:</p>
+<pre lang="xml"><code>&lt;CloudWatchAppender name="cloudWatch"
+                    awsLogGroupName="LogGroupName"
+                    awsLogStreamName="LogStreamName"
+                    awsLogRegionName="us-west-1"
+                    credentialAccessKey="..."
+                    credentialSecretKey="..."
+                    awsLogStreamFlushPeriodInSeconds="5"
+                    createIfNeeded="true"
+                    createLogGroupIfNeeded="false"
+                    createLogStreamIfNeeded="false"&gt;
+    &lt;PatternLayout&gt;
+        &lt;Pattern&gt;%5p | %d{ISO8601}{UTC} | %t | %C | %M:%L | %m %ex %n&lt;/Pattern&gt;
+    &lt;/PatternLayout&gt;
+&lt;/CloudWatchAppender&gt;
+...
+&lt;Logger name="org.apereo" additivity="true" level="debug"&gt;
+    &lt;appender-ref ref="cloudWatch" /&gt;
+&lt;/Logger&gt;
+</code></pre>
+<p>AWS credentials are fetched from the following sources automatically, where relevant and made possible via CAS configuration:</p>
+<ol>
+<li>EC2 instance metadata linked to the IAM role.</li>
+<li>External properties file that contains <code>accessKey</code> and <code>secretKey</code> as property keys.</li>
+<li>AWS profile path and profile name.</li>
+<li>System properties that include <code>aws.accessKeyId</code>, <code>aws.secretKey</code> and <code>aws.sessionToken</code>
+</li>
+<li>Environment variables that include <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_KEY</code> and <code>AWS_SESSION_TOKEN</code>.</li>
+<li>Properties file on the classpath as <code>awscredentials.properties</code> that contains <code>accessKey</code> and <code>secretKey</code> as property keys.</li>
+<li>Static credentials for access key and secret provided directly by the configuration at hand (logging, etc).</li>
+</ol>
+<p><code>createIfNeeded</code>, <code>createLogGroupIfNeeded</code>, and <code>createLogStreamIfNeeded</code> are optional; <code>createIfNeeded</code> will default to<br>
+<code>true</code> while <code>createLogGroupIfNeeded</code> and <code>createLogStreamIfNeeded</code> default to <code>false</code>. Any <code>true</code> value will take<br>
+precendence (i.e., set all to <code>false</code> to not create anything).</p>

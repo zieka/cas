@@ -1,0 +1,538 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---oauth-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---oauth-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - OAuth Authentication<br>
+category: Authentication</h2>
+<h1>
+<a id="oauthopenid-authentication" class="anchor" href="#oauthopenid-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth/OpenID Authentication</h1>
+<p>Allow CAS to act as an OAuth/OpenID authentication provider. Please <a href="https://oauth.net/2/">review the specification</a> to learn more.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oauthTokens</code></td>
+<td>Manage and control <a href="OAuth-OpenId-Authentication.html">OAuth2 access tokens</a>. A <code>GET</code> operation produces a list of all access/refresh tokens. A <code>DELETE</code> operation will delete the provided access/refresh token provided in form of a parameter selector. (i.e. <code>/{token}</code>). A <code>GET</code> operation produces with a parameter selector of <code>/{token}</code> will list the details of the fetched access/refresh token.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-oauth-webflow&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#oauth2">review this guide</a>.</p>
+<h2>
+<a id="endpoints" class="anchor" href="#endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoints</h2>
+<p>After enabling OAuth support, the following endpoints will be available:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oauth2.0/authorize</code></td>
+<td>Authorize the user and start the CAS authentication flow.</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td>
+<code>/oauth2.0/accessToken</code>,<code>/oauth2.0/token</code>
+</td>
+<td>Get an access token in plain-text or JSON</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td><code>/oauth2.0/profile</code></td>
+<td>Get the authenticated user profile in JSON via <code>access_token</code> parameter.</td>
+<td><code>GET</code></td>
+</tr>
+<tr>
+<td><code>/oauth2.0/introspect</code></td>
+<td>Query CAS to detect the status of a given access token via <a href="https://tools.ietf.org/html/rfc7662">introspection</a>. This endpoint expects HTTP basic authentication with OAuth2 service <code>client_id</code> and <code>client_secret</code> associated as username and password.</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td><code>/oauth2.0/device</code></td>
+<td>Approve device user codes via the <a href="https://tools.ietf.org/html/draft-denniss-oauth-device-flow">device flow protocol</a>.</td>
+<td><code>POST</code></td>
+</tr>
+<tr>
+<td><code>/oauth2.0/revoke</code></td>
+<td>
+<a href="https://tools.ietf.org/html/rfc7009">Revoke</a> access or refresh tokens. This endpoint expects HTTP basic authentication with OAuth2 service <code>client_id</code> and <code>client_secret</code> associated as username and password.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="responsegrant-types" class="anchor" href="#responsegrant-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Response/Grant Types</h2>
+<p>The following types are supported; they allow you to get an access token representing the current user and OAuth<br>
+client application. With the access token, you'll be able to query the <code>/profile</code> endpoint and get the user profile.</p>
+<h3>
+<a id="authorization-code" class="anchor" href="#authorization-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authorization Code</h3>
+<p>The authorization code type is made for UI interactions: the user will enter credentials, shall receive a code and will exchange that code for an access token.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Parameters</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oauth2.0/authorize</code></td>
+<td><code>response_type=code&amp;client_id=&lt;ID&gt;&amp;redirect_uri=&lt;CALLBACK&gt;</code></td>
+<td>OAuth code as a parameter of the <code>CALLBACK</code> url.</td>
+</tr>
+<tr>
+<td><code>/oauth2.0/accessToken</code></td>
+<td>
+<code>grant_type=authorization_code&amp;client_id=ID</code><!-- raw HTML omitted --><code>&amp;client_secret=SECRET&amp;code=CODE&amp;redirect_uri=CALLBACK</code>
+</td>
+<td>The access token.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="proof-key-code-exchange-pkce" class="anchor" href="#proof-key-code-exchange-pkce" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proof Key Code Exchange (PKCE)</h4>
+<p>The <a href="https://tools.ietf.org/html/rfc7636">Proof Key for Code Exchange</a> (PKCE, pronounced pixie) extension describes a technique for public clients to mitigate the threat of having the authorization code intercepted. The technique involves the client first creating a secret, and then using that secret again when exchanging the authorization code for an access token. This way if the code is intercepted, it will not be useful since the token request relies on the initial secret.</p>
+<p>The authorization code type at the authorization endpoint <code>/oauth2.0/authorize</code> is able to accept the following parameters to activate PKCE:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_challenge</code></td>
+<td>The code challenge generated using the method below.</td>
+</tr>
+<tr>
+<td><code>code_challenge_method</code></td>
+<td>
+<code>plain</code>, <code>S256</code>. This parameter is optional, where <code>plain</code> is assumed by default.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>/oauth2.0/accessToken</code>  endpoint is able to accept the following parameters to activate PKCE:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code_verifier</code></td>
+<td>The original code verifier for the PKCE request, that the app originally generated before the authorization request.</td>
+</tr>
+</tbody>
+</table>
+<p>If the method is <code>plain</code>, then the CAS needs only to check that the provided <code>code_verifier</code> matches the expected <code>code_challenge</code> string.<br>
+If the method is <code>S256</code>, then the CAS should take the provided <code>code_verifier</code> and transform it using the same method the client will have used initially. This means calculating the SHA256 hash of the verifier and base64-url-encoding it, then comparing it to the stored <code>code_challenge</code>.</p>
+<p>If the verifier matches the expected value, then the CAS can continue on as normal, issuing an access token and responding appropriately.</p>
+<h3>
+<a id="tokenimplicit" class="anchor" href="#tokenimplicit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Token/Implicit</h3>
+<p>The <code>token</code> type is also made for UI interactions as well as indirect non-interactive (i.e. Javascript) applications.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Parameters</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oauth2.0/authorize</code></td>
+<td><code>response_type=token&amp;client_id=ID&amp;redirect_uri=CALLBACK</code></td>
+<td>The access token as an anchor parameter of the <code>CALLBACK</code> url.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="resource-owner-credentials" class="anchor" href="#resource-owner-credentials" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Resource Owner Credentials</h3>
+<p>The <code>password</code> grant type allows the OAuth client to directly send the user's credentials to the OAuth server.<br>
+This grant is a great user experience for trusted first party clients both on the web and in native device applications.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Parameters</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oauth2.0/accessToken</code></td>
+<td>
+<code>grant_type=password&amp;client_id=ID</code><!-- raw HTML omitted --><code>&amp;client_secret=&lt;SECRET&gt;</code><!-- raw HTML omitted --><code>&amp;username=USERNAME&amp;password=PASSWORD</code>
+</td>
+<td>The access token.</td>
+</tr>
+</tbody>
+</table>
+<p>Because there is no <code>redirect_uri</code> specified by this grant type, the service identifier recognized by CAS and matched in the service registry is taken as the <code>client_id</code> instead. You may optionally also pass along a <code>service</code> or <code>X-service</code> header value that identifies the target application url. The header value must match the OAuth service definition in the registry that is linked to the client id.</p>
+<h3>
+<a id="client-credentials" class="anchor" href="#client-credentials" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Client Credentials</h3>
+<p>The simplest of all of the OAuth grants, this grant is suitable for machine-to-machine authentication<br>
+where a specific user’s permission to access data is not required.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Parameters</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oauth2.0/accessToken</code></td>
+<td><code>grant_type=client_credentials&amp;client_id=client&amp;client_secret=secret</code></td>
+<td>The access token.</td>
+</tr>
+</tbody>
+</table>
+<p>Because there is no <code>redirect_uri</code> specified by this grant type, the service identifier recognized by CAS and matched in the service registry is taken as the <code>client_id</code> instead. You may optionally also pass along a <code>service</code> or <code>X-service</code> header value that identifies the target application url. The header value must match the OAuth service definition in the registry that is linked to the client id.</p>
+<h3>
+<a id="refresh-token" class="anchor" href="#refresh-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Refresh Token</h3>
+<p>The refresh token grant type retrieves a new access token from a refresh token (emitted for a previous access token),<br>
+when this previous access token is expired.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Parameters</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oauth2.0/accessToken</code></td>
+<td>
+<code>grant_type=refresh_token&amp;client_id=&lt;ID&gt;</code><!-- raw HTML omitted --><code>&amp;client_secret=SECRET&amp;refresh_token=REFRESH_TOKEN</code>
+</td>
+<td>The new access token.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="device-flow" class="anchor" href="#device-flow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Device Flow</h3>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Parameters</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oauth2.0/accessToken</code></td>
+<td><code>response_type=device_code&amp;client_id=&lt;ID&gt;</code></td>
+<td>Device authorization url, device code and user code.</td>
+</tr>
+<tr>
+<td><code>/oauth2.0/accessToken</code></td>
+<td><code>response_type=device_code&amp;client_id=&lt;ID&gt;&amp;code=&lt;DEVICE_CODE&gt;</code></td>
+<td>New access token once the user code is approved.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="grant-type-selection" class="anchor" href="#grant-type-selection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Grant Type Selection</h2>
+<p>A grant is a method of acquiring an access token. Deciding which grants to implement depends on the type of client the end user will be using, and the experience you want for your users.</p>
+<p><img src="https://alexbilbie.com/images/oauth-grants.svg" alt=""></p>
+<p>To learn more about profiles and grant types, please <a href="https://alexbilbie.com/guide-to-oauth-2-grants/">review this guide</a>.</p>
+<h2>
+<a id="register-clients" class="anchor" href="#register-clients" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register Clients</h2>
+<p>Every OAuth client must be defined as a CAS service (notice the new <em>clientId</em> and <em>clientSecret</em> properties, specific to OAuth):</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "clientid",
+  "clientSecret": "clientSecret",
+  "serviceId" : "^(https|imaps)://&lt;redirect-uri&gt;.*",
+  "name" : "OAuthService",
+  "id" : 100,
+  "supportedGrantTypes": [ "java.util.HashSet", [ "...", "..." ] ],
+  "supportedResponseTypes": [ "java.util.HashSet", [ "...", "..." ] ]
+}
+</code></pre>
+<p>The following fields are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientId</code></td>
+<td>The client identifier for the application/service.</td>
+</tr>
+<tr>
+<td><code>clientSecret</code></td>
+<td>The client secret for the application/service.</td>
+</tr>
+<tr>
+<td><code>supportedGrantTypes</code></td>
+<td>Collection of supported grant types for this service.</td>
+</tr>
+<tr>
+<td><code>supportedResponseTypes</code></td>
+<td>Collection of supported response types for this service.</td>
+</tr>
+<tr>
+<td><code>bypassApprovalPrompt</code></td>
+<td>Whether approval prompt/consent screen should be bypassed. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>generateRefreshToken</code></td>
+<td>Whether a refresh token should be generated along with the access token. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>renewRefreshToken</code></td>
+<td>Whether the existing refresh token should be expired and a new one generated (and sent along) whenever a new access token is requested (with <code>grant_type</code> = <code>refresh_token</code>). Only possible if <code>generateRefreshToken</code> is set to <code>true</code>. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>jwtAccessToken</code></td>
+<td>Whether access tokens should be created as JWTs. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>serviceId</code></td>
+<td>The pattern that authorizes the redirect URI(s), or same as <code>clientId</code> in case <code>redirect_uri</code> is not required by the grant type (i.e <code>client_credentials</code>, etc).</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>Service definitions are typically managed by the <a href="../services/Service-Management.html">service management</a> facility.</p>
+<!-- raw HTML omitted -->
+<h3>
+<a id="encryptable-client-secrets" class="anchor" href="#encryptable-client-secrets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Encryptable Client Secrets</h3>
+<p>Client secrets for OAuth relying parties may be defined as encrypted values prefixed with <code>{cas-cipher}</code>:</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "clientid",
+  "clientSecret": "{cas-cipher}eyJhbGciOiJIUzUxMiIs...",
+  "serviceId" : "^(https|imaps)://&lt;redirect-uri&gt;.*",
+  "name": "Sample",
+  "id": 100
+}
+</code></pre>
+<p>Client secrets may be encrypted using CAS-provided cipher operations either manually or via the <a href="Configuring-Commandline-Shell.html">CAS Command-line shell</a>.<br>
+To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#oauth2">review this guide</a>.</p>
+<h3>
+<a id="attribute-release" class="anchor" href="#attribute-release" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Release</h3>
+<p>Attribute/claim filtering and release policies are defined per OAuth service.<br>
+See <a href="../integration/Attribute-Release-Policies.html">this guide</a> for more info.</p>
+<h2>
+<a id="oauth-token-expiration-policy" class="anchor" href="#oauth-token-expiration-policy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth Token Expiration Policy</h2>
+<p>The expiration policy for OAuth tokens is controlled by CAS settings and properties. Note that while access and refresh tokens may have their own lifetime and expiration policy, they are typically upper-bound to the length of the CAS single sign-on session.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#oauth2">review this guide</a>.</p>
+<h3>
+<a id="per-service" class="anchor" href="#per-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h3>
+<p>The expiration policy of certain OAuth tokens can be conditionally decided on a per-application basis. The candidate service<br>
+whose token expiration policy is to deviate from the default configuration must be designed as the following snippets demonstrate.</p>
+<h4>
+<a id="oauth-code" class="anchor" href="#oauth-code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth Code</h4>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "clientid",
+  "clientSecret": "clientSecret",
+  "serviceId" : "^(https|imaps)://&lt;redirect-uri&gt;.*",
+  "name" : "OAuthService",
+  "id" : 100,
+  "codeExpirationPolicy": {
+    "@class": "org.apereo.cas.support.oauth.services.DefaultRegisteredServiceOAuthCodeExpirationPolicy",
+    "numberOfUses": 1,
+    "timeToLive": "10"
+  }
+}
+</code></pre>
+<h4>
+<a id="oauth-access-token" class="anchor" href="#oauth-access-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth Access Token</h4>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "clientid",
+  "clientSecret": "clientSecret",
+  "serviceId" : "^(https|imaps)://&lt;redirect-uri&gt;.*",
+  "name" : "OAuthService",
+  "id" : 100,
+  "accessTokenExpirationPolicy": {
+    "@class": "org.apereo.cas.support.oauth.services.DefaultRegisteredServiceOAuthAccessTokenExpirationPolicy",
+    "maxTimeToLive": "1000",
+    "timeToLive": "100"
+  }
+}
+</code></pre>
+<h4>
+<a id="oauth-device-token" class="anchor" href="#oauth-device-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth Device Token</h4>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "clientid",
+  "clientSecret": "clientSecret",
+  "serviceId" : "^(https|imaps)://&lt;redirect-uri&gt;.*",
+  "name" : "OAuthService",
+  "id" : 100,
+  "accessTokenExpirationPolicy": {
+    "@class": "org.apereo.cas.support.oauth.services.DefaultRegisteredServiceOAuthDeviceTokenExpirationPolicy",
+    "timeToLive": "100"
+  }
+}
+</code></pre>
+<h4>
+<a id="oauth-refresh-token" class="anchor" href="#oauth-refresh-token" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth Refresh Token</h4>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+  "clientId": "clientid",
+  "clientSecret": "clientSecret",
+  "serviceId" : "^(https|imaps)://&lt;redirect-uri&gt;.*",
+  "name" : "OAuthService",
+  "id" : 100,
+  "accessTokenExpirationPolicy": {
+    "@class": "org.apereo.cas.support.oauth.services.DefaultRegisteredServiceOAuthRefreshTokenExpirationPolicy",
+    "timeToLive": "100"
+  }
+}
+</code></pre>
+<h2>
+<a id="jwt-access-tokens" class="anchor" href="#jwt-access-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JWT Access Tokens</h2>
+<p>By default, OAuth access tokens are created as opaque identifiers. There is also the option to generate JWTs as access tokens on a per-service basis:</p>
+<pre lang="json"><code>{
+    "@class" : "org.apereo.cas.support.oauth.services.OAuthRegisteredService",
+    "clientId": "clientid",
+    "clientSecret": "clientSecret",
+    "serviceId" : "^(https|imaps)://&lt;redirect-uri&gt;.*",
+    "name" : "OAuthService",
+    "id" : 100,
+    "jwtAccessToken": true,
+    "properties" : {
+      "@class" : "java.util.HashMap",
+      "accessTokenAsJwtSigningKey" : {
+         "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+         "values" : [ "java.util.HashSet", [ "..." ] ]
+      },
+      "accessTokenAsJwtEncryptionKey" : {
+           "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+           "values" : [ "java.util.HashSet", [ "..." ] ]
+      },
+      "accessTokenAsJwtSigningEnabled" : {
+         "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+         "values" : [ "java.util.HashSet", [ "true" ] ]
+      },
+      "accessTokenAsJwtEncryptionEnabled" : {
+         "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+         "values" : [ "java.util.HashSet", [ "true" ] ]
+      },
+      "accessTokenAsJwtCipherStrategyType" : {
+         "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+         "values" : [ "java.util.HashSet", [ "ENCRYPT_AND_SIGN" ] ]
+      }
+    }
+}
+</code></pre>
+<p>The following cipher strategy types are available:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ENCRYPT_AND_SIGN</code></td>
+<td>Default strategy; encrypt values, and then sign.</td>
+</tr>
+<tr>
+<td><code>SIGN_AND_ENCRYPT</code></td>
+<td>Sign values, and then encrypt.</td>
+</tr>
+</tbody>
+</table>
+<p>Signing and encryption keys may also be defined on a per-service basis, or globally via CAS settings.<br>
+To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#oauth2">review this guide</a>.</p>
+<h2>
+<a id="oauth-user-profile-structure" class="anchor" href="#oauth-user-profile-structure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OAuth User Profile Structure</h2>
+<p>The requested user profile may be rendered and consumed by the application using the following options.</p>
+<h3>
+<a id="nested" class="anchor" href="#nested" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Nested</h3>
+<p>By default, the requested user profile is rendered using a <code>NESTED</code> format where the authenticated principal and attributes are placed inside <code>id</code> and <code>attributes</code> tags respectively in the final structure.</p>
+<pre lang="json"><code>{
+  "id": "casuser",
+  "attributes": {
+    "email": "casuser@example.org",
+    "name": "CAS"
+  },
+  "something": "else"
+}
+</code></pre>
+<h3>
+<a id="flat" class="anchor" href="#flat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Flat</h3>
+<p>This option flattens principal attributes by one degree, putting them at the same level as <code>id</code>. Other nested elements in the final payload are left untouched.</p>
+<pre lang="json"><code>{
+  "id": "casuser",
+  "email": "casuser@example.org",
+  "name": "CAS",
+  "something": "else"
+}
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#oauth2">review this guide</a>.</p>
+<h3>
+<a id="custom" class="anchor" href="#custom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom</h3>
+<p>If you wish to create your own profile structure, you will need to design a component and register it with CAS to handle the rendering of the user profile:</p>
+<pre lang="java"><code>package org.apereo.cas.support.oauth;
+
+@Configuration("MyOAuthConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class MyOAuthConfiguration {
+
+    @Bean
+    @RefreshScope
+    public OAuth20UserProfileViewRenderer oauthUserProfileViewRenderer() {
+        ...
+    }
+}
+</code></pre>
+<p><a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> to learn more about how to register configurations into the CAS runtime.</p>
+<h2>
+<a id="throttling" class="anchor" href="#throttling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Throttling</h2>
+<p>Authentication throttling may be enabled for the <code>/oauth2.0/accessToken</code> provided support is included in the overlay to <a href="Configuring-Authentication-Throttling.html">turn on authentication<br>
+throttling</a> support. The throttling mechanism that handles the usual CAS server endpoints for authentication<br>
+and ticket validation, etc is then activated for the OAuth endpoints that are supported for throttling.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#oauth2">review this guide</a>.</p>
+<h2>
+<a id="server-configuration" class="anchor" href="#server-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Server Configuration</h2>
+<p>Remember that OAuth features of CAS require session affinity (and optionally session replication),<br>
+as the authorization responses throughout the login flow are stored via server-backed session storage mechanisms. You will need to configure your deployment<br>
+environment and load balancers accordingly.</p>
+<h2>
+<a id="sample-client-applications" class="anchor" href="#sample-client-applications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Client Applications</h2>
+<ul>
+<li><a href="https://github.com/cas-projects/oauth2-sample-java-webapp">OAuth2 Sample Webapp</a></li>
+</ul>
+<h1>
+<a id="openid-authentication" class="anchor" href="#openid-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OpenID Authentication</h1>
+<p>To configure CAS to act as an OpenID provider, please <a href="../protocol/OpenID-Protocol.html">see this page</a>.</p>

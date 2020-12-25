@@ -1,0 +1,21 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---git-service-registrycategory-services" class="anchor" href="#layout-defaulttitle-cas---git-service-registrycategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Git Service Registry<br>
+category: Services</h2>
+<h1>
+<a id="git-service-registry" class="anchor" href="#git-service-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git Service Registry</h1>
+<p>This registry reads services definitions from remote or local git repositories. Service definition files are expected to be<br>
+either <a href="JSON-Service-Management.html">JSON</a> or <a href="YAML-Service-Management.html">YAML</a> files. The contents of the repository is pulled at defined intervals and changes to service definitions are committed and<br>
+pushed to the defined remotes.</p>
+<p>Support is enabled by adding the following module into the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-git-service-registry&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#git-service-registry">review this guide</a>.</p>
+<!-- raw HTML omitted -->
+<p>The service registry is also able to auto detect changes as it will pull changes from defined remotes periodically. It will monitor changes to recognize<br>
+file additions, removals and updates and will auto-refresh CAS so changes may happen instantly.</p>

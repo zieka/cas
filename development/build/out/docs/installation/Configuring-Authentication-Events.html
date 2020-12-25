@@ -1,0 +1,156 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-authentication-eventscategory-authentication" class="anchor" href="#layout-defaulttitle-cas---configuring-authentication-eventscategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Authentication Events<br>
+category: Authentication</h2>
+<h1>
+<a id="authentication-events" class="anchor" href="#authentication-events" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication Events</h1>
+<p>CAS provides a facility for consuming and recording authentication events into persistent storage. This functionality is similar to the records<br>
+kept by the <a href="Audits.html">Audit log</a> except that the functionality and storage format is controlled via CAS itself rather than the audit engine.<br>
+Additionally, while audit data may be used for reporting and monitoring, events stored into storage via this functionality may later be assessed<br>
+in a historical fashion to assess authentication requests, evaluate risk associated with them and take further action upon them. Events are primarily<br>
+designed to be consumed by the developer and subsequent CAS modules, while audit data is targeted at deployers for end-user functionality and reporting.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-core-events&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2>
+<a id="recorded-data" class="anchor" href="#recorded-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recorded Data</h2>
+<p>The following metadata is captured and recorded by the event machinery when enabled:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>principalId</code></td>
+<td>The principal id of the authenticated subject</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>Timestamp of this event</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td>Timestamp of this authentication event</td>
+</tr>
+<tr>
+<td><code>clientIpAddress</code></td>
+<td>Client IP address</td>
+</tr>
+<tr>
+<td><code>serverIpAddress</code></td>
+<td>Server IP address</td>
+</tr>
+<tr>
+<td><code>agent</code></td>
+<td>User-Agent of the browser</td>
+</tr>
+<tr>
+<td><code>geoLatitude</code></td>
+<td>Geo Latitude of authentication request's origin</td>
+</tr>
+<tr>
+<td><code>geoLongitude</code></td>
+<td>Geo Longitude of authentication request's origin</td>
+</tr>
+<tr>
+<td><code>geoAccuracy</code></td>
+<td>Accuracy measure of the location</td>
+</tr>
+<tr>
+<td><code>geoTimestamp</code></td>
+<td>Timestamp of the geo location request</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="geolocation" class="anchor" href="#geolocation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GeoLocation</h2>
+<p>CAS attempts to record the geolocation properties of the authentication requests, by allowing the browser to ask for user's consent.<br>
+Should consent not be granted or geolocation not supported by the browser, CAS will ignore the geolocation data when it attempts to<br>
+record the event. To learn more, please <a href="GeoTracking-Authentication-Requests.html">review this guide</a>.</p>
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>events</code></td>
+<td>Provides a JSON representation of all CAS recorded events.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>The following storage backends are available for consumption of events.</p>
+<h3>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
+<p>Stores authentication events into a MongoDb NoSQL database.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-events-mongo&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#mongodb-events">review this guide</a>.</p>
+<h3>
+<a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h3>
+<p>Stores authentication events into a DynamoDb database.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-events-dynamodb&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#dynamodb-events">review this guide</a>.</p>
+<h3>
+<a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
+<p>Stores authentication events inside a CouchDb instance.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-events-couchdb&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchdb-events">review this guide</a>.</p>
+<h3>
+<a id="jpa" class="anchor" href="#jpa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JPA</h3>
+<p>Stores authentication events into a RDBMS.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-events-jpa&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#database-events">review this guide</a>.</p>
+<h3>
+<a id="influxdb" class="anchor" href="#influxdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>InfluxDb</h3>
+<p>Stores authentication events inside an InfluxDb instance.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-events-influxdb&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#influxdb-events">review this guide</a>.</p>
+<h3>
+<a id="memory" class="anchor" href="#memory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Memory</h3>
+<p>Stores authentication events into memory for a very limited time period.</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-events-memory&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>

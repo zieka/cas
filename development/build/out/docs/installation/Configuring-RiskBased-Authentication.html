@@ -1,0 +1,95 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---adaptive-risk-based-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---adaptive-risk-based-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Adaptive Risk-based Authentication<br>
+category: Authentication</h2>
+<h1>
+<a id="risk-based-authentication" class="anchor" href="#risk-based-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Risk-based Authentication</h1>
+<p>Risk-based authentication allows CAS to detect suspicious and seemingly-fraudulent authentication requests based on past user behavior<br>
+and collected authentication events, statistics, etc. Once and <em>after</em> primary authentication where the principal is identified,<br>
+the authentication transaction is analyzed via a number of configurable criteria and fences to determine how <em>risky</em> the attempt may be.<br>
+The result of the evaluation step is a cumulative risk score that is then weighed against a risk threshold set by the CAS operator.<br>
+In the event that the authentication attempt is considered risky well beyond the risk threshold, CAS may be allowed to take action and<br>
+mitigate that risk.</p>
+<p>Simply put, the story told is:</p>
+<blockquote>
+<p>If an authentication request is at least [X%] risky, take action to mitigate that risk.</p>
+</blockquote>
+<p>The functionality of this feature is <strong>ENTIRELY</strong> dependent upon collected statistics and authentication events in the past.<br>
+Without data, there is nothing to analyze and no risk to detect.</p>
+<p>Note that evaluation of attempts and mitigation of risks are all recorded in the audit log.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="risk-calculation" class="anchor" href="#risk-calculation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Risk Calculation</h2>
+<p>One or more risk calculators may be enabled to allow an analysis of authentication requests.</p>
+<p>A high-level explanation of the risk calculation strategy follows:</p>
+<ul>
+<li>If there is no recorded event at all present for the principal, consider the request suspicious.</li>
+<li>If the number of recorded events for the principal based on the active criteria matches the total number of events, consider the<br>
+request safe.</li>
+</ul>
+<h3>
+<a id="ip-address" class="anchor" href="#ip-address" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IP Address</h3>
+<p>This calculator looks into past authentication events that match the client ip address. It is applicable if you wish<br>
+to consider authentication requests from unknown ip addresses suspicious for the user. The story here is:</p>
+<blockquote>
+<p>Find all past authentication events that match the current client ip address and calculate an averaged score.</p>
+</blockquote>
+<h3>
+<a id="browser-user-agent" class="anchor" href="#browser-user-agent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Browser User Agent</h3>
+<p>This calculator looks into past authentication events that match the client's <code>user-agent</code> string. It is applicable if you wish<br>
+to consider authentication requests from unknown browsers suspicious for the user. The story here is:</p>
+<blockquote>
+<p>Find all past authentication events that match the current client browser and calculate an averaged score.</p>
+</blockquote>
+<h3>
+<a id="geolocation" class="anchor" href="#geolocation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Geolocation</h3>
+<p>This calculator looks into past authentication events that contain geolocation data, and compares those with the current geolocation.<br>
+If current geolocation data is unavailable, it will attempt to geocode the location based on the current client ip address. This feature<br>
+mostly depends on whether or not geodata is made available to CAS via the client browser and<br>
+requires <a href="GeoTracking-Authentication-Requests.html">geotracking of authentication requests</a>.</p>
+<p>The story here is:</p>
+<blockquote>
+<p>Find all past authentication events that match the current client location and calculate an average score.</p>
+</blockquote>
+<h3>
+<a id="datetime" class="anchor" href="#datetime" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Date/Time</h3>
+<p>This calculator looks into past authentication events that fit within the defined time-window. It is applicable if you wish<br>
+to consider authentication requests outside that window suspicious for the user. The story here is:</p>
+<blockquote>
+<p>Find all past authentication events that are established X hours before/after now and calculate an averaged score.</p>
+</blockquote>
+<h2>
+<a id="risk-mitigation" class="anchor" href="#risk-mitigation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Risk Mitigation</h2>
+<p>Once an authentication attempt is deemed risky, a contingency plan may be enabled to mitigate risk. If configured and allowed,<br>
+CAS may notify both the principal and deployer via both email and sms.</p>
+<h3>
+<a id="block-authentication" class="anchor" href="#block-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Block Authentication</h3>
+<p>Prevent the authentication flow to proceed and disallow the establishment of the SSO session.</p>
+<h3>
+<a id="multifactor-authentication" class="anchor" href="#multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multifactor Authentication</h3>
+<p>Force the authentication event into a <a href="../mfa/Configuring-Multifactor-Authentication.html">multifactor flow of choice</a>,<br>
+identified by the provider id.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Support is enabled by including the following dependency in the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-electrofence&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#risk-based-authentication">review this guide</a>.</p>
+<h3>
+<a id="messaging--notifications" class="anchor" href="#messaging--notifications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Messaging &amp; Notifications</h3>
+<p>Users may be notified of risky authentication attempts via text messages and/or email.<br>
+To learn more about available options, please <a href="../notifications/SMS-Messaging-Configuration.html">see this guide</a><br>
+or <a href="../notifications/Sending-Email-Configuration.html">this guide</a>.</p>
+<h3>
+<a id="remember" class="anchor" href="#remember" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remember</h3>
+<ul>
+<li>You <strong>MUST</strong> allow and configure CAS to track and record <a href="Configuring-Authentication-Events.html">authentication events</a>.</li>
+<li>You <strong>MUST</strong> allow and configure CAS to <a href="GeoTracking-Authentication-Requests.html">geolocate authentication requests</a>.</li>
+<li>If the selected contingency plan is to force the user into a multifactor authentication flow, you then <strong>MUST</strong> configure CAS for<br>
+<a href="../mfa/Configuring-Multifactor-Authentication.html">multifactor authentication</a> and the relevant provider.</li>
+</ul>

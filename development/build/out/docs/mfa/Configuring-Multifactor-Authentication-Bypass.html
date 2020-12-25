@@ -1,0 +1,178 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---multifactor-authentication-bypasscategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---multifactor-authentication-bypasscategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Multifactor Authentication Bypass<br>
+category: Multifactor Authentication</h2>
+<h1>
+<a id="multifactor-authentication-bypass" class="anchor" href="#multifactor-authentication-bypass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multifactor Authentication Bypass</h1>
+<p>Each <a href="Configuring-Multifactor-Authentication.html">multifactor provider</a> is equipped with options to allow for bypass. Once the provider<br>
+is chosen to honor the authentication request, bypass rules are then consulted to calculate whether the provider should ignore the request and skip MFA conditionally.</p>
+<h2>
+<a id="default-bypass" class="anchor" href="#default-bypass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default Bypass</h2>
+<p>CAS provides a default bypass policy for each <a href="Configuring-Multifactor-Authentication.html">multifactor provider</a> that can be configured through CAS properties.<br>
+All providers will consult this policy for bypass events before consulting any other configured bypass providers.</p>
+<p>Bypass rules allow for the following options for each provider:</p>
+<ul>
+<li>Skip multifactor authentication based on designated <strong>principal</strong> attribute <strong>names</strong>.</li>
+<li>...[and optionally] Skip multifactor authentication based on designated <strong>principal</strong> attribute <strong>values</strong>.</li>
+<li>Skip multifactor authentication based on designated <strong>authentication</strong> attribute <strong>names</strong>.</li>
+<li>...[and optionally] Skip multifactor authentication based on designated <strong>authentication</strong> attribute <strong>values</strong>.</li>
+<li>Skip multifactor authentication depending on method/form of primary authentication execution.</li>
+<li>Skip multifactor authentication depending on the properties of the http request such as remote addr/host and/or header names.</li>
+</ul>
+<p>A few examples follow:</p>
+<ul>
+<li>Trigger MFA except when the principal carries an <code>affiliation</code> attribute whose value is either <code>alum</code> or <code>member</code>.</li>
+<li>Trigger MFA except when the principal carries a <code>superAdmin</code> attribute.</li>
+<li>Trigger MFA except if the method of primary authentication is SPNEGO.</li>
+<li>Trigger MFA except if credentials used for primary authentication are of type <code>org.example.MyCredential</code>.</li>
+</ul>
+<p>Note that in addition to the above options, some multifactor authentication providers<br>
+may also skip and bypass the authentication request in the event that the authenticated principal does not quite "qualify"<br>
+for multifactor authentication. See the documentation for each specific provider to learn more.</p>
+<h3>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h3>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#multifactor-authentication">review this guide</a>.</p>
+<p>Note that ticket validation requests shall successfully go through if multifactor authentication is<br>
+bypassed for the given provider. In such cases, no authentication context is passed back to the application and<br>
+additional attributes are supplanted to let the application know multifactor authentication is bypassed for the provider.</p>
+<h3>
+<a id="bypass-per-service" class="anchor" href="#bypass-per-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bypass Per Service</h3>
+<p>MFA Bypass rules can be overridden per application via the CAS service registry. This is useful when<br>
+MFA may be turned on globally for all applications and services, yet a few selectively need to be excluded. Services<br>
+whose access should bypass MFA may be defined as such in the CAS service registry:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^(https|imaps)://.*",
+  "id" : 100,
+  "multifactorPolicy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceMultifactorPolicy",
+    "multifactorAuthenticationProviders" : [ "java.util.LinkedHashSet", [ "mfa-duo" ] ],
+    "bypassEnabled" : "true"
+  }
+}
+</code></pre>
+<h3>
+<a id="bypass-per-principal-attribute--service" class="anchor" href="#bypass-per-principal-attribute--service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bypass Per Principal Attribute &amp; Service</h3>
+<p>This is similar to the above option, except that bypass is only activated for<br>
+the registered application if the authenticated principal contains an attribute<br>
+with the specified value(s).</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^(https|imaps)://.*",
+  "id" : 100,
+  "multifactorPolicy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceMultifactorPolicy",
+    "bypassPrincipalAttributeName": "attributeForBypass",
+    "bypassPrincipalAttributeValue": "^bypass-value-[A-Z].+",
+    "bypassEnabled" : "true"
+  }
+}
+</code></pre>
+<h2>
+<a id="additional-bypass-providers" class="anchor" href="#additional-bypass-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional Bypass Providers</h2>
+<p>In addition to the configurable default bypass rules, the following bypass providers can be defined and executed after default bypass rules are calculated.</p>
+<p>In the case where the default rules determine that the multifactor authentication should be bypassed, the chain will be short circuited and no additional bypass providers will be consulted.</p>
+<h3>
+<a id="bypass-via-groovy" class="anchor" href="#bypass-via-groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bypass via Groovy</h3>
+<p>Multifactor authentication bypass may be determined using a Groovy script of your own design. The outcome of the script, if <code>true</code> indicates that multifactor<br>
+authentication for the requested provider should proceed. Otherwise <code>false</code> indicates that  multifactor authentication for this provider should be skipped and bypassed.</p>
+<p>The outline of the script may be as follows:</p>
+<pre lang="groovy"><code>import java.util.*
+
+def boolean run(final Object... args) {
+    def authentication = args[0]
+    def principal = args[1]
+    def registeredService = args[2]
+    def provider = args[3]
+    def logger = args[4]
+    def httpRequest = args[5]
+
+    // Stuff happens...
+
+    return false;
+}
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>authentication</code></td>
+<td>The object representing the established authentication event.</td>
+</tr>
+<tr>
+<td><code>principal</code></td>
+<td>The object representing the authenticated principal.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td>The object representing the corresponding service definition in the registry.</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>The object representing the requested multifactor authentication provider.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+<tr>
+<td><code>httpRequest</code></td>
+<td>The object responsible for capturing the http request.</td>
+</tr>
+</tbody>
+</table>
+<p>As an example, the following script skips multifactor authentication if the application requesting it is registered in the CAS service registry under the name <code>MyApplication</code> and only does so if the provider is Duo Security and the authenticated principal contains an attribute named <code>mustBypassMfa</code> whose values contains <code>true</code>.</p>
+<pre lang="groovy"><code>def boolean run(final Object... args) {
+    def authentication = args[0]
+    def principal = args[1]
+    def service = args[2]
+    def provider = args[3]
+    def logger = args[4]
+    def httpRequest = args[5]
+
+    if (service.name == "MyApplication") {
+        logger.info("Evaluating principal attributes ${principal.attributes}")
+
+        def bypass = principal.attributes['mustBypassMfa']
+        if (bypass.contains("true") &amp;&amp; provider.id == "mfa-duo") {
+            logger.info("Skipping bypass for principal ${principal.id}")
+            return false
+        }
+    }
+    return true
+}
+</code></pre>
+<h3>
+<a id="bypass-via-rest" class="anchor" href="#bypass-via-rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bypass via REST</h3>
+<p>Multifactor authentication bypass may be determined using a REST API of your own design. Endpoints must be designed to accept/process <code>application/json</code> via<br>
+<code>GET</code> requests. A returned status code <code>202</code> meaning <code>ACCEPTED</code> indicates that multifactor authentication for the requested provider should proceed. Otherwise multifactor authentication for this provider should be skipped and bypassed.</p>
+<p>The following parameters are passed:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>principal</code></td>
+<td>The identifier of the authenticated principal.</td>
+</tr>
+<tr>
+<td><code>provider</code></td>
+<td>The identifier of the multifactor authentication provider.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td>The identifier of the registered service in the registry, if any.</td>
+</tr>
+</tbody>
+</table>

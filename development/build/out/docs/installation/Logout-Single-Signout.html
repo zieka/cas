@@ -1,0 +1,136 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---logout--single-logoutcategory-sso--slo" class="anchor" href="#layout-defaulttitle-cas---logout--single-logoutcategory-sso--slo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Logout &amp; Single Logout<br>
+category: SSO &amp; SLO</h2>
+<h1>
+<a id="logout-and-single-logout-slo" class="anchor" href="#logout-and-single-logout-slo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logout and Single Logout (SLO)</h1>
+<p>There are potentially many active application sessions during a CAS single sign-on session, and the distinction between<br>
+logout and single logout is based on the number of sessions that are ended upon a <em>logout</em> operation.</p>
+<!-- raw HTML omitted -->
+<p>The scope of logout is determined by where the action takes place:</p>
+<ol>
+<li>Application logout - ends a single application session</li>
+<li>CAS logout - ends the CAS SSO session</li>
+</ol>
+<p>Note that the logout action in each case has no effect on the other in the simple case. Ending an application session<br>
+does not end the CAS session and ending the CAS session does not affect application sessions. This is a common cause of<br>
+confusion for new users and deployers of an SSO system.</p>
+<p>The single logout support in CAS attempts to reconcile the disparity between CAS logout and application logout. When<br>
+CAS is configured for SLO, it attempts to send logout messages to every application that requested authentication to<br>
+CAS during the SSO session. While this is a best-effort process, in many cases it works well and provides a consistent<br>
+user experience by creating symmetry between login and logout.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="cas-logout" class="anchor" href="#cas-logout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Logout</h2>
+<p>Per the <a href="../protocol/CAS-Protocol.html">CAS Protocol</a>, the <code>/logout</code> endpoint is responsible for destroying the current SSO session.<br>
+Upon logout, it may also be desirable to redirect back to a service. This is controlled via specifying the redirect<br>
+link via the <code>service</code> parameter. The specified <code>service</code> must be registered in the service registry of CAS and enabled and<br>
+CAS must be allowed to follow service redirects.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#logout">review this guide</a>.</p>
+<h2>
+<a id="single-logout-slo" class="anchor" href="#single-logout-slo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Single Logout (SLO)</h2>
+<p>CAS is designed to support single sign out: it means that it will be able to invalidate client application sessions in addition to its own SSO session.<br>
+Whenever a ticket-granting ticket is explicitly expired, the logout protocol will be initiated. Clients that do not support the<br>
+logout protocol may notice extra requests in their access logs that appear not to do anything.</p>
+<!-- raw HTML omitted -->
+<p>When a CAS session ends, it notifies each of the services that the SSO session is no longer valid, and that relying parties<br>
+need to invalidate their own session. Remember that the callback submitted to each CAS-protected application is<br>
+a notification; nothing more. It is the <strong>responsibility of the application</strong> to intercept that notification and properly<br>
+destroy the user authentication session, either manually, via a specific endpoint or more commonly via a CAS client library that supports SLO.</p>
+<p>Also note that since SLO is a global event, all applications that have an authentication record with CAS will by default be<br>
+contacted, and this may disrupt user experience negatively if those applications are individually distinct from each other.<br>
+As an example, if user has logged into a portal application and an email application, logging out of one through SLO will<br>
+also destroy the user session in the other which could mean data loss if the application is not carefully managing its session and user activity.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#single-logout">review this guide</a>.</p>
+<h3>
+<a id="back-channel" class="anchor" href="#back-channel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Back Channel</h3>
+<p>CAS sends an HTTP POST message directly to the service. This is the traditional way of performing notification to the service.</p>
+<p>A sample back channel SLO message:</p>
+<pre lang="xml"><code>&lt;samlp:LogoutRequest
+    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+    xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+    ID="[RANDOM ID]"
+    Version="2.0"
+    IssueInstant="[CURRENT DATE/TIME]"&gt;
+    &lt;saml:NameID&gt;@NOT_USED@&lt;/saml:NameID&gt;
+    &lt;samlp:SessionIndex&gt;[SESSION IDENTIFIER]&lt;/samlp:SessionIndex&gt;
+&lt;/samlp:LogoutRequest&gt;
+</code></pre>
+<h3>
+<a id="front-channel" class="anchor" href="#front-channel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Front Channel</h3>
+<p>CAS issues asynchronous AJAX <code>GET</code> logout requests via <code>JSONP</code> to authenticated services.<br>
+The expected behaviour of the CAS client is to invalidate the application web session.</p>
+<!-- raw HTML omitted -->
+<p>A sample front channel SLO request submitted by CAS resembles the following format:</p>
+<pre><code>curl 'https://service.url?callback=jQuery112409319555380089843_1509437967792&amp;logoutRequest=[BASE64 encoded request]&amp;_=1509437967793'
+</code></pre>
+<h2>
+<a id="slo-requests" class="anchor" href="#slo-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SLO Requests</h2>
+<p>The way the notification is done (<em>back</em> or <em>front</em> channel) is configured at a service level<br>
+through the <code>logoutType</code> property. This value is set to <code>LogoutType.BACK_CHANNEL</code> by default. The message is<br>
+delivered or the redirection is sent to the URL presented in the <em>service</em> parameter of the original CAS protocol ticket request.</p>
+<p>The session identifier is the CAS service ticket ID that was provided to the service when it originally authenticated<br>
+to CAS. The session identifier is used to correlate a CAS session with an application session; for example, the SLO<br>
+session identifier maps to a servlet session that can subsequently be destroyed to terminate the application session.</p>
+<h3>
+<a id="turning-off-single-logout" class="anchor" href="#turning-off-single-logout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Turning Off Single Logout</h3>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#single-logout">review this guide</a>.</p>
+<h3>
+<a id="redirecting-logout-to-service" class="anchor" href="#redirecting-logout-to-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redirecting Logout to Service</h3>
+<p>Logout requests may be optionally routed to an external URL bypassing the CAS logout screen. In order to to do you will need to specify the target destination typically in form of a <code>service</code> parameter to the CAS logout endpoint per the <a href="../protocol/CAS-Protocol-Specification.html">CAS protocol specification</a>.</p>
+<h3>
+<a id="single-logout-per-service" class="anchor" href="#single-logout-per-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Single Logout Per Service</h3>
+<p>Registered applications with CAS have the option to control single logout behavior individually via<br>
+the <a href="../services/Service-Management.html">Service Management</a> component. Each registered service in the service registry will include configuration<br>
+that describes how to the logout request should be submitted. This behavior is controlled via the <code>logoutType</code> property<br>
+which allows to specify whether the logout request should be submitted via back/front channel or turned off for this application.</p>
+<p>Sample configuration follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "logoutType" : "BACK_CHANNEL"
+}
+</code></pre>
+<h3>
+<a id="service-endpoint-for-logout-requests" class="anchor" href="#service-endpoint-for-logout-requests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Endpoint for Logout Requests</h3>
+<p>By default, logout requests are submitted to the original service id collected at the time of authentication.<br>
+CAS has the option to submit such requests to a specific service endpoint that is different<br>
+from the original service id, and of course can be configured on a per-service level. This is useful in<br>
+cases where the application that is integrated with CAS<br>
+does not exactly use a CAS client that supports intercepting such requests and instead, exposes a<br>
+different endpoint for its logout operations.</p>
+<p>To configure a service specific endpoint, try the following example:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "logoutType" : "BACK_CHANNEL",
+  "logoutUrl" : "https://web.application.net/logout"
+}
+</code></pre>
+<h3>
+<a id="asynchronous-slo-messages" class="anchor" href="#asynchronous-slo-messages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Asynchronous SLO Messages</h3>
+<p>By default, backchannel logout messages are sent to endpoint in an asynchronous fashion.<br>
+This behavior can be modified via CAS settings. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#logout">review this guide</a>.</p>
+<h2>
+<a id="sso-session-vs-application-session" class="anchor" href="#sso-session-vs-application-session" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SSO Session vs. Application Session</h2>
+<p>In order to better understand the SSO session management of CAS and how it regards application sessions,<br>
+one important note is to be first and foremost considered:</p>
+<!-- raw HTML omitted -->
+<p>CAS wants to maintain and control the SSO session in the form of<br>
+the <code>TicketGrantingTicket</code> and a TGT id which is shared between the<br>
+user-agent and the CAS server in the form of a secure cookie.</p>
+<p>CAS is not an application session manager in that it is the<br>
+responsibility of the applications to maintain and control their own<br>
+application sessions.  Once authentication is completed, CAS is<br>
+typically out of the picture in terms of the application sessions. Therefore, the expiration policy<br>
+of the application session itself is entirely independent of CAS and may be loosely coordinated<br>
+and adjusted depending on the ideal user experience in the event that the application session expires.</p>
+<p>In the event that Single Logout is not activated, typically, application may expose a logout endpoint in order to destroy the session and next, redirect<br>
+the agent to the CAS <code>logout</code> endpoint in order to completely destroy the SSO session as well.</p>
+<p>Here's a brief diagram that demonstrates various application session configuration and interactions with CAS:</p>
+<p><img src="http://i.imgur.com/0XyuLgz.png" alt=""></p>

@@ -1,0 +1,219 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---high-availability-guidecategory-high-availability" class="anchor" href="#layout-defaulttitle-cas---high-availability-guidecategory-high-availability" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - High Availability Guide<br>
+category: High Availability</h2>
+<h1>
+<a id="high-availability-guide-haclustering" class="anchor" href="#high-availability-guide-haclustering" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>High Availability Guide (HA/Clustering)</h1>
+<p>A highly available CAS deployment is one that offers resilience in response to various failure modes such that CAS<br>
+continues to offer SSO services despite failures. We offer a recommended architecture that provides a starting point for<br>
+planning and executing a CAS deployment that meets institutional performance and availability requirements.<br>
+It also provides a framework for understanding CAS software component requirements imposed by HA considerations.</p>
+<p>A high availability (HA) configuration of CAS is achieved by ensuring there is adequate redundancy so that<br>
+the service is robust in the face of component failures and that routine maintenance can be done without service downtime.<br>
+This can be achieved with multi-node and to a lesser degree with single-node CAS with advanced virtual machine capabilities.<br>
+This document will focus on the CAS Server components required to achieve HA. A more quantitative analysis of HA configuration<br>
+depends on supporting infrastructure and services and is beyond the scope of this document.</p>
+<p>The CAS Server software has had a great track record of being extremely reliable. However, the CAS Server is only a<br>
+small part of software and hardware that authentication has to traverse to work smoothly. Clustering has typically<br>
+been used by deployers not only for load handling but also for fail-over. Even if a failure does not occur, it is<br>
+sometimes desirable to restart a server. For example, if a serious security fix at the operating system level was<br>
+installed, the server should be restarted immediately. In a cluster of CAS servers, this could be easily accomplished<br>
+with a rolling restart even during the busiest time.</p>
+<p>Operating a single server traditionally would delay such a restart until a less busy time, while running with a known<br>
+vulnerability. However, more recently with the growing acceptance of virtual machine technology and its inherent<br>
+redundancy and fault tolerance, single node CAS has been able to achieve similar qualities.</p>
+<h2>
+<a id="recommended-architecture" class="anchor" href="#recommended-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recommended Architecture</h2>
+<p>The following diagram highlights the vital aspects of a highly available CAS deployment.</p>
+<p><img src="../images/recommended_ha_architecture.png" alt="Recommended HA Architecture" title="Recommended HA Architecture"></p>
+<p>It's worth pointing out some important characteristics of this architecture:</p>
+<ul>
+<li>Dependent systems can tolerate up to N-1 node failures. (Where N is the total number of nodes.)</li>
+<li>CAS itself can tolerate up to N-1 node failures.</li>
+<li>Loss of a cache node DOES NOT cause loss of SSO state data (i.e. tickets) in replicating caches.</li>
+<li>Loss of a cache node MAY cause loss of SSO state data in non-replicating caches (e.g. memcached).</li>
+<li>Loss of SSO state data is always graceful: users simply re-authenticate.</li>
+</ul>
+<p>Before proceeding into a detailed discussion of various aspects of the recommended architecture, we offer a guiding<br>
+principle for planning a highly available deployment:</p>
+<!-- raw HTML omitted -->
+<p>Experience has shown that simplicity is a vital system characteristic of successful and robust HA deployments.<br>
+Strive for simplicity and you will be well served.</p>
+<h2>
+<a id="deployment-scenarios" class="anchor" href="#deployment-scenarios" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deployment Scenarios</h2>
+<h3>
+<a id="single-node-cas-ha-vm-infrastructure" class="anchor" href="#single-node-cas-ha-vm-infrastructure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Single-node CAS, HA VM Infrastructure</h3>
+<p>High availability can be achieved by implementing a single-node CAS running in a sophisticated virtualized environment.<br>
+This approach to high availability is attractive in the sense that it simplifies the CAS server configuration but<br>
+requires hardware virtualization technology that may not be present and available.</p>
+<h4>
+<a id="physical-architecture" class="anchor" href="#physical-architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Physical Architecture</h4>
+<p>In a single-node VM architecture, the CAS server, along with the necessary prerequisites and software dependencies is deployed in a single host VM.<br>
+Under this deployment scenario the default in-memory Ticket Registry is sufficient and no Servlet Session replication is<br>
+required. This simplifies the deployment configuration and is the recommended approach if the VM infrastructure<br>
+is sufficient to meet HA and scalability needs.</p>
+<h4>
+<a id="robustness" class="anchor" href="#robustness" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Robustness</h4>
+<p>Hardware component failure/recovery is a feature of the virtualized environment such that the loss of a CPU,<br>
+memory or power does not cause a failure of the CAS server.</p>
+<h4>
+<a id="zero-downtime-maintenance-approach" class="anchor" href="#zero-downtime-maintenance-approach" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Zero downtime maintenance approach</h4>
+<p>True zero downtime maintenance (i.e. no observable impact to end users) is not achievable with this configuration.<br>
+However, staging of maintenance and upgrades can be done without downtime by leveraging the cloning ability of most<br>
+VM infrastructures. Once the new CAS Server node is ready, a brief cutover can be implemented which will effectively<br>
+end all current SSO sessions. This could be done by scheduling restart of Tomcat during low traffic times, after the new <code>cas.war</code> has been deployed.</p>
+<h4>
+<a id="scalability" class="anchor" href="#scalability" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scalability</h4>
+<p>CAS itself has modest computing requirements such that any modern enterprise class server hardware is going to<br>
+be sufficient to handle 10,000s of users in typical deployment scenarios. In a recent client engagement load testing<br>
+a single node deployment yielded good results with CAS handling 200 concurrent users at 61 requests per second which<br>
+roughly translates into 108,000 authentication transactions per hour. These number are of course representative<br>
+and any benchmark will be highly dependent on local infrastructure.<br>
+VM environments should be able to scale the available CPU and memory to meet a wide range of needs.</p>
+<h3>
+<a id="multiple-cas-server-nodes" class="anchor" href="#multiple-cas-server-nodes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiple CAS Server Nodes</h3>
+<p>A highly available CAS deployment is composed of two or more nodes behind a hardware load balancer in<br>
+either active/passive or active/active mode. In general the former offers simplicity with<br>
+adequate failover; the latter, improved resource usage and reduced service interruptions at the cost of additional complexity.<br>
+Active-passive configuration can be done with manual or automatic failover in the case where the primary CAS node fails.<br>
+Active-active configuration is possible with a clustered ticket registry state such that any available CAS node<br>
+can service any request for the CAS server. <a href="../ticketing/Configuring-Ticketing-Components.html">A number of options are available</a><br>
+for implementing an active-active configuration with shared ticket state.</p>
+<p>HA can be achieved by implementing a multi-node CAS deployment running on multiple VMs or physical hosts.<br>
+This approach is attractive since it allows true zero down-time maintenance of the service at the cost of a marginal increase in deployment complexity.</p>
+<p>Multi-node CAS generally involves the following:</p>
+<ul>
+<li>Installing multiple instances of the CAS server (so that one or more of the servers can be destroyed without the CAS service becoming unavailable)</li>
+<li>Configuring the multiple instances of the CAS server to share ticket state (so that regardless of which CAS server a user or service interacts with, the response from each CAS server is the same.)</li>
+<li>Configuring a solution for directing traffic among the clustered CAS servers, for detecting component failure and removing failed components from service</li>
+<li>Optionally, configuring a solution for sharing session state and session failover across the CAS instances (this isn't typically appropriate, since end-user CAS sessions tend to be short lived and the experience is more request-response style than it is session oriented) - favor short-lived sticky (aka persistent sessions) load-balancing instead (could be a problem with large NAT deployments)</li>
+<li>Having appropriate contingency plans such that the desired margin of headroom against failure is restored when it is exercised. (For example, having three CAS server instances, clustered, serving a load that can be serviced with just two instances.)</li>
+</ul>
+<h4>
+<a id="physical-architecture-1" class="anchor" href="#physical-architecture-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Physical Architecture</h4>
+<p>The physical architecture may be realized through VMs or physical hardware. It is important to note that<br>
+in a shared ticket state model (Active/Active mode), CAS server nodes need to be able to communicate tickets<br>
+state across all nodes and as such, firewall restrictions between such nodes needs to be relaxed enough to allow for ticket state replication.</p>
+<p>The service endpoint is a virtual IP address configured at the load balancer. Thus all requests are handled<br>
+by the load balancer and then routed to available CAS nodes.</p>
+<h4>
+<a id="robustness-1" class="anchor" href="#robustness-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Robustness</h4>
+<p>In the event of a CAS node failure, the work load and authentication requests can properly<br>
+be rerouted to another CAS node. It is possible that through the failover scenario, some state<br>
+may be lost depending on where the user is in the login flow and as such, once the rerouting of<br>
+the request has landed from the failed node to the clone, users may need be presented with the<br>
+CAS login screen again. This failure mode can be eliminated with Servlet session state replication.</p>
+<h4>
+<a id="zero-downtime-maintenance-approach-1" class="anchor" href="#zero-downtime-maintenance-approach-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Zero downtime maintenance approach</h4>
+<p>Maintenance work, such that it would include upgrades and application of patches to the<br>
+software may be carried out via two general approaches:</p>
+<ul>
+<li>
+<p>In active-passive models, work may be carried out offline on the passive CAS node.<br>
+The load balancer is then tweaked to switch over the prepared node once ready thereby<br>
+switching the active-passive nodes around. This results in all CAS SSO sessions being reset and<br>
+possibly some Ticket validation failures if done during times with high utilization. See below for more details on this approach.</p>
+</li>
+<li>
+<p>In active-active models, one node can be taken offline while at least one other<br>
+CAS server node remains alive to respond to requests. Once the upgrade procedure is done,<br>
+the server can return to the pool while obtaining the ticket state from other active nodes. Certain<br>
+distributed ticket registry models have the ability to bootstrap themselves by receiving ticket<br>
+data from other nodes without any manual configuration or adjustment. See below for more details on this approach.</p>
+</li>
+</ul>
+<h4>
+<a id="scalability-1" class="anchor" href="#scalability-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scalability</h4>
+<p>Scalability is simply achieved by adding new CAS nodes to the cluster.</p>
+<h4>
+<a id="activepassive-mode" class="anchor" href="#activepassive-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Active/Passive Mode</h4>
+<p>In an active/passive load balanced configuration, 1 of N nodes serves all requests at any given time. This simplifies<br>
+ticket storage requirements since it is not necessary to share ticket state among several application nodes.</p>
+<p>In particular, the default ticket registry component that stores tickets in memory is suitable for active/failover<br>
+setups with the understanding that a node failure would result in ticket loss. It's worth repeating that ticket loss<br>
+results in graceful application failure where users simply re-authenticate to CAS to create new SSO sessions;<br>
+CAS client sessions created under previous SSO sessions would suffer no interruption or loss of data.</p>
+<h4>
+<a id="activeactive-mode" class="anchor" href="#activeactive-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Active/Active Mode</h4>
+<p>A load balancer in active/active mode serves requests to all N nodes simultaneously. The load balancer chooses a node<br>
+to serve a request based on a configured algorithm; typically least active or round robin. In this system architecture,<br>
+it is vitally important to use a ticket store where a ticket can be located regardless of which CAS node requests it.</p>
+<p>It's instructive to discuss the origin of this requirement. There are two interactions for tickets that occur from<br>
+fundamentally different network sources:</p>
+<ol>
+<li>User's Web browser contacts CAS to generate a ticket.</li>
+<li>Target service contacts CAS with a ticket to validate it.</li>
+</ol>
+<p>Since both requests flow through the load balancer from different source addresses, it is not possible to guarantee<br>
+that both requests are serviced by the same CAS node. Thus the requirement that a ticket be locatable regardless of<br>
+the CAS node that requests it. It should be clear why in-memory storage is not suitable for active/active deployments.</p>
+<p>The active-active architecture allows for a zero down-time transitions between CAS server versions at the time of<br>
+upgrades. One CAS node instance can be taken offline, undergo maintenance, and then be put back into the production.<br>
+The same strategy is then repeated for all other CAS nodes.</p>
+<p>There is a further consideration for active/active deployments: session affinity. Session affinity is a feature of<br>
+most load balancer equipment where the device performs state management for incoming requests and routes a client to<br>
+the same node for subsequent requests for a period of time. This feature is no longer required by default<br>
+as CAS is able to maintain state for the CAS login/logout webflows directly on the client-side. Additional<br>
+options are however provided to allow for servlet container session storage to be used with replication options<br>
+if necessary. See <a href="../webflow/Webflow-Customization-Sessions.html">this guide</a> to learn more.</p>
+<h4>
+<a id="avoid-round-robin-dns" class="anchor" href="#avoid-round-robin-dns" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Avoid Round Robin DNS</h4>
+<p>We <em>strongly</em> recommend avoiding round robin DNS as a cost-effective alternative to a hardware load balancer.<br>
+Client cache expiration policy is entirely uncontrollable, and typical cache expiration times are much longer than<br>
+desirable periods for node failover. A <a href="http://httpd.apache.org/docs/current/mod/mod_proxy.html">reverse proxy</a> or<br>
+<a href="http://www.linuxvirtualserver.org/software/ipvs.html">software load balancer</a> are recommended alternatives to hardware.</p>
+<h3>
+<a id="ha-ticket-registry" class="anchor" href="#ha-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HA Ticket Registry</h3>
+<p>The following <a href="../ticketing/Configuring-Ticketing-Components.html">ticket storage components</a> provide the best tradeoff among ease of use, scalability, and<br>
+fault tolerance and are suitable for both active/passive and active/active setups.</p>
+<p>The particular choice of storage technology should be driven by infrastructure and expertise as much as performance<br>
+and availability considerations. It's hardly valuable to have a high-performance storage for which you lack the<br>
+expertise to troubleshoot when problems invariably arise.</p>
+<p>The technology considerations of the various storage components merit some discussion since there are notable<br>
+differences that impact availability and performance characteristics. Cache systems like Ehcache and Hazelcast<br>
+offer a distributed cache that presents a single, consistent view of entries regardless<br>
+of the node contacted. Distributed caches rely on replication to provide for consistency. Cache systems like memcached<br>
+store the ticket on exactly 1 node and use a deterministic algorithm to locate the node containing the ticket:</p>
+<pre><code>N' = f(h(T), N1, N2, N3, ... Nm)
+</code></pre>
+<p>where <em>h(T)</em> is the hash of the ticket ID, <em>N1 ... Nm</em> is the set of cache nodes, and <em>N'</em> is member of <em>N ... Nm</em>.</p>
+<p>These sorts of cache systems do not require replication and generally provide for simplicity at the expense of some<br>
+durability.</p>
+<h5>
+<a id="secure-cache-replication" class="anchor" href="#secure-cache-replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Secure Cache Replication</h5>
+<p>A number of cache-based ticket registries support secure replication of ticket data across the wire,<br>
+so that tickets are encrypted and signed on replication attempts to prevent sniffing and eavesdrops.<br>
+<a href="../installation/Ticket-Registry-Replication-Encryption.html">See this guide</a> for more info.</p>
+<h3>
+<a id="distributing-service-definitions" class="anchor" href="#distributing-service-definitions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Distributing Service Definitions</h3>
+<p>In an HA environment, service definitions must be replicated and accessible by all nodes in<br>
+the CAS cluster. Typically, this may be achieved by leveraging centralized <a href="../services/Service-Management.html">registry implementations</a> that are backed<br>
+by JPA, LDAP, MongoDb, etc. Registries that are backed by the file system need to devise a process of ensuring proper file<br>
+replication, either manually or via a background daemon.</p>
+<h3>
+<a id="connection-pooling" class="anchor" href="#connection-pooling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connection Pooling</h3>
+<p>We <em>strongly</em> recommend that all IO connections to a back-end data stores, such as LDAP directories and databases,<br>
+leverage connection pooling where possible. It makes the best use of computational<br>
+(especially for SSL/TLS connections) and IO resources while providing the best performance characteristics.</p>
+<h3>
+<a id="monitoring" class="anchor" href="#monitoring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Monitoring</h3>
+<p>CAS adopters typically implement monitoring of the availability of the CAS service using the tools already<br>
+in use in operational practice for monitoring other enterprise web applications. CAS introduces a new<br>
+modest monitoring page with authentication by default by the remote_address of the requestor.</p>
+<h3>
+<a id="channel-confidentiality" class="anchor" href="#channel-confidentiality" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Channel Confidentiality</h3>
+<p>Channel Confidentiality (via SSL/TLS) is assumed and critical to the security posture of the CAS system.<br>
+This includes both front-channel (between user browser-agent and CAS server) and back-channel<br>
+(between web application and CAS server) https traffic, any intermediate proxy traffic between load balancers or<br>
+content filters and CAS nodes, as well as primary authentication (e.g. LDAPS) and attribute resolution (JDBC over SSL).<br>
+Any break in the privacy controls at any stage comprises the overall security of the system.</p>
+<h3>
+<a id="upgrades" class="anchor" href="#upgrades" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Upgrades</h3>
+<p>CAS server upgrades should be carried out through the recommended <a href="../installation/WAR-Overlay-Installation.html">WAR overlay approach</a>. Established as a best<br>
+practice, the overlay approach allows one to seamlessly obtain the intended CAS server version from well<br>
+known and public repositories while laying custom changes specific on top of the downloaded binary artifact.<br>
+In the specifics of the overlay approach, it may also be desirable to externalize the configuration<br>
+outside of the <code>cas.war</code> so that the properties and logging configuration can vary across tiers for the same <code>cas.war</code> file.<br>
+That is, externalizing the environment-specific configuration allows the same <code>cas.war</code> to be promoted from server to server<br>
+and tier to tier, which increases the confidence that the web application that was tested and verified out of production will behave as tested in production.</p>

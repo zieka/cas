@@ -1,0 +1,94 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---custom-multifactor-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---custom-multifactor-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Custom Multifactor Authentication<br>
+category: Multifactor Authentication</h2>
+<h1>
+<a id="custom-multifactor-authentication" class="anchor" href="#custom-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom Multifactor Authentication</h1>
+<p>To create your own custom multifactor authentication provider, you will need to design components that primarily register a customized authentication flow into the CAS webflow engine under a unique identifier. Later on, you will also need to consider strategies by which your custom multifactor authentication provider <a href="Configuring-Multifactor-Authentication-Triggers.html">can be triggered</a>.</p>
+<h2>
+<a id="provider-id" class="anchor" href="#provider-id" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider ID</h2>
+<p>Each multifactor provider is assigned a unique identifier that is typically mapped or made equal to the underlying webflow. The unique identifier can be any arbitrary string of your choosing, provided it's kept distinct and sensible as it, depending on use case, may be used in other systems and by other applications to act as a trigger.</p>
+<p>For the purposes of this guide, let's choose <code>mfa-custom</code> as our provider id.</p>
+<h2>
+<a id="webflow-xml-configuration" class="anchor" href="#webflow-xml-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webflow XML Configuration</h2>
+<p>The flow configuration file needs to be placed inside a <code>src/main/resources/webflow/mfa-custom</code><br>
+directory, named as <code>mfa-custom.xml</code> whose outline is sampled below:</p>
+<pre lang="xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow.xsd"&gt;
+
+    &lt;!-- 
+        Define states and actions... 
+    --&gt;
+    &lt;end-state id="success" /&gt;
+&lt;/flow&gt;
+</code></pre>
+<h2>
+<a id="register-webflow-configuration" class="anchor" href="#register-webflow-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register Webflow Configuration</h2>
+<p>The custom provider itself is its own standalone webflow that is then registered with the primary authentication flow.</p>
+<pre lang="java"><code>public class CustomAuthenticatorWebflowConfigurer extends AbstractCasMultifactorWebflowConfigurer {
+    public static final String MFA_EVENT_ID = "mfa-custom";
+      
+    /*
+        Define the appropriate constructor based on the parent class
+        public CustomAuthenticatorWebflowConfigurer(...) {
+        }
+    */  
+
+    @Override
+    protected void doInitialize() throws Exception {
+        registerMultifactorProviderAuthenticationWebflow(getLoginFlow(),
+                MFA_EVENT_ID, yourCustomMfaFlowDefinitionRegistry);
+    }
+}
+</code></pre>
+<h2>
+<a id="design-provider" class="anchor" href="#design-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design Provider</h2>
+<p>Multifactor authentication providers in CAS are represented in forms of <code>MultifactorAuthenticationProvider</code> instances.<br>
+The outline of the provider is briefly displayed below and much of its behavior is removed in favor of defaults.</p>
+<pre lang="java"><code>public class CustomMultifactorAuthenticationProvider extends AbstractMultifactorAuthenticationProvider {
+    private static final long serialVersionUID = 4789727148634156909L;
+}
+</code></pre>
+<h2>
+<a id="register-provider" class="anchor" href="#register-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register Provider</h2>
+<p>The custom webflow configuration needs to be registered with CAS. The outline of the configuration registration is sampled and summarized below:</p>
+<pre lang="java"><code>package org.example.cas;
+
+@Configuration("CustomAuthenticatorSubsystemConfiguration")
+public class CustomAuthenticatorSubsystemConfiguration {
+    ...
+    @Bean
+    public FlowDefinitionRegistry customFlowRegistry() {
+        var builder = new FlowDefinitionRegistryBuilder(applicationContext, flowBuilderServices);
+        builder.addFlowBuilder(new FlowModelFlowBuilder(
+            new DefaultFlowModelHolder(new DynamicFlowModelBuilder())),
+            "mfa-custom");
+        return builder.build();
+    }
+
+    @Bean
+    public MultifactorAuthenticationProvider customAuthenticationProvider() {
+        var p = new CustomMultifactorAuthenticationProvider();
+        p.setId("mfa-custom");
+        return p;
+    }
+
+    @Bean
+    public CasWebflowConfigurer customWebflowConfigurer() {
+        return new CustomAuthenticatorWebflowConfigurer(...);
+    } 
+
+    @Bean
+    public CasWebflowExecutionPlanConfigurer customWebflowExecutionPlanConfigurer() {
+        return plan -&gt; plan.registerWebflowConfigurer(CustomAuthenticatorWebflowConfigurer());
+    }
+    ...
+}
+</code></pre>
+<p>Do not forget to register the configuration class with CAS. <a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> for better details.</p>
+<h2>
+<a id="triggers" class="anchor" href="#triggers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Triggers</h2>
+<p>The custom authentication webflow can be triggered using any of the <a href="Configuring-Multifactor-Authentication-Triggers.html">supported options</a>.</p>

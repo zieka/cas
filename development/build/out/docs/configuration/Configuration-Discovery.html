@@ -1,0 +1,45 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuration-discoverycategory-configuration" class="anchor" href="#layout-defaulttitle-cas---configuration-discoverycategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuration Discovery<br>
+category: Configuration</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="configuration-discovery" class="anchor" href="#configuration-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Discovery</h1>
+<p>Certain aspects of the CAS server deployment may be advertised via a discovery endpoint to indicate to client applications and consumers the set of features and capabilities that are turned on. The <a href="../monitoring/Monitoring-Statistics.html">discovery profile endpoint</a> is enabled by including the following module in the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-discovery-profile&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>The metadata reported in the discovery profile generally includes two categories of items:</p>
+<ul>
+<li>Capabilities that <strong>could be</strong> supported by the CAS server where the feature is available and yet isn't quite configured and turned on.</li>
+<li>Capabilities that <strong>are</strong> actively and currently supported by and configured in the running CAS server.</li>
+</ul>
+<p>Examples of reported items include:</p>
+<ul>
+<li>Service definitions types (CAS, SAML, OAuth, etc)</li>
+<li>Multifactor Authentication Provider  types (Authy, Duo Security, etc)</li>
+<li>...</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>Note that this capability and endpoint is turned off by default and its access is controlled similar to all other CAS administrative endpoints. Once the endpoint is turned on, you will need to ensure proper access is granted only to authorized parties via appropriate <a href="../monitoring/Monitoring-Statistics.html">security options provided by CAS</a>.</p>
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>discoveryProfile</code></td>
+<td>Provides a JSON representation of the <a href="Configuration-Discovery.html">CAS configuration and capabilities</a>.</td>
+</tr>
+</tbody>
+</table>

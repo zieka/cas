@@ -1,0 +1,85 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---rest-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---rest-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - REST Authentication<br>
+category: Authentication</h2>
+<h1>
+<a id="rest-authentication" class="anchor" href="#rest-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST Authentication</h1>
+<!-- raw HTML omitted -->
+<p>REST authentication is enabled by including the following dependencies in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+    &lt;artifactId&gt;cas-server-support-rest-authentication&lt;/artifactId&gt;
+    &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>This allows the CAS server to reach to a remote REST endpoint via a <code>POST</code> for verification of credentials.<br>
+Credentials are passed via an <code>Authorization</code> header whose value is <code>Basic XYZ</code> where XYZ is a<br>
+Base64 encoded version of the credentials.</p>
+<p>The response that is returned must be accompanied by a <code>200</code><br>
+status code where the body should contain <code>id</code> and <code>attributes</code> fields, the latter being optional,<br>
+which represent the authenticated principal for CAS:</p>
+<pre lang="json"><code>{"@class":"org.apereo.cas.authentication.principal.SimplePrincipal","id":"casuser","attributes":{}}
+</code></pre>
+<p>Expected responses from the REST endpoint are mapped to CAS as such:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>200</code></td>
+<td>Successful authentication.</td>
+</tr>
+<tr>
+<td><code>403</code></td>
+<td>Produces a <code>AccountDisabledException</code>
+</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td>Produces a <code>AccountNotFoundException</code>
+</td>
+</tr>
+<tr>
+<td><code>423</code></td>
+<td>Produces a <code>AccountLockedException</code>
+</td>
+</tr>
+<tr>
+<td><code>412</code></td>
+<td>Produces a <code>AccountExpiredException</code>
+</td>
+</tr>
+<tr>
+<td><code>428</code></td>
+<td>Produces a <code>AccountPasswordMustChangeException</code>
+</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>Produces a <code>FailedLoginException</code>
+</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="warnings" class="anchor" href="#warnings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Warnings</h2>
+<p>The remote REST endpoint can send warnings back to the CAS server using custom headers.<br>
+If the authentication is successful, these warnings will be shown to the user directly after the login.</p>
+<h3>
+<a id="x-cas-warning" class="anchor" href="#x-cas-warning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>X-CAS-Warning</code>
+</h3>
+<p>For each <code>X-CAS-Warning</code> header present in the response, a corresponding message will be shown to the user. The header value can either be the key for a <a href="../ux/User-Interface-Customization-Localization.html">localized message</a> or the message itself.</p>
+<h3>
+<a id="x-cas-passwordexpirationdate" class="anchor" href="#x-cas-passwordexpirationdate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>X-CAS-PasswordExpirationDate</code>
+</h3>
+<p>If this header is present in the response and contains a <code>RFC1123 date</code> a special message will be shown<br>
+to warn the user about the expiring password. If a <a href="../password_management/Password-Management.html">password management provider</a> is configured,<br>
+the user will be able to directly change the password.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#rest-authentication">review this guide</a>.</p>

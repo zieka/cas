@@ -1,0 +1,43 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---splunk-logging-configurationcategory-logs--audits" class="anchor" href="#layout-defaulttitle-cas---splunk-logging-configurationcategory-logs--audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Splunk Logging Configuration<br>
+category: Logs &amp; Audits</h2>
+<h1>
+<a id="splunk-logging" class="anchor" href="#splunk-logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Splunk Logging</h1>
+<p>Log data can be automatically routed to <a href="https://splunk.com/">Splunk</a>. Support is enabled by including the following module in the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-logging-config-splunk&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>You may also need to declare the following repository in your CAS overlay to be able to resolve dependencies:</p>
+<pre lang="groovy"><code>repositories {
+    maven { 
+        mavenContent { releasesOnly() }
+        url "https://splunk.jfrog.io/splunk/ext-releases-local" 
+    }
+}
+</code></pre>
+<p>With the above module, you may then declare a specific appender to communicate with Splunk.<br>
+Following is an example that assumes that you have Splunk Enterprise running locally (with an IP address of <code>127.0.0.1</code>),<br>
+with a TCP input configured on port <code>15000</code>. TCP inputs do not have the same port number as the<br>
+Splunk Enterprise management port.</p>
+<pre lang="xml"><code>&lt;Appenders&gt;
+   &lt;Socket name="SocketAppender" host="127.0.0.1" port="15000"&gt;
+      &lt;PatternLayout pattern="%p: %m%n" charset="UTF-8"/&gt;
+   &lt;/Socket&gt;
+...
+   &lt;SplunkAppender name="SplunkAppender"&gt;
+      &lt;AppenderRef ref="SocketAppender" /&gt;
+   &lt;/SplunkAppender&gt;
+&lt;/Appenders&gt;
+...
+&lt;Loggers&gt;
+   &lt;Logger name="org.apereo" level="debug"&gt;
+      &lt;AppenderRef ref="SplunkAppender"/&gt;
+   &lt;/Logger&gt;
+&lt;/Loggers&gt;
+</code></pre>
+<p>Of course, you will need to create a TCP input in Splunk Enterprise to which CAS will write logs.</p>

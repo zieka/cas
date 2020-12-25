@@ -1,0 +1,65 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuration-extensionscategory-configuration" class="anchor" href="#layout-defaulttitle-cas---configuration-extensionscategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuration Extensions<br>
+category: Configuration</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="extending-cas-configuration" class="anchor" href="#extending-cas-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extending CAS Configuration</h1>
+<p>Being a <a href="https://github.com/spring-projects/spring-boot">Spring Boot</a> application at its core, designing and extending CAS configuration components very much comes down to <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html">the following guide</a> some aspects of which are briefly highlighted in this document.</p>
+<h2>
+<a id="configuration-components" class="anchor" href="#configuration-components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Components</h2>
+<p>This is the recommended approach to create additional Spring beans, override existing ones and inject your own custom behavior into the CAS application runtime.</p>
+<p>Given CAS’ adoption of Spring Boot, most if not all of the old XML configuration is transformed into <code>@Configuration</code> components. These are classes declared by each relevant module that are automatically picked up at runtime whose job is to declare and configure beans and register them into the application context. Another way of thinking about it is, components that are decorated with <code>@Configuration</code> are loose equivalents of old XML configuration files that are highly organized where <code>&lt;bean&gt;</code> tags are translated to java methods tagged with <code>@Bean</code> and configured dynamically.</p>
+<h3>
+<a id="design" class="anchor" href="#design" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design</h3>
+<p>To design your own configuration class, take inspiration from the following sample:</p>
+<pre lang="java"><code>package org.apereo.cas.custom.config;
+
+@Configuration("SomethingConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class SomethingConfiguration {
+
+    @Autowired
+    private CasConfigurationProperties casProperties;
+
+    @Autowired
+    @Qualifier("someOtherBeanId")
+    private SomeBean someOtherBeanId;
+
+    @RefreshScope
+    @Bean
+    public MyBean myBean() {
+        return new MyBean();
+    }
+} 
+</code></pre>
+<ul>
+<li>The <code>@Bean</code> definitions can also be tagged with <code>@RefreshScope</code> to become auto-reloadable when the CAS context is refreshed as a result of an external property change.</li>
+<li>
+<code>@Configuration</code> classes can be assigned an order with <code>@Order(1984)</code> which would place them in an ordered queue waiting to be loaded in that sequence.</li>
+<li>To be more explicit, <code>@Configuration</code> classes can also be loaded exactly before/after another <code>@Configuration</code> component with <code>@AutoConfigureBefore</code> or <code>@AutoConfigureAfter</code> annotations.</li>
+</ul>
+<h3>
+<a id="register" class="anchor" href="#register" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register</h3>
+<p>How are <code>@Configuration</code> components picked up? Each CAS module declares its set of configuration components as such, per guidelines <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html">laid out by Spring Boot</a>:</p>
+<ul>
+<li>Create a <code>src/main/resources/META-INF/spring.factories</code> file</li>
+<li>Add the following into the file:</li>
+</ul>
+<pre lang="properties"><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.apereo.cas.custom.config.SomethingConfiguration
+</code></pre>
+<h3>
+<a id="overrides" class="anchor" href="#overrides" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overrides</h3>
+<p>What if you needed to override the definition of a CAS-provided bean and replace it entirely with your own?</p>
+<p>This is where <code>@Conditional</code> components come to aid. Most component/bean definitions in CAS are registered with some form of <code>@Conditional</code> tag that indicates to the bootstrapping process to ignore their creation, if <em>a bean definition with the same id</em> is already defined. This means you can create your own configuration class, register it and the design a <code>@Bean</code> definition only to have the context utilize yours rather than what ships with CAS by default.</p>
+<h3>
+<a id="exclusions" class="anchor" href="#exclusions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Exclusions</h3>
+<p>You can control the list of auto-configuration classes to exclude them in the <code>cas.properties</code> file:</p>
+<pre lang="properties"><code>spring.autoconfigure.exclude=org.apereo.cas.custom.config.SomethingConfiguration
+</code></pre>
+<h2>
+<a id="cas-properties" class="anchor" href="#cas-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Properties</h2>
+<p>The <a href="Configuration-Properties.html">collection of CAS-provided settings</a> are all encapsulated inside a <code>CasConfigurationProperties</code> component. This is a parent class that brings all elements of the entire CAS platform together and binds values to the relevant fields inside in a very type-safe manner. The <a href="Configuration-Server-Management.html">configuration binding</a> is typically done via <code>@EnableConfigurationProperties(CasConfigurationProperties.class)</code> on the actual configuration class.</p>
+<!-- raw HTML omitted -->
+<p>If you wish to design your own and extend the CAS configuration file, you can surely follow the same approach with the <code>@EnableConfigurationProperties</code> annotation or use the good ol' <code>@Value</code>.</p>

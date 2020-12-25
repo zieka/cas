@@ -1,0 +1,26 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---loggly-logging-configurationcategory-logs--audits" class="anchor" href="#layout-defaulttitle-cas---loggly-logging-configurationcategory-logs--audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Loggly Logging Configuration<br>
+category: Logs &amp; Audits</h2>
+<h1>
+<a id="loggly-configuration" class="anchor" href="#loggly-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Loggly Configuration</h1>
+<p><a href="https://www.loggly.com">Loggly</a> is a cloud-based log management service that makes it easy to access and analyze the mission-critical information within your logs.<br>
+Log data can be automatically routed to Loggly via Rsyslog. The advantage of using Rsyslog is that it can send TCP events without blocking your application, can optionally encrypt the data, and even queue data to add robustness to network failure.</p>
+<p>See <a href="https://www.loggly.com/docs/java-log4j-2/">this guide</a> for more info.</p>
+<pre lang="xml"><code>...
+&lt;Appenders&gt;
+    &lt;Socket name="Loggly" host="localhost" port="514" protocol="UDP"&gt;
+        &lt;PatternLayout&gt;
+        &lt;pattern&gt;${hostName} java %d{yyyy-MM-dd HH:mm:ss,SSS}{GMT} %p %t
+            %c %M - %m%n&lt;/pattern&gt;
+        &lt;/PatternLayout&gt;
+    &lt;/Socket&gt;
+&lt;/Appenders&gt;
+...
+&lt;Loggers&gt;
+    &lt;Root level="INFO"&gt;
+        &lt;AppenderRef ref="Loggly" /&gt;
+    &lt;/Root&gt;
+&lt;/Loggers&gt;
+</code></pre>

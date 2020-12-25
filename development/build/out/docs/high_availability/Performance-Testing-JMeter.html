@@ -1,0 +1,216 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---jmeter-performance-testingcategory-high-availability" class="anchor" href="#layout-defaulttitle-cas---jmeter-performance-testingcategory-high-availability" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - JMeter Performance Testing<br>
+category: High Availability</h2>
+<h1>
+<a id="jmeter-performance-testing" class="anchor" href="#jmeter-performance-testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JMeter Performance Testing</h1>
+<p>Apache JMeter is a great performance testing tool that is used heavily within the Java community.</p>
+<h2>
+<a id="install-jmeter" class="anchor" href="#install-jmeter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install JMeter</h2>
+<ul>
+<li>Linux and Mac:
+<ul>
+<li>Download the JMeter binary.
+<ul>
+<li><a href="http://jmeter.apache.org/download_jmeter.cgi">http://jmeter.apache.org/download_jmeter.cgi</a></li>
+</ul>
+</li>
+<li>Unzip apache-jmeter-*.tgz to your preferred location</li>
+<li>Run <code>bin/jmeter.sh</code>
+<ul>
+<li>Note: Mac users can also use the popular HomeBrew package manager to install JMeter.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Windows:
+<ul>
+<li>Here is a tutorial for windows setup.
+<ul>
+<li><a href="http://toolsqa.com/jmeter/download-and-installation-jmeter/">http://toolsqa.com/jmeter/download-and-installation-jmeter/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="sample-test-scripts" class="anchor" href="#sample-test-scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Test Scripts</h2>
+<p>Below you will find three generic runnable login scripts for the three most popular CAS implementation flavors. Please feel free to edit and use for your needs.</p>
+<p>Although the scripts support different login methodologies, they do share some common traits.</p>
+<h2>
+<a id="common-settings-tabs" class="anchor" href="#common-settings-tabs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Common Settings Tabs</h2>
+<ul>
+<li>
+<em>User Defined Variables</em>
+<ul>
+<li>
+<em>ThreadCount</em> - Number of Threads (Kind of like Users).  Recommend starting with 100 users or so.</li>
+<li>
+<em>Duration</em> -  How long should the test run.  Usually, the more threads(users) the longer the duration should be</li>
+<li>
+<em>RampUpPeriod</em> - How long to take to ramp up to full set of thread count</li>
+</ul>
+</li>
+<li>
+<em>Thread Group</em> (or Tests):
+<ul>
+<li>
+<em>Loop Count</em> - # of Loops, or more correctly the # of users to run through the test.
+<ul>
+<li>Count will be associated to the total users that will run through the test</li>
+<li>
+<em>Forever</em> check box will loop through file and keep going till manually stopped or until reaches Duration<br>
+from "User Defined Variables" page</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<em>CSV Get Users/Passwords</em>:
+<ul>
+<li>Name and location of file containing test user credentials</li>
+<li>Should be in the format of <code>User,Password</code>, with no spaces between “User", the “comma" and “Password”</li>
+</ul>
+</li>
+</ul>
+<p><strong>Scripts</strong></p>
+<p>The scripts can be downloaded from <a href="https://github.com/apereo/cas/raw/master/etc/loadtests/">here</a>.</p>
+<ul>
+<li>
+<strong><em>CAS_CAS.jmx</em></strong>
+<ul>
+<li>Vanilla installation of CAS using standard CAS login process</li>
+<li>No SP (Service Provider) is needed</li>
+<li>User Defined Variables:
+<ul>
+<li>
+<em>IdPHost</em> - URL of your CAS instance</li>
+<li>
+<em>CasSP</em> - SP (Service Provider) URL but does not have to be active</li>
+</ul>
+</li>
+<li>Test Fragments:
+<ul>
+<li>
+<em>GET - CAS Login Page</em> -- Access login page for a typical CAS login</li>
+<li>
+<em>POST - Login Credentials</em> -- Post credentials from user file into CAS instance</li>
+<li>
+<em>GET - User Info with Service Ticket</em> -- Get user info with Service Ticket that CAS generated when user logged in
+<ul>
+<li>Under Assertion, may need to update expected user results</li>
+</ul>
+</li>
+<li>
+<em>GET - User Logout</em> -- Logout user from CAS session via CAS logout</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong><em>CAS_Oauth.jmx</em></strong>
+<ul>
+<li>CAS supporting OAuth login process</li>
+<li>An active SP is optional</li>
+<li>Script reflects the most common way that OAuth is used, the Authorization Code method</li>
+<li>
+<em>User Defined Variables</em>:
+<ul>
+<li>
+<em>IdPHost</em> - URL of your CAS instance</li>
+<li>
+<em>CasSP</em> - SP (Service Provider) URL but does not have to be active</li>
+<li>
+<em>SpClientId</em> - The clientId of the SP within the CAS service file</li>
+<li>
+<em>SpRedirectUri</em> - Endpoint in SP that will be used to receive the "Authorization Code"</li>
+<li>
+<em>SpState</em> - CSRF token used</li>
+<li>
+<em>SpClientName</em> - The OAuth call type being used for authentication</li>
+<li>
+<em>SpResponseType</em> - The OAuth method being used, in this case "code", which stands for "Authorization Code"</li>
+<li>
+<em>SpClientSecret</em> - Secret phrase or word shared between the SP and CAS</li>
+</ul>
+</li>
+<li>
+<em>Test Fragments</em>:
+<ul>
+<li>
+<em>Verify Service Provider</em> -- Verifies URL to SP is correct (Optional, can be disabled)</li>
+<li>
+<em>Start CAS Login process</em> -- Accessing CAS login page for OAuth with all parameters set</li>
+<li>
+<em>1a-1d</em> -- Post login credentials for user, followed by redirects to get code in Access Token
+<ul>
+<li>broken into several processes due to encoding issues when testing</li>
+</ul>
+</li>
+<li>
+<em>GET - User Profile with Access Token</em> -- Call to CAS to get the user's info with Access Token
+<ul>
+<li>Under Assertion, may need to update expected user results</li>
+</ul>
+</li>
+<li>
+<em>GET - User Logout</em> -- Logout user from CAS session via CAS logout</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<strong><em>CAS_SAML2.jmx</em></strong>
+<ul>
+<li>CAS support for SAML2 Login process</li>
+<li>An active SP is required!
+<ul>
+<li>For this test used SimpleSAMLphp</li>
+</ul>
+</li>
+<li>
+<em>User Defined Variables</em>:
+<ul>
+<li>
+<em>CasSP</em> - Domain of registered CAS SP using SAML</li>
+<li>
+<em>ProviderId</em> - SAML EntityID stated in metadata for SP</li>
+</ul>
+</li>
+<li>
+<em>Test Fragments</em>:
+<ul>
+<li>
+<em>Go To SP for CAS Login</em> -- SP page protected by SAML2 that will redirect to CAS login endpoint</li>
+<li>
+<em>POST - Login User</em> -- Post credentials from user file into CAS SAML2 login</li>
+<li>
+<em>POST - CAS Authorization to SP</em> -- Send response from CAS to SP for processing and final request for user info
+<ul>
+<li>May need to updated Assertion for successful user information returned</li>
+</ul>
+</li>
+<li>
+<em>GET - User Logout</em> -- Logout user from CAS session via CAS logout</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2>
+<a id="run-test-scripts" class="anchor" href="#run-test-scripts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Run Test Scripts</h2>
+<p>Once you have saved the test scripts to your system. You can either run within the JMeter<br>
+GUI or via command line. It his highly recommended that the GUI be used for<br>
+troubleshooting the scripts to work within your environment. Then, when you actually start<br>
+load testing, you do that via the command line.</p>
+<p>To activate the JMeter GUI, from the command line type:</p>
+<pre lang="bash"><code>prompt$ /usr/local/bin/jmeter
+</code></pre>
+<p>This path should correspond to the location you chose to install Jmeter.</p>
+<p>A simple example of a JMeter startup via command line:</p>
+<pre lang="bash"><code>prompt$ /usr/local/bin/jmeter -n -t your_script.jmx
+</code></pre>
+<p><code>-n</code> run JMeter in non-GUI mode.<br>
+<code>-t</code> path to .jmx test file.</p>
+<p>More examples can be found on the <a href="http://jmeter.apache.org/usermanual/get-started.html#non_gui">Jmeter site</a>.</p>

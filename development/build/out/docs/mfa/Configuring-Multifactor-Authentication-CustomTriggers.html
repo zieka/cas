@@ -1,0 +1,84 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-multifactor-authentication-custom-triggerscategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---configuring-multifactor-authentication-custom-triggerscategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Multifactor Authentication Custom Triggers<br>
+category: Multifactor Authentication</h2>
+<h1>
+<a id="multifactor-authentication-custom-triggers" class="anchor" href="#multifactor-authentication-custom-triggers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multifactor Authentication Custom Triggers</h1>
+<p>To create your own custom multifactor authentication trigger, you will need to design a component that is able to resolve events in the CAS authentication chain. The trigger's (i.e. event resolver's) job is to examine a set of conditions and requirements and provide an event id to CAS that would indicate the next step in the authentication flow.</p>
+<p>A typical custom trigger, as an example, might be:</p>
+<ul>
+<li>Activate MFA provider identified by <code>mfa-duo</code> if the client browser's IP address matches the pattern <code>123.+</code>.</li>
+</ul>
+<p>Note that:</p>
+<ul>
+<li>You are really not doing anything <em>custom</em> per se. All built-in CAS triggers behave in the same exact way when they attempt to resolve the next event.</li>
+<li>As you will observe below, the event resolution machinery is completely oblivious to multifactor authentication; all it cares about is finding the next event in the chain in a very generic way. Our custom implementation of course wants to have the next event deal with some form of MFA via a provider, but in theory we could have resolved the next event to be <code>hello-world</code>.</li>
+</ul>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+<p>You will need to have compile-time access to the following modules in the Overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-core-webflow&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>These are modules that ship with CAS by default and thou shall mark them with a <code>compile</code> or <code>provided</code> scope in your build configuration.</p>
+<h2>
+<a id="design-triggers" class="anchor" href="#design-triggers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design Triggers</h2>
+<p>The below example demonstrates a reasonable outline of a custom event resolver:</p>
+<pre lang="java"><code>package org.apereo.cas.custom.mfa;
+
+public class ExampleMultifactorAuthenticationTrigger implements MultifactorAuthenticationTrigger {
+
+    @Autowired
+    private CasConfigurationProperties casProperties;
+
+   @Override
+   public Optional&lt;MultifactorAuthenticationProvider&gt; isActivated(final Authentication authentication,
+                                                                  final RegisteredService registeredService,
+                                                                  final HttpServletRequest httpServletRequest,
+                                                                  final Service service) {
+
+       return Optional.empty();
+   }
+}
+</code></pre>
+<h2>
+<a id="register-triggers" class="anchor" href="#register-triggers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register Triggers</h2>
+<p>The event resolver trigger then needs to be registered. <a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> for better details.</p>
+<p>The below example demonstrates a reasonable outline of a custom event resolver:</p>
+<pre lang="java"><code>package org.apereo.cas.custom.config;
+
+@Configuration("SomethingConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class SomethingConfiguration {
+
+    @Autowired
+    @Qualifier("initialAuthenticationAttemptWebflowEventResolver")
+    private CasDelegatingWebflowEventResolver initialEventResolver;
+    
+    @Bean
+    public MultifactorAuthenticationTrigger exampleMultifactorAuthenticationTrigger() {
+        return new ExampleMultifactorAuthenticationTrigger();
+    }
+    
+    @Bean
+    @RefreshScope
+    public CasWebflowEventResolver exampleMultifactorAuthenticationWebflowEventResolver() {
+        val r = new DefaultMultifactorAuthenticationProviderEventResolver(
+            authenticationSystemSupport.getObject(),
+            centralAuthenticationService.getObject(),
+            servicesManager.getObject(),
+            ticketRegistrySupport.getObject(),
+            warnCookieGenerator.getObject(),
+            authenticationRequestServiceSelectionStrategies.getObject(),
+            multifactorAuthenticationProviderSelector.getObject(),
+            exampleMultifactorAuthenticationTrigger());
+        this.initialAuthenticationAttemptWebflowEventResolver.addDelegate(r);
+        return r;
+    }
+}
+</code></pre>
+<p>Do not forget to register the configuration class with CAS. <a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> for better details.</p>

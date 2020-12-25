@@ -1,0 +1,49 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---radius-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---radius-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - RADIUS Authentication<br>
+category: Multifactor Authentication</h2>
+<h1>
+<a id="radius-authentication" class="anchor" href="#radius-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RADIUS Authentication</h1>
+<p>RADIUS support is enabled by only including the following dependency in the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-radius&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#radius-authentication">review this guide</a>.</p>
+<p>You may also need to declare the following repository in<br>
+your CAS overlay to be able to resolve dependencies:</p>
+<pre lang="groovy"><code>repositories {
+    maven { 
+        mavenContent { releasesOnly() }
+        url "https://dl.bintray.com/apereocas/jradius" 
+    }
+}
+</code></pre>
+<h1>
+<a id="rsa-radius-mfa" class="anchor" href="#rsa-radius-mfa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RSA RADIUS MFA</h1>
+<p>RSA RADIUS OTP support for MFA is enabled by only including the following dependency in the overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-radius-mfa&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2>
+<a id="configuration-1" class="anchor" href="#configuration-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#radius-otp">review this guide</a>.</p>
+<h2>
+<a id="repository" class="anchor" href="#repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Repository</h2>
+<p>You may also need to declare the following repository in<br>
+your CAS overlay to be able to resolve dependencies:</p>
+<pre lang="xml"><code>repositories {
+    maven { 
+        mavenContent { releasesOnly() }
+        url "https://jitpack.io" 
+    }
+}
+</code></pre>

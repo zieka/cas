@@ -1,0 +1,401 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuration-servercategory-configuration" class="anchor" href="#layout-defaulttitle-cas---configuration-servercategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuration Server<br>
+category: Configuration</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="configuration-server" class="anchor" href="#configuration-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Server</h1>
+<p>As your CAS deployment moves through the deployment pipeline from dev to test and into production<br>
+you can manage the configuration between those environments and be certain that applications<br>
+have everything they need to run when they migrate through the use of an external configuration server<br>
+provided by the <a href="https://github.com/spring-cloud/spring-cloud-config">Spring Cloud</a> project. As an alternative,<br>
+you may decide to run CAS in a standalone mode removing the need for external configuration server deployment,<br>
+though at the cost of losing features and capabilities relevant for a cloud deployment.</p>
+<h2>
+<a id="configuration-profiles" class="anchor" href="#configuration-profiles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Profiles</h2>
+<p>The CAS server web application responds to the following strategies that dictate how settings should be consumed.</p>
+<h3>
+<a id="standalone" class="anchor" href="#standalone" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Standalone</h3>
+<p>This is the default configuration mode which indicates that CAS does <strong>NOT</strong> require connections to an external configuration server<br>
+and will run in an embedded <em>standalone mode</em>. When this option is turned on, CAS by default will attempt to locate settings and properties<br>
+inside a given directory indicated under the setting name <code>cas.standalone.configuration-directory</code> and otherwise falls back to using <code>/etc/cas/config</code> as the configuration directory.<br>
+You may instruct CAS to use this setting via the methods <a href="Configuration-Management.html#overview">outlined here</a>.<br>
+There also exists a <code>cas.standalone.configuration-file</code> which can be used to directly feed a collection of properties to CAS in form of a file or classpath resource.</p>
+<p>Similar to the Spring Cloud external configuration server, the contents of this directory include <code>(cas|application).(yml|properties)</code><br>
+files that can be used to control CAS behavior. Also, note that this configuration directory can be monitored by CAS to auto-pick up changes<br>
+and refresh the application context as needed. Please <a href="Configuration-Management-Reload.html#reload-strategy">review this guide</a> to learn more.</p>
+<p>Note that by default, all CAS settings and configuration is controlled via the embedded <code>application.properties</code> file in the CAS server<br>
+web application. There is also an embedded <code>application.yml</code> file that allows you to override all defaults if you wish to ship the configuration inside the main CAS web application and not rely on externalized configuration files. If you prefer properties to yaml, then <code>application-standalone.properties</code> will override <code>application.properties</code> as well.</p>
+<p>Settings found in external configuration files are and will be able to override the defaults provided by CAS. The naming of the configuration files<br>
+inside the CAS configuration directory follows the below pattern:</p>
+<ul>
+<li>An <code>application.(properties|yml|yaml)</code> file is always loaded, if found.</li>
+<li>Settings located inside <code>properties|yml|yaml</code> files whose name matches the value of <code>spring.application.name</code> are loaded (i.e <code>cas.properties</code>) Note: <code>spring.application.name</code> defaults to uppercase <code>CAS</code> but the lowercase name will also be loaded.</li>
+<li>Settings located inside <code>properties|yml|yaml</code> files whose name matches the value of <code>spring.profiles.active</code> are loaded (i.e <code>ldap.properties</code>).</li>
+<li>Profile-specific application properties outside of your packaged web application (<code>application-{profile}.properties|yml|yaml</code>)<br>
+This allows you to, if needed, split your settings into multiple property files and then locate them by assigning their name<br>
+to the list of active profiles (i.e. <code>spring.profiles.active=standalone,testldap,stagingMfa</code>)</li>
+</ul>
+<p>Configuration files are loaded in the following order where <code>spring.profiles.active=standalone,profile1,profile2</code>. Note that the last configuration file loaded will override any duplicate properties from configuration files loaded earlier:</p>
+<ol>
+<li><code>application.(properties|yml|yaml) </code></li>
+<li>(lower case) <code>spring.application.name.(properties|yml|yaml)</code>
+</li>
+<li><code>spring.application.name.(properties|yml|yaml)</code></li>
+<li><code>application-standalone.(properties|yml|yaml)</code></li>
+<li><code>standalone.(properties|yml|yaml)</code></li>
+<li><code>application-profile1.(properties|yml|yaml)</code></li>
+<li><code>profile1.(properties|yml|yaml)</code></li>
+<li><code>application-profile2.(properties|yml|yaml)</code></li>
+<li><code>profile2.(properties|yml|yaml)</code></li>
+</ol>
+<p>If two configuration files with same base name and different extensions exist, they are processed in the order of <code>properties</code>, <code>yml</code> and then <code>yaml</code> and then <code>groovy</code> (last one processed wins where duplicate properties exist). These external configuration files will override files located in the classpath (e.g. files from <code>src/main/resources</code> in your CAS overlay that end up in <code>WEB-INF/classes</code>) but the internal files are loaded per the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html">spring boot</a> rules which differ from the CAS standalone configuration rules described here (e.g. <!-- raw HTML omitted -->.properties would not be loaded from classpath but <code>application-&lt;profile&gt;.properties</code> would).</p>
+<!-- raw HTML omitted -->
+<h3>
+<a id="spring-cloud" class="anchor" href="#spring-cloud" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring Cloud</h3>
+<p>CAS is able to use an external and central configuration server to obtain state and settings.<br>
+The configuration server provides a very abstract way for CAS (and all of its other clients) to obtain settings from a variety<br>
+of sources, such as file system, <code>git</code> or <code>svn</code> repositories, MongoDb databases, Vault, etc. The beauty of this solution is that to the CAS<br>
+web application server, it matters not where settings come from and it has no knowledge of the underlying property sources. It<br>
+talks to the configuration server to locate settings and move on.</p>
+<!-- raw HTML omitted -->
+<p>A full comprehensive guide is provided by the <a href="https://cloud.spring.io/spring-cloud-config/spring-cloud-config.html">Spring Cloud project</a>.</p>
+<h4>
+<a id="overlay" class="anchor" href="#overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overlay</h4>
+<p>The configuration server itself, similar to CAS, can be deployed<br>
+via the following module in it own <a href="https://github.com/apereo/cas-configserver-overlay">WAR overlay</a>:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-webapp-config-server&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>In addition to the <a href="Configuration-Management.html#overview">strategies outlined here</a>, the configuration server<br>
+may load CAS settings and properties via the following order and mechanics:</p>
+<ol>
+<li>Profile-specific application properties outside of your packaged web application (<code>application-{profile}.properties|yml</code>)</li>
+<li>Profile-specific application properties packaged inside your jar (<code>application-{profile}.properties|yml</code>)</li>
+<li>Application properties outside of your packaged jar (<code>application.properties|yml</code>).</li>
+<li>Application properties packaged inside your jar (<code>application.properties|yml</code>).</li>
+</ol>
+<p>The configuration and behavior of the configuration server is also controlled by its own<br>
+<code>src/main/resources/bootstrap.properties</code> file. By default, it runs under port <code>8888</code> at <code>/casconfigserver</code> inside<br>
+an embedded Apache Tomcat server whose endpoints are protected with basic authentication<br>
+where the default credentials are <code>casuser</code> and an auto-generated password defined in <code>src/main/resources/application.properties</code>.</p>
+<p>Furthermore, by default it runs under a <code>native</code> profile described below.</p>
+<p>The following endpoints are secured and exposed by the configuration server:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/encrypt</code></td>
+<td>Accepts a <code>POST</code> to encrypt CAS configuration settings.</td>
+</tr>
+<tr>
+<td><code>/decrypt</code></td>
+<td>Accepts a <code>POST</code> to decrypt CAS configuration settings.</td>
+</tr>
+<tr>
+<td><code>/actuator/refresh</code></td>
+<td>Accepts a <code>POST</code> and attempts to refresh the internal state of configuration server.</td>
+</tr>
+<tr>
+<td><code>/actuator/env</code></td>
+<td>Accepts a <code>GET</code> and describes all configuration sources of the configuration server.</td>
+</tr>
+<tr>
+<td><code>/actuator/cas/default</code></td>
+<td>Describes what the configuration server knows about the <code>default</code> settings profile.</td>
+</tr>
+<tr>
+<td><code>/actuator/cas/native</code></td>
+<td>Describes what the configuration server knows about the <code>native</code> settings profile.</td>
+</tr>
+</tbody>
+</table>
+<p>Once you have the configuration server deployed and assuming the credentials used to secure the configuration server match the example below, you can observe the collection of settings via:</p>
+<pre lang="bash"><code>curl -u casuser:Mellon https://config.server.url:8888/casconfigserver/cas/native
+</code></pre>
+<p>Assuming actuator endpoints are enabled in the configuration, you can also observe the collection of property sources that provide settings to the configuration server:</p>
+<pre lang="bash"><code>curl -u casuser:Mellon https://config.server.url:8888/casconfigserver/actuator/env
+</code></pre>
+<!-- raw HTML omitted -->
+<h4>
+<a id="clients-and-consumers" class="anchor" href="#clients-and-consumers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clients and Consumers</h4>
+<p>To let the CAS server web application (or any other client for that matter) talk to the configuration server,<br>
+the following settings need to be applied to CAS' own <code>src/main/resources/bootstrap.properties</code> file.<br>
+The properties to configure the CAS server web application as the client of the configuration server<br>
+must necessarily be read in before the rest of the application’s configuration is read from the configuration server, during the <em>bootstrap</em> phase.</p>
+<pre lang="properties"><code>spring.cloud.config.uri=https://casuser:Mellon@config.server.url:8888/casconfigserver
+spring.cloud.config.profile=native
+spring.cloud.config.enabled=true
+spring.profiles.active=default
+</code></pre>
+<p>Remember that configuration server serves property sources from <code>/{name}/{profile}/{label}</code> to applications,<br>
+where the default bindings in the client app are the following:</p>
+<pre lang="bash"><code>"name" = ${spring.application.name}
+"profile" = ${spring.profiles.active}
+"label" = "master"
+</code></pre>
+<p>All of them can be overridden by setting <code>spring.cloud.config.*</code> (where <code>*</code> is "name", "profile" or "label").<br>
+The "label" is useful for rolling back to previous versions of configuration; with the default Config Server implementation<br>
+it can be a git label, branch name or commit id. Label can also be provided as a comma-separated list,<br>
+in which case the items in the list are tried on-by-one until one succeeds. This can be useful when working on a feature<br>
+branch, for instance, when you might want to align the config label with your branch,<br>
+but make it optional (e.g. <code>spring.cloud.config.label=myfeature,develop</code>).</p>
+<p>To lean more about how CAS allows you to reload configuration changes,<br>
+please <a href="Configuration-Management-Reload.html">review this guide</a>.</p>
+<h4>
+<a id="profiles" class="anchor" href="#profiles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Profiles</h4>
+<p>Various profiles exist to determine how configuration server should retrieve properties and settings.</p>
+<h5>
+<a id="native" class="anchor" href="#native" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Native</h5>
+<p>The server is configured by default to load <code>cas.(properties|yml)</code> files from an external location that is <code>/etc/cas/config</code>.<br>
+This location is constantly monitored by the server to detect external changes. Note that this location simply needs to<br>
+exist, and does not require any special permissions or structure. The name of the configuration file that goes inside this<br>
+directory needs to match the <code>spring.application.name</code> (i.e. <code>cas.properties</code>).</p>
+<p>If you want to use additional configuration files, they need to have the<br>
+form <code>application-&lt;profile&gt;.(properties|yml)</code>.<br>
+A file named <code>application.(properties|yml)</code> will be included by default. The profile specific<br>
+files can be activated by using the <code>spring.profiles.include</code> configuration option,<br>
+controlled via the <code>src/main/resources/bootstrap.properties</code> file:</p>
+<pre lang="properties"><code>spring.profiles.active=native
+spring.cloud.config.server.native.searchLocations=file:///etc/cas/config
+spring.profiles.include=profile1,profile2
+</code></pre>
+<p>An example of an external <code>.properties</code> file hosted by an external location follows:</p>
+<pre lang="properties"><code>cas.server.name=...
+</code></pre>
+<p>You could have just as well used a <code>cas.yml</code> file to host the changes.</p>
+<h5>
+<a id="default" class="anchor" href="#default" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h5>
+<p>The configuration server is also able to handle <code>git</code> or <code>svn</code> based repositories that host CAS configuration.<br>
+Such repositories can either be local to the deployment, or they could be on the cloud in form of GitHub/BitBucket. Access to<br>
+cloud-based repositories can either be in form of a username/password, or via SSH so as long the appropriate keys are configured in the<br>
+CAS deployment environment which is really no different than how one would normally access a git repository via SSH.</p>
+<pre lang="properties"><code># spring.profiles.active=default
+# spring.cloud.config.server.git.uri=https://github.com/repoName/config
+# spring.cloud.config.server.git.uri=file://${user.home}/config
+# spring.cloud.config.server.git.username=
+# spring.cloud.config.server.git.password=
+
+# spring.cloud.config.server.svn.basedir=
+# spring.cloud.config.server.svn.uri=
+# spring.cloud.config.server.svn.username=
+# spring.cloud.config.server.svn.password=
+# spring.cloud.config.server.svn.default-label=trunk
+</code></pre>
+<p>Needless to say, the repositories could use both YAML and properties syntax to host configuration files.</p>
+<!-- raw HTML omitted -->
+<h5>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h5>
+<p>The server is also able to locate properties entirely from a MongoDb instance.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-mongo&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Note that to access and review the collection of CAS properties,<br>
+you will need to use your own native tooling for MongoDB to configure and inject settings.</p>
+<p>MongoDb documents are required to be found in the collection <code>MongoDbProperty</code>, as the following document:</p>
+<pre lang="json"><code>{
+    "id": "kfhf945jegnsd45sdg93452",
+    "name": "the-setting-name",
+    "value": "the-setting-value"
+}
+</code></pre>
+<p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#mongodb">review this guide</a>.</p>
+<h5>
+<a id="hashicorp-vault" class="anchor" href="#hashicorp-vault" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HashiCorp Vault</h5>
+<p>CAS is also able to use <a href="https://www.vaultproject.io/">Vault</a> to<br>
+locate properties and settings. <a href="Configuration-Properties-Security.html">Please review this guide</a>.</p>
+<h5>
+<a id="hashicorp-consul" class="anchor" href="#hashicorp-consul" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HashiCorp Consul</h5>
+<p>CAS is also able to use <a href="https://www.consul.io/">Consul</a> to<br>
+locate properties and settings. <a href="../installation/Service-Discovery-Guide-Consul.html">Please review this guide</a>.</p>
+<h5>
+<a id="apache-zookeeper" class="anchor" href="#apache-zookeeper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache ZooKeeper</h5>
+<p>CAS is also able to use <a href="https://zookeeper.apache.org/">Apache ZooKeeper</a> to locate properties and settings.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-zookeeper&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#zookeeper">review this guide</a>.</p>
+<p>You will need to map CAS settings to ZooKeeper's nodes that contain values. The parent node for all settings should<br>
+match the configuration root value provided to CAS. Under the root, you could have folders such<br>
+as <code>cas</code>, <code>cas,dev</code>, <code>cas,local</code>, etc where <code>dev</code> and <code>local</code> are Spring profiles.</p>
+<p>To create nodes and values in Apache ZooKeeper, try the following commands<br>
+as a sample:</p>
+<pre lang="bash"><code>zookeeper-client -server zookeeper1:2181
+create /cas cas
+create /cas/config cas
+create /cas/config/cas cas
+create /cas/config/cas/settingName casuser::Test
+</code></pre>
+<p>Creating nodes and directories in Apache ZooKeeper may require providing a value. The above sample commands show that<br>
+the value <code>cas</code> is provided when creating directories. Always check with the official Apache ZooKeeper guides. You may not need to do that step.</p>
+<p>Finally in your CAS properties, the new <code>settingName</code> setting can be used as a reference.</p>
+<pre lang="properties"><code># cas.something.something=${settingName}
+</code></pre>
+<p>...where <code>${settingName}</code> gets the value of the contents of the Apache ZooKeeper node <code>cas/config/cas/settingName</code>.</p>
+<h5>
+<a id="amazon-s3" class="anchor" href="#amazon-s3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon S3</h5>
+<p>CAS is also able to use <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev">Amazon S3</a> to locate properties and settings.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-aws-s3&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>See <a href="Configuration-Properties.html#amazon-s3">this guide</a> for relevant settings.</p>
+<h5>
+<a id="amazon-secrets-manager" class="anchor" href="#amazon-secrets-manager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon Secrets Manager</h5>
+<p>CAS is also able to use <a href="https://aws.amazon.com/secrets-manager/">Amazon Secret Manager</a> to locate properties and settings.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-aws-secretsmanager&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>See <a href="Configuration-Properties.html#amazon-secrets-manager">this guide</a> for relevant settings.</p>
+<h5>
+<a id="amazon-systems-manager-parameter-store-ssm" class="anchor" href="#amazon-systems-manager-parameter-store-ssm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon Systems Manager Parameter Store (SSM)</h5>
+<p>CAS is also able to use <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">AWS Systems Manager Parameter Store</a><br>
+to locate properties and settings.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-aws-ssm&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>See <a href="Configuration-Properties.html#amazon-parameter-store">this guide</a> for relevant settings.</p>
+<h5>
+<a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h5>
+<p>CAS is also able to use <a href="https://aws.amazon.com/dynamodb/">DynamoDb</a> to locate properties and settings.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-dynamodb&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>The <code>DynamoDbCasProperties</code> table is automatically created by CAS with the following structure:</p>
+<pre lang="json"><code>{
+    "id": "primary-key",
+    "name": "the-setting-name",
+    "value": "the-setting-value"
+}
+</code></pre>
+<p>See <a href="Configuration-Properties.html#dynamodb">this guide</a> for relevant settings.</p>
+<h5>
+<a id="azure-keyvault-secrets" class="anchor" href="#azure-keyvault-secrets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Azure KeyVault Secrets</h5>
+<p>CAS is also able to use Microsoft Azure's KeyVault Secrets to locate properties and settings. Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-azure-keyvault&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#azure-keyvault-secrets">review this guide</a>.</p>
+<p><strong>IMPORTANT</strong>: The allowed  name pattern in Azure Key Vault is <code>^[0-9a-zA-Z-]+$</code>. For properties that contain<br>
+that contain <code>.</code> in the name (i.e. <code>cas.some.property</code>),  replace <code>.</code> with <code>-</code> when you store the setting in Azure Key Vault (i.e. <code>cas-some-property</code>).<br>
+The module will handle the transformation for you.</p>
+<p>See <a href="Configuration-Properties.html#azure-keyvault-secrets">this guide</a> for relevant settings.</p>
+<h5>
+<a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h5>
+<p>CAS is also able to use a relational database to locate properties and settings.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-jdbc&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>By default, settings are expected to be found under a <code>CAS_SETTINGS_TABLE</code> that contains the fields: <code>id</code>, <code>name</code> and <code>value</code>.<br>
+To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#jdbc">review this guide</a>.</p>
+<h5>
+<a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h5>
+<p>CAS is also able to locate properties and settings using a REST API.</p>
+<p>Support is provided via the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-rest&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>The REST endpoint is expected to produce a <code>Map</code> in the payload with keys as the setting names<br>
+and values as the setting value. To see the relevant list of CAS properties for this<br>
+feature, please <a href="Configuration-Properties.html#rest">review this guide</a>.</p>
+<h4>
+<a id="cas-server-cloud-configuration" class="anchor" href="#cas-server-cloud-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Server Cloud Configuration</h4>
+<p>The cloud configuration modules provided above on this page by the CAS project directly may also be used verbatim inside<br>
+a CAS server overlay. Remember that the primary objective for these modules is to simply retrieve settings and properties<br>
+from a source. While they are mostly and primarily useful when activated inside the Spring Cloud Configuration server and<br>
+can be set to honor profiles and such, they nonetheless may also be used inside a CAS server overlay directly to simply<br>
+fetch settings from a source while running in standalone mode. In such scenarios, all sources of configuration regardless<br>
+of format or syntax will work alongside each other to retrieve settings and you can certainly mix and match as you see fit.</p>
+<h4>
+<a id="composite-sources" class="anchor" href="#composite-sources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Composite Sources</h4>
+<p>In some scenarios you may wish to pull configuration data from multiple environment repositories.<br>
+To do this just enable multiple profiles in your configuration server’s application properties or YAML file.<br>
+If, for example, you want to pull configuration data from a Git repository as well as a SVN<br>
+repository you would set the following properties for your configuration server.</p>
+<pre lang="yml"><code>spring:
+  profiles:
+    active: git, svn
+  cloud:
+    config:
+      server:
+        svn:
+          uri: file:///path/to/svn/repo
+          order: 2
+        git:
+          uri: file:///path/to/git/repo
+          order: 1
+</code></pre>
+<p>In addition to each repo specifying a URI, you can also specify an <code>order</code> property. The <code>order</code> property allows you to specify<br>
+the priority order for all your repositories. The lower the numerical value of the order property the<br>
+higher priority it will have. The priority order of a repository will help resolve any potential<br>
+conflicts between repositories that contain values for the same properties.</p>
+<h4>
+<a id="property-overrides" class="anchor" href="#property-overrides" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Property Overrides</h4>
+<p>The configuration server has an "overrides" feature that allows the operator to provide configuration properties<br>
+to all applications that cannot be accidentally changed by the application using the normal change events and hooks.<br>
+To declare overrides add a map of name-value pairs to <code>spring.cloud.config.server.overrides</code>.</p>
+<p>For example:</p>
+<pre lang="yml"><code>spring:
+  cloud:
+    config:
+      server:
+        overrides:
+          foo: bar
+</code></pre>
+<p>This will cause the CAS server (as the client of the configuration server) to read <code>foo=bar</code> independent of its own configuration.</p>
+<h2>
+<a id="securing-settings" class="anchor" href="#securing-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Securing Settings</h2>
+<p>To learn how sensitive CAS settings can be secured via encryption, <a href="Configuration-Properties-Security.html">please review this guide</a>.</p>
+<h2>
+<a id="reloading-changes" class="anchor" href="#reloading-changes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reloading Changes</h2>
+<p>To lean more about how CAS allows you to reload configuration changes,<br>
+please <a href="Configuration-Management-Reload.html">review this guide</a>.</p>
+<h2>
+<a id="clustered-deployments" class="anchor" href="#clustered-deployments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clustered Deployments</h2>
+<p>CAS uses the <a href="http://cloud.spring.io/spring-cloud-static/spring-cloud.html">Spring Cloud Bus</a><br>
+to manage configuration in a distributed deployment. Spring Cloud Bus links nodes of a<br>
+distributed system with a lightweight message broker. This can then be used to broadcast state<br>
+changes (e.g. configuration changes) or other management instructions.</p>
+<p>To learn how sensitive CAS settings can be secured via encryption, <a href="Configuration-Management-Clustered.html">please review this guide</a>.</p>

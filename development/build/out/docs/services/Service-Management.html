@@ -1,0 +1,211 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---service-managementcategory-services" class="anchor" href="#layout-defaulttitle-cas---service-managementcategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Service Management<br>
+category: Services</h2>
+<h1>
+<a id="service-management" class="anchor" href="#service-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Management</h1>
+<p>The CAS service management facility allows CAS server administrators to declare and configure which services<br>
+(CAS clients) may make use of CAS in which ways. The core component of the service management facility is the<br>
+service registry that stores one or more registered services containing metadata that drives a number of CAS behaviors:</p>
+<ul>
+<li>
+<a href="Configuring-Service-Access-Strategy.html">Authorized services</a> - Control which services may participate in a CAS SSO session.</li>
+<li>Forced authentication - Provides administrative control for forced authentication.</li>
+<li>
+<a href="../integration/Attribute-Release.html">Attribute release</a> - Provide user details to services for authorization and personalization.</li>
+<li>
+<a href="Configuring-Service-Proxy-Policy.html">Proxy control</a> - Further restrict authorized services by granting/denying proxy authentication capability.</li>
+<li>
+<a href="../ux/User-Interface-Customization.html">Theme control</a> - Define alternate CAS themes to be used for particular services.</li>
+</ul>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#service-registry">review this guide</a>.</p>
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>registeredServices</code></td>
+<td>Provides a JSON representation of the <a href="Service-Management.html">CAS service registry</a>. The endpoint can also accept a mime-type of <code>application/vnd.cas.services+yaml</code> to produce YAML output. A <code>GET</code> operation with a parameter selector of <code>/{id}</code> will fetch a specific service definition. A <code>DELETE</code> operation with a parameter selector of <code>/{id}</code> will delete the specific service definition by its id.</td>
+</tr>
+<tr>
+<td><code>exportRegisteredServices</code></td>
+<td>Provides a ZIP-file representation of the <a href="Service-Management.html">CAS service registry</a>.</td>
+</tr>
+<tr>
+<td><code>importRegisteredServices</code></td>
+<td>Import service definitions into the <a href="Service-Management.html">CAS service registry</a>. The request body is expected to be the service definition itself.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="service-management-web-application" class="anchor" href="#service-management-web-application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Management Web Application</h2>
+<p>The service management webapp is a standalone web application that may be deployed along side CAS that provides a GUI<br>
+to manage service registry data. The management web application <em>MUST</em> share the same registry configuration as the<br>
+CAS server itself so the entire system can load the same services data. To learn more about<br>
+the management webapp, <a href="Installing-ServicesMgmt-Webapp.html">please see this guide</a>.</p>
+<h2>
+<a id="registered-services" class="anchor" href="#registered-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Registered Services</h2>
+<p>Registered services present the following metadata:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Required unique identifier. This <strong>MUST</strong> be a valid numeric value.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Required name (<code>255</code> characters or less).</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Optional free-text description of the service. (<code>255</code> characters or less)</td>
+</tr>
+<tr>
+<td><code>informationUrl</code></td>
+<td>Optional free-text link to the service information guide.</td>
+</tr>
+<tr>
+<td><code>privacyUrl</code></td>
+<td>Optional free-text link to the service privacy policy.</td>
+</tr>
+<tr>
+<td><code>redirectUrl</code></td>
+<td>Optional URL to use when returning an authentication response back to applications.</td>
+</tr>
+<tr>
+<td><code>logo</code></td>
+<td>Optional path to an image file that is the logo for this service. The image will be displayed on the login page along with the service description and name. The value may be a relative path to the <code>images</code> directory of the CAS web application or it may be a full URL.</td>
+</tr>
+<tr>
+<td><code>serviceId</code></td>
+<td>Required <a href="http://docs.oracle.com/javase/tutorial/essential/regex/">regular expression</a> describing a logical service. A logical service defines one or more URLs where a service or services are located. The definition of the url pattern must be <strong>done carefully</strong> because it can open security breaches.</td>
+</tr>
+<tr>
+<td><code>theme</code></td>
+<td>Optional theme name that may be used to customize the CAS UI when the service requests a ticket. Values can use the <a href="../configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a> syntax. See <a href="../ux/User-Interface-Customization.html">this guide</a> for more details.</td>
+</tr>
+<tr>
+<td><code>proxyPolicy</code></td>
+<td>Determines whether the service is able to proxy authentication. See <a href="Configuring-Service-Proxy-Policy.html">this guide</a> for more info.</td>
+</tr>
+<tr>
+<td><code>evaluationOrder</code></td>
+<td>Determines relative order of evaluation of registered services. This flag is particularly important in cases where two service URL expressions cover the same services; evaluation order determines which registration is evaluated first and acts as an internal sorting factor.</td>
+</tr>
+<tr>
+<td><code>authenticationPolicy</code></td>
+<td>The authentication policy to act as a complement or override for the global authentication engine. See <a href="Configuring-Service-AuthN-Policy.html">this guide</a> for more details.</td>
+</tr>
+<tr>
+<td><code>attributeReleasePolicy</code></td>
+<td>The policy that describes the set of attributes allows to be released to the application, as well as any other filtering logic needed to weed some out. See <a href="../integration/Attribute-Release.html">this guide</a> for more details on attribute release and filters.</td>
+</tr>
+<tr>
+<td><code>logoutType</code></td>
+<td>Defines how this service should be treated once the logout protocol is initiated. Acceptable values are <code>LogoutType.BACK_CHANNEL</code>, <code>LogoutType.FRONT_CHANNEL</code> or <code>LogoutType.NONE</code>. See <a href="../installation/Logout-Single-Signout.html">this guide</a> for more details on logout.</td>
+</tr>
+<tr>
+<td><code>responseType</code></td>
+<td>Defines how CAS should respond to requests for this service. See <a href="Configuring-Service-Response-Type.html">this guide</a> for more details.</td>
+</tr>
+<tr>
+<td><code>usernameAttributeProvider</code></td>
+<td>The provider configuration which dictates what value as the "username" should be sent back to the application. See <a href="../integration/Attribute-Release.html">this guide</a> for more details on attribute release and filters.</td>
+</tr>
+<tr>
+<td><code>accessStrategy</code></td>
+<td>The strategy configuration that outlines and access rules for this service. It describes whether the service is allowed, authorized to participate in SSO, or can be granted access from the CAS perspective based on a particular attribute-defined role, aka RBAC. See <a href="../integration/Attribute-Release.html">this guide</a> for more details on attribute release and filters.</td>
+</tr>
+<tr>
+<td><code>publicKey</code></td>
+<td>The public key associated with this service that is used to authorize the request by encrypting certain elements and attributes in the CAS validation protocol response, such as <a href="../installation/Configuring-Proxy-Authentication.html">the PGT</a> or <a href="../integration/ClearPass.html">the credential</a>. See <a href="../integration/Attribute-Release.html">this guide</a> for more details on attribute release and filters.</td>
+</tr>
+<tr>
+<td><code>logoutUrl</code></td>
+<td>URL endpoint for this service to receive logout requests. See <a href="../installation/Logout-Single-Signout.html">this guide</a> for more details</td>
+</tr>
+<tr>
+<td><code>properties</code></td>
+<td>Extra metadata associated with this service in form of key/value pairs. This is used to inject custom fields into the service definition, to be used later by extension modules to define additional behavior on a per-service basis. <a href="Configuring-Service-Custom-Properties.html">See this guide</a> for more info please.</td>
+</tr>
+<tr>
+<td><code>multifactorPolicy</code></td>
+<td>The policy that describes the configuration required for this service authentication, typically for <a href="../mfa/Configuring-Multifactor-Authentication.html">multifactor authentication</a>.</td>
+</tr>
+<tr>
+<td><code>contacts</code></td>
+<td>Specify the collection of contacts associated with service that own the application. See <a href="Configuring-Service-Contacts.html">this guide</a> for more info.</td>
+</tr>
+<tr>
+<td><code>matchingStrategy</code></td>
+<td>Specify the strategy used to match the service definition against an authentication request. See <a href="Configuring-Service-Matching-Strategy.html">this guide</a> for more info.</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<h3>
+<a id="service-access-strategy" class="anchor" href="#service-access-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Service Access Strategy</h3>
+<p><a href="Configuring-Service-Access-Strategy.html">See this guide</a> for more info.</p>
+<h3>
+<a id="proxy-authentication-policy" class="anchor" href="#proxy-authentication-policy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proxy Authentication Policy</h3>
+<p><a href="Configuring-Service-Proxy-Policy.html">See this guide</a> for more info.</p>
+<h3>
+<a id="required-authentication" class="anchor" href="#required-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Required Authentication</h3>
+<p><a href="Configuring-Service-AuthN-Policy.html">See this guide</a> for more details.</p>
+<h3>
+<a id="tags--properties" class="anchor" href="#tags--properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tags &amp; Properties</h3>
+<p><a href="Configuring-Service-Custom-Properties.html">See this guide</a> for more info.</p>
+<h3>
+<a id="contacts--owners" class="anchor" href="#contacts--owners" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contacts &amp; Owners</h3>
+<p><a href="Configuring-Service-Contacts.html">See this guide</a> for more info.</p>
+<h3>
+<a id="expiration-policy" class="anchor" href="#expiration-policy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Expiration Policy</h3>
+<p><a href="Configuring-Service-Expiration-Policy.html">See this guide</a> for more info.</p>
+<h3>
+<a id="matching-strategy" class="anchor" href="#matching-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Matching Strategy</h3>
+<p>See <a href="Configuring-Service-Matching-Strategy.html">this guide</a> for more info.</p>
+<h2>
+<a id="storage" class="anchor" href="#storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Storage</h2>
+<p>The following options may be used to store services in CAS.</p>
+<p>| Storage          | Description                                           | Usage<br>
+|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------<br>
+| Memory           | <a href="InMemory-Service-Management.html">See this guide</a>.   | Store service definitions XML stored in memory. Changes require CAS repackaging and server restarts<br>
+| JSON             | <a href="JSON-Service-Management.html">See this guide</a>.       | Store service definitions in flat JSON files. HA deployments require replication of service definitions.<br>
+| YAML             | <a href="YAML-Service-Management.html">See this guide</a>.       | Same as <code>JSON</code>.<br>
+| GIT              | <a href="Git-Service-Management.html">See this guide</a>.        | Store service definitions in Git repository. Candidate for HA deployments.<br>
+| MongoDb          | <a href="MongoDb-Service-Management.html">See this guide</a>.    | Store service definitions in MongoDb. Candidate for HA deployments.<br>
+| Redis            | <a href="Redis-Service-Management.html">See this guide</a>.      | Store service definitions in Redis. Candidate for HA deployments.<br>
+| LDAP             | <a href="LDAP-Service-Management.html">See this guide</a>.       | Store service definitions in a directory server. Candidate for HA deployments.<br>
+| JPA              | <a href="JPA-Service-Management.html">See this guide</a>.        | Store service definitions in a relational database (Oracle, MySQL, etc). Candidate for HA deployments.<br>
+| Couchbase        | <a href="Couchbase-Service-Management.html">See this guide</a>.  | Store service definitions in Couchbase. Candidate for HA deployments.<br>
+| Couchbase        | <a href="CouchDb-Service-Management.html">See this guide</a>.    | Store service definitions in CouchDb. Candidate for HA deployments.<br>
+| DynamoDb         | <a href="DynamoDb-Service-Management.html">See this guide</a>.   | Store service definitions in DynamoDb. Candidate for HA deployments.<br>
+| Amazon S3        | <a href="AmazonS3-Service-Management.html">See this guide</a>.   | Store service definitions in Amazon S3 buckets. Candidate for HA deployments.<br>
+| CosmosDb         | <a href="CosmosDb-Service-Management.html">See this guide</a>.   | Store service definitions in an Azure CosmosDb. Candidate for HA deployments.<br>
+| Cassandra        | <a href="Cassandra-Service-Management.html">See this guide</a>.  | Store service definitions in an Apache Cassandra. Candidate for HA deployments.<br>
+| REST             | <a href="REST-Service-Management.html">See this guide</a>.       | Design your own service registry implementation as a REST API. Candidate for HA deployments.<br>
+| Custom           | <a href="Custom-Service-Management.html">See this guide</a>.     | Design your own service registry using CAS APIs as an extension. Candidate for HA deployments.</p>
+<h3>
+<a id="how-do-i-choose" class="anchor" href="#how-do-i-choose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How Do I Choose?</h3>
+<p>There are is a wide range of service registries on the menu. The selection criteria is outlined below:</p>
+<ul>
+<li>Choose a technology that you are most familiar with and have the skills and patience to troubleshoot, tune and scale for the win.</li>
+<li>Choose a technology that does not force your CAS configuration to be tied to any individual servers/nodes in the cluster, as this will present auto-scaling issues and manual effort.</li>
+<li>Choose a technology that works well with your network and firewall configuration and is performant and reliable enough based on your network topology.</li>
+<li>Choose a technology that shows promising results under <em>your expected load</em>, having run <a href="../high_availability/High-Availability-Performance-Testing.html">performance and stress tests</a>.</li>
+<li>Choose a technology that does not depend on outside processes, systems and manual work as much as possible, is self-reliant and self contained.</li>
+</ul>

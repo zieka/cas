@@ -1,0 +1,183 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---fido2-webauthn-multifactor-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---fido2-webauthn-multifactor-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - FIDO2 WebAuthn Multifactor Authentication<br>
+category: Multifactor Authentication</h2>
+<h1>
+<a id="fido2-webauthn-multifactor-authentication" class="anchor" href="#fido2-webauthn-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FIDO2 WebAuthn Multifactor Authentication</h1>
+<p><a href="https://webauthn.io/">WebAuthn</a> is an API that makes it very easy for a relying party, such as a web service, to integrate strong<br>
+authentication into applications using support built in to all leading browsers and platforms. This means<br>
+that web services can now easily offer their users strong authentication with a choice of authenticators<br>
+such as security keys or built-in platform authenticators such as biometric readers.</p>
+<p>Support is enabled by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-webauthn&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn">review this guide</a>.</p>
+<p>You may also need to declare the following repository in<br>
+your CAS overlay to be able to resolve dependencies:</p>
+<pre lang="groovy"><code>repositories {
+    maven { 
+        mavenContent { releasesOnly() }
+        url "https://dl.bintray.com/apereocas/webauthn-cas" 
+    }
+}
+</code></pre>
+<h2>
+<a id="primary-authentication" class="anchor" href="#primary-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Primary Authentication</h2>
+<p>It is possible to allow WebAuthN to act as a standalone authentication strategy for primary authentication. Using this approach,<br>
+user accounts and FIDO2-enabled devices that have already registered with CAS are given the option to login using their FIDO2-enabled<br>
+device by only providing the username linked to their registration record for a passwordless authentication experience.</p>
+<p>Device registration can occur out of band using available CAS APIs, or by allowing users to pass through the registration flow<br>
+as part of the typical multifactor authentication. See below for details on device registration.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn">review this guide</a>.</p>
+<h2>
+<a id="registration" class="anchor" href="#registration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Registration</h2>
+<p>Device registration flows are baked into CAS automatically. A background <em>cleaner</em> process is also automatically scheduled to scan the<br>
+repository periodically and remove expired device registration records based on configured parameters. In the default setting, devices<br>
+expire after a fixed period since a user registered their device. If you deploy U2F<br>
+MFA for a setup where tokens are centrally distributed and revoked,<br>
+you may want to <a href="../configuration/Configuration-Properties.html#fido2-webauthn">extend the interval</a>.</p>
+<!-- raw HTML omitted -->
+<h3>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h3>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>webAuthnDevices/{username}</code></td>
+<td>
+<code>GET</code> request to fetch device registration records for the user.</td>
+</tr>
+<tr>
+<td><code>webAuthnDevices/{username}</code></td>
+<td>
+<code>DELETE</code> request to delete all device registration records for the user.</td>
+</tr>
+<tr>
+<td><code>webAuthnDevices/{username}/{credential}</code></td>
+<td>
+<code>DELETE</code> request to delete a device registration record for the user.</td>
+</tr>
+<tr>
+<td><code>webAuthnDevices/{username}</code></td>
+<td>
+<code>POST</code> request to add a device registration record for the user with request body parameter <code>record</code>.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="default" class="anchor" href="#default" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h3>
+<p>By default, a repository implementation is included that collects user device registrations and saves them into memory.<br>
+This option should only be used for demo and testing purposes.</p>
+<h3>
+<a id="json" class="anchor" href="#json" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON</h3>
+<p>A device repository implementation that collects user device registrations and saves them into a JSON file whose<br>
+path is taught to CAS via settings. This is a very modest option and should mostly be used for demo and testing<br>
+purposes. Needless to say, this JSON resource acts as a database that must be available to all CAS server nodes in the cluster.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-json">review this guide</a>.</p>
+<h3>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
+<p>Device registrations may be kept inside a MongoDb instance by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-webauthn-mongo&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-mongodb">review this guide</a>.</p>
+<h3>
+<a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
+<p>Device registrations may be kept inside LDAP directories by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-webauthn-ldap&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Device registration records are kept inside a designated configurable multi-valued attribute as JSON blobs. The attribute values are parsed<br>
+to load, save, update or delete accounts. The content of each attribute value can be signed/encrypted if necessary.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-ldap">review this guide</a>.</p>
+<h3>
+<a id="jpa" class="anchor" href="#jpa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JPA</h3>
+<p>Device registrations may be kept inside a relational database instance by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-webauthn-jpa&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-jpa">review this guide</a>.</p>
+<h3>
+<a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
+<p>Device registrations may be kept inside a Redis database instance by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-webauthn-redis&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-redis">review this guide</a>.</p>
+<h3>
+<a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h3>
+<p>Device registrations may be kept inside a DynamoDb instance by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-webauthn-dynamodb&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-dynamodb">review this guide</a>.</p>
+<h3>
+<a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
+<p>Device registrations may be managed using an external REST API by including the following module in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-webauthn-rest&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>The following parameters are passed:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Parameters</th>
+<th>Description</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>N/A</td>
+<td>Retrieve all records.</td>
+<td>
+<code>200</code> status code; Collection of JSON records in the body.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>username</code></td>
+<td>Retrieve all records for user.</td>
+<td>
+<code>200</code> status code Collection of JSON records in the body.</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td>Collection of records as JSON body</td>
+<td>Store/Update registered devices.</td>
+<td>
+<code>200</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-rest">review this guide</a>.</p>

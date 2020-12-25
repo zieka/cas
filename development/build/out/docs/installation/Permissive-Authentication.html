@@ -1,0 +1,45 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---permissive-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---permissive-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Permissive Authentication<br>
+category: Authentication</h2>
+<h1>
+<a id="permissive-authentication" class="anchor" href="#permissive-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Permissive Authentication</h1>
+<p>Permissive authentication components fall into two categories: Those that accept a set of credentials<br>
+stored directly in the configuration and those that accept a set of credentials from a file resource on the server.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+  &lt;artifactId&gt;cas-server-support-generic&lt;/artifactId&gt;
+  &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#file-authentication">review this guide</a>.</p>
+<h2>
+<a id="example-password-file" class="anchor" href="#example-password-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example Password File</h2>
+<pre lang="bash"><code>scott::password
+bob::password2
+</code></pre>
+<h2>
+<a id="json-file" class="anchor" href="#json-file" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON File</h2>
+<p>The password file may also be specified as a JSON resource instead which allows one to<br>
+specify additional account details mostly useful for development and basic testing. The outline of the file may be defined as:</p>
+<pre lang="json"><code>{
+  "@class" : "java.util.LinkedHashMap",
+  "casuser" : {
+    "@class" : "org.apereo.cas.adaptors.generic.CasUserAccount",
+    "password" : "Mellon",
+    "attributes" : {
+      "@class" : "java.util.LinkedHashMap",
+      "firstName" : [ "java.util.List", ["Apereo"]],
+      "lastName" : [ "java.util.List", ["CAS"]]
+    },
+    "status" : "OK",
+    "expirationDate" : "2050-01-01"
+  }
+}
+</code></pre>
+<p>The accepted statuses are <code>OK</code>, <code>LOCKED</code>, <code>DISABLED</code>, <code>EXPIRED</code> and <code>MUST_CHANGE_PASSWORD</code>. To see the<br>
+relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#json-authentication">review this guide</a>.</p>

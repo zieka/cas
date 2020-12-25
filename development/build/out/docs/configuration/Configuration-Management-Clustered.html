@@ -1,0 +1,78 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuration-management-clustered-deploymentcategory-configuration" class="anchor" href="#layout-defaulttitle-cas---configuration-management-clustered-deploymentcategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuration Management Clustered Deployment<br>
+category: Configuration</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="clustered-deployments" class="anchor" href="#clustered-deployments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clustered Deployments</h1>
+<p>CAS uses the <a href="http://cloud.spring.io/spring-cloud-static/spring-cloud.html">Spring Cloud Bus</a><br>
+to manage configuration in a distributed deployment. Spring Cloud Bus links nodes of a<br>
+distributed system with a lightweight message broker. This can then be used to broadcast state<br>
+changes (e.g. configuration changes) or other management instructions.</p>
+<p>The bus supports sending messages to all nodes listening. Broadcasted events will attempt to update, refresh and<br>
+reload each CAS server application’s configuration.</p>
+<p>If CAS nodes are not sharing a central location for configuration properties such that each<br>
+node contains a copy of the settings, any changes you make to one node must be replicated and<br>
+synced across all nodes so they are persisted on disk. The broadcast mechanism noted above only<br>
+applies changes to the runtime and the running CAS instance. Ideally, you should be keeping track<br>
+of CAS settings in a shared (git) repository (or better yet, inside a private Github repository perhaps)<br>
+where you make a change in one place and it's broadcasted to all nodes. This model removes the need for<br>
+synchronizing changes across disks and CAS nodes.</p>
+<p>To see the relevant list of CAS properties, please <a href="Configuration-Properties.html#configuration-storage">review this guide</a>.</p>
+<p>The following endpoints are secured and exposed by the Spring Cloud Config Bus:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/actuator/bus-refresh</code></td>
+<td>Reload the configuration of all CAS nodes in the cluster if the cloud bus is turned on.</td>
+</tr>
+<tr>
+<td><code>/actuator/bus-env</code></td>
+<td>Sends key/values pairs to update each CAS node if the cloud bus is turned on.</td>
+</tr>
+</tbody>
+</table>
+<p>The transport mechanism for the bus to broadcast events is handled via one of the following components.</p>
+<h2>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h2>
+<p>To enable additional logging, modify the logging configuration file to add the following:</p>
+<pre lang="xml"><code>&lt;Logger name="org.springframework.amqp" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+</code></pre>
+<h2>
+<a id="rabbitmq" class="anchor" href="#rabbitmq" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RabbitMQ</h2>
+<p>This is the default option for broadcasting change events to CAS nodes.<br>
+<a href="https://www.rabbitmq.com/">RabbitMQ</a> is open source message broker<br>
+software (sometimes called message-oriented middleware) that implements<br>
+the Advanced Message Queuing Protocol (AMQP).</p>
+<p>Support is enabled by including the following dependency in the final overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-amqp&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#rabbitmq">review this guide</a>.</p>
+<h2>
+<a id="kafka" class="anchor" href="#kafka" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kafka</h2>
+<p>Apache Kafka is an open-source message broker project developed by the Apache Software Foundation.<br>
+The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds.<br>
+It is, in its essence, a "massively scalable pub/sub message queue designed as a distributed transaction log",<br>
+making it highly valuable for enterprise infrastructures to process streaming data.</p>
+<p>Support is enabled by including the following dependency in the final overlay:</p>
+<pre lang="xml"><code>&lt;dependency&gt;
+     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
+     &lt;artifactId&gt;cas-server-support-configuration-cloud-kafka&lt;/artifactId&gt;
+     &lt;version&gt;${cas.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#kafka">review this guide</a>.</p>
