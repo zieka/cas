@@ -289,69 +289,6 @@ function guidGenerator() {
 }
 
 
-function generateDependencyLangFragments() {
-  var preElements = $("div.language-xml.highlighter-rouge div.highlight td.rouge-code pre");
-  $.each(preElements, function (i, val) {
-
-    var text = $(val).text();
-    if (!text.trim().startsWith("<dependency>")) {
-      return;
-    }
-
-    var mavenXml = $(val).html();
-
-    xmlDoc = $.parseXML(text),
-      $xml = $(xmlDoc),
-      $groupId = $xml.find("groupId");
-    $artifactId = $xml.find("artifactId");
-
-	var activeVersion = getActiveDocumentationVersionInView(true)
-  var cfg = "compile";
-	if (activeVersion == null || activeVersion == undefined || activeVersion == "development" || parseFloat(activeVersion) >= 6.2) {
-	    cfg = "implementation"
-	}
-	var gradleDep = "<span class='nt'>" + cfg + "</span> \"" + $groupId.text() + "<span class='p'>:</span>" + $artifactId.text() + "<span class='p'>:</span><span class='nt'>${project.'cas.version'}</span>\"";
-
-    // do not break up this line
-    var gradleFragment = `<div class='highlight'><pre class='highlight'><code><table style='border-spacing: 0'><tbody><tr><td class='gutter gl' style='text-align: right'><pre class='lineno'>1</pre></td><td class='code'><pre>` + gradleDep + `</pre></td></tr></tbody></table></code></pre></div>`;
-
-    var parentTable = $(val).closest('pre.highlight').parent();
-
-    var mavenId = Math.floor((Math.random() * 10000) + 1);
-    var gradleId = Math.floor((Math.random() * 10000) + 1);
-
-    var tabs = "<ul class='nav nav-pills'> \
-  <li class='nav-item'><a class='nav-link active' data-toggle='tab' href='#maven" + mavenId + "'>Maven</a></li> \
-  <li class='nav-item'><a class='nav-link' data-toggle='tab' href='#gradle" + gradleId + "'>Gradle</a></li> \
-  <li role='presentation' class='nav-item dropdown'> \
-      <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button'>Resources<span class='caret'></span></a> \
-      <div class='dropdown-menu'> \
-          <a class='dropdown-item' href='https://github.com/apereo/cas-overlay-template'>CAS Server WAR Overlay</a> \
-          <a class='dropdown-item' href=\"javascript:generateOverlay('" + $artifactId.text() + "');\">Generate CAS Server WAR Overlay</a> \
-          <div class='dropdown-divider'></div> \
-          <a class='dropdown-item' href='https://github.com/apereo/cas-management-overlay'>CAS Management WAR Overlay</a> \
-	  <div class='dropdown-divider'></div> \
-	  <a class='dropdown-item' href='https://github.com/apereo/cas-configserver-overlay'>CAS Configuration Server Overlay</a> \
-	  <a class='dropdown-item' href='https://github.com/apereo/cas-discoveryserver-overlay'>CAS Discovery Server Overlay</a> \
-	  <a class='dropdown-item' href='https://github.com/apereo/cas-bootadmin-overlay'>CAS Spring Boot Admin Server</a> \
-      </div> \
-  </li> \
-  </ul> \
-  <div class='tab-content clearfix'> \
-    <div class='tab-pane fade in active language-xml highlighter-rouge' id='maven" + mavenId + "'>" + parentTable.html() + "</div> \
-    <div class='tab-pane fade in language-java highlighter-rouge' id='gradle" + gradleId + "'>" + gradleFragment + "</div> \
-  </div>";
-
-    var divHighlight = parentTable.closest('div.highlight').parent();
-
-    divHighlight.empty();
-    divHighlight.prepend(tabs);
-  });
-
-  // select the gradle tab by default
-  $("a.nav-link[href^='#gradle']").click();
-}
-
 function responsiveImages() {
   $('img').each(function () {
     $(this).addClass('img-fluid');
@@ -364,12 +301,6 @@ function responsiveTables() {
   });
 }
 
-function copyButton() {
-  $('pre.highlight').each(function () {
-    var btn = '<button class="copy-button hidden-md-down fa fa-clipboard" title="Copy" />';
-    $(this).append(btn);
-  });
-}
 
 function enableBootstrapTooltips() {
   $('[data-toggle="tooltip"]').tooltip();
@@ -386,32 +317,14 @@ function generateOverlay(artifactId) {
   $("#overlayform").submit();
 }
 
-var clipboard = new Clipboard('.copy-button', {
-  text: function (trigger) {
-    var code = $(trigger).parent().find('td.rouge-code pre').text();
-    if (code === "") {
-      code = $(trigger).parent().find('td.code pre').text();
-    }
-    console.log("Copied " + code);
-    return code;
-  }
-});
-
-clipboard.on('success', function (e) {
-  e.clearSelection();
-});
-
 $(function () {
   loadSidebarForActiveVersion();
   generatePageTOC();
-  generateDependencyLangFragments();
   generateToolbarIcons();
   generateNavigationBarAndCrumbs();
 
   responsiveImages();
   responsiveTables();
-
-  copyButton();
 
   var formattedVersion = getActiveDocumentationVersionInView();
   if (formattedVersion != "" && formattedVersion.indexOf(CONST_CURRENT_VER) == -1) {
