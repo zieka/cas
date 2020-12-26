@@ -8,12 +8,7 @@ category: Authentication</h2>
 <p>Verify and authenticate credentials using Groovy scripts. The task of credential verification, principal transformation,<br>
 handling password policy and all other related matters are the sole responsibility of the Groovy script.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-generic&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-generic" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#groovy-authentication">review this guide</a>.</p>
 <p>The Groovy script may be designed as:</p>
 <pre lang="groovy"><code>import org.apereo.cas.authentication.*

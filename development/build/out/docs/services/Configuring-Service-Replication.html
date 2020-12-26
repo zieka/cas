@@ -37,12 +37,7 @@ distributed cache via Hazelcast to broadcast service definition files across the
 each node as needed. As service definitions are loaded by CAS, events are broadcasted to all<br>
 CAS nodes in the cluster to pick up the changes and keep definitions in sync.</p>
 <p>Support is enabled by including the following dependency in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-service-registry-stream-hazelcast&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-service-registry-stream-hazelcast" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#service-registry-replication-hazelcast">review this guide</a>.</p>
 <h2>
 <a id="apache-kafka" class="anchor" href="#apache-kafka" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache Kafka</h2>
@@ -52,12 +47,7 @@ distributed cache via Apache Kafka to broadcast service definition files across 
 each node as needed. As service definitions are loaded by CAS, events are broadcasted to all<br>
 CAS nodes in the cluster to pick up the changes and keep definitions in sync.</p>
 <p>Support is enabled by including the following dependency in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-service-registry-stream-kafka&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-service-registry-stream-kafka" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#service-registry-replication-kafka">review this guide</a>.</p>
 <h2>
 <a id="replication-modes" class="anchor" href="#replication-modes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Replication Modes</h2>

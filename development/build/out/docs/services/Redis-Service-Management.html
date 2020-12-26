@@ -10,12 +10,7 @@ category: Services</h2>
 key/value store that accepts <code>String</code> keys and CAS service definition objects as values. The key is started with <code>CAS_SERVICE:</code>.</p>
 <p>The Redis service registry supports Redis Sentinel, which provides high availability for Redis. In practical terms this means that using Sentinel you can create a Redis deployment that resists without human intervention to certain kind of failures. Redis Sentinel also provides other collateral tasks such as monitoring, notifications and acts as a configuration provider for clients.</p>
 <p>Support is enabled by including the following dependency in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-redis-service-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-redis-service-registry" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#redis-service-registry">review this guide</a>.</p>
 <h2>
 <a id="auto-initialization" class="anchor" href="#auto-initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Auto Initialization</h2>

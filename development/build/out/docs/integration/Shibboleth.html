@@ -24,12 +24,7 @@ utilize a full range of native CAS protocol features such as <code>renew</code> 
 Shibboleth Identity Provider <a href="https://github.com/Unicon/shib-cas-authn2">v2</a><br>
 and <a href="https://github.com/Unicon/shib-cas-authn3">v3</a> and <a href="https://github.com/Unicon/shib-cas-authn">v4</a>.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-shibboleth&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-shibboleth" %}</p>
 <h3>
 <a id="relying-party-entityid" class="anchor" href="#relying-party-entityid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relying Party EntityId</h3>
 <p>The authentication plugin is able to pass the relying party's entity ID over<br>
@@ -47,12 +42,7 @@ that is provided by the metadata associated with the relying party.</p>
 <h3>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h3>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-saml-mdui&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-mdui" %}</p>
 <h3>
 <a id="relying-party-metadata" class="anchor" href="#relying-party-metadata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relying Party Metadata</h3>
 <p>You may allow CAS to recognize SAML MDUI directly from metadata documents that are fed to CAS via settings. If the metadata for the relying party matches the requested <code>entityId</code> and contains MDUI elements, those will be passed onto the login page for decorations. If MDUI is not available in the metadata, the relevant elements from the matching service in the service registry will be used all the same.</p>

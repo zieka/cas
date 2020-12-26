@@ -54,12 +54,7 @@ Vault can store your existing secrets, or it can dynamically generate new secret
 to control access to third-party resources or provide time-limited credentials for your infrastructure.<br>
 To learn more about Vault and its installation process, please visit the project website.</p>
 <p>Once vault is accessible and configured inside CAS, support is provided via the following dependency:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-vault&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-vault" %}</p>
 <p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#vault">review this guide</a>.</p>
 <p>With CAS, secrets are picked up at startup of the application server. CAS uses the data and settings<br>
 from the application name (i.e. <code>cas</code>) and active profiles to determine contexts paths in<br>

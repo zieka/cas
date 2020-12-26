@@ -10,12 +10,7 @@ as specified in <a href="https://tools.ietf.org/html/rfc8555">RFC 8555</a>. ACME
 certificate authority (CA) such as Let's Encrypt and an applicant can use to automate the process<br>
 of verification and certificate issuance.</p>
 <p>Support is enabled by including the following dependency in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-acme&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-acme" %}</p>
 <p>The activation of this module is performed on startup when the CAS server is ready serve http requests.<br>
 When this module is finished successfully, the domain key pair composed of the key and<br>
 the certificate (including the full certificate path) will be produced in separate files.</p>

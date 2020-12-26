@@ -13,12 +13,7 @@ available as a standard Bills of Materials (BOM). Not everyone likes inheriting 
 You may have your own corporate standard parent that you need to use, or<br>
 you may just prefer to explicitly declare all your configuration.</p>
 <p>Support for BOM is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-bom&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-bom" %}</p>
 <p>Please <a href="https://plugins.gradle.org/plugin/io.spring.dependency-management">use this guide</a><br>
 and configure the Gradle build accordingly.</p>
 <p>Please note that the <a href="WAR-Overlay-Initializr.html">CAS Initializr</a> is preconfigured to use the CAS BOM.</p>

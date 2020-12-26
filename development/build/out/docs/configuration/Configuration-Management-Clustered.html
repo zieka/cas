@@ -55,12 +55,7 @@ synchronizing changes across disks and CAS nodes.</p>
 software (sometimes called message-oriented middleware) that implements<br>
 the Advanced Message Queuing Protocol (AMQP).</p>
 <p>Support is enabled by including the following dependency in the final overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-amqp&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-amqp" %}</p>
 <p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#rabbitmq">review this guide</a>.</p>
 <h2>
 <a id="kafka" class="anchor" href="#kafka" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kafka</h2>
@@ -69,10 +64,5 @@ The project aims to provide a unified, high-throughput, low-latency platform for
 It is, in its essence, a "massively scalable pub/sub message queue designed as a distributed transaction log",<br>
 making it highly valuable for enterprise infrastructures to process streaming data.</p>
 <p>Support is enabled by including the following dependency in the final overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-kafka&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-kafka" %}</p>
 <p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#kafka">review this guide</a>.</p>

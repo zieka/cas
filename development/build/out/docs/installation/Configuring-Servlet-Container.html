@@ -51,12 +51,7 @@ Other platforms such as Windows may require custom configuration.</p>
 <h3>
 <a id="apache-tomcat" class="anchor" href="#apache-tomcat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache Tomcat</h3>
 <p>Note that by default, the embedded container attempts to enable the HTTP2 protocol.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-webapp-tomcat&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp-tomcat" %}</p>
 <h4>
 <a id="ipv4-configuration" class="anchor" href="#ipv4-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IPv4 Configuration</h4>
 <p>In order to force Apache Tomcat to use IPv4, configure the following as a system property for your <em>run</em> command:</p>
@@ -91,31 +86,16 @@ argument whose value is set to the <code>logging.properties</code> path. Use the
 </code></pre>
 <h3>
 <a id="jetty" class="anchor" href="#jetty" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jetty</h3>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-webapp-jetty&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp-jetty" %}</p>
 <h3>
 <a id="undertow" class="anchor" href="#undertow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Undertow</h3>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-webapp-undertow&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp-undertow" %}</p>
 <h2>
 <a id="external" class="anchor" href="#external" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>External</h2>
 <p>A CAS deployment may be deployed to any number of external servlet containers. The container <strong>MUST</strong> support<br>
 the servlet specification <code>v4.0.0</code> at a minimum. In these scenarios, the following vanilla CAS web application<br>
 may be used, in the <a href="WAR-Overlay-Installation.html">WAR Overlay</a> :</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-webapp&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp" %}</p>
 <p>While there is no official project support, the following containers should be compatible with a CAS deployment:</p>
 <ul>
 <li>
@@ -144,12 +124,7 @@ Refer to the servlet container's own documentation for more info.</p>
 <h3>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h3>
 <p>Support for external containers is enabled by including the following module in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-webapp&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp" %}</p>
 <h3>
 <a id="async-support" class="anchor" href="#async-support" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Async Support</h3>
 <p>In the event that an external servlet container is used, you MAY need to make sure it's configured correctly to<br>

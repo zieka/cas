@@ -9,12 +9,7 @@ category: Logs &amp; Audits</h2>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-sentry&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-sentry" %}</p>
 <p>The <a href="../logging/Logging.html">Logging</a> configuration file must be adjusted to match the following:</p>
 <pre lang="xml"><code>&lt;Configuration packages="...,org.apache.logging.log4j.core,com.getsentry.raven.log4j2"&gt;
     &lt;Appenders&gt;

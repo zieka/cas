@@ -6,12 +6,7 @@ category: Ticketing</h2>
 <h1>
 <a id="redis-ticket-registry" class="anchor" href="#redis-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis Ticket Registry</h1>
 <p>Redis integration is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-redis-ticket-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-redis-ticket-registry" %}</p>
 <p>This registry stores tickets in one or more <a href="http://redis.io/">Redis</a> instances. The<br>
 <a href="http://projects.spring.io/spring-data-redis/">spring data redis</a> library used by this component presents Redis as a<br>
 key/value store that accepts <code>String</code> keys and CAS ticket objects as values. The key is started with <code>CAS_TICKET:</code>.</p>

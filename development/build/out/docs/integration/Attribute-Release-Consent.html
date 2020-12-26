@@ -9,12 +9,7 @@ category: Attributes</h2>
 user will be presented with a collection of attributes allowed to be released to the application with options to either proceed or deny the release of said attributes. There are also additional options to indicate how should underlying changes in the attribute release policy be considered by the consent engine. Users are also provided the ability to set up reminders in the event that no change is detected in the attribute release policy.</p>
 <p>Consent attribute records stored in the configured repository are signed and encrypted.</p>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-consent-webflow&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-webflow" %}</p>
 <h2>
 <a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
 <p>The following endpoints are provided by CAS:</p>
@@ -294,52 +289,27 @@ def Boolean deleteAll(final Object... args) {
 <h3>
 <a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h3>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-consent-jdbc&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-jdbc" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jpa-attribute-consent">review this guide</a>.</p>
 <h3>
 <a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-consent-mongo&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-mongo" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#mongodb-attribute-consent">review this guide</a>.</p>
 <h3>
 <a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-consent-redis&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-redis" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#redis-attribute-consent">review this guide</a>.</p>
 <h3>
 <a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-consent-couchdb&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-couchdb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchdb-attribute-consent">review this guide</a>.</p>
 <h3>
 <a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-consent-rest&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-rest" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#rest-attribute-consent">review this guide</a>.</p>
 <p>Endpoints must be designed to accept/process <code>application/json</code>.</p>
 <p>| Operation                 | Method    | Data                                 | Expected Response<br>
@@ -355,12 +325,7 @@ def Boolean deleteAll(final Object... args) {
 <a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
 <p>Consent decisions can be stored on LDAP user objects. The decisions are serialized into JSON and stored one-by-one in a multi-valued string attribute.</p>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-consent-ldap&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-ldap" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ldap-attribute-consent">review this guide</a>.</p>
 <h3>
 <a id="custom" class="anchor" href="#custom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom</h3>

@@ -378,12 +378,7 @@ class GroovyRegisteredAccessStrategy extends DefaultRegisteredServiceAccessStrat
 <h2>
 <a id="grouper" class="anchor" href="#grouper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Grouper</h2>
 <p>The grouper access strategy is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-grouper-core&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-grouper-core" %}</p>
 <p>This access strategy attempts to locate <a href="https://incommon.org/software/grouper/">Grouper</a><br>
 groups for the CAS principal. The groups returned by Grouper<br>
 are collected as CAS attributes and examined against the list of required attributes for service access.</p>

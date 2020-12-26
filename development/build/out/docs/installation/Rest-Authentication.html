@@ -7,12 +7,7 @@ category: Authentication</h2>
 <a id="rest-authentication" class="anchor" href="#rest-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST Authentication</h1>
 <!-- raw HTML omitted -->
 <p>REST authentication is enabled by including the following dependencies in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-rest-authentication&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest-authentication" %}</p>
 <p>This allows the CAS server to reach to a remote REST endpoint via a <code>POST</code> for verification of credentials.<br>
 Credentials are passed via an <code>Authorization</code> header whose value is <code>Basic XYZ</code> where XYZ is a<br>
 Base64 encoded version of the credentials.</p>

@@ -34,12 +34,7 @@ ticket expires.</p>
 <h2>
 <a id="components" class="anchor" href="#components" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Components</h2>
 <p>SPNEGO support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-spnego-webflow&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-spnego-webflow" %}</p>
 <p>You may also need to declare the following repository in your CAS overlay to be able to resolve dependencies:</p>
 <pre lang="groovy"><code>repositories {
     maven { 

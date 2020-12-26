@@ -9,12 +9,7 @@ category: Integration</h2>
 integration point for external authentication services.</p>
 <!-- raw HTML omitted -->
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-saml-googleapps&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-googleapps" %}</p>
 <h2>
 <a id="generate-publicprivate-keys" class="anchor" href="#generate-publicprivate-keys" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generate Public/Private Keys</h2>
 <p>The first step is to generate DSA/RSA public and private keys. These are used to sign and read the Assertions.<br>

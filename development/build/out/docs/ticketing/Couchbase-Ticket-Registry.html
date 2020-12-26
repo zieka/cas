@@ -6,12 +6,7 @@ category: Ticketing</h2>
 <h1>
 <a id="couchbase-ticket-registry" class="anchor" href="#couchbase-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Couchbase Ticket Registry</h1>
 <p>Couchbase integration is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-couchbase-ticket-registry&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-couchbase-ticket-registry" %}</p>
 <p><a href="http://www.couchbase.com">Couchbase</a> is a highly available, open source NoSQL database server based on<br>
 <a href="http://www.erlang.org">Erlang/OTP</a> and its mnesia database. The intention of this<br>
 registry is to leverage the capability of Couchbase server to provide high availability to CAS.</p>

@@ -82,12 +82,7 @@ cas.standard.js.file=/themes/[theme_name]/js/cas.js
 to account for common and provide for common use cases when it comes to user interface modifications<br>
 and samples, and attempt to automate much of the configuration.</p>
 <p>Support is enabled by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-theme-collections&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-theme-collections" %}</p>
 <p>The following themes are provided by this module and can be assigned to service definitions:</p>
 <table>
 <thead>

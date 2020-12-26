@@ -12,12 +12,7 @@ and <code>Layout</code> components typically defined inside a <code>logback.xml<
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-logback&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-logback" %}</p>
 <p>You must also make sure the following modules and dependencies are excluded from the WAR overlay:</p>
 <pre lang="groovy"><code>configurations.all {
     exclude(group: "org.apache.logging.log4j", module: "log4j-api")

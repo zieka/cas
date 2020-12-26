@@ -6,12 +6,7 @@ category: Ticketing</h2>
 <h1>
 <a id="memcached-ticket-registry" class="anchor" href="#memcached-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Memcached Ticket Registry</h1>
 <p>Memcached integration is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-memcached-ticket-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-memcached-ticket-registry" %}</p>
 <p>This registry stores tickets in one or more <a href="http://memcached.org/">memcached</a> instances.<br>
 Memcached stores data in exactly one node among many in a distributed cache, thus avoiding the requirement to replicate<br>
 or otherwise share data between nodes. A deterministic function is used to locate the node, <em>N'</em>, on which to store<br>
@@ -27,12 +22,7 @@ Note that a change in the set of available cache nodes may produce a different t
 <p>Enable support via the <a href="https://code.google.com/p/spymemcached/">spymemcached library</a>. This is a simple, asynchronous,<br>
 single-threaded memcached client that should be the default choice for the majority of deployments.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-memcached-spy&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-memcached-spy" %}</p>
 <h2>
 <a id="aws-elasticache" class="anchor" href="#aws-elasticache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AWS ElastiCache</h2>
 <p>You may also use <a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/AutoDiscovery.html">AWS ElastiCache</a><br>
@@ -49,12 +39,7 @@ code the individual cache node endpoints in the configuration</p>
 <p>All of the cache nodes in the cluster maintain a list of metadata about all of the other nodes.<br>
 This metadata is updated whenever nodes are added or removed from the cluster.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-memcached-aws-elasticache&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-memcached-aws-elasticache" %}</p>
 <h2>
 <a id="configuration-considerations" class="anchor" href="#configuration-considerations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Considerations</h2>
 <p>There are three core configuration concerns with memcached:</p>

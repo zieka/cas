@@ -9,12 +9,7 @@ category: Multifactor Authentication</h2>
 end-to-end risk-based multiFactor authentication.</p>
 <p>Start by visiting the <a href="https://www.acceptto.com/acceptto-mfa-rest-api/">Acceptto documentation</a>.</p>
 <p>Support is enabled by including the following module in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-acceptto-mfa&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-acceptto-mfa" %}</p>
 <p>The integration adds support for both multifactor authentication and QR passwordless authentication.</p>
 <h2>
 <a id="integration-with-dbfp" class="anchor" href="#integration-with-dbfp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integration with DBFP</h2>

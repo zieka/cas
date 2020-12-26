@@ -98,73 +98,38 @@ SERVER IP ADDRESS: 192.168.200.22
 <h2>
 <a id="database-audits" class="anchor" href="#database-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database Audits</h2>
 <p>If you intend to use a database for auditing functionality, enable the following module in your configuration:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-audit-jdbc&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-audit-jdbc" %}</p>
 <p>To learn how to configure database drivers, please <a href="JDBC-Drivers.html">review this guide</a>.<br>
 To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#database-audits">review this guide</a>.</p>
 <h2>
 <a id="mongodb-audits" class="anchor" href="#mongodb-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb Audits</h2>
 <p>If you intend to use a MongoDb database for auditing functionality, enable the following module in your configuration:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-audit-mongo&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-audit-mongo" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#mongodb-audits">review this guide</a>.</p>
 <h2>
 <a id="redis-audits" class="anchor" href="#redis-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis Audits</h2>
 <p>If you intend to use a Redis database for auditing functionality, enable the following module in your configuration:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-audit-redis&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-audit-redis" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#redis-audits">review this guide</a>.</p>
 <h2>
 <a id="couchdb-audits" class="anchor" href="#couchdb-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb Audits</h2>
 <p>If you intend to use a CouchDb database for auditing functionality, enable the following module in your configuration:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-audit-couchdb&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-audit-couchdb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchdb-audits">review this guide</a>.</p>
 <h2>
 <a id="couchbase-audits" class="anchor" href="#couchbase-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Couchbase Audits</h2>
 <p>If you intend to use a Couchbase database for auditing functionality, enable the following module in your configuration:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-audit-couchbase&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-audit-couchbase" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchbase-audits">review this guide</a>.</p>
 <h2>
 <a id="dynamodb-audits" class="anchor" href="#dynamodb-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb Audits</h2>
 <p>If you intend to use a DynamoDb database for auditing functionality, enable the following module in your configuration:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-audit-dynamodb&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-audit-dynamodb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#dynamodb-audits">review this guide</a>.</p>
 <h2>
 <a id="rest-audits" class="anchor" href="#rest-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST Audits</h2>
 <p>Audit events may also be <code>POST</code>ed to an endpoint of your choosing. To activate this feature, enable the following module in your configuration:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-audit-rest&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-audit-rest" %}</p>
 <p>The body of the HTTP request is a JSON representation of the audit record.<br>
 To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#rest-audits">review this guide</a>.</p>
 <h2>

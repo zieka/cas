@@ -104,12 +104,7 @@ via the <a href="Configuring-Monitoring-Administration.html">Spring Boot Adminis
 <h2>
 <a id="cas-endpoints" class="anchor" href="#cas-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Endpoints</h2>
 <p>The default set of CAS actuator endpoints can be turned in by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-reports&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-reports" %}</p>
 <p>Note that certain CAS features present actuator endpoints of their own, and such endpoints only become active<br>
 once the feature is turned on and made available to CAS at runtime. For more information, refer to the specific<br>
 documentation page for the feature in question to learn more about administrative endpoints, etc.</p>
@@ -159,12 +154,7 @@ levels:</p>
 <h2>
 <a id="distributed-tracing" class="anchor" href="#distributed-tracing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Distributed Tracing</h2>
 <p>Support for distributed tracing of requests is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-sleuth&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-sleuth" %}</p>
 <p><img src="https://cloud.githubusercontent.com/assets/1205228/24955152/8798ad9c-1f97-11e7-8b9d-fccc3c306c42.png" alt="image"></p>
 <p>For most users <a href="https://cloud.spring.io/spring-cloud-sleuth/">Sleuth</a> should be invisible, and all<br>
 interactions with external systems should be instrumented automatically.</p>

@@ -8,12 +8,7 @@ category: Integration</h2>
 <p>Google Analytics can be used to deliver useful statistics. create custom dimensions and metrics to gain<br>
 insight into CAS and user traffic.</p>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-google-analytics&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-google-analytics" %}</p>
 <p>Furthermore, CAS presents the ability to drop in a special cookie upon successful authentication events to be later process<br>
 and consumed by Google Analytics. The value of this cookie is determined as a principal/authentication attribute.</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#google-analytics">review this guide</a>.</p>

@@ -44,12 +44,7 @@ category: Webflow Management</h2>
 <a id="java" class="anchor" href="#java" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java</h3>
 <p>This is the most traditional yet most powerful method of dynamically altering the webflow internals. You will be asked to write components that auto-configure the webflow and inject themselves into the running CAS application context only to be executed at runtime.</p>
 <p>At a minimum, your overlay will need to include the following modules:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-core-webflow&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-webflow" %}</p>
 <h4>
 <a id="design" class="anchor" href="#design" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design</h4>
 <p>Design your dynamic webflow configuration agent that alters the webflow using the following form:</p>

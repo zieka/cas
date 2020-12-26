@@ -14,12 +14,7 @@ is then passed along to the web socket channel for verification and successful l
 for a completely <em>passwordless</em> scenario such that the mobile device can continue to re-use the JWT<br>
 for authentication attempts, allowing the end user to <em>scan and proceed</em>.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-qrlogin&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-qrlogin" %}</p>
 <h2>
 <a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
 <p>The following endpoints are provided by CAS:</p>

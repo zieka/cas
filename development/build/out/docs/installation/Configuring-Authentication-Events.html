@@ -11,12 +11,7 @@ Additionally, while audit data may be used for reporting and monitoring, events 
 in a historical fashion to assess authentication requests, evaluate risk associated with them and take further action upon them. Events are primarily<br>
 designed to be consumed by the developer and subsequent CAS modules, while audit data is targeted at deployers for end-user functionality and reporting.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-core-events&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-events" %}</p>
 <h2>
 <a id="recorded-data" class="anchor" href="#recorded-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recorded Data</h2>
 <p>The following metadata is captured and recorded by the event machinery when enabled:</p>
@@ -98,59 +93,29 @@ record the event. To learn more, please <a href="GeoTracking-Authentication-Requ
 <h3>
 <a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
 <p>Stores authentication events into a MongoDb NoSQL database.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-events-mongo&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-events-mongo" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#mongodb-events">review this guide</a>.</p>
 <h3>
 <a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h3>
 <p>Stores authentication events into a DynamoDb database.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-events-dynamodb&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-events-dynamodb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#dynamodb-events">review this guide</a>.</p>
 <h3>
 <a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
 <p>Stores authentication events inside a CouchDb instance.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-events-couchdb&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-events-couchdb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchdb-events">review this guide</a>.</p>
 <h3>
 <a id="jpa" class="anchor" href="#jpa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JPA</h3>
 <p>Stores authentication events into a RDBMS.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-events-jpa&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-events-jpa" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#database-events">review this guide</a>.</p>
 <h3>
 <a id="influxdb" class="anchor" href="#influxdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>InfluxDb</h3>
 <p>Stores authentication events inside an InfluxDb instance.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-events-influxdb&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-events-influxdb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#influxdb-events">review this guide</a>.</p>
 <h3>
 <a id="memory" class="anchor" href="#memory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Memory</h3>
 <p>Stores authentication events into memory for a very limited time period.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-events-memory&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-events-memory" %}</p>

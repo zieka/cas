@@ -11,12 +11,7 @@ is generated automatically at build and release time by processing all items ann
 is then made available for additional querying and filtering to look up definitions of a given property or locate relevant settings<br>
 that apply to a particular group of functionality in CAS, such as LDAP authentication.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-core-configuration-metadata-repository&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-configuration-metadata-repository" %}</p>
 <p>Configuration metadata may also be accessed and queried using the CAS actuator endpoints. <a href="../monitoring/Monitoring-Statistics.html">See this guide</a> to learn more.</p>
 <h2>
 <a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>

@@ -20,12 +20,7 @@ category: Monitoring &amp; Statistics</h2>
 <li>Spring Integration metrics</li>
 </ul>
 <p>Support is enabled by including the following module in the Overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-metrics&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-metrics" %}</p>
 <p>Auto-configuration enables the instrumentation of all available DataSource objects<br>
 with a metric named <code>jdbc</code>. Data source instrumentation results in gauges representing the<br>
 currently active, maximum allowed, and minimum allowed connections in the pool.<br>

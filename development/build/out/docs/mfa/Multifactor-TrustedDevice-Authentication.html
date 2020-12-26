@@ -24,12 +24,7 @@ This can be optionally disabled and applied only to a selected set of providers.
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>Support is provided via the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-trusted-mfa&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-trusted-mfa" %}</p>
 <h2>
 <a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
 <p>The following endpoints are provided by CAS:</p>
@@ -103,69 +98,39 @@ This is also most useful if you have a very small deployment with a small user b
 <a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h3>
 <p>User decisions may also be kept inside a regular RDBMS of your own choosing.</p>
 <p>Support is provided via the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-trusted-mfa-jdbc&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-trusted-mfa-jdbc" %}</p>
 <p>To learn how to configure database drivers, <a href="../installation/JDBC-Drivers.html">please see this guide</a>.<br>
 To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jdbc-storage">review this guide</a>.</p>
 <h3>
 <a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
 <p>User decisions may also be kept inside a CouchDb instance.</p>
 <p>Support is provided via the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-trusted-mfa-couchdb&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-trusted-mfa-couchdb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchdb-storage">review this guide</a>.</p>
 <h3>
 <a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
 <p>User decisions may also be kept inside a MongoDb instance.</p>
 <p>Support is provided via the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-trusted-mfa-mongo&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-trusted-mfa-mongo" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#mongodb-storage">review this guide</a>.</p>
 <h3>
 <a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h3>
 <p>User decisions may also be kept inside a DynamoDb instance.</p>
 <p>Support is provided via the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-trusted-mfa-dynamodb&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-trusted-mfa-dynamodb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#dynamodb-storage">review this guide</a>.</p>
 <h3>
 <a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
 <p>User decisions may also be kept inside a Redis instance.</p>
 <p>Support is provided via the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-trusted-mfa-redis&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-trusted-mfa-redis" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#redis-storage">review this guide</a>.</p>
 <h3>
 <a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
 <p>If you wish to completely delegate the management, verification and persistence of user decisions, you may design a REST API<br>
 which CAS shall contact to verify user decisions and remember those for later.</p>
 <p>Support is provided via the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-trusted-mfa-rest&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-trusted-mfa-rest" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#rest-storage">review this guide</a>.</p>
 <h4>
 <a id="retrieve-trusted-records" class="anchor" href="#retrieve-trusted-records" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Retrieve Trusted Records</h4>

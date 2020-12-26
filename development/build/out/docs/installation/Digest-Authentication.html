@@ -11,12 +11,7 @@ It applies a hash function to the username and password before sending them over
 Technically, digest authentication is an application of MD5 cryptographic<br>
 hashing with usage of nonce values to prevent replay attacks. It uses the HTTP protocol.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-digest-authentication&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-digest-authentication" %}</p>
 <p>For additional information on how digest authentication works,<br>
 please <a href="https://en.wikipedia.org/wiki/Digest_access_authentication">review this guide</a>.</p>
 <h2>

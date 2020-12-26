@@ -10,12 +10,7 @@ authentication into applications using support built in to all leading browsers 
 that web services can now easily offer their users strong authentication with a choice of authenticators<br>
 such as security keys or built-in platform authenticators such as biometric readers.</p>
 <p>Support is enabled by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-webauthn&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn">review this guide</a>.</p>
 <p>You may also need to declare the following repository in<br>
 your CAS overlay to be able to resolve dependencies:</p>
@@ -88,64 +83,34 @@ purposes. Needless to say, this JSON resource acts as a database that must be av
 <h3>
 <a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
 <p>Device registrations may be kept inside a MongoDb instance by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-webauthn-mongo&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn-mongo" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-mongodb">review this guide</a>.</p>
 <h3>
 <a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
 <p>Device registrations may be kept inside LDAP directories by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-webauthn-ldap&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn-ldap" %}</p>
 <p>Device registration records are kept inside a designated configurable multi-valued attribute as JSON blobs. The attribute values are parsed<br>
 to load, save, update or delete accounts. The content of each attribute value can be signed/encrypted if necessary.</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-ldap">review this guide</a>.</p>
 <h3>
 <a id="jpa" class="anchor" href="#jpa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JPA</h3>
 <p>Device registrations may be kept inside a relational database instance by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-webauthn-jpa&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn-jpa" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-jpa">review this guide</a>.</p>
 <h3>
 <a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
 <p>Device registrations may be kept inside a Redis database instance by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-webauthn-redis&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn-redis" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-redis">review this guide</a>.</p>
 <h3>
 <a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h3>
 <p>Device registrations may be kept inside a DynamoDb instance by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-webauthn-dynamodb&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn-dynamodb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido2-webauthn-dynamodb">review this guide</a>.</p>
 <h3>
 <a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
 <p>Device registrations may be managed using an external REST API by including the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-webauthn-rest&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn-rest" %}</p>
 <p>The following parameters are passed:</p>
 <table>
 <thead>

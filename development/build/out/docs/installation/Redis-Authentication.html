@@ -6,12 +6,7 @@ title: CAS - Redis Authentication</h2>
 <a id="redis-authentication" class="anchor" href="#redis-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis Authentication</h1>
 <p>Verify and authenticate credentials using <a href="https://redis.io/">Redis</a>.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-redis-authentication&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-redis-authentication" %}</p>
 <p>User accounts are mapped to a <code>username</code> field as the key. The user account record would contain the following fields:</p>
 <table>
 <thead>

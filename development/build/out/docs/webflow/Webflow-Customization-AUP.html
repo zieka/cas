@@ -11,12 +11,7 @@ and/or acceptance of the policy would be handled via an external storage mechani
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-webflow&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-webflow" %}</p>
 <p>Customize the policy by modifying the <code>src/main/resources/templates/casAcceptableUsagePolicyView.html</code>. See <a href="../ux/User-Interface-Customization.html">this guide</a><br>
 to learn more about user interface customizations. Note that the view here should have full access to the resolved principal and attributes,<br>
 if you wish to dynamically alter the page to present different text, etc.</p>
@@ -168,71 +163,41 @@ def fetch(Object[] args) {
 <a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
 <p>Alternatively, CAS can be configured to use LDAP as the storage mechanism. Upon accepting the policy, the result will be stored back into LDAP and<br>
 remembered via the same attribute. Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-ldap&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-ldap" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ldap-1">review this guide</a>.</p>
 <h3>
 <a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
 <p>CAS can be configured to use a MongoDb instance as the storage mechanism. Upon accepting the policy, the adopter is expected to provide a collection name where the<br>
 decision is kept and the document is assumed to contain a <code>username</code> column as well as one that matches the AUP attribute name defined.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-mongo&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-mongo" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#acceptable-usage-policy">review this guide</a>.</p>
 <h3>
 <a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
 <p>CAS can be configured to use a Redis instance as the storage mechanism. Decisions are mapped to a combination of CAS username and the designated AUP attribute name.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-redis&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-redis" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#acceptable-usage-policy">review this guide</a>.</p>
 <h3>
 <a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
 <p>CAS can be configured to use a CouchDb instance as the storage mechanism. Upon accepting the policy, the adopter is expected to provide a collection name where the<br>
 decision is kept and the document is assumed to contain a <code>username</code> column as well as one that matches the AUP attribute name defined.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-couchdb&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-couchdb" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#acceptable-usage-policy">review this guide</a>.</p>
 <h3>
 <a id="couchbase" class="anchor" href="#couchbase" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Couchbase</h3>
 <p>CAS can be configured to use a Couchbase instance as the storage mechanism. Upon accepting the policy, the<br>
 decision is kept inside a document with a <code>username</code> column and the AUP attribute name with the result of the decision.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-couchbase&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-couchbase" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#acceptable-usage-policy">review this guide</a>.</p>
 <h3>
 <a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h3>
 <p>CAS can be configured to use a database as the storage mechanism. Upon accepting the policy, the adopter is expected to provide a table name where the<br>
 decision is kept and the table is assumed to contain a <code>username</code> column as well as one that matches the AUP attribute name defined.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-jdbc&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-jdbc" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#acceptable-usage-policy">review this guide</a>.</p>
 <h3>
 <a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
@@ -248,12 +213,7 @@ output body is expected to be an instance of <code>AcceptableUsagePolicyTerms</c
 }
 </code></pre>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-aup-rest&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-aup-rest" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#acceptable-usage-policy">review this guide</a>.</p>
 <h3>
 <a id="custom" class="anchor" href="#custom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom</h3>

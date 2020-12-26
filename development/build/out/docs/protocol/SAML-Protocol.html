@@ -25,12 +25,7 @@ as a SAML2 identity provider.</p>
 </ul>
 <p>A SAML 1.1 ticket validation response is obtained by validating a ticket via POST at the <code>/samlValidate URI</code>.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-saml&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml" %}</p>
 <h3>
 <a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h3>
 <p>The following endpoints are provided by CAS:</p>

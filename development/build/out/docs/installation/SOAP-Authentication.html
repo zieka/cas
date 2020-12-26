@@ -40,12 +40,7 @@ determine the <em>account status</em>.</p>
 &lt;/xs:schema&gt;
 </code></pre>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-soap-authentication&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-soap-authentication" %}</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#soap-authentication">review this guide</a>.</p>

@@ -43,12 +43,7 @@ be resolved, a status code of <code>406 - Not Acceptable</code> is returned.</p>
 <h2>
 <a id="identity-provider-discovery-service" class="anchor" href="#identity-provider-discovery-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Discovery Service</h2>
 <!-- raw HTML omitted -->
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-saml-idp-discovery&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-discovery" %}</p>
 <p>Identity provider discovery allows CAS to <a href="https://wiki.shibboleth.net/confluence/display/EDS10/Embedded+Discovery+Service">embed and present a discovery service</a> as part of delegated authentication. Configured SAML2 identity providers in the CAS configuration<br>
 used for delegated authentication are presented as options for discovery.</p>
 <p>CAS is also able to directly consume multiple JSON feeds<br>

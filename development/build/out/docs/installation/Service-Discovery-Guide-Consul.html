@@ -46,12 +46,7 @@ config/application/
 <a id="cas-discovery-service-clients" class="anchor" href="#cas-discovery-service-clients" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Discovery Service Clients</h2>
 <p>Each individual CAS server is given the ability to auto-register itself with the discovery server, provided configuration is made available to instruct the CAS server how to locate and connect to the discover server service.</p>
 <p>Support is added by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-consul-client&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consul-client" %}</p>
 <p>To see the relevant list of CAS properties,<br>
 please <a href="../configuration/Configuration-Properties.html#consul-service-discovery">review this guide</a>.</p>
 <h3>

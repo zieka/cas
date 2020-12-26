@@ -6,12 +6,7 @@ category: Ticketing</h2>
 <h1>
 <a id="ehcache-v3-ticket-registry" class="anchor" href="#ehcache-v3-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ehcache v3 Ticket Registry</h1>
 <p>Ehcache 3.x integration is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-ehcache3-ticket-registry&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-ehcache3-ticket-registry" %}</p>
 <p>This registry stores tickets using the <a href="http://ehcache.org/">Ehcache 3.x</a> caching library<br>
 and <a href="https://www.ehcache.org/documentation/3.3/clustered-cache.html">an optional Terracotta cluster</a>.</p>
 <h2>
@@ -47,12 +42,7 @@ removed in a future CAS release. Unlike the Ehcache 3.x library, it can replicat
 needing an external cache cluster (e.g. Terracotta in Ehcache 3.x).</p>
 <!-- raw HTML omitted -->
 <p>Ehcache integration is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-ehcache-ticket-registry&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-ehcache-ticket-registry" %}</p>
 <p>This registry stores tickets using <a href="http://ehcache.org/">Ehcache</a> version 2.x library.</p>
 <h2>
 <a id="distributed-cache" class="anchor" href="#distributed-cache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Distributed Cache</h2>

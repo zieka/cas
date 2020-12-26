@@ -9,12 +9,7 @@ category: Notifications</h2>
 or password reset links/tokens. SMS providers supported by CAS are listed below. Note that an active/professional subscription may be required for certain<br>
 providers.</p>
 <p>Default support for SMS notifications is automatically enabled/included by the relevant modules using the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-core-notifications&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-notifications" %}</p>
 <p>You need not explicitly include this module in WAR Overlay configurations, except when there is a need to access components and APIs at compile-time.<br>
 See below on how to customize or override the default behavior with specific providers.</p>
 <h2>
@@ -75,50 +70,25 @@ def run(Object[] args) {
 <h2>
 <a id="twilio" class="anchor" href="#twilio" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Twilio</h2>
 <p>To learn more, <a href="https://www.twilio.com/">visit this site</a>.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-sms-twilio&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-sms-twilio" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#twilio">review this guide</a>.</p>
 <h2>
 <a id="textmagic" class="anchor" href="#textmagic" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TextMagic</h2>
 <p>To learn more, <a href="https://www.textmagic.com/">visit this site</a>.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-sms-textmagic&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-sms-textmagic" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#textmagic">review this guide</a>.</p>
 <h2>
 <a id="clickatell" class="anchor" href="#clickatell" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Clickatell</h2>
 <p>To learn more, <a href="http://www.clickatell.com/">visit this site</a>.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-sms-clickatell&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-sms-clickatell" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#clickatell">review this guide</a>.</p>
 <h2>
 <a id="amazon-sns" class="anchor" href="#amazon-sns" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon SNS</h2>
 <p>To learn more, <a href="https://docs.aws.amazon.com/sns">visit this site</a>.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-sms-aws-sns&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-sms-aws-sns" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#amazon-sns">review this guide</a>.</p>
 <h2>
 <a id="nexmo" class="anchor" href="#nexmo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Nexmo</h2>
 <p>To learn more, <a href="https://dashboard.nexmo.com/">visit this site</a>.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-sms-nexmo&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-sms-nexmo" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#nexmo">review this guide</a>.</p>

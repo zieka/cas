@@ -9,12 +9,7 @@ category: Services</h2>
 either <a href="JSON-Service-Management.html">JSON</a> or <a href="YAML-Service-Management.html">YAML</a> files. The contents of the repository is pulled at defined intervals and changes to service definitions are committed and<br>
 pushed to the defined remotes.</p>
 <p>Support is enabled by adding the following module into the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-git-service-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-git-service-registry" %}</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#git-service-registry">review this guide</a>.</p>
 <!-- raw HTML omitted -->
 <p>The service registry is also able to auto detect changes as it will pull changes from defined remotes periodically. It will monitor changes to recognize<br>

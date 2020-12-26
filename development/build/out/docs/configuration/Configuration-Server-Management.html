@@ -65,12 +65,7 @@ talks to the configuration server to locate settings and move on.</p>
 <a id="overlay" class="anchor" href="#overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overlay</h4>
 <p>The configuration server itself, similar to CAS, can be deployed<br>
 via the following module in it own <a href="https://github.com/apereo/cas-configserver-overlay">WAR overlay</a>:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-webapp-config-server&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp-config-server" %}</p>
 <p>In addition to the <a href="Configuration-Management.html#overview">strategies outlined here</a>, the configuration server<br>
 may load CAS settings and properties via the following order and mechanics:</p>
 <ol>
@@ -197,12 +192,7 @@ CAS deployment environment which is really no different than how one would norma
 <a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h5>
 <p>The server is also able to locate properties entirely from a MongoDb instance.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-mongo&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-mongo" %}</p>
 <p>Note that to access and review the collection of CAS properties,<br>
 you will need to use your own native tooling for MongoDB to configure and inject settings.</p>
 <p>MongoDb documents are required to be found in the collection <code>MongoDbProperty</code>, as the following document:</p>
@@ -225,12 +215,7 @@ locate properties and settings. <a href="../installation/Service-Discovery-Guide
 <a id="apache-zookeeper" class="anchor" href="#apache-zookeeper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache ZooKeeper</h5>
 <p>CAS is also able to use <a href="https://zookeeper.apache.org/">Apache ZooKeeper</a> to locate properties and settings.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-zookeeper&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-zookeeper" %}</p>
 <p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#zookeeper">review this guide</a>.</p>
 <p>You will need to map CAS settings to ZooKeeper's nodes that contain values. The parent node for all settings should<br>
 match the configuration root value provided to CAS. Under the root, you could have folders such<br>
@@ -253,46 +238,26 @@ the value <code>cas</code> is provided when creating directories. Always check w
 <a id="amazon-s3" class="anchor" href="#amazon-s3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon S3</h5>
 <p>CAS is also able to use <a href="https://docs.aws.amazon.com/AmazonS3/latest/dev">Amazon S3</a> to locate properties and settings.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-aws-s3&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-aws-s3" %}</p>
 <p>See <a href="Configuration-Properties.html#amazon-s3">this guide</a> for relevant settings.</p>
 <h5>
 <a id="amazon-secrets-manager" class="anchor" href="#amazon-secrets-manager" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon Secrets Manager</h5>
 <p>CAS is also able to use <a href="https://aws.amazon.com/secrets-manager/">Amazon Secret Manager</a> to locate properties and settings.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-aws-secretsmanager&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-aws-secretsmanager" %}</p>
 <p>See <a href="Configuration-Properties.html#amazon-secrets-manager">this guide</a> for relevant settings.</p>
 <h5>
 <a id="amazon-systems-manager-parameter-store-ssm" class="anchor" href="#amazon-systems-manager-parameter-store-ssm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon Systems Manager Parameter Store (SSM)</h5>
 <p>CAS is also able to use <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html">AWS Systems Manager Parameter Store</a><br>
 to locate properties and settings.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-aws-ssm&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-aws-ssm" %}</p>
 <p>See <a href="Configuration-Properties.html#amazon-parameter-store">this guide</a> for relevant settings.</p>
 <h5>
 <a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h5>
 <p>CAS is also able to use <a href="https://aws.amazon.com/dynamodb/">DynamoDb</a> to locate properties and settings.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-dynamodb&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-dynamodb" %}</p>
 <p>The <code>DynamoDbCasProperties</code> table is automatically created by CAS with the following structure:</p>
 <pre lang="json"><code>{
     "id": "primary-key",
@@ -304,12 +269,7 @@ to locate properties and settings.</p>
 <h5>
 <a id="azure-keyvault-secrets" class="anchor" href="#azure-keyvault-secrets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Azure KeyVault Secrets</h5>
 <p>CAS is also able to use Microsoft Azure's KeyVault Secrets to locate properties and settings. Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-azure-keyvault&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-azure-keyvault" %}</p>
 <p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#azure-keyvault-secrets">review this guide</a>.</p>
 <p><strong>IMPORTANT</strong>: The allowed  name pattern in Azure Key Vault is <code>^[0-9a-zA-Z-]+$</code>. For properties that contain<br>
 that contain <code>.</code> in the name (i.e. <code>cas.some.property</code>),  replace <code>.</code> with <code>-</code> when you store the setting in Azure Key Vault (i.e. <code>cas-some-property</code>).<br>
@@ -319,24 +279,14 @@ The module will handle the transformation for you.</p>
 <a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h5>
 <p>CAS is also able to use a relational database to locate properties and settings.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-jdbc&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-jdbc" %}</p>
 <p>By default, settings are expected to be found under a <code>CAS_SETTINGS_TABLE</code> that contains the fields: <code>id</code>, <code>name</code> and <code>value</code>.<br>
 To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#jdbc">review this guide</a>.</p>
 <h5>
 <a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h5>
 <p>CAS is also able to locate properties and settings using a REST API.</p>
 <p>Support is provided via the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-configuration-cloud-rest&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-rest" %}</p>
 <p>The REST endpoint is expected to produce a <code>Map</code> in the payload with keys as the setting names<br>
 and values as the setting value. To see the relevant list of CAS properties for this<br>
 feature, please <a href="Configuration-Properties.html#rest">review this guide</a>.</p>

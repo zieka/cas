@@ -17,12 +17,7 @@ category: Authentication</h2>
 <li>Troubleshoot a bothersome authentication experience with an application on behalf of another user.</li>
 </ol>
 <p>Surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-surrogate-webflow&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-webflow" %}</p>
 <h2>
 <a id="account-storage" class="anchor" href="#account-storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Storage</h2>
 <p>The following account stores may be configured and used to locate surrogates authorized for a particular user.</p>
@@ -41,43 +36,23 @@ category: Authentication</h2>
 <h3>
 <a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
 <p>LDAP support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-surrogate-authentication-ldap&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-ldap" %}</p>
 <p>Surrogate accounts may also be retrieved from an LDAP instance. Such accounts are expected to be found in a configured attribute defined for the primary user in LDAP whose value(s) may be examined against a regular expression pattern of your own choosing to further narrow down the list of authorized surrogate accounts. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#surrogate-authentication">review this guide</a>.</p>
 <h3>
 <a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
 <p>CouchDb support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-surrogate-authentication-couchdb&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-couchdb" %}</p>
 <p>Surrogate accounts may also be retrieved from an CouchDb instance. By default, this takes the form of surrogate/principal key/value pairs. Users authorized as surrogates may be listed multiple times to authorize them to access multiple accounts. Additionally, the CouchDb surrogate support may be configured to use a profile attribute containing a list of principals the user may surrogate for with the <code>profileBased</code> property. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#surrogate-authentication">review this guide</a>.</p>
 <h3>
 <a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h3>
 <p>JDBC support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-surrogate-authentication-jdbc&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-jdbc" %}</p>
 <p>Aside from the usual database settings, this mode requires the specification of two SQL queries; one that determines eligibility and one that is able to retrieve<br>
 the list of accounts that can be impersonated for a given admin user. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jdbc-surrogate-accounts">review this guide</a>.</p>
 <h3>
 <a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
 <p>REST support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-surrogate-authentication-rest&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-rest" %}</p>
 <table>
 <thead>
 <tr>

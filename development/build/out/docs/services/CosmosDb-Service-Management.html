@@ -7,12 +7,7 @@ category: Services</h2>
 <a id="cosmosdb-service-registry" class="anchor" href="#cosmosdb-service-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CosmosDb Service Registry</h1>
 <p>Stores registered service data in an <a href="https://docs.microsoft.com/en-us/azure/cosmos-db/introduction">Azure CosmosDb</a> instance.</p>
 <p>Support is enabled by adding the following module into the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-cosmosdb-service-registry&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-cosmosdb-service-registry" %}</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#cosmosdb-service-registry">review this guide</a>.</p>

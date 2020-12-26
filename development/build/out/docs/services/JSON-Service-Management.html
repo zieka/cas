@@ -8,12 +8,7 @@ category: Services</h2>
 <p>This registry reads services definitions from JSON configuration files at the application context initialization time.<br>
 JSON files are expected to be found inside a configured directory location and this registry will recursively look through the directory structure to find relevant JSON files.</p>
 <p>Support is enabled by adding the following module into the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-json-service-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-json-service-registry" %}</p>
 <p>A sample JSON file follows:</p>
 <pre lang="json"><code>{
   "@class" : "org.apereo.cas.services.RegexRegisteredService",

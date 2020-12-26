@@ -6,12 +6,7 @@ category: Logs &amp; Audits</h2>
 <h1>
 <a id="splunk-logging" class="anchor" href="#splunk-logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Splunk Logging</h1>
 <p>Log data can be automatically routed to <a href="https://splunk.com/">Splunk</a>. Support is enabled by including the following module in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-logging-config-splunk&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-logging-config-splunk" %}</p>
 <p>You may also need to declare the following repository in your CAS overlay to be able to resolve dependencies:</p>
 <pre lang="groovy"><code>repositories {
     maven { 

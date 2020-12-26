@@ -25,10 +25,5 @@ public class MyConfiguration implements ServiceRegistryExecutionPlanConfigurer {
 }
 </code></pre>
 <p>At a minimum, your overlay will need to include the following modules:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-core-services&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-services" %}</p>
 <p><a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> to learn more about how to register configurations into the CAS runtime.</p>

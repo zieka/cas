@@ -10,12 +10,7 @@ from simplified use of the JMS API to a complete infrastructure to receive messa
 Integration with messaging systems is entirely built on<br>
 top of <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-messaging.html">Spring Boot</a>.</p>
 <p>Support is enabled by including the following dependency in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-jms-ticket-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-jms-ticket-registry" %}</p>
 <p>This registry is very much an extension of the <a href="Default-Ticket-Registry.html">default ticket registry</a>.<br>
 The difference is that ticket operations applied to the registry are broadcasted using a messaging queue<br>
 to other listening CAS nodes on the queue. Each node keeps copies of ticket state on its own and only<br>
@@ -45,12 +40,7 @@ embedded (to make explicit that an embedded broker is required and should lead t
 is not available in the classpath), and native to connect to a broker using the netty transport protocol.<br>
 When the latter is configured, CAS configures the registry connecting to a broker running on the local machine with the default settings.</p>
 <p>Support is enabled by including the following dependency in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-    &lt;artifactId&gt;spring-boot-starter-artemis&lt;/artifactId&gt;
-    &lt;version&gt;${springboot.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="spring-boot-starter-artemis" %}</p>
 <p>Artemis configuration is controlled by external configuration properties in <a href="../configuration/Configuration-Properties.html#jms-ticket-registry">CAS settings</a>.</p>
 <h2>
 <a id="jndi" class="anchor" href="#jndi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JNDI</h2>

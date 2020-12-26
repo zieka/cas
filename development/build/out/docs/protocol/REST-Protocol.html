@@ -14,12 +14,7 @@ by exposing a way to REST-fully obtain a Ticket Granting Ticket and then use tha
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>Support is enabled by including the following to the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-rest&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest" %}</p>
 <h2>
 <a id="request-a-ticket-granting-ticket" class="anchor" href="#request-a-ticket-granting-ticket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Request a Ticket Granting Ticket</h2>
 <pre lang="bash"><code>POST /cas/v1/tickets HTTP/1.0
@@ -38,12 +33,7 @@ Location: http://www.whatever.com/cas/v1/tickets/{TGT id}
 <h3>
 <a id="jwt-ticket-granting-tickets" class="anchor" href="#jwt-ticket-granting-tickets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JWT Ticket Granting Tickets</h3>
 <p>Ticket-granting tickets created by the REST protocol may be issued as JWTs instead. Support is enabled by including the following in your overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-rest-tokens&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest-tokens" %}</p>
 <p>To request a ticket-granting ticket as JWT next, ensure the <code>POST</code> request matches the following:</p>
 <pre lang="bash"><code>POST /cas/v1/tickets HTTP/1.0
 
@@ -81,12 +71,7 @@ ST-1-FFDFHDSJKHSDFJKSDHFJKRUEYREWUIFSD2132
 <a id="jwt-service-tickets" class="anchor" href="#jwt-service-tickets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JWT Service Tickets</h3>
 <p>Service tickets created by the REST protocol may be issued as JWTs instead. See <a href="../installation/Configure-ServiceTicket-JWT.html">this guide</a> to learn more.</p>
 <p>Support is enabled by including the following in your overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-rest-tokens&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest-tokens" %}</p>
 <p>Note that JWTs created are typically signed and encrypted by default with pre-generated keys. To control settings or to see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jwt-tickets">review this guide</a>.</p>
 <h2>
 <a id="validate-service-ticket" class="anchor" href="#validate-service-ticket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validate Service Ticket</h2>
@@ -120,12 +105,7 @@ and has not yet expired.</p>
 <h2>
 <a id="add-service" class="anchor" href="#add-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add Service</h2>
 <p>Support is enabled by including the following in your overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-rest-services&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest-services" %}</p>
 <p>Invoke CAS to register applications into its own service registry. The REST call must be authenticated using basic authentication where credentials are authenticated and accepted by the existing CAS authentication strategy, and furthermore the authenticated principal must be authorized with a pre-configured role/attribute name and value that is designated in the CAS configuration via the CAS properties. The body of the request must be the service definition that shall be registered in JSON format and of course, CAS must be configured to accept the particular service type defined in the body. The accepted media type for this request is <code>application/json</code>.</p>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#rest-api">review this guide</a>.</p>
 <pre lang="bash"><code>POST /cas/v1/services HTTP/1.0
@@ -152,12 +132,7 @@ allows only trusted applications to connect directly to the CAS server.</p>
 <p>It is also possible to let the servlet container validate the TLS client key / X.509 certificate<br>
 during TLS handshake, and have CAS server retrieve the certificate from the container.</p>
 <p>Support is enabled by including the following in your overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-rest-x509&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest-x509" %}</p>
 <h3>
 <a id="request-a-ticket-granting-ticket-proxy-tls-client-authentication-using-a-body-parameter" class="anchor" href="#request-a-ticket-granting-ticket-proxy-tls-client-authentication-using-a-body-parameter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Request a Ticket Granting Ticket (Proxy TLS Client Authentication using a body parameter)</h3>
 <pre lang="bash"><code>POST /cas/v1/tickets HTTP/1.0

@@ -9,12 +9,7 @@ category: Multifactor Authentication</h2>
 via Authy's REST API that does all the heavy lifting.</p>
 <p>Start by visiting the <a href="https://www.authy.com/developers/">Authy documentation</a>.</p>
 <p>Support is enabled by including the following module in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-authy&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-authy" %}</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#authy">review this guide</a>.</p>

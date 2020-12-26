@@ -17,12 +17,7 @@ configured in the <code>fortress.properties</code> file. CAS automatically searc
 and constructs an access manager component with the admin user as the default communication user to fortress.</p>
 <p>To enable this feature, ensure Apache Fortress is <a href="http://directory.apache.org/fortress/installation.html" title="apache fortress installation">installed</a>.</p>
 <p>Next include the following module in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-fortress&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-fortress" %}</p>
 <p>At this time, Apache Fortress support is limited to Apache Tomcat as the web container.<br>
 Support for additional containers such as Jetty will be worked out in future releases.</p>
 <h2>

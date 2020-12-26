@@ -7,12 +7,7 @@ category: Configuration</h2>
 <a id="jdbc-drivers" class="anchor" href="#jdbc-drivers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC Drivers</h1>
 <p>While in most cases this is unnecessary and handled by CAS automatically,<br>
 you may need to also include the following module to account for various database drivers:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-   &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-   &lt;artifactId&gt;cas-server-support-jdbc-drivers&lt;/artifactId&gt;
-   &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-jdbc-drivers" %}</p>
 <h2>
 <a id="database-support" class="anchor" href="#database-support" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database Support</h2>
 <p>Automatic support for drivers includes the following databases.<br>

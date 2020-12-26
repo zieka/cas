@@ -364,12 +364,7 @@ def Map&lt;String, List&lt;Object&gt;&gt; run(final Object... args) {
 takes advantage of scripting functionality built into the Java platform via additional libraries and drivers. While Groovy should be<br>
 natively supported by CAS, the following module is required in the overlay to include support for additional languages<br>
 such as Python, etc.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-script-engines&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-script-engines" %}</p>
 <p>The service definition then may be designed as:</p>
 <pre lang="json"><code>{
   "@class" : "org.apereo.cas.services.RegexRegisteredService",

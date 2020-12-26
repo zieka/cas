@@ -16,12 +16,7 @@ so that Hazelcast will use it to make strong data consistency guarantees i.e. th
 live nodes will not occur should any other <em>primary data owner</em> members die. The data will be<br>
 re-partitioned among the remaining live cluster members.</p>
 <p>Support is enabled by the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-hazelcast-ticket-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-hazelcast-ticket-registry" %}</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>This module has a configuration strategy which by default auto-configures a hazelcast instance used by the ticket registry implementation to build and retrieve Hazelcast's maps for its distributed tickets storage. Some aspects of hazelcast configuration in this auto-configuration mode are controlled by CAS properties.</p>
@@ -33,30 +28,15 @@ refer to <a href="http://docs.hazelcast.org/docs/3.9.1/manual/html-single/index.
 <a id="aws-ec2-auto-discovery" class="anchor" href="#aws-ec2-auto-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AWS EC2 Auto Discovery</h2>
 <p>Hazelcast support in CAS may handle EC2 auto-discovery automatically. It is useful when you do not want to provide or you cannot provide the list of possible IP addresses for the members of the cluster. You optionally also have the ability to specify partitioning group that would be zone aware. When using the zone-aware configuration, backups are created in the other AZs. Each zone will be accepted as one partition group. Using the AWS Discovery capability requires that you turn off and disable multicast and TCP/IP config in the CAS settings, which should be done automatically by CAS at runtime.</p>
 <p>Support is enabled by the following module:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-hazelcast-discovery-aws&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-hazelcast-discovery-aws" %}</p>
 <h2>
 <a id="apache-jclouds-auto-discovery" class="anchor" href="#apache-jclouds-auto-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache jclouds Auto Discovery</h2>
 <p>Hazelcast support in CAS may handle auto-discovery automatically via <a href="https://jclouds.apache.org/">Apache jclouds®</a>. It is useful when you do not want to provide or you cannot provide the list of possible IP addresses for the members of the cluster. Apache jclouds® is an open source multi-cloud toolkit for the Java platform that gives you the freedom to create applications that are portable across clouds while giving you full control to use cloud-specific features. To see the full list of supported cloud environments, <a href="https://jclouds.apache.org/reference/providers/#compute">please see this link</a>.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-hazelcast-discovery-jclouds&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-hazelcast-discovery-jclouds" %}</p>
 <h2>
 <a id="microsoft-azure-auto-discovery" class="anchor" href="#microsoft-azure-auto-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Microsoft Azure Auto Discovery</h2>
 <p>Hazelcast support in CAS may handle auto-discovery automatically via Microsoft Azure. The discovery strategy will provide all Hazelcast instances by returning VMs within your Azure resource group that are tagged with a specified value. You will need to setup <a href="https://azure.microsoft.com/en-us/documentation/articles/resource-group-create-service-principal-portal/">Azure Active Directory Service Principal credentials</a> for your Azure Subscription for this plugin to work. With every Hazelcast Virtual Machine you deploy in your resource group, you need to ensure that each VM is tagged with the value of <code>clusterId</code> defined in the CAS Hazelcast configuration. The only requirement is that every VM can access each other either by private or public IP address.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-hazelcast-discovery-azure&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-hazelcast-discovery-azure" %}</p>
 <h2>
 <a id="kubernetes-auto-discovery" class="anchor" href="#kubernetes-auto-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kubernetes Auto Discovery</h2>
 <p>This hazelcast discovery plugin provides the possibility to lookup IP addresses of other members by resolving<br>
@@ -67,22 +47,12 @@ those requests against a <a href="http://kubernetes.io/">Kubernetes</a> Service 
 <li>DNS Lookup against a given headless DNS service name</li>
 </ul>
 <p>See <a href="https://github.com/hazelcast/hazelcast-kubernetes">this link</a> for more info.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-hazelcast-discovery-kubernetes&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-hazelcast-discovery-kubernetes" %}</p>
 <h2>
 <a id="docker-swarm-auto-discovery" class="anchor" href="#docker-swarm-auto-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docker Swarm Auto Discovery</h2>
 <p>This hazelcast discovery plugin provides a Docker Swarm mode based discovery strategy.</p>
 <p>See <a href="https://github.com/bitsofinfo/hazelcast-docker-swarm-discovery-spi/">this link</a> for more info.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-hazelcast-discovery-swarm&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-hazelcast-discovery-swarm" %}</p>
 <h2>
 <a id="multicast-auto-discovery" class="anchor" href="#multicast-auto-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multicast Auto Discovery</h2>
 <p>With the multicast auto-discovery mechanism, Hazelcast allows cluster members to find each other using multicast communication. The cluster members do not need to know the concrete addresses of the other members, as they just multicast to all the other members for listening. Whether multicast is possible or allowed <strong>depends on your environment</strong>.</p>

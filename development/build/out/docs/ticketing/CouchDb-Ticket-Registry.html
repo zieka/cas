@@ -6,12 +6,7 @@ category: Ticketing</h2>
 <h1>
 <a id="couchdb-ticket-registry" class="anchor" href="#couchdb-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDB Ticket Registry</h1>
 <p>CouchDB integration is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-couchdb-ticket-registry&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-couchdb-ticket-registry" %}</p>
 <p><a href="http://couchdb.apache.org">CouchDB</a> is a highly available, open source NoSQL database server based on<br>
 <a href="http://www.erlang.org">Erlang/OTP</a> and its mnesia database. The intention of this<br>
 registry is to leverage the multi-master, multi-datacenter capabilities of CouchDB server to provide high availability to CAS.</p>

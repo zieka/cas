@@ -56,12 +56,7 @@ CAS will begin to automatically watch and monitor the configuration files indica
 application context automatically. You may also attempt to <a href="../monitoring/Monitoring-Statistics.html">refresh settings manually</a><br>
 via the CAS admin endpoints.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-core-events-configuration&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-events-configuration" %}</p>
 <h4>
 <a id="spring-cloud" class="anchor" href="#spring-cloud" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring Cloud</h4>
 <p>Clients of the configuration server (i.e. CAS server web application) do also expose a <code>/refresh</code> endpoint<br>

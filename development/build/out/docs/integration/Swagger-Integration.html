@@ -9,12 +9,7 @@ category: Integration</h2>
 The generated documentation supports all CAS endpoints and REST APIs provided they are made available to the runtime<br>
 application context and are present in the overlay.</p>
 <p>Support is enabled by including the following dependency in the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-swagger&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-swagger" %}</p>
 <h2>
 <a id="endpoints" class="anchor" href="#endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoints</h2>
 <p>The following Swagger endpoints may be used to analyze and test the APIs:</p>

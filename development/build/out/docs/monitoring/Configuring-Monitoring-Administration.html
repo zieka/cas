@@ -15,12 +15,7 @@ category: Monitoring &amp; Statistics</h2>
 <a id="cas-server-as-client" class="anchor" href="#cas-server-as-client" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Server as Client</h2>
 <p>Each individual CAS server is given the ability to auto-register itself with the admin server, provided configuration is made available to instruct the CAS server how to locate and connect to the admin server.</p>
 <p>Support is added by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-bootadmin-client&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-bootadmin-client" %}</p>
 <p>Note that CAS server's actuator endpoints are by default secured. In order to allow secure communication between the CAS server and the Spring Boot Admin server, <a href="https://codecentric.github.io/spring-boot-admin/current/">please see guide</a>.</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>

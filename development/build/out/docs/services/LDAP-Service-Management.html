@@ -8,12 +8,7 @@ category: Services</h2>
 <p>Service registry implementation which stores the services in a LDAP Directory and attempts to <em>map</em> service records to LDAP entries in order to configure<br>
 settings for retrieval, search and persistence of service definitions. By default, entries are assigned the <code>objectclass</code> that is <code>casRegisteredService</code> attribute and are looked up by the <code>uid</code> attribute.</p>
 <p>Support is enabled by adding the following module into the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-ldap-service-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-ldap-service-registry" %}</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>The default mapper has support for the following optional items:</p>

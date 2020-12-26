@@ -9,12 +9,7 @@ category: Ticketing</h2>
 data (tickets) in a database back-end such as MySQL.</p>
 <!-- raw HTML omitted -->
 <p>Support is enabled by adding the following module into the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-jpa-ticket-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-jpa-ticket-registry" %}</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jpa-ticket-registry">review this guide</a>.</p>

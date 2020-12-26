@@ -7,12 +7,7 @@ category: Authentication</h2>
 <a id="mongodb-authentication" class="anchor" href="#mongodb-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb Authentication</h1>
 <p>Verify and authenticate credentials against a <a href="https://www.mongodb.org/">MongoDb</a> instance.<br>
 Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-mongo&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-mongo" %}</p>
 <p>To see the relevant list of CAS properties,<br>
 please <a href="../configuration/Configuration-Properties.html#mongodb-authentication">review this guide</a>.</p>
 <p>Accounts are expected to be found as such in collections:</p>

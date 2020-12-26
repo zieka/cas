@@ -5,14 +5,10 @@ title: CAS - Cassandra Service Registry<br>
 category: Services</h2>
 <h1>
 <a id="cassandra-service-registry" class="anchor" href="#cassandra-service-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cassandra Service Registry</h1>
-<p>Stores registered service data in <a href="http://cassandra.apache.org/">Apache Cassandra</a> instances. Services are expected to be found/stored in a <code>casservices</code> table with a default write consistency of <code>LOCAL_QUORUM</code> and read consistency of <code>ONE</code>.</p>
+<p>Stores registered service data in <a href="http://cassandra.apache.org/">Apache Cassandra</a> instances. Services<br>
+are expected to be found/stored in a <code>casservices</code> table with a default write consistency of <code>LOCAL_QUORUM</code> and read consistency of <code>ONE</code>.</p>
 <p>Support is enabled by adding the following module into the overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-     &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-     &lt;artifactId&gt;cas-server-support-cassandra-service-registry&lt;/artifactId&gt;
-     &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;                                                            
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-cassandra-service-registry" %}</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#cassandra-service-registry">review this guide</a>.</p>

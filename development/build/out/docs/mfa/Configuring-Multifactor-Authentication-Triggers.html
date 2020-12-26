@@ -345,12 +345,7 @@ Groups are collected by CAS and then cross-checked against all available/configu
 The group's comparing factor <strong>MUST</strong> be defined in CAS to activate this behavior<br>
 and it can be based on the group's name, display name, etc where<br>
 a successful match against a provider id shall activate the chosen MFA provider.</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-grouper&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-grouper" %}</p>
 <p>You will also need to ensure <code>grouper.client.properties</code> is available on the classpath<br>
 with the following configured properties:</p>
 <pre lang="properties"><code>grouperClient.webService.url = http://192.168.99.100:32768/grouper-ws/servicesRest
@@ -480,12 +475,7 @@ such as access strategies and authorization rules simply because it's just anoth
 <p>To learn more about integration options and to understand how to delegate authentication to CAS<br>
 from a Shibboleth identity provider, please <a href="../integration/Shibboleth.html">see this guide</a>.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-shibboleth&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-shibboleth" %}</p>
 <p>The <code>entityId</code> parameter may be passed as such:</p>
 <pre lang="bash"><code>https://.../cas/login?service=http://idp.example.org&amp;entityId=the-entity-id-passed
 </code></pre>

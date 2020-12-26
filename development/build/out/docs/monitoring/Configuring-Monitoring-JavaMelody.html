@@ -7,12 +7,7 @@ category: Monitoring &amp; Statistics</h2>
 <a id="javamelody-monitoring" class="anchor" href="#javamelody-monitoring" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JavaMelody Monitoring</h1>
 <p>Use <a href="https://github.com/javamelody/javamelody">JavaMelody</a> is to monitor CAS in QA and production environments.</p>
 <p>Support is added by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-javamelody&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-javamelody" %}</p>
 <p>JavaMelody monitoring is by default exposed at <code>${context-path}/monitoring</code> where <code>${context-path}</code> is typically set to <code>/cas</code>.</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>

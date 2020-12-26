@@ -11,12 +11,7 @@ category: Authentication</h2>
 capacity within a time window may either be blocked or <em>throttled</em> to slow down. This is done to protect the system from overloading, allowing you to introduce<br>
 a scenario to allow CAS 120 authentication requests per minute with a refill rate of 10 requests per second that would continually increase in the capacity bucket.</p>
 <p>Enable the following module in your configuration overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-throttle-bucket4j&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-throttle-bucket4j" %}</p>
 <h2>
 <a id="failure-throttling" class="anchor" href="#failure-throttling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Failure Throttling</h2>
 <p>CAS provides a facility for limiting failed login attempts to support password guessing and related abuse scenarios.<br>
@@ -37,12 +32,7 @@ rate in failures per second. The following properties are provided to define the
 reasonable basis for throttling policy. Regardless of policy care should be taken to weigh security against access;<br>
 overly restrictive policies may prevent legitimate authentication attempts.</p>
 <p>Enable the following module in your configuration overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-throttle&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-throttle" %}</p>
 <h3>
 <a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h3>
 <p>The following endpoints are provided by CAS:</p>
@@ -73,58 +63,33 @@ a particular username from the same IP address.</p>
 <p>Queries a database data source used by the CAS audit facility to prevent successive failed login attempts for a particular username from the same IP address.<br>
 This component requires and depends on the <a href="Audits.html">CAS auditing functionality</a> via databases.</p>
 <p>Enable the following module in your configuration overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-throttle-jdbc&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-throttle-jdbc" %}</p>
 <p>For additional instructions on how to configure auditing, please <a href="Audits.html">review the following guide</a>.</p>
 <h3>
 <a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
 <p>Queries a MongoDb data source used by the CAS audit facility to prevent successive failed login attempts for a particular username from the same IP address. This component requires and depends on the <a href="Audits.html">CAS auditing functionality</a> via MongoDb.</p>
 <p>Enable the following module in your configuration overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-throttle-mongo&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-throttle-mongo" %}</p>
 <h3>
 <a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
 <p>Queries a Redis data source used by the CAS audit facility to prevent successive failed login attempts<br>
 for a particular username from the same IP address. This component requires and<br>
 depends on the <a href="Audits.html">CAS auditing functionality</a> via Redis.</p>
 <p>Enable the following module in your configuration overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-throttle-redis&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-throttle-redis" %}</p>
 <h3>
 <a id="hazelcast" class="anchor" href="#hazelcast" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hazelcast</h3>
 <p>This feature uses a distributed Hazelcast map to record throttled authentication attempts.<br>
 This component requires and depends on the <a href="Audits.html">CAS auditing functionality</a></p>
 <p>Enable the following module in your configuration overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-throttle-hazelcast&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-throttle-hazelcast" %}</p>
 <h3>
 <a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
 <p>Queries a CouchDb data source used by the CAS audit facility to prevent successive failed login attempts<br>
 for a particular username from the same IP address. This component requires and<br>
 depends on the <a href="Audits.html">CAS auditing functionality</a> via CouchDb.</p>
 <p>Enable the following module in your configuration overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-throttle-couchdb&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-throttle-couchdb" %}</p>
 <p>For additional instructions on how to configure auditing, please <a href="Audits.html">review the following guide</a>.</p>
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>

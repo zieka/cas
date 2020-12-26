@@ -13,12 +13,7 @@ is built on top of <a href="http://cxf.apache.org/fediz.html">Apache Fediz</a> w
 <p>A key benefit of the STS is the reduced complexity for applications. A web service consumer does not have to know how to create the various types of security<br>
 tokens its service providers require. Instead, it sends a request to the STS containing the requirements of the client and the service provider and attaches the returned security token to the outgoing SOAP message to the service provider.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-ws-sts&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-ws-sts" %}</p>
 <!-- raw HTML omitted -->
 <h3>
 <a id="endpoints" class="anchor" href="#endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoints</h3>
@@ -52,12 +47,7 @@ and conform as closely as possible to the WS-Trust protocols for token acquisiti
 The IdP is in charge of transforming the sign-in request of the browser to a SOAP request for the STS and the response of the<br>
 STS to the sign-in response for the browser. Further the browser user must authenticate with the IdP.</p>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-ws-idp&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-ws-idp" %}</p>
 <h3>
 <a id="endpoints-1" class="anchor" href="#endpoints-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoints</h3>
 <table>

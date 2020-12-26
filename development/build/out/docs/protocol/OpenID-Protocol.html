@@ -20,12 +20,7 @@ This is not recommended and you should think of a more elaborated way of providi
 <h2>
 <a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-openid-webflow&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-openid-webflow" %}</p>
 <p>To see the relevant list of CAS properties for this feature, please <a href="../configuration/Configuration-Properties.html#openid-authentication">review this guide</a>.</p>
 <h2>
 <a id="register-clients" class="anchor" href="#register-clients" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register Clients</h2>

@@ -6,12 +6,7 @@ category: Ticketing</h2>
 <h1>
 <a id="cassandra-ticket-registry" class="anchor" href="#cassandra-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cassandra Ticket Registry</h1>
 <p>Cassandra integration is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-    &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-    &lt;artifactId&gt;cas-server-support-cassandra-ticket-registry&lt;/artifactId&gt;
-    &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-cassandra-ticket-registry" %}</p>
 <p>This registry stores tickets in <a href="http://cassandra.apache.org/">Apache Cassandra</a> instances. Tickets are expected to be found/stored in a <code>castickets</code> table<br>
 with a default write consistency of <code>LOCAL_QUORUM</code> and read consistency of <code>ONE</code>.</p>
 <h2>
