@@ -11,12 +11,7 @@ to ADFS, making CAS Server a WS-Federation client. Claims released from ADFS are
 available as attributes to CAS Server, and by extension CAS Clients.</p>
 <!-- raw HTML omitted -->
 <p>Support is enabled by including the following dependency in the WAR overlay:</p>
-<pre lang="xml"><code>&lt;dependency&gt;
-  &lt;groupId&gt;org.apereo.cas&lt;/groupId&gt;
-  &lt;artifactId&gt;cas-server-support-wsfederation-webflow&lt;/artifactId&gt;
-  &lt;version&gt;${cas.version}&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-wsfederation-webflow" %}</p>
 <p>You may also need to declare the following repository in your<br>
 CAS Overlay to be able to resolve dependencies:</p>
 <pre lang="groovy"><code>repositories {

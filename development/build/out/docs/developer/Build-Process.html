@@ -4,7 +4,7 @@
 title: CAS - Build Process<br>
 category: Developer</h2>
 <h1>
-<a id="build-process" class="anchor" href="#build-process" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build Process</h1>
+<a id="cas-build-process" class="anchor" href="#cas-build-process" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Build Process</h1>
 <p>This page documents the steps that a CAS developer/contributor should take for building a CAS server locally.</p>
 <!-- raw HTML omitted -->
 <h2>
@@ -231,3 +231,18 @@ alias bci='clear; cas; \
     -DskipNestedConfigMetadataGen=true \
     -DskipBootifulArtifact=true'
 </code></pre>
+<h1>
+<a id="cas-initializr-build-process" class="anchor" href="#cas-initializr-build-process" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Initializr Build Process</h1>
+<p>The code for the CAS Initializr is found in the CAS repository on the <code>heroku-casinit</code> branch.<br>
+Clone CAS and checkout the <code>heroku-casinit</code> branch if you want to customize it or improve it.</p>
+<pre lang="bash"><code>git clone --single-branch --branch heroku-casinit https://github.com/apereo/cas.git casinit
+cd casinit
+gradlew bootRun
+</code></pre>
+<p>Then in another terminal, test the local running instance using:</p>
+<pre lang="bash"><code>mkdir cas-server
+cd cas-server
+curl -k http://localhost:8080/starter.tgz -d dependencies="ldap,aup,x509" | tar -xzvf 
+gradlew build
+</code></pre>
+<p>Make any desired changes to the CAS Initializr project and submit the changes as a PR if they are generally useful.</p>

@@ -133,8 +133,8 @@ be included under a <code>src/main/java</code> directory in the overlay project 
 <a id="dependency-management" class="anchor" href="#dependency-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependency Management</h2>
 <p>Each release of CAS provides a curated list of dependencies it supports. In practice, you do not need to provide a version for any of<br>
 these dependencies in your build configuration as the CAS distribution is managing that for you. When you upgrade CAS itself, these dependencies will be upgraded as well in a consistent way.</p>
-<p>The curated list of dependencies contains a refined list of third party libraries. The list is available as a standard Bills of Materials (BOM). Not everyone likes inheriting from the BOM.<br>
+<p>The curated list of dependencies contains a refined list of third party libraries. The list is<br>
+available as a standard Bills of Materials (BOM). Not everyone likes inheriting from the BOM.<br>
 You may have your own corporate standard parent that you need to use, or you may just prefer to explicitly declare all your configuration.</p>
-<p>To take advantage of the CAS BOM at <code>org.apereo.cas:cas-server-support-bom</code>, via Gradle, please <a href="https://plugins.gradle.org/plugin/io.spring.dependency-management">use this guide</a><br>
-and configure the Gradle build accordingly.</p>
+<p>To take advantage of the CAS BOM, please see <a href="BOM-Dependency-Management.html">this guide</a>.</p>
 <p><!-- raw HTML omitted -->(1) <a href="http://maven.apache.org/plugins/maven-war-plugin/overlays.html">WAR Overlays</a><!-- raw HTML omitted --></p>
