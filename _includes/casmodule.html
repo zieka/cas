@@ -2,12 +2,16 @@
 {% assign max = 999999 %}
 {% assign diff = max | minus: min %}
 {% assign randomNumber = page.content | size | date: "%s" | modulo: diff | plus: min %}
-
+ {{include.ignoreBOM}}
 <ul class='nav nav-pills'>
   <li class='nav-item'><a class='nav-link' data-toggle='tab' href='#maven{{ randomNumber }}'>Maven</a></li>
   <li class='nav-item'><a class='nav-link active' data-toggle='tab' href='#gradle{{ randomNumber }}'>Gradle</a></li>
 
-  <li class='nav-item'><a class='nav-link' data-toggle='tab' href='#bom{{ randomNumber }}'>BOM</a></li>
+  {% if include.ignoreBOM == "true" %}
+
+  {% else %}
+    <li class='nav-item'><a class='nav-link' data-toggle='tab' href='#bom{{ randomNumber }}'>BOM</a></li>
+  {% endif %}
 
   <li role='presentation' class='nav-item dropdown'>
     <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button'>Resources<span

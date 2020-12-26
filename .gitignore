@@ -3,6 +3,7 @@
 .project
 .settings
 target
+.jekyll-metadata
 test-output/
 bin/
 *.ipr
