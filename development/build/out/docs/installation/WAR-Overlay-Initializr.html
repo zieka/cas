@@ -95,3 +95,18 @@ service uses that information to initialize the select options and the tree of a
 <p>Or using HTTPie:</p>
 <pre lang="bash"><code>http https://casinit.herokuapp.com Accept:application/json
 </code></pre>
+<h2>
+<a id="contributing-to-the-cas-initializr" class="anchor" href="#contributing-to-the-cas-initializr" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributing to the CAS Initializr</h2>
+<p>The code for the CAS Initializr is found in the <a href="https://github.com/apereo/cas">https://github.com/apereo/cas</a> repository on the <code>heroku-casinit</code> branch.<br>
+Clone CAS and checkout the <code>heroku-casinit</code> branch if you want to customize it or improve it.</p>
+<pre><code>git clone --single-branch --branch heroku-casinit https://github.com/apereo/cas.git casinit
+cd casinit
+gradlew bootRun
+</code></pre>
+<p>Then in another terminal, test using the local initializr:</p>
+<pre><code>mkdir cas-server
+cd cas-server
+curl -k http://localhost:8080/starter.tgz -d dependencies="ldap,aup,x509" | tar -xzvf 
+gradlew build
+</code></pre>
+<p>Make any desired changes to the CAS Initializr project and submit the changes as a PR if they are generally useful.</p>
