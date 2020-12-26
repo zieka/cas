@@ -1,0 +1,445 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-service-access-strategycategory-services" class="anchor" href="#layout-defaulttitle-cas---configuring-service-access-strategycategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Service Access Strategy<br>
+category: Services</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="configure-service-access-strategy" class="anchor" href="#configure-service-access-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure Service Access Strategy</h1>
+<p>The access strategy of a registered service provides fine-grained control over the service authorization rules.<br>
+It describes whether the service is allowed to use the CAS server, allowed to participate in<br>
+single sign-on authentication, etc. Additionally, it may be configured to require a certain set of principal<br>
+attributes that must exist before access can be granted to the service. This behavior allows one to configure<br>
+various attributes in terms of access roles for the application and define rules that would be enacted and<br>
+validated when an authentication request from the application arrives.</p>
+<h2>
+<a id="default-strategy" class="anchor" href="#default-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default Strategy</h2>
+<p>The default strategy allows one to configure a service with the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enabled</code></td>
+<td>Flag to toggle whether the entry is active; a disabled entry produces behavior equivalent to a non-existent entry.</td>
+</tr>
+<tr>
+<td><code>ssoEnabled</code></td>
+<td>Set to <code>false</code> to force users to authenticate to the service regardless of protocol flags (e.g. <code>renew=true</code>).</td>
+</tr>
+<tr>
+<td><code>requiredAttributes</code></td>
+<td>A <code>Map</code> of required principal attribute names along with the set of values for each attribute. These attributes <strong>MUST</strong> be available to the authenticated Principal and resolved before CAS can proceed, providing an option for role-based access control from the CAS perspective. If no required attributes are presented, the check will be entirely ignored.</td>
+</tr>
+<tr>
+<td><code>requireAllAttributes</code></td>
+<td>Flag to toggle to control the behavior of required attributes. Default is <code>true</code>, which means all required attribute names must be present. Otherwise, at least one matching attribute name may suffice. Note that this flag only controls which and how many of the attribute <strong>names</strong> must be present. If attribute names satisfy the CAS configuration, at the next step at least one matching attribute value is required for the access strategy to proceed successfully.</td>
+</tr>
+<tr>
+<td><code>unauthorizedRedirectUrl</code></td>
+<td>Optional url to redirect the flow in case service access is not allowed.</td>
+</tr>
+<tr>
+<td><code>caseInsensitive</code></td>
+<td>Indicates whether matching on required attribute values should be done in a case-insensitive manner. Default is <code>false</code>
+</td>
+</tr>
+<tr>
+<td><code>rejectedAttributes</code></td>
+<td>A <code>Map</code> of rejected principal attribute names along with the set of values for each attribute. These attributes <strong>MUST NOT</strong> be available to the authenticated Principal so that access may be granted. If none is defined, the check is entirely ignored.</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h3>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h3>
+<p>The following examples demonstrate access policy enforcement features of CAS.</p>
+<h4>
+<a id="disable-service-access" class="anchor" href="#disable-service-access" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Disable Service Access</h4>
+<p>Service is not allowed to use CAS:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : false,
+    "ssoEnabled" : true
+  }
+}
+</code></pre>
+<h4>
+<a id="enforce-attributes" class="anchor" href="#enforce-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Enforce Attributes</h4>
+<p>To access the service, the principal must have a <code>cn</code> attribute with the value of <code>admin</code> <strong>AND</strong> a<br>
+<code>givenName</code> attribute with the value of <code>Administrator</code>:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true,
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "cn" : [ "java.util.HashSet", [ "admin" ] ],
+      "givenName" : [ "java.util.HashSet", [ "Administrator" ] ]
+    }
+  }
+}
+</code></pre>
+<p>To access the service, the principal must have a <code>cn</code> attribute with the value of <code>admin</code> <strong>OR</strong> a<br>
+<code>givenName</code> attribute with the value of <code>Administrator</code>:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true,
+    "requireAllAttributes": false,
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "cn" : [ "java.util.HashSet", [ "admin" ] ],
+      "givenName" : [ "java.util.HashSet", [ "Administrator" ] ]
+    }
+  }
+}
+</code></pre>
+<p>To access the service, the principal must have a <code>cn</code> attribute whose value is either of <code>admin</code>, <code>Admin</code> or <code>TheAdmin</code>.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true,
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "cn" : [ "java.util.HashSet", [ "admin", "Admin", "TheAdmin" ] ]
+    }
+  }
+}
+</code></pre>
+<h4>
+<a id="static-unauthorized-redirect-url" class="anchor" href="#static-unauthorized-redirect-url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Static Unauthorized Redirect URL</h4>
+<p>Service access is denied if the principal does <em>not</em> have a <code>cn</code> attribute containing the value <code>super-user</code>. If so,<br>
+the user will be redirected to <code>https://www.github.com</code> instead.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id": 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "unauthorizedRedirectUrl" : "https://www.github.com",
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "cn" : [ "java.util.HashSet", [ "super-user" ] ]
+    }
+  }
+}
+</code></pre>
+<h4>
+<a id="dynamic-unauthorized-redirect-url" class="anchor" href="#dynamic-unauthorized-redirect-url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dynamic Unauthorized Redirect URL</h4>
+<p>Service access is denied if the principal does <em>not</em> have a <code>cn</code> attribute containing the value <code>super-user</code>. If so, the redirect URL<br>
+will be dynamically determined based on outcome of the specified Groovy script.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id": 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "unauthorizedRedirectUrl" : "file:/etc/cas/config/unauthz-redirect-url.groovy",
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "cn" : [ "java.util.HashSet", [ "super-user" ] ]
+    }
+  }
+}
+</code></pre>
+<p>The script itself will take the following form:</p>
+<pre lang="groovy"><code>import org.apereo.cas.*
+import org.apereo.cas.web.support.*
+import java.util.*
+import java.net.*
+import org.apereo.cas.authentication.*
+
+def URI run(final Object... args) {
+    def registeredService = args[0]
+    def requestContext = args[1]
+    def applicationContext = args[2]
+    def logger = args[3]
+    
+    logger.info("Redirecting to somewhere, processing [{}]", registeredService.name)
+    /**
+     * Stuff Happens...
+     */
+    return new URI("https://www.github.com");
+}
+</code></pre>
+<p>The following parameters are provided to the script:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>registeredService</code></td>
+<td>The object representing the matching registered service in the registry.</td>
+</tr>
+<tr>
+<td><code>requestContext</code></td>
+<td>The object representing the Spring Webflow <code>RequestContext</code>.</td>
+</tr>
+<tr>
+<td><code>applicationContext</code></td>
+<td>The object representing the Spring <code>ApplicationContext</code>.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="enforce-combined-attribute-conditions" class="anchor" href="#enforce-combined-attribute-conditions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Enforce Combined Attribute Conditions</h4>
+<p>To access the service, the principal must have a <code>cn</code> attribute whose value is either of <code>admin</code>, <code>Admin</code> or <code>TheAdmin</code>,<br>
+<strong>OR</strong> the principal must have a <code>member</code> attribute whose value is either of <code>admins</code>, <code>adminGroup</code> or <code>staff</code>.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "requireAllAttributes" : false,
+    "ssoEnabled" : true,
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "cn" : [ "java.util.HashSet", [ "admin", "Admin", "TheAdmin" ] ],
+      "member" : [ "java.util.HashSet", [ "admins", "adminGroup", "staff" ] ]
+    }
+  }
+}
+</code></pre>
+<h4>
+<a id="enforce-must-not-have-attributes" class="anchor" href="#enforce-must-not-have-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Enforce Must-Not-Have Attributes</h4>
+<p>To access the service, the principal must have a <code>cn</code> attribute whose value is either of <code>admin</code>, <code>Admin</code> or <code>TheAdmin</code>,<br>
+OR the principal must have a <code>member</code> attribute whose value is either of <code>admins</code>, <code>adminGroup</code> or <code>staff</code>. The principal<br>
+also must not have an attribute "role" whose value matches the pattern <code>deny.+</code>.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "requireAllAttributes" : false,
+    "ssoEnabled" : true,
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "cn" : [ "java.util.HashSet", [ "admin", "Admin", "TheAdmin" ] ],
+      "member" : [ "java.util.HashSet", [ "admins", "adminGroup", "staff" ] ]
+    },
+    "rejectedAttributes" : {
+      "@class" : "java.util.HashMap",
+      "role" : [ "java.util.HashSet", [ "deny.+" ] ]
+    }
+  }
+}
+</code></pre>
+<h2>
+<a id="time-based" class="anchor" href="#time-based" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Time-Based</h2>
+<p>The time-based access strategy is an extension of the default which additionally,<br>
+allows one to configure a service with the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>startingDateTime</code></td>
+<td>Indicates the starting date/time whence service access may be granted.  (i.e. <code>2015-10-11T09:55:16.552-07:00</code>)</td>
+</tr>
+<tr>
+<td><code>endingDateTime</code></td>
+<td>Indicates the ending date/time whence service access may be granted.  (i.e. <code>2015-10-20T09:55:16.552-07:00</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Service access is only allowed within <code>startingDateTime</code> and <code>endingDateTime</code>:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "name" : "test",
+  "id" : 62,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.TimeBasedRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true,
+    "unauthorizedRedirectUrl" : "https://www.github.com",
+    "startingDateTime" : "2015-11-01T13:19:54.132-07:00",
+    "endingDateTime" : "2015-11-10T13:19:54.248-07:00"
+  }
+}
+</code></pre>
+<h2>
+<a id="remote-endpoint" class="anchor" href="#remote-endpoint" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remote Endpoint</h2>
+<p>This strategy is an extension of the default which additionally,<br>
+allows one to configure a service with the following properties:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>endpointUrl</code></td>
+<td>Endpoint that receives the authorization request from CAS for the authenticated principal.</td>
+</tr>
+<tr>
+<td><code>acceptableResponseCodes</code></td>
+<td>Comma-separated response codes that are considered accepted for service access.</td>
+</tr>
+</tbody>
+</table>
+<p>The objective of this policy is to ensure a remote endpoint can make service access decisions by<br>
+receiving the CAS authenticated principal as url parameter of a <code>GET</code> request. The response code that<br>
+the endpoint returns is then compared against the policy setting and if a match is found, access is granted.</p>
+<p>Remote endpoint access strategy authorizing service access based on response code:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.RemoteEndpointServiceAccessStrategy",
+    "endpointUrl" : "https://somewhere.example.org",
+    "acceptableResponseCodes" : "200,202"
+  }
+}
+</code></pre>
+<h2>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h2>
+<p>This strategy delegates to a Groovy script to dynamically decide the access rules requested by CAS at runtime:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.GroovyRegisteredServiceAccessStrategy",
+    "groovyScript" : "file:///etc/cas/config/access-strategy.groovy"
+  }
+}
+</code></pre>
+<p>The script itself may be designed as such by overriding the needed operations where necessary:</p>
+<pre lang="groovy"><code>import org.apereo.cas.services.*
+import java.util.*
+
+class GroovyRegisteredAccessStrategy extends DefaultRegisteredServiceAccessStrategy {
+    @Override
+    boolean isServiceAccessAllowed() {
+        ...
+    }
+
+    @Override
+    boolean isServiceAccessAllowedForSso() {
+        ...
+    }
+
+    @Override
+    boolean doPrincipalAttributesAllowServiceAccess(String principal, Map&lt;String, Object&gt; attributes) {
+        ...
+    }
+}
+</code></pre>
+<p>The configuration of this component qualifies to use the <a href="../configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a> syntax. Refer to the CAS API documentation to learn more about operations and expected behaviors.</p>
+<h2>
+<a id="grouper" class="anchor" href="#grouper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Grouper</h2>
+<p>The grouper access strategy is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-grouper-core" %}</p>
+<p>This access strategy attempts to locate <a href="https://incommon.org/software/grouper/">Grouper</a><br>
+groups for the CAS principal. The groups returned by Grouper<br>
+are collected as CAS attributes and examined against the list of required attributes for service access.</p>
+<p>The following properties are available:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>groupField</code></td>
+<td>Attribute of the Grouper group used when converting the group to a CAS attribute.</td>
+<td>
+<code>NAME</code>, <code>EXTENSION</code>, <code>DISPLAY_NAME</code> or <code>DISPLAY_EXTENSION</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>You will also need to ensure <code>grouper.client.properties</code> is available on the classpath (i.e. <code>src/main/resources</code>)<br>
+with the following configured properties:</p>
+<pre lang="properties"><code>grouperClient.webService.url = http://grouper.example.com/grouper-ws/servicesRest
+grouperClient.webService.login = banderson
+grouperClient.webService.password = password
+</code></pre>
+<p>Grouper access strategy based on group's display extension:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "name" : "test",
+  "id" : 62,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.grouper.services.GrouperRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true,
+    "requireAllAttributes" : true,
+    "requiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "grouperAttributes" : [ "java.util.HashSet", [ "faculty" ] ]
+    },
+    "groupField" : "DISPLAY_EXTENSION"
+  }
+}
+</code></pre>
+<p>While the <code>grouper.client.properties</code> is a hard requirement and must be presented, configuration properties can always be assigned to the strategy<br>
+to override the defaults:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "name" : "test",
+  "id" : 62,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.grouper.services.GrouperRegisteredServiceAccessStrategy",
+    "configProperties" : {
+      "@class" : "java.util.HashMap",
+      "grouperClient.webService.url" : "http://grouper.example.com/grouper-ws/servicesRest"
+    },
+    "groupField" : "DISPLAY_EXTENSION"
+  }
+}
+</code></pre>

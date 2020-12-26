@@ -1,0 +1,61 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---messaging-jms-ticket-registrycategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---messaging-jms-ticket-registrycategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Messaging (JMS) Ticket Registry<br>
+category: Ticketing</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="jms-ticket-registry" class="anchor" href="#jms-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JMS Ticket Registry</h1>
+<p>CAS can be enabled with a variety of messaging systems in order to distribute and share ticket data:<br>
+from simplified use of the JMS API to a complete infrastructure to receive messages asynchronously.<br>
+Integration with messaging systems is entirely built on<br>
+top of <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-messaging.html">Spring Boot</a>.</p>
+<p>Support is enabled by including the following dependency in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-jms-ticket-registry" %}</p>
+<p>This registry is very much an extension of the <a href="Default-Ticket-Registry.html">default ticket registry</a>.<br>
+The difference is that ticket operations applied to the registry are broadcasted using a messaging queue<br>
+to other listening CAS nodes on the queue. Each node keeps copies of ticket state on its own and only<br>
+instructs others to keep their copy accurate by broadcasting messages and data associated with each.<br>
+Each message and ticket registry instance running inside a CAS node in the cluster is tagged with a unique<br>
+identifier in order to avoid endless looping behavior and recursive needless inbound operations.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jms-ticket-registry">review this guide</a>.</p>
+<h2>
+<a id="activemq" class="anchor" href="#activemq" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ActiveMQ</h2>
+<p>CAS can configure the ticket registry when it detects that ActiveMQ<br>
+is available on the classpath. If the broker is present, an embedded broker is started and<br>
+configured automatically, as long as no broker URL is specified through configuration.<br>
+By default, ActiveMQ creates a destination if it does not exist yet, so destinations are resolved against their provided names.</p>
+<p>ActiveMQ configuration is controlled by external configuration properties in <a href="../configuration/Configuration-Properties.html#jms-ticket-registry">CAS settings</a>.</p>
+<p>The default setting for ActiveMQ is that all persistent messages outside of a transaction<br>
+are sent to a broker are synchronous. This means that the send method is blocked until the<br>
+message is received by the broker, its then written to disk - then a response is returned<br>
+to the client and the <code>send()</code> unblocks with success or throws an error if the send could not complete (e.g. due to a security exception).</p>
+<h2>
+<a id="artemis" class="anchor" href="#artemis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Artemis</h2>
+<p>CAS can auto-configure the ticket registry when it detects that <a href="https://activemq.apache.org/artemis/">Artemis</a><br>
+is available on the classpath. If the broker is present, an embedded broker is started and<br>
+configured automatically (unless the mode property has been explicitly set). The supported modes are:<br>
+embedded (to make explicit that an embedded broker is required and should lead to an error if the broker<br>
+is not available in the classpath), and native to connect to a broker using the netty transport protocol.<br>
+When the latter is configured, CAS configures the registry connecting to a broker running on the local machine with the default settings.</p>
+<p>Support is enabled by including the following dependency in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="spring-boot-starter-artemis" %}</p>
+<p>Artemis configuration is controlled by external configuration properties in <a href="../configuration/Configuration-Properties.html#jms-ticket-registry">CAS settings</a>.</p>
+<h2>
+<a id="jndi" class="anchor" href="#jndi" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JNDI</h2>
+<p>If you are <a href="../installation/Configuring-Servlet-Container.html">running CAS in an application server</a>,<br>
+CAS will attempt to locate a JMS connection using JNDI. By default, the locations<br>
+<code>java:/JmsXA</code> and <code>java:/XAConnectionFactory</code> will be checked. Of course, alternative locations may be<br>
+specified using <a href="../configuration/Configuration-Properties.html#jms-ticket-registry">CAS settings</a>.</p>
+<h2>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h2>
+<p>To enable additional logging, configure the log4j configuration file to add the following levels:</p>
+<pre lang="xml"><code>...
+&lt;Logger name="org.springframework.jms" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+...
+</code></pre>

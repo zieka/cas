@@ -1,0 +1,82 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---securing-configuration-propertiescategory-configuration" class="anchor" href="#layout-defaulttitle-cas---securing-configuration-propertiescategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Securing Configuration Properties<br>
+category: Configuration</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="configuration-security" class="anchor" href="#configuration-security" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Security</h1>
+<p>This document describes how to retrieve and secure CAS configuration and properties.</p>
+<h2>
+<a id="standalone" class="anchor" href="#standalone" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Standalone</h2>
+<p>If you are running CAS in standalone mode without the presence of the configuration server,<br>
+you can take advantage of built-in <a href="http://www.jasypt.org/">Jasypt</a> functionality to decrypt sensitive CAS settings.</p>
+<p>Jasypt supplies command-line tools useful for performing encryption, decryption, etc. In order to use the tools, you should download the Jasypt distribution. Once unzipped, you will find a <code>jasypt-$VERSION/bin</code> directory a number of <code>bat|sh</code> scripts that you can use for encryption/decryption operations <code>(encrypt|decrypt).(bat|sh)</code>.</p>
+<p>Encrypted settings need to be placed into CAS configuration files as:</p>
+<pre lang="properties"><code>cas.something.sensitive={cas-cipher}FKSAJDFGYOS8F7GLHAKERGFHLSAJ
+</code></pre>
+<p>You also need to instruct CAS to use the proper algorithm, decryption key and other relevant parameters<br>
+when attempting to decrypt settings. To see the relevant list of CAS properties for this<br>
+feature, please <a href="Configuration-Properties.html#configuration-security">review this guide</a>.</p>
+<h2>
+<a id="spring-cloud" class="anchor" href="#spring-cloud" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Spring Cloud</h2>
+<p>Securing CAS settings and decrypting them is entirely handled by<br>
+the <a href="https://github.com/spring-cloud/spring-cloud-config">Spring Cloud</a> project<br>
+as <a href="Configuration-Server-Management.html">described in this guide</a>.</p>
+<p>The CAS configuration server exposes <code>/encrypt</code> and <code>/decrypt</code> endpoints to support encrypting and decrypting values.<br>
+Both endpoints accept a <code>POST</code> payload; you can use <code>/encrypt</code> to secure and encrypt settings and place them inside your CAS configuration.<br>
+CAS will auto-decrypt at the appropriate moment.</p>
+<p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#configuration-security">review this guide</a>.</p>
+<!-- raw HTML omitted -->
+<p>To encrypt a given setting, use:</p>
+<pre lang="bash"><code>curl -u casuser:Mellon https://config.server.endpoint/encrypt -d sensitiveValue
+</code></pre>
+<p>Then, copy the encrypted setting into your CAS configuration using the method specified below.</p>
+<!-- raw HTML omitted -->
+<p>If you wish to manually encrypt and decrypt settings to ensure the functionality is sane, use:</p>
+<pre lang="bash"><code>export ENCRYPTED=`curl -u casuser:Mellon https://config.server.endpoint/encrypt -d sensitiveValue | python -c 'import sys,urllib;print urllib.quote(sys.stdin.read().strip())'`
+echo $ENCRYPTED
+curl -u casuser:Mellon https://config.server.endpoint/decrypt -d $ENCRYPTED | python -c 'import sys,urllib;print urllib.quote(sys.stdin.read().strip())'
+</code></pre>
+<p>Properties that are prefixed with <code>{cipher}</code> are automatically decrypted by the CAS configuration server at runtime, such as:</p>
+<pre lang="yml"><code>cas
+    something
+        sensitive: '{cipher}FKSAJDFGYOS8F7GLHAKERGFHLSAJ'
+</code></pre>
+<p>Or:</p>
+<pre lang="properties"><code># Note that there are no quotes around the value!
+cas.something.sensitive={cipher}FKSAJDFGYOS8F7GLHAKERGFHLSAJ
+</code></pre>
+<h2>
+<a id="vault" class="anchor" href="#vault" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vault</h2>
+<p>You can also store sensitive settings inside <a href="https://www.vaultproject.io/">Vault</a>.<br>
+Vault can store your existing secrets, or it can dynamically generate new secrets<br>
+to control access to third-party resources or provide time-limited credentials for your infrastructure.<br>
+To learn more about Vault and its installation process, please visit the project website.</p>
+<p>Once vault is accessible and configured inside CAS, support is provided via the following dependency:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-configuration-cloud-vault" %}</p>
+<p>To see the relevant list of CAS properties for this feature, please <a href="Configuration-Properties.html#vault">review this guide</a>.</p>
+<p>With CAS, secrets are picked up at startup of the application server. CAS uses the data and settings<br>
+from the application name (i.e. <code>cas</code>) and active profiles to determine contexts paths in<br>
+which secrets should be stored and later fetched.</p>
+<p>These context paths typically are:</p>
+<pre lang="bash"><code>/secret/{application}/{profile}
+/secret/{application}
+</code></pre>
+<p>As an example, you may write the following CAS setting to Vault:</p>
+<pre lang="bash"><code>vault write secret/cas/native &lt;setting-name&gt;=&lt;value&gt;
+</code></pre>
+<p>CAS will execute the equivalent of the following command to read settings later when needed:</p>
+<pre lang="bash"><code>vault read secret/cas/native
+</code></pre>
+<p>All settings and secrets that are stored inside Vault may be reloaded at any given time.<br>
+To learn more about how CAS allows you to reload configuration changes, please <a href="Configuration-Management-Reload.html">review this guide</a>.<br>
+To learn more about how configuration is managed and profiled by CAS, please <a href="Configuration-Management.html">review this guide</a>.</p>
+<h3>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h3>
+<p>To enable additional logging, modify the logging configuration file to add the following:</p>
+<pre lang="xml"><code>&lt;Logger name="org.springframework.cloud.vault" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+</code></pre>

@@ -1,0 +1,26 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---remote-address-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---remote-address-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Remote Address Authentication<br>
+category: Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="remote-address-authentication" class="anchor" href="#remote-address-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remote Address Authentication</h1>
+<p>This handler uses the request's remote address to transparently authenticate a user, having verified<br>
+the address against a range of configured IP addresses. The mechanics of this approach are very similar<br>
+to X.509 certificate authentication, but trust is instead placed on the client internal network address.</p>
+<p>The benefit of this approach is that transparent authentication is achieved within a large corporate<br>
+network without the need to manage certificates.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="caveats" class="anchor" href="#caveats" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Caveats</h2>
+<p>This method of authentication assumes internal clients will be hitting the CAS server directly<br>
+and not coming via a web proxy. In the event of the client using the web proxy the likelihood<br>
+of the remote address lookup succeeding is reduced because to CAS the client address is that<br>
+of the proxy server and not the client. Given that this form of CAS authentication would typically<br>
+be deployed within an internal network this is generally not a problem.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-generic-remote-webflow" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#remote-address-authentication">review this guide</a>.</p>

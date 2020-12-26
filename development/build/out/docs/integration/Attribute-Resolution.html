@@ -1,0 +1,150 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---attribute-resolutioncategory-attributes" class="anchor" href="#layout-defaulttitle-cas---attribute-resolutioncategory-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Attribute Resolution<br>
+category: Attributes</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="attribute-resolution" class="anchor" href="#attribute-resolution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Resolution</h1>
+<p>Attribute resolution strategies are controlled by<br>
+the <a href="https://github.com/apereo/person-directory">Person Directory project</a>.<br>
+The Person Directory dependency is automatically bundled with the CAS server. Therefore,<br>
+declaring an additional dependency will not be required.<br>
+This Person Directory project supports both LDAP and JDBC attribute resolution,<br>
+caching, attribute aggregation from multiple attribute sources, etc.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resolveAttributes/{name}</code></td>
+<td>Invoke the CAS <a href="Attribute-Resolution.html">attribute resolution</a> engine to locate attributes for <code>{name}</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="person-directory" class="anchor" href="#person-directory" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Person Directory</h2>
+<p>A framework for resolving persons and attributes from a variety of underlying sources.<br>
+It consists of a collection of components that retrieve, cache, resolve, aggregate,<br>
+merge person attributes from JDBC, LDAP and more.</p>
+<p>To see the relevant list of CAS properties that deal with resolving principals, please <a href="../configuration/Configuration-Properties.html#principal-resolution">review this guide</a>.</p>
+<p>Attribute sources are defined and configured to describe the global set of attributes to be fetched<br>
+for each authenticated principal. That global set of attributes is then filtered by the<br>
+service manager according to service-specific attribute release rules.</p>
+<p>Note that each attribute repository source can be assigned a unique identifier to be used for additional filtering. The attribute resolution engine<br>
+provided by Person Directory can also be configured to only consult not all but a selection of attribute repository sources, <em>deferring</em> the task<br>
+of attribute retrieval for later phases in the authentication process, such as <a href="Attribute-Release-Caching.html">releasing attributes</a>.</p>
+<!-- raw HTML omitted -->
+<p>The goal of the resolver is to construct a final identifiable authenticated principal for CAS which carries a number of attributes inside it.<br>
+The behavior of the person-directory resolver is such that it attempts to locate the principal id, which in most cases is the same thing as the credential<br>
+id provided during authentication or it could be noted by a custom attribute. Then the resolver starts to construct attributes from attribute repositories defined. If it realizes that a custom attribute is used to determine the principal id AND the same attribute is also set to be collected into the final set of attributes, it will then remove that attribute from the final collection.</p>
+<p>Note that by default, CAS auto-creates attribute repository sources that are appropriate for LDAP, JDBC, etc.<br>
+If you need something more, you will need to resort to more elaborate measures of defining the bean configuration.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#authentication-attributes">review this guide</a>.<br>
+More about the Person Directory and its configurable sources <a href="https://github.com/apereo/person-directory">can be found here</a>.</p>
+<h3>
+<a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h3>
+<p>CAS does allow for attributes to be retrieved from a variety of SQL databases.<br>
+To learn how to configure database drivers, <a href="../installation/JDBC-Drivers.html">please see this guide</a>.</p>
+<p>JDBC attribute sources can be defined based on the following mechanics:</p>
+<h4>
+<a id="single-row" class="anchor" href="#single-row" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Single Row</h4>
+<p>Designed to work against a table where there is a mapping of one row to one user.<br>
+An example of this table format would be:</p>
+<table>
+<thead>
+<tr>
+<th>uid</th>
+<th>first_name</th>
+<th>last_name</th>
+<th>email</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jsmith</code></td>
+<td><code>John</code></td>
+<td><code>Smith</code></td>
+<td><code>jsmith@example.org</code></td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="multi-row" class="anchor" href="#multi-row" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multi Row</h4>
+<p>Designed to work against a table where there is a mapping of one row to one user.<br>
+An example of this table format would be:</p>
+<table>
+<thead>
+<tr>
+<th>uid</th>
+<th>attr_name</th>
+<th>attr_value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jsmith</code></td>
+<td><code>first_name</code></td>
+<td><code>John</code></td>
+</tr>
+<tr>
+<td><code>jsmith</code></td>
+<td><code>last_name</code></td>
+<td><code>Smith</code></td>
+</tr>
+<tr>
+<td><code>jsmith</code></td>
+<td><code>email</code></td>
+<td><code>jsmith@example.org</code></td>
+</tr>
+</tbody>
+</table>
+<p>You will need to define column mappings<br>
+in your configuration to map the <code>attr_name</code> column to the <code>attr_value</code> column</p>
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
+<p>Suppose CAS is configured to authenticate against Active Directory. The account whose details are defined below<br>
+authenticates via <code>sAMAccountName</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sAMAccountName</code></td>
+<td><code>johnsmith</code></td>
+</tr>
+<tr>
+<td><code>cn</code></td>
+<td><code>John Smith</code></td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example #1</h3>
+<p>If the resolver is configured to use <code>sAMAccoutName</code> as the attribute for the principal id, then when authentication is complete the resolver attempts<br>
+to construct attributes from attribute repository sources, it sees <code>sAMAccoutName</code> as the attribute and sees the principal id is to<br>
+be created by <code>sAMAccoutName</code>. So it would remove the <code>sAMAccoutName</code> from the attributes.<br>
+The final result is is a principal whose id is <code>johnsmith</code> who has a <code>cn</code> attribute of <code>John Smith</code>.</p>
+<h3>
+<a id="example-2" class="anchor" href="#example-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example #2</h3>
+<p>If the resolver is configured to use <code>cn</code> as the attribute for the principal id, then when authentication is complete the resolver attempts to<br>
+construct attributes from attribute repository sources. It then sees <code>sAMAccoutName</code> as the attribute and sees the principal id is to be created by <code>cn</code>.<br>
+So it would remove the <code>cn</code> from the attributes. The final result is is a principal whose id is <code>John Smith</code><br>
+who has a <code>sAMAccountName</code> attribute of <code>johnsmith</code>.</p>
+<h2>
+<a id="attribute-definitions" class="anchor" href="#attribute-definitions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Definitions</h2>
+<p>CAS attributes may be decorated with additional metadata which can later be used depending on the<br>
+requirements of the protocol and nature of the integration with a target application. To learn<br>
+more, please <a href="Attribute-Definitions.html">see this guide</a>.</p>

@@ -1,0 +1,85 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---adaptive-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---adaptive-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Adaptive Authentication<br>
+category: Multifactor Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="adaptive-authentication" class="anchor" href="#adaptive-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adaptive Authentication</h1>
+<p>Adaptive authentication in CAS allows you to accept or reject authentication requests based on certain characteristics<br>
+of the client browser and/or device. When configured, you are provided with options to block authentication requests<br>
+from certain locations submitted by certain browser agents. For instance, you may consider authentication requests submitted<br>
+from <code>London, UK</code> to be considered suspicious, or you may want to block requests that are submitted from Internet Explorer, etc.</p>
+<p>Adaptive authentication can also be configured to trigger multifactor based on specific days and times. For example, you may wish to trigger multifactor on select days or if the current hour is after 11pm or before 6am. Each rule block may be assigned to an mfa provider where successful matching of rules allows for the multifactor trigger to execute.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#adaptive-authentication">review this guide</a>.</p>
+<p>To enable adaptive authentication, you will need to allow CAS to geo-locate authentication requests.<br>
+To learn more, please <a href="../installation/GeoTracking-Authentication-Requests.html">see this guide</a></p>
+<h2>
+<a id="ip-intelligence" class="anchor" href="#ip-intelligence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IP Intelligence</h2>
+<p>CAS provides you with the capability to examine the client IP address and decide whether access should be granted. This may be useful<br>
+to detect bot, proxy or VPN traffic and protect your deployment from fraud, automated attacks, crawlers, etc.</p>
+<p>The result of the IP address examination may either ban and request the request, allow it to go through, or present a score<br>
+to indicate the probability of an IP address that may be questionable. If the result is ranked score, it will be compared against<br>
+the configured risk threshold to determine whether the request may proceed.</p>
+<p>Banned IP address can either be defined as patterns in the CAS settings, or they may be examined using the listed strategies below.</p>
+<h3>
+<a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
+<p>The client IP address is submitted to a REST endpoint as the header <code>clientIpAddress</code> under a <code>GET</code> request. The expected result status codes are the following:</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>401</code>, <code>403</code>
+</td>
+<td>IP address is banned and the request will be rejected.</td>
+</tr>
+<tr>
+<td>
+<code>200</code>, <code>202</code>
+</td>
+<td>IP address is allowed and the request may proceed.</td>
+</tr>
+<tr>
+<td>All Others</td>
+<td>Response body is expected to contain a score between <code>1</code> and <code>0</code>, (<code>1=Banned</code> and <code>0=Allowed</code>), indicating IP address suspiciousness.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h3>
+<p>The client IP address may be examined using a Groovy script whose outline should match the following:</p>
+<pre lang="groovy"><code>import org.apereo.cas.authentication.principal.*
+import org.apereo.cas.authentication.*
+import org.apereo.cas.util.*
+import org.apereo.cas.authentication.adaptive.intel.*
+
+def run(Object[] args) {
+    def requestContext = args[0]
+    def clientIpAddress = args[1]
+    def logger = args[2]
+    logger.info("Client ip address provided is ${clientIpAddress}")
+    
+    if (ipAddressIsRejected())
+        return IPAddressIntelligenceResponse.banned()
+    
+    return IPAddressIntelligenceResponse.allows()
+}
+</code></pre>
+<h3>
+<a id="blackdot-ip-intel" class="anchor" href="#blackdot-ip-intel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BlackDot IP Intel</h3>
+<p>Please <a href="https://getipintel.net/">see this link</a> for more info. A valid subscription is required for large query counts.</p>
+<!-- raw HTML omitted -->
+<p>Note that a valid email that is checked frequently must be used in the contact field or else the service might be disabled without notice. Furthermore, <strong>DO NOT</strong> exceed more<br>
+than 500 queries per day &amp; 15 queries per minute. See <a href="https://getipintel.net/#FAQ">FAQ</a> for further information.</p>
+<h1>
+<a id="risk-based-authentication" class="anchor" href="#risk-based-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Risk-based Authentication</h1>
+<p>CAS is able to track and examine authentication requests for suspicious behavior.<br>
+To learn more, please <a href="../installation/Configuring-RiskBased-Authentication.html">see this guide</a>.</p>

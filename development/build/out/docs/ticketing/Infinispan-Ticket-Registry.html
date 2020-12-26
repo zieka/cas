@@ -1,0 +1,54 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---infinispan-ticket-registrycategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---infinispan-ticket-registrycategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Infinispan Ticket Registry<br>
+category: Ticketing</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="infinispan-ticket-registry" class="anchor" href="#infinispan-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Infinispan Ticket Registry</h1>
+<p>Infinispan integration is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-infinispan-ticket-registry" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#infinispan-ticket-registry">review this guide</a>.</p>
+<p><a href="http://infinispan.org/">Infinispan</a> is a distributed in-memory key/value data store with optional schema.<br>
+It can be used both as an embedded Java library and as a language-independent service accessed remotely over a variety of protocols.<br>
+It offers advanced functionality such as transactions, events, querying and distributed processing.</p>
+<p>Cache instance can be integrated with</p>
+<ul>
+<li>JCache (JSR-107)</li>
+<li>Hibernate second-level Cache</li>
+<li>WildFly modules</li>
+<li>Apache Lucene directory backed by Infinispan</li>
+<li>Directory Provider for Hibernate Search</li>
+<li>Spring Cache 3.x and 4.x</li>
+<li>CDI</li>
+<li>OSGi</li>
+<li><a href="https://github.com/infinispan/infinispan-spark">Apache Spark</a></li>
+<li><a href="https://github.com/infinispan/infinispan-hadoop">Apache Hadoop</a></li>
+</ul>
+<p>There are a variety of cache stores available to choose from, some of which are:</p>
+<ul>
+<li>JPA/JDBC Store</li>
+<li>Single File &amp; Soft-Index</li>
+<li>REST</li>
+<li>Cassandra</li>
+<li>Redis</li>
+<li>HBase</li>
+<li>MongoDB</li>
+</ul>
+<p>See the <a href="http://infinispan.org/cache-store-implementations/">full list of implementations</a>.</p>
+<h2>
+<a id="distributed-cache" class="anchor" href="#distributed-cache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Distributed Cache</h2>
+<p>A sample <code>infinispan.xml</code> configuration file:</p>
+<pre lang="xml"><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;infinispan xsi:schemaLocation="urn:infinispan:config:8.2 http://www.infinispan.org/schemas/infinispan-config-8.2.xsd"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:infinispan:config:8.2"&gt;
+
+   &lt;cache-container default-cache="cas"&gt;
+       &lt;jmx duplicate-domains="true" /&gt;
+       &lt;local-cache name="cas" /&gt;
+   &lt;/cache-container&gt;
+&lt;/infinispan&gt;
+
+</code></pre>
+<p>Refer to the <a href="http://infinispan.org/">Infinispan</a> documentation to learn more about cache configuration, and how<br>
+to manage the eviction policy for various ticket types.</p>

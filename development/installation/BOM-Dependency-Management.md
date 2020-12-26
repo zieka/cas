@@ -3,6 +3,8 @@ layout: default
 title: CAS - Bill of Materials
 category: Authentication
 ---
+{% include variables.html %}
+
 
 # CAS Bill of Materials  (BOM)
 
@@ -17,7 +19,7 @@ you may just prefer to explicitly declare all your configuration.
 
 Support for BOM is enabled by including the following dependency in the WAR overlay:
 
-{% include casmodule.html group="org.apereo.cas" module="cas-server-support-bom" %}
+{% include casmodule.html group="org.apereo.cas" module="cas-server-support-bom" ignoreBOM="true" %}
 
 Please [use this guide](https://plugins.gradle.org/plugin/io.spring.dependency-management)
 and configure the Gradle build accordingly.

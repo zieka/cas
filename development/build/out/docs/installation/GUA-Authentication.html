@@ -1,0 +1,23 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---gua-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---gua-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - GUA Authentication<br>
+category: Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="graphical-user-authentication" class="anchor" href="#graphical-user-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Graphical User Authentication</h1>
+<p>Graphical user authentication, sometimes also known as 'login images' are a form of login verification (i.e. second factor) where a site presents the user with an image previously selected by the user at the time the account is created. It is an "account secret" tied to the username that should not be easily reproduced by a phishing campaign attempting to impersonate a legitimate website.</p>
+<p>In practice, CAS prompts the user for only their username and responds with a page displaying what should be the user's pre-selected image along with a password field to complete their authentication. The user in turn is to be trained to refuse submitting the rest of their login credentials to a site posing to be legitimate if CAS fails to present the correct image.</p>
+<h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Overview</h2>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-gua" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#gua-authentication">review this guide</a>.</p>
+<h3>
+<a id="resource" class="anchor" href="#resource" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Resource</h3>
+<p>Primarily useful for demo and testing purposes, this option allows CAS to load a global and static image resource<br>
+as the user identifier onto the login flow.</p>
+<h3>
+<a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
+<p>CAS may also be allowed to locate a binary image attribute for the user from LDAP. The binary attribute value is then loaded<br>
+as the user identifier onto the login flow.</p>

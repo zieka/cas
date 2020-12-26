@@ -1,0 +1,249 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---build-processcategory-developer" class="anchor" href="#layout-defaulttitle-cas---build-processcategory-developer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Build Process<br>
+category: Developer</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="cas-build-process" class="anchor" href="#cas-build-process" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Build Process</h1>
+<p>This page documents the steps that a CAS developer/contributor should take for building a CAS server locally.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="source-checkout" class="anchor" href="#source-checkout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Source Checkout</h2>
+<p>The following shell commands may be used to grab the source from the repository:</p>
+<pre lang="bash"><code>git clone --recursive git@github.com:apereo/cas.git cas-server
+</code></pre>
+<p>Or a quicker clone:</p>
+<pre lang="bash"><code>git clone --recursive --depth=1 --single-branch --branch=master git@github.com:apereo/cas.git cas-server
+# git fetch --unshallow
+</code></pre>
+<p>For a successful clone, you will need to have <a href="https://help.github.com/articles/working-with-ssh-key-passphrases/">set up SSH keys</a> for your account on Github.<br>
+If that is not an option, you may clone the CAS repository under <code>https</code> via <code>https://github.com/apereo/cas.git</code>.</p>
+<p>You may also need to update submodules linked to the CAS repository. Newer versions of Git will do this automatically,<br>
+but older versions will require you to explicitly tell git to download the contents of submodules:</p>
+<pre lang="bash"><code>git submodule update --init --recursive
+</code></pre>
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Build</h2>
+<p>The following shell commands may be used to build the source:</p>
+<pre lang="bash"><code>cd cas-server
+git checkout master
+</code></pre>
+<p>When done, you may build the codebase via the following command:</p>
+<pre lang="bash"><code>./gradlew build install --parallel -x test -x javadoc -x check --build-cache --configure-on-demand
+</code></pre>
+<p>The following commandline boolean flags are supported by the build and can be passed in form of system properties via <code>-D</code>:</p>
+<p>| Flag                              | Description<br>
+|-----------------------------------+---------------------------------------------------------------------------+<br>
+| <code>enableRemoteDebugging</code>           | Allows for remote debugging via a pre-defined port (i.e. <code>5000</code>).<br>
+| <code>remoteDebuggingSuspend</code>          | Set to <code>true</code> to suspend JVM remote debugging until the debugger attaches to the running session.<br>
+| <code>enableIncremental</code>               | Enable Gradle's incremental compilation feature.<br>
+| <code>showStandardStreams</code>             | Let the build output logs that are sent to the standard streams. (i.e. console, etc)<br>
+| <code>skipCheckstyle</code>                  | Skip running Checkstyle checks.<br>
+| <code>skipSpotbugs</code>                    | Skip running Spotbugs checks.<br>
+| <code>skipVersionConflict</code>             | If a dependency conflict is found, use the latest version rather than failing the build.<br>
+| <code>skipNestedConfigMetadataGen</code>     | Skip generating configuration metadata for nested properties and generic collections.<br>
+| <code>skipSonarqube</code>                   | Ignore reporting results to Sonarqube.<br>
+| <code>skipErrorProneCompiler</code>          | Skip running the <code>error-prone</code> static-analysis compiler.<br>
+| <code>skipBootifulArtifact</code>            | Do not apply the Spring Boot plugin to bootify application artifacts.<br>
+| <code>ignoreJavadocFailures</code>           | Ignore javadoc failures and let the build resume.<br>
+| <code>ignoreFindbugsFailures</code>          | Ignore Findbugs failures and let the build resume.<br>
+| <code>ignoreTestFailures</code>              | Ignore test failures and let the build resume.<br>
+| <code>casModules</code>                      | Comma separated list of modules without the <code>cas-server-[support|core]</code> prefix.</p>
+<ul>
+<li>You can use <code>-x &lt;task&gt;</code> to entirely skip/ignore a phase in the build. (i.e. <code>-x test</code>, <code>-x check</code>).</li>
+<li>If you have no need to let Gradle resolve/update dependencies and new module versions for you, you can take advantage of the <code>--offline</code> flag when you build which tends to make the build go a lot faster.</li>
+<li>Using the Gradle daemon also is a big help. It should be enabled <a href="https://docs.gradle.org/current/userguide/gradle_daemon.html">by default</a>.</li>
+<li>Enabling <a href="https://docs.gradle.org/current/userguide/build_cache.html">Gradle's build cache</a> via <code>--build-cache</code> can also significantly improve build times.</li>
+</ul>
+<h2>
+<a id="tasks" class="anchor" href="#tasks" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Tasks</h2>
+<p>Available build tasks can be found using the command <code>./gradlew tasks</code>.</p>
+<h2>
+<a id="ide-setup" class="anchor" href="#ide-setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IDE Setup</h2>
+<p>CAS development may be carried out using any modern IDE that supports Gradle.</p>
+<h3>
+<a id="intellij-idea" class="anchor" href="#intellij-idea" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IntelliJ IDEA</h3>
+<p>The following IDEA settings for Gradle may also be useful:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/71612835-5ea5ed80-2bbc-11ea-8f49-9746dc2b3a70.png" alt="image"></p>
+<p>Additionally, you may need to customize the VM settings to ensure the development environment can load and index the codebase:</p>
+<pre lang="bash"><code>-server
+-Xms1g
+-Xmx8g
+-Xss16m
+-XX:NewRatio=3
+
+-XX:ReservedCodeCacheSize=240m
+-XX:+UseCompressedOops
+-XX:SoftRefLRUPolicyMSPerMB=50
+
+-XX:+UseParNewGC
+-XX:ParallelGCThreads=4
+-XX:+UseConcMarkSweepGC
+-XX:ConcGCThreads=4
+
+-XX:+CMSClassUnloadingEnabled
+-XX:+CMSParallelRemarkEnabled
+-XX:CMSInitiatingOccupancyFraction=65
+-XX:+CMSScavengeBeforeRemark
+-XX:+UseCMSInitiatingOccupancyOnly
+
+-XX:MaxTenuringThreshold=1
+-XX:SurvivorRatio=8
+-XX:+UseCodeCacheFlushing
+-XX:+AggressiveOpts
+-XX:-TraceClassUnloading
+-XX:+AlwaysPreTouch
+-XX:+TieredCompilation
+
+-Djava.net.preferIPv4Stack=true
+-Dsun.io.useCanonCaches=false
+-Djsse.enableSNIExtension=true
+-ea
+-Xverify:none
+</code></pre>
+<h4>
+<a id="plugins" class="anchor" href="#plugins" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Plugins</h4>
+<p>The following plugins may prove useful during development:</p>
+<ul>
+<li><a href="https://plugins.jetbrains.com/plugin/1065-checkstyle-idea">Checkstyle</a></li>
+<li><a href="https://plugins.jetbrains.com/plugin/3847-findbugs-idea">FindBugs</a></li>
+<li><a href="https://github.com/mplushnikov/lombok-intellij-plugin">Lombok</a></li>
+</ul>
+<p>Once you have installed the Lombok plugin, you will also need to ensure Annotation Processing is turned on. You may need to restart IDEA in order for changes to take full effect.</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/35231112-287f625a-ffad-11e7-8c1a-af23ff33918d.png" alt="image"></p>
+<p>Note that the CAS-provided Checkstyle rules can be imported into idea to automate a number of<br>
+formatting rules specially related to package imports and layouts. Once imported, the rules<br>
+should look something like the below screenshot:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/42846621-b99539fc-8a2e-11e8-8128-9344bda7224d.png" alt="image"></p>
+<h4>
+<a id="running-cas" class="anchor" href="#running-cas" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running CAS</h4>
+<p>It is possible to run the CAS web application directly from IDEA by<br>
+creating a <em>Run Configuration</em> that roughly matches the following screenshot:</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/41805461-9ea25b76-765f-11e8-9a36-fa82d286cf09.png" alt="image"></p>
+<p>This setup allows the developer to run the CAS web<br>
+application via an <a href="Build-Process.html#embedded-containers">embedded servlet container</a>.</p>
+<h3>
+<a id="eclipse" class="anchor" href="#eclipse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Eclipse</h3>
+<p>For Eclipse, execute the following commands:</p>
+<pre lang="bash"><code>cd cas-server
+./gradlew eclipse
+</code></pre>
+<p>Then, import the project into eclipse using "General\Existing Projects into Workspace"<br>
+and choose "Add Gradle Nature" from the "Configure" context menu of the project.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="testing-modules" class="anchor" href="#testing-modules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Testing Modules</h2>
+<p>Please <a href="Test-Process.html">see this page</a> to learn more about the testing process and guidelines.</p>
+<h2>
+<a id="embedded-containers" class="anchor" href="#embedded-containers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Embedded Containers</h2>
+<p>The CAS project comes with a number of built-in modules that are pre-configured with embedded servlet containers such as<br>
+Apache Tomcat, Jetty, etc for the server web application, the management web application and others. These modules are found in the <code>webapp</code> folder of the CAS project.</p>
+<h3>
+<a id="configure-ssl" class="anchor" href="#configure-ssl" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure SSL</h3>
+<p>The <code>thekeystore</code> file must include the SSL private/public keys that are issued for your CAS server domain. You<br>
+will need to use the <code>keytool</code> command of the JDK to create the keystore and the certificate.</p>
+<p>The following commands may serve as an example:</p>
+<pre lang="bash"><code>keytool -genkey -alias cas -keyalg RSA -validity 999 \
+    -keystore /etc/cas/thekeystore -ext san=dns:$REPLACE_WITH_FULL_MACHINE_NAME
+</code></pre>
+<p>Note that the validity parameter allows you to specify, in the number of days, how long the certificate should be<br>
+valid for. The longer the time period, the less likely you are to need to recreate it. To recreate it, you'd need<br>
+to delete the old one and then follow these instructions again. You may also need to provide<br>
+the <em>Subject Alternative Name</em> field, which can be done with <code>keytool</code> via <code>-ext san=dns:$REPLACE_WITH_FULL_MACHINE_NAME</code>.</p>
+<p>The response will look something like this:</p>
+<pre lang="bash"><code>Enter keystore password: changeit
+Re-enter new password: changeit
+What is your first and last name?
+  [Unknown]:  $REPLACE_WITH_FULL_MACHINE_NAME (i.e. mymachine.domain.edu)
+What is the name of your organizational unit?
+  [Unknown]:  Test
+What is the name of your organization?
+  [Unknown]:  Test
+What is the name of your City or Locality?
+  [Unknown]:  Test
+What is the name of your State or Province?
+  [Unknown]:  Test
+What is the two-letter country code for this unit?
+  [Unknown]:  US
+Is CN=$FULL_MACHINE_NAME, OU=Test, O=Test, L=Test, ST=Test, C=US correct?
+  [no]:  yes
+</code></pre>
+<p>In your <code>/etc/hosts</code> file (on Windows: <code>C:\Windows\System32\Drivers\etc\hosts</code>), you may also need to add the following entry:</p>
+<pre lang="bash"><code>127.0.0.1 mymachine.domain.edu
+</code></pre>
+<p>The certificate exported out of your keystore needs to also be imported into the Java platform's global keystore:</p>
+<pre lang="bash"><code># Export the certificate into a file
+keytool -export -file /etc/cas/config/cas.crt -keystore /etc/cas/thekeystore -alias cas
+
+# Import the certificate into the global keystore
+sudo keytool -import -file /etc/cas/config/cas.crt -alias cas -keystore $JAVA_HOME/lib/security/cacerts
+</code></pre>
+<p>...where <code>JAVA_HOME</code> is where you have the JDK installed (i.e <code>/Library/Java/JavaVirtualMachines/jdk[version].jdk/Contents/Home</code>).</p>
+<p>On Windows, Administration right should be granted to the console instead<br>
+of <code>sudo</code>, and <code>$JAVA_HOME/lib/security/cacerts</code> should be changed to <code>"%JAVA_HOME%/lib/security/cacerts"</code> instead.</p>
+<h3>
+<a id="deploy" class="anchor" href="#deploy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deploy</h3>
+<p>Execute the following command:</p>
+<pre lang="bash"><code>cd webapp/cas-server-webapp-tomcat
+
+../../gradlew build bootRun --parallel --offline --configure-on-demand --build-cache --stacktrace
+</code></pre>
+<p>The response will look something like this:</p>
+<pre lang="bash"><code>...
+2017-05-26 19:10:46,470 INFO [org.apereo.cas.web.CasWebApplication] - &lt;Started CasWebApplication in 21.893 seconds (JVM running for 36.888)&gt;
+...
+</code></pre>
+<p>By default CAS will be available at <code>https://mymachine.domain.edu:8443/cas</code></p>
+<h3>
+<a id="remote-debugging" class="anchor" href="#remote-debugging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remote Debugging</h3>
+<p>The embedded container instance is pre-configured to listen to debugger requests on port <code>5000</code> provided you<br>
+specify the <code>enableRemoteDebugging</code> parameter. For external container<br>
+deployments, <a href="https://wiki.apache.org/tomcat/FAQ">such as Apache Tomcat</a>, the following example<br>
+shows what needs configuring in the <code>bin/startup.sh|bat</code> file:</p>
+<pre lang="bash"><code>export JPDA_ADDRESS=5000
+export JPDA_TRANSPORT=dt_socket
+bin/catalina.sh jpda start
+</code></pre>
+<p>When you're done, create a remote debugger configuration in your IDE that connects to this port and you will be able to step into the code.</p>
+<p><img src="https://cloud.githubusercontent.com/assets/1205228/26517058/d09a8288-4245-11e7-962e-004bfe174a0a.png" alt="image"></p>
+<h2>
+<a id="manual-submodule-testing" class="anchor" href="#manual-submodule-testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Manual Submodule Testing</h2>
+<p>Please <a href="Test-Process.html">see this page</a> to learn more about the testing process and guidelines.</p>
+<h2>
+<a id="sample-build-aliases" class="anchor" href="#sample-build-aliases" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Build Aliases</h2>
+<p>Below are some examples of convenient build aliases for quickly running a local cas server from the project or<br>
+installing dependencies from the project for use in the cas-overlay.</p>
+<pre lang="bash"><code># Adjust the cas alias to the location of cas project folder
+alias cas='cd ~/Workspace/cas'
+
+# test cas directly from project rather than using the CAS overlay
+alias bc='clear; cas; cd webapp/cas-server-webapp-tomcat ; \
+    ../../gradlew build bootRun --configure-on-demand --build-cache --parallel \
+    -x test -x javadoc -x check -DremoteDebuggingSuspend=false \
+    -DenableRemoteDebugging=true --stacktrace \
+    -DskipNestedConfigMetadataGen=true'
+
+# Install jars for use with a CAS overlay project
+alias bci='clear; cas; \
+    ./gradlew clean build install --configure-on-demand \
+    --build-cache --parallel \
+    -x test -x javadoc -x check --stacktrace \
+    -DskipNestedConfigMetadataGen=true \
+    -DskipBootifulArtifact=true'
+</code></pre>
+<h1>
+<a id="cas-initializr-build-process" class="anchor" href="#cas-initializr-build-process" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Initializr Build Process</h1>
+<p>The code for the CAS Initializr is found in the CAS repository on the <code>heroku-casinit</code> branch.<br>
+Clone CAS and checkout the <code>heroku-casinit</code> branch if you want to customize it or improve it.</p>
+<pre lang="bash"><code>git clone --single-branch --branch heroku-casinit https://github.com/apereo/cas.git casinit
+cd casinit
+gradlew bootRun
+</code></pre>
+<p>Then in another terminal, test the local running instance using:</p>
+<pre lang="bash"><code>mkdir cas-server
+cd cas-server
+curl -k http://localhost:8080/starter.tgz -d dependencies="ldap,aup,x509" | tar -xzvf 
+gradlew build
+</code></pre>
+<p>Make any desired changes to the CAS Initializr project and submit the changes as a PR if they are generally useful.</p>

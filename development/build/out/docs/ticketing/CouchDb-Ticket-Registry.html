@@ -1,0 +1,33 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---couchdb-ticket-registrycategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---couchdb-ticket-registrycategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - CouchDB Ticket Registry<br>
+category: Ticketing</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="couchdb-ticket-registry" class="anchor" href="#couchdb-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDB Ticket Registry</h1>
+<p>CouchDB integration is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-couchdb-ticket-registry" %}</p>
+<p><a href="http://couchdb.apache.org">CouchDB</a> is a highly available, open source NoSQL database server based on<br>
+<a href="http://www.erlang.org">Erlang/OTP</a> and its mnesia database. The intention of this<br>
+registry is to leverage the multi-master, multi-datacenter capabilities of CouchDB server to provide high availability to CAS.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchdb-ticket-registry">review this guide</a>.</p>
+<p>The only truly mandatory setting is the URL. However, CouchDB should not be used in admin party mode in production, so username and password are needed as well.</p>
+<h2>
+<a id="caveat" class="anchor" href="#caveat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Caveat</h2>
+<p>The trade off for multi-master replication across multiple datacenters if CouchDB does not fully delete<br>
+records. Depending on deployment scale, usage, and available storage, the database may need regular cleaning<br>
+through normal CouchDB techniques.</p>
+<h2>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h2>
+<p>To enable additional logging, configure the log4j configuration file to add the following<br>
+levels:</p>
+<pre lang="xml"><code>...
+&lt;Logger name="org.apache.couchdb" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+...
+</code></pre>

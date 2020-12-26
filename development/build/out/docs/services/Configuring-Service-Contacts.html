@@ -1,0 +1,27 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-service-contactscategory-services" class="anchor" href="#layout-defaulttitle-cas---configuring-service-contactscategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Service Contacts<br>
+category: Services</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="configure-service-contacts" class="anchor" href="#configure-service-contacts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure Service Contacts</h1>
+<p>CAS has ability to assign contact information to a service definition. These are individual and/or entities that can be classified as owners of the application that may be notified in case changes are applied to the service definition.</p>
+<p>A sample JSON file follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "name" : "sample service",
+  "id" : 100,
+  "contacts": [
+    "java.util.ArrayList", [{
+        "@class": "org.apereo.cas.services.DefaultRegisteredServiceContact",
+        "name": "John Smith",
+        "email": "jsmith@example.org",
+        "phone": "123-456-7890",
+        "department": "IT"
+      }
+    ]
+  ]
+}
+</code></pre>

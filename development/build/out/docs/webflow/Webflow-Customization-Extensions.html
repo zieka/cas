@@ -1,0 +1,173 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---web-flow-extensionscategory-webflow-management" class="anchor" href="#layout-defaulttitle-cas---web-flow-extensionscategory-webflow-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Web Flow Extensions<br>
+category: Webflow Management</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="extending-cas-webflow" class="anchor" href="#extending-cas-webflow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extending CAS Webflow</h1>
+<p>The objective of this guide is to better describe how CAS utilizes Spring Webflow to accommodate various authentication flows. Please remember that this is <strong>NOT</strong> to teach one how Spring Webflow itself works internally. If you want to learn more about Spring Webflow and understand the internals of actions, states, decisions and scopes please <a href="http://projects.spring.io/spring-webflow/">see this guide</a>.</p>
+<p>CAS by default operates on the following core webflow configuration files:</p>
+<table>
+<thead>
+<tr>
+<th>Flow</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>login</code></td>
+<td><code>src/main/resources/webflow/login-webflow.xml</code></td>
+</tr>
+<tr>
+<td><code>logout</code></td>
+<td><code>src/main/resources/webflow/logout-webflow.xml</code></td>
+</tr>
+</tbody>
+</table>
+<p>The above flow configuration files present a minimal structure for what CAS needs at its core to handle login and logout flows. It is important to note that at runtime many other actions and states are injected into either of these flows dynamically depending on the CAS configuration and presence of feature modules. Also note that each feature module itself may dynamically present other opinionated subflow configuration files that are automagically picked up at runtime.</p>
+<p>So in truth, what you see above is not necessarily all of what you may get.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="modifying-webflow" class="anchor" href="#modifying-webflow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Modifying Webflow</h2>
+<p>In modest trivial cases, you may be able to <a href="../installation/WAR-Overlay-Installation.html">overlay and modify</a> the core flow configuration files to add or override the desired behavior. Again, think very carefully before introducing those changes into your deployment environment. Avoid making ad-hoc changes to the webflow as much as possible and consider how the change you have in mind might be more suitable as a direct contribution to the CAS project itself so you can just take advantage of its configuration and <em>NOT</em> its maintenance.</p>
+<p>To learn how to introduce new actions and state into a Spring Webflow, please <a href="http://projects.spring.io/spring-webflow/">see this guide</a>.</p>
+<!-- raw HTML omitted -->
+<p>In more advanced cases where you may need to take a deep dive and alter core CAS behavior conditionally, you would need to take advantage of the CAS APIs to deliver changes. Using the CAS APIs directly does present the following advantages at some cost:</p>
+<ul>
+<li>Changes are all scoped to Java (Groovy, Kotlin, Clojure, etc).</li>
+<li>You have the full power of Java to dynamically and conditionally augment the Spring Webflow.</li>
+<li>Your changes are all self-contained.</li>
+<li>Changes are now part of the CAS APIs and they will be compiled. Breaking changes on upgrades, if any, should be noticed immediately at build time.</li>
+</ul>
+<h3>
+<a id="java" class="anchor" href="#java" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java</h3>
+<p>This is the most traditional yet most powerful method of dynamically altering the webflow internals. You will be asked to write components that auto-configure the webflow and inject themselves into the running CAS application context only to be executed at runtime.</p>
+<p>At a minimum, your overlay will need to include the following modules:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-webflow" %}</p>
+<h4>
+<a id="design" class="anchor" href="#design" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Design</h4>
+<p>Design your dynamic webflow configuration agent that alters the webflow using the following form:</p>
+<pre lang="java"><code>public class SomethingWebflowConfigurer extends AbstractCasWebflowConfigurer {
+     public SomethingWebflowConfigurer(FlowBuilderServices flowBuilderServices,
+                                       FlowDefinitionRegistry flowDefinitionRegistry,
+                                       ApplicationContext applicationContext,
+                                       CasConfigurationProperties casProperties) {
+        super(flowBuilderServices, flowDefinitionRegistry, applicationContext, casProperties);
+     }
+
+    @Override
+    protected void doInitialize() throws Exception {
+        final Flow flow = super.getLoginFlow();
+        // Magic happens; Call 'super' to see what you have access to and alter the flow.
+    }
+}
+</code></pre>
+<h4>
+<a id="register" class="anchor" href="#register" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register</h4>
+<p>You will then need to register your newly-designed component into the CAS application runtime:</p>
+<pre lang="java"><code>package org.example.something;
+
+@Configuration("somethingConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class SomethingConfiguration implements CasWebflowExecutionPlanConfigurer {
+
+    @Autowired
+    private CasConfigurationProperties casProperties;
+
+    @Autowired
+    @Qualifier("loginFlowRegistry")
+    private FlowDefinitionRegistry loginFlowDefinitionRegistry;
+
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @Autowired
+    private FlowBuilderServices flowBuilderServices;
+
+    @ConditionalOnMissingBean(name = "somethingWebflowConfigurer")
+    @Bean
+    public CasWebflowConfigurer somethingWebflowConfigurer() {
+        return new SomethingWebflowConfigurer(flowBuilderServices,
+                    loginFlowDefinitionRegistry, applicationContext, casProperties);
+    }
+
+    @Override
+    public void configureWebflowExecutionPlan(final CasWebflowExecutionPlan plan) {
+        plan.registerWebflowConfigurer(somethingWebflowConfigurer());
+    }
+}
+</code></pre>
+<p>Configuration classes need to be registered with CAS inside a <code>src/main/resources/META-INF/spring.factories</code> file:</p>
+<pre lang="properties"><code>org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.example.something.SomethingConfiguration
+</code></pre>
+<p>See <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-developing-auto-configuration.html">this guide</a> for more info.</p>
+<h3>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h3>
+<p>You may configure CAS to alter and auto-configure the webflow via a Groovy script. This is the less elaborate option where you have modest access to CAS APIs that allow you alter the webflow. However, configuration and scaffolding of the overlay and required dependencies is easier as all is provided by CAS at runtime.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#spring-webflow-groovy-auto-configuration">review this guide</a>.</p>
+<!-- raw HTML omitted -->
+<p>A sample Groovy script follows that aims to locate the CAS login flow and a particular state pre-defined in the flow. If found, a custom action is inserted into the state to execute as soon as CAS enters that state in the flow. While this is a rather modest example, note that the script has the ability to add/remove actions, states, transitions, add/remove subflows, etc.</p>
+<pre lang="groovy"><code>import java.util.*
+
+import org.apereo.cas.*
+import org.apereo.cas.web.*
+import org.apereo.cas.web.support.*
+import org.apereo.cas.web.flow.*
+
+import org.springframework.webflow.*
+import org.springframework.webflow.engine.*
+import org.springframework.webflow.execution.*
+
+def Object run(final Object... args) {
+    def webflow = args[0]
+    def springApplicationContext = args[1]
+    def logger = args[2]
+
+    logger.info("Configuring webflow context...")
+
+    def loginFlow = webflow.getLoginFlow()
+    if (webflow.containsFlowState(loginFlow, CasWebflowConstants.STATE_ID_INIT_LOGIN_FORM)) {
+        logger.info("Found state that initializes the login form")
+
+        def state = webflow.getState(loginFlow, CasWebflowConstants.STATE_ID_INIT_LOGIN_FORM, ActionState.class)
+        logger.info("The state id is {}", state.id)
+
+        state.getEntryActionList().add({ requestContext -&gt;
+            def flowScope = requestContext.flowScope
+            def httpRequest = WebUtils.getHttpServletRequestFromExternalWebflowContext(requestContext)
+
+            logger.info("Action executing as part of ${state.id}. Stuff happens...")
+            return new Event(this, "success")
+        })
+
+        logger.info("Added action to ${state.id}'s entry action list")
+    }
+
+    return true
+}
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>webflow</code></td>
+<td>The object representing a facade on top of Spring Webflow APIs.</td>
+</tr>
+<tr>
+<td><code>springApplicationContext</code></td>
+<td>The Spring application context.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>Logger object for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>

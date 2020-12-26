@@ -1,0 +1,496 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---openid-connect-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---openid-connect-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - OpenID Connect Authentication<br>
+category: Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="openid-connect-authentication" class="anchor" href="#openid-connect-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OpenID Connect Authentication</h1>
+<p>Allow CAS to act as an <a href="http://openid.net/connect/">OpenId Connect Provider (OP)</a>.</p>
+<!-- raw HTML omitted -->
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-oidc" %}</p>
+<p>To learn more about OpenId Connect, please <a href="http://openid.net/specs/openid-connect-basic-1_0.html">review this guide</a>.</p>
+<p>The current implementation provides support for:</p>
+<ul>
+<li><a href="http://openid.net/specs/openid-connect-basic-1_0.html">Authorization Code Flow</a></li>
+<li><a href="https://openid.net/specs/openid-connect-implicit-1_0.html">Implicit Flow</a></li>
+<li><a href="https://openid.net/specs/openid-connect-discovery-1_0.html">Dynamic Discovery</a></li>
+<li><a href="https://openid.net/specs/openid-connect-discovery-1_0-21.html">WebFinger Issuer Discovery</a></li>
+<li>Administration and registration of <a href="../services/Service-Management.html">OIDC clients and relying parties</a>.</li>
+<li>Administration and registration of <a href="../services/Service-Management.html">OIDC clients and relying parties</a> via <a href="https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-management-01">Dynamic Client Registration protocol</a>.</li>
+<li>Ability to <a href="../integration/Attribute-Release-Policies.html">resolve, map and release claims</a>.</li>
+<li>Ability to configure expiration policies for various tokens.</li>
+</ul>
+<h2>
+<a id="endpoints" class="anchor" href="#endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Endpoints</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/oidc/.well-known</code></td>
+<td>The discovery endpoint used to query for CAS OIDC configuration information and metadata.</td>
+</tr>
+<tr>
+<td><code>/oidc/.well-known/openid-configuration</code></td>
+<td>Same as <code>.well-known</code> discovery endpoint.</td>
+</tr>
+<tr>
+<td><code>/oidc/.well-known/webfinger</code></td>
+<td>
+<a href="http://tools.ietf.org/html/rfc7033">WebFinger</a> discovery endpoint</td>
+</tr>
+<tr>
+<td><code>/oidc/jwks</code></td>
+<td>Contains the server’s public signing keys, which clients may use to verify the digital signatures of access tokens and ID tokens issued by CAS.</td>
+</tr>
+<tr>
+<td><code>/oidc/authorize</code></td>
+<td>Authorization requests are handled here.</td>
+</tr>
+<tr>
+<td><code>/oidc/profile</code></td>
+<td>User profile requests are handled here.</td>
+</tr>
+<tr>
+<td><code>/oidc/introspect</code></td>
+<td>Query CAS to detect the status of a given access token via <a href="https://tools.ietf.org/html/rfc7662">introspection</a>. This endpoint expects HTTP basic authentication with OIDC service <code>client_id</code> and <code>client_secret</code> associated as username and password.</td>
+</tr>
+<tr>
+<td>
+<code>/oidc/accessToken</code>, <code>/oidc/token</code>
+</td>
+<td>Produces authorized access tokens.</td>
+</tr>
+<tr>
+<td><code>/oidc/revoke</code></td>
+<td>
+<a href="https://tools.ietf.org/html/rfc7009">Revoke</a> access or refresh tokens. This endpoint expects HTTP basic authentication with OIDC service <code>client_id</code> and <code>client_secret</code> associated as username and password.</td>
+</tr>
+<tr>
+<td><code>/oidc/register</code></td>
+<td>Register clients via the <a href="https://tools.ietf.org/html/draft-ietf-oauth-dyn-reg-management-01">dynamic client registration</a> protocol.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="register-clients" class="anchor" href="#register-clients" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Register Clients</h2>
+<p>Clients can be registered with CAS in the following ways.</p>
+<h3>
+<a id="statically" class="anchor" href="#statically" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Statically</h3>
+<p>OpenID Connect clients can be <em>statically</em> registered with CAS as such:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "^&lt;https://the-redirect-uri&gt;",
+  "name": "OIDC",
+  "id": 1000
+}
+</code></pre>
+<p>Note that OpenID connect clients as service definitions are an extension of <a href="OAuth-OpenId-Authentication.html">OAuth services</a> in CAS. All settings that apply to an OAuth service definition should equally apply here as well.<br>
+The following fields are specifically available for OpenID connect services:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientId</code></td>
+<td>Required. The identifier for this client application.</td>
+</tr>
+<tr>
+<td><code>clientSecret</code></td>
+<td>Required. The secret for this client application.</td>
+</tr>
+<tr>
+<td><code>serviceId</code></td>
+<td>Required. The authorized redirect URI for this OIDC client.</td>
+</tr>
+<tr>
+<td><code>supportedGrantTypes</code></td>
+<td>Optional. Collection of supported grant types for this service.</td>
+</tr>
+<tr>
+<td><code>supportedResponseTypes</code></td>
+<td>Optional. Collection of supported response types for this service.</td>
+</tr>
+<tr>
+<td><code>signIdToken</code></td>
+<td>Optional. Whether ID tokens should be signed. Default is <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>jwks</code></td>
+<td>Optional. Resource path to the keystore location that holds the keys for this application.</td>
+</tr>
+<tr>
+<td><code>jwksCacheDuration</code></td>
+<td>Optional. The expiration policy time value applied to loaded/cached keys for this application.</td>
+</tr>
+<tr>
+<td><code>jwksCacheTimeUnit</code></td>
+<td>Optional. The expiration policy time unit of measure (i.e. <code>seconds</code>, <code>minutes</code>, etc) applied to loaded/cached keys.</td>
+</tr>
+<tr>
+<td><code>encryptIdToken</code></td>
+<td>Optional. Whether ID tokens should be encrypted. Default is <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>idTokenEncryptionAlg</code></td>
+<td>Optional. The algorithm header value used to encrypt the id token.</td>
+</tr>
+<tr>
+<td><code>idTokenSigningAlg</code></td>
+<td>Optional. The algorithm header value used to sign the id token.</td>
+</tr>
+<tr>
+<td><code>userInfoSigningAlg</code></td>
+<td>Optional. The algorithm header value used to sign user profile responses.</td>
+</tr>
+<tr>
+<td><code>userInfoEncryptedResponseAlg</code></td>
+<td>Optional. The algorithm header value used to encrypt user profile responses.</td>
+</tr>
+<tr>
+<td><code>tokenEndpointAuthenticationMethod</code></td>
+<td>Optional. The requested client authentication method to the token endpoint. Default is <code>client_secret_basic</code>.</td>
+</tr>
+<tr>
+<td><code>applicationType</code></td>
+<td>Optional. <code>web</code>, <code>native</code>, or blank. Defined the kind of the application. The default, if omitted, is <code>web</code>.</td>
+</tr>
+<tr>
+<td><code>idTokenEncryptionEncoding</code></td>
+<td>Optional. The algorithm method header value used to encrypt the id token.</td>
+</tr>
+<tr>
+<td><code>userInfoEncryptedResponseEncoding</code></td>
+<td>Optional. The algorithm method header value used to encrypt the user profile response.</td>
+</tr>
+<tr>
+<td><code>subjectType</code></td>
+<td>Optional value chosen from <code>public</code> or <code>pairwise</code>. Type to use when generating principal identifiers. Default is <code>public</code>.</td>
+</tr>
+<tr>
+<td><code>sectorIdentifierUri</code></td>
+<td>Optional. Host value of this URL is used as the sector identifier for the pairwise identifier calculation. If left undefined, the host value of the <code>serviceId</code> will be used instead.</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>Service definitions are typically managed and registered with CAS by the <a href="../services/Service-Management.html">service management</a> facility.</p>
+<!-- raw HTML omitted -->
+<h3>
+<a id="dynamically" class="anchor" href="#dynamically" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dynamically</h3>
+<p>Client applications may dynamically be registered with CAS for authentication. By default, CAS operates<br>
+in a <code>PROTECTED</code> mode where the registration endpoint requires user authentication. This behavior may be relaxed via<br>
+CAS settings to allow CAS to operate in an <code>OPEN</code> mode.</p>
+<h2>
+<a id="settings" class="anchor" href="#settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Settings</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#openid-connect">review this guide</a>.</p>
+<h2>
+<a id="server-configuration" class="anchor" href="#server-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Server Configuration</h2>
+<p>Remember that OpenID Connect features of CAS require session affinity (and optionally session replication),<br>
+as the authorization responses throughout the login flow are stored via server-backed session storage mechanisms.<br>
+You will need to configure your deployment environment and load-balancers accordingly.</p>
+<h2>
+<a id="sample-client-applications" class="anchor" href="#sample-client-applications" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample Client Applications</h2>
+<ul>
+<li><a href="https://github.com/cas-projects/oidc-sample-java-webapp">MITREid Sample Java Webapp</a></li>
+</ul>
+<h2>
+<a id="claims" class="anchor" href="#claims" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Claims</h2>
+<p>OpenID connect claims are simply treated as normal CAS attributes that need to<br>
+be <a href="../integration/Attribute-Release-Policies.html">resolved, mapped and released</a>.</p>
+<h3>
+<a id="scope-based-claims" class="anchor" href="#scope-based-claims" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scope-based Claims</h3>
+<p>You may chain various attribute release policies that authorize claim release based on specific scopes:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "...",
+  "clientSecret": "...",
+  "serviceId" : "...",
+  "name": "OIDC Test",
+  "id": 10,
+  "scopes" : [ "java.util.HashSet", 
+    [ "profile", "email", "address", "phone", "offline_access", "displayName", "eduPerson" ]
+  ]
+}
+</code></pre>
+<p>Standard scopes that internally catalog pre-defined claims all belong to the namespace <code>org.apereo.cas.oidc.claims</code> and are described below:</p>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>o.a.c.o.c.OidcProfileScopeAttributeReleasePolicy</code></td>
+<td>Release claims mapped to the spec-predefined <code>profile</code> scope.</td>
+</tr>
+<tr>
+<td><code>o.a.c.o.c.OidcEmailScopeAttributeReleasePolicy</code></td>
+<td>Release claims mapped to the spec-predefined <code>email</code> scope.</td>
+</tr>
+<tr>
+<td><code>o.a.c.o.c.OidcAddressScopeAttributeReleasePolicy</code></td>
+<td>Release claims mapped to the spec-predefined <code>address</code> scope.</td>
+</tr>
+<tr>
+<td><code>o.a.c.o.c.OidcPhoneScopeAttributeReleasePolicy</code></td>
+<td>Release claims mapped to the spec-predefined <code>phone</code> scope.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="mapping-claims" class="anchor" href="#mapping-claims" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mapping Claims</h3>
+<p>Claims associated with a scope (i.e. <code>given_name</code> for <code>profile</code>) are fixed in<br>
+the <a href="http://openid.net/specs/openid-connect-basic-1_0.html">OpenID specification</a>. In the<br>
+event that custom arbitrary attributes should be mapped to claims, mappings can be defined in CAS<br>
+settings to link a CAS-defined attribute to a fixed given scope. For instance, CAS configuration may<br>
+allow the value of the attribute <code>sys_given_name</code> to be mapped and assigned to the claim <code>given_name</code><br>
+without having an impact on the attribute resolution configuration and all other CAS-enabled applications.</p>
+<p>If mapping is not defined, by default CAS attributes are expected to match claim names.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#openid-connect">review this guide</a>.</p>
+<h3>
+<a id="user-defined-scopes" class="anchor" href="#user-defined-scopes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User-Defined Scopes</h3>
+<p>Note that in addition to standard system scopes, you may define your own custom scope with a number of attributes within:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "...",
+  "clientSecret": "...",
+  "serviceId" : "...",
+  "name": "OIDC Test",
+  "id": 10,
+  "scopes" : [ "java.util.HashSet", [ "displayName", "eduPerson" ] ]
+}
+</code></pre>
+<p>These such as <code>displayName</code> above, get bundled into a <code>custom</code> scope which can be used and requested by services and clients.</p>
+<p>If you however wish to define your custom scopes as an extension of what OpenID Connect defines<br>
+such that you may bundle attributes together, then you need to first register your <code>scope</code>,<br>
+define its attribute bundle and then use it a given service definition such as <code>eduPerson</code> above.<br>
+Such user-defined scopes are also able to override the definition of system scopes.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#openid-connect">review this guide</a>.</p>
+<h3>
+<a id="releasing-claims" class="anchor" href="#releasing-claims" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Releasing Claims</h3>
+<p>Defined scopes for a given service definition control and build attribute release policies internally. Such attribute release<br>
+policies allow one to release standard claims, remap attributes to standard claims, or define custom claims and scopes altogether.</p>
+<p>It is also possible to define and use <em>free-form</em> attribute release policies outside the confines of a <em>scope</em> to freely build and release claims/attributes.</p>
+<p>For example, the following service definition will decide on relevant attribute release policies based on the semantics<br>
+of the scopes <code>profile</code> and <code>email</code>. There is no need to design or list individual claims as CAS will auto-configure<br>
+the relevant attribute release policies:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "...",
+  "name": "OIDC",
+  "id": 1,
+  "scopes" : [ "java.util.HashSet",
+    [ "profile", "email" ]
+  ]
+}
+</code></pre>
+<p>A <em>scope-free</em> attribute release policy may just as equally apply, allowing one in<br>
+the following example to release <code>userX</code> as a <em>claim</em>:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "...",
+  "name": "OIDC",
+  "id": 1,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
+    "allowedAttributes" : {
+      "@class" : "java.util.TreeMap",
+      "userX" : "groovy { return attributes['uid'].get(0) + '-X' }"
+    }
+  }
+}
+</code></pre>
+<p>It is also possible to mix <em>free-form</em> release policies with those that operate based on a scope by chaining such policies together. For example, the below policy<br>
+allows the release of <code>user-x</code> as a claim, as well as all claims assigned and internally defined for the standard <code>email</code> scope.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId": "...",
+  "name": "OIDC",
+  "id": 10,
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [
+      "java.util.ArrayList",
+      [
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "uid", "givenName" ] ],
+          "order": 0  
+        },
+        {
+          "@class": "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
+          "allowedAttributes": {
+            "@class": "java.util.TreeMap",
+            "user-x": "groovy { return attributes['uid'].get(0) + '-X' }"
+          },
+          "order": 1
+        },
+        {
+          "@class": "org.apereo.cas.oidc.claims.OidcEmailScopeAttributeReleasePolicy",
+          "order": 2
+        }
+      ]
+    ]
+  }
+}
+</code></pre>
+<p>To learn more about attribute release policies and the chain of command, please <a href="../integration/Attribute-Release-Policies.html">see this guide</a>.</p>
+<h2>
+<a id="authentication-context-class" class="anchor" href="#authentication-context-class" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication Context Class</h2>
+<p>Support for authentication context class references is implemented in form of <code>acr_values</code> as part of the original<br>
+authorization request, which is mostly taken into account by<br>
+the <a href="../mfa/Configuring-Multifactor-Authentication.html">multifactor authentication features</a> of CAS.<br>
+Once successful, <code>acr</code> and <code>amr</code> values are passed back to the relying party as part of the id token.</p>
+<h2>
+<a id="pairwise-identifiers" class="anchor" href="#pairwise-identifiers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pairwise Identifiers</h2>
+<p>When <code>pairwise</code> subject type is used, CAS will calculate a unique <code>sub</code> value for each sector identifier. This identifier<br>
+should not be reversible by any party other than CAS and is somewhat akin to CAS generating persistent anonymous user<br>
+identifiers. Each value provided to every relying party is different so as not to enable clients to correlate the user's activities without permission.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "client",
+  "clientSecret": "secret",
+  "serviceId" : "^&lt;https://the-redirect-uri&gt;",
+  "usernameAttributeProvider" : {
+    "@class" : "org.apereo.cas.services.PairwiseOidcRegisteredServiceUsernameAttributeProvider",
+    "persistentIdGenerator" : {
+      "@class" : "org.apereo.cas.authentication.principal.OidcPairwisePersistentIdGenerator",
+      "salt" : "aGVsbG93b3JsZA=="
+    }
+  }
+}
+</code></pre>
+<h2>
+<a id="keystores" class="anchor" href="#keystores" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Keystores</h2>
+<p>Each registered application in CAS can contain its own keystore as a <code>jwks</code> resource. By default,<br>
+a global keystore can be expected and defined via CAS properties. The format of the keystore<br>
+file is similar to the following:</p>
+<pre lang="json"><code>{
+  "keys": [
+    {
+      "d": "...",
+      "e": "AQAB",
+      "n": "...",
+      "kty": "RSA",
+      "kid": "cas"
+    }
+  ]
+}
+</code></pre>
+<p>CAS will attempt to auto-generate a keystore if it can't find one, but if you wish to generate one manually,<br>
+a JWKS can be generated using <a href="https://mkjwk.org/">this tool</a><br>
+or <a href="http://connect2id.com/products/nimbus-jose-jwt/generator">this tool</a>.</p>
+<h2>
+<a id="webfinger-issuer-discovery" class="anchor" href="#webfinger-issuer-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WebFinger Issuer Discovery</h2>
+<p>OpenID Provider Issuer discovery is the process of determining the location of the OpenID Provider. Issuer discovery is optional; if a Relying Party<br>
+knows the OP's Issuer location through an out-of-band mechanism, it can skip this step.</p>
+<p>Issuer discovery requires the following information to make a discovery request:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>resource</code></td>
+<td>Required. Identifier for the target End-User that is the subject of the discovery request.</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>Server where a WebFinger service is hosted.</td>
+</tr>
+<tr>
+<td><code>rel</code></td>
+<td>URI identifying the type of service whose location is being requested:<code>http://openid.net/specs/connect/1.0/issuer</code>
+</td>
+</tr>
+</tbody>
+</table>
+<p>To start discovery of OpenID endpoints, the End-User supplies an Identifier to the Relying Party. The RP applies normalization rules to the Identifier to<br>
+determine the Resource and Host. Then it makes an HTTP <code>GET</code> request to the CAS WebFinger endpoint with the <code>resource</code> and <code>rel</code> parameters to obtain<br>
+the location of the requested service. The Issuer location <strong>MUST</strong> be returned in the WebFinger response as the value<br>
+of the <code>href</code> member of a links array element with <code>rel</code> member value <code>http://openid.net/specs/connect/1.0/issuer</code>.</p>
+<p>Example invocation of the <code>webfinger</code> endpoint follows:</p>
+<pre lang="bash"><code>curl https://sso.example.org/cas/oidc/.well-known/webfinger?resource=acct:casuser@somewhere.example.org
+</code></pre>
+<p>The expected response shall match the following example:</p>
+<pre lang="json"><code>{
+  "subject": "acct:casuser@somewhere.example.org",
+  "links": [
+    {
+      "rel": "http://openid.net/specs/connect/1.0/issuer",
+      "href": "https://sso.example.org/cas/oidc/"
+    }
+  ]
+}
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#openid-connect-webfinger">review this guide</a>.</p>
+<h3>
+<a id="webfinger-resource-userinfo" class="anchor" href="#webfinger-resource-userinfo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WebFinger Resource UserInfo</h3>
+<p>To determine the correct issuer, resources that are provided to the <code>webfinger</code> discovery endpoint using the <code>acct</code> URI scheme<br>
+can be located and fetched using external user repositories via <code>email</code> or <code>username</code>.</p>
+<!-- raw HTML omitted -->
+<p>The following user-info repository choices are available for configuration and production use.</p>
+<h4>
+<a id="groovy-userinfo-repository" class="anchor" href="#groovy-userinfo-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy UserInfo Repository</h4>
+<p>The task of locating accounts linked to webfinger resources can be handled using an external Groovy script whose outline would match the following:</p>
+<pre lang="groovy"><code>def findByUsername(Object[] args) {
+    def username = args[0]
+    def logger = args[1]
+    return [username: username]
+}
+
+def findByEmailAddress(Object[] args) {
+    def email = args[0]
+    def logger = args[1]
+    return [email: email]
+}
+</code></pre>
+<p>The expected return value from the script is a <code>Map</code> that contains key-value objects, representing user account details. An empty <code>Map</code><br>
+would indicate the absence of the user record, leading to a <code>404</code> response status back to the relying party.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#openid-connect-webfinger">review this guide</a>.</p>
+<h4>
+<a id="rest-userinfo-repository" class="anchor" href="#rest-userinfo-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST UserInfo Repository</h4>
+<p>The REST repository allows the CAS server to reach to a remote REST endpoint via the configured HTTP method to fetch user account information.</p>
+<p>Query data is passed via either <code>email</code> or <code>username</code> HTTP headers. The response that is returned must be accompanied by a <code>200</code><br>
+status code where the body should contain <code>Map</code> representing the user account information. All other responses will lead to a <code>404</code><br>
+response status back to the relying party.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#openid-connect-webfinger">review this guide</a>.</p>
+<h4>
+<a id="custom-userinfo-repository" class="anchor" href="#custom-userinfo-repository" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom UserInfo Repository</h4>
+<p>It is possible to design and inject your own version of webfinger user repositories into CAS. First, you will need to design<br>
+a <code>@Configuration</code> class to contain your own <code>OidcWebFingerUserInfoRepository</code> implementation:</p>
+<pre lang="java"><code>@Configuration("customWebFingerUserInfoConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class CustomWebFingerUserInfoConfiguration {
+
+    @Bean
+    public OidcWebFingerUserInfoRepository oidcWebFingerUserInfoRepository() {
+        ...
+    }
+}
+</code></pre>
+<p>Your configuration class needs to be registered with CAS. <a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> for better details.</p>

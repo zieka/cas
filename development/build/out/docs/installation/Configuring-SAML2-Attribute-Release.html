@@ -1,0 +1,313 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---saml2-attribute-releasecategory-attributes" class="anchor" href="#layout-defaulttitle-cas---saml2-attribute-releasecategory-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - SAML2 Attribute Release<br>
+category: Attributes</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="saml2-attribute-release" class="anchor" href="#saml2-attribute-release" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML2 Attribute Release</h1>
+<p>Attribute filtering and release policies are defined per SAML service. See <a href="../integration/Attribute-Release-Policies.html">this guide</a> for more info.</p>
+<h2>
+<a id="attribute-value-types" class="anchor" href="#attribute-value-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Value Types</h2>
+<p>By default, attribute value blocks that are created in the final SAML2 response do not carry any type information in the encoded XML.<br>
+You can, if necessary, enforce a particular type for an attribute value per the requirements of the SAML2 service provider, if any.<br>
+An example of an attribute that is encoded with specific type information would be:</p>
+<pre lang="xml"><code>&lt;saml2:Attribute FriendlyName="givenName" Name="givenName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"&gt;
+    &lt;saml2:AttributeValue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string"&gt;HelloWorld&lt;/saml2:AttributeValue&gt;
+&lt;/saml2:Attribute&gt;
+</code></pre>
+<p>The following attribute value types are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XSString</code></td>
+<td>Mark the attribute value type as <code>string</code>.</td>
+</tr>
+<tr>
+<td><code>XSURI</code></td>
+<td>Mark the attribute value type as <code>uri</code>.</td>
+</tr>
+<tr>
+<td><code>XSBoolean</code></td>
+<td>Mark the attribute value type as <code>boolean</code>.</td>
+</tr>
+<tr>
+<td><code>XSInteger</code></td>
+<td>Mark the attribute value type as <code>integer</code>.</td>
+</tr>
+<tr>
+<td><code>XSDateTime</code></td>
+<td>Mark the attribute value type as <code>datetime</code> .</td>
+</tr>
+<tr>
+<td><code>XSBase64Binary</code></td>
+<td>Mark the attribute value type as <code>base64Binary</code>.</td>
+</tr>
+<tr>
+<td><code>XSObject</code></td>
+<td>Skip the attribute value type and serialize the value as a complex XML object/POJO.</td>
+</tr>
+</tbody>
+</table>
+<p>...where the types for each attribute would be defined as such:</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name": "SAML Service",
+  "metadataLocation" : "../../sp-metadata.xml",
+  "id": 1,
+  "attributeValueTypes": {
+    "@class": "java.util.HashMap",
+    "&lt;attribute-name&gt;": "&lt;attribute-value-type&gt;"
+  }
+}
+</code></pre>
+<h2>
+<a id="attribute-name-formats" class="anchor" href="#attribute-name-formats" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Name Formats</h2>
+<p>Attribute name formats can be specified per relying party in the service registry.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name": "SAML Service",
+  "metadataLocation" : "../../sp-metadata.xml",
+  "id": 100001,
+  "attributeNameFormats": {
+    "@class": "java.util.HashMap",
+    "attributeName": "basic|uri|unspecified|custom-format-etc"
+  }
+}
+</code></pre>
+<p>You may also have the option to define attributes and their relevant name format globally<br>
+via CAS properties. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-idp">review this guide</a>.</p>
+<h2>
+<a id="attribute-friendly-names" class="anchor" href="#attribute-friendly-names" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Friendly Names</h2>
+<p>Attribute friendly names can be specified per relying party in the service registry, as well as globally via CAS settings.<br>
+If there is no friendly name defined for the attribute, the<br>
+attribute name will be used instead in its place. Note that the name of the attribute is one that is designed to be released to the service provider,<br>
+specially if the original attribute is <em>mapped</em> to a different name.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name": "SAML Service",
+  "metadataLocation" : "../../sp-metadata.xml",
+  "id": 100001,
+  "attributeFriendlyNames": {
+    "@class": "java.util.HashMap",
+    "urn:oid:2.5.4.42": "friendly-name-to-use"
+  }
+}
+</code></pre>
+<h2>
+<a id="incommon-research-and-scholarship" class="anchor" href="#incommon-research-and-scholarship" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>InCommon Research and Scholarship</h2>
+<p>A specific attribute release policy is available to release the <a href="https://spaces.internet2.edu/display/InCFederation/Research+and+Scholarship+Attribute+Bundle">attribute bundles</a><br>
+needed for InCommon Research and Scholarship service providers using the entity attribute value <code>http://id.incommon.org/category/research-and-scholarship</code>:</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "entity-ids-allowed-via-regex",
+  "name": "SAML",
+  "id": 10,
+  "metadataLocation": "path/to/incommon/metadata.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [ "java.util.ArrayList",
+      [
+         {"@class": "org.apereo.cas.support.saml.services.InCommonRSAttributeReleasePolicy"}
+      ]
+    ]
+  }
+}
+</code></pre>
+<p>Attributes authorized for release are set to be <code>eduPersonPrincipalName</code>, <code>eduPersonTargetedID</code>, <code>email</code>, <code>displayName</code>,<br>
+<code>givenName</code>, <code>surname</code>, <code>eduPersonScopedAffiliation</code>.</p>
+<h2>
+<a id="refeds-research-and-scholarship" class="anchor" href="#refeds-research-and-scholarship" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REFEDS Research and Scholarship</h2>
+<p>A specific attribute release policy is available to release the <a href="https://refeds.org/category/research-and-scholarship">attribute bundles</a><br>
+needed for REFEDS Research and Scholarship service providers using the entity attribute value <code>http://refeds.org/category/research-and-scholarship</code>:</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "entity-ids-allowed-via-regex",
+  "name": "SAML",
+  "id": 10,
+  "metadataLocation": "path/to/incommon/metadata.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [ "java.util.ArrayList",
+      [
+         {"@class": "org.apereo.cas.support.saml.services.RefedsRSAttributeReleasePolicy"}
+      ]
+    ]
+  }
+}
+</code></pre>
+<p>This policy is an extension of <code>InCommonRSAttributeReleasePolicy</code> that operates based on different entity attribute value.</p>
+<h2>
+<a id="releasing-edupersontargetedid" class="anchor" href="#releasing-edupersontargetedid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Releasing <code>eduPersonTargetedID</code>
+</h2>
+<p>If you do not have pre-calculated values for the <code>eduPersonTargetedID</code> attribute to fetch before release,<br>
+you can let CAS calculate the <code>eduPersonTargetedID</code> attribute dynamically at release time using the following policy:</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "entity-ids-allowed-via-regex",
+  "name": "SAML",
+  "id": 10,
+  "metadataLocation": "path/to/metadata.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.support.saml.services.EduPersonTargetedIdAttributeReleasePolicy",
+    "salt": "OqmG80fEKBQt",
+    "attribute": ""
+  }
+}
+</code></pre>
+<p>The generated id may be based off of an existing principal attribute. If left unspecified or attribute not found,<br>
+the authenticated principal id is used.</p>
+<h2>
+<a id="groovy-script" class="anchor" href="#groovy-script" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy Script</h2>
+<p>This policy allows a Groovy script to calculate the collection of released attributes.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "entity-ids-allowed-via-regex",
+  "name": "SAML",
+  "id": 10,
+  "metadataLocation": "path/to/incommon/metadata.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.support.saml.services.GroovySamlRegisteredServiceAttributeReleasePolicy",
+    "groovyScript": "file:/etc/cas/config/script.groovy"
+  }
+}
+</code></pre>
+<p>The configuration of this component qualifies to use the <a href="../configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a> syntax.</p>
+<p>The outline of the script may be designed as:</p>
+<pre lang="groovy"><code>import java.util.*
+import org.apereo.cas.support.saml.services.*
+import org.apereo.cas.support.saml.*
+
+def Map&lt;String, Object&gt; run(final Object... args) {
+    def attributes = args[0]
+    def service = args[1]
+    def resolver = args[2]
+    def facade = args[3]
+    def entityDescriptor = args[4]
+    def applicationContext = args[5]
+    def logger = args[6]
+    ...
+    return null;
+}
+</code></pre>
+<p>The following parameters are passed to the script:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attributes</code></td>
+<td>Map of current attributes resolved and available for release.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td>The SAML service definition matched in the service registry.</td>
+</tr>
+<tr>
+<td><code>resolver</code></td>
+<td>The metadata resolver instance of this service provider.</td>
+</tr>
+<tr>
+<td><code>facade</code></td>
+<td>A wrapper on top of the metadata resolver that allows access to utility functions.</td>
+</tr>
+<tr>
+<td><code>entityDescriptor</code></td>
+<td>The <code>EntityDescriptor</code> object matched and linked to this service provider's metadata.</td>
+</tr>
+<tr>
+<td><code>applicationContext</code></td>
+<td>CAS application context allowing direct access to beans, etc.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>An example script follows:</p>
+<pre lang="groovy"><code>import java.util.*
+import org.apereo.cas.support.saml.services.*
+import org.apereo.cas.support.saml.*
+
+def Map&lt;String, Object&gt; run(final Object... args) {
+    def attributes = args[0]
+    def service = args[1]
+    def resolver = args[2]
+    def facade = args[3]
+    def entityDescriptor = args[4]
+    def applicationContext = args[5]
+    def logger = args[6]
+
+    if (entityDescriptor.entityId == "TestingSAMLApplication") {
+      return [username:["something"], another:"attribute"]
+    }
+    return [:]
+}
+</code></pre>
+<h2>
+<a id="pattern-matching-entity-ids" class="anchor" href="#pattern-matching-entity-ids" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pattern Matching Entity Ids</h2>
+<p>In the event that an aggregate is defined containing multiple entity ids, the below attribute release policy may be used to release a collection of allowed attributes to entity ids grouped together by a regular expression pattern:</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "entity-ids-allowed-via-regex",
+  "name": "SAML",
+  "id": 10,
+  "metadataLocation": "path/to/incommon/metadata.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.support.saml.services.PatternMatchingEntityIdAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "sn" ] ],
+    "fullMatch" : "true",
+    "reverseMatch" : "false",
+    "entityIds" : "entityId1|entityId2|somewhere.+"
+  }
+}
+</code></pre>
+<h2>
+<a id="entity-attributes-filter" class="anchor" href="#entity-attributes-filter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Entity Attributes Filter</h2>
+<p>This attribute release policy authorizes the release of defined attributes, provided the accompanying metadata for the service provider contains attributes that match certain values.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "entity-ids-allowed-via-regex",
+  "name": "SAML",
+  "id": 10,
+  "metadataLocation": "path/to/metadata.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.support.saml.services.MetadataEntityAttributesAttributeReleasePolicy",
+    "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "sn" ] ],
+    "entityAttributeValues" : [ "java.util.LinkedHashSet", [ "entity-attribute-value" ] ],
+    "entityAttribute" : "http://somewhere.org/category-x",
+    "entityAttributeFormat" : "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"
+  }
+}
+</code></pre>
+<p>The specification of <code>entityAttributeFormat</code> is optional.</p>
+<h2>
+<a id="requested-attributes-filter" class="anchor" href="#requested-attributes-filter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requested Attributes Filter</h2>
+<p>This attribute release policy authorizes the release of defined attributes, based on the accompanying metadata for the service provider having requested attributes as part of its <code>AttributeConsumingService</code> element.</p>
+<pre lang="json"><code>{
+  "@class": "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId": "entity-ids-allowed-via-regex",
+  "name": "SAML",
+  "id": 10,
+  "metadataLocation": "path/to/metadata.xml",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.support.saml.services.MetadataRequestedAttributesAttributeReleasePolicy",
+    "useFriendlyName" : false
+  }
+}
+</code></pre>
+<p>The <code>useFriendlyName</code> allows the filter to compare the requested attribute's friendly name with the resolved attribute.</p>

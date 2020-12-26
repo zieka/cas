@@ -1,0 +1,29 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-service-custom-propertiescategory-services" class="anchor" href="#layout-defaulttitle-cas---configuring-service-custom-propertiescategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Service Custom Properties<br>
+category: Services</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="configure-service-custom-properties" class="anchor" href="#configure-service-custom-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configure Service Custom Properties</h1>
+<p>CAS has ability to add arbitrary attributes to a registered service.<br>
+These attributes are considered extra metadata about the service that<br>
+indicate settings such as contact phone number, email, etc or<br>
+extra attributes and fields that may be used by extensions<br>
+for custom functionality on a per-service basis.</p>
+<p>A sample JSON file follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://.+",
+  "name" : "sample service",
+  "id" : 100,
+  "properties" : {
+    "@class" : "java.util.HashMap",
+    "email" : {
+      "@class" : "org.apereo.cas.services.DefaultRegisteredServiceProperty",
+      "values" : [ "java.util.HashSet", [ "person@place.edu", "admin@place.edu" ] ]
+    }
+  }
+}
+</code></pre>
+<p>Registered service property values can use the <a href="../configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a> syntax.</p>

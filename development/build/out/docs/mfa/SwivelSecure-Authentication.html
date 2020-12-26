@@ -1,0 +1,31 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---swivel-secure-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---swivel-secure-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Swivel Secure Authentication<br>
+category: Multifactor Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="swivel-secure-authentication" class="anchor" href="#swivel-secure-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Swivel Secure Authentication</h1>
+<p>Swivel Secure offers a wide range of authentication factors, allowing the use of 2FA and image based authentication. To learn more, please refer to <a href="https://swivelsecure.com/">the official website</a>.</p>
+<p>CAS supports Swivel Secure's TURing-image based authentication. TURing uses the PINsafe protocol to provide a One Time Code for authentication. Each image is unique for that session.</p>
+<p><img src="https://user-images.githubusercontent.com/1205228/27012173-e8e32020-4e98-11e7-935f-c5166f228bd5.png" alt="image"></p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-swivel" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#swivel-secure">review this guide</a>.</p>
+<h2>
+<a id="logging" class="anchor" href="#logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logging</h2>
+<p>To enable additional logging, configure the log4j configuration file to add the following levels:</p>
+<pre lang="xml"><code>...
+&lt;Logger name="com.swiveltechnologies" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+...
+</code></pre>
+<h2>
+<a id="swivel-sdk" class="anchor" href="#swivel-sdk" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Swivel SDK</h2>
+<p>Note that Swivel SDK artifacts are not published to a Maven repository. This means that you will need to download the necessary JAR files and include the in your build configuration. The SDK may be downloaded from <a href="https://github.com/apereo/cas/blob/master/support/cas-server-support-swivel/lib/pinsafe.client.jar">the CAS codebase</a>. Then, assuming the SDK is placed inside a <code>lib</code> directory of the <a href="../installation/WAR-Overlay-Installation.html">WAR overlay</a> directory, it can be referenced in the build configuration as such:</p>
+<pre lang="gradle"><code>compile files("${projectDir}/lib/pinsafe.client.jar")
+</code></pre>

@@ -1,0 +1,1348 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas-common-properties-overviewcategory-configuration" class="anchor" href="#layout-defaulttitle-cas-common-properties-overviewcategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS Common Properties Overview<br>
+category: Configuration</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="cas-common-properties" class="anchor" href="#cas-common-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Common Properties</h1>
+<p>This document describes a number of suggestions and configuration<br>
+options that apply to and are common amongst a selection of CAS modules and features.<br>
+To see the full list of CAS properties, please <a href="Configuration-Properties.html">review this guide</a>.</p>
+<h2>
+<a id="what-is-configurationkey" class="anchor" href="#what-is-configurationkey" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is <code>${configurationKey}</code>?</h2>
+<p>Many CAS <em>sub</em> settings are common and applicable to a number of modules and features. For example, in dealing with database authentication there are a number of database-related modules who own an individual setting to define the database driver. These settings would typically be defined as <code>cas.authn.feature1.database-driver=xyz</code> and <code>cas.authn.feature2.database-driver=abc</code>. Rather than duplicating the shared and common <code>database-driver</code> setting, this page attempts to collect only what might be common CAS settings across features and modules while referring to the specific feature under the path <code>${configurationKey}</code>. Therefore, the documentation for either <code>feature1</code> or <code>feature2</code> might allow one to find common database-related settings (such as the <code>database-driver</code>) under <code>${configurationKey}.database-driver</code> where <code>${configurationKey}</code> would either be <code>cas.authn.feature1</code> or <code>cas.authn.feature2</code> depending on feature at hand. The notes and documentation for each feature that wants to inherit from a common block of settings should always advertise the appropriate value for <code>${configurationKey}</code>.</p>
+<h2>
+<a id="naming-convention" class="anchor" href="#naming-convention" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Naming Convention</h2>
+<ul>
+<li>
+<p>Settings and properties that are controlled by the CAS platform directly always begin with the prefix <code>cas</code>. All other settings are controlled<br>
+and provided to CAS via other underlying frameworks and may have their own schemas and syntax. <strong>BE CAREFUL</strong> with the distinction.</p>
+</li>
+<li>
+<p>Unrecognized properties are rejected by CAS and/or frameworks upon which CAS depends.<br>
+This means if you somehow misspell a property definition or fail to adhere to the dot-notation syntax and such, your setting<br>
+is entirely refused by CAS and likely the feature it controls will never be activated in the way you intend.</p>
+</li>
+</ul>
+<h2>
+<a id="indexed-settings" class="anchor" href="#indexed-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Indexed Settings</h2>
+<p>CAS settings able to accept multiple values are typically documented with an index, such as <code>cas.some.setting[0]=value</code>.<br>
+The index <code>[0]</code> is meant to be incremented by the adopter to allow for distinct multiple configuration blocks:</p>
+<pre lang="properties"><code># cas.some.setting[0]=value1
+# cas.some.setting[1]=value2
+</code></pre>
+<h2>
+<a id="trust-but-verify" class="anchor" href="#trust-but-verify" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trust But Verify</h2>
+<p>If you are unsure about the meaning of a given CAS setting, do <strong>NOT</strong> turn it on without hesitation.<br>
+Review the codebase or better yet, <a href="/cas/Mailing-Lists.html">ask questions</a> to clarify the intended behavior.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="time-unit-of-measure" class="anchor" href="#time-unit-of-measure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Time Unit of Measure</h2>
+<p>All CAS settings that deal with time units, unless noted otherwise,<br>
+should support the duration syntax for full clarity on unit of measure:</p>
+<pre lang="bash"><code>"PT20S"     -- parses as "20 seconds"
+"PT15M"     -- parses as "15 minutes"
+"PT10H"     -- parses as "10 hours"
+"P2D"       -- parses as "2 days"
+"P2DT3H4M"  -- parses as "2 days, 3 hours and 4 minutes"
+</code></pre>
+<p>The native numeric syntax is still supported though you will have to refer to the docs<br>
+in each case to learn the exact unit of measure.</p>
+<h2>
+<a id="job-scheduling" class="anchor" href="#job-scheduling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Job Scheduling</h2>
+<p>A number of CAS components are given the ability to schedule background jobs to clean tokens, remove records, etc.<br>
+The behavior of the scheduler can be controlled using the following settings:</p>
+<pre lang="properties"><code># ${configurationKey}.schedule.start-delay=PT10S
+# ${configurationKey}.schedule.repeat-interval=PT60S
+# ${configurationKey}.schedule.enabled=true
+</code></pre>
+<h2>
+<a id="authentication-throttling" class="anchor" href="#authentication-throttling" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication Throttling</h2>
+<p>Certain functionality in CAS, such as <a href="../installation/OAuth-OpenId-Authentication.html">OAuth</a><br>
+or <a href="../protocol/REST-Protocol.html">REST API</a>, allow you to throttle requests to specific endpoints in addition to the more<br>
+generic authentication throttling functionality applied during the login flow and authentication attempts.</p>
+<p>To fully deliver this functionality, it is expected that <a href="../installation/Configuring-Authentication-Throttling.html">authentication throttling</a> is turned on.</p>
+<h2>
+<a id="authentication-credential-selection" class="anchor" href="#authentication-credential-selection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication Credential Selection</h2>
+<p>A number of authentication handlers are allowed to determine whether they can operate on the provided credential<br>
+and as such lend themselves to be tried and tested during the authentication handler selection phase. The credential criteria<br>
+may be one of the following options:</p>
+<ul>
+<li>A regular expression pattern that is tested against the credential identifier</li>
+<li>A fully qualified class name of your own design that looks similar to the below example:</li>
+</ul>
+<pre lang="java"><code>import java.util.function.Predicate;
+import org.apereo.cas.authentication.Credential;
+
+public class PredicateExample implements Predicate&lt;Credential&gt; {
+    @Override
+    public boolean test(final Credential credential) {
+        // Examine the credential and return true/false
+    }
+}
+</code></pre>
+<ul>
+<li>Path to an external Groovy script that looks similar to the below example:</li>
+</ul>
+<pre lang="groovy"><code>import org.apereo.cas.authentication.Credential
+import java.util.function.Predicate
+
+class PredicateExample implements Predicate&lt;Credential&gt; {
+    @Override
+    boolean test(final Credential credential) {
+        // test and return result
+    }
+}
+</code></pre>
+<h2>
+<a id="authentication-principal-transformation" class="anchor" href="#authentication-principal-transformation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authentication Principal Transformation</h2>
+<p>Authentication handlers that generally deal with username-password credentials<br>
+can be configured to transform the user id prior to executing the authentication sequence.<br>
+The following options may be used:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NONE</code></td>
+<td>Do not apply any transformations.</td>
+</tr>
+<tr>
+<td><code>UPPERCASE</code></td>
+<td>Convert the username to uppercase.</td>
+</tr>
+<tr>
+<td><code>LOWERCASE</code></td>
+<td>Convert the username to lowercase.</td>
+</tr>
+</tbody>
+</table>
+<p>Authentication handlers as part of principal transformation may also be provided a path to a Groovy script to transform the provided username. The outline of the script may take on the following form:</p>
+<pre lang="groovy"><code>def String run(final Object... args) {
+    def providedUsername = args[0]
+    def logger = args[1]
+    return providedUsername.concat("SomethingElse")
+}
+</code></pre>
+<p>The following options related to principal transformation support in CAS apply equally to a number of CAS components (authentication handlers, etc) given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.principal-transformation.pattern=(.+)@example.org
+# ${configurationKey}.principal-transformation.groovy.location=file:///etc/cas/config/principal.groovy
+# ${configurationKey}.principal-transformation.suffix=
+# ${configurationKey}.principal-transformation.case-conversion=NONE|UPPERCASE|LOWERCASE
+# ${configurationKey}.principal-transformation.prefix=
+</code></pre>
+<h2>
+<a id="cookie-properties" class="anchor" href="#cookie-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cookie Properties</h2>
+<p>The following common properties configure cookie generator support in CAS.</p>
+<pre lang="properties"><code># ${configurationKey}.path=
+# ${configurationKey}.max-age=-1
+# ${configurationKey}.domain=
+# ${configurationKey}.name=
+# ${configurationKey}.secure=true
+# ${configurationKey}.http-only=true
+# ${configurationKey}.same-site-policy=none|lax|strict
+# ${configurationKey}.comment=CAS Cookie
+</code></pre>
+<h2>
+<a id="cassandra-configuration" class="anchor" href="#cassandra-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cassandra Configuration</h2>
+<p>Control properties that are relevant to Cassandra,<br>
+when CAS attempts to establish connections, run queries, etc.</p>
+<pre lang="properties"><code># ${configurationKey}.keyspace=
+# ${configurationKey}.contact-points=localhost:9042
+# ${configurationKey}.local-dc=
+# ${configurationKey}.consistency-level=ANY|ONE|TWO|THREE|QUORUM|LOCAL_QUORUM|ALL|EACH_QUORUM|LOCAL_SERIAL|SERIAL|LOCAL_ONE
+# ${configurationKey}.serial-consistency-level=ANY|ONE|TWO|THREE|QUORUM|LOCAL_QUORUM|ALL|EACH_QUORUM|LOCAL_SERIAL|SERIAL|LOCAL_ONE
+# ${configurationKey}.timeout=PT5S
+</code></pre>
+<h2>
+<a id="hibernate--jdbc" class="anchor" href="#hibernate--jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hibernate &amp; JDBC</h2>
+<p>Control global properties that are relevant to Hibernate,<br>
+when CAS attempts to employ and utilize database resources,<br>
+connections and queries.</p>
+<pre lang="properties"><code># cas.jdbc.show-sql=true
+# cas.jdbc.gen-ddl=true
+# cas.jdbc.case-insensitive=false
+# cas.jdbc.physical-table-names.{table-name}={new-table-name}
+</code></pre>
+<h3>
+<a id="database-settings" class="anchor" href="#database-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database Settings</h3>
+<p>The following options related to JPA/JDBC support in CAS apply equally to a number of CAS components (ticket registries, etc) given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.user=sa
+# ${configurationKey}.password=
+# ${configurationKey}.driver-class=org.hsqldb.jdbcDriver
+# ${configurationKey}.url=jdbc:hsqldb:mem:cas-hsql-database
+# ${configurationKey}.dialect=org.hibernate.dialect.HSQLDialect
+
+# ${configurationKey}.fail-fast-timeout=1
+# ${configurationKey}.isolation-level-name=ISOLATION_READ_COMMITTED 
+# ${configurationKey}.health-query=
+# ${configurationKey}.isolate-internal-queries=false
+# ${configurationKey}.leak-threshold=10
+# ${configurationKey}.propagation-behaviorName=PROPAGATION_REQUIRED
+# ${configurationKey}.batchSize=1
+# ${configurationKey}.default-catalog=
+# ${configurationKey}.default-schema=
+# ${configurationKey}.ddl-auto=create-drop
+# ${configurationKey}.physical-naming-strategy-class-name=org.apereo.cas.hibernate.CasHibernatePhysicalNamingStrategy
+
+# ${configurationKey}.autocommit=false
+# ${configurationKey}.idle-timeout=5000
+
+# ${configurationKey}.data-source-name=
+# ${configurationKey}.data-source-roxy=false
+
+# Hibernate-specific properties (i.e. `hibernate.globally_quoted_identifiers`)
+# ${configurationKey}.properties.property-name=propertyValue
+
+# ${configurationKey}.pool.suspension=false
+# ${configurationKey}.pool.mi-size=6
+# ${configurationKey}.pool.max-size=18
+# ${configurationKey}.pool.max-wait=2000
+# ${configurationKey}.pool.timeout-millis=1000
+</code></pre>
+<h3>
+<a id="container-based-jdbc-connections" class="anchor" href="#container-based-jdbc-connections" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Container-based JDBC Connections</h3>
+<p>If you are planning to use a container-managed JDBC connection with CAS (i.e. JPA Ticket/Service Registry, etc)<br>
+then you can set the <code>data-source-name</code> property on any of the configuration items that require a database<br>
+connection. When using a container configured data source, many of the pool related parameters will not be used.<br>
+If <code>data-source-name</code> is specified but the JNDI lookup fails, a data source will be created with the configured<br>
+(or default) CAS pool parameters.</p>
+<p>If you experience classloading errors while trying to use a container datasource, you can try<br>
+setting the <code>data-source-proxy</code> setting to true which will wrap the container datasource in<br>
+a way that may resolve the error.</p>
+<p>The <code>data-source-name</code> property can be either a JNDI name for the datasource or a resource name prefixed with<br>
+<code>java:/comp/env/</code>. If it is a resource name then you need an entry in a <code>web.xml</code> that you can add to your<br>
+CAS overlay. It should contain an entry like this:</p>
+<pre lang="xml"><code>&lt;resource-ref&gt;
+    &lt;res-ref-name&gt;jdbc/casDataSource&lt;/res-ref-name&gt;
+    &lt;res-type&gt;javax.sql.DataSource&lt;/res-type&gt;
+    &lt;res-auth&gt;Container&lt;/res-auth&gt;
+&lt;/resource-ref&gt;
+</code></pre>
+<p>In Apache Tomcat a container datasource can be defined like this in the <code>context.xml</code>:</p>
+<pre lang="xml"><code>&lt;Resource name="jdbc/casDataSource"
+    auth="Container"
+    type="javax.sql.DataSource"
+    driverClassName="org.postgresql.Driver"
+    url="jdbc:postgresql://casdb.example.com:5432/xyz_db"
+    username="cas"
+    password="xyz"
+    testWhileIdle="true"
+    testOnBorrow="true"
+    testOnReturn="false"
+    validationQuery="select 1"
+    validationInterval="30000"
+    timeBetweenEvictionRunsMillis="30000"
+    factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+    minIdle="0"
+    maxIdle="5"
+    initialSize="0"
+    maxActive="20"
+    maxWait="10000" /&gt;
+</code></pre>
+<p>In Jetty, a pool can be put in JNDI with a <code>jetty.xml</code> or <code>jetty-env.xml</code> file like this:</p>
+<pre lang="xml"><code>&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE Configure PUBLIC "-//Jetty//Configure//EN" "http://www.eclipse.org/jetty/configure_9_3.dtd"&gt;
+
+&lt;Configure class="org.eclipse.jetty.webapp.WebAppContext"&gt;
+&lt;New id="datasource.cas" class="org.eclipse.jetty.plus.jndi.Resource"&gt;
+    &lt;Arg&gt;&lt;/Arg&gt; &lt;!-- empty scope arg is JVM scope --&gt;
+    &lt;Arg&gt;jdbc/casDataSource&lt;/Arg&gt; &lt;!-- name that matches resource in web.xml--&gt;
+    &lt;Arg&gt;
+        &lt;New class="org.apache.commons.dbcp.BasicDataSource"&gt;
+            &lt;Set name="driverClassName"&gt;oracle.jdbc.OracleDriver&lt;/Set&gt;
+            &lt;Set name="url"&gt;jdbc:oracle:thin:@//casdb.example.com:1521/ntrs"&lt;/Set&gt;
+            &lt;Set name="username"&gt;cas&lt;/Set&gt;
+            &lt;Set name="password"&gt;xyz&lt;/Set&gt;
+            &lt;Set name="validationQuery"&gt;select dummy from dual&lt;/Set&gt;
+            &lt;Set name="testOnBorrow"&gt;true&lt;/Set&gt;
+            &lt;Set name="testOnReturn"&gt;false&lt;/Set&gt;
+            &lt;Set name="testWhileIdle"&gt;false&lt;/Set&gt;
+            &lt;Set name="defaultAutoCommit"&gt;false&lt;/Set&gt;
+            &lt;Set name="initialSize"&gt;0&lt;/Set&gt;
+            &lt;Set name="maxActive"&gt;15&lt;/Set&gt;
+            &lt;Set name="minIdle"&gt;0&lt;/Set&gt;
+            &lt;Set name="maxIdle"&gt;5&lt;/Set&gt;
+            &lt;Set name="maxWait"&gt;2000&lt;/Set&gt;
+        &lt;/New&gt;
+    &lt;/Arg&gt;
+&lt;/New&gt;
+&lt;/Configure&gt;
+</code></pre>
+<h2>
+<a id="person-directory-principal-resolution" class="anchor" href="#person-directory-principal-resolution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Person Directory Principal Resolution</h2>
+<p>The following options related to Person Directory support in CAS when it attempts to resolve and build the authenticated principal, given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.principal-attribute=uid,sAMAccountName,etc
+# ${configurationKey}.return-null=false
+# ${configurationKey}.principal-resolution-failure-fatal=false
+# ${configurationKey}.use-existing-principal-id=false
+# ${configurationKey}.attribute-resolution-enabled=true
+# ${configurationKey}.active-attribute-repository-ids=StubRepository,etc
+</code></pre>
+<h2>
+<a id="git-configuration" class="anchor" href="#git-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git Configuration</h2>
+<p>The following options related to Git integration support in CAS when it attempts to connect and pull/push changes, given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.git.repository-url=https://github.com/repository
+# ${configurationKey}.git.branches-to-clone=master
+# ${configurationKey}.git.active-branch=master
+# ${configurationKey}.git.sign-commits=false
+# ${configurationKey}.git.username=
+# ${configurationKey}.git.password=
+# ${configurationKey}.git.clone-directory.location=file:/tmp/cas-service-registry
+# ${configurationKey}.git.push-changes=false
+# ${configurationKey}.git.private-key-passphrase=
+# ${configurationKey}.git.private-key.location=file:/tmp/privkey.pem
+# ${configurationKey}.git.ssh-session-password=
+# ${configurationKey}.git.timeout=PT10S
+# ${configurationKey}.git.strict-host-key-checking=true
+# ${configurationKey}.git.clear-existing-identities=false
+</code></pre>
+<h2>
+<a id="influxdb-configuration" class="anchor" href="#influxdb-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>InfluxDb Configuration</h2>
+<p>The following options related to InfluxDb support in CAS apply equally to a number of CAS components given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.url=http://localhost:8086
+# ${configurationKey}.username=root
+# ${configurationKey}.password=root
+# ${configurationKey}.retention-policy=autogen
+# ${configurationKey}.drop-database=false
+# ${configurationKey}.points-to-flush=100
+# ${configurationKey}.batch-interval=PT5S
+# ${configurationKey}.consistency-level=ALL
+</code></pre>
+<h2>
+<a id="apache-kafka-configuration" class="anchor" href="#apache-kafka-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache Kafka Configuration</h2>
+<p>The following options related to Kafka support in CAS apply equally to a number of CAS components given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.bootstrap-address=localhost:9092
+</code></pre>
+<h3>
+<a id="apache-kafka-topic-configuration" class="anchor" href="#apache-kafka-topic-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache Kafka Topic Configuration</h3>
+<p>The following options related to Kafka support in CAS apply equally to a number of CAS components given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.name=
+# ${configurationKey}.partitions=1
+# ${configurationKey}.replicas=1
+# ${configurationKey}.compression-type=gzip
+# ${configurationKey}.config.key=value
+</code></pre>
+<h2>
+<a id="hazelcast-configuration" class="anchor" href="#hazelcast-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Hazelcast Configuration</h2>
+<p>The following options related to Hazelcast support in CAS apply equally to a number of CAS components given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.cluster.members=123.456.789.000,123.456.789.001
+# ${configurationKey}.cluster.instance-name=localhost
+# ${configurationKey}.cluster.port=5701
+
+# ${configurationKey}.license-key=
+# ${configurationKey}.enable-compression=false
+# ${configurationKey}.enable-management-center-scripting=true
+</code></pre>
+<p>More advanced Hazelcast configuration settings are listed below, given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.cluster.tcpip-enabled=true
+
+# ${configurationKey}.cluster.partition-member-group-type=HOST_AWARE|CUSTOM|PER_MEMBER|ZONE_AWARE|SPI
+# ${configurationKey}.cluster.map-merge-policy=PUT_IF_ABSENT|HIGHER_HITS|DISCARD|PASS_THROUGH|EXPIRATION_TIME|LATEST_UPDATE|LATEST_ACCESS
+
+# ${configurationKey}.cluster.eviction-policy=LRU
+# ${configurationKey}.cluster.max-no-heartbeat-seconds=300
+# ${configurationKey}.cluster.logging-type=slf4j
+# ${configurationKey}.cluster.port-auto-increment=true
+# ${configurationKey}.cluster.max-size=85
+# ${configurationKey}.cluster.backup-count=1
+# ${configurationKey}.cluster.async-backup-count=0
+# ${configurationKey}.cluster.max-size-policy=USED_HEAP_PERCENTAGE
+# ${configurationKey}.cluster.timeout=5
+
+# ${configurationKey}.cluster.local-address=
+# ${configurationKey}.cluster.public-address=
+# ${configurationKey}.cluster.network-interfaces=1,2,3,4
+
+# ${configurationKey}.cluster.outbound-ports[0]=45000
+</code></pre>
+<h3>
+<a id="static-wan-replication" class="anchor" href="#static-wan-replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Static WAN Replication</h3>
+<pre lang="properties"><code># ${configurationKey}.cluster.wan-replication.enabled=false
+# ${configurationKey}.cluster.wan-replication.replication-name=CAS
+
+# ${configurationKey}.cluster.wan-replication.targets[0].endpoints=1.2.3.4,4.5.6.7
+# ${configurationKey}.cluster.wan-replication.targets[0].publisher-className=com.hazelcast.enterprise.wan.replication.WanBatchReplication
+# ${configurationKey}.cluster.wan-replication.targets[0].queue-full-behavior=THROW_EXCEPTION
+# ${configurationKey}.cluster.wan-replication.targets[0].acknowledge-type=ACK_ON_OPERATION_COMPLETE
+# ${configurationKey}.cluster.wan-replication.targets[0].queue-capacity=10000
+# ${configurationKey}.cluster.wan-replication.targets[0].batch-size=500
+# ${configurationKey}.cluster.wan-replication.targets[0].snapshot-enabled=false
+# ${configurationKey}.cluster.wan-replication.targets[0].batch-maximum-delay-milliseconds=1000
+# ${configurationKey}.cluster.wan-replication.targets[0].response-timeout-milliseconds=60000
+# ${configurationKey}.cluster.wan-replication.targets[0].executor-thread-count=2
+
+# ${configurationKey}.cluster.wan-replication.targets[0].consistency-check-strategy=NONE|MERKLE_TREES
+# ${configurationKey}.cluster.wan-replication.targets[0].cluster-name=
+# ${configurationKey}.cluster.wan-replication.targets[0].publisher-id=
+# ${configurationKey}.cluster.wan-replication.targets[0].properties=
+</code></pre>
+<h3>
+<a id="multicast-discovery" class="anchor" href="#multicast-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multicast Discovery</h3>
+<pre lang="properties"><code># ${configurationKey}.cluster.multicast-trusted-interfaces=
+# ${configurationKey}.cluster.multicast-enabled=false
+# ${configurationKey}.cluster.multicast-port=
+# ${configurationKey}.cluster.multicast-group=
+# ${configurationKey}.cluster.multicast-timeout=2
+# ${configurationKey}.cluster.multicast-time-to-live=32
+</code></pre>
+<h3>
+<a id="aws-ec2-discovery" class="anchor" href="#aws-ec2-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>AWS EC2 Discovery</h3>
+<pre lang="properties"><code># ${configurationKey}.cluster.discovery.enabled=true
+
+# ${configurationKey}.cluster.discovery.aws.access-ley=
+# ${configurationKey}.cluster.discovery.aws.secret-ley=
+
+# ${configurationKey}.cluster.discovery.aws.iam-role=
+
+# ${configurationKey}.cluster.discovery.aws.region=us-east-1
+# ${configurationKey}.cluster.discovery.aws.host-header=
+# ${configurationKey}.cluster.discovery.aws.security-group-name=
+# ${configurationKey}.cluster.discovery.aws.tag-key=
+# ${configurationKey}.cluster.discovery.aws.tag-value=
+# ${configurationKey}.cluster.discovery.aws.port=-1
+# ${configurationKey}.cluster.discovery.aws.connection-timeout-seconds=5
+</code></pre>
+<h3>
+<a id="apache-jclouds-discovery" class="anchor" href="#apache-jclouds-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache jclouds Discovery</h3>
+<pre lang="properties"><code># ${configurationKey}.cluster.discovery.enabled=true
+
+# ${configurationKey}.cluster.discovery.jclouds.provider=
+# ${configurationKey}.cluster.discovery.jclouds.identity=
+# ${configurationKey}.cluster.discovery.jclouds.credential=
+# ${configurationKey}.cluster.discovery.jclouds.endpoint=
+# ${configurationKey}.cluster.discovery.jclouds.zones=
+# ${configurationKey}.cluster.discovery.jclouds.regions=
+# ${configurationKey}.cluster.discovery.jclouds.tag-keys=
+# ${configurationKey}.cluster.discovery.jclouds.tag-values=
+# ${configurationKey}.cluster.discovery.jclouds.group=
+# ${configurationKey}.cluster.discovery.jclouds.port=-1
+# ${configurationKey}.cluster.discovery.jclouds.role-name=
+# ${configurationKey}.cluster.discovery.jclouds.credential-path=
+</code></pre>
+<h3>
+<a id="kubernetes-discovery" class="anchor" href="#kubernetes-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Kubernetes Discovery</h3>
+<pre lang="properties"><code># ${configurationKey}.cluster.discovery.enabled=true
+
+# ${configurationKey}.service-dns=
+# ${configurationKey}.service-dns-timeout=-1
+# ${configurationKey}.service-name=
+# ${configurationKey}.service-label-name=
+# ${configurationKey}.service-label-value=
+# ${configurationKey}.cluster.discovery.kubernetes.namespace=
+# ${configurationKey}.resolve-not-ready-addresses=false
+# ${configurationKey}.cluster.discovery.kubernetes.kubernetes-master=
+# ${configurationKey}.api-token=
+</code></pre>
+<h3>
+<a id="docker-swarm-discovery" class="anchor" href="#docker-swarm-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docker Swarm Discovery</h3>
+<pre lang="properties"><code># ${configurationKey}.cluster.discovery.enabled=true
+
+# ${configurationKey}.cluster.discovery.docker-swarm.dns-provider.enabled=true
+# ${configurationKey}.cluster.discovery.docker-swarm.dns-provider.service-name=
+# ${configurationKey}.cluster.discovery.docker-swarm.dns-provider.service-port=5701
+# ${configurationKey}.cluster.discovery.docker-swarm.dns-provider.peer-services=service-a,service-b,etc
+
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.enabled=true
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.group-name=
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.group-password=
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.docker-network-names=
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.docker-service-names=
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.docker-service-labels=
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.swarm-mgr-uri=
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.skip-verify-ssl=false
+# ${configurationKey}.cluster.discovery.docker-swarm.member-provider.hazelcast-peer-port=5701
+</code></pre>
+<h3>
+<a id="microsoft-azure-discovery" class="anchor" href="#microsoft-azure-discovery" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Microsoft Azure Discovery</h3>
+<pre lang="properties"><code># ${configurationKey}.cluster.discovery.enabled=true
+
+# ${configurationKey}.cluster.discovery.azure.subscription-id=
+# ${configurationKey}.cluster.discovery.azure.client-id=
+# ${configurationKey}.cluster.discovery.azure.client-secret=
+# ${configurationKey}.cluster.discovery.azure.tenant-id=
+# ${configurationKey}.cluster.discovery.azure.cluster-id=
+# ${configurationKey}.cluster.discovery.azure.group-name=
+</code></pre>
+<h2>
+<a id="radius-configuration" class="anchor" href="#radius-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RADIUS Configuration</h2>
+<p>The following options related to RADIUS support in CAS apply equally to a number of CAS components (authentication, etc)<br>
+given the component's <em>configuration key</em>.</p>
+<p><code>server</code> parameters defines identification values of authenticated service (CAS server), primarily <code>server.protocol</code><br>
+for communication to RADIUS server identified by <code>client</code>.</p>
+<p><code>client</code> parameters defines values for connecting RADIUS server.<br>
+Parameter <code>client.inetAddress</code> has possibility to contain more addresses separated by comma to define failover servers<br>
+when <code>failoverOnException</code> is set.</p>
+<pre lang="properties"><code># ${configurationKey}.server.nas-port-id=-1
+# ${configurationKey}.server.nas-real-port=-1
+# ${configurationKey}.server.protocol=EAP_MSCHAPv2
+# ${configurationKey}.server.retries=3
+# ${configurationKey}.server.nas-port-type=-1
+# ${configurationKey}.server.nas-port=-1
+# ${configurationKey}.server.nas-ip-address=
+# ${configurationKey}.server.nas-ipv6-address=
+# ${configurationKey}.server.nas-identifier=-1
+# ${configurationKey}.client.authentication-port=1812
+# ${configurationKey}.client.shared-secret=N0Sh@ar3d$ecReT
+# ${configurationKey}.client.socket-timeout=0
+# ${configurationKey}.client.inet-address=localhost
+# ${configurationKey}.client.accounting-port=1813
+# ${configurationKey}.failover-on-exception=false
+# ${configurationKey}.failover-on-authentication-failure=false
+</code></pre>
+<h2>
+<a id="couchdb-configuration" class="anchor" href="#couchdb-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb Configuration</h2>
+<p>The following options related to CouchDb support in CAS apply equally to a number of CAS components (ticket registries, etc) given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.couch-db.url=http://localhost:5984
+# ${configurationKey}.couch-db.username=
+# ${configurationKey}.couch-db.password=
+# ${configurationKey}.couch-db.socket-timeout=10000
+# ${configurationKey}.couch-db.connection-timeout=1000
+# ${configurationKey}.couch-db.drop-collection=false
+# ${configurationKey}.couch-db.max-connections=20
+# ${configurationKey}.couch-db.enable-ssl=
+# ${configurationKey}.couch-db.relaxed-ssl-settings=
+# ${configurationKey}.couch-db.caching=false
+# ${configurationKey}.couch-db.max-cache-entries=1000
+# ${configurationKey}.couch-db.max-object-size-bytes=8192
+# ${configurationKey}.couch-db.use-expect-continue=true
+# ${configurationKey}.couch-db.cleanup-idle-connections=true
+# ${configurationKey}.couch-db.create-if-not-exists=true
+# ${configurationKey}.couch-db.proxy-host=
+# ${configurationKey}.couch-db.proxy-port=-1
+
+# Defaults are based on the feature name.
+# ${configurationKey}.couch-db.db-name=
+
+# For the few features that can't have update conflicts automatically resolved.
+# ${configurationKey}.couch-db.retries=5
+
+# Depending on the feature at hand, CAS may perform some actions asynchronously.
+# ${configurationKey}.couch-db.asynchronous=true
+</code></pre>
+<h2>
+<a id="mongodb-configuration" class="anchor" href="#mongodb-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb Configuration</h2>
+<p>The following options related to MongoDb support in CAS apply equally to a number of CAS components (ticket registries, etc) given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.mongo.host=localhost
+# ${configurationKey}.mongo.client-uri=localhost
+# ${configurationKey}.mongo.port=27017
+# ${configurationKey}.mongo.drop-collection=false
+# ${configurationKey}.mongo.socket-keep-alive=false
+# ${configurationKey}.mongo.password=
+
+# ${configurationKey}.mongo.collection=cas-service-registry
+
+# ${configurationKey}.mongo.database-name=cas-mongo-database
+# ${configurationKey}.mongo.timeout=5000
+# ${configurationKey}.mongo.user-id=
+# ${configurationKey}.mongo.write-concern=NORMAL
+# ${configurationKey}.mongo.read-concern=AVAILABLE
+# ${configurationKey}.mongo.read-preference=PRIMARY
+# ${configurationKey}.mongo.authentication-database-name=
+# ${configurationKey}.mongo.replica-set=
+# ${configurationKey}.mongo.ssl-enabled=false
+# ${configurationKey}.mongo.retry-writes=false
+
+# ${configurationKey}.mongo.pool.life-time=60000
+# ${configurationKey}.mongo.pool.idle-time=30000
+# ${configurationKey}.mongo.pool.max-wait-time=60000
+# ${configurationKey}.mongo.pool.max-size=10
+# ${configurationKey}.mongo.pool.min-size=1
+# ${configurationKey}.mongo.pool.per-host=10
+</code></pre>
+<h2>
+<a id="dynamodb-configuration" class="anchor" href="#dynamodb-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb Configuration</h2>
+<p>The following options related to DynamoDb support in CAS apply equally to a number of CAS components (ticket registries, etc) given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.dynamo-db.drop-tables-on-startup=false
+# ${configurationKey}.dynamo-db.prevent-table-creation-on-startup=false
+# ${configurationKey}.dynamo-db.local-instance=false
+</code></pre>
+<p>AWS settings for this feature are available <a href="#amazon-integration-settings">here</a>.</p>
+<h2>
+<a id="restful-integrations" class="anchor" href="#restful-integrations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RESTful Integrations</h2>
+<p>The following options related to features in CAS that provide REST support to fetch and update data. These settings apply equally, given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.method=GET|POST
+# ${configurationKey}.order=0
+# ${configurationKey}.case-insensitive=false
+# ${configurationKey}.basic-auth-username=uid
+# ${configurationKey}.basic-auth-password=password
+# ${configurationKey}.url=https://rest.somewhere.org/attributes
+</code></pre>
+<h2>
+<a id="redis-configuration" class="anchor" href="#redis-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis Configuration</h2>
+<p>The following options related to Redis support in CAS apply equally to a number of CAS components (ticket registries, etc) given the component's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.redis.host=localhost
+# ${configurationKey}.redis.database=0
+# ${configurationKey}.redis.port=6380
+# ${configurationKey}.redis.password=
+# ${configurationKey}.redis.timeout=2000
+# ${configurationKey}.redis.use-ssl=false
+# ${configurationKey}.redis.read-from=MASTER
+</code></pre>
+<h3>
+<a id="redis-pool-configuration" class="anchor" href="#redis-pool-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis Pool Configuration</h3>
+<pre lang="properties"><code># ${configurationKey}.redis.pool.enabled=false
+# ${configurationKey}.redis.pool.max-active=20
+# ${configurationKey}.redis.pool.max-idle=8
+# ${configurationKey}.redis.pool.min-idle=0
+# ${configurationKey}.redis.pool.max-active=8
+# ${configurationKey}.redis.pool.max-wait=-1
+# ${configurationKey}.redis.pool.num-tests-per-eviction-run=0
+# ${configurationKey}.redis.pool.soft-min-evictable-idle-time-millis=0
+# ${configurationKey}.redis.pool.min-evictable-idle-time-millis=0
+# ${configurationKey}.redis.pool.lifo=true
+# ${configurationKey}.redis.pool.fairness=false
+# ${configurationKey}.redis.pool.test-on-create=false
+# ${configurationKey}.redis.pool.test-on-borrow=false
+# ${configurationKey}.redis.pool.test-on-return=false
+# ${configurationKey}.redis.pool.test-while-idle=false
+</code></pre>
+<h3>
+<a id="redis-sentinel-configuration" class="anchor" href="#redis-sentinel-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis Sentinel Configuration</h3>
+<pre lang="properties"><code># ${configurationKey}.redis.sentinel.master=mymaster
+# ${configurationKey}.redis.sentinel.node[0]=localhost:26377
+# ${configurationKey}.redis.sentinel.node[1]=localhost:26378
+# ${configurationKey}.redis.sentinel.node[2]=localhost:26379
+</code></pre>
+<h3>
+<a id="redis-cluster-configuration" class="anchor" href="#redis-cluster-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis Cluster Configuration</h3>
+<pre lang="properties"><code># ${configurationKey}.redis.cluster.password=
+# ${configurationKey}.redis.cluster.max-redirects=0
+# ${configurationKey}.redis.cluster.nodes[0].host=
+# ${configurationKey}.redis.cluster.nodes[0].port=
+# ${configurationKey}.redis.cluster.nodes[0].replica-of=
+# ${configurationKey}.redis.cluster.nodes[0].id=
+# ${configurationKey}.redis.cluster.nodes[0].name=
+# ${configurationKey}.redis.cluster.nodes[0].type=MASTER|SLAVE
+</code></pre>
+<h2>
+<a id="ddl-configuration" class="anchor" href="#ddl-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DDL Configuration</h2>
+<p>Note that the default value for Hibernate's DDL setting is <code>create-drop</code> which may not be appropriate for use in production. Setting the value to<br>
+<code>validate</code> may be more desirable, but any of the following options can be used:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>validate</code></td>
+<td>Validate the schema, but make no changes to the database.</td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td>Update the schema.</td>
+</tr>
+<tr>
+<td><code>create</code></td>
+<td>Create the schema, destroying previous data.</td>
+</tr>
+<tr>
+<td><code>create-drop</code></td>
+<td>Drop the schema at the end of the session.</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>Do nothing.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that during a version migration where any schema has changed <code>create-drop</code> will result<br>
+in the loss of all data as soon as CAS is started. For transient data like tickets this is probably<br>
+not an issue, but in cases like the audit table important data could be lost. Using <code>update</code>, while safe<br>
+for data, is confirmed to result in invalid database state. <code>validate</code> or <code>none</code> settings<br>
+are likely the only safe options for production use.</p>
+<p>For more information on configuration of transaction levels and propagation behaviors,<br>
+please review <a href="http://docs.spring.io/spring-framework/docs/current/javadoc-api/">this guide</a>.</p>
+<h2>
+<a id="saml2-service-provider-integrations" class="anchor" href="#saml2-service-provider-integrations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML2 Service Provider Integrations</h2>
+<p>The settings defined for each service provider simply attempt to automate the creation of<br>
+a <a href="../installation/Configuring-SAML2-Authentication.html#saml-services">SAML service definition</a> and nothing more. If you find the<br>
+applicable settings lack in certain areas, it is best to fall back onto the native configuration strategy for registering<br>
+SAML service providers with CAS which would depend on your service registry of choice.</p>
+<p>Each SAML service provider supports the following settings:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>metadata</code></td>
+<td>Location of metadata for the service provider (i.e URL, path, etc)</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>The name of the service provider registered in the service registry.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>The description of the service provider registered in the service registry.</td>
+</tr>
+<tr>
+<td><code>nameIdAttribute</code></td>
+<td>Attribute to use when generating name ids for this service provider.</td>
+</tr>
+<tr>
+<td><code>nameIdFormat</code></td>
+<td>The forced NameID Format identifier (i.e. <code>urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress</code>).</td>
+</tr>
+<tr>
+<td><code>attributes</code></td>
+<td>Attributes to release to the service provider, which may virtually be mapped and renamed.</td>
+</tr>
+<tr>
+<td><code>signatureLocation</code></td>
+<td>Signature location to verify metadata.</td>
+</tr>
+<tr>
+<td><code>entityIds</code></td>
+<td>List of entity ids allowed for this service provider.</td>
+</tr>
+<tr>
+<td><code>signResponses</code></td>
+<td>Indicate whether responses should be signed. Default is <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>signAssertions</code></td>
+<td>Indicate whether assertions should be signed. Default is <code>false</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>The only required setting that would activate the automatic configuration for a service provider is the presence and definition of metadata. All other settings are optional.</p>
+<p>The following options apply equally to SAML2 service provider integrations, given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.metadata=/etc/cas/saml/dropbox.xml
+# ${configurationKey}.name=SP Name
+# ${configurationKey}.description=SP Integration
+# ${configurationKey}.name-id-attribute=mail
+# ${configurationKey}.name-id-format=
+# ${configurationKey}.signature-location=
+# ${configurationKey}.attributes=
+# ${configurationKey}.entity-ids=
+# ${configurationKey}.sign-responses=
+# ${configurationKey}.sign-assertions=
+</code></pre>
+<h2>
+<a id="multifactor-authentication-providers" class="anchor" href="#multifactor-authentication-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multifactor Authentication Providers</h2>
+<p>All configurable multifactor authentication providers have these base properties available given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.rank=
+# ${configurationKey}.id=
+# ${configurationKey}.name=
+# ${configurationKey}.failure-mode=UNDEFINED
+</code></pre>
+<h2>
+<a id="multifactor-authentication-bypass" class="anchor" href="#multifactor-authentication-bypass" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multifactor Authentication Bypass</h2>
+<p>The following bypass options apply equally to multifactor authentication providers given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.bypass.principal-attribute-name=bypass|skip
+# ${configurationKey}.bypass.principal-attribute-value=true|enabled.+
+
+# ${configurationKey}.bypass.authentication-attribute-name=bypass|skip
+# ${configurationKey}.bypass.authentication-attribute-value=allowed.+|enabled.+
+
+# ${configurationKey}.bypass.authentication-handler-name=AcceptUsers.+
+# ${configurationKey}.bypass.authentication-method-name=LdapAuthentication.+
+
+# ${configurationKey}.bypass.credential-class-type=UsernamePassword.+
+
+# ${configurationKey}.bypass.http-request-remote-address=127.+|example.*
+# ${configurationKey}.bypass.http-request-headers=header-X-.+|header-Y-.+
+
+# ${configurationKey}.bypass.groovy.location=file:/etc/cas/config/mfa-bypass.groovy
+</code></pre>
+<p>If multifactor authentication bypass is determined via REST,<br>
+RESTful settings are available <a href="#restful-integrations">here</a> under the configuration key <code>${configurationKey}.bypass.rest</code>.</p>
+<h2>
+<a id="couchbase-integration-settings" class="anchor" href="#couchbase-integration-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Couchbase Integration Settings</h2>
+<p>The following options are shared and apply when CAS is configured to integrate with Couchbase (i.e ticket registry, etc), given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.addresses[0]=localhost
+# ${configurationKey}.cluster-username=
+# ${configurationKey}.cluster-password= 
+
+# ${configurationKey}.bucket=testbucket    
+
+# ${configurationKey}.connection-timeout=PT60S
+# ${configurationKey}.search-timeout=PT30S
+# ${configurationKey}.query-timeout=PT30S
+# ${configurationKey}.view-timeout=PT30S
+# ${configurationKey}.kv-timeout=PT30S 
+# ${configurationKey}.max-http-connections=PT30S
+# ${configurationKey}.idle-connection-timeout=PT30S
+# ${configurationKey}.query-threshold=PT30S
+# ${configurationKey}.scan-consistency=NOT_BOUNDED|REQUEST_PLUS
+</code></pre>
+<h2>
+<a id="amazon-integration-settings" class="anchor" href="#amazon-integration-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon Integration Settings</h2>
+<p>The following options are shared and apply when CAS is configured to integrate with various<br>
+Amazon Web Service features, given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.credential-access-key=
+# ${configurationKey}.credential-secret-key=
+
+# ${configurationKey}.endpoint=http://localhost:8000
+# ${configurationKey}.region=US_WEST_2|US_EAST_2|EU_WEST_2|&lt;REGION-NAME&gt;
+# ${configurationKey}.local-address=
+# ${configurationKey}.retry-mode=STANDARD|LEGACY
+
+# ${configurationKey}.proxy-host=
+# ${configurationKey}.proxy-password=
+# ${configurationKey}.proxy-username=
+
+# ${configurationKey}.read-capacity=10
+# ${configurationKey}.write-capacity=10
+# ${configurationKey}.connection-timeout=5000
+# ${configurationKey}.socket-timeout=5000
+# ${configurationKey}.use-reaper=false
+
+# ${configurationKey}.client-execution-timeout=10000
+# ${configurationKey}.max-connections=10
+</code></pre>
+<h2>
+<a id="memcached-integration-settings" class="anchor" href="#memcached-integration-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Memcached Integration Settings</h2>
+<p>The following  options are shared and apply when CAS is configured to integrate with memcached (i.e ticket registry, etc), given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.memcached.servers=localhost:11211
+# ${configurationKey}.memcached.locator-type=ARRAY_MOD
+# ${configurationKey}.memcached.failure-mode=Redistribute
+# ${configurationKey}.memcached.hash-algorithm=FNV1_64_HASH
+# ${configurationKey}.memcached.should-optimize=false
+# ${configurationKey}.memcached.daemon=true
+# ${configurationKey}.memcached.max-reconnect-delay=-1
+# ${configurationKey}.memcached.use-nagle-algorithm=false
+# ${configurationKey}.memcached.shutdown-timeout-seconds=-1
+# ${configurationKey}.memcached.op-timeout=-1
+# ${configurationKey}.memcached.timeout-exception-threshold=2
+# ${configurationKey}.memcached.max-total=20
+# ${configurationKey}.memcached.max-idle=8
+# ${configurationKey}.memcached.min-idle=0
+
+# ${configurationKey}.memcached.transcoder=KRYO|SERIAL|WHALIN|WHALINV1
+# ${configurationKey}.memcached.transcoder-compression-threshold=16384
+# ${configurationKey}.memcached.kryo-auto-reset=false
+# ${configurationKey}.memcached.kryo-objects-by-reference=false
+# ${configurationKey}.memcached.kryo-registration-required=false
+</code></pre>
+<h2>
+<a id="password-policy-settings" class="anchor" href="#password-policy-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Password Policy Settings</h2>
+<p>The following  options are shared and apply when CAS is configured to integrate with account sources and authentication strategies that support password policy enforcement and detection, given the provider's <em>configuration key</em>. Note that certain setting may only be applicable if the underlying account source is LDAP and are only taken into account if the authentication strategy configured in CAS is able to honor and recognize them:</p>
+<pre lang="properties"><code># ${configurationKey}.type=GENERIC|AD|FreeIPA|EDirectory
+
+# ${configurationKey}.enabled=true
+# ${configurationKey}.policy-attributes.account-locked=javax.security.auth.login.AccountLockedException
+# ${configurationKey}.login-failures=5
+# ${configurationKey}.warning-attribute-value=
+# ${configurationKey}.warning-attribute-name=
+# ${configurationKey}.display-warning-on-match=true
+# ${configurationKey}.warn-all=true
+# ${configurationKey}.warning-days=30
+# ${configurationKey}.account-state-handling-enabled=true
+
+# An implementation of `org.ldaptive.auth.AuthenticationResponseHandler`
+# ${configurationKey}.custom-policy-class=com.example.MyAuthenticationResponseHandler
+
+# ${configurationKey}.strategy=DEFAULT|GROOVY|REJECT_RESULT_CODE
+# ${configurationKey}.groovy.location=file:/etc/cas/config/password-policy.groovy
+</code></pre>
+<h4>
+<a id="password-policy-strategies" class="anchor" href="#password-policy-strategies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Password Policy Strategies</h4>
+<p>Password policy strategy types are outlined below. The strategy evaluates the authentication response received from LDAP, etc and is allowed to review it upfront in order to further examine whether account state, messages and warnings is eligible for further investigation.</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEFAULT</code></td>
+<td>Accepts the authentication response as is, and processes account state, if any.</td>
+</tr>
+<tr>
+<td><code>GROOVY</code></td>
+<td>Examine the authentication response as part of a Groovy script dynamically. The responsibility of handling account state changes and warnings is entirely delegated to the script.</td>
+</tr>
+<tr>
+<td><code>REJECT_RESULT_CODE</code></td>
+<td>An extension of the <code>DEFAULT</code> where account state is processed only if the result code of the authentication response is not denied in the configuration. By default <code>INVALID_CREDENTIALS(49)</code> prevents CAS from handling account states.</td>
+</tr>
+</tbody>
+</table>
+<p>If the password policy strategy is to be handed off to a Groovy script, the outline of the script may be as follows:</p>
+<pre lang="groovy"><code>import java.util.*
+import org.ldaptive.auth.*
+import org.apereo.cas.*
+import org.apereo.cas.authentication.*
+import org.apereo.cas.authentication.support.*
+
+def List&lt;MessageDescriptor&gt; run(final Object... args) {
+    def response = args[0]
+    def configuration = args[1];
+    def logger = args[2]
+    def applicationContext = args[3]
+
+    logger.info("Handling password policy [{}] via ${configuration.getAccountStateHandler()}", response)
+
+    def accountStateHandler = configuration.getAccountStateHandler()
+    return accountStateHandler.handle(response, configuration)
+}
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>response</code></td>
+<td>The LDAP authentication response of type <code>org.ldaptive.auth.AuthenticationResponse</code>
+</td>
+</tr>
+<tr>
+<td><code>configuration</code></td>
+<td>The LDAP password policy configuration carrying the account state handler defined.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="webflow-auto-configuration" class="anchor" href="#webflow-auto-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webflow Auto Configuration</h2>
+<p>Control aspects of webflow that relate to auto-configuration of webflow states, transitions and execution order.</p>
+<pre lang="properties"><code># ${configurationKey}.order=
+</code></pre>
+<h2>
+<a id="delegated-authentication-settings" class="anchor" href="#delegated-authentication-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delegated Authentication Settings</h2>
+<p>The following options are shared and apply when CAS is configured to delegate authentication<br>
+to an external provider such as Yahoo, given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.id=
+# ${configurationKey}.secret=
+# ${configurationKey}.client-name=My Provider
+# ${configurationKey}.auto-redirect=false
+# ${configurationKey}.css-class=
+# ${configurationKey}.callback-url=
+# ${configurationKey}.principal-attribute-id=
+# ${configurationKey}.enabled=true
+# ${configurationKey}.callback-url-type=PATH_PARAMETER|QUERY_PARAMETER|NONE
+
+</code></pre>
+<p>The following types are supported with callback URL resolution:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PATH_PARAMETER</code></td>
+<td>When constructing a callback URL, client name is added to the url as a path parameter.</td>
+</tr>
+<tr>
+<td><code>QUERY_PARAMETER</code></td>
+<td>When constructing a callback URL, client name is added to the url as a query parameter.</td>
+</tr>
+<tr>
+<td><code>NONE</code></td>
+<td>No client name is added to the url.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="delegated-authentication-openid-connect-settings" class="anchor" href="#delegated-authentication-openid-connect-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Delegated Authentication OpenID Connect Settings</h3>
+<p>The following options are shared and apply when CAS is configured to delegate authentication<br>
+to an external OpenID Connect provider such as Azure AD, given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.discovery-uri=
+# ${configurationKey}.logout-url=
+# ${configurationKey}.max-clock-skew=
+# ${configurationKey}.scope=
+# ${configurationKey}.use-nonce=false
+# ${configurationKey}.disable-nonce=false
+# ${configurationKey}.preferred-jws-algorithm=
+# ${configurationKey}.response-mode=
+# ${configurationKey}.response-type=
+# ${configurationKey}.custom-params.param1=value1
+# ${configurationKey}.read-timeout=PT5S
+# ${configurationKey}.connect-timeout=PT5S
+# ${configurationKey}.expire-session-with-token=false
+# ${configurationKey}.token-expiration-advance=0
+</code></pre>
+<h2>
+<a id="ldap-connection-settings" class="anchor" href="#ldap-connection-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP Connection Settings</h2>
+<p>The following  options apply  to features that integrate with an LDAP server (i.e. authentication, attribute resolution, etc) given the provider's <em>configuration key</em>:</p>
+<pre lang="properties"><code># ${configurationKey}.ldap-url=ldaps://ldap1.example.edu ldaps://ldap2.example.edu
+# ${configurationKey}.bind-dn=cn=-directory -manager,dc=example,dc=org
+# ${configurationKey}.bind-credential=Password
+
+# ${configurationKey}.pool-passivator=NONE|BIND
+# ${configurationKey}.connection-strategy=
+# ${configurationKey}.connect-timeout=PT5S
+# ${configurationKey}.trust-certificates=
+# ${configurationKey}.trust-store=
+# ${configurationKey}.trust-store-password=
+# ${configurationKey}.trust-store-type=JKS|JCEKS|PKCS12
+# ${configurationKey}.keystore=
+# ${configurationKey}.keystore-password=
+# ${configurationKey}.keystore-type=JKS|JCEKS|PKCS12
+# ${configurationKey}.disable-pooling=false
+# ${configurationKey}.min-pool-size=3
+# ${configurationKey}.max-pool-size=10
+# ${configurationKey}.validate-on-checkout=true
+# ${configurationKey}.validate-periodically=true
+# ${configurationKey}.validate-period=PT5M
+# ${configurationKey}.validate-timeout=PT5S
+# ${configurationKey}.fail-fast=true
+# ${configurationKey}.idle-time=PT10M
+# ${configurationKey}.prune-period=PT2H
+# ${configurationKey}.block-wait-time=PT3S
+
+# ${configurationKey}.use-start-tls=false
+# ${configurationKey}.response-timeout=PT5S
+# ${configurationKey}.allow-multiple-dns=false
+# ${configurationKey}.allow-multiple-entries=false
+# ${configurationKey}.follow-referrals=false
+# ${configurationKey}.binary-attributes=objectGUID,someOtherAttribute
+# ${configurationKey}.name=
+</code></pre>
+<h3>
+<a id="connection-initialization" class="anchor" href="#connection-initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connection Initialization</h3>
+<p>LDAP connection configuration injected into the LDAP connection pool can be initialized with the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Behavior</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>bindDn</code>/<code>bindCredential</code> provided</td>
+<td>Use the provided credentials to bind when initializing connections.</td>
+</tr>
+<tr>
+<td>
+<code>bindDn</code>/<code>bindCredential</code> set to <code>*</code>
+</td>
+<td>Use a fast-bind strategy to initialize the pool.</td>
+</tr>
+<tr>
+<td>
+<code>bindDn</code>/<code>bindCredential</code> set to blank</td>
+<td>Skip connection initializing; perform operations anonymously.</td>
+</tr>
+<tr>
+<td>SASL mechanism provided</td>
+<td>Use the given SASL mechanism to bind when initializing connections.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="passivators" class="anchor" href="#passivators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Passivators</h3>
+<p>The following options can be used to passivate objects when they are checked back into the LDAP connection pool:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NONE</code></td>
+<td>No passivation takes place.</td>
+</tr>
+<tr>
+<td><code>BIND</code></td>
+<td>The default behavior which passivates a connection by performing a bind operation on it. This option requires the availability of bind credentials when establishing connections to LDAP.</td>
+</tr>
+</tbody>
+</table>
+<h4>
+<a id="why-passivators" class="anchor" href="#why-passivators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why Passivators?</h4>
+<p>You may receive unexpected LDAP failures, when CAS is configured to authenticate using <code>DIRECT</code> or <code>AUTHENTICATED</code> types and LDAP is locked down to not allow anonymous binds/searches. Every second attempt with a given LDAP connection from the pool would fail if it was on the same connection as a failed login attempt, and the regular connection validator would similarly fail. When a connection is returned back to a pool, it still may contain the principal and credentials from the previous attempt. Before the next bind attempt using that connection, the validator tries to validate the connection again but fails because it's no longer trying with the configured bind credentials but with whatever user DN was used in the previous step. Given the validation failure, the connection is closed and CAS would deny access by default. Passivators attempt to reconnect to LDAP with the configured bind credentials, effectively resetting the connection to what it should be after each bind request.</p>
+<p>Furthermore if you are seeing errors in the logs that resemble a <em>&lt;Operation exception encountered, reopening connection&gt;</em> type of message, this usually is an indication that the connection pool's validation timeout established and created by CAS is greater than the timeout configured in the LDAP server, or more likely, in the load balancer in front of the LDAP servers. You can adjust the LDAP server session's timeout for connections, or you can teach CAS to use a validity period that is equal or less than the LDAP server session's timeout.</p>
+<h3>
+<a id="connection-strategies" class="anchor" href="#connection-strategies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Connection Strategies</h3>
+<p>If multiple URLs are provided as the LDAP url, this describes how each URL will be processed.</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ACTIVE_PASSIVE</code></td>
+<td>First LDAP will be used for every request unless it fails and then the next shall be used.</td>
+</tr>
+<tr>
+<td><code>ROUND_ROBIN</code></td>
+<td>For each new connection the next url in the list will be used.</td>
+</tr>
+<tr>
+<td><code>RANDOM</code></td>
+<td>For each new connection a random LDAP url will be selected.</td>
+</tr>
+<tr>
+<td><code>DNS_SRV</code></td>
+<td>LDAP urls based on DNS SRV records of the configured/given LDAP url will be used.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="ldap-sasl-mechanisms" class="anchor" href="#ldap-sasl-mechanisms" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP SASL Mechanisms</h3>
+<pre lang="properties"><code># ${configurationKey}.sasl-mechanism=GSSAPI|DIGEST_MD5|CRAM_MD5|EXTERNAL
+# ${configurationKey}.sasl-realm=EXAMPLE.COM
+# ${configurationKey}.sasl-authorization-id=
+# ${configurationKey}.sasl-mutual-auth=
+# ${configurationKey}.sasl-quality-of-protection=
+# ${configurationKey}.sasl-security-strength=
+
+</code></pre>
+<h3>
+<a id="ldap-connection-validators" class="anchor" href="#ldap-connection-validators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP Connection Validators</h3>
+<p>The following LDAP validators can be used to test connection health status:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NONE</code></td>
+<td>No validation takes place.</td>
+</tr>
+<tr>
+<td><code>SEARCH</code></td>
+<td>Validates a connection is healthy by performing a search operation. Validation is considered successful if the search result size is greater than zero.</td>
+</tr>
+<tr>
+<td><code>COMPARE</code></td>
+<td>Validates a connection is healthy by performing a compare operation.</td>
+</tr>
+</tbody>
+</table>
+<pre lang="properties"><code># ${configurationKey}.validator.type=NONE|SEARCH|COMPARE
+# ${configurationKey}.validator.base-dn=
+# ${configurationKey}.validator.search-filter=(object-class=*)
+# ${configurationKey}.validator.scope=OBJECT|ONELEVEL|SUBTREE
+# ${configurationKey}.validator.attribute-name=objectClass
+# ${configurationKey}.validator.attribute-value=top
+# ${configurationKey}.validator.dn=
+
+</code></pre>
+<h3>
+<a id="ldap-ssl-hostname-verification" class="anchor" href="#ldap-ssl-hostname-verification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP SSL Hostname Verification</h3>
+<p>The following LDAP validators can be used to test connection health status:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEFAULT</code></td>
+<td>Default option to enable and force hostname verification of the LDAP SSL configuration.</td>
+</tr>
+<tr>
+<td><code>ANY</code></td>
+<td>Skip and ignore the hostname verification of the LDAP SSL configuration.</td>
+</tr>
+</tbody>
+</table>
+<pre lang="properties"><code>#${configurationKey}.hostname-verifier=DEFAULT|ANY
+</code></pre>
+<h3>
+<a id="ldap-ssl-trust-managers" class="anchor" href="#ldap-ssl-trust-managers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP SSL Trust Managers</h3>
+<p>Trust managers are responsible for managing the trust material that is used when making LDAP trust decisions,<br>
+and for deciding whether credentials presented by a peer should be accepted.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DEFAULT</code></td>
+<td>Enable and force the default JVM trust managers.</td>
+</tr>
+<tr>
+<td><code>ANY</code></td>
+<td>Trust any client or server.</td>
+</tr>
+</tbody>
+</table>
+<pre lang="properties"><code>#${configurationKey}.trust-manager=DEFAULT|ANY
+</code></pre>
+<h3>
+<a id="ldap-types" class="anchor" href="#ldap-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP Types</h3>
+<p>A number of components/features in CAS allow you to explicitly indicate a <code>type</code> for the LDAP server, specially in cases where CAS needs to update an attribute, etc in LDAP (i.e. consent, password management, etc). The relevant setting would be:</p>
+<pre lang="properties"><code>#${configurationKey}.type=AD|FreeIPA|EDirectory|Generic
+</code></pre>
+<p>The following types are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AD</code></td>
+<td>Active Directory.</td>
+</tr>
+<tr>
+<td><code>FreeIPA</code></td>
+<td>FreeIPA Directory Server.</td>
+</tr>
+<tr>
+<td><code>EDirectory</code></td>
+<td>NetIQ eDirectory.</td>
+</tr>
+<tr>
+<td><code>GENERIC</code></td>
+<td>All other directory servers (i.e OpenLDAP, etc).</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="ldap-authenticationsearch-settings" class="anchor" href="#ldap-authenticationsearch-settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP Authentication/Search Settings</h3>
+<p>In addition to common LDAP connection settings above, there are cases where CAS simply need to execute<br>
+authenticate against an LDAP server to fetch an account or set of attributes or execute a search query in general.<br>
+The following  options apply  given the provider's <em>configuration key</em>:</p>
+<p><strong>Note:</strong> Failure to specify adequate properties such as <code>type</code>, <code>ldapUrl</code>, etc will simply deactivate LDAP  altogether silently.</p>
+<pre lang="properties"><code># ${configurationKey}.type=AD|AUTHENTICATED|DIRECT|ANONYMOUS
+
+# ${configurationKey}.base-dn=dc=example,dc=org
+# ${configurationKey}.subtree-search=true
+# ${configurationKey}.search-filter=cn={user}
+# ${configurationKey}.page-size=0
+
+# ${configurationKey}.enhance-with-entry-resolver=true
+# ${configurationKey}.deref-aliases=NEVER|SEARCHING|FINDING|ALWAYS
+# ${configurationKey}.dn-format=uid=%s,ou=people,dc=example,dc=org
+# ${configurationKey}.principal-attribute-password=password
+
+</code></pre>
+<p>The following authentication types are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AD</code></td>
+<td>Active Directory - Users authenticate with <code>sAMAccountName</code> typically using a DN format.</td>
+</tr>
+<tr>
+<td><code>AUTHENTICATED</code></td>
+<td>Manager bind/search type of authentication. If <code>principalAttributePassword</code> is empty then a user simple bind is done to validate credentials. Otherwise the given attribute is compared with the given <code>principalAttributePassword</code> using the <code>SHA</code> encrypted value of it.</td>
+</tr>
+<tr>
+<td><code>DIRECT</code></td>
+<td>Compute user DN from a format string and perform simple bind. This is relevant when no search is required to compute the DN needed for a bind operation. This option is useful when all users are under a single branch in the directory, e.g. <code>ou=Users,dc=example,dc=org</code>, or the username provided on the CAS login form is part of the DN, e.g. <code>uid=%s,ou=Users,dc=exmaple,dc=org</code>
+</td>
+</tr>
+<tr>
+<td><code>ANONYMOUS</code></td>
+<td>Similar semantics as <code>AUTHENTICATED</code> except no <code>bindDn</code> and <code>bindCredential</code> may be specified to initialize the connection. If <code>principalAttributePassword</code> is empty then a user simple bind is done to validate credentials. Otherwise the given attribute is compared with the given <code>principalAttributePassword</code> using the <code>SHA</code> encrypted value of it.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="ldap-search-entry-handlers" class="anchor" href="#ldap-search-entry-handlers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP Search Entry Handlers</h3>
+<pre lang="properties"><code># ${configurationKey}.search-entry-handlers[0].type=
+
+# ${configurationKey}.search-entry-handlers[0].case-change.dn-case-change=NONE|LOWER|UPPER
+# ${configurationKey}.search-entry-handlers[0].case-change.attribute-name-case-change=NONE|LOWER|UPPER
+# ${configurationKey}.search-entry-handlers[0].case-change.attribute-value-case-change=NONE|LOWER|UPPER
+# ${configurationKey}.search-entry-handlers[0].case-change.attribute-names=
+
+# ${configurationKey}.search-entry-handlers[0].dn-attribute.dn-attribute-name=entryDN
+# ${configurationKey}.search-entry-handlers[0].dn-attribute.add-if-exists=false
+
+# ${configurationKey}.search-entry-handlers[0].primary-group-id.group-filter=(&amp;(object-class=group)(object-sid={0}))
+# ${configurationKey}.search-entry-handlers[0].primary-group-id.base-dn=
+
+# ${configurationKey}.search-entry-handlers[0].merge-attribute.merge-attribute-name=
+# ${configurationKey}.search-entry-handlers[0].merge-attribute.attribute-names=
+
+# ${configurationKey}.search-entry-handlers[0].recursive.search-attribute=
+# ${configurationKey}.search-entry-handlers[0].recursive.merge-attributes=
+
+</code></pre>
+<p>The following types are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CASE_CHANGE</code></td>
+<td>Provides the ability to modify the case of search entry DNs, attribute names, and attribute values.</td>
+</tr>
+<tr>
+<td><code>DN_ATTRIBUTE_ENTRY</code></td>
+<td>Adds the entry DN as an attribute to the result set. Provides a client side implementation of RFC 5020.</td>
+</tr>
+<tr>
+<td><code>MERGE</code></td>
+<td>Merges the values of one or more attributes into a single attribute.</td>
+</tr>
+<tr>
+<td><code>OBJECT_GUID</code></td>
+<td>Handles the <code>objectGUID</code> attribute fetching and conversion.</td>
+</tr>
+<tr>
+<td><code>OBJECT_SID</code></td>
+<td>Handles the <code>objectSid</code> attribute fetching and conversion.</td>
+</tr>
+<tr>
+<td><code>PRIMARY_GROUP</code></td>
+<td>Constructs the primary group SID and then searches for that group and puts it's DN in the 'memberOf' attribute of the original search entry.</td>
+</tr>
+<tr>
+<td><code>RANGE_ENTRY</code></td>
+<td>Rewrites attributes returned from Active Directory to include all values by performing additional searches.</td>
+</tr>
+<tr>
+<td><code>RECURSIVE_ENTRY</code></td>
+<td>This recursively searches based on a supplied attribute and merges those results into the original entry.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="ldap-multiple-base-dns" class="anchor" href="#ldap-multiple-base-dns" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP Multiple Base DNs</h3>
+<p>There may be scenarios where different parts of a single LDAP tree could be considered as base-dns. Rather than duplicating<br>
+the LDAP configuration block for each individual base-dn, each entry can be specified and joined together using a special delimiter character.<br>
+The user DN is retrieved using the combination of all base-dn and DN resolvers in the order defined. DN resolution should fail if multiple DNs<br>
+are found. Otherwise the first DN found is returned.</p>
+<pre lang="properties"><code># ${configurationKey}.base-dn=subtreeA,dc=example,dc=net|subtreeC,dc=example,dc=net
+</code></pre>

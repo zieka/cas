@@ -1,0 +1,268 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---attribute-value-release-policiescategory-attributes" class="anchor" href="#layout-defaulttitle-cas---attribute-value-release-policiescategory-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Attribute Value Release Policies<br>
+category: Attributes</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="attribute-value-filters" class="anchor" href="#attribute-value-filters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Value Filters</h1>
+<p>While each policy defines what principal attributes may be allowed for a given service,<br>
+there are optional attribute filters that can be set per policy to further weed out attributes based on their <strong>values</strong>.</p>
+<h2>
+<a id="chaining-filters" class="anchor" href="#chaining-filters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Chaining Filters</h2>
+<p>Attribute filters can be chained together so as to associate multiple filters with a single service definition.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 200,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "attributeFilter" : {
+      "@class" : "org.apereo.cas.services.support.RegisteredServiceChainingAttributeFilter",
+      "filters": [ "java.util.ArrayList",
+        [
+            {
+              "@class" : "org.apereo.cas.services.support.RegisteredServiceRegexAttributeFilter",
+              "pattern" : "^\\w{3}$",
+              "order": 10
+            },
+            {
+              "@class" : "..."
+            }
+        ]
+      ]
+    },
+    "allowedAttributes" : [ "java.util.ArrayList", [ "uid", "groupMembership" ] ]
+  }
+}
+</code></pre>
+<p>Chained attribute filters are sorted given their <code>order</code> property first before execution.</p>
+<h2>
+<a id="regex" class="anchor" href="#regex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Regex</h2>
+<p>The regex filter that is responsible to make sure only attributes whose value<br>
+matches a certain regex pattern are released.</p>
+<p>Suppose that the following attributes are resolved:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uid</code></td>
+<td>jsmith</td>
+</tr>
+<tr>
+<td><code>groupMembership</code></td>
+<td>std</td>
+</tr>
+<tr>
+<td><code>cn</code></td>
+<td>JohnSmith</td>
+</tr>
+</tbody>
+</table>
+<p>The following configuration for instance considers the initial list of <code>uid</code>,<br>
+<code>groupMembership</code> and then only allows and releases attributes whose value's length<br>
+is 3 characters. Therefore, out of the above list, only <code>groupMembership</code> is released to the application.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 200,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "attributeFilter" : {
+      "@class" : "org.apereo.cas.services.support.RegisteredServiceRegexAttributeFilter",
+      "pattern" : "^\\w{3}$"
+    },
+    "allowedAttributes" : [ "java.util.ArrayList", [ "uid", "groupMembership" ] ]
+  }
+}
+</code></pre>
+<h2>
+<a id="mapped-regex" class="anchor" href="#mapped-regex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mapped Regex</h2>
+<p>The regex filter that is responsible to make sure only a selected set of attributes whose value matches a certain regex pattern are released. The filter selectively applies patterns to attributes mapped in the configuration. If an attribute is mapped, it is only allowed to be released if it matches the linked pattern. If an attribute is not mapped, it may optionally be excluded from the released set of attributes.</p>
+<p>For example, the below example only allows release of <code>memberOf</code> if it contains a value that is 3 characters in length. If no values are found, the <code>memberOf</code> is excluded from the final released bundle.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 200,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "attributeFilter" : {
+      "@class": "org.apereo.cas.services.support.RegisteredServiceMappedRegexAttributeFilter",
+      "patterns": {
+          "@class" : "java.util.TreeMap",
+          "memberOf": "^\\w{3}$"
+      },
+      "excludeUnmappedAttributes": false,
+      "completeMatch": false,
+      "caseInsensitive": true,
+      "order": 0
+    },
+    "allowedAttributes" : [ "java.util.ArrayList", [ "uid", "memberOf" ] ]
+  }
+}
+</code></pre>
+<p>The following fields are supported by this filter:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>patterns</code></td>
+<td>A map of attributes and their associated pattern tried against value(s).</td>
+</tr>
+<tr>
+<td><code>completeMatch</code></td>
+<td>Indicates whether pattern-matching should execute over the entire value region.</td>
+</tr>
+<tr>
+<td><code>excludeUnmappedAttributes</code></td>
+<td>Indicates whether unmapped attributes should be removed from the final bundle.</td>
+</tr>
+<tr>
+<td><code>caseInsensitive</code></td>
+<td>Indicates whether pattern matching should be done in a case-insensitive manner.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="reverse-mapped-regex" class="anchor" href="#reverse-mapped-regex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reverse Mapped Regex</h2>
+<p>Identical to the <em>Mapped Regex</em> filter, except that the filter only allows a selected set of attributes whose value<br>
+<strong>does not match</strong> a certain regex pattern are released.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 200,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "attributeFilter" : {
+      "@class": "org.apereo.cas.services.support.RegisteredServiceReverseMappedRegexAttributeFilter",
+      "patterns": {
+          "memberOf": "^\\w{3}$"
+      },
+      "excludeUnmappedAttributes": false,
+      "completeMatch": false,
+      "caseInsensitive": true,
+      "order": 0
+    },
+    "allowedAttributes" : [ "java.util.ArrayList", [ "uid", "memberOf" ] ]
+  }
+}
+</code></pre>
+<h2>
+<a id="mutant-mapped-regex" class="anchor" href="#mutant-mapped-regex" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mutant Mapped Regex</h2>
+<p>This filter structurally, in terms of settings and properties, is identical to the <em>Mapped Regex</em> filter. Its main ability is to filter attribute values by a collection of patterns and then supplant the value dynamically based on the results of the regex match.</p>
+<p>For example, the following definition attempts to filter all values assigned to the attribute <code>memberOf</code> based on the given patterns. Each pattern is linked via <code>-&gt;</code> to the expected return value that may reference specific groups in the produced regex result. Assuming the attribute <code>memberOf</code> has values of <code>math101</code> and <code>marathon101</code>, the filter will produce values <code>courseA-athon101</code> and <code>courseB-h101</code> after processing.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 200,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "attributeFilter" : {
+      "@class": "org.apereo.cas.services.support.RegisteredServiceMutantRegexAttributeFilter",
+      "patterns": {
+          "@class" : "java.util.TreeMap",
+          "memberOf": [ "java.util.ArrayList", [ "^mar(.+)(101) -&gt; courseA-$1$2", "^mat(.+)(101) -&gt; courseB-$1$2" ] ]
+      },
+      "excludeUnmappedAttributes": false,
+      "completeMatch": false,
+      "caseInsensitive": true,
+      "order": 0
+    },
+    "allowedAttributes" : [ "java.util.ArrayList", [ "uid", "memberOf" ] ]
+  }
+}
+</code></pre>
+<h2>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h2>
+<p>Attribute value filtering may also be carried out using an inline or external Groovy script.<br>
+Scripts have access to the current resolved attributes via <code>attributes</code> and a <code>logger</code>.<br>
+The returned result of the script must be a <code>Map&lt;String, Object&gt;</code>.</p>
+<h3>
+<a id="inlined-groovy" class="anchor" href="#inlined-groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Inlined Groovy</h3>
+<p>An inline groovy filter allows you to embed the script directly in the service definition.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 200,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "attributeFilter" : {
+      "@class" : "org.apereo.cas.services.support.RegisteredServiceScriptedAttributeFilter",
+      "script" : "groovy { return attributes }"
+    },
+    "allowedAttributes" : [ "java.util.ArrayList", [ "uid", "groupMembership" ] ]
+  }
+}
+</code></pre>
+<h3>
+<a id="external-groovy" class="anchor" href="#external-groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>External Groovy</h3>
+<p>An external groovy filter allows you to define the script in file located outside of the CAS web application.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 200,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "attributeFilter" : {
+      "@class" : "org.apereo.cas.services.support.RegisteredServiceScriptedAttributeFilter",
+      "script" : "file:/etc/cas/filter-this.groovy"
+    },
+    "allowedAttributes" : [ "java.util.ArrayList", [ "uid", "groupMembership" ] ]
+  }
+}
+</code></pre>
+<p>The outline of the script may be as follows:</p>
+<pre lang="groovy"><code>import java.util.*
+
+def run(final Object... args) {
+    def attributes = args[0]
+    def logger = args[1]
+
+    logger.info "Attributes currently resolved: ${attributes}"
+    def map =...
+    return map
+}
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attributes</code></td>
+<td>A <code>Map</code> of current  attributes resolved from sources.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>

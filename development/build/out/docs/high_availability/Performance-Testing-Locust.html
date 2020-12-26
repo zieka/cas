@@ -1,0 +1,32 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---high-availability-performance-testingcategory-high-availability" class="anchor" href="#layout-defaulttitle-cas---high-availability-performance-testingcategory-high-availability" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - High Availability Performance Testing<br>
+category: High Availability</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="locust-performance-testing" class="anchor" href="#locust-performance-testing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Locust Performance Testing</h1>
+<p><a href="http://locust.io/">Locust</a> is an easy-to-use, distributed, user load testing tool. It is intended for load-testing web sites (or other systems) and figuring out how many concurrent users a system can handle. <a href="http://docs.locust.io/en/latest/what-is-locust.html">See this guide</a> for more info.</p>
+<h3>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setup</h3>
+<p>A fundamental feature of Locust is that you describe all your tests in Python code. No need for clunky UIs or bloated XML, just plain code. For this to work, you will need to <a href="https://www.python.org/downloads/">download Python</a>. Next download the Locust test suite <a href="https://github.com/apereo/cas/raw/master/etc/loadtests">from here</a> and <a href="https://virtualenv.pypa.io/en/stable/">configure a virtual environment</a> to install modules:</p>
+<pre lang="bash"><code>pip3 install virtualenv
+virtualenv mylocustenv/
+pip3 install -r requirements.txt
+</code></pre>
+<p>Install Locust via the following:</p>
+<pre lang="bash"><code>pip3 install locustio
+</code></pre>
+<p>Create a <code>credentials.csv</code> file that contains <code>username,password</code> entries used for load tests.</p>
+<pre lang="bash"><code>echo casuser,Mellon &gt; cas/credentials.csv
+</code></pre>
+<p>Run the script as such:</p>
+<pre lang="bash"><code>locust -f cas/casLocust.py --host=https://cas.example.org
+...
+[2017-05-02 16:31:49,742] test/INFO/locust.main: Starting web monitor at *:8089
+[2017-05-02 16:31:49,744] test/INFO/locust.main: Starting Locust 0.8a2
+</code></pre>
+<p>Navigate to <a href="http://localhost:8089">http://localhost:8089</a> and proceed with starting the test swarm.</p>
+<p>For additional options, use:</p>
+<pre lang="bash"><code>locust --help
+</code></pre>

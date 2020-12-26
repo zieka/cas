@@ -1,0 +1,26 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-ticketing-componentscategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---configuring-ticketing-componentscategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Ticketing Components<br>
+category: Ticketing</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="ticket-registry-replication-encryption" class="anchor" href="#ticket-registry-replication-encryption" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ticket Registry Replication Encryption</h1>
+<p>The following ticket registries are able to support secure ticket replication<br>
+by encrypting and signing tickets:</p>
+<ul>
+<li><a href="../ticketing/Hazelcast-Ticket-Registry.html">Hazelcast</a></li>
+<li><a href="../ticketing/Ehcache-Ticket-Registry.html">Ehcache</a></li>
+<li><a href="../ticketing/Ignite-Ticket-Registry.html">Ignite</a></li>
+<li><a href="../ticketing/CouchDb-Ticket-Registry.html">CouchDb</a></li>
+<li><a href="../ticketing/Memcached-Ticket-Registry.html">Memcached</a></li>
+<li><a href="../ticketing/Redis-Ticket-Registry.html">Redis</a></li>
+<li><a href="../ticketing/MongoDb-Ticket-Registry.html">MongoDb</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Each ticket registry configuration supports a cipher component that needs to be configured by the deployer.<br>
+The settings, algorithms and secret keys used for the cipher may be controlled via CAS settings.<br>
+Refer to the settings allotted for each registry to learn more about ticket encryption.</p>
+<p>Additionally, <a href="../ticketing/Ignite-Ticket-Registry.html">Ignite</a> may be configured to use TLS for replication transport.</p>

@@ -788,8 +788,8 @@ JDBC authentication for endpoint security may be additionally configured via the
 # cas.monitor.endpoints.jdbc.query=
 ```
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) 
-under the configuration key `cas.monitor.endpoints.jdbc`.
+{% include {{ version }}/password-encoding.md configKey="cas.monitor.endpoints.jdbc" %}
+
 
 ### Enabling Endpoints
 
@@ -1765,9 +1765,9 @@ under the configuration key `cas.authn.surrogate.rest`.
 
 ### Notifications
 
-Email notifications settings for this feature are available [here](Configuration-Properties-Common.html#email-notifications) 
-under the configuration key `cas.authn.surrogate`. SMS notifications settings for this feature are 
-available [here](Configuration-Properties-Common.html#sms-notifications) under the configuration key `cas.authn.surrogate`.
+{% include {{ version }}/email-notifications.md configKey="cas.authn.surrogate" %}
+
+{% include {{ version }}/sms-notifications.md configKey="cas.authn.surrogate" %}
 
 ## QR Authentication
 
@@ -1812,9 +1812,10 @@ more about this topic, [please review this guide](../installation/Configuring-Ri
 # cas.authn.adaptive.risk.response.risky-authentication-attribute=triggeredRiskBasedAuthentication
 ```
 
-Email notifications settings for this feature are available [here](Configuration-Properties-Common.html#email-notifications) 
-under the configuration key `cas.authn.adaptive.risk.response`. SMS notifications settings for this feature are 
-available [here](Configuration-Properties-Common.html#sms-notifications) under the configuration key `cas.authn.adaptive.risk.response`.
+{% include {{ version }}/email-notifications.md configKey="cas.authn.adaptive.risk.response" %}
+
+{% include {{ version }}/sms-notifications.md configKey="cas.authn.adaptive.risk.response" %}
+
 
 ## Passwordless Authentication
 
@@ -1872,16 +1873,13 @@ key [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of
 Signing & encryption settings for this feature are available [here](Configuration-Properties-Common.html#signing--encryption) under 
 the configuration key `cas.authn.passwordless.tokens`.
 
-Email notifications settings for this feature are available [here](Configuration-Properties-Common.html#email-notifications) 
-under the configuration key `cas.authn.passwordless.tokens`. SMS notifications settings for this feature are 
-available [here](Configuration-Properties-Common.html#sms-notifications) under the configuration key `cas.authn.passwordless.tokens`.
+{% include {{ version }}/email-notifications.md configKey="cas.authn.passwordless.tokens" %}
+
+{% include {{ version }}/sms-notifications.md configKey="cas.authn.passwordless.tokens" %}
 
 Database settings for this feature are available [here](Configuration-Properties-Common.html#database-settings) under 
 the configuration key `cas.authn.passwordless.tokens.jpa`. Scheduler settings for this feature are available [here](Configuration-Properties-Common.html#job-scheduling) under the configuration key `cas.authn.passwordless.tokens.jpa.cleaner`.
 
-## Email Submissions
-
-Email notifications settings are available [here](Configuration-Properties-Common.html#email-notifications).
 
 ## SMS Messaging
 
@@ -2014,7 +2012,8 @@ Common Cassandra settings for this feature are available [here](Configuration-Pr
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.cassandra`. 
 
-Password encoding settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.cassandra`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.cassandra" %}
+
 
 ## Digest Authentication
 
@@ -2035,7 +2034,7 @@ To learn more about this topic, [please review this guide](../mfa/RADIUS-Authent
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.radius`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.radius`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.radius" %}
 
 Radius  settings for this feature are available [here](Configuration-Properties-Common.html#radius-configuration) under the configuration key `cas.authn.radius`.
 
@@ -2049,7 +2048,7 @@ To learn more about this topic, [please review this guide](../installation/Permi
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.file`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.file`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.file" %}
 
 ```properties
 # cas.authn.file.separator=::
@@ -2072,7 +2071,7 @@ To learn more about this topic, [please review this guide](../installation/Permi
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.json`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.json`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.json" %}
 
 Password policy settings for this feature are available [here](Configuration-Properties-Common.html#password-policy-settings) under the configuration key `cas.authn.json.passwordPolicy`.
 
@@ -2087,7 +2086,7 @@ To learn more about this topic, [please review this guide](../installation/Rejec
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.reject`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.reject`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.reject" %}
 
 ```properties
 # cas.authn.reject.users=user1,user2
@@ -2107,7 +2106,9 @@ Database settings for this feature are available [here](Configuration-Properties
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.jdbc.query[0]`.
 
-Password encoding settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.jdbc.query[0]`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.jdbc.query[0]" %}
+
+
 
 ```properties
 # cas.authn.jdbc.query[0].credential-criteria=
@@ -2129,7 +2130,8 @@ Database settings for this feature are available [here](Configuration-Properties
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.jdbc.search[0]`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.jdbc.search[0]`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.jdbc.search[0]" %}
+
 
 ```properties
 # cas.authn.jdbc.search[0].field-user=
@@ -2148,7 +2150,8 @@ Database settings for this feature are available [here](Configuration-Properties
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.jdbc.bind[0]`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.jdbc.bind[0]`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.jdbc.bind[0]" %}
+
 
 ```properties
 # cas.authn.jdbc.bind[0].credential-criteria=
@@ -2170,7 +2173,8 @@ Database settings for this feature are available [here](Configuration-Properties
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.jdbc.encode[0]`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.jdbc.encode[0]`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.jdbc.encode[0]" %}
+
 
 ```properties
 # cas.authn.jdbc.encode[0].number-of-iterations=0
@@ -2193,7 +2197,9 @@ Password encoding  settings for this feature are available [here](Configuration-
 To learn more about this topic, [please review this guide](../installation/CouchDb-Authentication.html).
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.couch-db`.
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.couch-db`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.couch-db" %}
+
 
 Common configuration settings for this feature are available [here](Configuration-Properties-Common.html#couchdb-configuration) under the configuration key `cas.authn`.
 
@@ -2209,7 +2215,9 @@ Common configuration settings for this feature are available [here](Configuratio
 
 To learn more about this topic, [please review this guide](../installation/Redis-Authentication.html).
 
-Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.redis`. Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.redis`.
+Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.redis`. 
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.redis" %}
 
 Common configuration settings for this feature are available [here](Configuration-Properties-Common.html#redis-configuration) 
 under the configuration key `cas.authn`.
@@ -2224,7 +2232,8 @@ under the configuration key `cas.authn`.
 To learn more about this topic, [please review this guide](../installation/MongoDb-Authentication.html). 
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.mongo`. 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.mongo`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.mongo" %}
 
 Common configuration settings for this feature are available [here](Configuration-Properties-Common.html#mongodb-configuration) under the configuration key `cas.authn`.
 
@@ -2281,12 +2290,14 @@ LDAP password policy settings for this feature are available [here](Configuratio
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.ldap[0]`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.ldap[0]`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.ldap[0]" %}
 
 ## REST Authentication
 
 This allows the CAS server to reach to a remote REST endpoint via a `POST`.
-To learn more about this topic, [please review this guide](../installation/Rest-Authentication.html). Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.rest`.
+To learn more about this topic, [please review this guide](../installation/Rest-Authentication.html). 
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.rest" %}
 
 ```properties
 # cas.authn.rest.uri=https://...
@@ -2399,7 +2410,9 @@ LDAP settings for this feature are available [here](Configuration-Properties-Com
 
 ## JAAS Authentication
 
-To learn more about this topic, [please review this guide](../installation/JAAS-Authentication.html). Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.jaas[0]`. Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.jaas[0]`.
+To learn more about this topic, [please review this guide](../installation/JAAS-Authentication.html). Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.jaas[0]`. 
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.jaas[0]" %}
 
 ```properties
 # cas.authn.jaas[0].realm=CAS
@@ -2470,7 +2483,7 @@ To learn more about this topic, [please review this guide](../installation/Couch
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.couchbase`.
 
- Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.couchbase`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.couchbase" %}
 
 Database settings for this feature are available [here](Configuration-Properties-Common.html#couchbase-integration-settings) under the configuration key `cas.authn.couchbase`.
 
@@ -2487,7 +2500,8 @@ Database settings for this feature are available [here](Configuration-Properties
 To learn more about this topic, [please review this guide](../installation/AWS-CloudDirectory-Authentication.html).
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.cloud-directory`.
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.cloud-directory`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.cloud-directory" %}
 
 AWS settings for this feature are available [here](Configuration-Properties-Common.html#amazon-integration-settings) 
 under the configuration key `cas.authn.cloud-directory`.
@@ -2510,7 +2524,8 @@ under the configuration key `cas.authn.cloud-directory`.
 To learn more about this topic, [please review this guide](../installation/AWS-Cognito-Authentication.html).
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.cognito`.
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.cognito`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.cognito" %}
 
 AWS settings for this feature are available [here](Configuration-Properties-Common.html#amazon-integration-settings) under the configuration key `cas.authn.cognito`.
 
@@ -2527,7 +2542,8 @@ AWS settings for this feature are available [here](Configuration-Properties-Comm
 To learn more about this topic, [please review this guide](../installation/Okta-Authentication.html).
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.okta`.
-Password encoding settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.okta`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.okta" %}
 
 ```properties
 # cas.authn.okta.name=
@@ -2548,7 +2564,8 @@ Password encoding settings for this feature are available [here](Configuration-P
 To learn more about this topic, [please review this guide](../installation/Azure-ActiveDirectory-Authentication.html).
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.azure-active-directory`.
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.azure-active-directory`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.azure-active-directory" %}
 
 ```properties
 # cas.authn.azure-active-directory.name=
@@ -2565,7 +2582,8 @@ Password encoding  settings for this feature are available [here](Configuration-
 To learn more about this topic, [please review this guide](../installation/SOAP-Authentication.html).
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.soap`.
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.soap`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.soap" %}
 
 ```properties
 # cas.authn.soap.name=
@@ -2593,7 +2611,8 @@ prior to production rollouts.</p></div>
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.accept`.
 Password policy settings for this feature are available [here](Configuration-Properties-Common.html#password-policy-settings) under the configuration key `cas.authn.accept.passwordPolicy`.
-Password encoding settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.accept`.
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.accept" %}
 
 ```properties
 # cas.authn.accept.users=
@@ -2780,7 +2799,7 @@ To learn more about this topic, [please review this guide](../installation/Synco
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.syncope`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.syncope`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.syncope" %}
 
 ```properties
 # cas.authn.syncope.domain=Master
@@ -2794,7 +2813,7 @@ To learn more about this topic, [please review this guide](../installation/Shiro
 
 Principal transformation settings for this feature are available [here](Configuration-Properties-Common.html#authentication-principal-transformation) under the configuration key `cas.authn.shiro`.
 
-Password encoding  settings for this feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.shiro`.
+{% include {{ version }}/password-encoding.md configKey="cas.authn.shiro" %}
 
 ```properties
 # cas.authn.shiro.required-permissions=value1,value2,...
@@ -2816,6 +2835,7 @@ To learn more about this topic, [please review this guide](../installation/Trust
 ## WS-Fed Delegated Authentication
 
 To learn more about this topic, [please review this guide](../integration/ADFS-Integration.html).
+
 {% include {{ version }}/wsfed-delegated-authentication.md configKey="cas.authn.wsfed[0]" %}
 
 ## Multifactor Authentication
@@ -2915,10 +2935,7 @@ The following strategies can be used to generate keys for trusted device records
 | `DEFAULT`            | Uses a combination of the username, device name and device fingerprint to generate the device key.
 | `LEGACY`             | Deprecated. Uses a combination of the username, record date and device fingerprint to generate the device key.
 
-#### Signing & Encryption
-
-The signing and encryption keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`.
-The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`. Signing & encryption settings for this feature are available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.authn.mfa.trusted`.
+{% include {{ version }}/signing-encryption.md configKey="cas.authn.mfa.trusted" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
 #### JSON Storage
 
@@ -2979,8 +2996,7 @@ under the configuration key `cas.authn.mfa.trusted.dynamo-db`.
 The device fingerprint cookie component can be configured with the common cookie properties found [here](Configuration-Properties-Common.html#cookie-properties) under the configuration key `cas.authn.mfa.trusted.device-fingerprint.cookie`.
 The default cookie name is set to `MFATRUSTED` and the default maxAge is set to `2592000`.
 
-The device fingerprint cookie component supports signing & encryption. The signing and encryption keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`.
-The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`. Signing & encryption settings for this feature are available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.authn.mfa.trusted.device-fingerprint.cookie`.
+{% include {{ version }}/signing-encryption.md configKey="cas.authn.mfa.trusted.device-fingerprint.cookie" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
 #### Cleaner
 
@@ -3000,9 +3016,9 @@ To learn more about this topic, [please review this guide](../mfa/Simple-Multifa
 # cas.authn.mfa.simple.token-length=6
 ```
 
-Email notifications settings for this feature are available [here](Configuration-Properties-Common.html#email-notifications) 
-under the configuration key `cas.authn.mfa.simple`. SMS notifications settings for this feature are 
-available [here](Configuration-Properties-Common.html#sms-notifications) under the configuration key `cas.authn.mfa.simple`.
+{% include {{ version }}/email-notifications.md configKey="cas.authn.mfa.simple" %}
+
+{% include {{ version }}/sms-notifications.md configKey="cas.authn.mfa.simple" %}
 
 Multifactor authentication bypass settings for this provider are available [here](Configuration-Properties-Common.html#multifactor-authentication-bypass)
 under the configuration key `cas.authn.mfa.simple`.
@@ -3029,11 +3045,8 @@ To learn more about this topic, [please review this guide](../mfa/GoogleAuthenti
 Multifactor authentication bypass settings for this provider are available [here](Configuration-Properties-Common.html#multifactor-authentication-bypass)
 under the configuration key `cas.authn.mfa.gauth`. Scheduler settings for this feature are available [here](Configuration-Properties-Common.html#job-scheduling) under the configuration key `cas.authn.mfa.gauth.cleaner`.
 
-#### Signing & Encryption
 
-The signing and encryption keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`.
-The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`.  Signing & encryption settings for this feature are
-available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.authn.mfa.gauth`.
+{% include {{ version }}/signing-encryption.md configKey="cas.authn.mfa.gauth" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
 #### Google Authenticator CouchDb
 
@@ -4077,9 +4090,8 @@ To learn more about this topic, [please review this guide](../protocol/WS-Federa
 # cas.authn.wsfed-idp.sts.realm.issuer=CAS
 ```
 
-### Signing & Encryption
+{% include {{ version }}/signing-encryption.md configKey="cas.authn.wsfed-idp.sts" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
-The signing and encryption keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`. The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`.  These come into play in order to secure authentication requests between the IdP and STS. Signing & encryption settings for this feature are available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.authn.wsfed-idp.sts`.
 
 ## OAuth2
 
@@ -4202,11 +4214,7 @@ Cookie settings for this feature are available [here](Configuration-Properties-C
 # cas.tgc.auto-configure-cookie-path=true
 ```
 
-### Signing & Encryption
-
-The signing and encryption keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`.
-The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`.
-Signing & encryption settings for this feature are available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.tgc`.
+{% include {{ version }}/signing-encryption.md configKey="cas.tgc" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
 ## Logout
 
@@ -4242,7 +4250,7 @@ the last resort in getting an integration to work...maybe not even then.</p></di
 # cas.clearpass.cache-credential=false
 ```
 
-The signing and encryption keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`. The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`. Signing & encryption settings for this feature are available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.clearpass`.
+{% include {{ version }}/signing-encryption.md configKey="cas.clearpass" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
 ## Message Bundles
 
@@ -4635,9 +4643,9 @@ Scheduler settings for this feature are available [here](Configuration-Propertie
 
 ### Service Registry Notifications
 
-Email notifications settings for this feature are available [here](Configuration-Properties-Common.html#email-notifications) 
-under the configuration key `cas.service-registry`. SMS notifications settings for this feature are 
-available [here](Configuration-Properties-Common.html#sms-notifications) under the configuration key `cas.service-registry`.
+{% include {{ version }}/email-notifications.md configKey="cas.service-registry" %}
+
+{% include {{ version }}/sms-notifications.md configKey="cas.service-registry" %}
 
 ### JSON Service Registry
 
@@ -5077,11 +5085,7 @@ available [here](Configuration-Properties-Common.html#signing--encryption) under
 
 ## Protocol Ticket Security
 
-Controls whether tickets issued by the CAS server should be secured via signing and encryption
-when shared with client applications on outgoing calls. The signing and encryption 
-keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`.
-The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`. Signing & encryption settings for this 
-feature are available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.ticket`.
+{% include {{ version }}/signing-encryption.md configKey="cas.ticket" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
 ## Service Tickets Behavior
 
@@ -5770,17 +5774,15 @@ To learn more about this topic, [please review this guide](../installation/Passw
 # cas.authn.pm.auto-login=false
 ```
 
-Common email notifications settings for this feature are available [here](Configuration-Properties-Common.html#email-notifications) 
-under the configuration key `cas.authn.pm.reset`. SMS notifications settings for this feature are 
-available [here](Configuration-Properties-Common.html#sms-notifications) under the configuration key `cas.authn.pm.reset`.
+{% include {{ version }}/email-notifications.md configKey="cas.authn.pm.reset" %}
 
-The signing and encryption keys [are both JWKs](Configuration-Properties-Common.html#signing--encryption) of size `512` and `256`.
-The encryption algorithm is set to `AES_128_CBC_HMAC_SHA_256`. Signing & encryption settings for this feature are available [here](Configuration-Properties-Common.html#signing--encryption) under the configuration key `cas.authn.pm.reset`.
+{% include {{ version }}/sms-notifications.md configKey="cas.authn.pm.reset" %}
+
+{% include {{ version }}/signing-encryption.md configKey="cas.authn.pm.reset" signingKeySize="512" encryptionKeySize="256" encryptionAlg="AES_128_CBC_HMAC_SHA_256" %}
 
 ### Webflow Configuration
 
-Webflow auto-configuration settings for this feature are available [here](Configuration-Properties-Common.html#webflow-auto-configuration) under 
-the configuration key `cas.authn.pm.webflow`.
+Webflow auto-configuration settings for this feature are available [here](Configuration-Properties-Common.html#webflow-auto-configuration) under the configuration key `cas.authn.pm.webflow`.
 
 ### Password History
 
@@ -5822,8 +5824,11 @@ under the configuration key `cas.authn.pm.ldap[0]`.
 ### JDBC Password Management
 
 Common Database settings for this feature are available [here](Configuration-Properties-Common.html#database-settings) 
-under the configuration key `cas.authn.pm.jdbc`. Common password encoding  settings for this 
-feature are available [here](Configuration-Properties-Common.html#password-encoding) under the configuration key `cas.authn.pm.jdbc`.
+under the configuration key `cas.authn.pm.jdbc`. 
+
+
+{% include {{ version }}/password-encoding.md configKey="cas.authn.pm.jdbc" %}
+
 
 ```properties
 # The two fields indicated below are expected to be returned
@@ -5850,16 +5855,5 @@ feature are available [here](Configuration-Properties-Common.html#password-encod
 ## ACME Integration
 
 To learn more about this topic, [please review this guide](../integration/ACME-Integration.html).
-    
-```properties
-# cas.acme.domains[0]=example.org
-# cas.acme.terms-of-use-accepted=true
 
-# cas.acme.key-size=2048
-
-# cas.acme.server-url=acme://letsencrypt.org/staging
-# cas.acme.user-key.location=file:/etc/cas/config/acme/user.key
-# cas.acme.domain-key.location=file:/etc/cas/config/acme/domain.key
-# cas.acme.domain-csr.location=file:/etc/cas/config/acme/domain.csr
-# cas.acme.domain-chain.location=file:/etc/cas/config/acme/domain-chain.crt
-```
+{% include {{ version }}/acme-integration.md %}

@@ -1,0 +1,203 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---troubleshooting-guidecategory-installation" class="anchor" href="#layout-defaulttitle-cas---troubleshooting-guidecategory-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Troubleshooting Guide<br>
+category: Installation</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="troubleshooting-guide" class="anchor" href="#troubleshooting-guide" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting Guide</h1>
+<p>A number of common questions and answers are gathered here. Please watch for updates as this is likely to grow as time/development moves on.</p>
+<h2>
+<a id="review-logs" class="anchor" href="#review-logs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Review Logs</h2>
+<p>CAS server logs are the best resource for determining the root cause of the problem, provided you have configured the appropriate log levels.<br>
+Specifically you want to make sure <code>DEBUG</code> levels are turned on the <code>org.apereo</code> package in the log configuration:</p>
+<pre lang="xml"><code>&lt;Logger name="org.apereo" level="trace" additivity="false" includeLocation="true"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+</code></pre>
+<p>When changes are applied, restart the server environment and observe the log files to get a better<br>
+understanding of CAS behavior. For more info, please <a href="../logging/Logging.html">review  this guide</a> on how to configure logs with CAS.</p>
+<p>Note that the above configuration block only addresses logging behavior of CAS components; not those<br>
+upon which CAS depends. Consult the log4j configuration and turn on appropriate <code>DEBUG</code> logs for each relevant component.<br>
+Those are usually your best data source for diagnostics and troubleshooting.</p>
+<p>If your container of choice is <a href="https://tomcat.apache.org/tomcat-9.0-doc/logging.html">Apache Tomcat</a>,<br>
+you may also want to look into your <code>catalina.out</code><br>
+and <code>localhost-X-Y-Z.log</code> log files to learn more about source of issues.</p>
+<h2>
+<a id="deployment-problem-x-configuration-issue-can-you-help" class="anchor" href="#deployment-problem-x-configuration-issue-can-you-help" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deployment Problem; X Configuration Issue. Can You Help?</h2>
+<p><a href="#review-logs">Study this</a>.</p>
+<h2>
+<a id="how-do-i-tuneextend-mongodb-mysql-spring-webflow-etc" class="anchor" href="#how-do-i-tuneextend-mongodb-mysql-spring-webflow-etc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How do I tune/extend MongoDb, MySQL, Spring Webflow, etc?</h2>
+<p>If you have a question about tuning and configuration of external components utilized by CAS<br>
+and you have a need to achieve more advanced use cases other than what the CAS defaults offer, your question is best<br>
+addressed by the community in charge of that component's development and support. As a general rule,<br>
+you should always pick a technology with which you are most familiar, or otherwise, shoot a question to<br>
+the Spring Webflow, MongoDb, Hazelcast, etc forums to have experts review and recommend ideas.</p>
+<p>Typical questions in this category that are best answered elsewhere are:</p>
+<ul>
+<li>How do I configure SSL for Apache Tomcat, Jetty, etc?</li>
+<li>How do I pass variables from one flow to the next in Spring webflow?</li>
+<li>How do I tune up a hazelcast cluster?</li>
+<li>What is the recommended strategy for making MongoDb highly available?</li>
+</ul>
+<h2>
+<a id="using-snapshot-versions" class="anchor" href="#using-snapshot-versions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using <code>SNAPSHOT</code> Versions</h2>
+<p>There may be cases where you learn that a fix is available for the defect or behavior relevant for your CAS deployments and you may be advised to upgrade to the current available <code>SNAPSHOT</code> release. Depending on your <a href="WAR-Overlay-Installation.html">choice of installation</a>, you will need to find the setting in your deployment configuration and build scripts that describes your <em>current</em> CAS version and bump that to the next <code>SNAPSHOT</code>. The build scripts should also have additional instructions on how to obtain and build <code>SNAPSHOT</code> releases in README files and such.</p>
+<p>To find out what <code>SNAPSHOT</code> version applies to your deployment, you can either look at the release schedule or the appropriate branch of the CAS codebase. For instance, if you have deployed CAS <code>2.0.4</code> and the release schedule shows the next release is targeted for a <code>2.0.5</code>, then the available <code>SNAPSHOT</code> release would be <code>2.0.5-SNAPSHOT</code>. You can also take a look at the milestone setting assigned to the issue/pull request and determine the <code>SNAPSHOT</code> release. <code>SNAPSHOT</code> releases are always postfixed with <code>-SNAPSHOT</code>. If the assigned milestone to an issue is for instance <code>1.2.5-RC1</code>, then the <code>SNAPSHOT</code> release would be <code>1.2.5-RC1-SNAPSHOT</code>.</p>
+<h2>
+<a id="configuring-ssl-behind-load-balancerproxy" class="anchor" href="#configuring-ssl-behind-load-balancerproxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuring SSL Behind Load Balancer/Proxy</h2>
+<p>You might be running CAS inside a <a href="Configuring-Servlet-Container.html">servlet container</a> such as Apache Tomcat behind some sort of proxy such as haproxy, Apache httpd, etc where the proxy is handling the SSL termination. The connections to the user are secured via <code>https</code>, yet those between the proxy and CAS service are just <code>http</code>.</p>
+<p>With this setup, the CAS login screen may still warn you about a non-secure connection. There is no setting in CAS that would allow you to control/adjust this, as this is entirely controlled by the container itself. All CAS cares about is whether the incoming connection request identifies itself as a secure connection. So to remove the warning, you will need to look into your container's configuration and docs to see how the connection may be secured between the proxy and CAS.</p>
+<p>For <a href="https://tomcat.apache.org/tomcat-9.0-doc/config/http.html">Apache Tomcat</a>, you may be able to adjust the connector that talks to the proxy with a <code>secure=true</code> attribute.</p>
+<h2>
+<a id="application-x-redirected-you-too-many-times" class="anchor" href="#application-x-redirected-you-too-many-times" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Application X "redirected you too many times"</h2>
+<p>"Too many redirect" errors are usually cause by service ticket validation failure events, generally<br>
+caused by application misconfiguration.<br>
+Ticket validation failure may be caused by expired or unrecognized tickets, SSL-related<br>
+issues and such. Examine your CAS logs and you will find the cause.</p>
+<h2>
+<a id="not-receiving-attributes" class="anchor" href="#not-receiving-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Not Receiving Attributes</h2>
+<p>If your client application is not receiving attributes, you will need to make sure:</p>
+<ol>
+<li>The client is using a version of <a href="../protocol/CAS-Protocol.html">CAS protocol</a> that is able to release attributes.</li>
+<li>The client, predicated on #1, is hitting the appropriate endpoint for service ticket validation (i.e. <code>/p3/serviceValidate</code>).</li>
+<li>The CAS server itself is <a href="../integration/Attribute-Resolution.html">resolving and retrieving attributes</a> correctly.</li>
+<li>The CAS server is authorized to <a href="../integration/Attribute-Release.html">release attributes</a> to that particular client application inside its service registry.</li>
+</ol>
+<p>Please <a href="../services/Service-Management.html">review this guide</a> to better understand the CAS service registry.</p>
+<h2>
+<a id="application-not-authorized" class="anchor" href="#application-not-authorized" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Application Not Authorized</h2>
+<p>You may encounter this error, when the requesting application/service url cannot be found in your CAS service registry. When an<br>
+authentication request is submitted to the CAS <code>login</code> endpoint, the destination application is indicated as a url parameter which<br>
+will be checked against the CAS service registry to determine if the application is allowed to use CAS. If the url is not found, this<br>
+message will be displayed back. Since service definitions in the registry have the ability to be defined by a url pattern,<br>
+it is entirely possible that the pattern in the registry for the service definition is misconfigured and does not produce a successful match<br>
+for the requested application url.</p>
+<p>Please <a href="../services/Service-Management.html">review this guide</a> to better understand the CAS service registry.</p>
+<h2>
+<a id="invalidexpired-cas-tickets" class="anchor" href="#invalidexpired-cas-tickets" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Invalid/Expired CAS Tickets</h2>
+<p>You may experience <code>INVAILD_TICKET</code> related errors when attempting to use a CAS ticket whose expiration policy dictates that the ticket<br>
+has expired. The CAS log should further explain in more detail if the ticket is considered expired, but for diagnostic purposes,<br>
+you may want to adjust the <a href="../ticketing/Configuring-Ticket-Expiration-Policy.html">ticket expiration policy configuration</a> to remove and troubleshoot this error.</p>
+<p>Furthermore, if the ticket itself cannot be located in the CAS ticket registry the ticket is also considered invalid. You will need<br>
+to observe the ticket used and compare it with the value that exists in the ticket registry to ensure that the ticket id provided is valid.</p>
+<h2>
+<a id="out-of-heap-memory-error" class="anchor" href="#out-of-heap-memory-error" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Out of Heap Memory Error</h2>
+<pre lang="bash"><code>java.lang.OutOfMemoryError: GC overhead limit exceeded
+        at java.util.Arrays.copyOfRange(Arrays.java:3658)
+        at java.lang.StringBuffer.toString(StringBuffer.java:671)
+        at 
+</code></pre>
+<p>You may encounter this error, when in all likelihood, a cache-based ticket registry such as EhCache is used whose eviction policy<br>
+is not correctly configured. Objects and tickets are cached inside the registry storage back-end tend to linger around longer than<br>
+they should or the eviction policy is not doing a good enough job to clean unused tickets that may be marked as expired by CAS.</p>
+<p>To troubleshoot, you can configure the JVM to perform a heap dump prior to exiting, which you should set up immediately so you have<br>
+some additional information if/when it happens next time. The follow system properties should do the trick:</p>
+<pre lang="bash"><code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath="/path/to/jvm-dump.hprof" 
+</code></pre>
+<p>Also ensure that your container is configured to have enough memory available. For Apache Tomcat, the following setting as an environment variable may be configured:</p>
+<pre lang="bash"><code>CATALINA_OPTS=-Xms1000m -Xmx2000m
+</code></pre>
+<p>You will want to profile your server with something like <a href="https://visualvm.github.io/">JVisualVM</a>. This will help you see what is actually<br>
+going on with your memory.</p>
+<p>You might also consider taking periodic heap dumps using the JMap tool or <a href="http://www.yourkit.com/java/profiler/">YourKit Java profiler</a><br>
+and analyzing offline using some analysis tool.</p>
+<p>Finally, review the eviction policy of your ticket registry and ensure the values that determine object lifetime are appropriate for your environment.</p>
+<h2>
+<a id="ssl--certificates" class="anchor" href="#ssl--certificates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SSL &amp; Certificates</h2>
+<h3>
+<a id="pkix-path-building-failed" class="anchor" href="#pkix-path-building-failed" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PKIX Path Building Failed</h3>
+<pre lang="bash"><code>Sep 28, 2009 4:13:26 PM org.apereo.cas.client.validation.AbstractCasProtocolUrlBasedTicketValidator retrieveResponseFromServer
+SEVERE: javax.net.ssl.SSLHandshakeException:
+sun.security.validator.ValidatorException: PKIX path building failed:
+sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+javax.net.ssl.SSLHandshakeException:
+sun.security.validator.ValidatorException: PKIX path building failed:
+sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+      at com.sun.net.ssl.internal.ssl.Alerts.getSSLException(Unknown Source)
+      at com.sun.net.ssl.internal.ssl.SSLSocketImpl.fatal(Unknown Source)
+      at com.sun.net.ssl.internal.ssl.Handshaker.fatalSE(Unknown Source)
+      at com.sun.net.ssl.internal.ssl.Handshaker.fatalSE(Unknown Source)
+      at com.sun.net.ssl.internal.ssl.ClientHandshaker.serverCertificate(Unknown Source)
+</code></pre>
+<p>PKIX path building errors are the most common SSL errors. The problem here is that the CAS client does not trust the certificate presented by the<br>
+CAS server; most often this occurs because of using a <em>self-signed certificate</em> on the CAS server. To resolve this error, import the CAS server<br>
+certificate into the system truststore of the CAS client. If the certificate is issued by your own PKI, it is better to import the root certificate of your PKI into the CAS client truststore.</p>
+<p>By default the Java system truststore is at <code>$JAVA_HOME/jre/lib/security/cacerts</code>. The certificate to be imported <strong>MUST</strong> be a DER-encoded file.<br>
+If the contents of the certificate file are binary, it's likely DER-encoded; if the file begins with the text <code>---BEGIN CERTIFICATE---</code>, it is PEM-encoded and needs to be converted to DER encoding.</p>
+<pre lang="bash"><code>keytool -import -keystore $JAVA_HOME/jre/lib/security/cacerts -file tmp/cert.der -alias certName
+</code></pre>
+<p>If you have multiple java editions installed on your machine, make sure that the app / web server is pointing to the correct JDK/JRE version<br>
+(The one to which the certificate has been exported correctly) One common mistake that occurs while generating self-validated certificates is that the <code>JAVA_HOME</code> might be different than that used by the server.</p>
+<h3>
+<a id="no-subject-alternative-names" class="anchor" href="#no-subject-alternative-names" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>No subject alternative names</h3>
+<pre lang="bash"><code>javax.net.ssl.SSLHandshakeException: java.security.cert.CertificateException: No subject alternative names present
+</code></pre>
+<p>This is a hostname/SSL certificate CN mismatch. This commonly happens when a self-signed certificate issued to localhost is placed on a machine that<br>
+is accessed by IP address. It should be noted that generating a certificate with an IP address for a common name, e.g. <code>CN=192.168.1.1,OU=Middleware,dc=vt,dc=edu</code>, will not work in most cases where the client making the connection is Java.</p>
+<h3>
+<a id="https-hostname-wrong" class="anchor" href="#https-hostname-wrong" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HTTPS hostname wrong</h3>
+<pre lang="bash"><code>java.lang.RuntimeException: java.io.IOException: HTTPS hostname wrong:  should be &lt;eiger.iad.vt.edu&gt;
+    org.apereo.cas.client.validation.Saml11TicketValidator.retrieveResponseFromServer(Saml11TicketValidator.java:203)
+    org.apereo.cas.client.validation.AbstractUrlBasedTicketValidator.validate(AbstractUrlBasedTicketValidator.java:185)
+    org.apereo.cas.client.validation.AbstractTicketValidationFilter.doFilter
+</code></pre>
+<p>The above error occurs most commonly when the CAS client ticket validator attempts to contact the CAS server and is presented a certificate whose<br>
+CN does not match the fully-qualified host name of the CAS server. There are a few common root causes of this mismatch:</p>
+<ul>
+<li>CAS client misconfiguration</li>
+<li>Complex multi-tier server environment (e.g. clustered CAS server)</li>
+<li>Host name too broad for scope of wildcard certificate</li>
+</ul>
+<p>It is also worth checking that the certificate your CAS server is using for SSL encryption matches the one the client is checking against.</p>
+<h3>
+<a id="no-name-matching-x-found" class="anchor" href="#no-name-matching-x-found" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>No name matching X found</h3>
+<pre lang="bash"><code>Caused by: java.security.cert.CertificateException: No name matching cas.server found
+    at sun.security.util.HostnameChecker.matchDNS(Unknown Source) ~[?:1.8.0_77]
+    at sun.security.util.HostnameChecker
+</code></pre>
+<p>Same as above.</p>
+<h3>
+<a id="wildcard-certificates" class="anchor" href="#wildcard-certificates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Wildcard Certificates</h3>
+<p>Java support for wildcard certificates is limited to hosts strictly in the same domain as the wildcard. For example, a certificate with <code>CN=.vt.edu</code> matches hosts <strong><code>a.vt.edu</code></strong> and <strong><code>b.vt.edu</code></strong>, but <em>not</em> <strong><code>a.b.vt.edu</code></strong>.</p>
+<h3>
+<a id="unrecognized-name-error" class="anchor" href="#unrecognized-name-error" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Unrecognized Name Error</h3>
+<pre lang="bash"><code>javax.net.ssl.SSLProtocolException: handshake alert: unrecognized_name
+</code></pre>
+<p>The above error occurs mainly in Oracle JDK CAS Server installations. In JDK, SNI (Server Name Indication) is enabled by default. When the HTTPD Server<br>
+does not send the correct Server Name back, the JDK HTTP Connection refuses to connect and the exception stated above is thrown.</p>
+<p>You must ensure your HTTPD Server is sending back the correct hostname. E.g. in Apache HTTPD, you must set the ServerAlias in the SSL vhost:</p>
+<pre lang="bash"><code>ServerName your.ssl-server.name
+ServerAlias your.ssl-server.name
+</code></pre>
+<p>Alternatively, you can disable the SNI detection in JDK, by adding this flag to the Java options of your CAS Servers' application server configuration:</p>
+<pre lang="bash"><code>-Djsse.enableSNIExtension=false
+</code></pre>
+<h3>
+<a id="when-all-else-fails" class="anchor" href="#when-all-else-fails" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>When All Else Fails</h3>
+<p>If you have read, understood, and tried all the troubleshooting tips on this page and continue to have problems,<br>
+please perform an SSL trace and attach it to a posting to the<br>
+CAS mailing lists. An SSL trace is written to<br>
+STDOUT when the following system property is set, <code>javax.net.debug=ssl</code>.<br>
+An example follows of how to do this in the Tomcat servlet container.</p>
+<p>Sample <code>setenv.sh</code> Tomcat Script follows:</p>
+<pre lang="bash"><code># Uncomment the next 4 lines for custom SSL keystore
+# used by all deployed applications
+# KEYSTORE="$HOME/path/to/custom.keystore"
+# CATALINA_OPTS=$CATALINA_OPTS" -Djavax.net.ssl.keyStore=$KEYSTORE"
+# CATALINA_OPTS=$CATALINA_OPTS" -Djavax.net.ssl.keyStoreType=BKS"
+# CATALINA_OPTS=$CATALINA_OPTS" -Djavax.net.ssl.keyStorePassword=changeit"
+ 
+# Uncomment the next 4 lines to allow custom SSL trust store
+# used by all deployed applications
+# TRUSTSTORE="$HOME/path/to/custom.truststore"
+# CATALINA_OPTS=$CATALINA_OPTS" -Djavax.net.ssl.trustStore=$TRUSTSTORE"
+# CATALINA_OPTS=$CATALINA_OPTS" -Djavax.net.ssl.trustStoreType=BKS"
+# CATALINA_OPTS=$CATALINA_OPTS" -Djavax.net.ssl.trustStorePassword=changeit"
+ 
+# Uncomment the next line to print SSL debug trace in catalina.out
+# CATALINA_OPTS=$CATALINA_OPTS" -Djavax.net.debug=ssl"
+ 
+export CATALINA_OPTS
+</code></pre>

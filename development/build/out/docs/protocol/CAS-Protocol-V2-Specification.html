@@ -1,0 +1,641 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---cas-protocol-20-specificationcategory-protocols" class="anchor" href="#layout-defaulttitle-cas---cas-protocol-20-specificationcategory-protocols" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - CAS Protocol 2.0 Specification<br>
+category: Protocols</h2>
+<!-- raw HTML omitted -->
+<h1>
+<a id="cas-protocol-20-specification" class="anchor" href="#cas-protocol-20-specification" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>CAS Protocol 2.0 Specification</em>
+</h1>
+<p>Author: Drew Mazurek<br>
+Contributors:<br>
+Susan Bramhall<br>
+Howard Gilbert<br>
+Andy Newman<br>
+Andrew Petro<br>
+Version: 1.0</p>
+<p>Release Date: May 4, 2005<br>
+Copyright © 2005, Yale University</p>
+<h1>
+<a id="1-introduction" class="anchor" href="#1-introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. Introduction</h1>
+<p>This is the official specification of the CAS 1.0 and 2.0 protocols. It is subject to change.</p>
+<h2>
+<a id="11-conventions--definitions" class="anchor" href="#11-conventions--definitions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.1. Conventions &amp; Definitions</h2>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY",<br>
+and "OPTIONAL" in this document are to be interpreted as described in RFC 2119[1].</p>
+<ul>
+<li>"Client" refers to the end user and/or the web browser.</li>
+<li>"Server" refers to the Central Authentication Service server.</li>
+<li>"Service" refers to the application the client is trying to access.</li>
+<li>"Back-end service" refers to the application a service is trying to access on behalf of a client. This can also be<br>
+referred to as the "target service."</li>
+<li>
+<!-- raw HTML omitted --> is a bare line feed (ASCII value 0x0a).</li>
+</ul>
+<h1>
+<a id="2-cas-uris" class="anchor" href="#2-cas-uris" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. CAS URIs</h1>
+<p>CAS is an HTTP[2,3]-based protocol that requires each of its components to be accessible through specific URIs.<br>
+This section will discuss each of the URIs.</p>
+<h2>
+<a id="21-login-as-credential-requestor" class="anchor" href="#21-login-as-credential-requestor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1. <em>/login</em> as credential requestor</h2>
+<p>The <em>/login</em> URI operates with two behaviors: as a credential requestor, and as a credential acceptor. It responds<br>
+to credentials by acting as a credential acceptor and otherwise acts as a credential requestor.</p>
+<p>If the client has already established a single sign-on session with CAS, the web browser presents to CAS a secure<br>
+cookie containing a string identifying a ticket-granting ticket. This cookie is called the ticket-granting cookie.<br>
+If the ticket-granting cookie keys to a valid ticket-granting ticket, CAS may issue a service ticket provided all the<br>
+other conditions in this specification are met. See Section 3.6 for more information on ticket-granting cookies.</p>
+<h3>
+<a id="211-parameters" class="anchor" href="#211-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1.1. parameters</h3>
+<p>The following HTTP request parameters may be passed to <em>/login</em> while it is acting as a credential requestor.<br>
+They are all case-sensitive, and they all MUST be handled by <em>/login</em>.</p>
+<ol>
+<li>
+<code>service [OPTIONAL]</code> - the identifier of the application the client is trying to access. In almost all cases, this will<br>
+be the URL of the application. Note that as an HTTP request parameter, this URL value MUST be URL-encoded as described<br>
+in Section 2.2 of RFC 1738 [4]. If a service is not specified and a single sign-on session does not yet exist, CAS SHOULD<br>
+request credentials from the user to initiate a single sign-on session. If a service is not specified and a single sign-on<br>
+session already exists, CAS SHOULD display a message notifying the client that it is already logged in.</li>
+<li>
+<code>renew [OPTIONAL]</code> - if this parameter is set, single sign-on will be bypassed. In this case, CAS will require the client<br>
+to present credentials regardless of the existence of a single sign-on session with CAS. This parameter is not compatible<br>
+with the "gateway" parameter. Services redirecting to the <em>/login</em> URI and login form views posting to the <em>/login</em> URI<br>
+SHOULD NOT set both the "renew" and "gateway" request parameters. Behavior is undefined if both are set. It is RECOMMENDED<br>
+that CAS implementations ignore the "gateway" parameter if "renew" is set. It is RECOMMENDED that when the renew parameter<br>
+is set itsvalue be "true".</li>
+<li>
+<code>gateway [OPTIONAL]</code> - if this parameter is set, CAS will not ask the client for credentials. If the client has a pre-existing<br>
+single sign-on session with CAS, or if a single sign-on session can be established through non-interactive means<br>
+(i.e. trust authentication), CAS MAY redirect the client to the URL specified by the "service" parameter, appending a valid<br>
+service ticket. (CAS also MAY interpose an advisory page informing the client that a CAS authentication has taken place.)<br>
+If the client does not have a single sign-on session with CAS, and a non-interactive authentication cannot be established, CAS<br>
+MUST redirect the client to the URL specified by the "service" parameter with no "ticket" parameter appended to the URL.<br>
+If the "service" parameter is not specified and "gateway" is set, the behavior of CAS is undefined. It is RECOMMENDED that in<br>
+this case, CAS request credentials as if neither parameter was specified. This parameter is not compatible with the "renew"<br>
+parameter. Behavior is undefined if both are set. It is RECOMMENDED that when the gateway parameter is set its value be "true".</li>
+</ol>
+<h3>
+<a id="212-url-examples-of-login" class="anchor" href="#212-url-examples-of-login" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1.2. URL examples of <em>/login</em>
+</h3>
+<p>Simple login example:</p>
+<pre><code>https://server/cas/login?service=http%3A%2F%2Fwww.service.com
+</code></pre>
+<p>Don't prompt for username/password:</p>
+<pre><code>https://server/cas/login?service=http%3A%2F%2Fwww.service.com&amp;gateway=true
+</code></pre>
+<p>Always prompt for username/password:</p>
+<pre><code>https://server/cas/login?service=http%3A%2F%2Fwww.service.com&amp;renew=true
+</code></pre>
+<h3>
+<a id="213-response-for-usernamepassword-authentication" class="anchor" href="#213-response-for-usernamepassword-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1.3. response for username/password authentication</h3>
+<p>When <em>/login</em> behaves as a credential requestor, the response will vary depending on the type of credentials it is requesting.<br>
+In most cases, CAS will respond by displaying a login screen requesting a username and password. This page MUST include a form<br>
+with the parameters, "username", "password", and "lt". The form MAY also include the parameter, "warn". If "service" was<br>
+specified to <em>/login</em>, "service" MUST also be a parameter of the form, containing the value originally passed to <em>/login</em>. These<br>
+parameters are discussed in detail in Section 2.2.1. The form MUST be submitted through the HTTP POST method to <em>/login</em> which<br>
+will then act as a credential acceptor, discussed in Section 2.2.</p>
+<h3>
+<a id="214-response-for-trust-authentication" class="anchor" href="#214-response-for-trust-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1.4. response for trust authentication</h3>
+<p>Trust authentication accommodates consideration of arbitrary aspects of the request as a basis for authentication.<br>
+The appropriate user experience for trust authentication will be highly deployer-specific in consideration of local policy<br>
+and of the logistics of the particular authentication mechanism implemented.</p>
+<p>When <em>/login</em> behaves as a credential requestor for trust authentication, its behavior will be determined by the type of<br>
+credentials it will be receiving. If the credentials are valid, CAS MAY transparently redirect the user to the service.<br>
+Alternately, CAS MAY display a warning that credentials were presented and allow the client to confirm that it wants to use<br>
+those credentials. It is RECOMMENDED that CAS implementations allow the deployer to choose the preferred behavior. If the<br>
+credentials are invalid or non-existent, it is RECOMMENDED that CAS display to the client the reason authentication failed,<br>
+and possibly present the user with alternate means of authentication (e.g. username/password authentication).</p>
+<h3>
+<a id="215-response-for-single-sign-on-authentication" class="anchor" href="#215-response-for-single-sign-on-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.1.5. response for single sign-on authentication</h3>
+<p>If the client has already established a single sign-on session with CAS, the client will have presented its HTTP session<br>
+cookie to <em>/login</em> and behavior will be handled as in Section 2.2.4. However, if the "renew" parameter is set, the behavior will<br>
+be handled as in Section 2.1.3 or 2.1.4.</p>
+<h2>
+<a id="22-login-as-credential-acceptor" class="anchor" href="#22-login-as-credential-acceptor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2. <em>/login</em> as credential acceptor</h2>
+<p>When a set of accepted credentials are passed to <em>/login</em>, it acts as a credential acceptor and its behavior is defined in<br>
+this section.</p>
+<h3>
+<a id="221-parameters-common-to-all-types-of-authentication" class="anchor" href="#221-parameters-common-to-all-types-of-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2.1. parameters common to all types of authentication</h3>
+<p>The following HTTP request parameters MAY be passed to <em>/login</em> while it is acting as a credential acceptor. They are all<br>
+case-sensitive and they all MUST be handled by <em>/login</em>.</p>
+<ol>
+<li>
+<code>service [OPTIONAL]</code> - the URL of the application the client is trying to access. CAS MUST redirect the client to this URL<br>
+upon successful authentication. This is discussed in detail in Section 2.2.4.</li>
+<li>
+<code>warn [OPTIONAL]</code> - if this parameter is set, single sign-on MUST NOT be transparent. The client MUST be prompted before<br>
+being authenticated to another service.</li>
+</ol>
+<h3>
+<a id="222-parameters-for-usernamepassword-authentication" class="anchor" href="#222-parameters-for-usernamepassword-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2.2. parameters for username/password authentication</h3>
+<p>In addition to the OPTIONAL parameters specified in Section 2.2.1, the following HTTP request parameters MUST be passed to<br>
+<em>/login</em> while it is acting as a credential acceptor for username/password authentication. They are all case-sensitive.</p>
+<ol>
+<li>
+<code>username [REQUIRED]</code> - the username of the client that is trying to log in</li>
+<li>
+<code>password [REQUIRED]</code> - the password of the client that is trying to log in</li>
+<li>
+<code>lt [REQUIRED]</code> - a login ticket. This is provided as part of the login form discussed in Section 2.1.3.<br>
+The login ticket itself is discussed in Section 3.5.</li>
+</ol>
+<h3>
+<a id="223-parameters-for-trust-authentication" class="anchor" href="#223-parameters-for-trust-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2.3. parameters for trust authentication</h3>
+<p>There are no REQUIRED HTTP request parameters for trust authentication. Trust authentication may be based on any aspect<br>
+of the HTTP request.</p>
+<h3>
+<a id="224-response" class="anchor" href="#224-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.2.4. response</h3>
+<p>One of the following responses MUST be provided by /login when it is operating as a credential acceptor.</p>
+<ol>
+<li>successful login: redirect the client to the URL specified by the "service" parameter in a manner that will not cause<br>
+the client's credentials to be forwarded to the service. This redirection MUST result in the client issuing a GET request<br>
+to the service. The request MUST include a valid service ticket, passed as the HTTP request parameter, "ticket".<br>
+See Appendix B for more information. If "service" was not specified, CAS MUST display a message notifying the client that<br>
+it has successfully initiated a single sign-on session.</li>
+<li>failed login: return to /login as a credential requestor. It is RECOMMENDED in this case that the CAS server display<br>
+an error message be displayed to the user describing why login failed (e.g. bad password, locked account, etc.), and if<br>
+appropriate, provide an opportunity for the user to attempt to login again.</li>
+</ol>
+<h2>
+<a id="23-logout" class="anchor" href="#23-logout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.3. <em>/logout</em>
+</h2>
+<p><em>/logout</em> destroys a client's single sign-on CAS session. The ticket-granting cookie (Section 3.6) is destroyed, and<br>
+subsequent requests to <em>/login</em> will not obtain service tickets until the user again presents primary credentials<br>
+(and thereby establishes a new single sign-on session).</p>
+<h3>
+<a id="231-parameters" class="anchor" href="#231-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.3.1. parameters</h3>
+<p>The following HTTP request parameter MAY be specified to <em>/logout</em>. It is case sensitive and SHOULD be handled by <em>/logout</em>.</p>
+<ol>
+<li>url [OPTIONAL] - if "url" is specified, the URL specified by "url" SHOULD be on the logout page with descriptive text.<br>
+For example, "The application you just logged out of has provided a link it would like you to follow. Please click here to<br>
+access <a href="http://www.go-back.edu">http://www.go-back.edu</a>."</li>
+</ol>
+<h3>
+<a id="232-response" class="anchor" href="#232-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.3.2. response</h3>
+<p><em>/logout</em> MUST display a page stating that the user has been logged out. If the "url" request parameter is implemented,<br>
+<em>/logout</em> SHOULD also provide a link to the provided URL as described in Section 2.3.1.</p>
+<h2>
+<a id="24-validate-cas-10" class="anchor" href="#24-validate-cas-10" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4. <em>/validate</em> [CAS 1.0]</h2>
+<p><em>/validate</em> checks the validity of a service ticket./validate is part of the CAS 1.0 protocol and thus does not handle proxy<br>
+authentication. CAS MUST respond with a ticket validation failure response when a proxy ticket is passed to <em>/validate</em>.</p>
+<h3>
+<a id="241-parameters" class="anchor" href="#241-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4.1. parameters</h3>
+<p>The following HTTP request parameters MAY be specified to <em>/validate</em>. They are case sensitive and MUST all be handled<br>
+by <em>/validate</em>.</p>
+<ol>
+<li>
+<code>service [REQUIRED]</code> - the identifier of the service for which the ticket was issued, as discussed in Section 2.2.1.</li>
+<li>
+<code>ticket [REQUIRED]</code> - the service ticket issued by /login. Service tickets are described in Section 3.1.</li>
+<li>
+<code>renew [OPTIONAL]</code> - if this parameter is set, ticket validation will only succeed if the service ticket was issued<br>
+from the presentation of the user's primary credentials. It will fail if the ticket was issued from a single sign-on session.</li>
+</ol>
+<h3>
+<a id="242-response" class="anchor" href="#242-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4.2. response</h3>
+<p><em>/validate</em> will return one of the following two responses:</p>
+<p>On ticket validation success:</p>
+<pre><code>yes&lt;LF&gt;
+username&lt;LF&gt;
+</code></pre>
+<p>On ticket validation failure:</p>
+<pre><code>no&lt;LF&gt;
+&lt;LF&gt;
+</code></pre>
+<h3>
+<a id="243-url-examples-of-validate" class="anchor" href="#243-url-examples-of-validate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.4.3. URL examples of <em>/validate</em>
+</h3>
+<p>Simple validation attempt:</p>
+<pre><code>https://server/cas/validate?service=http%3A%2F%2Fwww.service.com&amp;ticket=...
+</code></pre>
+<p>Ensure service ticket was issued by presentation of primary credentials:</p>
+<pre><code>https://server/cas/validate?service=http%3A%2F%2Fwww.service.com&amp;ticket=...
+</code></pre>
+<h2>
+<a id="25-servicevalidate-cas-20" class="anchor" href="#25-servicevalidate-cas-20" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5. <em>/serviceValidate</em> [CAS 2.0]</h2>
+<p><em>/serviceValidate</em> checks the validity of a service ticket and returns an XML-fragment response. <em>/serviceValidate</em><br>
+MUST also generate and issue proxy-granting tickets when requested. /serviceValidate MUST NOT return a successful<br>
+authentication if it receives a proxy ticket. It is RECOMMENDED that if /serviceValidate receives a proxy ticket, the<br>
+error message in the XML response SHOULD explain that validation failed because a proxy ticket was passed to <em>/serviceValidate</em>.</p>
+<h3>
+<a id="251-parameters" class="anchor" href="#251-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5.1. parameters</h3>
+<p>The following HTTP request parameters MAY be specified to <em>/serviceValidate</em>. They are case sensitive and MUST all be<br>
+handled by <em>/serviceValidate</em>.</p>
+<ol>
+<li>
+<code>service [REQUIRED]</code> - the identifier of the service for which the ticket was issued, as discussed in Section 2.2.1.</li>
+<li>
+<code>ticket [REQUIRED]</code> - the service ticket issued by /login. Service tickets are described in Section 3.1.</li>
+<li>
+<code>pgtUrl [OPTIONAL]</code> - the URL of the proxy callback. Discussed in Section 2.5.4.</li>
+<li>
+<code>renew [OPTIONAL]</code> - if this parameter is set, ticket validation will only succeed if the service ticket was issued from the presentation of the user's primary credentials. It will fail if the ticket was issued from a single sign-on session.</li>
+</ol>
+<h3>
+<a id="252-response" class="anchor" href="#252-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5.2. response</h3>
+<p><em>/serviceValidate</em> will return an XML-formatted CAS serviceResponse as described in the XML schema in Appendix A.<br>
+Below are example responses:</p>
+<p>On ticket validation success:</p>
+<pre><code>&lt;cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'&gt;
+    &lt;cas:authenticationSuccess&gt;
+        &lt;cas:user&gt;username&lt;/cas:user&gt;
+            &lt;cas:proxyGrantingTicket&gt;PGTIOU-84678-8a9d...
+        &lt;/cas:proxyGrantingTicket&gt;
+    &lt;/cas:authenticationSuccess&gt;
+&lt;/cas:serviceResponse&gt;
+</code></pre>
+<p>On ticket validation failure:</p>
+<pre><code>&lt;cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'&gt;
+    &lt;cas:authenticationFailure code="INVALID_TICKET"&gt;
+        Ticket ST-1856339-aA5Yuvrxzpv8Tau1cYQ7 not recognized
+    &lt;/cas:authenticationFailure&gt;
+&lt;/cas:serviceResponse&gt;
+</code></pre>
+<h3>
+<a id="253-error-codes" class="anchor" href="#253-error-codes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5.3. error codes</h3>
+<p>The following values MAY be used as the "code" attribute of authentication failure responses. The following is the<br>
+minimum set of error codes that all CAS servers MUST implement. Implementations MAY include others.</p>
+<ol>
+<li>
+<code>INVALID_REQUEST</code> - not all of the required request parameters were present</li>
+<li>
+<code>INVALID_TICKET</code> - the ticket provided was not valid, or the ticket did not come from an initial login and "renew"<br>
+was set on validation. The body of the <a href="cas:authenticationFailure">cas:authenticationFailure</a> block of the XML response SHOULD describe the exact<br>
+details.</li>
+<li>
+<code>INVALID_SERVICE</code> - the ticket provided was valid, but the service specified did not match the service associated with<br>
+the ticket. CAS MUST invalidate the ticket and disallow future validation of that same ticket.</li>
+<li>
+<code>INTERNAL_ERROR</code> - an internal error occurred during ticket validation</li>
+</ol>
+<p>For all error codes, it is RECOMMENDED that CAS provide a more detailed message as the body of the <code>&lt;cas:authenticationFailure&gt;</code><br>
+block of the XML response.</p>
+<h3>
+<a id="254-proxy-callback" class="anchor" href="#254-proxy-callback" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5.4. proxy callback</h3>
+<p>If a service wishes to proxy a client's authentication to a back-end service, it must acquire a proxy-granting ticket.<br>
+Acquisition of this ticket is handled through a proxy callback URL. This URL will uniquely and securely identify the back-end<br>
+service that is proxying the client's authentication. The back-end service can then decide whether or not to accept the<br>
+credentials based on the back-end service's identifying callback URL.</p>
+<p>The proxy callback mechanism works as follows:</p>
+<p>The service that is requesting a proxy-granting ticket specifies upon initial service ticket or proxy ticket validation the<br>
+HTTP request parameter "pgtUrl" to <em>/serviceValidate</em> (or <em>/proxyValidate</em>). This is a callback URL of the service to which CAS<br>
+will connect to verify the service's identity. This URL MUST be HTTPS, and CAS MUST verify both that the SSL certificate is<br>
+valid and that its name matches that of the service. If the certificate fails validation, no proxy-granting ticket will be<br>
+issued, and the CAS service response as described in Section 2.5.2 MUST NOT contain a <code>&lt;proxyGrantingTicket&gt;</code> block. At this<br>
+point, the issuance of a proxy-granting ticket is halted, but service ticket validation will continue, returning success or<br>
+failure as appropriate. If certificate validation is successful, issuance of a proxy-granting ticket proceeds as in step 2.<br>
+CAS uses an HTTP GET request to pass the HTTP request parameters "pgtId" and "pgtIou" to the pgtUrl. These entities are<br>
+discussed in Sections 3.3 and 3.4, respectively.</p>
+<p>If the HTTP GET returns an HTTP status code of 200 (OK), CAS MUST respond to the <em>/serviceValidate</em> (or <em>/proxyValidate</em>)<br>
+request with a service response (Section 2.5.2) containing the proxy-granting ticket IOU (Section 3.4) within the<br>
+<code>&lt;cas:proxyGrantingTicket&gt;</code> block. If the HTTP GET returns any other status code, excepting HTTP 3xx redirects, CAS MUST<br>
+respond to the <em>/serviceValidate</em> (or <em>/proxyValidate</em>) request with a service response that MUST NOT contain a<br>
+<code>&lt;cas:proxyGrantingTicket&gt;</code> block. CAS MAY follow any HTTP redirects issued by the pgtUrl. However, the identifying callback<br>
+URL provided upon validation in the <code>&lt;proxy&gt;</code> block MUST be the same URL that was initially passed to <em>/serviceValidate</em><br>
+(or <em>/proxyValidate</em>) as the "pgtUrl" parameter.</p>
+<p>The service, having received a proxy-granting ticket IOU in the CAS response, and both a proxy-granting ticket and a<br>
+proxy-granting ticket IOU from the proxy callback, will use the proxy-granting ticket IOU to correlate the proxy-granting<br>
+ticket with the validation response. The service will then use the proxy-granting ticket for the acquisition of proxy<br>
+tickets as described in Section 2.7.</p>
+<h3>
+<a id="255-url-examples-of-servicevalidate" class="anchor" href="#255-url-examples-of-servicevalidate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.5.5. URL examples of <em>/serviceValidate</em>
+</h3>
+<p>Simple validation attempt:</p>
+<pre><code>https://server/cas/serviceValidate?service=http%3A%2F%2Fwww.service.com&amp;...
+</code></pre>
+<p>Ensure service ticket was issued by presentation of primary credentials:</p>
+<p><a href="https://server/cas/serviceValidate?service=http%3A%2F%2Fwww.service.com&amp;">https://server/cas/serviceValidate?service=http%3A%2F%2Fwww.service.com&amp;</a>... ST-1856339-aA5Yuvrxzpv8Tau1cYQ7&amp;renew=true</p>
+<p>Pass in a callback URL for proxying:</p>
+<p><a href="https://server/cas/serviceValidate?service=http%3A%2F%2Fwww.service.com&amp;">https://server/cas/serviceValidate?service=http%3A%2F%2Fwww.service.com&amp;</a>...</p>
+<h2>
+<a id="26-proxyvalidate-cas-20" class="anchor" href="#26-proxyvalidate-cas-20" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.6. <em>/proxyValidate</em> [CAS 2.0]</h2>
+<p><em>/proxyValidate</em> MUST perform the same validation tasks as /serviceValidate and additionally validate proxy tickets.<br>
+<em>/proxyValidate</em> MUST be capable of validating both service tickets and proxy tickets.</p>
+<h3>
+<a id="261-parameters" class="anchor" href="#261-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.6.1. parameters</h3>
+<p><em>/proxyValidate</em> has the same parameter requirements as <em>/serviceValidate</em>. See Section 2.5.1.</p>
+<h3>
+<a id="262-response" class="anchor" href="#262-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.6.2. response</h3>
+<p><em>/proxyValidate</em> will return an XML-formatted CAS serviceResponse as described in the XML schema in Appendix A.<br>
+Below are example responses:</p>
+<p>On ticket validation success:</p>
+<pre><code>&lt;cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'&gt;
+  &lt;cas:authenticationSuccess&gt;
+      &lt;cas:user&gt;username&lt;/cas:user&gt;
+      &lt;cas:proxyGrantingTicket&gt;PGTIOU-84678-8a9d...&lt;/cas:proxyGrantingTicket&gt;
+      &lt;cas:proxies&gt;
+          &lt;cas:proxy&gt;https://proxy2/pgtUrl&lt;/cas:proxy&gt;
+          &lt;cas:proxy&gt;https://proxy1/pgtUrl&lt;/cas:proxy&gt;
+      &lt;/cas:proxies&gt;
+  &lt;/cas:authenticationSuccess&gt;
+&lt;/cas:serviceResponse&gt;
+</code></pre>
+<p>Note that when authentication has proceeded through multiple proxies, the order in which the proxies were traversed<br>
+MUST be reflected in the <a href="cas:proxies">cas:proxies</a> block. The most recently-visited proxy MUST be the first proxy listed, and all<br>
+the other proxies MUST be shifted down as new proxies are added. In the above example, the service identified by<br>
+<em><a href="https://proxy1/pgtUrl">https://proxy1/pgtUrl</a></em> was visited first, and that service proxied authentication to the service identified by<br>
+<em><a href="https://proxy2/pgtUrl">https://proxy2/pgtUrl</a></em>.</p>
+<p>On ticket validation failure:</p>
+<pre><code>&lt;cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'&gt;
+  &lt;cas:authenticationFailure code="INVALID_TICKET"&gt;
+      ticket PT-1856376-1HMgO86Z2ZKeByc5XdYD not recognized
+  &lt;/cas:authenticationFailure&gt;
+&lt;/cas:serviceResponse&gt;
+</code></pre>
+<h3>
+<a id="263-url-examples-of-proxyvalidate" class="anchor" href="#263-url-examples-of-proxyvalidate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.6.3 URL examples of <em>/proxyValidate</em>
+</h3>
+<p><em>/proxyValidate</em> accepts the same parameters as <em>/serviceValidate</em>. See Section 2.5.5 for use examples, substituting<br>
+"proxyValidate" for "serviceValidate".</p>
+<h2>
+<a id="27-proxy-cas-20" class="anchor" href="#27-proxy-cas-20" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.7. <em>/proxy</em> [CAS 2.0]</h2>
+<p><em>/proxy</em> provides proxy tickets to services that have acquired proxy-granting tickets and will be proxying<br>
+authentication to back-end services.</p>
+<h3>
+<a id="271-parameters" class="anchor" href="#271-parameters" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.7.1. parameters</h3>
+<p>The following HTTP request parameters MUST be specified to /proxy. They are both case-sensitive.</p>
+<ol>
+<li>
+<code>pgt [REQUIRED]</code> - the proxy-granting ticket acquired by the service during service ticket or proxy ticket validation</li>
+<li>
+<code>targetService [REQUIRED]</code> - the service identifier of the back-end service. Note that not all back-end services are<br>
+web services so this service identifier will not always be a URL. However, the service identifier specified here MUST<br>
+match the "service" parameter specified to /proxyValidate upon validation of the proxy ticket.</li>
+</ol>
+<h3>
+<a id="272-response" class="anchor" href="#272-response" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.7.2. response</h3>
+<p><em>/proxy</em> will return an XML-formatted CAS serviceResponse as described in the XML schema in Appendix A.<br>
+Below are example responses:</p>
+<p>On request success:</p>
+<pre><code>&lt;cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'&gt;
+    &lt;cas:proxySuccess&gt;
+        &lt;cas:proxyTicket&gt;PT-1856392-b98xZrQN4p90ASrw96c8&lt;/cas:proxyTicket&gt;
+    &lt;/cas:proxySuccess&gt;
+&lt;/cas:serviceResponse&gt;
+</code></pre>
+<p>On request failure:</p>
+<pre><code>&lt;cas:serviceResponse xmlns:cas='http://www.yale.edu/tp/cas'&gt;
+  &lt;cas:proxyFailure code="INVALID_REQUEST"&gt;
+      'pgt' and 'targetService' parameters are both required
+  &lt;/cas:proxyFailure&gt;
+&lt;/cas:serviceResponse&gt;
+</code></pre>
+<h3>
+<a id="273-error-codes" class="anchor" href="#273-error-codes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.7.3. error codes</h3>
+<p>The following values MAY be used as the "code" attribute of authentication failure responses. The following is<br>
+the minimum set of error codes that all CAS servers MUST implement. Implementations MAY include others.</p>
+<ol>
+<li>
+<code>INVALID_REQUEST</code> - not all of the required request parameters were present</li>
+<li>
+<code>BAD_PGT</code> - the pgt provided was invalid</li>
+<li>
+<code>INTERNAL_ERROR</code> - an internal error occurred during ticket validation</li>
+</ol>
+<p>For all error codes, it is RECOMMENDED that CAS provide a more detailed message as the body of the<br>
+<code>&lt;cas:authenticationFailure&gt;</code> block of the XML response.</p>
+<h3>
+<a id="274-url-example-of-proxy" class="anchor" href="#274-url-example-of-proxy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.7.4. URL example of <em>/proxy</em>
+</h3>
+<p>Simple proxy request:</p>
+<pre><code>https://server/cas/proxy?targetService=http%3A%2F%2Fwww.service.com&amp;pgt=......
+</code></pre>
+<h1>
+<a id="3-cas-entities" class="anchor" href="#3-cas-entities" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. CAS Entities</h1>
+<h2>
+<a id="31-service-ticket" class="anchor" href="#31-service-ticket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.1. service ticket</h2>
+<p>A service ticket is an opaque string that is used by the client as a credential to obtain access to a service.<br>
+The service ticket is obtained from CAS upon a client's presentation of credentials and a service identifier to <em>/login</em><br>
+as described in Section 2.2.</p>
+<h3>
+<a id="311-service-ticket-properties" class="anchor" href="#311-service-ticket-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.1.1. service ticket properties</h3>
+<ol>
+<li>Service tickets are only valid for the service identifier that was specified to /login when they were generated.<br>
+The service identifier SHOULD NOT be part of the service ticket.</li>
+<li>Service tickets MUST only be valid for one ticket validation attempt. Whether or not validation was successful,<br>
+CAS MUST then invalidate the ticket, causing all future validation attempts of that same ticket to fail.</li>
+<li>CAS SHOULD expire unvalidated service tickets in a reasonable period of time after they are issued. If a service<br>
+presents for validation an expired service ticket, CAS MUST respond with a validation failure response.<br>
+It is RECOMMENDED that the validation response include a descriptive message explaining why validation failed.<br>
+It is RECOMMENDED that the duration a service ticket is valid before it expires be no longer than five minutes.<br>
+Local security and CAS usage considerations MAY determine the optimal lifespan of unvalidated service tickets.</li>
+<li>Service tickets MUST contain adequate secure random data so that a ticket is not guessable.</li>
+<li>Service tickets MUST begin with the characters, "ST-".</li>
+<li>Services MUST be able to accept service tickets of up to 32 characters in length. It is RECOMMENDED that services<br>
+support service tickets of up to 256 characters in length.</li>
+</ol>
+<h2>
+<a id="32-proxy-ticket" class="anchor" href="#32-proxy-ticket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.2. proxy ticket</h2>
+<p>A proxy ticket is an opaque string that a service uses as a credential to obtain access to a back-end service on<br>
+behalf of a client. Proxy tickets are obtained from CAS upon a service's presentation of a valid proxy-granting ticket<br>
+(Section 3.3), and a service identifier for the back-end service to which it is connecting.</p>
+<h3>
+<a id="321-proxy-ticket-properties" class="anchor" href="#321-proxy-ticket-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.2.1. proxy ticket properties</h3>
+<ol>
+<li>Proxy tickets are only valid for the service identifier specified to /proxy when they were generated.<br>
+The service identifier SHOULD NOT be part of the proxy ticket.</li>
+<li>Proxy tickets MUST only be valid for one ticket validation attempt. Whether or not validation was successful,<br>
+CAS MUST then invalidate the ticket, causing all future validation attempts of that same ticket to fail.</li>
+<li>CAS SHOULD expire unvalidated proxy tickets in a reasonable period of time after they are issued.<br>
+If a service presents for validation an expired proxy ticket, CAS MUST respond with a validation failure response.<br>
+It is RECOMMENDED that the validation response include a descriptive message explaining why validation failed.<br>
+It is RECOMMENDED that the duration a proxy ticket is valid before it expires be no longer than five minutes.<br>
+Local security and CAS usage considerations MAY determine the optimal lifespan of unvalidated proxy tickets.</li>
+<li>Proxy tickets MUST contain adequate secure random data so that a ticket is not guessable.</li>
+<li>Proxy tickets SHOULD begin with the characters, "PT-".</li>
+<li>Proxy tickets MUST begin with either the characters, "ST-" or "PT-".</li>
+<li>Back-end services MUST be able to accept proxy tickets of up to 32 characters in length.<br>
+It is RECOMMENDED that back-end services support proxy tickets of up to 256 characters in length.</li>
+</ol>
+<h2>
+<a id="33-proxy-granting-ticket" class="anchor" href="#33-proxy-granting-ticket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.3. proxy-granting ticket</h2>
+<p>A proxy-granting ticket is an opaque string that is used by a service to obtain proxy tickets for obtaining access<br>
+to a back-end service on behalf of a client. Proxy-granting tickets are obtained from CAS upon validation of a<br>
+service ticket or a proxy ticket. Proxy-granting ticket issuance is described fully in Section 2.5.4.</p>
+<h3>
+<a id="331-proxy-granting-ticket-properties" class="anchor" href="#331-proxy-granting-ticket-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.3.1. proxy-granting ticket properties</h3>
+<ol>
+<li>Proxy-granting tickets MAY be used by services to obtain multiple proxy tickets.<br>
+Proxy-granting tickets are not one-time-use tickets.</li>
+<li>Proxy-granting tickets MUST expire when the client whose authentication is being proxied logs out of CAS.</li>
+<li>Proxy-granting tickets MUST contain adequate secure random data so that a ticket is not guessable in a reasonable<br>
+period of time through brute-force attacks.</li>
+<li>Proxy-granting tickets SHOULD begin with the characters, "PGT-".</li>
+<li>Services MUST be able to handle proxy-granting tickets of up to 64 characters in length.<br>
+It is RECOMMENDED that services support proxy-granting tickets of up to 256 characters in length.</li>
+</ol>
+<h2>
+<a id="34-proxy-granting-ticket-iou" class="anchor" href="#34-proxy-granting-ticket-iou" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.4. proxy-granting ticket IOU</h2>
+<p>A proxy-granting ticket IOU is an opaque string that is placed in the response provided by <em>/serviceValidate</em><br>
+and <em>/proxyValidate</em> used to correlate a service ticket or proxy ticket validation with a particular proxy-granting<br>
+ticket. See Section 2.5.4 for a full description of this process.</p>
+<h3>
+<a id="341-proxy-granting-ticket-iou-properties" class="anchor" href="#341-proxy-granting-ticket-iou-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.4.1. proxy-granting ticket IOU properties</h3>
+<ol>
+<li>Proxy-granting ticket IOUs SHOULD NOT contain any reference to their associated proxy-granting tickets.<br>
+Given a particular PGTIOU, it MUST NOT be possible to derive its corresponding PGT through algorithmic methods in a<br>
+reasonable period of time.</li>
+<li>Proxy-granting ticket IOUs MUST contain adequate secure random data so that a ticket is not guessable in a<br>
+reasonable period of time through brute-force attacks.</li>
+<li>Proxy-granting ticket IOUs SHOULD begin with the characters, "PGTIOU-".</li>
+<li>Services MUST be able to handle PGTIOUs of up to 64 characters in length.<br>
+It is RECOMMENDED that services support PGTIOUs of up to 256 characters in length.</li>
+</ol>
+<h2>
+<a id="35-login-ticket" class="anchor" href="#35-login-ticket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.5. login ticket</h2>
+<p>A login ticket is a string that is provided by <em>/login</em> as a credential requestor and passed to <em>/login</em> as a<br>
+credential acceptor for username/password authentication. Its purpose is to prevent the replaying of credentials<br>
+due to bugs in web browsers.</p>
+<h3>
+<a id="351-login-ticket-properties" class="anchor" href="#351-login-ticket-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.5.1. login ticket properties</h3>
+<ol>
+<li>Login tickets issued by /login MUST be probabilistically unique.</li>
+<li>Login tickets MUST only be valid for one authentication attempt. Whether or not authentication was successful,<br>
+CAS MUST then invalidate the login ticket, causing all future authentication attempts with that instance of that<br>
+login ticket to fail.</li>
+<li>Login tickets SHOULD begin with the characters, "LT-".</li>
+</ol>
+<h2>
+<a id="36-ticket-granting-cookie" class="anchor" href="#36-ticket-granting-cookie" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.6. ticket-granting cookie</h2>
+<p>A ticket-granting cookie is an HTTP cookie[5] set by CAS upon the establishment of a single sign-on session.<br>
+This cookie maintains login state for the client, and while it is valid, the client can present it to CAS in lieu<br>
+of primary credentials. Services can opt out of single sign-on through the "renew" parameter described in Sections<br>
+2.1.1, 2.4.1, and 2.5.1.</p>
+<h3>
+<a id="361-ticket-granting-cookie-properties" class="anchor" href="#361-ticket-granting-cookie-properties" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.6.1. ticket-granting cookie properties</h3>
+<ol>
+<li>Ticket-granting cookies MUST be set to expire at the end of the client's browser session.</li>
+<li>CAS MUST set the cookie path to be as restrictive as possible. For example, if the CAS server is set up under the<br>
+path /cas, the cookie path MUST be set to /cas.</li>
+<li>The value of ticket-granting cookies MUST contain adequate secure random data so that a ticket-granting cookie is<br>
+not guessable in a reasonable period of time.</li>
+<li>The value of ticket-granting cookies SHOULD begin with the characters, "TGC-".</li>
+</ol>
+<h2>
+<a id="37-ticket-and-ticket-granting-cookie-character-set" class="anchor" href="#37-ticket-and-ticket-granting-cookie-character-set" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.7. ticket and ticket-granting cookie character set</h2>
+<p>In addition to the above requirements, all CAS tickets and the value of the ticket-granting cookie MUST contain only<br>
+characters from the set {A-Z, a-z, 0-9, and the hyphen character ?-'}.</p>
+<h1>
+<a id="appendix-a-cas-response-xml-schema" class="anchor" href="#appendix-a-cas-response-xml-schema" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Appendix A: CAS response XML schema</h1>
+<pre><code>&lt;!--
+   The following is the schema for the Yale Central Authentication
+   Service (CAS) version 2.0 protocol response.  This covers the responses
+   for the following servlets:
+     /serviceValidate
+     /proxyValidate
+     /proxy
+   This specification is subject to change.
+   Author:  Drew Mazurek
+   Version: $Id: cas2.xsd,v 1.1 2005/02/14 16:19:06 dmazurek Exp $
+--&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:cas="http://www.yale.edu/tp/cas"
+           targetNamespace="http://www.yale.edu/tp/cas"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"&gt;
+    &lt;xs:element name="serviceResponse" type="cas:ServiceResponseType"/&gt;
+    &lt;xs:complexType name="ServiceResponseType"&gt;
+        &lt;xs:choice&gt;
+            &lt;xs:element name="authenticationSuccess" type="cas:AuthenticationSuccessType"/&gt;
+            &lt;xs:element name="authenticationFailure" type="cas:AuthenticationFailureType"/&gt;
+            &lt;xs:element name="proxySuccess" type="cas:ProxySuccessType"/&gt;
+            &lt;xs:element name="proxyFailure" type="cas:ProxyFailureType"/&gt;
+        &lt;/xs:choice&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:complexType name="AuthenticationSuccessType"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="user" type="xs:string"/&gt;
+            &lt;xs:element name="proxyGrantingTicket" type="xs:string" minOccurs="0"/&gt;
+            &lt;xs:element name="proxies" type="cas:ProxiesType" minOccurs="0"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:complexType name="ProxiesType"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="proxy" type="xs:string" maxOccurs="unbounded"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:complexType name="AuthenticationFailureType"&gt;
+        &lt;xs:simpleContent&gt;
+            &lt;xs:extension base="xs:string"&gt;
+                &lt;xs:attribute name="code" type="xs:string" use="required"/&gt;
+            &lt;/xs:extension&gt;
+        &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:complexType name="ProxySuccessType"&gt;
+        &lt;xs:sequence&gt;
+            &lt;xs:element name="proxyTicket" type="xs:string"/&gt;
+        &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+    &lt;xs:complexType name="ProxyFailureType"&gt;
+        &lt;xs:simpleContent&gt;
+            &lt;xs:extension base="xs:string"&gt;
+                &lt;xs:attribute name="code" type="xs:string" use="required"/&gt;
+            &lt;/xs:extension&gt;
+        &lt;/xs:simpleContent&gt;
+    &lt;/xs:complexType&gt;
+&lt;/xs:schema&gt;
+</code></pre>
+<h1>
+<a id="appendix-b-safe-redirection" class="anchor" href="#appendix-b-safe-redirection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Appendix B: Safe redirection</h1>
+<p>After a successful login, safely redirecting the client from CAS to its final destination must be handled with care.<br>
+In most cases, the client has sent credentials to the CAS server over a POST request. By this specification, the CAS<br>
+server must then forward the user to the application with a GET request.</p>
+<p>The HTTP/1.1 RFC[3] provides a response code of 303: See Other, which provides for the desired behavior:<br>
+a script that receives data through a POST request can, through a 303 redirection, forward the browser to another<br>
+URL through a GET request. However, not all browsers have implemented this behavior correctly.</p>
+<p>The recommended method of redirection is thus JavaScript. A page containing a window.location.href in the following<br>
+manner performs adequately:</p>
+<pre><code>&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Yale Central Authentication Service&lt;/title&gt;
+        &lt;script&gt;
+            window.location.href="https://portal.yale.edu/Login?ticket=ST-..." mce_href="https://portal.yale.edu/Login?ticket=ST-...";
+       &lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;noscript&gt;
+            &lt;p&gt;CAS login successful.&lt;/p&gt;
+            &lt;p&gt;  Click &lt;a xhref="https://portal.yale.edu/Login?ticket=ST-..." mce_href="https://portal.yale.edu/Login?ticket=ST-..."&gt;here&lt;/a&gt;
+            to access the service you requested.&lt;br /&gt;  &lt;/p&gt;
+        &lt;/noscropt&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Additionally, CAS should disable browser caching by setting all of the various cache-related headers:</p>
+<pre><code>Pragma: no-cache
+Cache-Control: no-store
+Expires: [RFC 1123[6] date equal to or before now]
+</code></pre>
+<p>The introduction of the login ticket removed the possibility of CAS accepting credentials that were cached and replayed<br>
+by a browser. However, early versions of Apple's Safari browser contained a bug where through usage of the Back button,<br>
+Safari could be coerced into presenting the client's credentials to the service it is trying to access. CAS can prevent<br>
+this behavior by not automatically redirecting if it detects that the remote browser is one of these early versions of<br>
+Safari. Instead, CAS should display a page that states login was successful, and provide a link to the requested service.<br>
+The client must then manually click to proceed.</p>
+<p>Appendix C: References<br>
+[1] Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", RFC 2119, Harvard University, March 1997.<br>
+[2] Berners-Lee, T., Fielding, R., Frystyk, H., "Hypertext Transfer Protocol - HTTP/1.0", RFC 1945, MIT/LCS, UC Irvine, MIT/LCS, May 1996.<br>
+[3] Fielding, R., Gettys, J., Mogul, J., Frystyk, H., Masinter, L., Leach, P., Berners-Lee, T., "Hypertext Transfer Protocol - HTTP/1.1", RFC 2068, UC Irvine, Compaq/W3C, Compaq, W3C/MIT, Xerox, Microsoft, W3C/MIT, June 1999.<br>
+[4] Berners-Lee, T., Masinter, L., and MaCahill, M., "Uniform Resource Locators (URL)", RFC 1738, CERN, Xerox Corporation, University of Minnesota, December 1994.<br>
+[5] Kristol, D., Montulli, L., "HTTP State Management Mechanism", RFC 2965, Bell Laboratories/Lucent Technologies, Epinions.com, Inc., October 2000.<br>
+[6] Braden, R., "Requirements for Internet Hosts - Application and Support", RFC 1123, Internet Engineering Task Force, October 1989.</p>
+<h1>
+<a id="appendix-d-cas-license" class="anchor" href="#appendix-d-cas-license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Appendix D: CAS License</h1>
+<p>Copyright (c) 2000-2005 Yale University.<br>
+THIS SOFTWARE IS PROVIDED "AS IS," AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED<br>
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, ARE EXPRESSLY DISCLAIMED. IN NO EVENT SHALL YALE<br>
+UNIVERSITY OR ITS EMPLOYEES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES<br>
+(INCLUDING, BUT NOT LIMITED, THE COSTS OF PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS;<br>
+OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT<br>
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED IN ADVANCE OF THE<br>
+POSSIBILITY OF SUCH DAMAGE.</p>
+<p>Redistribution and use of this software in source or binary forms, with or without modification, are permitted, provided<br>
+that the following conditions are met:</p>
+<ol>
+<li>Any redistribution must include the above copyright notice and disclaimer and this list of conditions in any related<br>
+documentation and, if feasible, in the redistributed software.</li>
+<li>Any redistribution must include the acknowledgment, "This product includes software developed by Yale University,"\<br>
+in any related documentation and, if feasible, in the redistributed software.</li>
+<li>The names "Yale" and "Yale University" must not be used to endorse or promote products derived from this software.</li>
+</ol>
+<h1>
+<a id="appendix-e-changes-to-this-document" class="anchor" href="#appendix-e-changes-to-this-document" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Appendix E: Changes to this Document</h1>
+<p>May 4, 2005: v1.0 - initial release</p>

@@ -1,0 +1,125 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---json-service-registrycategory-services" class="anchor" href="#layout-defaulttitle-cas---json-service-registrycategory-services" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - JSON Service Registry<br>
+category: Services</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="json-service-registry" class="anchor" href="#json-service-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON Service Registry</h1>
+<p>This registry reads services definitions from JSON configuration files at the application context initialization time.<br>
+JSON files are expected to be found inside a configured directory location and this registry will recursively look through the directory structure to find relevant JSON files.</p>
+<p>Support is enabled by adding the following module into the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-json-service-registry" %}</p>
+<p>A sample JSON file follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testJsonFile",
+  "id" : 103935657744185,
+  "evaluationOrder" : 10
+}
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#json-service-registry">review this guide</a>.</p>
+<!-- raw HTML omitted -->
+<p>The JSON service registry is also able to auto detect changes to the specified directory. It will monitor changes to recognize<br>
+file additions, removals and updates and will auto-refresh CAS so changes do happen instantly.</p>
+<!-- raw HTML omitted -->
+<p>The naming convention for new JSON files is recommended to be the following:</p>
+<pre lang="bash"><code>JSON fileName = serviceName + "-" + serviceNumericId + ".json"
+</code></pre>
+<p>Based on the above formula, for example the above JSON snippet shall be named: <code>testJsonFile-103935657744185.json</code>. Remember that because files are created based on the <code>serviceName</code>, you will need to make sure <a href="https://en.wikipedia.org/wiki/Filename#Reserved_characters_and_words">characters considered invalid for file names</a> are not used as part of the name. Furthermore, note that CAS <strong>MUST</strong> be given full read/write permissions on directory which contains service definition files.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="json-syntax" class="anchor" href="#json-syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON Syntax</h2>
+<p>CAS uses <a href="http://hjson.org/">a version of the JSON syntax</a> that provides a much more relaxed<br>
+syntax with the ability to specify comments.</p>
+<p>A given JSON file for instance could be formatted as such in CAS:</p>
+<pre lang="json"><code>{
+  /*
+    Generic service definition that applies to https/imaps urls
+    that wish to register with CAS for authentication.
+  */
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^(https|imaps)://.*",
+  "name" : "HTTPS and IMAPS",
+  "id" : 10000001,
+}
+</code></pre>
+<p>Note the trailing comma at the end. See the above link for more info on the alternative syntax.</p>
+<h2>
+<a id="legacy-syntax" class="anchor" href="#legacy-syntax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Legacy Syntax</h2>
+<p>A number of legacy service definitions, supported by CAS automatically, are listed below.</p>
+<h2>
+<a id="cas-add-ons" class="anchor" href="#cas-add-ons" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Add-ons</h2>
+<p>Originally <a href="https://github.com/Unicon/cas-addons/wiki/Configuring-JSON-Service-Registry">developed as an extension</a> for CAS <code>3.5.x</code>, this add-on provided JSON syntax support in form of a single file that contained all service definitions. An example legacy JSON file is listed below for reference:</p>
+<pre lang="json"><code>{
+    "services":[
+        {
+            "id":1,
+            "serviceId":"https://www.example.com/**",
+            "name":"GOOGLE",
+            "description":"Test service with ant-style pattern matching",
+            "theme":"my_example_theme",
+            "allowedToProxy":true,
+            "enabled":true,
+            "ssoEnabled":true,
+            "anonymousAccess":false,
+            "evaluationOrder":1,
+            "allowedAttributes":["uid", "mail"]
+        }
+    ]
+}
+</code></pre>
+<p>CAS is able to transform this definition into one that is officially supported. The results of transformations are written into a temporary file where the user is warned about the presence of this legacy behavior and the location of the transformed files. Changes should be reviewed and ultimately put into use in the relevant directory location to be loaded by the registry.</p>
+<p>To activate support for this legacy syntax, the services registry file needs to be renamed <code>servicesRegistry.json</code> and must be placed in the same directory<br>
+as all other JSON service definition files.</p>
+<p>A few things to note:</p>
+<ul>
+<li>The <code>extraAttributes</code> property is ignored and may not be transformed.</li>
+<li>Service identifier patterns in the legacy syntax may be specified as <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html">ant patterns</a>. These patterns are automatically massaged by CAS in <em>small ways</em> during transformations to ensure they are turned into a valid regular expression as much as possible. You should of course review the results and make any manual modifications necessary to make the pattern functional.</li>
+</ul>
+<h3>
+<a id="jasig-namespace" class="anchor" href="#jasig-namespace" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jasig Namespace</h3>
+<p>CAS automatically should remain backward compatible with service definitions<br>
+that were created by a CAS <code>4.2.x</code> instance. Warnings should show up in the logs<br>
+when such deprecated service definitions are found. Deployers are advised to review each definition<br>
+and consult the docs to apply the new syntax.</p>
+<p>An example legacy JSON file is listed below for reference:</p>
+<pre lang="json"><code>{
+  "@class" : "org.jasig.cas.services.RegexRegisteredService",
+  "serviceId" : "^https://www.jasig.org/cas",
+  "name" : "Legacy",
+  "id" : 100,
+  "description" : "This service definition authorizes the legacy jasig/cas URL. It is solely here to demonstrate service backwards-compatibility",
+  "proxyPolicy" : {
+    "@class" : "org.jasig.cas.services.RefuseRegisteredServiceProxyPolicy"
+  },
+  "evaluationOrder" : 100,
+  "usernameAttributeProvider" : {
+    "@class" : "org.jasig.cas.services.DefaultRegisteredServiceUsernameProvider"
+  },
+  "logoutType" : "BACK_CHANNEL",
+  "attributeReleasePolicy" : {
+    "@class" : "org.jasig.cas.services.ReturnAllowedAttributeReleasePolicy",
+    "principalAttributesRepository" : {
+      "@class" : "org.jasig.cas.authentication.principal.cache.CachingPrincipalAttributesRepository",
+      "timeUnit" : "HOURS",
+      "expiration" : 2,
+      "mergingStrategy" : "NONE"
+    },
+    "authorizedToReleaseCredentialPassword" : false,
+    "authorizedToReleaseProxyGrantingTicket" : false
+  },
+  "accessStrategy" : {
+    "@class" : "org.jasig.cas.services.DefaultRegisteredServiceAccessStrategy",
+    "enabled" : true,
+    "ssoEnabled" : true
+  }
+}
+</code></pre>
+<h2>
+<a id="replication" class="anchor" href="#replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Replication</h2>
+<p>If CAS is deployed in a cluster, the service definition files must be kept in sync for all CAS nodes. Please <a href="Configuring-Service-Replication.html">review this guide</a> to learn more about available options.</p>
+<h2>
+<a id="auto-initialization" class="anchor" href="#auto-initialization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Auto Initialization</h2>
+<p>Upon startup and configuration permitting, the registry is able to auto initialize itself from default JSON service definitions available to CAS. See <a href="AutoInitialization-Service-Management.html">this guide</a> for more info.</p>

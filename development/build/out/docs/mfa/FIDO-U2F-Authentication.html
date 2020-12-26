@@ -1,0 +1,160 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---u2f---fido-universal-2nd-factor-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---u2f---fido-universal-2nd-factor-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - U2F - FIDO Universal 2nd Factor Authentication<br>
+category: Multifactor Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="u2f---fido-universal-authentication" class="anchor" href="#u2f---fido-universal-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>U2F - FIDO Universal Authentication</h1>
+<p>U2F is an open authentication standard that enables internet users to securely access any number of online services, with one single device, instantly<br>
+and with no drivers, or client software needed. The CAS U2F implementation is built on top of <a href="https://www.yubico.com/about/background/fido/">Yubico</a> and<br>
+the technical specifications are hosted by the open-authentication industry consortium known as the <a href="https://fidoalliance.org/">FIDO Alliance</a>.</p>
+<p>Note that not all browsers today support U2F. While support in recent versions of Chrome and<br>
+Opera seem to exist, you should always verify that U2F support is available for your target browser.</p>
+<p>Support is enabled by including the following module in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-u2f" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido-u2f">review this guide</a>.</p>
+<h2>
+<a id="registration" class="anchor" href="#registration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Registration</h2>
+<p>U2F device registration flows are baked into CAS automatically. A background <em>cleaner</em> process is also automatically scheduled to scan the<br>
+repository periodically and remove expired device registration records based on configured parameters. In the default setting U2F devices<br>
+expire after a fixed period since a user registered the U2F token (independent of the last time the token was used); if you deploy U2F<br>
+MFA for a setup where tokens are centrally distributed and revoked, you may want to <a href="../configuration/Configuration-Properties.html#fido-u2f">extend the interval</a>.</p>
+<!-- raw HTML omitted -->
+<h3>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h3>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>u2fDevices</code></td>
+<td>A <code>GET</code> request presents the collection of registered devices. Registered devices for a single user can be queried via <code>GET</code> by using a selector path (i.e. <code>u2fDevices/{username}</code>). Registered devices for a single user can be deleted via <code>DELETE</code> by using a selector path (i.e. <code>u2fDevices/{username}</code>). A single registered devices for a single user can be deleted via <code>DELETE</code> by using a selector path (i.e. <code>u2fDevices/{username}/{id}</code>).</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="default" class="anchor" href="#default" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default</h3>
+<p>By default, a repository implementation is included that collects user device registrations and saves them into memory.<br>
+This option should only be used for demo and testing purposes.</p>
+<h3>
+<a id="json" class="anchor" href="#json" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON</h3>
+<p>A device repository implementation that collects user device registrations and saves them into a JSON file whose path is taught to CAS via settings. This is a very modest option and should mostly be used for demo and testing purposes. Needless to say, this JSON resource acts as a database that must be available to all CAS server nodes in the cluster.</p>
+<p>Devices stored into the JSON file take on the following format:</p>
+<pre lang="json"><code>{
+  "@class" : "java.util.HashMap",
+  "devices" : [ "java.util.ArrayList", [ {
+    "@class" : "org.apereo.cas.adaptors.u2f.storage.U2FDeviceRegistration",
+    "id" : 1508515100762,
+    "username" : "casuser",
+    "record" : "{\"keyHandle\":\"keyhandle11\",\"publicKey\":\"publickey1\",\"counter\":1,\"compromised\":false}",
+    "createdDate" : "2016-10-15"
+  } ] ]
+}
+</code></pre>
+<h3>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h3>
+<p>Device registrations may be managed via an external Groovy script. The script may be designed as follows:</p>
+<pre lang="groovy"><code>import java.util.*
+import org.apereo.cas.adaptors.u2f.storage.*
+
+Map&lt;String, List&lt;U2FDeviceRegistration&gt;&gt; read(final Object... args) {
+    def logger = args[0]
+    ...
+    null
+}
+
+Boolean write(final Object... args) {
+    List&lt;U2FDeviceRegistration&gt; list = args[0]
+    def logger = args[1]
+    ...
+    true
+}
+
+void removeAll(final Object... args) {
+    def logger = args[0]
+}          
+
+def remove(Object[] args) {
+    def device = args[0]
+    def logger = args[1]
+}
+</code></pre>
+<h3>
+<a id="jpa" class="anchor" href="#jpa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JPA</h3>
+<p>Device registrations may be kept inside a relational database by including the following module in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-u2f-jpa" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido-u2f-jpa">review this guide</a>.</p>
+<h3>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
+<p>Device registrations may be kept inside a MongoDb instance by including the following module in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-u2f-mongo" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido-u2f-mongodb">review this guide</a>.</p>
+<h3>
+<a id="dynamodb" class="anchor" href="#dynamodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb</h3>
+<p>Device registrations may be kept inside a DynamoDb instance by including the following module in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-u2f-dynamodb" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido-u2f-dynamodb">review this guide</a>.</p>
+<h3>
+<a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
+<p>Device registrations may be kept inside a Redis instance by including the following module in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-u2f-redis" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido-u2f-redis">review this guide</a>.</p>
+<h3>
+<a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
+<p>Device registrations may be kept inside a CouchDb instance by including the following module in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-u2f-couchdb" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido-u2f-couchdb">review this guide</a>.</p>
+<h3>
+<a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
+<p>Device registrations may be managed via REST APIs. Endpoints must be designed to<br>
+accept/process <code>application/json</code>. The syntax for he collection of devices passed back and<br>
+forth is designed in JSON and is identical to the JSON structure defined above.</p>
+<p>The following parameters are passed:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Parameters</th>
+<th>Description</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>N/A</td>
+<td>Retrieve all registered devices.</td>
+<td>
+<code>200</code> status code; Collection of registered devices as JSON in response body.</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td>Collection of registered devices as JSON</td>
+<td>Store registered devices.</td>
+<td>
+<code>200</code>.</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>N/A</td>
+<td>Delete all device records</td>
+<td>
+<code>200</code>.</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td>
+<code>/${id}</code>  as a path variable</td>
+<td>Delete all device records matching that identifier.</td>
+<td>
+<code>200</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#fido-u2f-rest">review this guide</a>.</p>

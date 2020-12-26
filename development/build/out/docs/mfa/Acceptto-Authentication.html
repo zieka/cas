@@ -1,0 +1,20 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---acceptto-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---acceptto-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Acceptto Authentication<br>
+category: Multifactor Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="acceptto-authentication" class="anchor" href="#acceptto-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acceptto Authentication</h1>
+<p>Secure your workforce identity with <a href="https://www.acceptto.com">Acceptto</a><br>
+end-to-end risk-based multiFactor authentication.</p>
+<p>Start by visiting the <a href="https://www.acceptto.com/acceptto-mfa-rest-api/">Acceptto documentation</a>.</p>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-acceptto-mfa" %}</p>
+<p>The integration adds support for both multifactor authentication and QR passwordless authentication.</p>
+<h2>
+<a id="integration-with-dbfp" class="anchor" href="#integration-with-dbfp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Integration with DBFP</h2>
+<p>The integration is able to handle the integration with DBFP and will set a cookie named <code>jwt</code> that is passed to the Acceptto API. This parameter contains a value that the server uses to assess the risk of authentication request including browser fingerprint, IP address of user and GPS location of the user’s browser. The server compares this data with the history of user behavior data to detect anomalies.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#acceptto">review this guide</a>.</p>

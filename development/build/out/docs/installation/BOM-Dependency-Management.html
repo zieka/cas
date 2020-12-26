@@ -1,0 +1,20 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---bill-of-materialscategory-authentication" class="anchor" href="#layout-defaulttitle-cas---bill-of-materialscategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Bill of Materials<br>
+category: Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="cas-bill-of-materials--bom" class="anchor" href="#cas-bill-of-materials--bom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Bill of Materials  (BOM)</h1>
+<p>Each release of CAS provides a curated list of dependencies it supports. In practice, you do not need<br>
+to provide a version for any of these dependencies in your build configuration as the CAS distribution is managing that for you.<br>
+When you upgrade CAS itself, these dependencies will be upgraded as well in a consistent way.</p>
+<p>The curated list of dependencies contains a refined list of third party libraries. The list is<br>
+available as a standard Bills of Materials (BOM). Not everyone likes inheriting from the BOM.<br>
+You may have your own corporate standard parent that you need to use, or<br>
+you may just prefer to explicitly declare all your configuration.</p>
+<p>Support for BOM is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-bom" ignoreBOM="true" %}</p>
+<p>Please <a href="https://plugins.gradle.org/plugin/io.spring.dependency-management">use this guide</a><br>
+and configure the Gradle build accordingly.</p>
+<p>Please note that the <a href="WAR-Overlay-Initializr.html">CAS Initializr</a> is preconfigured to use the CAS BOM.</p>

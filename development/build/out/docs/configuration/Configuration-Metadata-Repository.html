@@ -1,0 +1,36 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas-configuration-metadata-repositorycategory-configuration" class="anchor" href="#layout-defaulttitle-cas-configuration-metadata-repositorycategory-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS Configuration Metadata Repository<br>
+category: Configuration</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="configuration-metadata" class="anchor" href="#configuration-metadata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration Metadata</h1>
+<p>CAS ships with meta-data files that provide details of all supported configuration properties and settings. The repository of all configuration metadata<br>
+is generated automatically at build and release time by processing all items annotated with <code>@ConfigurationProperties</code> within the codebase. This repository<br>
+is then made available for additional querying and filtering to look up definitions of a given property or locate relevant settings<br>
+that apply to a particular group of functionality in CAS, such as LDAP authentication.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-core-configuration-metadata-repository" %}</p>
+<p>Configuration metadata may also be accessed and queried using the CAS actuator endpoints. <a href="../monitoring/Monitoring-Statistics.html">See this guide</a> to learn more.</p>
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>configurationMetadata</code></td>
+<td>Exposes <a href="Configuration-Metadata-Repository.html">CAS configuration metadata</a> that can be used to query settings. The default endpoint presents a list of all settings recognized by CAS, with the added capability to search for a specific CAS setting by its partial <code>name</code> as a selector. This interface ships with CAS by default and you need not do anything special to enable it.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="metadata-via-commandline" class="anchor" href="#metadata-via-commandline" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Metadata via Commandline</h2>
+<p>The metadata repository can also be examined using the command-line as a separate utility.<br>
+<a href="../installation/Configuring-Commandline-Shell.html">See this guide</a> for more info.</p>

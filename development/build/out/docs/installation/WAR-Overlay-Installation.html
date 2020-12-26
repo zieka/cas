@@ -1,0 +1,141 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---overlay-installationcategory-installation" class="anchor" href="#layout-defaulttitle-cas---overlay-installationcategory-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Overlay Installation<br>
+category: Installation</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="war-overlay-installation" class="anchor" href="#war-overlay-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WAR Overlay Installation</h1>
+<p>CAS installation is a fundamentally source-oriented process, and we recommend a WAR overlay (1)<br>
+project to organize customizations such as component configuration and UI design.<br>
+The output of a WAR overlay build is a <code>cas.war</code> file that can be deployed<br>
+to a servlet container like <a href="Configuring-Servlet-Container.html">Apache Tomcat</a>.</p>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
+<p><a href="../planning/Installation-Requirements.html">See this guide</a> to learn more.</p>
+<h2>
+<a id="what-is-a-war-overlay" class="anchor" href="#what-is-a-war-overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is a WAR Overlay?</h2>
+<p>Overlays are a strategy to combat repetitive code and/or resources. Rather than downloading the CAS codebase and building from source,<br>
+overlays allow you to download a pre-built vanilla CAS web application server provided by the project itself and override/insert specific behavior into it. At build time, the build installation process will attempt to download the provided<br>
+binary artifact first. Then the tool will locate your configuration files and settings made available<br>
+inside the same project directory and will merge those into the downloaded artifact in order to produce<br>
+one wholesome archive (i.e. <code>cas.war</code>) . Overridden artifacts may include<br>
+resources, java classes, images, CSS and javascript files. In order for the merge<br>
+process to successfully execute, the location and names of the overridden artifacts<br>
+locally must <strong>EXACTLY</strong> match that of those provided by the project<br>
+inside the originally downloaded archive. Java code in the overlay project's <code>src/main/java</code><br>
+folder and resources in <code>src/main/resources</code> will end up in the <code>WEB-INF\classes</code><br>
+folder of cas.war and they will be loaded by the classloader instead of resources with the same names in jar files inside <code>WEB-INF\lib</code>.</p>
+<p>It goes without saying that while up-front ramp-up time could be slightly complicated, there are significant advantages to this approach:</p>
+<ol>
+<li>There is no need to download/build from the source.</li>
+<li>Upgrades are tremendously easier in most cases by simply adjusting the build script to download the newer CAS release.</li>
+<li>Rather than hosting the entire software source code, as the deployer you <strong>ONLY</strong> keep your own local customizations which makes change tracking much easier.</li>
+<li>Tracking changes inside a source control repository is very lightweight, again simply because only relevant changes (and not the entire software) is managed.</li>
+</ol>
+<h3>
+<a id="managing-overlays" class="anchor" href="#managing-overlays" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Managing Overlays</h3>
+<p>Most if not all aspects of CAS can be controlled by adding, removing, or modifying files in the overlay; it's also possible and indeed common to customize the behavior of<br>
+CAS by adding third-party components that implement CAS APIs as Java source files or dependency references.</p>
+<p>The process of working with an overlay can be summarized in the following steps:</p>
+<ul>
+<li>Start with and build the provided basic vanilla build/deployment.</li>
+<li>Identify the artifacts from the produced build that need changes. These artifacts are generally produced by the build in the <code>build</code> directory for Gradle. Use the gradle <code>explodeWar</code> task.</li>
+<li>Copy the identified artifacts from the identified above directories over to the <code>src/main/resources</code> directory.</li>
+</ul>
+<ol>
+<li>Create the <code>src/main/resources</code> directories, if they don't already exist.</li>
+<li>Copied paths and file names <strong>MUST EXACTLY MATCH</strong> their build counterparts, or the change won't take effect. See the table below to understand how to map folders and files from the build to <code>src</code>.</li>
+</ol>
+<ul>
+<li>After changes, rebuild and repeat the process as many times as possible.</li>
+<li>Double check your changes inside the built binary artifact to make sure the overlay process is working.</li>
+</ul>
+<!-- raw HTML omitted -->
+<h2>
+<a id="cas-war-overlays" class="anchor" href="#cas-war-overlays" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS WAR Overlays</h2>
+<p>CAS WAR overlay projects described below are provided for reference and study.</p>
+<h3>
+<a id="cas-overlay-initializr" class="anchor" href="#cas-overlay-initializr" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Overlay Initializr</h3>
+<p>Apereo CAS Initializr is a relatively new addition to the Apereo CAS ecosystem that allows you<br>
+as the deployer to generate CAS WAR Overlay projects on the fly with just what you need to start quickly.</p>
+<p>To learn more about the initializr, please <a href="WAR-Overlay-Initializr.html">review this guide</a>.</p>
+<h3>
+<a id="cas-overlay-template" class="anchor" href="#cas-overlay-template" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Overlay Template</h3>
+<p>You can download or clone the repositories below to get started with a CAS overlay template.</p>
+<!-- raw HTML omitted -->
+<table>
+<thead>
+<tr>
+<th>Project</th>
+<th>Build Directory</th>
+<th>Source Directory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/apereo/cas-overlay-template">CAS WAR Overlay</a></td>
+<td><code>cas/build/cas-resources</code></td>
+<td><code>src/main/resources</code></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>cas/build/cas-resources</code> files are unzipped<br>
+from <code>cas.war!WEB-INF\lib\cas-server-webapp-resources-&lt;version&gt;.jar</code> via <code>gradle explodeWar</code> in the overlay.</p>
+<p>To construct the overlay project, you need to copy directories and<br>
+files <em>that you need to customize</em> in the build directory over to the source directory.</p>
+<p>The WAR overlay also provides additional tasks to explode the binary artifact first before re-assembling it again.<br>
+You may need to do that step manually yourself to learn what files/directories need to be copied over to the source directory.</p>
+<p>Note: Do <strong>NOT</strong> ever make changes in the above-noted build directory. The changeset will be cleaned out and<br>
+set back to defaults every time you do a build. Put overlaid components inside the source directory<br>
+and/or other instructed locations to avoid surprises.</p>
+<h2>
+<a id="cas-configuration-server-overlay" class="anchor" href="#cas-configuration-server-overlay" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CAS Configuration Server Overlay</h2>
+<p>See this <a href="https://github.com/apereo/cas-configserver-overlay">Maven WAR overlay</a> for more details.</p>
+<p>To learn more about the configuration server, please <a href="../configuration/Configuration-Server-Management.html">review this guide</a>.</p>
+<h2>
+<a id="dockerized-deployment" class="anchor" href="#dockerized-deployment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dockerized Deployment</h2>
+<p>See <a href="Docker-Installation.html">this guide</a> for more info.</p>
+<h2>
+<a id="servlet-container" class="anchor" href="#servlet-container" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Servlet Container</h2>
+<p>CAS can be deployed to a number of servlet containers. See <a href="Configuring-Servlet-Container.html">this guide</a> for more info.</p>
+<h2>
+<a id="custom-and-third-party-source" class="anchor" href="#custom-and-third-party-source" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom and Third-Party Source</h2>
+<p>It is common to customize or extend the functionality of CAS by developing Java components that implement CAS APIs or<br>
+to include third-party source by dependency references. Including third-party source is trivial; simply include<br>
+the relevant dependency in the overlay <code>build.gradle</code> file.</p>
+<!-- raw HTML omitted -->
+<p>In order to include custom Java source, it should<br>
+be included under a <code>src/main/java</code> directory in the overlay project source tree.</p>
+<pre><code>├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── edu
+│   │   │       └── sso
+│   │   │           └── middleware
+│   │   │               └── cas
+│   │   │                   ├── audit
+│   │   │                   │   ├── CompactSlf4jAuditTrailManager.java
+│   │   │                   ├── authentication
+│   │   │                   │   └── principal
+│   │   │                   │       └── UsernamePasswordCredentialsToPrincipalResolver.java
+│   │   │                   ├── services
+│   │   │                   │   └── JsonServiceRegistryDao.java
+│   │   │                   ├── util
+│   │   │                   │   └── X509Helper.java
+│   │   │                   └── web
+│   │   │                       ├── HelpController.java
+│   │   │                       ├── flow
+│   │   │                       │   ├── AbstractForgottenCredentialAction.java
+│   │   │                       └── util
+│   │   │                           ├── ProtocolParameterAuthority.java
+</code></pre>
+<h2>
+<a id="dependency-management" class="anchor" href="#dependency-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependency Management</h2>
+<p>Each release of CAS provides a curated list of dependencies it supports. In practice, you do not need to provide a version for any of<br>
+these dependencies in your build configuration as the CAS distribution is managing that for you. When you upgrade CAS itself, these dependencies will be upgraded as well in a consistent way.</p>
+<p>The curated list of dependencies contains a refined list of third party libraries. The list is<br>
+available as a standard Bills of Materials (BOM). Not everyone likes inheriting from the BOM.<br>
+You may have your own corporate standard parent that you need to use, or you may just prefer to explicitly declare all your configuration.</p>
+<p>To take advantage of the CAS BOM, please see <a href="BOM-Dependency-Management.html">this guide</a>.</p>
+<p><!-- raw HTML omitted -->(1) <a href="http://maven.apache.org/plugins/maven-war-plugin/overlays.html">WAR Overlays</a><!-- raw HTML omitted --></p>

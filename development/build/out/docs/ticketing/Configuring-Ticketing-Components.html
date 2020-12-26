@@ -1,0 +1,76 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---configuring-ticketing-componentscategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---configuring-ticketing-componentscategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Configuring Ticketing Components<br>
+category: Ticketing</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="ticketing" class="anchor" href="#ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ticketing</h1>
+<p>There are two core configurable ticketing components:</p>
+<ul>
+<li>
+<code>TicketRegistry</code> - Provides for durable ticket storage.</li>
+<li>
+<code>ExpirationPolicy</code> - Provides a policy framework for ticket expiration semantics.</li>
+</ul>
+<h2>
+<a id="ticket-registry" class="anchor" href="#ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ticket Registry</h2>
+<p>The deployment environment and technology expertise generally determine the particular <code>TicketRegistry</code> component. A cache-backed implementation is recommended for HA deployments, while the default in-memory registry may be suitable for small deployments.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ticket-registry">review this guide</a>.</p>
+<h3>
+<a id="how-do-i-choose" class="anchor" href="#how-do-i-choose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How Do I Choose?</h3>
+<p>There are a wide range of ticket registries on the menu. The selection criteria are outlined below:</p>
+<ul>
+<li>Choose a technology that you are most familiar with and have the skills and patience to troubleshoot, tune and scale for the win.</li>
+<li>Choose a technology that does not force your CAS configuration to be tied to any individual servers/nodes in the cluster, as this will present auto-scaling issues and manual effort.</li>
+<li>Choose a technology that works well with your network and firewall configuration and is performant and reliable enough based on your network topology.</li>
+<li>Choose a technology that shows promising results under <em>your expected load</em>, having run <a href="../high_availability/High-Availability-Performance-Testing.html">performance and stress tests</a>.</li>
+<li>Choose a technology that does not depend on outside processes and systems as much as possible, is self-reliant and self contained.</li>
+</ul>
+<p>The above simply outlines suggestions and guidelines you may wish to consider. Each option presents various pros and cons and in the end, you must decide which drawbacks or advantages provide you with the best experience.</p>
+<h3>
+<a id="cache-based-ticket-registries" class="anchor" href="#cache-based-ticket-registries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cache-Based Ticket Registries</h3>
+<p>Cached-based ticket registries provide a high-performance solution for ticket storage in high availability<br>
+deployments. Components for the following caching technologies are provided:</p>
+<ul>
+<li><a href="Default-Ticket-Registry.html">Default</a></li>
+<li><a href="Hazelcast-Ticket-Registry.html">Hazelcast</a></li>
+<li><a href="Ehcache-Ticket-Registry.html">Ehcache</a></li>
+<li><a href="Ignite-Ticket-Registry.html">Ignite</a></li>
+<li><a href="Memcached-Ticket-Registry.html">Memcached</a></li>
+<li><a href="Infinispan-Ticket-Registry.html">Infinispan</a></li>
+</ul>
+<h3>
+<a id="message-based-ticket-registries" class="anchor" href="#message-based-ticket-registries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Message-based Ticket Registries</h3>
+<ul>
+<li><a href="Messaging-JMS-Ticket-Registry.html">JMS</a></li>
+</ul>
+<h3>
+<a id="rdbms-ticket-registries" class="anchor" href="#rdbms-ticket-registries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>RDBMS Ticket Registries</h3>
+<p>RDBMS-based ticket registries provide a distributed ticket store across multiple CAS nodes.<br>
+Components for the following caching technologies are provided:</p>
+<ul>
+<li><a href="JPA-Ticket-Registry.html">JPA</a></li>
+</ul>
+<h3>
+<a id="nosql-ticket-registries" class="anchor" href="#nosql-ticket-registries" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NoSQL Ticket Registries</h3>
+<p>CAS also provides support for a variety of other databases, including Redis, MongoDb and Apache<br>
+Cassandra, for ticket storage and persistence:</p>
+<ul>
+<li><a href="Infinispan-Ticket-Registry.html">Infinispan</a></li>
+<li><a href="Couchbase-Ticket-Registry.html">Couchbase</a></li>
+<li><a href="Redis-Ticket-Registry.html">Redis</a></li>
+<li><a href="CouchDb-Ticket-Registry.html">CouchDb</a></li>
+<li><a href="MongoDb-Ticket-Registry.html">MongoDb</a></li>
+<li><a href="DynamoDb-Ticket-Registry.html">DynamoDb</a></li>
+</ul>
+<h3>
+<a id="secure-cache-replication" class="anchor" href="#secure-cache-replication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Secure Cache Replication</h3>
+<p>A number of cache-based ticket registries support secure replication of ticket data across the wire,<br>
+so that tickets are encrypted and signed on replication attempts to prevent sniffing and eavesdrops.<br>
+<a href="../installation/Ticket-Registry-Replication-Encryption.html">See this guide</a> for more info.</p>
+<h2>
+<a id="ticket-expiration-policies" class="anchor" href="#ticket-expiration-policies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ticket Expiration Policies</h2>
+<p>CAS supports a pluggable and extensible policy framework to control the expiration policy of<br>
+ticket-granting tickets (TGT) and service tickets (ST).<br>
+<a href="Configuring-Ticket-Expiration-Policy.html">See this guide</a> for details on how to configure the expiration policies.</p>

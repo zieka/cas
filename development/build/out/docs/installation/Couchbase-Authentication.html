@@ -1,0 +1,15 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---couchbase-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---couchbase-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Couchbase Authentication<br>
+category: Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="couchbase-authentication" class="anchor" href="#couchbase-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Couchbase Authentication</h1>
+<p>Verify and authenticate credentials using <a href="http://www.couchbase.com/">Couchbase</a>.</p>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-couchbase-authentication" %}</p>
+<p>The authentication strategy is able to fetch user attributes as part of the authentication event. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchbase-authentication">review this guide</a>.</p>
+<h2>
+<a id="couchbase-principal-attributes" class="anchor" href="#couchbase-principal-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Couchbase Principal Attributes</h2>
+<p>The above dependency may also be used, in the event that principal attributes need to be fetched from a Couchbase database without necessarily authenticating credentials against Couchbase. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchbase">review this guide</a>.</p>

@@ -1,0 +1,50 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---webflow-decorationscategory-webflow-management" class="anchor" href="#layout-defaulttitle-cas---webflow-decorationscategory-webflow-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Webflow Decorations<br>
+category: Webflow Management</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="webflow-decorations" class="anchor" href="#webflow-decorations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Webflow Decorations</h1>
+<p>There are times where you may need to modify the CAS login webflow to include additional data, typically fetched from outside resources and endpoints that may also be considered sensitive and may require credentials for access. Examples include displaying announcements on the CAS login screen or other types of dynamic data. You can certainly <a href="Webflow-Customization-Extensions.html">extend the webflow</a> to include additional states and actions into the login flow to call upon endpoints and data sources to fetch data. An easier option would be to let CAS decorate the login webflow automatically by reaching out to your REST endpoints, etc, taking care of the internal webflow configuration. Such decorators specifically get called upon as CAS begins to render the login view while reserving the right to decorate additional parts of the webflow in the future.</p>
+<p>Note that decorators only inject data into the webflow context where that data later on becomes available to the CAS login view, and more. Once the data is available, you still have the responsibility of using that data to properly display it in the appropriate view and style it correctly.</p>
+<h2>
+<a id="groovy-decorators" class="anchor" href="#groovy-decorators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy Decorators</h2>
+<p>Groovy login decorators allow one to inject data into the webflow context by using an external Groovy script that may take on the following form:</p>
+<pre lang="groovy"><code>def run(Object[] args) {
+     def requestContext = args[0]
+     def applicationContext = args[1]
+     def logger = args[2]
+     
+     logger.info("Decorating the webflow...")
+     requestContext.flowScope.put("decoration", ...)
+ }
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requestContext</code></td>
+<td>The Spring Webflow <code>RequestContext</code> that carries various types of scopes as data containers.</td>
+</tr>
+<tr>
+<td><code>applicationContext</code></td>
+<td>The Spring application context.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>Logger object used to issue log messages where needed.</td>
+</tr>
+</tbody>
+</table>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#spring-webflow-login-decorations">review this guide</a>.</p>
+<h2>
+<a id="rest-decorators" class="anchor" href="#rest-decorators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST Decorators</h2>
+<p>RESTful login decorators allow one to inject data into the webflow context by reaching out to an external REST API. If the endpoint responds back with a <code>200</code> status code, CAS would parse the response body into a JSON object and will stuff the result into the webflow's <code>flowScope</code> container under the key <code>decoration</code>. Please remember that data stuffed into the webflow <strong>MUST</strong> be serializable and if you intend to pass along complex objects types and fancy data structures, you need to make sure they can safely and ultimately transform into a simple <code>byte[]</code>.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#spring-webflow-login-decorations">review this guide</a>.</p>

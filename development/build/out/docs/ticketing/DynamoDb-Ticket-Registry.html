@@ -1,0 +1,26 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---dynamodb-ticket-registrycategory-ticketing" class="anchor" href="#layout-defaulttitle-cas---dynamodb-ticket-registrycategory-ticketing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - DynamoDb Ticket Registry<br>
+category: Ticketing</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="dynamodb-ticket-registry" class="anchor" href="#dynamodb-ticket-registry" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DynamoDb Ticket Registry</h1>
+<p>DynamoDb ticket registry integration is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-dynamodb-ticket-registry" %}</p>
+<p>This registry stores tickets in <a href="https://aws.amazon.com/dynamodb/">DynamoDb</a> instances. Each ticket type is linked to a distinct table.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>You will need to provide CAS with your <a href="https://aws.amazon.com/console/">AWS credentials</a>. Also, to gain a better understanding<br>
+of DynamoDb's core components and concepts, please <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html">start with this guide</a> first.<br>
+To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#dynamodb-ticket-registry">review this guide</a>.</p>
+<h2>
+<a id="troubleshooting" class="anchor" href="#troubleshooting" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Troubleshooting</h2>
+<p>To enable additional logging, configure the log4j configuration file to add the following levels:</p>
+<pre lang="xml"><code>...
+&lt;Logger name="com.amazonaws" level="debug" additivity="false"&gt;
+    &lt;AppenderRef ref="console"/&gt;
+    &lt;AppenderRef ref="file"/&gt;
+&lt;/Logger&gt;
+...
+</code></pre>

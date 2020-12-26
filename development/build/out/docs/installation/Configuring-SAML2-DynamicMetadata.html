@@ -1,0 +1,554 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---saml2-metadata-managementcategory-protocols" class="anchor" href="#layout-defaulttitle-cas---saml2-metadata-managementcategory-protocols" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - SAML2 Metadata Management<br>
+category: Protocols</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="saml2-metadata-management" class="anchor" href="#saml2-metadata-management" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SAML2 Metadata Management</h1>
+<p>Management of service provider metadata in a dynamic on-the-fly fashion may be accomplished via strategies outlined here.</p>
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>samlIdPRegisteredServiceMetadataCache</code></td>
+<td>Manage and control the cache that holds metadata instances for SAML service providers. Note the cache is specific to the JVM memory of the CAS server node and it's <strong>NOT</strong> distributed or replicated. A <code>GET</code> operation produces the cached copy of the metadata for a given service provider, using the <code>serviceId</code> and <code>entityId</code> parameters. The <code>serviceId</code> parameter may be the numeric identifier for the registered service or its name. In case the service definition represents a metadata aggregate such as InCommon, the <code>entityId</code> parameter may be used to pinpoint and filter the exact entity within the aggregate. A <code>DELETE</code> operation will delete invalidate the metadata cache. If no parameters are provided, the metadata cache will be entirely invalidated. A <code>serviceId</code> parameter will force CAS to only invalidate the cached metadata instance for that service provider. The <code>serviceId</code> parameter may be the numeric identifier for the registered service or its name.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="metadata-query-protocol" class="anchor" href="#metadata-query-protocol" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Metadata Query Protocol</h2>
+<p>CAS also supports the <a href="https://spaces.internet2.edu/display/InCFederation/Metadata+Query+Protocol">Dynamic Metadata Query Protocol</a><br>
+which is a REST-like API for requesting and receiving arbitrary metadata. In order to configure a CAS SAML service to retrieve its metadata from a Metadata query server, the metadata location must be configured to point to the query server instance.</p>
+<p>MDQ may be configured using the below snippet as an example:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "evaluationOrder" : 10,
+  "metadataLocation" : "https://mdq.server.org/entities/{0}"
+}
+</code></pre>
+<p>...where <code>{0}</code> serves as an entityID placeholder for which metadata is to be queried. The placeholder<br>
+is dynamically processed and replaced by CAS at runtime.</p>
+<h2>
+<a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h2>
+<p>Similar to the Dynamic Metadata Query Protocol (MDQ), SAML service provider metadata may also be fetched using a more traditional REST interface. This is a simpler option that does not require one to deploy a compliant MDQ server and provides the flexibility of producing SP metadata using any programming language or framework.</p>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-metadata-rest" %}</p>
+<p>Use the below snippet as an example to fetch metadata from REST endpoints:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "evaluationOrder" : 10,
+  "metadataLocation" : "rest://"
+}
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Requests are submitted to REST endpoints with <code>entityId</code> as the parameter and <code>Content-Type: application/xml</code> as the header. Upon<br>
+a successful <code>200 - OK</code> response status, CAS expects the body of the HTTP response to match the below snippet:</p>
+<pre lang="json"><code>{  
+   "id":1000,
+   "name":"SAML Metadata For Service Provider",
+   "value":"...",
+   "signature":"..."
+}
+</code></pre>
+<p>To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-rest">see this guide</a>.</p>
+<h3>
+<a id="identity-provider-metadata" class="anchor" href="#identity-provider-metadata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Metadata</h3>
+<p>Metadata artifacts that belong to CAS as a SAML2 identity provider may also be managed and stored via REST APIs. Artifacts such as the metadata, signing and<br>
+encryption keys, etc are passed along to an external API endpoint in the following structure as the request body:</p>
+<pre lang="json"><code>{
+    "signingCertificate": "...",
+    "signingKey": "...",
+    "encryptionCertificate": "...",
+    "encryptionKey": "...",
+    "metadata": "...",
+    "appliesTo": "CAS"
+}
+</code></pre>
+<p>The URL endpoint, defined in CAS settings is expected to be available at a path that ends in <code>/idp</code>, which is added onto the URL endpoint by CAS automatically.<br>
+The API is expected to produce a successful <code>200 - OK</code> response status on all operations outlined below:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>The response is expected to produce a JSON document outlining keys and metadata as indicated above. An <code>appliesTo</code> parameter may be passed to indicate the document owner and applicability, where a value of <code>CAS</code> indicates the CAS server as the global owner of the metadata and keys.</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td>Store the metadata and keys to finalize the metadata generation process. The request body contains the JSON document that outlines metadata and keys as indicated above.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys. To see the relevant<br>
+CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-rest">see this guide</a>.</p>
+<h4>
+<a id="per-service" class="anchor" href="#per-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h4>
+<p>Identity provider metadata, certificates and keys can also be defined on a per-service basis to override the global defaults.<br>
+Metadata documents that would be applicable to a service definition need to adjust the <code>appliesTo</code> field in the metadata<br>
+document to carry the service definition's name and numeric identifier using the <code>[service-name]-[service-numeric-identifier]</code> format.</p>
+<h2>
+<a id="git" class="anchor" href="#git" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Git</h2>
+<p>Metadata documents may also be stored in and fetched from Git repositories. This may specially be used to avoid copying metadata files across CAS nodes in a cluster, particularly where one needs to deal with more than a few bilateral SAML integrations. Metadata documents are stored as XML files, and their signing certificate, optionally, is expected to be found in a <code>.pem</code> file by the same name in the repository. (i.e. <code>SP.xml</code>'s certificate can be found in <code>SP.pem</code>).</p>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-metadata-git" %}</p>
+<p>SAML service definitions must then be designed as follows to allow CAS to fetch metadata documents from Git repositories:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "description" : "A Git-based metadata resolver",
+  "metadataLocation" : "git://"
+}
+</code></pre>
+<p>Give the above definition, the expectation is that the git repository<br>
+contains a <code>SAMLService.xml</code> file which may optionally also be accompanied by a <code>SAMLService.pem</code> file.</p>
+<!-- raw HTML omitted -->
+<p>To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-git">see this guide</a>.</p>
+<h3>
+<a id="identity-provider-metadata-1" class="anchor" href="#identity-provider-metadata-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Metadata</h3>
+<p>Metadata artifacts that belong to CAS as a SAML2 identity provider may also be managed and stored via Git. Artifacts such as the metadata, signing and encryption keys, etc are kept on the file-system in distinct directory locations inside the repository and data is pushed to or pulled from git repositories on demand.</p>
+<p>Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys. To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-git">see this guide</a>.</p>
+<h4>
+<a id="per-service-1" class="anchor" href="#per-service-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h4>
+<p>Identity provider metadata, certificates and keys can also be defined on a per-service basis to override the global defaults.<br>
+Metadata documents that would be applicable to a service definition need to adjust the <code>appliesTo</code> field in the metadata<br>
+document, which is used to construct the directory path to metadata artifacts.</p>
+<h2>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h2>
+<p>Metadata documents may also be stored in and fetched from a MongoDb instance.  This may specially be used to avoid copying metadata files across CAS nodes in a cluster, particularly where one needs to deal with more than a few bilateral SAML integrations. Metadata documents are stored in and fetched from a single pre-defined collection that is taught to CAS via settings.  The outline of the document is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The identifier of the record.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Indexed field which describes and names the metadata briefly.</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>The XML document representing the metadata for the service provider.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td>The contents of the signing certificate to validate metadata, if any.</td>
+</tr>
+</tbody>
+</table>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-metadata-mongo" %}</p>
+<p>SAML service definitions must then be designed as follows to allow CAS to fetch metadata documents from MongoDb instances:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "description" : "A MongoDb-based metadata resolver",
+  "metadataLocation" : "mongodb://"
+}
+</code></pre>
+<!-- raw HTML omitted -->
+<p>To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-mongodb">see this guide</a>.</p>
+<h3>
+<a id="identity-provider-metadata-2" class="anchor" href="#identity-provider-metadata-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Metadata</h3>
+<p>Metadata artifacts that belong to CAS as a SAML2 identity provider may also be managed and stored via MongoDb. Artifacts such as the metadata, signing and encryption keys, etc are kept inside a MongoDb collection taught to CAS via settings as a single document that would have the following structure:</p>
+<pre lang="json"><code>{
+    "signingCertificate": "...",
+    "signingKey": "...",
+    "encryptionCertificate": "...",
+    "encryptionKey": "...",
+    "metadata": "...",
+    "appliesTo": "CAS"
+}
+</code></pre>
+<p>Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys. To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-mongodb">see this guide</a>.</p>
+<h4>
+<a id="per-service-2" class="anchor" href="#per-service-2" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h4>
+<p>Identity provider metadata, certificates and keys can also be defined on a per-service basis to override the global defaults.<br>
+Metadata documents that would be applicable to a service definition need to adjust the <code>appliesTo</code> field in the metadata<br>
+document to carry the service definition's name and numeric identifier using the <code>[service-name]-[service-numeric-identifier]</code> format.</p>
+<h2>
+<a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h2>
+<p>Metadata documents may also be stored in and fetched from a Redis instance.  This may specially be used<br>
+to avoid copying metadata files across CAS nodes in a cluster, particularly where one needs to<br>
+deal with more than a few bilateral SAML integrations.</p>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-metadata-redis" %}</p>
+<p>SAML service definitions must then be designed as follows to allow CAS to fetch metadata documents from MongoDb instances:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "description" : "A Redis-based metadata resolver",
+  "metadataLocation" : "redis://"
+}
+</code></pre>
+<!-- raw HTML omitted -->
+<p>To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-redis">see this guide</a>.</p>
+<h3>
+<a id="identity-provider-metadata-3" class="anchor" href="#identity-provider-metadata-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Metadata</h3>
+<p>Metadata artifacts that belong to CAS as a SAML2 identity provider may also be managed and stored via Redis.</p>
+<p>Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys.<br>
+To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-redis">see this guide</a>.</p>
+<h4>
+<a id="per-service-3" class="anchor" href="#per-service-3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h4>
+<p>Identity provider metadata, certificates and keys can also be defined on a per-service basis to override the global defaults.<br>
+Metadata documents that would be applicable to a service definition need to adjust the <code>appliesTo</code> field in the metadata<br>
+document to carry the service definition's name and numeric identifier using the <code>[service-name]-[service-numeric-identifier]</code> format.</p>
+<h2>
+<a id="jpa" class="anchor" href="#jpa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JPA</h2>
+<p>Metadata documents may also be stored in and fetched from a relational database instance. This may specially be used to avoid copying metadata files across CAS nodes in a cluster, particularly where one needs to deal with more than a few bilateral SAML integrations. Metadata documents are stored in and fetched from a single pre-defined table  (i.e. <code>SamlMetadataDocument</code>) whose connection information is taught to CAS via settings and is automatically generated. The outline of the table is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The identifier of the record.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Indexed field which describes and names the metadata briefly.</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>The XML document representing the metadata for the service provider.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td>The contents of the signing certificate to validate metadata, if any.</td>
+</tr>
+</tbody>
+</table>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-metadata-jpa" %}</p>
+<p>SAML service definitions must then be designed as follows to allow CAS to fetch metadata documents from database instances:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "description" : "A relational-db-based metadata resolver",
+  "metadataLocation" : "jdbc://"
+}
+</code></pre>
+<!-- raw HTML omitted -->
+<p>To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-jpa">see this guide</a>.</p>
+<h3>
+<a id="identity-provider-metadata-4" class="anchor" href="#identity-provider-metadata-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Metadata</h3>
+<p>Metadata artifacts that belong to CAS as a SAML2 identity provider may also be managed and stored via JPA. Artifacts such as the metadata, signing and encryption keys, etc are kept<br>
+inside a database table that would have the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The identifier of the record.</td>
+</tr>
+<tr>
+<td><code>signingCertificate</code></td>
+<td>The signing certificate.</td>
+</tr>
+<tr>
+<td><code>signingKey</code></td>
+<td>The signing key.</td>
+</tr>
+<tr>
+<td><code>encryptionCertificate</code></td>
+<td>The encryption certificate.</td>
+</tr>
+<tr>
+<td><code>encryptionKey</code></td>
+<td>The encryption key.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>The SAML2 identity provider metadata.</td>
+</tr>
+<tr>
+<td><code>appliesTo</code></td>
+<td>The owner of the SAML2 identity provider metadata (i.e. <code>CAS</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys. To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-jpa">see this guide</a>.</p>
+<h4>
+<a id="per-service-4" class="anchor" href="#per-service-4" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h4>
+<p>Identity provider metadata, certificates and keys can also be defined on a per-service basis to override the global defaults.<br>
+Metadata documents that would be applicable to a service definition need to adjust the <code>appliesTo</code> column in the metadata<br>
+document to carry the service definition's name and numeric identifier using the <code>[service-name]-[service-numeric-identifier]</code> format.</p>
+<h2>
+<a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h2>
+<p>Metadata documents may also be stored in and fetched from a NoSQL database. This may specially be used to avoid copying metadata files across CAS nodes in a cluster, particularly where one needs to deal with more than a few bilateral SAML integrations. Metadata documents are stored in and fetched from a single pre-defined table  (i.e. <code>SamlMetadataDocument</code>) whose connection information is taught to CAS via settings and is automatically generated.  The outline of the database document is as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The identifier of the record.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Indexed field which describes and names the metadata briefly.</td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td>The XML document representing the metadata for the service provider.</td>
+</tr>
+<tr>
+<td><code>signature</code></td>
+<td>The contents of the signing certificate to validate metadata, if any.</td>
+</tr>
+</tbody>
+</table>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-metadata-couchdb" %}</p>
+<p>SAML service definitions must then be designed as follows to allow CAS to fetch metadata documents from CouchDb instances:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "description" : "A relational-db-based metadata resolver",
+  "metadataLocation" : "couchdb://",
+}
+</code></pre>
+<!-- raw HTML omitted -->
+<p>Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys. To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-couchdb">see this guide</a>.</p>
+<h3>
+<a id="identity-provider-metadata-5" class="anchor" href="#identity-provider-metadata-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Metadata</h3>
+<p>Metadata artifacts that belong to CAS as a SAML2 identity provider may also be managed and stored via CouchDb. Artifacts such as the metadata, signing and encryption keys, etc are kept<br>
+inside a database with documents that would have the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The identifier of the record.</td>
+</tr>
+<tr>
+<td><code>signingCertificate</code></td>
+<td>The signing certificate.</td>
+</tr>
+<tr>
+<td><code>signingKey</code></td>
+<td>The signing key.</td>
+</tr>
+<tr>
+<td><code>encryptionCertificate</code></td>
+<td>The encryption certificate.</td>
+</tr>
+<tr>
+<td><code>encryptionKey</code></td>
+<td>The encryption key.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>The SAML2 identity provider metadata.</td>
+</tr>
+<tr>
+<td><code>appliesTo</code></td>
+<td>The owner of the SAML2 identity provider metadata (i.e. <code>CAS</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys. To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-couchdb">see this guide</a>.</p>
+<h4>
+<a id="per-service-5" class="anchor" href="#per-service-5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h4>
+<p>Identity provider metadata, certificates and keys can also be defined on a per-service basis to override the global defaults.<br>
+Metadata documents that would be applicable to a service definition need to adjust the <code>appliesTo</code> field in the metadata<br>
+document to carry the service definition's name and numeric identifier using the <code>[service-name]_[service-numeric-identifier]</code> format.</p>
+<h2>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h2>
+<p>A metadata location for a SAML service definition may  point to an external Groovy script, allowing the script to programmatically<br>
+determine and build the metadata resolution machinery to be added to the collection of the existing resolvers.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "description" : "A Groovy-based metadata resolver",
+  "metadataLocation" : "file:/etc/cas/config/groovy-metadata.groovy"
+}
+</code></pre>
+<p>The outline of the script may be as follows:</p>
+<pre lang="groovy"><code>import java.util.*
+import org.apereo.cas.support.saml.*
+import org.apereo.cas.support.saml.services.*
+import org.opensaml.saml.metadata.resolver.*
+
+def Collection&lt;MetadataResolver&gt; run(final Object... args) {
+    def registeredService = args[0]
+    def samlConfigBean = args[1]
+    def samlProperties = args[2]
+    def criteriaSet = args[3]
+    def logger = args[4]
+
+    /*
+     Stuff happens where you build the relevant metadata resolver instance(s).
+     When done, simply wrap the results into a collection and return.
+     A null or empty collection will be ignored by CAS.
+  */
+  def metadataResolver = ...
+   return CollectionUtils.wrap(metadataResolver)
+}
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>registeredService</code></td>
+<td>The object representing the corresponding service definition in the registry.</td>
+</tr>
+<tr>
+<td><code>samlConfigBean</code></td>
+<td>The object representing the OpenSAML configuration class holding various builder and marshaller factory instances.</td>
+</tr>
+<tr>
+<td><code>samlProperties</code></td>
+<td>The object responsible for capturing the CAS SAML IdP properties defined in the configuration.</td>
+</tr>
+<tr>
+<td><code>criteriaSet</code></td>
+<td>The object responsible for capturing the criteria for metadata solution, if any.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="amazon-s3" class="anchor" href="#amazon-s3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Amazon S3</h2>
+<p>Metadata documents may also be stored in and fetched from a MongoDb instance.<br>
+This may specially be used to avoid copying metadata files across CAS nodes in a cluster, particularly where one needs<br>
+to deal with more than a few bilateral SAML integrations. Metadata documents are stored in and fetched from a<br>
+single pre-defined bucket that is taught to CAS via settings.</p>
+<p>Support is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-saml-idp-metadata-aws-s3" %}</p>
+<p>SAML service definitions must then be designed as follows to allow CAS to fetch metadata documents from MongoDb instances:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
+  "serviceId" : "the-entity-id-of-the-sp(s)",
+  "name" : "SAMLService",
+  "id" : 10000003,
+  "description" : "Amazon S3-based metadata resolver",
+  "metadataLocation" : "awss3://"
+}
+</code></pre>
+<p>The following parameters are expected for the Amazon S3 object metadata:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>signature</code></td>
+<td>The metadata signing certificate, if any.</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<p>To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-amazon-s3">see this guide</a>.</p>
+<h3>
+<a id="identity-provider-metadata-6" class="anchor" href="#identity-provider-metadata-6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Identity Provider Metadata</h3>
+<p>Metadata artifacts that belong to CAS as a SAML2 identity provider may also be managed and stored via Amazon S3 buckets. Artifacts such as the metadata, signing and encryption keys, etc are kept<br>
+inside a bucket with metadata that would have the following structure:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>The identifier of the record.</td>
+</tr>
+<tr>
+<td><code>signingCertificate</code></td>
+<td>The signing certificate.</td>
+</tr>
+<tr>
+<td><code>signingKey</code></td>
+<td>The signing key.</td>
+</tr>
+<tr>
+<td><code>encryptionCertificate</code></td>
+<td>The encryption certificate.</td>
+</tr>
+<tr>
+<td><code>encryptionKey</code></td>
+<td>The encryption key.</td>
+</tr>
+<tr>
+<td><code>appliesTo</code></td>
+<td>The owner of this metadata document (i.e. <code>CAS</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>The actual object's content/body is expected to contain the SAML2 identity provider metadata. Note that the signing and encryption keys are expected to be encrypted and signed using CAS crypto keys.</p>
+<p>To see the relevant CAS properties, please <a href="../configuration/Configuration-Properties.html#saml-metadata-amazon-s3">see this guide</a>.</p>
+<h4>
+<a id="per-service-6" class="anchor" href="#per-service-6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Per Service</h4>
+<p>Identity provider metadata, certificates and keys can also be defined on a per-service basis to override the global defaults.<br>
+Metadata documents that would be applicable to a service definition need to be put in a special bucket named<br>
+using the <code>[service-name][service-numeric-identifier]</code> format.</p>

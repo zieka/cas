@@ -1,0 +1,19 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---microsoft-azure-active-directory-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---microsoft-azure-active-directory-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Microsoft Azure Active Directory Authentication<br>
+category: Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="microsoft-azure-active-directory-authentication" class="anchor" href="#microsoft-azure-active-directory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Microsoft Azure Active Directory Authentication</h1>
+<p><a href="https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis">Azure Active Directory (Azure AD)</a> is Microsoft’s cloud-based identity and access management service. The functionality described here allows one to authenticate credentials using<br>
+Azure Active Directory as the account store and optionally fetch user attributes using Microsoft Graph.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Support is enabled by including the following dependency in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-azuread-authentication" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#microsoft-azure-active-directory-authentication">review this guide</a>.</p>
+<h2>
+<a id="principal-attributes" class="anchor" href="#principal-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Principal Attributes</h2>
+<p>The above dependency may also be used, in the event that principal attributes need to be fetched from Azure Active Directory without<br>
+necessarily authenticating credentials . To see the relevant list of CAS properties, please [review this guide](..configuration/Configuration-Properties.html#microsoft-azure-active-directory.</p>

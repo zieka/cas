@@ -1,0 +1,169 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---overlay-installationcategory-installation" class="anchor" href="#layout-defaulttitle-cas---overlay-installationcategory-installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Overlay Installation<br>
+category: Installation</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="servlet-container-configuration" class="anchor" href="#servlet-container-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Servlet Container Configuration</h1>
+<p>A number of container options are available to deploy CAS. The <a href="WAR-Overlay-Installation.html">WAR Overlay</a> guide<br>
+describes how to build and deploy CAS.</p>
+<h2>
+<a id="how-do-i-choose" class="anchor" href="#how-do-i-choose" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How Do I Choose?</h2>
+<p>There are is a wide range of servlet containers and servers on the menu. The selection criteria is outlined below:</p>
+<ul>
+<li>Choose a technology that you are most familiar with and have the skills and patience to troubleshoot, tune and scale for the win.</li>
+<li>Choose a technology that does not force your CAS configuration to be tied to any individual servers/nodes in the cluster, as this will present auto-scaling issues and manual effort.</li>
+<li>Choose a technology that works well with your network and firewall configuration and is performant and reliable enough based on your network topology.</li>
+<li>Choose a technology that shows promising results under <em>your expected load</em>, having run <a href="../high_availability/High-Availability-Performance-Testing.html">performance and stress tests</a>.</li>
+<li>Choose a technology that does not depend on outside processes, systems and manual work as much as possible, is self-reliant and self contained.</li>
+</ul>
+<h2>
+<a id="production-quality" class="anchor" href="#production-quality" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Production Quality</h2>
+<p>All servlet containers presented here, embedded or otherwise, aim to be production ready. This means that CAS ships with useful defaults out of the box that<br>
+may be overridden, if necessary and by default, CAS configures everything for you from development to production<br>
+in today’s platforms. In terms of their production quality, there is almost no difference between using an embedded container vs. an external one.</p>
+<p>Unless there are specific, technical and reasonable objections, choosing an embedded servlet container is almost always the better choice.</p>
+<h2>
+<a id="embedded" class="anchor" href="#embedded" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Embedded</h2>
+<p>Note that CAS itself ships with a number of embedded containers that allow the platform to be self-contained<br>
+as much as possible. These embedded containers are an integral part of the CAS software, are maintained and<br>
+updated usually for every release and surely are meant to and can be used in production deployments.<br>
+You <strong>DO NOT</strong> need to, but can if you want to, configure and deploy to an externally configured container.</p>
+<!-- raw HTML omitted -->
+<p>To see the relevant list of CAS properties,<br>
+please <a href="../configuration/Configuration-Properties.html#embedded-container">review this guide</a>.</p>
+<h3>
+<a id="execution" class="anchor" href="#execution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Execution</h3>
+<p>The CAS web application, once built, may be deployed in place with the embedded container via the following command:</p>
+<pre lang="bash"><code>java -jar /path/to/cas.war
+</code></pre>
+<p>Additionally, it is also possible to run CAS as a fully executable web application:</p>
+<pre lang="bash"><code># chmod +x /path/to/cas.war
+/path/to/cas.war
+</code></pre>
+<p>This is achieved via the build process of the deployment overlay where a launch script is <em>inserted</em> at the beginning of the web application artifact. If you<br>
+wish to see and examine the script, simply run the following commands:</p>
+<pre lang="bash"><code># X is the number of lines from the beginning of the file
+head -n X /path/to.cas.war
+</code></pre>
+<p>Note that running CAS as a standalone and fully executable web application is supported on most Linux and OS X distributions.<br>
+Other platforms such as Windows may require custom configuration.</p>
+<h3>
+<a id="apache-tomcat" class="anchor" href="#apache-tomcat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apache Tomcat</h3>
+<p>Note that by default, the embedded container attempts to enable the HTTP2 protocol.</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp-tomcat" %}</p>
+<h4>
+<a id="ipv4-configuration" class="anchor" href="#ipv4-configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>IPv4 Configuration</h4>
+<p>In order to force Apache Tomcat to use IPv4, configure the following as a system property for your <em>run</em> command:</p>
+<pre lang="bash"><code>-Djava.net.preferIPv4Stack=true 
+</code></pre>
+<p>The same sort of configuration needs to be applied to your <code>$CATALINA_OPTS</code> environment variable in case of an external container.</p>
+<h4>
+<a id="faster-startup" class="anchor" href="#faster-startup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Faster Startup</h4>
+<p><a href="https://cwiki.apache.org/confluence/display/TOMCAT/HowTo+FasterStartUp">This guide</a> provides several recommendations on how to make<br>
+web applications and Apache Tomcat as a whole to start up faster.</p>
+<h4>
+<a id="logging" class="anchor" href="#logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logging</h4>
+<p>The embedded Apache Tomcat container is presently unable to display any log messages below <code>INFO</code> even if your CAS log<br>
+configuration explicitly asks for <code>DEBUG</code> or <code>TRACE</code> level data. See <a href="https://github.com/spring-projects/spring-boot/issues/2923">this bug report</a> to learn more.</p>
+<p>While workarounds and fixes may become available in the future, for the time being, you may execute the following<br>
+changes to get <code>DEBUG</code> level log data from the embedded Apache Tomcat. This is specially useful if you are troubleshooting the behavior<br>
+of Tomcat's internal components such as valves, etc.</p>
+<ul>
+<li>Design a <code>logging.properties</code> file as such:</li>
+</ul>
+<pre lang="properties"><code>handlers = java.util.logging.ConsoleHandler
+.level = ALL
+java.util.logging.ConsoleHandler.level = FINER
+java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
+</code></pre>
+<ul>
+<li>Design a<code>java.util.logging.config.file</code> setting as a system/environment variable or command-line<br>
+argument whose value is set to the <code>logging.properties</code> path. Use the setting when you launch and deploy CAS.</li>
+</ul>
+<p>For instance:</p>
+<pre lang="bash"><code>java -jar /path/to/cas.war -Djava.util.logging.config.file=/path/to/logging.properties
+</code></pre>
+<h3>
+<a id="jetty" class="anchor" href="#jetty" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Jetty</h3>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp-jetty" %}</p>
+<h3>
+<a id="undertow" class="anchor" href="#undertow" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Undertow</h3>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp-undertow" %}</p>
+<h2>
+<a id="external" class="anchor" href="#external" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>External</h2>
+<p>A CAS deployment may be deployed to any number of external servlet containers. The container <strong>MUST</strong> support<br>
+the servlet specification <code>v4.0.0</code> at a minimum. In these scenarios, the following vanilla CAS web application<br>
+may be used, in the <a href="WAR-Overlay-Installation.html">WAR Overlay</a> :</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp" %}</p>
+<p>While there is no official project support, the following containers should be compatible with a CAS deployment:</p>
+<ul>
+<li>
+<a href="http://tomcat.apache.org/">Apache Tomcat</a> (At a minimum, Apache Tomcat 9 is required)</li>
+<li><a href="http://www.jboss.org/">JBoss</a></li>
+<li><a href="http://wildfly.org/">Wildfly</a></li>
+<li><a href="http://undertow.io/">Undertow</a></li>
+<li>
+<a href="http://www.eclipse.org/jetty/">Jetty</a> (At a minimum, Jetty 9.4 is required)</li>
+<li><a href="http://glassfish.java.net/">GlassFish</a></li>
+<li><a href="http://www.ibm.com/software/websphere/">WebSphere</a></li>
+</ul>
+<p>Remember that an external container's configuration is <strong>NEVER</strong> automated by CAS in any way which means you are<br>
+responsible for upgrades, maintenance and all other manners of configuration such as logging, SSL, etc. CAS does<br>
+not provide official support and troubleshooting guidelines, etc for an external container's configuration or issues.<br>
+Refer to the servlet container's own documentation for more info.</p>
+<p>Note for JBoss, Wildfly and EAP, you may need to add a <code>jboss-deloyment-structure.xml</code> file to <code>src/main/webapp/WEB-INF</code> in your overlay in order for CAS to start properly.</p>
+<pre lang="xml"><code>&lt;jboss-deployment-structure&gt;
+    &lt;deployment&gt;
+        &lt;dependencies&gt;
+            &lt;module name="jdk.unsupported" /&gt;
+        &lt;/dependencies&gt;
+    &lt;/deployment&gt;
+&lt;/jboss-deployment-structure&gt;
+</code></pre>
+<h3>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h3>
+<p>Support for external containers is enabled by including the following module in the overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-webapp" %}</p>
+<h3>
+<a id="async-support" class="anchor" href="#async-support" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Async Support</h3>
+<p>In the event that an external servlet container is used, you MAY need to make sure it's configured correctly to<br>
+support asynchronous requests in the event you get related errors and your container requires this. This is<br>
+typically handled by setting <code>&lt;async-supported&gt;true&lt;/async-supported&gt;</code> inside the container's main <code>web.xml</code><br>
+file (i.e. For Apache Tomcat, that would be <code>$CATALINA_HOME/conf/web.xml</code>).</p>
+<h3>
+<a id="logging-1" class="anchor" href="#logging-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logging</h3>
+<p>When using an external container, you may need to ensure that logging configuration file that ships with CAS by default is disabled and turned into a no-op <strong>specially</strong> if the log configuration and location is to be controlled via CAS settings. This is required because initialization of the CAS web applications context inside an external servlet container tends to prematurely initialize the log configuration from classpath before CAS itself has had a chance to control logging via settings.</p>
+<p>To disable CAS' own logging, define a <code>log4j2.xml</code> under <code>src/main/resources</code> and put the following content in it:</p>
+<pre lang="xml"><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;Configuration&gt;
+    &lt;Appenders&gt;
+        &lt;Console name="console" target="SYSTEM_OUT"&gt;
+            &lt;PatternLayout pattern="%d %p [%c] - &amp;lt;%m&amp;gt;%n" /&gt;
+        &lt;/Console&gt;
+    &lt;/Appenders&gt;
+    &lt;Loggers&gt;
+        &lt;AsyncRoot level="off"&gt;
+            &lt;AppenderRef ref="console"/&gt;
+        &lt;/AsyncRoot&gt;
+    &lt;/Loggers&gt;
+&lt;/Configuration&gt;
+</code></pre>
+<p>The above configuration will turn the logging initialization moot, allowing the location and configuration of logs to be defined via CAS settings.</p>
+<h3>
+<a id="async-logging" class="anchor" href="#async-logging" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Async Logging</h3>
+<p>CAS logging automatically inserts itself into the runtime application context and will clean up<br>
+the logging context once the container is instructed to shut down. However, Apache Tomcat in particular<br>
+seems to by default ignore all JAR files named <code>log4j*.jar</code>, which prevents this feature from working.<br>
+You may need to change the <code>catalina.properties</code> and remove <code>log4j*.jar</code> from the <code>jarsToSkip</code> property. Failure<br>
+to do so will prevent the container to gracefully shut down and causes logger context threads to hang.</p>
+<p>You may need to do something similar on other containers if they skip scanning Log4j JAR files.</p>
+<h2>
+<a id="docker" class="anchor" href="#docker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Docker</h2>
+<p>You may also be interested to deploy CAS via <a href="https://www.docker.com/">Docker</a>.<br>
+See <a href="Docker-Installation.html">this guide</a> for more info.</p>
+<h2>
+<a id="system-service" class="anchor" href="#system-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>System Service</h2>
+<p>CAS can be easily started as Unix/Linux services using either <code>init.d</code> or <code>systemd</code>. To learn<br>
+more, please <a href="Configuring-Deployment-System-Service.html">visit this guide</a>.</p>

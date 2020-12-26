@@ -1,0 +1,28 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---long-term-authenticationcategory-sso--slo" class="anchor" href="#layout-defaulttitle-cas---long-term-authenticationcategory-sso--slo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Long Term Authentication<br>
+category: SSO &amp; SLO</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="long-term-authentication" class="anchor" href="#long-term-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Long Term Authentication</h1>
+<p>This feature, also known as <em>Remember Me</em>, extends the length of the SSO session beyond the typical period of hours<br>
+such that users can go days or weeks without having to log in to CAS. See the<br>
+<a href="../planning/Security-Guide.html">security guide</a><br>
+for discussion of security concerns related to long term authentication.</p>
+<h2>
+<a id="policy-and-deployment-considerations" class="anchor" href="#policy-and-deployment-considerations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Policy and Deployment Considerations</h2>
+<p>While users can elect to establish a long term authentication session, the duration is established through<br>
+configuration as a matter of security policy. Deployers must determine the length of long term authentication sessions<br>
+by weighing convenience against security risks.</p>
+<p>The use of long term authentication sessions dramatically increases the length of time ticket-granting tickets are<br>
+stored in the ticket registry. Loss of a ticket-granting ticket corresponding to a long-term SSO session would require<br>
+the user to re-authenticate to CAS. A security policy that requires that long term authentication sessions MUST NOT<br>
+be terminated prior to their natural expiration would mandate a ticket<br>
+registry component that provides for durable storage, such as the <a href="../ticketing/JPA-Ticket-Registry.html">JPA Ticket Registry</a>.</p>
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+<p>Adjust your expiration policy so that remember-me authentication requests are<br>
+handled via a long-term timeout expiration policy, and other requests<br>
+are handled via the CAS default SSO session expiration policy.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ticket-granting-cookie">review this guide</a> and <a href="../configuration/Configuration-Properties.html#remember-me">this guide</a>.</p>

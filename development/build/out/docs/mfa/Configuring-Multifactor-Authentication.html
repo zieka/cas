@@ -1,0 +1,232 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---multifactor-authenticationcategory-multifactor-authentication" class="anchor" href="#layout-defaulttitle-cas---multifactor-authenticationcategory-multifactor-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Multifactor Authentication<br>
+category: Multifactor Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="multifactor-authentication-mfa" class="anchor" href="#multifactor-authentication-mfa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multifactor Authentication (MFA)</h1>
+<p>CAS provides support for a variety of multifactor authentication providers and options, while allowing one to design their own. The secondary authentication factor always kicks in <em>after</em> the primary step and existing authentication sessions will be asked to step-up to the needed multifactor authentication factor, should the request or trigger require it. The satisfied authentication context is communicated back to the application as well to denote a successful multifactor authentication event.</p>
+<p>At a minimum, you need answer the following questions:</p>
+<ul>
+<li>Which provider(s) are we using for multifactor authentication?</li>
+<li>How and for whom are we triggering multifactor authentication?</li>
+</ul>
+<h2>
+<a id="supported-providers" class="anchor" href="#supported-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported Providers</h2>
+<p>The following multifactor providers are supported by CAS.</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Id</th>
+<th>Instructions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Duo Security</td>
+<td><code>mfa-duo</code></td>
+<td>
+<a href="DuoSecurity-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>Authy Authenticator</td>
+<td><code>mfa-authy</code></td>
+<td>
+<a href="AuthyAuthenticator-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>Acceptto</td>
+<td><code>mfa-acceptto</code></td>
+<td>
+<a href="Acceptto-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>YubiKey</td>
+<td><code>mfa-yubikey</code></td>
+<td>
+<a href="YubiKey-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>RSA/RADIUS</td>
+<td><code>mfa-radius</code></td>
+<td>
+<a href="RADIUS-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>WiKID</td>
+<td><code>mfa-radius</code></td>
+<td>
+<a href="RADIUS-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>Google Authenticator</td>
+<td><code>mfa-gauth</code></td>
+<td>
+<a href="GoogleAuthenticator-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>FIDO U2F</td>
+<td><code>mfa-u2f</code></td>
+<td>
+<a href="FIDO-U2F-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>FIDO2 WebAuthN</td>
+<td><code>mfa-webauthn</code></td>
+<td>
+<a href="FIDO2-WebAuthn-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>CAS Simple</td>
+<td><code>mfa-simple</code></td>
+<td>
+<a href="Simple-Multifactor-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>Swivel Secure</td>
+<td><code>mfa-swivel</code></td>
+<td>
+<a href="SwivelSecure-Authentication.html">See this guide</a>.</td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>Custom</td>
+<td>
+<a href="../mfa/Custom-MFA-Authentication.html">See this guide</a>.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="triggers" class="anchor" href="#triggers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Triggers</h2>
+<p>Multifactor authentication can be activated via a number of triggers.<br>
+To learn more, <a href="Configuring-Multifactor-Authentication-Triggers.html">please see this guide</a>.</p>
+<h2>
+<a id="bypass-rules" class="anchor" href="#bypass-rules" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bypass Rules</h2>
+<p>Each multifactor provider is equipped with options to allow for MFA bypass. To learn more, <a href="../mfa/Configuring-Multifactor-Authentication-Bypass.html">please see this guide</a>.</p>
+<h2>
+<a id="failure-modes" class="anchor" href="#failure-modes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Failure Modes</h2>
+<p>The authentication policy by default supports fail-closed mode, which means that if you attempt to exercise a particular<br>
+provider available to CAS and the provider cannot be reached, authentication will be stopped and an error<br>
+will be displayed. You can of course change this behavior so that authentication proceeds without exercising the provider<br>
+functionality, if that provider cannot respond.</p>
+<p>The following failure modes are supported:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLOSED</code></td>
+<td>Authentication is blocked if the provider cannot be reached.</td>
+</tr>
+<tr>
+<td><code>OPEN</code></td>
+<td>Authentication proceeds yet requested MFA is NOT communicated to the client if provider is unavailable.</td>
+</tr>
+<tr>
+<td><code>PHANTOM</code></td>
+<td>Authentication proceeds and requested MFA is communicated to the client if provider is unavailable.</td>
+</tr>
+<tr>
+<td><code>NONE</code></td>
+<td>Do not contact the provider at all to check for availability. Assume the provider is available.</td>
+</tr>
+</tbody>
+</table>
+<h3>
+<a id="failure-mode-selection" class="anchor" href="#failure-mode-selection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Failure Mode Selection</h3>
+<p>CAS will consult the current configuration in the event that the provider being requested is unreachable to determine how to proceed.<br>
+The failure mode can be configured at these locations and CAS will use the first defined failure mode in this order:</p>
+<ul>
+<li>Registered Service Multifactor Authentication Policy</li>
+<li>Multifactor Authentication Provider Configuration</li>
+<li>Global Multifactor Authentication Configuration</li>
+</ul>
+<p>If no actionable failure mode is encountered the user will be shown a generic "Authentication Failed" message.</p>
+<h3>
+<a id="failure-mode-by-registered-service" class="anchor" href="#failure-mode-by-registered-service" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Failure Mode by Registered Service</h3>
+<p>Set as part of the "multifactorPolicy".  This location will override a failure a mode set at any other location.</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^(https|imaps)://.*",
+  "id" : 100,
+  "multifactorPolicy" : {
+    "@class" : "org.apereo.cas.services.DefaultRegisteredServiceMultifactorPolicy",
+    "multifactorAuthenticationProviders" : [ "java.util.LinkedHashSet", [ "mfa-duo" ] ],
+    "failureMode" : "CLOSED"
+  }
+}
+</code></pre>
+<h3>
+<a id="failure-mode-by-multifactor-authentication-provider" class="anchor" href="#failure-mode-by-multifactor-authentication-provider" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Failure Mode by Multifactor Authentication Provider</h3>
+<p>Each defined multifactor authentication provider can set its own failure mode policy. Failure modes set at this location will override the global failure mode, but defer to any failure mode set by the registered service.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties-Common.html#multifactor-authentication-providers">review this guide</a>.</p>
+<h3>
+<a id="global-failure-mode" class="anchor" href="#global-failure-mode" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Global Failure Mode</h3>
+<p>A default failure mode can be specified globally via CAS properties and will be used in the case where no failure mode is set in either the provider or the registered service.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#multifactor-authentication">review this guide</a>.</p>
+<h2>
+<a id="multiple-provider-selection" class="anchor" href="#multiple-provider-selection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiple Provider Selection</h2>
+<p>In the event that multiple multifactor authentication providers are determined for a multifactor authentication transaction, by default CAS will attempt to sort the collection of providers based on their rank and will pick one with the highest priority. This use case may arise if multiple triggers are defined where each decides on a different multifactor authentication provider, or the same provider instance is configured multiple times with many instances.</p>
+<p>Provider selection may also be carried out using Groovy scripting strategies more dynamically.<br>
+The following example should serve as an outline of how to select multifactor providers based on a Groovy script:</p>
+<pre lang="groovy"><code>import java.util.*
+
+class SampleGroovyProviderSelection {
+    def String run(final Object... args) {
+        def service = args[0]
+        def principal = args[1]
+        def providersCollection = args[2]
+        def logger = args[3]
+        ...
+        return "mfa-duo"
+    }
+}
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<p>| Parameter             | Description<br>
+|-------------------------------------------------------------------------------------------------------------------<br>
+| <code>service</code>             | The object representing the incoming service provided in the request, if any.<br>
+| <code>principal</code>           | The object representing the authenticated principal along with its attributes.<br>
+| <code>providersCollection</code> | The object representing the collection of candidate multifactor providers qualified for the transaction.<br>
+| <code>logger</code>              | The object responsible for issuing log messages such as <code>logger.info(...)</code>.</p>
+<p>To see the relevant list of CAS properties,<br>
+please <a href="../configuration/Configuration-Properties.html#multifactor-authentication">review this guide</a>.</p>
+<h2>
+<a id="ranking-providers" class="anchor" href="#ranking-providers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Ranking Providers</h2>
+<p>At times, CAS needs to determine the correct provider when step-up authentication is required. Consider for a moment that CAS<br>
+already has established an SSO session with/without a provider and has reached a level of authentication. Another incoming<br>
+request attempts to exercise that SSO session with a different and often competing authentication requirement that may differ<br>
+from the authentication level CAS has already established. Concretely, examples may be:</p>
+<ul>
+<li>CAS has achieved an SSO session, but a separate request now requires step-up authentication with DuoSecurity.</li>
+<li>CAS has achieved an SSO session with an authentication level satisfied by DuoSecurity, but a separate request now requires step-up authentication with YubiKey.</li>
+</ul>
+<p>In certain scenarios, CAS will attempt to rank authentication levels and compare them with each other. If CAS already has achieved a level<br>
+that is higher than what the incoming request requires, no step-up authentication will be performed. If the opposite is true, CAS will<br>
+route the authentication flow to the required authentication level and upon success, will adjust the SSO session with the new higher<br>
+authentication level now satisfied.</p>
+<p>Ranking of authentication methods is done per provider via specific properties for each in CAS settings. Note that<br>
+the higher the rank value is, the higher on the security scale it remains. A provider that ranks higher with a larger weight value trumps<br>
+and override others with a lower value.</p>
+<h2>
+<a id="provider-selection-menu" class="anchor" href="#provider-selection-menu" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provider Selection Menu</h2>
+<p>If more than one multifactor authentication provider qualifies for the authentication request, CAS may be configured to<br>
+present all choices to the user, allowing them to select a provider that makes the most sense at a given time. This approach<br>
+is an alternative strategy to ranking providers.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#multifactor-authentication">review this guide</a>.</p>
+<h2>
+<a id="trusted-devicesbrowsers" class="anchor" href="#trusted-devicesbrowsers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trusted Devices/Browsers</h2>
+<p>CAS is able to natively provide trusted device/browser features as part of any multifactor authentication flow. While certain providers tend to support this feature as well, this behavior is now put into CAS directly providing you with exact control over how devices/browsers are checked, how is that decision remembered for subsequent requests and how you might allow delegated management of those trusted decisions both for admins and end-users.</p>
+<p><a href="Multifactor-TrustedDevice-Authentication.html">See this guide for more info</a>.</p>
+<h2>
+<a id="2fa-vs-mfa" class="anchor" href="#2fa-vs-mfa" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2FA vs. MFA</h2>
+<p>Multifactor authentication in CAS mostly presents itself in form of two-factor authentication when deployed. The framework however is designed in such a way to allow additional chaining of other providers into an existing authentication experience. If you have a need to string along multiple factors together one after another, it is likely that you may need to adjust and extend the existing authentication workflows to deliver the use case.</p>
+<h2>
+<a id="settings" class="anchor" href="#settings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Settings</h2>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#multifactor-authentication">review this guide</a>.</p>

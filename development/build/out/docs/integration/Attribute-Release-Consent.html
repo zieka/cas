@@ -1,0 +1,346 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---attribute-release-consentcategory-attributes" class="anchor" href="#layout-defaulttitle-cas---attribute-release-consentcategory-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Attribute Release Consent<br>
+category: Attributes</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="attribute-consent" class="anchor" href="#attribute-consent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Consent</h1>
+<p>CAS provides the ability to enforce user-informed consent upon attribute release. Practically, this means that prior to accessing the target application, the<br>
+user will be presented with a collection of attributes allowed to be released to the application with options to either proceed or deny the release of said attributes. There are also additional options to indicate how should underlying changes in the attribute release policy be considered by the consent engine. Users are also provided the ability to set up reminders in the event that no change is detected in the attribute release policy.</p>
+<p>Consent attribute records stored in the configured repository are signed and encrypted.</p>
+<p>Support is enabled by including the following module in the Overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-webflow" %}</p>
+<h2>
+<a id="administrative-endpoints" class="anchor" href="#administrative-endpoints" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Administrative Endpoints</h2>
+<p>The following endpoints are provided by CAS:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>attributeConsent</code></td>
+<td>Manage and control <a href="Attribute-Release-Consent.html">attribute consent decisions</a>. A <code>GET</code> operation produces a list of all consent decisions. A <code>DELETE</code> operation with a record key id will attempt to remove and revoke the registered device (i.e. <code>attributeConsent/{principal}/{id}</code>).</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="attribute-selection" class="anchor" href="#attribute-selection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attribute Selection</h2>
+<p>By default, all attributes that are marked for release do qualify for consent. To control this process, you may define a consent policy that indicates a criteria by which attribute selection for consent is carried out.</p>
+<p>The policy assigned to each service includes the following features:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>excludedAttributes</code></td>
+<td>Exclude the indicated attributes from consent.</td>
+</tr>
+<tr>
+<td><code>includeOnlyAttributes</code></td>
+<td>Force-include the indicated attributes in consent, provided attributes are resolved.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>Controls whether consent for this service should be activated. See below for activation rules.</td>
+</tr>
+</tbody>
+</table>
+<p>A sample definition follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 100,
+  "description" : "sample",
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnAllAttributeReleasePolicy",
+    "consentPolicy": {
+      "@class": "org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy",
+      "excludedAttributes": ["java.util.LinkedHashSet", ["test"]],
+      "includeOnlyAttributes": ["java.util.LinkedHashSet", ["test"]],
+      "status": "FALSE"
+    }
+  }
+}
+</code></pre>
+<h2>
+<a id="activation" class="anchor" href="#activation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Activation</h2>
+<p>Attribute consent activation can be controlled both at a global and per-service level. By default, global activation rules for<br>
+attribute consent are turned on and the consent policy rules for the service definition are disabled. The consent policy for<br>
+the service definition may override the global rules using the <code>status</code> field which accepts the following values:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FALSE</code></td>
+<td>Consent policy is disabled, overriding the global configuration.</td>
+</tr>
+<tr>
+<td><code>TRUE</code></td>
+<td>Consent policy is enabled, overriding the global configuration.</td>
+</tr>
+<tr>
+<td><code>UNDEFINED</code></td>
+<td>Consent policy is undefined, delegating the decision to the global configuration.</td>
+</tr>
+</tbody>
+</table>
+<p>Note that attribute consent policies may also be chained together to compose multiple policies. Each policy can be individually disabled or enabled and the overall aggregate status<br>
+of the entire attribute consent policy will be used to determine attribute consent activation and selection. A sample chain of attribute consent polices follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "sample",
+  "name" : "sample",
+  "id" : 100,
+  "description" : "sample",
+  "attributeReleasePolicy": {
+    "@class": "org.apereo.cas.services.ChainingAttributeReleasePolicy",
+    "policies": [ "java.util.ArrayList",
+      [
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "cn", "mail", "sn" ] ],
+          "consentPolicy": {
+            "@class": "org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy",
+            "includeOnlyAttributes": ["java.util.LinkedHashSet", ["cn"]],
+            "status": "TRUE"
+          }
+        },
+        {
+          "@class" : "org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy",
+          "allowedAttributes" : [ "java.util.ArrayList", [ "displayName" ] ],
+          "consentPolicy": {
+            "@class": "org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy",
+            "includeOnlyAttributes": ["java.util.LinkedHashSet", ["displayName"]],
+            "status": "FALSE"
+          }
+        }
+      ]
+    ]
+  }
+}
+</code></pre>
+<h3>
+<a id="activation-via-groovy" class="anchor" href="#activation-via-groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Activation via Groovy</h3>
+<p>The default consent activation strategy can be replaced with an external Groovy script to determine whether the request<br>
+qualifies for consent. Path to the script is defined via CAS configuration properties.</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#attribute-consent">review this guide</a>.</p>
+<p>The script itself may be designed as such:</p>
+<pre lang="groovy"><code>import org.apereo.cas.util.model.TriStateBoolean
+
+def run(Object[] args) {
+    def consentEngine = args[0]
+    def casProperties = args[1]
+    def service = args[2]
+    def registeredService = args[3]
+    def authentication = args[4]
+    def requestContext = args[5]
+    def logger = args[6]
+
+    logger.debug("Activating consent for ${registeredService.name}")
+    return true;
+}
+</code></pre>
+<p>The following parameters are passed to the script:</p>
+<p>| Parameter             | Description<br>
+|-----------------------------------------------------------------------------------------------------------------<br>
+| <code>consentEngine</code>       | A reference to the <code>ConsentEngine</code> object.<br>
+| <code>casProperties</code>       | A reference to the CAS configuration properties loaded from property sources.<br>
+| <code>service</code>             | The <code>Service</code> object representing the requesting application.<br>
+| <code>registeredService</code>   | The <code>RegisteredService</code> object representing the service definition in the registry.<br>
+| <code>authentication</code>      | The <code>Authentication</code> object representing the active authentication transaction.<br>
+| <code>requestContext</code>      | The object representing the Spring Webflow <code>RequestContext</code>.<br>
+| <code>logger</code>              | The object responsible for issuing log messages such as <code>logger.info(...)</code>.</p>
+<p>The script is expected to return either <code>true</code> or <code>false</code> to determine whether or not consent is required.</p>
+<h2>
+<a id="storage" class="anchor" href="#storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Storage</h2>
+<p>User consent decisions may be stored and remembered using one of the following options.</p>
+<h3>
+<a id="json" class="anchor" href="#json" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON</h3>
+<p>This is the default option, most useful for demo and testing purposes. Consent decisions are all kept<br>
+inside a static JSON resource whose path is taught to CAS via settings.</p>
+<p>A sample record follows:</p>
+<pre lang="json"><code>{
+   "id": 1000,
+   "principal": "casuser",
+   "service": "https://google.com",
+   "createdDate": [ 2017, 7, 10, 14, 10, 17 ],
+   "options": "ATTRIBUTE_NAME",
+   "reminder": 14,
+   "reminderTimeUnit": "DAYS",
+   "attributes": "..."
+}
+</code></pre>
+<p>The following fields are available:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>Valid numeric value for existing records.</td>
+</tr>
+<tr>
+<td><code>principal</code></td>
+<td>The authenticated user id.</td>
+</tr>
+<tr>
+<td><code>service</code></td>
+<td>Target application url to which attributes are about to be released.</td>
+</tr>
+<tr>
+<td><code>createdDate</code></td>
+<td>Date/Time of the decision record.</td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>Indicates how changes in attributes are determined for this application. (i.e. <code>ATTRIBUTE_NAME</code>, <code>ATTRIBUTE_VALUE</code>, <code>ALWAYS</code>)</td>
+</tr>
+<tr>
+<td><code>reminder</code></td>
+<td>Indicates the period after which user will be reminded to consent again, in case no changes are found.</td>
+</tr>
+<tr>
+<td><code>reminderTimeUnit</code></td>
+<td>The reminder time unit (i.e. <code>MONTHS</code>, <code>DAYS</code>, <code>HOURS</code>, etc).</td>
+</tr>
+<tr>
+<td><code>attributes</code></td>
+<td>Base64 of attribute names for this application, signed and encrypted.</td>
+</tr>
+</tbody>
+</table>
+<p>Valid values for <code>options</code> include:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ATTRIBUTE_NAME</code></td>
+<td>Ask for consent if any of the attribute names change, for instance, in cases where an attribute is added or removed from the release bundle. Consent is ignored if the value of an existing attribute is changed.</td>
+</tr>
+<tr>
+<td><code>ATTRIBUTE_VALUE</code></td>
+<td>Same as above, except that attributes values are also accounted for and trigger consent, if changed.</td>
+</tr>
+<tr>
+<td><code>ALWAYS</code></td>
+<td>Always ask for consent, regardless of change or context.</td>
+</tr>
+</tbody>
+</table>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#json-attribute-consent">review this guide</a>.</p>
+<h3>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h3>
+<p>Consent operations may be handled via a Groovy script whose path is taught to CAS via settings.</p>
+<p>The script may be designed as:</p>
+<pre lang="groovy"><code>import java.util.*
+import org.apereo.cas.consent.*
+
+def Set&lt;ConsentDecision&gt; read(final Object... args) {
+    def consentDecisions = args[0]
+    def logger = args[1]
+    ...
+    return null;
+}
+
+def Boolean write(final Object... args) {
+    def consentDecision = args[0]
+    def logger = args[1]
+    ...
+    return true;
+}
+
+def Boolean delete(final Object... args) {
+    def decisionId = args[0]
+    def logger = args[1]
+    ...
+    return true;
+}
+
+def Boolean deleteAll(final Object... args) {
+    def principal = args[0]
+    def logger = args[1]
+    ...
+    return true;
+}
+</code></pre>
+<h3>
+<a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h3>
+<p>Support is enabled by including the following module in the Overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-jdbc" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jpa-attribute-consent">review this guide</a>.</p>
+<h3>
+<a id="mongodb" class="anchor" href="#mongodb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MongoDb</h3>
+<p>Support is enabled by including the following module in the Overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-mongo" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#mongodb-attribute-consent">review this guide</a>.</p>
+<h3>
+<a id="redis" class="anchor" href="#redis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redis</h3>
+<p>Support is enabled by including the following module in the Overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-redis" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#redis-attribute-consent">review this guide</a>.</p>
+<h3>
+<a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
+<p>Support is enabled by including the following module in the Overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-couchdb" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#couchdb-attribute-consent">review this guide</a>.</p>
+<h3>
+<a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
+<p>Support is enabled by including the following module in the Overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-rest" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#rest-attribute-consent">review this guide</a>.</p>
+<p>Endpoints must be designed to accept/process <code>application/json</code>.</p>
+<p>| Operation                 | Method    | Data                                 | Expected Response<br>
+|---------------------------|-----------|--------------------------------------------------------------------------------------<br>
+| Locate consent decision   | <code>GET</code>     | <code>service</code>, <code>principal</code> as headers    | <code>200</code>. The consent decision object in the body.<br>
+| Locate consent decision for user   | <code>GET</code>     | <code>principal</code> as headers    | <code>200</code>. The consent decisions object in the body.<br>
+| Locate all consent decisions  | <code>GET</code>     | N/A    | <code>200</code>. The consent decisions object in the body.<br>
+| Store consent decision    | <code>POST</code>    |  Consent decision object in the body | <code>200</code>.<br>
+| Delete consent decision   | <code>DELETE</code>  | <code>/&lt;decisionId&gt;</code> appended to URL      | <code>200</code>.<br>
+| Delete consent decisions   | <code>DELETE</code>  | <code>principal</code> as header      | <code>200</code>.</p>
+<p>The consent decision object in transit will and must match the JSON structure above.</p>
+<h3>
+<a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
+<p>Consent decisions can be stored on LDAP user objects. The decisions are serialized into JSON and stored one-by-one in a multi-valued string attribute.</p>
+<p>Support is enabled by including the following module in the Overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-consent-ldap" %}</p>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#ldap-attribute-consent">review this guide</a>.</p>
+<h3>
+<a id="custom" class="anchor" href="#custom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom</h3>
+<p>You may also inject your own implementation for attribute consent management into CAS that would itself handle storing consent decisions, etc. In order to do this, you will need to design a configuration class that roughly matches the following:</p>
+<pre lang="java"><code>package org.apereo.cas.consent;
+
+@Configuration("MyConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class MyConfiguration {
+
+    @Bean
+    public ConsentRepository consentRepository() {
+        ...
+    }
+}
+</code></pre>
+<p><a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> to learn more about how to register configurations into the CAS runtime.</p>

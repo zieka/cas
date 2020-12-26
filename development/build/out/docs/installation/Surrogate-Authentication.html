@@ -1,0 +1,253 @@
+<hr>
+<h2>
+<a id="layout-defaulttitle-cas---surrogate-authenticationcategory-authentication" class="anchor" href="#layout-defaulttitle-cas---surrogate-authenticationcategory-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>layout: default<br>
+title: CAS - Surrogate Authentication<br>
+category: Authentication</h2>
+<p>{% include variables.html %}</p>
+<h1>
+<a id="surrogate-authentication" class="anchor" href="#surrogate-authentication" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Surrogate Authentication</h1>
+<p>Surrogate authentication (impersonation), sometimes known as <em>sudo for the web</em>, is the ability to authenticate on behalf of another user.</p>
+<p>The two actors in this case are:</p>
+<ol>
+<li>The primary admin user whose credentials are verified upon authentication.</li>
+<li>The surrogate user, selected by the admin, to which CAS will switch after credential verification and is one that is linked to the single sign-on session.</li>
+</ol>
+<p>Example use cases for impersonation include:</p>
+<ol>
+<li>Logging into an application on behalf of a user to execute and make changes.</li>
+<li>Troubleshoot a bothersome authentication experience with an application on behalf of another user.</li>
+</ol>
+<p>Surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-webflow" %}</p>
+<h2>
+<a id="account-storage" class="anchor" href="#account-storage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Storage</h2>
+<p>The following account stores may be configured and used to locate surrogates authorized for a particular user.</p>
+<h3>
+<a id="static" class="anchor" href="#static" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Static</h3>
+<p>Surrogate accounts may be defined statically in the CAS configuration. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#surrogate-authentication">review this guide</a>.</p>
+<h3>
+<a id="json" class="anchor" href="#json" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON</h3>
+<p>Similar to above, except that surrogate accounts may be defined in an external JSON file whose path is specified via the CAS configuration. The syntax of the JSON file should match the following snippet:</p>
+<pre lang="json"><code>{
+    "casuser": ["jsmith", "banderson"],
+    "adminuser": ["jsmith", "tomhanks"]
+}
+</code></pre>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#surrogate-authentication">review this guide</a>.</p>
+<h3>
+<a id="ldap" class="anchor" href="#ldap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>LDAP</h3>
+<p>LDAP support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-ldap" %}</p>
+<p>Surrogate accounts may also be retrieved from an LDAP instance. Such accounts are expected to be found in a configured attribute defined for the primary user in LDAP whose value(s) may be examined against a regular expression pattern of your own choosing to further narrow down the list of authorized surrogate accounts. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#surrogate-authentication">review this guide</a>.</p>
+<h3>
+<a id="couchdb" class="anchor" href="#couchdb" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CouchDb</h3>
+<p>CouchDb support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-couchdb" %}</p>
+<p>Surrogate accounts may also be retrieved from an CouchDb instance. By default, this takes the form of surrogate/principal key/value pairs. Users authorized as surrogates may be listed multiple times to authorize them to access multiple accounts. Additionally, the CouchDb surrogate support may be configured to use a profile attribute containing a list of principals the user may surrogate for with the <code>profileBased</code> property. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#surrogate-authentication">review this guide</a>.</p>
+<h3>
+<a id="jdbc" class="anchor" href="#jdbc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JDBC</h3>
+<p>JDBC support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-jdbc" %}</p>
+<p>Aside from the usual database settings, this mode requires the specification of two SQL queries; one that determines eligibility and one that is able to retrieve<br>
+the list of accounts that can be impersonated for a given admin user. To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#jdbc-surrogate-accounts">review this guide</a>.</p>
+<h3>
+<a id="rest" class="anchor" href="#rest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST</h3>
+<p>REST support for surrogate authentication is enabled by including the following dependencies in the WAR overlay:</p>
+<p>{% include casmodule.html group="org.apereo.cas" module="cas-server-support-surrogate-authentication-rest" %}</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Parameter(s)</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td>Whether principal can authenticate as a surrogate account.</td>
+<td>
+<code>surrogate</code>, <code>principal</code>
+</td>
+<td><code>202</code></td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td>List of accounts principal is eligible to impersonate.</td>
+<td><code>principal</code></td>
+<td>JSON list of usernames.</td>
+</tr>
+</tbody>
+</table>
+<p>To see the relevant list of CAS properties, please <a href="../configuration/Configuration-Properties.html#rest-surrogate-accounts">review this guide</a>.</p>
+<h3>
+<a id="custom" class="anchor" href="#custom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom</h3>
+<p>If you wish to design your own account store, you may follow the below approach:</p>
+<pre lang="java"><code>package org.apereo.cas.custom;
+
+@Configuration("mySurrogateConfiguration")
+@EnableConfigurationProperties(CasConfigurationProperties.class)
+public class MySurrogateConfiguration {
+
+    @Bean
+    public SurrogateAuthenticationService surrogateAuthenticationService() {
+      ...
+    }
+
+}
+</code></pre>
+<p><a href="../configuration/Configuration-Management-Extensions.html">See this guide</a> to learn more about how to register configurations into the CAS runtime.</p>
+<h2>
+<a id="account-selection" class="anchor" href="#account-selection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Account Selection</h2>
+<p>The surrogate user selection can happen via the following ways.</p>
+<h3>
+<a id="preselected" class="anchor" href="#preselected" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Preselected</h3>
+<p>This is the case where the surrogate user identity is known beforehand and is provided to CAS upon login using a special syntax.<br>
+When entering credentials, the following syntax should be used:</p>
+<pre lang="bash"><code>[surrogate-userid][separator][primary-userid]
+</code></pre>
+<p>For example, if you are <code>casuser</code> and you need to switch to <code>jsmith</code> as the surrogate user, the credential id provided to CAS would be <code>jsmith+casuser</code> where the separator is <code>+</code> and can be altered via the CAS configuration. You will need to provide your own password of course.</p>
+<h3>
+<a id="gui" class="anchor" href="#gui" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GUI</h3>
+<p>This is the case where the surrogate user identity is <em>not</em> known beforehand, and you wish to choose the account from a pre-populated list. When entering credentials, the following syntax should be used:</p>
+<pre lang="bash"><code>[separator][primary-userid]
+</code></pre>
+<p>For example, if you are <code>casuser</code> and you need to locate the surrogate account to which you may want to switch, the credential id provided to CAS would be <code>+casuser</code> where the separator is <code>+</code> and can be altered via the CAS configuration. You will need to provide your own password of course.</p>
+<h2>
+<a id="session-expiration" class="anchor" href="#session-expiration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Session Expiration</h2>
+<p>An impersonation session can be assigned a specific expiration policy that would control how long a surrogate session may last. This means that the SSO session established as part of impersonation will rightly vanish, once the expiration policy dictates as such. It is recommended that you keep the expiration length short (i.e. 30 minutes) to avoid possible security issues.</p>
+<!-- raw HTML omitted -->
+<h2>
+<a id="surrogate-attributes" class="anchor" href="#surrogate-attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Surrogate Attributes</h2>
+<p>Upon a successful surrogate authentication event, the following attributes are communicated back to the application in order to detect an impersonation session:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Instructions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>surrogateEnabled</code></td>
+<td>Boolean to indicate whether session is impersonated.</td>
+</tr>
+<tr>
+<td><code>surrogatePrincipal</code></td>
+<td>The admin user whose credentials are validated and acts as the impersonator.</td>
+</tr>
+<tr>
+<td><code>surrogateUser</code></td>
+<td>The surrogate user that is impersonated.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="surrogate-access-strategy" class="anchor" href="#surrogate-access-strategy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Surrogate Access Strategy</h2>
+<p>Each surrogate account storage is able to determine the list of impersonatees to enforce authorization rules. Additionally, you may on a per-service level define whether an application is authorized to leverage surrogate authentication. The surrogate access strategy is only activated if the establish authentication and SSO session is one of impersonation.</p>
+<p>See below for the available options.</p>
+<h3>
+<a id="attributes" class="anchor" href="#attributes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Attributes</h3>
+<p>Decide whether the primary user is tagged with enough attributes and entitlements to allow impersonation to execute. In the below example, surrogate access to the application matching <code>testId</code> is allowed only if the authenticated primary user carries an attribute <code>givenName</code> which contains a value of <code>Administrator</code>.</p>
+<p>A sample service definition follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.SurrogateRegisteredServiceAccessStrategy",
+    "surrogateEnabled" : true,
+    "enabled": true,
+    "ssoEnabled": true,
+    "surrogateRequiredAttributes" : {
+      "@class" : "java.util.HashMap",
+      "givenName" : [ "java.util.HashSet", [ "Administrator" ] ]
+    }
+  }
+}
+</code></pre>
+<h3>
+<a id="groovy" class="anchor" href="#groovy" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Groovy</h3>
+<p>Decide whether the primary user is allowed to go through impersonation via an external Groovy script. A sample service file follows:</p>
+<pre lang="json"><code>{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "testId",
+  "name" : "testId",
+  "id" : 1,
+  "accessStrategy" : {
+    "@class" : "org.apereo.cas.services.GroovySurrogateRegisteredServiceAccessStrategy",
+    "groovyScript": "file:/etc/cas/config/surrogate.groovy"
+  }
+}
+</code></pre>
+<p>The configuration of this component qualifies to use the <a href="../configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a> syntax. The Groovy<br>
+script itself may be designed as:</p>
+<pre lang="groovy"><code>import java.util.*
+
+def Object run(final Object... args) {
+    def principal = args[0]
+    def principalAttributes = args[1]
+    def logger = args[2]
+
+    logger.info("Checking for impersonation authz for $principal...")
+
+    // Decide if impersonation is allowed by returning true...
+    if (principal.equals("casuser")) {
+        return true
+    }
+    logger.warn("User is not allowed to proceed with impersonation!")
+    return false
+}
+</code></pre>
+<p>The parameters passed are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>principal</code></td>
+<td>Primary/Principal user id.</td>
+</tr>
+<tr>
+<td><code>principalAttributes</code></td>
+<td>Principal attributes collected for the primary user.</td>
+</tr>
+<tr>
+<td><code>logger</code></td>
+<td>The object responsible for issuing log messages such as <code>logger.info(...)</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2>
+<a id="surrogate-audits" class="anchor" href="#surrogate-audits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Surrogate Audits</h2>
+<p>Surrogate authentication events are by default tracked in the audit logs:</p>
+<pre><code>=============================================================
+WHO: (Primary User: [casuser], Surrogate User: [testuser])
+WHAT: ST-1-u_R_SyXJJlENS0fBLwpecNE for https://example.app.edu
+ACTION: SERVICE_TICKET_CREATED
+APPLICATION: CAS
+WHEN: Mon Sep 11 12:55:07 MST 2017
+CLIENT IP ADDRESS: 127.0.0.1
+SERVER IP ADDRESS: 127.0.0.1
+=============================================================
+</code></pre>
+<p>Additionally, failure and success events may also communicated via SMS and/or email messages to relevant parties. To learn more about available options, please <a href="../notifications/SMS-Messaging-Configuration.html">see this guide</a> or <a href="../notifications/Sending-Email-Configuration.html">this guide</a>.</p>
+<h2>
+<a id="rest-protocol" class="anchor" href="#rest-protocol" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>REST Protocol</h2>
+<p>The feature extends the <a href="../protocol/REST-Protocol.html">CAS REST API</a> communication model to surrogate authentication,<br>
+allowing REST credentials to specify a substitute and authenticate on behalf of another user. To activate surrogate authentication<br>
+for the CAS REST API, you will need to choose one of the following options:</p>
+<ul>
+<li>Format the credential username using the following syntax:</li>
+</ul>
+<pre lang="bash"><code>[surrogate-userid][separator][primary-userid]
+</code></pre>
+<ul>
+<li>Pass along a special request header <code>X-Surrogate-Principal</code> that contains the surrogate userid.</li>
+</ul>
