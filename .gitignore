@@ -6,6 +6,7 @@ target
 .jekyll-metadata
 test-output/
 bin/
+out/
 *.ipr
 *.iml
 *.iws
@@ -23,4 +24,5 @@ classes
 .sass-cache/
 *.jar
 *.MF
+build/
 *.war
