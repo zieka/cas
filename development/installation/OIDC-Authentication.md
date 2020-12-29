@@ -130,6 +130,10 @@ Remember that OpenID Connect features of CAS require session affinity (and optio
 as the authorization responses throughout the login flow are stored via server-backed session storage mechanisms. 
 You will need to configure your deployment environment and load-balancers accordingly.
 
+## Session Replication
+
+{% include {{ version }}/session-replication-configuration.md %}
+
 ## Sample Client Applications
 
 - [MITREid Sample Java Webapp](https://github.com/cas-projects/oidc-sample-java-webapp)
@@ -200,7 +204,7 @@ such that you may bundle attributes together, then you need to first register yo
 define its attribute bundle and then use it a given service definition such as `eduPerson` above.
 Such user-defined scopes are also able to override the definition of system scopes.
 
-To see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#openid-connect).
+{% include {{ version }}/claims-oidc-configuration.md %}
 
 ### Releasing Claims
 
