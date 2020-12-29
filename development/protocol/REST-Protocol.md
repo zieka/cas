@@ -23,6 +23,8 @@ by exposing a way to REST-fully obtain a Ticket Granting Ticket and then use tha
 Support is enabled by including the following to the overlay:
 
 {% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest" %}
+         
+{% include {{ version }}/rest-api-configuration.md %}
 
 ## Request a Ticket Granting Ticket
 
@@ -59,7 +61,9 @@ POST /cas/v1/tickets HTTP/1.0
 username=battags&password=password&token=true&additionalParam1=paramvalue
 ```
 
-The `token` parameter may either be passed as a request parameter or a request header. The body of the response will include the ticket-granting ticket as a JWT. Note that JWTs created are typically signed and encrypted by default with pre-generated keys. To control settings or to see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#jwt-tickets).
+The `token` parameter may either be passed as a request parameter or a request header. The body of the response will include the ticket-granting ticket as a JWT. Note that JWTs created are typically signed and encrypted by default with pre-generated keys. 
+
+{% include {{ version }}/jwt-tickets-configuration.md %}
 
 ## Authenticate Credentials
 
@@ -110,7 +114,7 @@ Support is enabled by including the following in your overlay:
 
 {% include casmodule.html group="org.apereo.cas" module="cas-server-support-rest-tokens" %}
 
-Note that JWTs created are typically signed and encrypted by default with pre-generated keys. To control settings or to see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#jwt-tickets).
+{% include {{ version }}/jwt-tickets-configuration.md %}
 
 ## Validate Service Ticket
 
@@ -163,7 +167,6 @@ Support is enabled by including the following in your overlay:
 
 Invoke CAS to register applications into its own service registry. The REST call must be authenticated using basic authentication where credentials are authenticated and accepted by the existing CAS authentication strategy, and furthermore the authenticated principal must be authorized with a pre-configured role/attribute name and value that is designated in the CAS configuration via the CAS properties. The body of the request must be the service definition that shall be registered in JSON format and of course, CAS must be configured to accept the particular service type defined in the body. The accepted media type for this request is `application/json`.
 
-To see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#rest-api).
 
 ```bash
 POST /cas/v1/services HTTP/1.0
@@ -307,7 +310,6 @@ To activate this functionality, you will need to choose an appropriate throttler
 The same throttling mechanism that handles the usual CAS server endpoints for authentication
 and ticket validation, etc is then activated for the REST endpoints that are supported for throttling. 
 
-To see the relevant options, [please review this guide](https://apereo.github.io/cas/development/configuration/Configuration-Properties.html#rest-api).
 
 ## Swagger API
 

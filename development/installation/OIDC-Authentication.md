@@ -108,9 +108,21 @@ Client applications may dynamically be registered with CAS for authentication. B
 in a `PROTECTED` mode where the registration endpoint requires user authentication. This behavior may be relaxed via 
 CAS settings to allow CAS to operate in an `OPEN` mode.
 
-## Settings
+## Configuration
 
-To see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#openid-connect).
+{% include {{ version }}/oidc-configuration.md %}
+   
+### JWKS
+
+{% include {{ version }}/jwks-oidc-configuration.md %}
+
+### Scopes & Claims
+
+{% include {{ version }}/claims-oidc-configuration.md %}
+
+### Logout
+
+{% include {{ version }}/logout-oidc-configuration.md %}
 
 ## Server Configuration
 
@@ -164,8 +176,6 @@ allow the value of the attribute `sys_given_name` to be mapped and assigned to t
 without having an impact on the attribute resolution configuration and all other CAS-enabled applications. 
 
 If mapping is not defined, by default CAS attributes are expected to match claim names.
-
-To see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#openid-connect).
 
 ### User-Defined Scopes
 
@@ -370,11 +380,11 @@ The expected response shall match the following example:
 }
 ```
 
-To see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#openid-connect-webfinger).
 
 ### WebFinger Resource UserInfo
 
-To determine the correct issuer, resources that are provided to the `webfinger` discovery endpoint using the `acct` URI scheme
+To determine the correct issuer, resources that are provided to 
+the `webfinger` discovery endpoint using the `acct` URI scheme
 can be located and fetched using external user repositories via `email` or `username`.
 
 <div class="alert alert-warning"><strong>Usage Warning!</strong><p>The default repository implementation will 
@@ -384,7 +394,8 @@ The following user-info repository choices are available for configuration and p
 
 #### Groovy UserInfo Repository
 
-The task of locating accounts linked to webfinger resources can be handled using an external Groovy script whose outline would match the following:
+The task of locating accounts linked to webfinger resources can be handled 
+using an external Groovy script whose outline would match the following:
 
 ```groovy
 def findByUsername(Object[] args) {
@@ -400,20 +411,25 @@ def findByEmailAddress(Object[] args) {
 }
 ```
 
-The expected return value from the script is a `Map` that contains key-value objects, representing user account details. An empty `Map`
-would indicate the absence of the user record, leading to a `404` response status back to the relying party.
+The expected return value from the script is a `Map` that contains 
+key-value objects, representing user account details. An empty `Map`
+would indicate the absence of the user record, leading to a `404` 
+response status back to the relying party.
 
-To see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#openid-connect-webfinger).
+{% include {{ version }}/groovy-webfinger-oidc-configuration.md %}
 
 #### REST UserInfo Repository
 
-The REST repository allows the CAS server to reach to a remote REST endpoint via the configured HTTP method to fetch user account information.
+The REST repository allows the CAS server to reach to a remote REST 
+endpoint via the configured HTTP method to fetch user account information.
 
-Query data is passed via either `email` or `username` HTTP headers. The response that is returned must be accompanied by a `200`
-status code where the body should contain `Map` representing the user account information. All other responses will lead to a `404` 
+Query data is passed via either `email` or `username` HTTP headers. 
+The response that is returned must be accompanied by a `200`
+status code where the body should contain `Map` representing the 
+user account information. All other responses will lead to a `404` 
 response status back to the relying party.
 
-To see the relevant list of CAS properties, please [review this guide](../configuration/Configuration-Properties.html#openid-connect-webfinger).
+{% include {{ version }}/rest-integration.md configKey="cas.authn.oidc.webfinger.user-info.rest" %}
 
 #### Custom UserInfo Repository
 
