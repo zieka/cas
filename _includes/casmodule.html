@@ -1,20 +1,31 @@
+<script type="text/javascript">
+
+function tabClicked(idx) {
+  var radius = "0px 5px 5px 5px";
+  if (idx != 0) {
+    radius = "5px 5px 5px 5px";
+  }
+  $(".tab-pane .highlight>pre.highlight").css("border-radius", radius);
+}
+
+</script>
 {% assign min = 1 %}
 {% assign max = 999999 %}
 {% assign diff = max | minus: min %}
 {% assign randomNumber = page.content | size | date: "%s" | modulo: diff | plus: min %}
  {{include.ignoreBOM}}
 <ul class='nav nav-pills'>
-  <li class='nav-item'><a class='nav-link' data-toggle='tab' href='#maven{{ randomNumber }}'>Maven</a></li>
-  <li class='nav-item'><a class='nav-link active' data-toggle='tab' href='#gradle{{ randomNumber }}'>Gradle</a></li>
+  <li class='nav-item'><a class='nav-link' onclick="javascript:tabClicked(0)" data-toggle='tab' href='#maven{{ randomNumber }}'>Maven</a></li>
+  <li class='nav-item'><a class='nav-link active' onclick="javascript:tabClicked(1)" data-toggle='tab' href='#gradle{{ randomNumber }}'>Gradle</a></li>
 
   {% if include.ignoreBOM == "true" %}
 
   {% else %}
-    <li class='nav-item'><a class='nav-link' data-toggle='tab' href='#bom{{ randomNumber }}'>BOM</a></li>
+    <li class='nav-item'><a class='nav-link' onclick="javascript:tabClicked(2)" data-toggle='tab' href='#bom{{ randomNumber }}'>BOM</a></li>
   {% endif %}
 
   <li role='presentation' class='nav-item dropdown'>
-    <a class='nav-link dropdown-toggle' data-toggle='dropdown' href='#' role='button'>Resources<span
+    <a class='nav-link dropdown-toggle' onclick="javascript:tabClicked(3)" data-toggle='dropdown' href='#' role='button'>Resources<span
         class='caret'></span></a>
     <div class='dropdown-menu'>
       <a class='dropdown-item' href='https://github.com/apereo/cas-overlay-template'>CAS Server WAR Overlay</a>
