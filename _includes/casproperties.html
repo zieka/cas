@@ -1,0 +1,274 @@
+{% assign min = 1 %}
+{% assign max = 999999 %}
+{% assign diff = max | minus: min %}
+
+{% assign rbrace = "}" %}
+{% assign lbrace = "{" %}
+
+{% assign modules = include.modules | split: "," %}
+{% assign excludes = include.excludes | split: "," %}
+{% assign properties = include.properties | split: "," %}
+{% assign thirdParty = include.thirdParty | split: "," %}
+
+{% assign randomNumber = include.properties | default: include.modules | remove: "." | remove: "," %}
+
+<p>The following settings and properties are available from the CAS configuration repository:</p>
+
+<ul class='nav nav-pills'>
+<li class='nav-item'>
+    <a class='nav-link active' id="linkRequiredProperties{{ randomNumber }}" data-toggle='tab' href='#requiredProperties{{ randomNumber }}'>Required Settings</a>
+</li>
+<li class='nav-item'>
+    <a class='nav-link' id="linkOptionalProperties{{ randomNumber }}" data-toggle='tab' href='#optionalProperties{{ randomNumber }}'>Optional Settings</a>
+</li>
+
+{% if thirdParty.size > 0 %}
+<li class='nav-item'>
+    <a class='nav-link' id="linkThirdPartyProperties{{ randomNumber }}"  data-toggle='tab' href='#thirdPartyProperties{{ randomNumber }}'>Third Party Settings</a>
+</li>
+{% endif %}
+
+<li class='nav-item'>
+    <a class='nav-link' id="linkNotes{{ randomNumber }}"  data-toggle='tab' href='#notes{{ randomNumber }}'>Guidelines</a>
+</li>
+</ul>
+
+<div class='tab-content clearfix'>
+<div class='tab-pane fade in active show' id='requiredProperties{{ randomNumber }}'>
+    <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
+    <sub>
+        The configuration settings listed below are tagged as <u><i>Required</i></u> in the CAS configuration metadata. This flag indicates that the presence of the setting is not strictly necessary in the end-user CAS configuration, because a default value may be assigned or the feature in question may not be immediately intended for use. You may want to own the setting and update it assigned value, assuming the intended feature controlled by the setting is utilized.
+    </sub>
+    <br><p />
+    <table class="properties" id='tableRequiredProperties{{ randomNumber }}'>
+    <tbody>
+        {% for module in modules %}
+            {% for cfg in site.data[version][module] %}
+                {% assign configBlock = cfg[1] %}
+
+                {% for config in configBlock %}
+                    {% if config.required == true %}
+
+                        {% assign foundExcluded = false %}
+                        {% for ex in excludes %}
+                            {% if config.name contains ex %}
+                                {% assign foundExcluded = true %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% unless foundExcluded == true %}
+                            {% include casproperty.html 
+                                name=config.name 
+                                defaultValue=config.defaultValue 
+                                description=config.description 
+                                deprecationLevel=config.deprecationLevel
+                                deprecationReplacement=config.deprecationReplacement %}
+                        {% endunless %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+
+
+        {% for prop in properties %} 
+            {% for module in site.data[version] %}
+                {% assign moduleEntry = module[1] %}
+                {% for cfg in moduleEntry %}
+                    {% assign configBlock = cfg[1] %}
+
+                    {% for config in configBlock %}
+                        {% if config.required == true and config.name contains prop %}
+                            
+                            {% assign foundExcluded = false %}
+                            {% for ex in excludes %}
+                                {% if config.name contains ex %}
+                                    {% assign foundExcluded = true %}
+                                {% endif %}
+                            {% endfor %}
+
+                            {% unless foundExcluded == true %}
+                                {% include casproperty.html 
+                                    name=config.name 
+                                    defaultValue=config.defaultValue 
+                                    description=config.description 
+                                    deprecationLevel=config.deprecationLevel
+                                    deprecationReplacement=config.deprecationReplacement %}
+                            {% endunless %}
+
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+
+<div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
+
+    <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
+    <sub>
+        The configuration settings listed below are tagged as <i>Optional</i> in the CAS configuration metadata. This flag indicates that the presence of the setting is not immediately necessary in the end-user CAS configuration, because a default value is assigned or the activation of the feature is not conditionally controlled by the setting value.
+    </sub>
+    <br><p />
+
+    <table class="properties" id='tableOptionalProperties{{ randomNumber }}'>
+    <tbody>
+        {% for module in modules %}
+            {% for cfg in site.data[version][module] %}
+                {% assign configBlock = cfg[1] %}
+
+                {% for config in configBlock %}
+                    {% unless config.required == true %}
+                        
+                        {% assign foundExcluded = false %}
+                        {% for ex in excludes %}
+                            {% if config.name contains ex %}
+                                {% assign foundExcluded = true %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% unless foundExcluded == true %}
+                            {% include casproperty.html 
+                                name=config.name 
+                                defaultValue=config.defaultValue 
+                                description=config.description 
+                                deprecationLevel=config.deprecationLevel
+                                deprecationReplacement=config.deprecationReplacement %}
+                        {% endunless %}
+
+                    {% endunless %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+
+
+
+        {% for prop in properties %} 
+            {% for module in site.data[version] %}
+                {% assign moduleEntry = module[1] %}
+                {% for cfg in moduleEntry %}
+                    {% assign configBlock = cfg[1] %}
+
+                    {% for config in configBlock %}
+                            
+                        {% if config.name contains prop %}  
+                            {% unless config.required == true %}
+
+                                {% assign foundExcluded = false %}  
+                                {% for ex in excludes %}
+                                    {% if config.name contains ex %}
+                                        {% assign foundExcluded = true %}
+                                    {% endif %}
+                                {% endfor %}
+    
+                                {% unless foundExcluded == true %}
+                                    {% include casproperty.html 
+                                        name=config.name 
+                                        defaultValue=config.defaultValue 
+                                        description=config.description 
+                                        deprecationLevel=config.deprecationLevel
+                                        deprecationReplacement=config.deprecationReplacement %}
+                                {% endunless %}
+                            {% endunless %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+
+    </tbody>
+    </table>
+</div>
+
+{% if thirdParty.size > 0 %}
+<div class='tab-pane fade in' id='thirdPartyProperties{{ randomNumber }}'>
+    <table class="properties" id='tableThirdPartyProperties{{ randomNumber }}'>
+        <tbody>
+
+        {% for cfg in site.data[version]["third-party"] %}
+            {% assign configBlock = cfg[1] %}
+
+            {% for config in configBlock %}
+                {% if thirdParty contains config.name %}
+
+                    {% assign foundExcluded = false %}
+                    {% for ex in excludes %}
+                        {% if config.name contains ex %}
+                            {% assign foundExcluded = true %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% unless foundExcluded == true %}
+                        {% include casproperty.html 
+                            name=config.name 
+                            defaultValue=config.defaultValue 
+                            description=config.description 
+                            deprecationLevel=config.deprecationLevel
+                            deprecationReplacement=config.deprecationReplacement %}
+                    {% endunless %}
+
+                {% endif %}
+            {% endfor %}
+
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+<div class='tab-pane fade in' id='notes{{ randomNumber }}'>
+    <hr>
+    <ul>
+        <li>
+            <strong>Configuration Metadata:</strong> The collection of configuration properties listed in this section are automatically generated from the CAS source and components that contain the actual field definitions, types, descriptions, modules, etc. This metadata may not always be 100% accurate, or could be lacking details and sufficient explanations. Over time and <i>with your help and contributions</i>, the accuracy and volume of the documentation should improve over time.
+        </li>
+        <hr>
+        <li>
+            <strong>Be Selective:</strong> This section is meant as a guide only. Do NOT copy/paste the entire collection of settings into your CAS configuration; rather pick only the properties that you need. Do NOT enable settings unless you are certain of their purpose and do NOT copy settings into your configuration only to keep them as reference. All these ideas lead to upgrade headaches, maintenance nightmares and premature aging.
+        </li>
+        <hr>
+        <li>
+            <p>
+            <strong>YAGNI:</strong> Note that for nearly ALL use cases, declaring and configuring properties listed below is sufficient. You should NOT have to explicitly massage a CAS XML/Java/etc configuration file to design an authentication handler, create attribute release policies, etc. CAS at runtime will auto-configure all required changes for you.
+            </p>
+
+            <p>
+                If you are unsure about the meaning of a given CAS setting, do NOT turn it on without hesitation. Review the codebase or better yet, ask questions to clarify the intended behavior.
+            </p>
+        </li>
+        <hr>
+        <li>
+            <p>
+            <strong>Naming Convention:</strong> Property names can be specified in very relaxed terms. For instance <code>cas.someProperty</code>, <code>cas.some-property</code>, <code>cas.some_property</code> are all valid names. While all forms are accepted by CAS, there are certain components (in CAS and other frameworks used) whose activation at runtime is conditional on a property value, where this property is required to have been specified in CAS configuration using kebab case. This is both true for properties that are owned by CAS as well as those that might be presented to the system via an external library or framework such as Spring Boot, etc. When possible, properties should be stored in 
+            lower-case kebab format, such as <code>cas.property-name=value</code>.
+            </p>
+
+            <p>
+                Settings and properties that are controlled by the CAS platform directly always begin with the prefix <code>cas</code>. All other settings are controlled and provided to CAS via other underlying frameworks and may have their own schemas and syntax. BE CAREFUL with the distinction.
+            </p>
+
+            <p>
+                Unrecognized properties are rejected by CAS and/or frameworks upon which CAS depends. This means if you somehow misspell a property definition or fail to adhere to the dot-notation syntax and such, your setting is entirely refused by CAS and likely the feature it controls will never be activated in the way you intend.
+            </p>
+        </li>
+        <hr>
+        <li>
+            <strong>Validation:</strong> Configuration properties are automatically validated on CAS startup to report issues with configuration binding, specially if defined CAS settings cannot be recognized or validated by the configuration schema. The validation process is on by default and can be skipped on startup using a special system property <code>SKIP_CONFIG_VALIDATION</code> that should be set to <code>true</code>. Additional validation processes are also handled via <a href="/{{version}}/configuration/Configuration-Metadata-Repository.html">Configuration Metadata</a> and property migrations applied automatically on startup by Spring Boot and family.
+        </li>
+        <hr>
+        <li>
+            <strong>Indexed Settings:</strong> CAS settings able to accept multiple values are typically documented with an index, such as <code>cas.some.setting[0]=value</code>. The index <code>[0]</code> is meant to be incremented by the adopter to allow for distinct multiple configuration blocks.
+        </li>
+        <hr>
+        <li>
+            <strong>Time Unit of Measure:</strong> All CAS settings that deal with time units, unless noted otherwise, should support the duration syntax for full clarity on unit of measure: <code>PT20S, PT15M, PT10H, PT6D, P2DT3H4M</code>.
+        </li>
+        
+    </ul>
+</div>
+
+</div>
+
+<hr>

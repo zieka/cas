@@ -1,0 +1,24 @@
+<tr>
+    <td>
+        <li style="list-style: square">
+            <code>{{ include.name | replace: "[]", "[0]"}}={{ include.defaultValue }}</code>
+        </li>
+        <div class="text-wrap small">
+            <p>
+                {{ include.description 
+                    | replace: "{@code", "<code>"
+                    | replace: rbrace, "</code>" 
+                    | remove: rbrace 
+                    | replace: "&lt;", "<" 
+                    | replace: "&gt;", ">" 
+                }}
+            </p>
+        </div>
+
+        {% if include.deprecationLevel.size > 0 %}
+            <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
+            <sub>Deprecation status is <code>{{ include.deprecationLevel }}</code> with a replacement setting: <code>{{ include.deprecationReplacement | default: "N/A" }}</code>.</sub>
+        {% endif %}
+        
+    </td>
+</tr>
