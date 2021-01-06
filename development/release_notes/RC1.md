@@ -60,7 +60,7 @@ The following items are new improvements and enhancements presented in this rele
 ### Spring Boot 2.4
                   
 CAS is now based on the Spring Boot `2.4.x` series which by extension also requires CAS to upgrade
-its dependency on related projects such as Spring and Spring Cloud. While this is a 
+its dependency on related projects such as [Spring and Spring Cloud](../planning/Architecture.html). While this is a 
 significant framework upgrade, the change should remain largely invisible to CAS users and adopters.
 
 ### Testing Strategy
@@ -85,6 +85,10 @@ has now removed the requirement for an XML foundation, allowing the construction
 
 [WebAuthN/FIDO2 Device registrations](../mfa/FIDO2-WebAuthn-Authentication.html) 
 may be managed using an external REST API.
+
+### Inwebo MFA Integration
+
+Support [inWebo](../mfa/Inwebo-Authentication.html) as a multifactor authentication provider is now available.
  
 ### SCIM Provisioning
 
@@ -124,11 +128,20 @@ decisions for multifactor authentication may also be kept inside a Redis instanc
 
 ## Other Stuff
      
-- The configuration of [Hazelcast clusters](../ticketing/Hazelcast-Ticket-Registry.html) can allow for specification of network interfaces.
+- [Hazelcast cluster configuration](../ticketing/Hazelcast-Ticket-Registry.html) allows specification of network interfaces.
 - Delegated authentication configuration can allow for a pre-defined callback/redirect URI.
+- Configuration metadata is corrected in a number of cases to make sure `@NestedConfigurationProperty` is properly set on fields.
+- Publishing Maven metadata into the local maven repository is corrected to include all CAS-required repositories.
  
 ## Library Upgrades
 
 - Spring Framework
 - Spring Boot
 - Spring Cloud
+- Hibernate
+- Amazon SDK
+- Hazelcast
+- Joda Time
+- Thymeleaf Dialect
+- Apache Ignite
+- BouncyCastle
