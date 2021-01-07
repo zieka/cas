@@ -118,6 +118,10 @@ The CAS project generally operates based on its own [maintenance policy](https:/
 
 By simply delivering the change and having it get merged into the codebase relevant branches. There is no predefined roadmap for the project. Work items get completed based on community's availability, interest, time and money. **The roadmap is what you intend to work on.**
 
+## Are there plans to...?
+
+CAS project development activity is largely based on volunteer time and contributions. Planning for future changes and roadmap discussions in the absence of a time commitment, solid funding or sponsorship seems unnecessary and can only feel like ceremonial, premature busywork specially as due dates for such plans inevitably and almost always get pushed back and continue to eat dust given the absence of tooling and resources. So, there are no plans. There are only pending pull requests and solid contributions to the CAS codebase when and if they arrive. 
+
 ## How often are changes released?
 
 You can review the [release schedule](https://github.com/apereo/cas/milestones). Note that the dates specified for each milestone are somewhat tentative and may be pushed around depending on need and severity. 
