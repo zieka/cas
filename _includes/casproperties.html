@@ -16,24 +16,44 @@
 
 <ul class='nav nav-pills'>
 <li class='nav-item'>
-    <a class='nav-link active' id="linkRequiredProperties{{ randomNumber }}" data-toggle='tab' href='#requiredProperties{{ randomNumber }}'>Required Settings</a>
+    <a class='nav-link active' 
+        
+        id="linkRequiredProperties{{ randomNumber }}" 
+        data-toggle='tab' 
+        href='#requiredProperties{{ randomNumber }}'>Required Settings</a>
 </li>
 <li class='nav-item'>
-    <a class='nav-link' id="linkOptionalProperties{{ randomNumber }}" data-toggle='tab' href='#optionalProperties{{ randomNumber }}'>Optional Settings</a>
+    <a class='nav-link' 
+       
+        id="linkOptionalProperties{{ randomNumber }}" 
+        data-toggle='tab' 
+        href='#optionalProperties{{ randomNumber }}'>Optional Settings</a>
 </li>
 
 <li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
-    <a class='nav-link' id="linkSigningEncryption{{ randomNumber }}" data-toggle='tab' href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
+    <a class='nav-link' 
+       
+        id="linkSigningEncryption{{ randomNumber }}" 
+        data-toggle='tab' 
+        href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
 </li>
 
 {% if thirdParty.size > 0 %}
 <li class='nav-item'>
-    <a class='nav-link' id="linkThirdPartyProperties{{ randomNumber }}"  data-toggle='tab' href='#thirdPartyProperties{{ randomNumber }}'>Third Party Settings</a>
+    <a class='nav-link' 
+        
+        id="linkThirdPartyProperties{{ randomNumber }}"  
+        data-toggle='tab' 
+        href='#thirdPartyProperties{{ randomNumber }}'>Third Party Settings</a>
 </li>
 {% endif %}
 
 <li class='nav-item'>
-    <a class='nav-link' id="linkNotes{{ randomNumber }}"  data-toggle='tab' href='#notes{{ randomNumber }}'>Guidelines</a>
+    <a class='nav-link' 
+       
+        id="linkNotes{{ randomNumber }}"  
+        data-toggle='tab' 
+        href='#notes{{ randomNumber }}'>Guidelines</a>
 </li>
 </ul>
 
@@ -118,6 +138,9 @@
     </table>
 </div>
 
+<div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
+    {% include {{ version }}/signing-encryption-configuration.md %}
+</div>
 
 <div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
 
@@ -289,15 +312,6 @@
     </ul>
 </div>
 
-{% if signingEncryptionEnabled == true %}
-<div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
-    {% include {{ version }}/signing-encryption-configuration.md %}
-</div>
-{% else %}
-    <script>
-        let element = document.getElementById("navSigningEncryptionProperties{{ randomNumber }}");
-        element.style.display="none";
-    </script>
-{% endif %}
+
 
 </div>
