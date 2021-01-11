@@ -1,0 +1,19 @@
+---
+- module: "cas-server-support-throttle-hazelcast"
+  owner: "org.apereo.cas.configuration.model.support.throttle.HazelcastThrottleProperties"
+  type: "java.lang.Boolean"
+  description: "Enables compression when default java serialization is used."
+  name: "cas.authn.throttle.hazelcast.enable-compression"
+  defaultValue: false
+- module: "cas-server-support-throttle-hazelcast"
+  owner: "org.apereo.cas.configuration.model.support.throttle.HazelcastThrottleProperties"
+  type: "java.lang.Boolean"
+  description: "Enables scripting from Management Center."
+  name: "cas.authn.throttle.hazelcast.enable-management-center-scripting"
+  defaultValue: true
+- module: "cas-server-support-throttle-hazelcast"
+  owner: "org.apereo.cas.configuration.model.support.throttle.HazelcastThrottleProperties"
+  type: "java.lang.String"
+  description: "Hazelcast enterprise license key."
+  name: "cas.authn.throttle.hazelcast.license-key"
+  defaultValue: ""

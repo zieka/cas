@@ -1,0 +1,7 @@
+---
+- module: "cas-server-support-token-webflow"
+  owner: "org.apereo.cas.configuration.model.support.token.TokenAuthenticationProperties"
+  type: "java.lang.String"
+  description: "Name of the authentication handler."
+  name: "cas.authn.token.name"
+  defaultValue: ""

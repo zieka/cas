@@ -1,0 +1,7 @@
+---
+- module: "cas-server-consent-rest"
+  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Rest"
+  type: "java.lang.String"
+  description: "REST endpoint to use to which consent decision records will be submitted."
+  name: "cas.consent.rest.endpoint"
+  defaultValue: ""

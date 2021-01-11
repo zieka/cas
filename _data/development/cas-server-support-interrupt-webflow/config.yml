@@ -1,0 +1,59 @@
+---
+- module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties"
+  type: "java.lang.String"
+  description: "A regex pattern on the attribute name that if matches will successfully\
+    \ complete the first condition for the interrupt notifications trigger."
+  name: "cas.interrupt.attribute-name"
+  defaultValue: ""
+- module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties"
+  type: "java.lang.String"
+  description: "A regex pattern on the attribute value that if matches will successfully\
+    \ complete the first condition for the interrupt notifications trigger."
+  name: "cas.interrupt.attribute-value"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Groovy"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.interrupt.groovy.location"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Json"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.interrupt.json.location"
+  defaultValue: ""
+- module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  type: "java.lang.String"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ password for authentication."
+  name: "cas.interrupt.rest.basic-auth-password"
+  defaultValue: ""
+- module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  type: "java.lang.String"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ username for authentication."
+  name: "cas.interrupt.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  type: "java.lang.String"
+  description: "HTTP method to use when contacting the rest endpoint. Examples include\
+    \ {@code GET, POST}, etc."
+  name: "cas.interrupt.rest.method"
+  defaultValue: "GET"
+- required: true
+  module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  type: "java.lang.String"
+  description: "The endpoint URL to contact and retrieve attributes."
+  name: "cas.interrupt.rest.url"
+  defaultValue: ""

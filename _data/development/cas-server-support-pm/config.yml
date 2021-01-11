@@ -1,0 +1,17 @@
+---
+- required: true
+  module: "cas-server-support-pm"
+  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Groovy"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.authn.pm.groovy.location"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-pm"
+  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Json"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.authn.pm.json.location"
+  defaultValue: ""

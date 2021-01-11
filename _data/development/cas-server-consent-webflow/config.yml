@@ -1,0 +1,17 @@
+---
+- required: true
+  module: "cas-server-consent-webflow"
+  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Groovy"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.consent.groovy.location"
+  defaultValue: ""
+- required: true
+  module: "cas-server-consent-webflow"
+  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Json"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.consent.json.location"
+  defaultValue: ""

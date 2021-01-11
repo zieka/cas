@@ -1,0 +1,17 @@
+---
+- module: "cas-server-support-reports"
+  owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointsMonitorProperties"
+  type: "java.util.Map<java.lang.String,org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointProperties>"
+  description: "Options for monitoring sensitive CAS endpoints and resources. Acts\
+    \ as a parent class for all endpoints and settings and exposes shortcuts so security\
+    \ and capability of endpoints can be globally controlled from one spot and then\
+    \ overridden elsewhere."
+  name: "cas.monitor.endpoints.endpoint"
+  defaultValue: ""
+- module: "cas-server-support-reports"
+  owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointsMonitorProperties"
+  type: "java.lang.Boolean"
+  description: "Control whether access to endpoints can be controlled via form-based\
+    \ login over the web via a special admin login endpoint."
+  name: "cas.monitor.endpoints.form-login-enabled"
+  defaultValue: false

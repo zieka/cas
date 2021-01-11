@@ -1,0 +1,17 @@
+---
+- required: true
+  module: "cas-server-support-aup-core"
+  owner: "org.apereo.cas.configuration.model.support.aup.GroovyAcceptableUsagePolicyProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.acceptable-usage-policy.groovy.location"
+  defaultValue: ""
+- module: "cas-server-support-aup-core"
+  owner: "org.apereo.cas.configuration.model.support.aup.InMemoryAcceptableUsagePolicyProperties"
+  type: "org.apereo.cas.configuration.model.support.aup.InMemoryAcceptableUsagePolicyProperties$Scope"
+  description: "Scope of map where the aup selection is stored.GLOBAL:Store in global\
+    \ in-memory map (for life of server)..AUTHENTICATION:Store aup acceptance such\
+    \ that user is prompted when\nthey authenticate via credentials.."
+  name: "cas.acceptable-usage-policy.in-memory.scope"
+  defaultValue: ""
