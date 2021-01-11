@@ -15,50 +15,59 @@
 <p>The following settings and properties are available from the CAS configuration repository:</p>
 
 <ul class='nav nav-pills'>
-<li class='nav-item'>
-    <a class='nav-link active' 
-        id="linkRequiredProperties{{ randomNumber }}" 
-        data-toggle='tab' 
-        href='#requiredProperties{{ randomNumber }}'>Required Settings</a>
-</li>
-<li class='nav-item'>
-    <a class='nav-link' 
-        id="linkOptionalProperties{{ randomNumber }}" 
-        data-toggle='tab' 
-        href='#optionalProperties{{ randomNumber }}'>Optional Settings</a>
-</li>
+    <li class='nav-item'>
+        <a class='nav-link active' 
+            id="linkRequiredProperties{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#requiredProperties{{ randomNumber }}'>Required Settings</a>
+    </li>
+    <li class='nav-item'>
+        <a class='nav-link' 
+            id="linkOptionalProperties{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#optionalProperties{{ randomNumber }}'>Optional Settings</a>
+    </li>
 
-<li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
-    <a class='nav-link' 
-        id="linkSigningEncryption{{ randomNumber }}" 
-        data-toggle='tab' 
-        href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
-</li>
+    <li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkSigningEncryption{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
+    </li>
 
-{% if thirdParty.size > 0 %}
-<li class='nav-item'>
-    <a class='nav-link' 
+    <li class='nav-item' id='navRdbmsProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkRdbms{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#rdbmsProperties{{ randomNumber }}'>Hibernate & JDBC</a>
+    </li>
+
+    {% if thirdParty.size > 0 %}
+    <li class='nav-item'>
+        <a class='nav-link' 
+            id="linkThirdPartyProperties{{ randomNumber }}"  
+            data-toggle='tab' 
+            href='#thirdPartyProperties{{ randomNumber }}'>Third Party Settings</a>
+    </li>
+    {% endif %}
+
+    <li class='nav-item'>
+        <a class='nav-link' 
         
-        id="linkThirdPartyProperties{{ randomNumber }}"  
-        data-toggle='tab' 
-        href='#thirdPartyProperties{{ randomNumber }}'>Third Party Settings</a>
-</li>
-{% endif %}
-
-<li class='nav-item'>
-    <a class='nav-link' 
-       
-        id="linkNotes{{ randomNumber }}"  
-        data-toggle='tab' 
-        href='#notes{{ randomNumber }}'>Guidelines</a>
-</li>
+            id="linkNotes{{ randomNumber }}"  
+            data-toggle='tab' 
+            href='#notes{{ randomNumber }}'>Guidelines</a>
+    </li>
 </ul>
 
 {% assign signingEncryptionEnabled = false %}
 {% assign optionalSettingsFound = false %}
 {% assign requiredSettingsFound = false %}
+{% assign rdbmsSettingsFound = false %}
 
 <div class='tab-content clearfix'>
+
+
 <div class='tab-pane fade in active show' id='requiredProperties{{ randomNumber }}'>
     <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
     <sub>
@@ -140,7 +149,13 @@
 </div>
 
 <div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
-    {% include {{ version }}/signing-encryption-configuration.md %}
+    {% capture signingEncConfig %}{% include {{ version }}/signing-encryption-configuration.md %}{% endcapture %}
+    {{ signingEncConfig | markdownify }}
+</div>
+
+<div class='tab-pane fade in' id='rdbmsProperties{{ randomNumber }}'>
+    {% capture rdbmsConfig %}{% include {{ version }}/rdbms-configuration.md %}{% endcapture %}
+    {{ rdbmsConfig | markdownify }}
 </div>
 
 <div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
@@ -169,6 +184,9 @@
 
                         {% if config.name contains ".crypto." %}
                             {% assign signingEncryptionEnabled = true %}
+                        {% endif %}
+                        {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                            {% assign rdbmsSettingsFound = true %}
                         {% endif %}
 
                         {% unless foundExcluded == true %}
@@ -206,6 +224,10 @@
     
                                 {% if config.name contains ".crypto." %}
                                     {% assign signingEncryptionEnabled = true %}
+                                {% endif %}
+
+                                {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                                    {% assign rdbmsSettingsFound = true %}
                                 {% endif %}
 
                                 {% unless foundExcluded == true %}
@@ -333,6 +355,15 @@
     </script>
 {% endunless %}
 
+{% unless rdbmsSettingsFound %}
+    <script>
+        setTimeout(function(){ 
+            let elem = document.getElementById("linkRdbms{{ randomNumber }}");
+            elem.style.display="none";
+         }, 5);
+    </script>
+{% endunless %}
+
 {% unless requiredSettingsFound %}
     <script>
         setTimeout(function(){ 
@@ -344,6 +375,5 @@
          }, 5);
     </script>
 {% endunless %}
-
 
 </div>
