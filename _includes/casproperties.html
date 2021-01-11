@@ -10,7 +10,7 @@
 {% assign properties = include.properties | split: "," %}
 {% assign thirdParty = include.thirdParty | split: "," %}
 
-{% assign randomNumber = include.properties | default: include.modules | remove: "." | remove: "," %}
+{% assign randomNumber = include.properties | default: include.modules | remove: "." | remove: "," | remove: "[]" %}
 
 <p>The following settings and properties are available from the CAS configuration repository:</p>
 
