@@ -55,6 +55,8 @@
 </ul>
 
 {% assign signingEncryptionEnabled = false %}
+{% assign optionalSettingsFound = false %}
+{% assign requiredSettingsFound = false %}
 
 <div class='tab-content clearfix'>
 <div class='tab-pane fade in active show' id='requiredProperties{{ randomNumber }}'>
@@ -84,6 +86,7 @@
                         {% endif %}
 
                         {% unless foundExcluded == true %}
+                            {% assign requiredSettingsFound = true %}
                             {% include casproperty.html 
                                 name=config.name 
                                 defaultValue=config.defaultValue 
@@ -118,6 +121,7 @@
                             {% endif %}
 
                             {% unless foundExcluded == true %}
+                                {% assign requiredSettingsFound = true %}
                                 {% include casproperty.html 
                                     name=config.name 
                                     defaultValue=config.defaultValue 
@@ -168,6 +172,7 @@
                         {% endif %}
 
                         {% unless foundExcluded == true %}
+                            {% assign optionalSettingsFound = true %}
                             {% include casproperty.html 
                                 name=config.name 
                                 defaultValue=config.defaultValue 
@@ -204,6 +209,7 @@
                                 {% endif %}
 
                                 {% unless foundExcluded == true %}
+                                    {% assign optionalSettingsFound = true %}
                                     {% include casproperty.html 
                                         name=config.name 
                                         defaultValue=config.defaultValue 
@@ -317,5 +323,27 @@
          }, 5);
     </script>
 {% endunless %}
+
+{% unless optionalSettingsFound %}
+    <script>
+        setTimeout(function(){ 
+            let elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
+            elem.style.display="none";
+         }, 5);
+    </script>
+{% endunless %}
+
+{% unless requiredSettingsFound %}
+    <script>
+        setTimeout(function(){ 
+            var elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
+            elem.style.display="none";
+            
+            elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
+            elem.classList.add("active");
+         }, 5);
+    </script>
+{% endunless %}
+
 
 </div>
