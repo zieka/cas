@@ -17,14 +17,12 @@
 <ul class='nav nav-pills'>
 <li class='nav-item'>
     <a class='nav-link active' 
-        
         id="linkRequiredProperties{{ randomNumber }}" 
         data-toggle='tab' 
         href='#requiredProperties{{ randomNumber }}'>Required Settings</a>
 </li>
 <li class='nav-item'>
     <a class='nav-link' 
-       
         id="linkOptionalProperties{{ randomNumber }}" 
         data-toggle='tab' 
         href='#optionalProperties{{ randomNumber }}'>Optional Settings</a>
@@ -32,7 +30,6 @@
 
 <li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
     <a class='nav-link' 
-       
         id="linkSigningEncryption{{ randomNumber }}" 
         data-toggle='tab' 
         href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
@@ -312,6 +309,13 @@
     </ul>
 </div>
 
-
+{% unless signingEncryptionEnabled %}
+    <script>
+        setTimeout(function(){ 
+            let elem = document.getElementById("navSigningEncryptionProperties{{ randomNumber }}");
+            elem.style.display="none";
+         }, 5);
+    </script>
+{% endunless %}
 
 </div>
