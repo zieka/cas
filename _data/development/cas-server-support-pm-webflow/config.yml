@@ -20,7 +20,7 @@
   name: "cas.authn.pm.enabled"
   defaultValue: false
 - module: "cas-server-support-pm-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.PasswordHistory"
+  owner: "org.apereo.cas.configuration.model.support.pm.PasswordHistoryProperties"
   type: "java.lang.Boolean"
   description: "Flag to indicate if password history tracking is enabled."
   name: "cas.authn.pm.history.enabled"

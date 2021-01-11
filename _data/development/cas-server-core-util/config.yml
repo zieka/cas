@@ -2459,6 +2459,14 @@
     \ </ul>"
   name: "cas.authn.wsfed-idp.sts.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
+- required: true
+  module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
+  type: "Resource"
+  description: "The location of the resource. Resources can be URLS, or\nfiles found\
+    \ either on the classpath or outside somewhere\nin the file system."
+  name: "cas.authn.wsfed[].attribute-mutator-script.location"
+  defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"

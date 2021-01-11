@@ -100,21 +100,21 @@
   name: "cas.authn.oidc.jwks.jwks-type"
   defaultValue: "RSA"
 - module: "cas-server-support-oidc"
-  owner: "org.apereo.cas.configuration.model.support.oidc.OidcJsonWebKeystoreProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.oidc.RestfulOidcJsonWebKeystoreProperties"
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
   name: "cas.authn.oidc.jwks.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-support-oidc"
-  owner: "org.apereo.cas.configuration.model.support.oidc.OidcJsonWebKeystoreProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.oidc.RestfulOidcJsonWebKeystoreProperties"
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
   name: "cas.authn.oidc.jwks.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-support-oidc"
-  owner: "org.apereo.cas.configuration.model.support.oidc.OidcJsonWebKeystoreProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.oidc.RestfulOidcJsonWebKeystoreProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -122,7 +122,7 @@
   defaultValue: "GET"
 - required: true
   module: "cas-server-support-oidc"
-  owner: "org.apereo.cas.configuration.model.support.oidc.OidcJsonWebKeystoreProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.oidc.RestfulOidcJsonWebKeystoreProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.oidc.jwks.rest.url"

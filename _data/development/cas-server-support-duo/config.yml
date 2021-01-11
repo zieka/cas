@@ -11,9 +11,10 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
   type: "java.lang.String"
   description: "The application key is a string, at least 40 characters long,\nthat\
-    \ you generate and keep secret from Duo.\nYou can generate a random string in\
-    \ Python with:\n&lt;pre&gt;\nimport os, hashlib\nprint hashlib.sha1(os.urandom(32)).hexdigest()\n\
-    &lt;/pre&gt;"
+    \ you generate and keep secret from Duo.\nThis is a required setting for the WebSDK\
+    \ integration types.\nLeaving this setting as blank will activate the Universal\
+    \ Prompt option.\n\nYou can generate a random string in Python with:\n&lt;pre&gt;\n\
+    import os, hashlib\nprint hashlib.sha1(os.urandom(32)).hexdigest()\n&lt;/pre&gt;"
   name: "cas.authn.mfa.duo[].duo-application-key"
   defaultValue: ""
 - required: true
@@ -33,7 +34,14 @@
 - module: "cas-server-support-duo"
   owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
   type: "java.lang.String"
-  description: "The failure mode policy for this MFA provider."
+  description: "The failure mode policy for this MFA provider.\nThe following failure\
+    \ modes are supported:\n<ul>\n    <li>{@code CLOSED}: Authentication is blocked\
+    \ if the provider cannot be reached.</li>\n    <li>{@code OPEN}: Authentication\
+    \ proceeds yet requested MFA is NOT\n    communicated to the client if provider\
+    \ is unavailable.</li>\n    <li>{@code PHANTOM}: Authentication proceeds and requested\
+    \ MFA is\n    communicated to the client if provider is unavailable.</li>\n  \
+    \  <li>{@code NONE}: Do not contact the provider at all to check for availability.\
+    \ Assume the provider is available.</li>\n</ul>"
   name: "cas.authn.mfa.duo[].failure-mode"
   defaultValue: "UNDEFINED"
 - module: "cas-server-support-duo"
@@ -75,10 +83,10 @@
     no step-up authentication will be performed. If the opposite is true, CAS will\
     \ route the authentication\nflow to the required authentication level and upon\
     \ success, will adjust the SSO session with the\nnew higher authentication level\
-    \ now satisfied.\n<p>\nRanking of authentication methods is done per provider\
-    \ via specific properties for each.\nNote that the higher the rank value is, the\
-    \ higher on the security scale it remains.\nA provider that ranks higher with\
-    \ a larger weight value trumps and override others with a lower value.\n</p>"
+    \ now satisfied.\nRanking of authentication methods is done per provider via specific\
+    \ properties for each.\nNote that the higher the rank value is, the higher on\
+    \ the security scale it remains.\nA provider that ranks higher with a larger weight\
+    \ value trumps and override others with a lower value."
   name: "cas.authn.mfa.duo[].rank"
   defaultValue: ""
 - module: "cas-server-support-duo"

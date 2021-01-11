@@ -1,13 +1,6 @@
 ---
 - module: "cas-server-support-wsfederation-webflow"
   owner: "org.apereo.cas.configuration.model.support.wsfed.WsFederationDelegationProperties"
-  type: "Groovy"
-  description: "Path to attribute mutator groovy script\nthat allows one to modify\
-    \ wsfed attributes before\nestablishing a final principal."
-  name: "cas.authn.wsfed[].attribute-mutator-script"
-  defaultValue: ""
-- module: "cas-server-support-wsfederation-webflow"
-  owner: "org.apereo.cas.configuration.model.support.wsfed.WsFederationDelegationProperties"
   type: "boolean"
   description: "Whether CAS should enable its own attribute resolution machinery\n\
     after having received a response from wsfed."

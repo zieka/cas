@@ -68,7 +68,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.accept.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -307,8 +324,7 @@
     \ a valid mfa provider to an adaptive regex pattern representing either IP address,\
     \ user-agent or geolocation. When either of those collected pieces of adaptive\
     \ data matches configured regex pattern during authentication event, an MFA authentication\
-    \ transaction is triggered for an MFA provider represented by the map's key. <p>\
-    \ Default value is EMPTY Map."
+    \ transaction is triggered for an MFA provider represented by the map's key. </p>"
   name: "cas.authn.adaptive.require-multifactor"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -523,7 +539,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.azure-active-directory.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -599,7 +632,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.cassandra.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -675,7 +725,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.cloud-directory.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -751,7 +818,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.cognito.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -839,7 +923,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.couch-db.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -915,7 +1016,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.couchbase.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1003,7 +1121,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.file.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1164,7 +1299,23 @@
   description: "Define the password encoder type to use.\nType may be specified as\
     \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
     \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder."
+    if you wish you define your own encoder.\n\nThe following types may be used:\n\
+    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
+    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
+    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
+    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
+    \ {SHA} (or {SSHA}) prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
+    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
+    \ with handling password encoding operations.</li>\n</ul>"
   name: "cas.authn.jaas[].password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1363,7 +1514,23 @@
   description: "Define the password encoder type to use.\nType may be specified as\
     \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
     \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder."
+    if you wish you define your own encoder.\n\nThe following types may be used:\n\
+    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
+    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
+    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
+    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
+    \ {SHA} (or {SSHA}) prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
+    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
+    \ with handling password encoding operations.</li>\n</ul>"
   name: "cas.authn.jdbc.bind[].password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1431,7 +1598,23 @@
   description: "Define the password encoder type to use.\nType may be specified as\
     \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
     \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder."
+    if you wish you define your own encoder.\n\nThe following types may be used:\n\
+    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
+    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
+    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
+    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
+    \ {SHA} (or {SSHA}) prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
+    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
+    \ with handling password encoding operations.</li>\n</ul>"
   name: "cas.authn.jdbc.encode[].password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1499,7 +1682,23 @@
   description: "Define the password encoder type to use.\nType may be specified as\
     \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
     \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder."
+    if you wish you define your own encoder.\n\nThe following types may be used:\n\
+    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
+    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
+    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
+    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
+    \ {SHA} (or {SSHA}) prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
+    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
+    \ with handling password encoding operations.</li>\n</ul>"
   name: "cas.authn.jdbc.query[].password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1567,7 +1766,23 @@
   description: "Define the password encoder type to use.\nType may be specified as\
     \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
     \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder."
+    if you wish you define your own encoder.\n\nThe following types may be used:\n\
+    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
+    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
+    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
+    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
+    \ {SHA} (or {SSHA}) prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
+    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
+    \ with handling password encoding operations.</li>\n</ul>"
   name: "cas.authn.jdbc.search[].password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1635,7 +1850,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.json.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -1802,7 +2034,23 @@
   description: "Define the password encoder type to use.\nType may be specified as\
     \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
     \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder."
+    if you wish you define your own encoder.\n\nThe following types may be used:\n\
+    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
+    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
+    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
+    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
+    \ {SHA} (or {SSHA}) prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
+    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
+    \ with handling password encoding operations.</li>\n</ul>"
   name: "cas.authn.ldap[].password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3189,7 +3437,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.mongo.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3265,7 +3530,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.okta.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3404,7 +3686,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.pm.jdbc.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3574,7 +3873,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.radius.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3650,7 +3966,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.redis.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3726,7 +4059,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.reject.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3802,7 +4152,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.rest.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3842,7 +4209,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.shiro.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -3918,7 +4302,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.soap.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -4132,7 +4533,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.syncope.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
@@ -4476,7 +4894,24 @@
   description: "Define the password encoder type to use. Type may be specified as\
     \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
-    \ if you wish you define your own encoder. @see PasswordEncoderTypes"
+    \ if you wish you define your own encoder. The following types may be used: <ul>\
+    \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
+    \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
+    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
+    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
+    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
+    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
+    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
+    \ and have the label {SHA} (or {SSHA}) prepended to the encoded hash.</li>   \
+    \  <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the     {@code encoding-algorithm}, strength provided and an optional secret.</li>\
+    \     <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\
+    \ </ul> @see PasswordEncoderTypes"
   name: "cas.monitor.endpoints.jdbc.password-encoder.type"
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"

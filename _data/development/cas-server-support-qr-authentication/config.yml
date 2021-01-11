@@ -14,7 +14,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-qr-authentication"
-  owner: "org.apereo.cas.configuration.model.support.qr.QRAuthenticationProperties.Json"
+  owner: "org.apereo.cas.configuration.model.support.qr.JsonQRAuthenticationProperties"
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."

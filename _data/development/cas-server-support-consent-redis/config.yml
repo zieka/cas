@@ -1,40 +1,40 @@
 ---
 - required: true
   module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.Integer"
   description: "Database index used by the connection factory."
   name: "cas.consent.redis.database"
   defaultValue: 0
 - required: true
   module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.String"
   description: "Redis server host."
   name: "cas.consent.redis.host"
   defaultValue: "localhost"
 - required: true
   module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.String"
   description: "Login password of the redis server."
   name: "cas.consent.redis.password"
   defaultValue: ""
 - module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   description: "Redis connection pool settings."
   name: "cas.consent.redis.pool"
   defaultValue: ""
 - required: true
   module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.Integer"
   description: "Redis server port."
   name: "cas.consent.redis.port"
   defaultValue: 6379
 - module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.String"
   description: "Setting that describes how Lettuce routes read operations to replica\
     \ nodes. Accepted mode are : <ul> <li>{@code MASTER}: Default mode. Read from\
@@ -50,13 +50,13 @@
   name: "cas.consent.redis.read-from"
   defaultValue: ""
 - module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.Integer"
   description: "Connection timeout in milliseconds."
   name: "cas.consent.redis.timeout"
   defaultValue: 2000
 - module: "cas-server-support-consent-redis"
-  owner: "org.apereo.cas.configuration.model.support.consent.ConsentProperties.Redis"
+  owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.Boolean"
   description: "Whether or not to use SSL for connection factory."
   name: "cas.consent.redis.use-ssl"
