@@ -10,6 +10,7 @@
             <p>
                 {{ include.description 
                     | replace: "<p>", "<p/>"
+                    | replace: "</p>", "<p/>"
                     | replace: "@code", "<code>"
                     | replace: "@link", "<code>"
                     | replace: rbrace, "</code>" 
