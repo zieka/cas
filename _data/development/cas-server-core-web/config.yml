@@ -222,7 +222,8 @@
     \ to be deleted."
   name: "cas.locale.cookie.max-age"
   defaultValue: -1
-- module: "cas-server-core-web"
+- required: true
+  module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.LocaleCookieProperties"
   type: "java.lang.String"
   description: "Cookie name. Constructs a cookie with a specified name and value.\

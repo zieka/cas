@@ -42,7 +42,8 @@
     \ to be deleted."
   name: "cas.tgc.max-age"
   defaultValue: -1
-- module: "cas-server-core-cookie"
+- required: true
+  module: "cas-server-core-cookie"
   owner: "org.apereo.cas.configuration.model.support.cookie.TicketGrantingCookieProperties"
   type: "java.lang.String"
   description: "Cookie name. Constructs a cookie with a specified name and value.\
@@ -143,7 +144,8 @@
     \ to be deleted."
   name: "cas.warning-cookie.max-age"
   defaultValue: -1
-- module: "cas-server-core-cookie"
+- required: true
+  module: "cas-server-core-cookie"
   owner: "org.apereo.cas.configuration.model.support.cookie.WarningCookieProperties"
   type: "java.lang.String"
   description: "Cookie name. Constructs a cookie with a specified name and value.\

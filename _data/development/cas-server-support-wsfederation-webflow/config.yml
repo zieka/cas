@@ -56,7 +56,8 @@
     \ to be deleted."
   name: "cas.authn.wsfed[].cookie.max-age"
   defaultValue: ""
-- module: "cas-server-support-wsfederation-webflow"
+- required: true
+  module: "cas-server-support-wsfederation-webflow"
   owner: "org.apereo.cas.configuration.model.support.wsfed.WsFederationDelegatedCookieProperties"
   type: "java.lang.String"
   description: "Cookie name. Constructs a cookie with a specified name and value.\n\

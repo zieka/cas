@@ -42,7 +42,8 @@
     \ to be deleted."
   name: "cas.session-replication.cookie.max-age"
   defaultValue: -1
-- module: "cas-server-support-pac4j-api"
+- required: true
+  module: "cas-server-support-pac4j-api"
   owner: "org.apereo.cas.configuration.model.support.replication.CookieSessionReplicationProperties"
   type: "java.lang.String"
   description: "Cookie name. Constructs a cookie with a specified name and value.\

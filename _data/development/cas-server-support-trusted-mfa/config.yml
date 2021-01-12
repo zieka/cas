@@ -69,7 +69,8 @@
     \ to be deleted."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.max-age"
   defaultValue: -1
-- module: "cas-server-support-trusted-mfa"
+- required: true
+  module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.Cookie"
   type: "java.lang.String"
   description: "Cookie name. Constructs a cookie with a specified name and value.\
