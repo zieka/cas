@@ -93,6 +93,9 @@
                         {% if config.name contains ".crypto." %}
                             {% assign signingEncryptionEnabled = true %}
                         {% endif %}
+                        {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                            {% assign rdbmsSettingsFound = true %}
+                        {% endif %}
 
                         {% unless foundExcluded == true %}
                             {% assign requiredSettingsFound = true %}
@@ -127,6 +130,9 @@
 
                             {% if config.name contains ".crypto." %}
                                 {% assign signingEncryptionEnabled = true %}
+                            {% endif %}
+                            {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                                {% assign rdbmsSettingsFound = true %}
                             {% endif %}
 
                             {% unless foundExcluded == true %}
@@ -168,6 +174,7 @@
 
     <table class="properties" id='tableOptionalProperties{{ randomNumber }}'>
     <tbody>
+        
         {% for module in modules %}
             {% for cfg in site.data[version][module] %}
                 {% assign configBlock = cfg[1] %}

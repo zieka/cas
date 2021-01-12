@@ -1,5 +1,8 @@
+{% assign rbrace = "}" %}
+{% assign lbrace = "{" %}
+
 <tr>
-    <td>
+    <td> 
         <li style="list-style: square">
             <code>{{ include.name | replace: "[]", "[0]"}}={{ include.defaultValue }}</code>
         </li>
@@ -7,11 +10,13 @@
             <p>
                 {{ include.description 
                     | replace: "<p>", "<p/>"
-                    | replace: "{@code", "<code>"
+                    | replace: "@code", "<code>"
+                    | replace: "@link", "<code>"
+                    | replace: "@see", "See <code>"
                     | replace: rbrace, "</code>" 
-                    | remove: rbrace 
                     | replace: "&lt;", "<" 
                     | replace: "&gt;", ">" 
+                    | remove: lbrace
                 }}
             </p>
         </div>
