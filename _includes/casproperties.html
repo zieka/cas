@@ -49,6 +49,13 @@
             href='#emailProperties{{ randomNumber }}'>Email Servers</a>
     </li>
 
+    <li class='nav-item' id='navLdapProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkLdap{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#ldapProperties{{ randomNumber }}'>LDAP & Active Directory</a>
+    </li>
+
     {% if thirdParty.size > 0 %}
     <li class='nav-item'>
         <a class='nav-link' 
@@ -72,6 +79,7 @@
 {% assign requiredSettingsFound = false %}
 {% assign rdbmsSettingsFound = false %}
 {% assign emailSettingsFound = false %}
+{% assign ldapSettingsFound = false %}
 
 <div class='tab-content clearfix'>
 
@@ -98,14 +106,17 @@
                             {% endif %}
                         {% endfor %}
 
-                        {% if config.name contains ".crypto." %}
+                        {% if config.name contains ".crypto" %}
                             {% assign signingEncryptionEnabled = true %}
                         {% endif %}
-                        {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                        {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
                             {% assign rdbmsSettingsFound = true %}
                         {% endif %}
-                        {% if config.name contains ".mail." %}
+                        {% if config.name contains ".mail" %}
                             {% assign emailSettingsFound = true %}
+                        {% endif %}
+                        {% if config.name contains ".ldap" %}
+                            {% assign ldapSettingsFound = true %}
                         {% endif %}
 
                         {% unless foundExcluded == true %}
@@ -139,16 +150,19 @@
                                 {% endif %}
                             {% endfor %}
 
-                            {% if config.name contains ".crypto." %}
+                            {% if config.name contains ".crypto" %}
                                 {% assign signingEncryptionEnabled = true %}
                             {% endif %}
-                            {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                            {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
                                 {% assign rdbmsSettingsFound = true %}
                             {% endif %}
-                            {% if config.name contains ".mail." %}
+                            {% if config.name contains ".mail" %}
                                 {% assign emailSettingsFound = true %}
                             {% endif %}
-                            
+                            {% if config.name contains ".ldap" %}
+                                {% assign ldapSettingsFound = true %}
+                            {% endif %}
+
                             {% unless foundExcluded == true %}
                                 {% assign requiredSettingsFound = true %}
                                 {% include casproperty.html 
@@ -183,6 +197,11 @@
     {{ emailConfig | markdownify }}
 </div>
 
+<div class='tab-pane fade in' id='ldapProperties{{ randomNumber }}'>
+    {% capture ldapConfig %}{% include {{ version }}/ldap-configuration.md %}{% endcapture %}
+    {{ ldapConfig | markdownify }}
+</div>
+
 <div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
 
     <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
@@ -208,14 +227,17 @@
                             {% endif %}
                         {% endfor %}
 
-                        {% if config.name contains ".crypto." %}
+                        {% if config.name contains ".crypto" %}
                             {% assign signingEncryptionEnabled = true %}
                         {% endif %}
-                        {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                        {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
                             {% assign rdbmsSettingsFound = true %}
                         {% endif %}
-                        {% if config.name contains ".mail." %}
+                        {% if config.name contains ".mail" %}
                             {% assign emailSettingsFound = true %}
+                        {% endif %}
+                        {% if config.name contains ".ldap" %}
+                            {% assign ldapSettingsFound = true %}
                         {% endif %}
 
                         {% unless foundExcluded == true %}
@@ -251,15 +273,18 @@
                                     {% endif %}
                                 {% endfor %}
     
-                                {% if config.name contains ".crypto." %}
+                                {% if config.name contains ".crypto" %}
                                     {% assign signingEncryptionEnabled = true %}
                                 {% endif %}
 
-                                {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
+                                {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
                                     {% assign rdbmsSettingsFound = true %}
                                 {% endif %}
-                                {% if config.name contains ".mail." %}
+                                {% if config.name contains ".mail" %}
                                     {% assign emailSettingsFound = true %}
+                                {% endif %}
+                                {% if config.name contains ".ldap" %}
+                                    {% assign ldapSettingsFound = true %}
                                 {% endif %}
 
                                 {% unless foundExcluded == true %}
@@ -400,6 +425,15 @@
     <script>
         setTimeout(function(){ 
             let elem = document.getElementById("linkEmail{{ randomNumber }}");
+            elem.style.display="none";
+         }, 5);
+    </script>
+{% endunless %}
+
+{% unless ldapSettingsFound %}
+    <script>
+        setTimeout(function(){ 
+            let elem = document.getElementById("linkLdap{{ randomNumber }}");
             elem.style.display="none";
          }, 5);
     </script>
