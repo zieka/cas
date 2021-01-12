@@ -340,7 +340,13 @@
   module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "java.lang.String"
-  description: "Base DN to use."
+  description: "Base DN to use.\nThere may be scenarios where different parts of a\
+    \ single LDAP tree could be considered as base-dns. Rather than duplicating\n\
+    the LDAP configuration block for each individual base-dn, each entry can be specified\n\
+    and joined together using a special delimiter character. The user DN is retrieved\
+    \ using the combination of all base-dn and DN\nresolvers in the order defined.\
+    \ DN resolution should fail if multiple DNs are found. Otherwise the first DN\
+    \ found is returned.\nUsual syntax is: {@code subtreeA,dc=example,dc=net|subtreeC,dc=example,dc=net}."
   name: "cas.authn.attribute-repository.ldap[].base-dn"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
@@ -419,8 +425,8 @@
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "LdapHostnameVerifierOptions"
-  description: "Hostname verification options.\nAccepted values are {@link LdapHostnameVerifierOptions#DEFAULT}\
-    \ and {@link LdapHostnameVerifierOptions#ANY}."
+  description: "Hostname verification options.\nAccepted values are {@link LdapHostnameVerifierOptions#DEFAULT}\n\
+    and {@link LdapHostnameVerifierOptions#ANY}."
   name: "cas.authn.attribute-repository.ldap[].hostname-verifier"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
@@ -512,9 +518,20 @@
     \ that connection, the validator tries to\nvalidate the connection again but fails\
     \ because it’s no longer trying with the\nconfigured bind credentials but with\
     \ whatever user DN was used in the previous step.\nGiven the validation failure,\
-    \ the connection is closed and CAS would deny access by default. Passivators attempt\
-    \ to reconnect\nto LDAP with the configured bind credentials, effectively resetting\
-    \ the connection\nto what it should be after each bind request."
+    \ the connection is closed and CAS would deny\naccess by default. Passivators\
+    \ attempt to reconnect\nto LDAP with the configured bind credentials, effectively\
+    \ resetting the connection\nto what it should be after each bind request.\nFurthermore\
+    \ if you are seeing errors in the logs that resemble\na 'Operation exception encountered,\
+    \ reopening connection' type of message, this\nusually is an indication that the\
+    \ connection pool’s validation timeout\nestablished and created by CAS is greater\
+    \ than the timeout configured\nin the LDAP server, or more likely, in the load\
+    \ balancer in front of\nthe LDAP servers. You can adjust the LDAP server session’\
+    s timeout\nfor connections, or you can teach CAS to use a validity period that\n\
+    is equal or less than the LDAP server session’s timeout.\nAccepted values are:\n\
+    <ul>\n<li>{@code NONE}: No passivation takes place.</li>\n<li>{@code BIND}: The\
+    \ default behavior which passivates a connection by performing a\nbind operation\
+    \ on it. This option requires the availability of bind credentials when establishing\
+    \ connections to LDAP.</li>\n</ul>"
   name: "cas.authn.attribute-repository.ldap[].pool-passivator"
   defaultValue: "BIND"
 - module: "cas-server-support-person-directory"
@@ -598,8 +615,11 @@
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "java.lang.String"
-  description: "Trust Manager options.\nAccepted values are {@link LdapTrustManagerOptions#ANY},\
-    \ {@link LdapTrustManagerOptions#DEFAULT}."
+  description: "Trust Manager options.\nTrust managers are responsible for managing\
+    \ the trust material that is used when making LDAP trust decisions,\nand for deciding\
+    \ whether credentials presented by a peer should be accepted.\nAccepted values\
+    \ are:\n* <ul>\n<li>{@code DEFAULT}: Enable and force the default JVM trust managers.</li>\n\
+    <li>{@code ANY}: Trust any client or server.</li>\n</ul>"
   name: "cas.authn.attribute-repository.ldap[].trust-manager"
   defaultValue: ""
 - module: "cas-server-support-person-directory"

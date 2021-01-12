@@ -12,4 +12,5 @@ Device registrations may be kept inside a DynamoDb instance by including the fol
 
 {% include casmodule.html group="org.apereo.cas" module="cas-server-support-webauthn-dynamodb" %}
 
-{% include {{ version }}/dynamodb-configuration.md configKey="cas.authn.mfa.web-authn" %}
+{% include casproperties.html
+modules="cas-server-support-webauthn-dynamodb" %}

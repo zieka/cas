@@ -16,7 +16,13 @@
   module: "cas-server-support-surrogate-authentication-ldap"
   owner: "org.apereo.cas.configuration.model.support.surrogate.SurrogateLdapAuthenticationProperties"
   type: "java.lang.String"
-  description: "Base DN to use."
+  description: "Base DN to use. There may be scenarios where different parts of a\
+    \ single LDAP tree could be considered as base-dns. Rather than duplicating the\
+    \ LDAP configuration block for each individual base-dn, each entry can be specified\
+    \ and joined together using a special delimiter character. The user DN is retrieved\
+    \ using the combination of all base-dn and DN resolvers in the order defined.\
+    \ DN resolution should fail if multiple DNs are found. Otherwise the first DN\
+    \ found is returned. Usual syntax is: {@code subtreeA,dc=example,dc=net|subtreeC,dc=example,dc=net}."
   name: "cas.authn.surrogate.ldap.base-dn"
   defaultValue: ""
 - module: "cas-server-support-surrogate-authentication-ldap"
@@ -196,7 +202,18 @@
     \ DN was used in the previous step. Given the validation failure, the connection\
     \ is closed and CAS would deny access by default. Passivators attempt to reconnect\
     \ to LDAP with the configured bind credentials, effectively resetting the connection\
-    \ to what it should be after each bind request."
+    \ to what it should be after each bind request. Furthermore if you are seeing\
+    \ errors in the logs that resemble a 'Operation exception encountered, reopening\
+    \ connection' type of message, this usually is an indication that the connection\
+    \ pool’s validation timeout established and created by CAS is greater than the\
+    \ timeout configured in the LDAP server, or more likely, in the load balancer\
+    \ in front of the LDAP servers. You can adjust the LDAP server session’s timeout\
+    \ for connections, or you can teach CAS to use a validity period that is equal\
+    \ or less than the LDAP server session’s timeout. Accepted values are: <ul> <li>{@code\
+    \ NONE}: No passivation takes place.</li> <li>{@code BIND}: The default behavior\
+    \ which passivates a connection by performing a bind operation on it. This option\
+    \ requires the availability of bind credentials when establishing connections\
+    \ to LDAP.</li> </ul>"
   name: "cas.authn.surrogate.ldap.pool-passivator"
   defaultValue: "BIND"
 - module: "cas-server-support-surrogate-authentication-ldap"
@@ -287,8 +304,11 @@
 - module: "cas-server-support-surrogate-authentication-ldap"
   owner: "org.apereo.cas.configuration.model.support.surrogate.SurrogateLdapAuthenticationProperties"
   type: "java.lang.String"
-  description: "Trust Manager options. Accepted values are {@link LdapTrustManagerOptions#ANY},\
-    \ {@link LdapTrustManagerOptions#DEFAULT}."
+  description: "Trust Manager options. Trust managers are responsible for managing\
+    \ the trust material that is used when making LDAP trust decisions, and for deciding\
+    \ whether credentials presented by a peer should be accepted. Accepted values\
+    \ are: * <ul> <li>{@code DEFAULT}: Enable and force the default JVM trust managers.</li>\
+    \ <li>{@code ANY}: Trust any client or server.</li> </ul>"
   name: "cas.authn.surrogate.ldap.trust-manager"
   defaultValue: ""
 - module: "cas-server-support-surrogate-authentication-ldap"
