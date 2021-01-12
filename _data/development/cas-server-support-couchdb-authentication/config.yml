@@ -29,11 +29,11 @@
   description: "Create the database if it doesn't exist."
   name: "cas.authn.couch-db.create-if-not-exists"
   defaultValue: true
-- module: "cas-server-support-couchdb-authentication"
+- required: true
+  module: "cas-server-support-couchdb-authentication"
   owner: "org.apereo.cas.configuration.model.support.couchdb.authentication.CouchDbAuthenticationProperties"
   type: "java.lang.String"
-  description: "Database name. Defaults to +serviceRegistry+ and +ticketRegistry+\
-    \ for the service and ticket registries, respectively."
+  description: "Database name."
   name: "cas.authn.couch-db.db-name"
   defaultValue: ""
 - module: "cas-server-support-couchdb-authentication"
@@ -72,7 +72,8 @@
   description: "Order of authentication handler in chain."
   name: "cas.authn.couch-db.order"
   defaultValue: ""
-- module: "cas-server-support-couchdb-authentication"
+- required: true
+  module: "cas-server-support-couchdb-authentication"
   owner: "org.apereo.cas.configuration.model.support.couchdb.authentication.CouchDbAuthenticationProperties"
   type: "java.lang.String"
   description: "Password for connection."
@@ -115,7 +116,8 @@
   description: "Socket idle timeout."
   name: "cas.authn.couch-db.socket-timeout"
   defaultValue: 10000
-- module: "cas-server-support-couchdb-authentication"
+- required: true
+  module: "cas-server-support-couchdb-authentication"
   owner: "org.apereo.cas.configuration.model.support.couchdb.authentication.CouchDbAuthenticationProperties"
   type: "java.lang.String"
   description: "Connection url."
@@ -127,7 +129,8 @@
   description: "Expect HTTP 100 Continue during connection."
   name: "cas.authn.couch-db.use-expect-continue"
   defaultValue: true
-- module: "cas-server-support-couchdb-authentication"
+- required: true
+  module: "cas-server-support-couchdb-authentication"
   owner: "org.apereo.cas.configuration.model.support.couchdb.authentication.CouchDbAuthenticationProperties"
   type: "java.lang.String"
   description: "Username for connection."

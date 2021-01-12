@@ -29,11 +29,11 @@
   description: "Create the database if it doesn't exist."
   name: "cas.events.couch-db.create-if-not-exists"
   defaultValue: true
-- module: "cas-server-support-events-couchdb"
+- required: true
+  module: "cas-server-support-events-couchdb"
   owner: "org.apereo.cas.configuration.model.core.events.CouchDbEventsProperties"
   type: "java.lang.String"
-  description: "Database name. Defaults to +serviceRegistry+ and +ticketRegistry+\
-    \ for the service and ticket registries, respectively."
+  description: "Database name."
   name: "cas.events.couch-db.db-name"
   defaultValue: ""
 - module: "cas-server-support-events-couchdb"
@@ -60,7 +60,8 @@
   description: "Largest allowable serialized object."
   name: "cas.events.couch-db.max-object-size-bytes"
   defaultValue: 8192
-- module: "cas-server-support-events-couchdb"
+- required: true
+  module: "cas-server-support-events-couchdb"
   owner: "org.apereo.cas.configuration.model.core.events.CouchDbEventsProperties"
   type: "java.lang.String"
   description: "Password for connection."
@@ -96,7 +97,8 @@
   description: "Socket idle timeout."
   name: "cas.events.couch-db.socket-timeout"
   defaultValue: 10000
-- module: "cas-server-support-events-couchdb"
+- required: true
+  module: "cas-server-support-events-couchdb"
   owner: "org.apereo.cas.configuration.model.core.events.CouchDbEventsProperties"
   type: "java.lang.String"
   description: "Connection url."
@@ -108,7 +110,8 @@
   description: "Expect HTTP 100 Continue during connection."
   name: "cas.events.couch-db.use-expect-continue"
   defaultValue: true
-- module: "cas-server-support-events-couchdb"
+- required: true
+  module: "cas-server-support-events-couchdb"
   owner: "org.apereo.cas.configuration.model.core.events.CouchDbEventsProperties"
   type: "java.lang.String"
   description: "Username for connection."

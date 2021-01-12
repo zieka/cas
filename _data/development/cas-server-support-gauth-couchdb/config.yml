@@ -23,11 +23,11 @@
   description: "Create the database if it doesn't exist."
   name: "cas.authn.mfa.gauth.couch-db.create-if-not-exists"
   defaultValue: true
-- module: "cas-server-support-gauth-couchdb"
+- required: true
+  module: "cas-server-support-gauth-couchdb"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.CouchDbGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"
-  description: "Database name. Defaults to +serviceRegistry+ and +ticketRegistry+\
-    \ for the service and ticket registries, respectively."
+  description: "Database name."
   name: "cas.authn.mfa.gauth.couch-db.db-name"
   defaultValue: ""
 - module: "cas-server-support-gauth-couchdb"
@@ -54,7 +54,8 @@
   description: "Largest allowable serialized object."
   name: "cas.authn.mfa.gauth.couch-db.max-object-size-bytes"
   defaultValue: 8192
-- module: "cas-server-support-gauth-couchdb"
+- required: true
+  module: "cas-server-support-gauth-couchdb"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.CouchDbGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"
   description: "Password for connection."
@@ -90,7 +91,8 @@
   description: "Socket idle timeout."
   name: "cas.authn.mfa.gauth.couch-db.socket-timeout"
   defaultValue: 10000
-- module: "cas-server-support-gauth-couchdb"
+- required: true
+  module: "cas-server-support-gauth-couchdb"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.CouchDbGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"
   description: "Connection url."
@@ -102,7 +104,8 @@
   description: "Expect HTTP 100 Continue during connection."
   name: "cas.authn.mfa.gauth.couch-db.use-expect-continue"
   defaultValue: true
-- module: "cas-server-support-gauth-couchdb"
+- required: true
+  module: "cas-server-support-gauth-couchdb"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.CouchDbGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"
   description: "Username for connection."
