@@ -12,7 +12,7 @@
 
 {% assign randomNumber = include.properties | default: include.modules | remove: "." | remove: "," | remove: "[]" %}
 
-<p>The following settings and properties are available from the CAS configuration repository:</p>
+<p>The following settings and properties are available from the CAS configuration catalog:</p>
 
 <ul class='nav nav-pills'>
     <li class='nav-item'>
@@ -42,6 +42,13 @@
             href='#rdbmsProperties{{ randomNumber }}'>Hibernate & JDBC</a>
     </li>
 
+    <li class='nav-item' id='navEmailProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkEmail{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#emailProperties{{ randomNumber }}'>Email Servers</a>
+    </li>
+
     {% if thirdParty.size > 0 %}
     <li class='nav-item'>
         <a class='nav-link' 
@@ -64,6 +71,7 @@
 {% assign optionalSettingsFound = false %}
 {% assign requiredSettingsFound = false %}
 {% assign rdbmsSettingsFound = false %}
+{% assign emailSettingsFound = false %}
 
 <div class='tab-content clearfix'>
 
@@ -95,6 +103,9 @@
                         {% endif %}
                         {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
                             {% assign rdbmsSettingsFound = true %}
+                        {% endif %}
+                        {% if config.name contains ".mail." %}
+                            {% assign emailSettingsFound = true %}
                         {% endif %}
 
                         {% unless foundExcluded == true %}
@@ -134,7 +145,10 @@
                             {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
                                 {% assign rdbmsSettingsFound = true %}
                             {% endif %}
-
+                            {% if config.name contains ".mail." %}
+                                {% assign emailSettingsFound = true %}
+                            {% endif %}
+                            
                             {% unless foundExcluded == true %}
                                 {% assign requiredSettingsFound = true %}
                                 {% include casproperty.html 
@@ -162,6 +176,11 @@
 <div class='tab-pane fade in' id='rdbmsProperties{{ randomNumber }}'>
     {% capture rdbmsConfig %}{% include {{ version }}/rdbms-configuration.md %}{% endcapture %}
     {{ rdbmsConfig | markdownify }}
+</div>
+
+<div class='tab-pane fade in' id='emailProperties{{ randomNumber }}'>
+    {% capture emailConfig %}{% include {{ version }}/email-notifications-configuration.md %}{% endcapture %}
+    {{ emailConfig | markdownify }}
 </div>
 
 <div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
@@ -194,6 +213,9 @@
                         {% endif %}
                         {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
                             {% assign rdbmsSettingsFound = true %}
+                        {% endif %}
+                        {% if config.name contains ".mail." %}
+                            {% assign emailSettingsFound = true %}
                         {% endif %}
 
                         {% unless foundExcluded == true %}
@@ -235,6 +257,9 @@
 
                                 {% if config.name contains ".jpa." || config.name contains ".jdbc." %}
                                     {% assign rdbmsSettingsFound = true %}
+                                {% endif %}
+                                {% if config.name contains ".mail." %}
+                                    {% assign emailSettingsFound = true %}
                                 {% endif %}
 
                                 {% unless foundExcluded == true %}
@@ -371,12 +396,21 @@
     </script>
 {% endunless %}
 
+{% unless emailSettingsFound %}
+    <script>
+        setTimeout(function(){ 
+            let elem = document.getElementById("linkEmail{{ randomNumber }}");
+            elem.style.display="none";
+         }, 5);
+    </script>
+{% endunless %}
+
 {% unless requiredSettingsFound %}
     <script>
         setTimeout(function(){ 
             var elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
             elem.style.display="none";
-            
+             
             elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
             elem.click();
          }, 100);
