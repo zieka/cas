@@ -19,13 +19,15 @@
     \ as binary\nattributes by the underlying search resolver."
   name: "cas.monitor.ldap[].binary-attributes"
   defaultValue: ""
-- module: "cas-server-core-ldap-monitor"
+- required: true
+  module: "cas-server-core-ldap-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.LdapMonitorProperties"
   type: "java.lang.String"
   description: "The bind credential to use when connecting to LDAP."
   name: "cas.monitor.ldap[].bind-credential"
   defaultValue: ""
-- module: "cas-server-core-ldap-monitor"
+- required: true
+  module: "cas-server-core-ldap-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.LdapMonitorProperties"
   type: "java.lang.String"
   description: "The bind DN to use when connecting to LDAP.\nLDAP connection configuration\
@@ -126,7 +128,8 @@
     \ defaults to the default keystore type indicated\nby the underlying Java platform."
   name: "cas.monitor.ldap[].keystore-type"
   defaultValue: ""
-- module: "cas-server-core-ldap-monitor"
+- required: true
+  module: "cas-server-core-ldap-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.LdapMonitorProperties"
   type: "java.lang.String"
   description: "The LDAP url to the server. More than one may be specified, separated\
@@ -258,7 +261,7 @@
 - module: "cas-server-core-ldap-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.LdapMonitorProperties"
   type: "java.lang.String"
-  description: "Path to the keystore used to determine which certificates or certificate\
+  description: "Path to the keystore used to determine which certificates or\ncertificate\
     \ authorities should be trusted.\nUsed when connecting to an LDAP server via LDAPS\
     \ or startTLS connection.\nIf left blank, the default truststore for the Java\
     \ runtime is used."

@@ -356,13 +356,15 @@
     \ as binary\nattributes by the underlying search resolver."
   name: "cas.authn.attribute-repository.ldap[].binary-attributes"
   defaultValue: ""
-- module: "cas-server-support-person-directory"
+- required: true
+  module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "The bind credential to use when connecting to LDAP."
   name: "cas.authn.attribute-repository.ldap[].bind-credential"
   defaultValue: ""
-- module: "cas-server-support-person-directory"
+- required: true
+  module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "The bind DN to use when connecting to LDAP.\nLDAP connection configuration\
@@ -463,7 +465,8 @@
     \ defaults to the default keystore type indicated\nby the underlying Java platform."
   name: "cas.authn.attribute-repository.ldap[].keystore-type"
   defaultValue: ""
-- module: "cas-server-support-person-directory"
+- required: true
+  module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "The LDAP url to the server. More than one may be specified, separated\
@@ -625,7 +628,7 @@
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "java.lang.String"
-  description: "Path to the keystore used to determine which certificates or certificate\
+  description: "Path to the keystore used to determine which certificates or\ncertificate\
     \ authorities should be trusted.\nUsed when connecting to an LDAP server via LDAPS\
     \ or startTLS connection.\nIf left blank, the default truststore for the Java\
     \ runtime is used."

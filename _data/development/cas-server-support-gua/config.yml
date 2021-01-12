@@ -32,13 +32,15 @@
     \ as binary attributes by the underlying search resolver."
   name: "cas.authn.gua.ldap.binary-attributes"
   defaultValue: ""
-- module: "cas-server-support-gua"
+- required: true
+  module: "cas-server-support-gua"
   owner: "org.apereo.cas.configuration.model.support.gua.LdapGraphicalUserAuthenticationProperties"
   type: "java.lang.String"
   description: "The bind credential to use when connecting to LDAP."
   name: "cas.authn.gua.ldap.bind-credential"
   defaultValue: ""
-- module: "cas-server-support-gua"
+- required: true
+  module: "cas-server-support-gua"
   owner: "org.apereo.cas.configuration.model.support.gua.LdapGraphicalUserAuthenticationProperties"
   type: "java.lang.String"
   description: "The bind DN to use when connecting to LDAP. LDAP connection configuration\
@@ -141,7 +143,8 @@
     \ defaults to the default keystore type indicated by the underlying Java platform."
   name: "cas.authn.gua.ldap.keystore-type"
   defaultValue: ""
-- module: "cas-server-support-gua"
+- required: true
+  module: "cas-server-support-gua"
   owner: "org.apereo.cas.configuration.model.support.gua.LdapGraphicalUserAuthenticationProperties"
   type: "java.lang.String"
   description: "The LDAP url to the server. More than one may be specified, separated\

@@ -47,13 +47,15 @@
     \ as binary attributes by the underlying search resolver."
   name: "cas.authn.surrogate.simple.binary-attributes"
   defaultValue: ""
-- module: "cas-server-support-surrogate-webflow"
+- required: true
+  module: "cas-server-support-surrogate-webflow"
   owner: "org.apereo.cas.configuration.model.support.surrogate.SurrogateSimpleAuthenticationProperties"
   type: "java.lang.String"
   description: "The bind credential to use when connecting to LDAP."
   name: "cas.authn.surrogate.simple.bind-credential"
   defaultValue: ""
-- module: "cas-server-support-surrogate-webflow"
+- required: true
+  module: "cas-server-support-surrogate-webflow"
   owner: "org.apereo.cas.configuration.model.support.surrogate.SurrogateSimpleAuthenticationProperties"
   type: "java.lang.String"
   description: "The bind DN to use when connecting to LDAP. LDAP connection configuration\
@@ -149,7 +151,8 @@
     \ defaults to the default keystore type indicated by the underlying Java platform."
   name: "cas.authn.surrogate.simple.keystore-type"
   defaultValue: ""
-- module: "cas-server-support-surrogate-webflow"
+- required: true
+  module: "cas-server-support-surrogate-webflow"
   owner: "org.apereo.cas.configuration.model.support.surrogate.SurrogateSimpleAuthenticationProperties"
   type: "java.lang.String"
   description: "The LDAP url to the server. More than one may be specified, separated\

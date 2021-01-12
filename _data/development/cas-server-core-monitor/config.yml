@@ -239,13 +239,15 @@
     \ as binary attributes by the underlying search resolver."
   name: "cas.monitor.endpoints.ldap.binary-attributes"
   defaultValue: ""
-- module: "cas-server-core-monitor"
+- required: true
+  module: "cas-server-core-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointsMonitorProperties.LdapSecurity"
   type: "java.lang.String"
   description: "The bind credential to use when connecting to LDAP."
   name: "cas.monitor.endpoints.ldap.bind-credential"
   defaultValue: ""
-- module: "cas-server-core-monitor"
+- required: true
+  module: "cas-server-core-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointsMonitorProperties.LdapSecurity"
   type: "java.lang.String"
   description: "The bind DN to use when connecting to LDAP. LDAP connection configuration\
@@ -367,7 +369,8 @@
     \ defaults to the default keystore type indicated by the underlying Java platform."
   name: "cas.monitor.endpoints.ldap.keystore-type"
   defaultValue: ""
-- module: "cas-server-core-monitor"
+- required: true
+  module: "cas-server-core-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointsMonitorProperties.LdapSecurity"
   type: "java.lang.String"
   description: "The LDAP url to the server. More than one may be specified, separated\

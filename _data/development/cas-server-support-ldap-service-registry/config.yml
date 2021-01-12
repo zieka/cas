@@ -32,13 +32,15 @@
     \ as binary attributes by the underlying search resolver."
   name: "cas.service-registry.ldap.binary-attributes"
   defaultValue: ""
-- module: "cas-server-support-ldap-service-registry"
+- required: true
+  module: "cas-server-support-ldap-service-registry"
   owner: "org.apereo.cas.configuration.model.support.ldap.serviceregistry.LdapServiceRegistryProperties"
   type: "java.lang.String"
   description: "The bind credential to use when connecting to LDAP."
   name: "cas.service-registry.ldap.bind-credential"
   defaultValue: ""
-- module: "cas-server-support-ldap-service-registry"
+- required: true
+  module: "cas-server-support-ldap-service-registry"
   owner: "org.apereo.cas.configuration.model.support.ldap.serviceregistry.LdapServiceRegistryProperties"
   type: "java.lang.String"
   description: "The bind DN to use when connecting to LDAP. LDAP connection configuration\
@@ -141,7 +143,8 @@
     \ defaults to the default keystore type indicated by the underlying Java platform."
   name: "cas.service-registry.ldap.keystore-type"
   defaultValue: ""
-- module: "cas-server-support-ldap-service-registry"
+- required: true
+  module: "cas-server-support-ldap-service-registry"
   owner: "org.apereo.cas.configuration.model.support.ldap.serviceregistry.LdapServiceRegistryProperties"
   type: "java.lang.String"
   description: "The LDAP url to the server. More than one may be specified, separated\
