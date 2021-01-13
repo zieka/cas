@@ -61,40 +61,6 @@
   name: "cas.audit.number-of-days-in-history"
   defaultValue: 30
 - module: "cas-server-core-audit"
-  owner: "org.apereo.cas.configuration.model.core.audit.AuditRestProperties"
-  type: "java.lang.Boolean"
-  description: "Make storage requests asynchronously."
-  name: "cas.audit.rest.asynchronous"
-  defaultValue: true
-- module: "cas-server-core-audit"
-  owner: "org.apereo.cas.configuration.model.core.audit.AuditRestProperties"
-  type: "java.lang.String"
-  description: "If REST endpoint is protected via basic authentication, specify the\
-    \ password for authentication."
-  name: "cas.audit.rest.basic-auth-password"
-  defaultValue: ""
-- module: "cas-server-core-audit"
-  owner: "org.apereo.cas.configuration.model.core.audit.AuditRestProperties"
-  type: "java.lang.String"
-  description: "If REST endpoint is protected via basic authentication, specify the\
-    \ username for authentication."
-  name: "cas.audit.rest.basic-auth-username"
-  defaultValue: ""
-- module: "cas-server-core-audit"
-  owner: "org.apereo.cas.configuration.model.core.audit.AuditRestProperties"
-  type: "java.lang.String"
-  description: "HTTP method to use when contacting the rest endpoint. Examples include\
-    \ {@code GET, POST}, etc."
-  name: "cas.audit.rest.method"
-  defaultValue: "GET"
-- required: true
-  module: "cas-server-core-audit"
-  owner: "org.apereo.cas.configuration.model.core.audit.AuditRestProperties"
-  type: "java.lang.String"
-  description: "The endpoint URL to contact and retrieve attributes."
-  name: "cas.audit.rest.url"
-  defaultValue: ""
-- module: "cas-server-core-audit"
   owner: "org.apereo.cas.configuration.model.core.audit.AuditSlf4jLogProperties"
   type: "java.lang.String"
   description: "The audit format to use in the logs. Accepted value are: DEFAULT,\

@@ -63,8 +63,8 @@
   description: "Cookie name. Constructs a cookie with a specified name and value.\n\
     The name must conform to RFC 2965. That means it can contain only ASCII alphanumeric\
     \ characters and\ncannot contain commas, semicolons, or white space or begin with\
-    \ a $ character.\nThe cookie's name cannot be changed after creation.\nBy default,\
-    \ cookies are created according to the RFC 2965 cookie specification."
+    \ a {@code $} character.\nThe cookie's name cannot be changed after creation.\n\
+    By default, cookies are created according to the RFC 2965 cookie specification."
   name: "cas.authn.wsfed[].cookie.name"
   defaultValue: ""
 - module: "cas-server-support-wsfederation-webflow"
@@ -91,15 +91,15 @@
   owner: "org.apereo.cas.configuration.model.support.wsfed.WsFederationDelegatedCookieProperties"
   type: "java.lang.String"
   description: "If a cookie is only intended to be accessed in a first party context,\
-    \ the\ndeveloper has the option to apply one of settings\n{@code SameSite=Lax\
-    \ or SameSite=Strict or SameSite=None} to prevent external access.\n<p>\nTo safeguard\
-    \ more websites and their users, the new secure-by-default model\nassumes all\
-    \ cookies should be protected from external access unless otherwise\nspecified.\
-    \ Developers must use a new cookie setting, {@code SameSite=None}, to designate\n\
-    cookies for cross-site access. When the {@code SameSite=None} attribute is present,\
-    \ an additional\n{@code Secure} attribute is used so cross-site cookies can only\
-    \ be accessed over HTTPS\nconnections.\n</p>\n<p>Accepted values are: {@code Lax},\
-    \ {@code Strict},  {@code None}.</p>"
+    \ the\ndeveloper has the option to apply one of settings\n{@code SameSite=Lax}\
+    \ or {@code SameSite=Strict} or {@code SameSite=None} to prevent external access.\n\
+    <p>\nTo safeguard more websites and their users, the new secure-by-default model\n\
+    assumes all cookies should be protected from external access unless otherwise\n\
+    specified. Developers must use a new cookie setting, {@code SameSite=None}, to\
+    \ designate\ncookies for cross-site access. When the {@code SameSite=None} attribute\
+    \ is present, an additional\n{@code Secure} attribute is used so cross-site cookies\
+    \ can only be accessed over HTTPS\nconnections.\n</p>\n<p>Accepted values are:\
+    \ {@code Lax}, {@code Strict},  {@code None}.</p>"
   name: "cas.authn.wsfed[].cookie.same-site-policy"
   defaultValue: ""
 - module: "cas-server-support-wsfederation-webflow"

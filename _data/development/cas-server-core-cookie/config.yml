@@ -49,8 +49,8 @@
   description: "Cookie name. Constructs a cookie with a specified name and value.\
     \ The name must conform to RFC 2965. That means it can contain only ASCII alphanumeric\
     \ characters and cannot contain commas, semicolons, or white space or begin with\
-    \ a $ character. The cookie's name cannot be changed after creation. By default,\
-    \ cookies are created according to the RFC 2965 cookie specification."
+    \ a {@code $} character. The cookie's name cannot be changed after creation. By\
+    \ default, cookies are created according to the RFC 2965 cookie specification."
   name: "cas.tgc.name"
   defaultValue: ""
 - module: "cas-server-core-cookie"
@@ -83,15 +83,15 @@
   owner: "org.apereo.cas.configuration.model.support.cookie.TicketGrantingCookieProperties"
   type: "java.lang.String"
   description: "If a cookie is only intended to be accessed in a first party context,\
-    \ the developer has the option to apply one of settings {@code SameSite=Lax or\
-    \ SameSite=Strict or SameSite=None} to prevent external access. <p> To safeguard\
-    \ more websites and their users, the new secure-by-default model assumes all cookies\
-    \ should be protected from external access unless otherwise specified. Developers\
-    \ must use a new cookie setting, {@code SameSite=None}, to designate cookies for\
-    \ cross-site access. When the {@code SameSite=None} attribute is present, an additional\
-    \ {@code Secure} attribute is used so cross-site cookies can only be accessed\
-    \ over HTTPS connections. </p> <p>Accepted values are: {@code Lax}, {@code Strict},\
-    \  {@code None}.</p>"
+    \ the developer has the option to apply one of settings {@code SameSite=Lax} or\
+    \ {@code SameSite=Strict} or {@code SameSite=None} to prevent external access.\
+    \ <p> To safeguard more websites and their users, the new secure-by-default model\
+    \ assumes all cookies should be protected from external access unless otherwise\
+    \ specified. Developers must use a new cookie setting, {@code SameSite=None},\
+    \ to designate cookies for cross-site access. When the {@code SameSite=None} attribute\
+    \ is present, an additional {@code Secure} attribute is used so cross-site cookies\
+    \ can only be accessed over HTTPS connections. </p> <p>Accepted values are: {@code\
+    \ Lax}, {@code Strict},  {@code None}.</p>"
   name: "cas.tgc.same-site-policy"
   defaultValue: ""
 - module: "cas-server-core-cookie"
@@ -151,8 +151,8 @@
   description: "Cookie name. Constructs a cookie with a specified name and value.\
     \ The name must conform to RFC 2965. That means it can contain only ASCII alphanumeric\
     \ characters and cannot contain commas, semicolons, or white space or begin with\
-    \ a $ character. The cookie's name cannot be changed after creation. By default,\
-    \ cookies are created according to the RFC 2965 cookie specification."
+    \ a {@code $} character. The cookie's name cannot be changed after creation. By\
+    \ default, cookies are created according to the RFC 2965 cookie specification."
   name: "cas.warning-cookie.name"
   defaultValue: ""
 - module: "cas-server-core-cookie"
@@ -179,15 +179,15 @@
   owner: "org.apereo.cas.configuration.model.support.cookie.WarningCookieProperties"
   type: "java.lang.String"
   description: "If a cookie is only intended to be accessed in a first party context,\
-    \ the developer has the option to apply one of settings {@code SameSite=Lax or\
-    \ SameSite=Strict or SameSite=None} to prevent external access. <p> To safeguard\
-    \ more websites and their users, the new secure-by-default model assumes all cookies\
-    \ should be protected from external access unless otherwise specified. Developers\
-    \ must use a new cookie setting, {@code SameSite=None}, to designate cookies for\
-    \ cross-site access. When the {@code SameSite=None} attribute is present, an additional\
-    \ {@code Secure} attribute is used so cross-site cookies can only be accessed\
-    \ over HTTPS connections. </p> <p>Accepted values are: {@code Lax}, {@code Strict},\
-    \  {@code None}.</p>"
+    \ the developer has the option to apply one of settings {@code SameSite=Lax} or\
+    \ {@code SameSite=Strict} or {@code SameSite=None} to prevent external access.\
+    \ <p> To safeguard more websites and their users, the new secure-by-default model\
+    \ assumes all cookies should be protected from external access unless otherwise\
+    \ specified. Developers must use a new cookie setting, {@code SameSite=None},\
+    \ to designate cookies for cross-site access. When the {@code SameSite=None} attribute\
+    \ is present, an additional {@code Secure} attribute is used so cross-site cookies\
+    \ can only be accessed over HTTPS connections. </p> <p>Accepted values are: {@code\
+    \ Lax}, {@code Strict},  {@code None}.</p>"
   name: "cas.warning-cookie.same-site-policy"
   defaultValue: ""
 - module: "cas-server-core-cookie"
