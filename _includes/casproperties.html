@@ -106,20 +106,20 @@
                             {% endif %}
                         {% endfor %}
 
-                        {% if config.name contains ".crypto" %}
-                            {% assign signingEncryptionEnabled = true %}
-                        {% endif %}
-                        {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
-                            {% assign rdbmsSettingsFound = true %}
-                        {% endif %}
-                        {% if config.name contains ".mail" %}
-                            {% assign emailSettingsFound = true %}
-                        {% endif %}
-                        {% if config.name contains ".ldap" %}
-                            {% assign ldapSettingsFound = true %}
-                        {% endif %}
-
                         {% unless foundExcluded == true %}
+                            {% if config.name contains ".crypto" %}
+                                {% assign signingEncryptionEnabled = true %}
+                            {% endif %}
+                            {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                                {% assign rdbmsSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".mail" %}
+                                {% assign emailSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".ldap" %}
+                                {% assign ldapSettingsFound = true %}
+                            {% endif %}
+
                             {% assign requiredSettingsFound = true %}
                             {% include casproperty.html 
                                 name=config.name 
@@ -150,20 +150,20 @@
                                 {% endif %}
                             {% endfor %}
 
-                            {% if config.name contains ".crypto" %}
-                                {% assign signingEncryptionEnabled = true %}
-                            {% endif %}
-                            {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
-                                {% assign rdbmsSettingsFound = true %}
-                            {% endif %}
-                            {% if config.name contains ".mail" %}
-                                {% assign emailSettingsFound = true %}
-                            {% endif %}
-                            {% if config.name contains ".ldap" %}
-                                {% assign ldapSettingsFound = true %}
-                            {% endif %}
-
                             {% unless foundExcluded == true %}
+                                {% if config.name contains ".crypto" %}
+                                    {% assign signingEncryptionEnabled = true %}
+                                {% endif %}
+                                {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                                    {% assign rdbmsSettingsFound = true %}
+                                {% endif %}
+                                {% if config.name contains ".mail" %}
+                                    {% assign emailSettingsFound = true %}
+                                {% endif %}
+                                {% if config.name contains ".ldap" %}
+                                    {% assign ldapSettingsFound = true %}
+                                {% endif %}
+
                                 {% assign requiredSettingsFound = true %}
                                 {% include casproperty.html 
                                     name=config.name 
@@ -227,20 +227,20 @@
                             {% endif %}
                         {% endfor %}
 
-                        {% if config.name contains ".crypto" %}
-                            {% assign signingEncryptionEnabled = true %}
-                        {% endif %}
-                        {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
-                            {% assign rdbmsSettingsFound = true %}
-                        {% endif %}
-                        {% if config.name contains ".mail" %}
-                            {% assign emailSettingsFound = true %}
-                        {% endif %}
-                        {% if config.name contains ".ldap" %}
-                            {% assign ldapSettingsFound = true %}
-                        {% endif %}
-
                         {% unless foundExcluded == true %}
+                            {% if config.name contains ".crypto" %}
+                                {% assign signingEncryptionEnabled = true %}
+                            {% endif %}
+                            {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                                {% assign rdbmsSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".mail" %}
+                                {% assign emailSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".ldap" %}
+                                {% assign ldapSettingsFound = true %}
+                            {% endif %}
+
                             {% assign optionalSettingsFound = true %}
                             {% include casproperty.html 
                                 name=config.name 
@@ -273,21 +273,21 @@
                                     {% endif %}
                                 {% endfor %}
     
-                                {% if config.name contains ".crypto" %}
-                                    {% assign signingEncryptionEnabled = true %}
-                                {% endif %}
-
-                                {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
-                                    {% assign rdbmsSettingsFound = true %}
-                                {% endif %}
-                                {% if config.name contains ".mail" %}
-                                    {% assign emailSettingsFound = true %}
-                                {% endif %}
-                                {% if config.name contains ".ldap" %}
-                                    {% assign ldapSettingsFound = true %}
-                                {% endif %}
-
                                 {% unless foundExcluded == true %}
+                                    {% if config.name contains ".crypto" %}
+                                        {% assign signingEncryptionEnabled = true %}
+                                    {% endif %}
+
+                                    {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                                        {% assign rdbmsSettingsFound = true %}
+                                    {% endif %}
+                                    {% if config.name contains ".mail" %}
+                                        {% assign emailSettingsFound = true %}
+                                    {% endif %}
+                                    {% if config.name contains ".ldap" %}
+                                        {% assign ldapSettingsFound = true %}
+                                    {% endif %}
+
                                     {% assign optionalSettingsFound = true %}
                                     {% include casproperty.html 
                                         name=config.name 
