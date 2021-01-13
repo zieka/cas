@@ -1,5 +1,6 @@
 ---
-- module: "cas-server-support-gauth-ldap"
+- required: true
+  module: "cas-server-support-gauth-ldap"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.LdapGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"
   description: "Name of LDAP attribute that holds GAuth account/credential as JSON."
