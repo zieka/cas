@@ -110,7 +110,7 @@
                             {% if config.name contains ".crypto" %}
                                 {% assign signingEncryptionEnabled = true %}
                             {% endif %}
-                            {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                            {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
                                 {% assign rdbmsSettingsFound = true %}
                             {% endif %}
                             {% if config.name contains ".mail" %}
@@ -154,7 +154,7 @@
                                 {% if config.name contains ".crypto" %}
                                     {% assign signingEncryptionEnabled = true %}
                                 {% endif %}
-                                {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                                {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
                                     {% assign rdbmsSettingsFound = true %}
                                 {% endif %}
                                 {% if config.name contains ".mail" %}
@@ -231,7 +231,7 @@
                             {% if config.name contains ".crypto" %}
                                 {% assign signingEncryptionEnabled = true %}
                             {% endif %}
-                            {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                            {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
                                 {% assign rdbmsSettingsFound = true %}
                             {% endif %}
                             {% if config.name contains ".mail" %}
@@ -278,7 +278,7 @@
                                         {% assign signingEncryptionEnabled = true %}
                                     {% endif %}
 
-                                    {% if config.name contains ".jpa" || config.name contains ".jdbc" %}
+                                    {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
                                         {% assign rdbmsSettingsFound = true %}
                                     {% endif %}
                                     {% if config.name contains ".mail" %}
