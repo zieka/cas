@@ -12,7 +12,7 @@
 {% assign thirdPartyExactMatch = include.thirdPartyExactMatch | split: "," %}
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
 
-{% assign randomNumber = include.properties | default: include.modules | remove: "." | remove: "," | remove: "[]" %}
+{% assign randomNumber = include.properties | default: include.modules | remove: "-" | remove: "." | remove: "," | remove: "[]" %}
 
 <p>The following settings and properties are available from the CAS configuration catalog:</p>
 
