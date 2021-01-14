@@ -53,13 +53,14 @@
 - module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatAjpProperties"
   type: "java.lang.Boolean"
-  description: "Set to true if you want calls to request.getRemoteHost() to perform\
-    \ DNS lookups in order to return the actual host name of the remote client. Set\
-    \ to false to skip the DNS lookup and return the IP address in String form instead\
-    \ (thereby improving performance). By default, DNS lookups are disabled."
+  description: "Set to true if you want calls to {@code request.getRemoteHost()} to\
+    \ perform DNS lookups in order to return the actual host name of the remote client.\
+    \ Set to false to skip the DNS lookup and return the IP address in String form\
+    \ instead (thereby improving performance). By default, DNS lookups are disabled."
   name: "cas.server.tomcat.ajp.enable-lookups"
   defaultValue: false
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatAjpProperties"
   type: "java.lang.Boolean"
   description: "Enable AJP support in CAS for the embedded Apache Tomcat container."
@@ -111,8 +112,8 @@
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatAjpProperties"
   type: "java.lang.String"
   description: "Set this attribute to the name of the protocol you wish to have returned\
-    \ by calls to request.getScheme(). For example, you would set this attribute to\
-    \ \"https\" for an SSL Connector."
+    \ by calls to {@code request.getScheme()}. For example, you would set this attribute\
+    \ to {@code https} for an SSL Connector."
   name: "cas.server.tomcat.ajp.scheme"
   defaultValue: "http"
 - module: "cas-server-webapp-tomcat"
@@ -129,7 +130,8 @@
     \ on an SSL Connector). The default value is false."
   name: "cas.server.tomcat.ajp.secure"
   defaultValue: false
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatApachePortableRuntimeProperties"
   type: "java.lang.Boolean"
   description: "Enable APR mode."
@@ -218,7 +220,8 @@
   description: "List of certificates managed by the ssl host config."
   name: "cas.server.tomcat.apr.ssl-host-config.certificates"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheSslHostConfigCertificateProperties"
   type: "java.lang.String"
   description: "Name of the file that contains the certificate chain associated with\
@@ -228,7 +231,8 @@
     \ use the same certificate chain."
   name: "cas.server.tomcat.apr.ssl-host-config.certificates[].certificate-chain-file"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheSslHostConfigCertificateProperties"
   type: "java.lang.String"
   description: "Name of the file that contains the server certificate. The format\
@@ -239,7 +243,8 @@
     \ file."
   name: "cas.server.tomcat.apr.ssl-host-config.certificates[].certificate-file"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheSslHostConfigCertificateProperties"
   type: "java.lang.String"
   description: "Name of the file that contains the server private key. The format\
@@ -247,7 +252,8 @@
     \ case both\ncertificate and private key have to be in this file (NOT RECOMMENDED)."
   name: "cas.server.tomcat.apr.ssl-host-config.certificates[].certificate-key-file"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheSslHostConfigCertificateProperties"
   type: "java.lang.String"
   description: "The password used to access the private key associated with the\n\
@@ -265,7 +271,8 @@
     \ must have a unique type."
   name: "cas.server.tomcat.apr.ssl-host-config.certificates[].type"
   defaultValue: "UNDEFINED"
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheSslHostConfigProperties"
   type: "java.lang.Boolean"
   description: "Enable this host config."
@@ -356,7 +363,8 @@
     \ access to the resources protected by this security constraint."
   name: "cas.server.tomcat.basic-authn.auth-roles"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatBasicAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Enable the SSL valve for apache tomcat."
@@ -393,7 +401,7 @@
     \ name or querying kubernetes API. See code or Tomcat documentation for the environment\
     \ variables that are used. <ul> <li> {@code kubernetes} will use org.apache.catalina.tribes.KubernetesMembershipProvider</li>\
     \ <li> {@code dns} will use org.apache.catalina.tribes.DNSMembershipProvider</li>\
-    \ <li> class implementing {@code org.apache.catalina.tribes.MembershipProvider}</li>\
+    \ <li> Class implementing {@code org.apache.catalina.tribes.MembershipProvider}</li>\
     \ </ul>"
   name: "cas.server.tomcat.clustering.cloud-membership-provider"
   defaultValue: "kubernetes"
@@ -408,10 +416,11 @@
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatClusteringProperties"
   type: "java.lang.String"
   description: "Accepted values are: {@code DEFAULT, CLOUD}. Type of clustering to\
-    \ use, set to {@code CLOUD} if using CloudMembershipService."
+    \ use, set to {@code CLOUD} if using {@code CloudMembershipService}."
   name: "cas.server.tomcat.clustering.clustering-type"
   defaultValue: "DEFAULT"
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatClusteringProperties"
   type: "java.lang.Boolean"
   description: "Enable tomcat session clustering."
@@ -503,10 +512,10 @@
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatClusteringProperties"
   type: "java.lang.Boolean"
   description: "In case of a network failure, Java multicast socket don't transparently\
-    \ fail over, instead the socket will continuously throw IOException upon each\
-    \ receive request. When recoveryEnabled is set to true, this will close the multicast\
-    \ socket and open a new socket with the same properties as defined above. The\
-    \ default is true."
+    \ fail over, instead the socket will continuously throw {@code IOException} upon\
+    \ each receive request. When recovery-enabled is set to true, this will close\
+    \ the multicast socket and open a new socket with the same properties as defined\
+    \ above. The default is true."
   name: "cas.server.tomcat.clustering.membership-recovery-enabled"
   defaultValue: true
 - module: "cas-server-webapp-tomcat"
@@ -536,10 +545,11 @@
 - module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatClusteringProperties"
   type: "java.lang.Integer"
-  description: "The listen port for incoming data. The default value is 4000. To avoid\
-    \ port conflicts the receiver will automatically bind to a free port. So for example,\
-    \ if port is 4000, and autoBind is set to 10, then the receiver will open up a\
-    \ server socket on the first available port in the range 4000-4009."
+  description: "The listen port for incoming data. The default value is {@code 4000}.\
+    \ To avoid port conflicts the receiver will automatically bind to a free port.\
+    \ So for example, if port is {@code 4000}, and autoBind is set to 10, then the\
+    \ receiver will open up a server socket on the first available port in the range\
+    \ 4000-4009."
   name: "cas.server.tomcat.clustering.receiver-port"
   defaultValue: 4000
 - module: "cas-server-webapp-tomcat"
@@ -551,7 +561,8 @@
     \ value is a very high 5000 milliseconds."
   name: "cas.server.tomcat.clustering.receiver-timeout"
   defaultValue: 5000
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatCsrfProperties"
   type: "java.lang.Boolean"
   description: "Enable filter."
@@ -563,7 +574,8 @@
   description: "Directory name for extended log."
   name: "cas.server.tomcat.ext-access-log.directory"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatExtendedAccessLogProperties"
   type: "java.lang.Boolean"
   description: "Flag to indicate whether extended log facility is enabled."
@@ -593,7 +605,8 @@
   description: "Custom attributes to set on the proxy connector."
   name: "cas.server.tomcat.http-proxy.attributes"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatHttpProxyProperties"
   type: "java.lang.Boolean"
   description: "Enable the container running in proxy mode."
@@ -641,7 +654,8 @@
   description: "Additional attributes to be set on the connector."
   name: "cas.server.tomcat.http.attributes"
   defaultValue: ""
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatHttpProperties"
   type: "java.lang.Boolean"
   description: "Enable a separate port for the embedded container for HTTP access."
@@ -677,13 +691,15 @@
     \ request acceptance is governed solely by the accept attribute."
   name: "cas.server.tomcat.remote-addr.denied-client-ip-address-regex"
   defaultValue: ".+"
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatRemoteAddressProperties"
   type: "java.lang.Boolean"
   description: "Enable filter."
   name: "cas.server.tomcat.remote-addr.enabled"
   defaultValue: false
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatRewriteValveProperties"
   type: "org.springframework.core.io.Resource"
   description: "Location of a rewrite valve specifically by Apache Tomcat to activate\
@@ -773,7 +789,8 @@
     \ invoke this method with the values (0, 1, 2)."
   name: "cas.server.tomcat.socket.performance-latency"
   defaultValue: -1
-- module: "cas-server-webapp-tomcat"
+- required: true
+  module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatSslValveProperties"
   type: "java.lang.Boolean"
   description: "Enable the SSL valve for apache tomcat."

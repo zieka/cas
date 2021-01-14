@@ -61,7 +61,8 @@
     \ name."
   name: "cas.http-web-request.cors.allow-origins"
   defaultValue: ""
-- module: "cas-server-core-web"
+- required: true
+  module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.security.HttpCorsRequestProperties"
   type: "java.lang.Boolean"
   description: "Whether CORS should be enabled for http requests."
@@ -103,7 +104,8 @@
     \ one or more directives. Multiple directives are separated with a semicolon."
   name: "cas.http-web-request.header.content-security-policy"
   defaultValue: ""
-- module: "cas-server-core-web"
+- required: true
+  module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.security.HttpHeadersRequestProperties"
   type: "java.lang.Boolean"
   description: "Allow CAS to inject and enforce http security headers via an http\
