@@ -16,7 +16,7 @@
 
 <p>The following settings and properties are available from the CAS configuration catalog:</p>
 
-<ul class='nav nav-pills'>
+<ul class='nav nav-pills' id="navPillsMenus{{ randomNumber }}">
     <li class='nav-item'>
         <a class='nav-link active' 
             id="linkRequiredProperties{{ randomNumber }}" 
@@ -312,6 +312,12 @@
 
 {% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
 <div class='tab-pane fade in' id='thirdPartyProperties{{ randomNumber }}'>
+    <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
+    <sub>
+        The configuration settings listed below are tagged as <i>Third Party</i> in the CAS configuration metadata. This flag indicates that the configuration setting is not controlled, owned or managed by the CAS ecosystem, and affects functionality that is offered by a third-party library, such as Spring Boot or Spring Cloud to CAS. For additional info, you might have to visit the third-party source to find more details.
+    </sub>
+    <br><p />
+
     <table class="properties" id='tableThirdPartyProperties{{ randomNumber }}'>
         <tbody>
 
@@ -439,70 +445,45 @@
     </ul>
 </div>
 
-{% unless signingEncryptionEnabled %}
-    <script>
-        setTimeout(function(){ 
-            let elem = document.getElementById("navSigningEncryptionProperties{{ randomNumber }}");
-            elem.style.display="none";
-         }, 5);
-    </script>
-{% endunless %}
 
-{% unless optionalSettingsFound %}
-    <script>
-        setTimeout(function(){ 
-            let elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
-            elem.style.display="none";
-         }, 5);
-    </script>
-{% endunless %}
+<script>
+    setTimeout(function(){ 
+        var elem = null;
 
-{% unless rdbmsSettingsFound %}
-    <script>
-        setTimeout(function(){ 
-            let elem = document.getElementById("linkRdbms{{ randomNumber }}");
+        {% unless signingEncryptionEnabled %}
+            elem = document.getElementById("linkSigningEncryption{{ randomNumber }}");
             elem.style.display="none";
-         }, 5);
-    </script>
-{% endunless %}
+        {% endunless %}
 
-{% unless emailSettingsFound %}
-    <script>
-        setTimeout(function(){ 
-            let elem = document.getElementById("linkEmail{{ randomNumber }}");
-            elem.style.display="none";
-         }, 5);
-    </script>
-{% endunless %}
-
-{% unless ldapSettingsFound %}
-    <script>
-        setTimeout(function(){ 
-            let elem = document.getElementById("linkLdap{{ randomNumber }}");
-            elem.style.display="none";
-         }, 5);
-    </script>
-{% endunless %}
-
-{% unless requiredSettingsFound %}
-    <script>
-        setTimeout(function(){ 
-            var elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
-            elem.style.display="none";
-             
+        {% unless optionalSettingsFound %}
             elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
-            elem.click();
-         }, 100);
-    </script>
-{% endunless %}
+            elem.style.display="none";
+        {% endunless %}
 
-{% if requiredSettingsFound == false and optionalSettingsFound == false %}
-    <script>
-        setTimeout(function(){ 
-            elem = document.getElementById("linkThirdPartyProperties{{ randomNumber }}");
-            elem.click();
-         }, 150);
-    </script>
-{% endif %}
+        {% unless rdbmsSettingsFound %}
+            elem = document.getElementById("linkRdbms{{ randomNumber }}");
+            elem.style.display="none";
+        {% endunless %}
+
+        {% unless emailSettingsFound %}
+            elem = document.getElementById("linkEmail{{ randomNumber }}");
+            elem.style.display="none";
+        {% endunless %}
+
+        {% unless ldapSettingsFound %}
+            elem = document.getElementById("linkLdap{{ randomNumber }}");
+            elem.style.display="none";
+        {% endunless %}
+
+        {% unless requiredSettingsFound %}
+            elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
+            elem.style.display="none";
+        {% endunless %}
+
+        $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
+
+        }, 
+        500);
+</script>
 
 </div>
