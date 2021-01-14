@@ -101,12 +101,6 @@
   description: "Login password of the redis server."
   name: "cas.authn.redis.password"
   defaultValue: ""
-- module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
-  type: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
-  description: "Redis connection pool settings."
-  name: "cas.authn.redis.pool"
-  defaultValue: ""
 - required: true
   module: "cas-server-support-redis-authentication"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"

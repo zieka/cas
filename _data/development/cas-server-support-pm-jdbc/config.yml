@@ -1,6 +1,6 @@
 ---
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.Boolean"
   description: "The default auto-commit behavior of connections in the pool. Determined\
     \ whether queries such as update/insert should be immediately executed without\
@@ -8,14 +8,14 @@
   name: "cas.authn.pm.jdbc.autocommit"
   defaultValue: false
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.Integer"
   description: "A non-zero value enables use of JDBC2 batch updates by Hibernate.\
     \ e.g. recommended values between 5 and 30."
   name: "cas.authn.pm.jdbc.batch-size"
   defaultValue: 5
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Attempts to do a JNDI data source look up for the data source name\
     \ specified. Will attempt to locate the data source object as is, or will try\
@@ -24,14 +24,14 @@
   name: "cas.authn.pm.jdbc.data-source-name"
   defaultValue: ""
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether JNDI data sources retrieved should be proxied or\
     \ returned back verbatim."
   name: "cas.authn.pm.jdbc.data-source-proxy"
   defaultValue: false
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
     \ schema. By default, creates and drops the schema automatically when a session\
@@ -39,21 +39,21 @@
   name: "cas.authn.pm.jdbc.ddl-auto"
   defaultValue: "update"
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Qualifies unqualified table names with the given catalog in generated\
     \ SQL."
   name: "cas.authn.pm.jdbc.default-catalog"
   defaultValue: ""
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Qualify unqualified table names with the given schema/tablespace in\
     \ generated SQL."
   name: "cas.authn.pm.jdbc.default-schema"
   defaultValue: ""
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "The database dialect is a configuration setting for platform independent\
     \ software (JPA, Hibernate, etc) which allows such software to translate its generic\
@@ -62,13 +62,13 @@
   defaultValue: "org.hibernate.dialect.HSQLDialect"
 - required: true
   module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "The JDBC driver used to connect to the database."
   name: "cas.authn.pm.jdbc.driver-class"
   defaultValue: "org.hsqldb.jdbcDriver"
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.Long"
   description: "Set the pool initialization failure timeout. <ul> <li>Any value greater\
     \ than zero will be treated as a timeout for pool initialization. The calling\
@@ -94,20 +94,20 @@
   name: "cas.authn.pm.jdbc.fail-fast-timeout"
   defaultValue: 1
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "The SQL query to be executed to test the validity of connections."
   name: "cas.authn.pm.jdbc.health-query"
   defaultValue: ""
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Controls the maximum amount of time that a connection is allowed to\
     \ sit idle in the pool."
   name: "cas.authn.pm.jdbc.idle-timeout"
   defaultValue: "PT10M"
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.Boolean"
   description: "This property determines whether data source isolates internal pool\
     \ queries, such as the connection alive test, in their own transaction. <p> Since\
@@ -117,13 +117,13 @@
   name: "cas.authn.pm.jdbc.isolate-internal-queries"
   defaultValue: false
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Defines the isolation level for transactions. @see org.springframework.transaction.TransactionDefinition"
   name: "cas.authn.pm.jdbc.isolation-level-name"
   defaultValue: "ISOLATION_READ_COMMITTED"
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.Integer"
   description: "Controls the amount of time that a connection can be out of the pool\
     \ before a message is logged indicating a possible connection leak."
@@ -131,70 +131,74 @@
   defaultValue: 3000
 - required: true
   module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "The database connection password."
   name: "cas.authn.pm.jdbc.password"
   defaultValue: ""
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Fully-qualified name of the class that can control the physical naming\
     \ strategy of hibernate."
   name: "cas.authn.pm.jdbc.physical-naming-strategy-class-name"
   defaultValue: "org.apereo.cas.hibernate.CasHibernatePhysicalNamingStrategy"
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "Defines the propagation behavior for transactions. @see org.springframework.transaction.TransactionDefinition"
   name: "cas.authn.pm.jdbc.propagation-behavior-name"
   defaultValue: "PROPAGATION_REQUIRED"
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
   description: "Additional settings provided by Hibernate in form of key-value pairs."
   name: "cas.authn.pm.jdbc.properties"
   defaultValue: ""
-- module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+- required: true
+  module: "cas-server-support-pm-jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "SQL query to change the password and update."
   name: "cas.authn.pm.jdbc.sql-change-password"
   defaultValue: ""
-- module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+- required: true
+  module: "cas-server-support-pm-jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "SQL query to locate the user email address."
   name: "cas.authn.pm.jdbc.sql-find-email"
   defaultValue: ""
-- module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+- required: true
+  module: "cas-server-support-pm-jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "SQL query to locate the user phone number."
   name: "cas.authn.pm.jdbc.sql-find-phone"
   defaultValue: ""
-- module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+- required: true
+  module: "cas-server-support-pm-jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "SQL query to locate the user via email."
   name: "cas.authn.pm.jdbc.sql-find-user"
   defaultValue: ""
 - module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "SQL query to locate security questions for the account, if any."
   name: "cas.authn.pm.jdbc.sql-security-questions"
   defaultValue: ""
 - required: true
   module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "The database connection URL."
   name: "cas.authn.pm.jdbc.url"
   defaultValue: "jdbc:hsqldb:mem:cas-hsql-database"
 - required: true
   module: "cas-server-support-pm-jdbc"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties.Jdbc"
+  owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"
   description: "The database user. <p> The database user must have sufficient permissions\
     \ to be able to handle schema changes and updates, when needed."

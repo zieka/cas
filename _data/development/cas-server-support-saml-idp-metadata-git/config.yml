@@ -1,11 +1,13 @@
 ---
-- module: "cas-server-support-saml-idp-metadata-git"
+- required: true
+  module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.String"
   description: "The branch to checkout and activate."
   name: "cas.authn.saml-idp.metadata.git.active-branch"
   defaultValue: "master"
-- module: "cas-server-support-saml-idp-metadata-git"
+- required: true
+  module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.String"
   description: "If the repository is to be cloned, this will allow the list of branches\
@@ -45,7 +47,8 @@
   description: "Decide whether changes should be pushed back into the remote repository."
   name: "cas.authn.saml-idp.metadata.git.push-changes"
   defaultValue: false
-- module: "cas-server-support-saml-idp-metadata-git"
+- required: true
+  module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.String"
   description: "The address of the git repository. Could be a URL or a file-system\

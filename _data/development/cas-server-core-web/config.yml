@@ -333,17 +333,17 @@
     \ Locale if no files for a specific Locale have been found. If this is turned\
     \ off, the only fallback will be the default file (e.g. \"messages.properties\"\
     \ for basename \"messages\"). Falling back to the system Locale is the default\
-    \ behavior of java.util.ResourceBundle. However, this is often not desirable in\
-    \ an application server environment, where the system Locale is not relevant to\
-    \ the application at all: set this flag to \"false\" in such a scenario."
+    \ behavior of {@link java.util.ResourceBundle}. However, this is often not desirable\
+    \ in an application server environment, where the system Locale is not relevant\
+    \ to the application at all: set this flag to {@code false} in such a scenario."
   name: "cas.message-bundle.fallback-system-locale"
   defaultValue: false
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.MessageBundleProperties"
   type: "java.lang.Boolean"
   description: "Flag that controls whether to use code message. Set whether to use\
-    \ the message code as default message instead of throwing a NoSuchMessageException.\
-    \ Useful for development and debugging. Note: In case of a MessageSourceResolvable\
+    \ the message code as default message instead of throwing a {@code NoSuchMessageException}.\
+    \ Useful for development and debugging. Note: In case of a {@code MessageSourceResolvable}\
     \ with multiple codes (like a FieldError) and a MessageSource that has a parent\
     \ MessageSource, do not activate \"useCodeAsDefaultMessage\" in the parent: Else,\
     \ you'll get the first code returned as message by the parent, without attempts\

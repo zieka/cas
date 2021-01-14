@@ -20,12 +20,6 @@
   description: "Login password of the redis server."
   name: "cas.service-registry.redis.password"
   defaultValue: ""
-- module: "cas-server-support-redis-service-registry"
-  owner: "org.apereo.cas.configuration.model.support.redis.RedisServiceRegistryProperties"
-  type: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
-  description: "Redis connection pool settings."
-  name: "cas.service-registry.redis.pool"
-  defaultValue: ""
 - required: true
   module: "cas-server-support-redis-service-registry"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisServiceRegistryProperties"

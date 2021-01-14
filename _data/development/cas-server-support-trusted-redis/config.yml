@@ -20,12 +20,6 @@
   description: "Login password of the redis server."
   name: "cas.authn.mfa.trusted.redis.password"
   defaultValue: ""
-- module: "cas-server-support-trusted-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
-  type: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
-  description: "Redis connection pool settings."
-  name: "cas.authn.mfa.trusted.redis.pool"
-  defaultValue: ""
 - required: true
   module: "cas-server-support-trusted-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"

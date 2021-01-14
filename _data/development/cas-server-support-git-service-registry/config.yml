@@ -1,11 +1,13 @@
 ---
-- module: "cas-server-support-git-service-registry"
+- required: true
+  module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"
   description: "The branch to checkout and activate."
   name: "cas.service-registry.git.active-branch"
   defaultValue: "master"
-- module: "cas-server-support-git-service-registry"
+- required: true
+  module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"
   description: "If the repository is to be cloned, this will allow the list of branches\
@@ -46,7 +48,8 @@
   description: "Decide whether changes should be pushed back into the remote repository."
   name: "cas.service-registry.git.push-changes"
   defaultValue: false
-- module: "cas-server-support-git-service-registry"
+- required: true
+  module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"
   description: "The address of the git repository. Could be a URL or a file-system\

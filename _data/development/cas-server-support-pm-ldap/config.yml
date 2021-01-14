@@ -321,7 +321,8 @@
     \ type indicated\nby the underlying Java platform."
   name: "cas.authn.pm.ldap[].trust-store-type"
   defaultValue: ""
-- module: "cas-server-support-pm-ldap"
+- required: true
+  module: "cas-server-support-pm-ldap"
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
   type: "LdapType"
   description: "The specific variant of LDAP\nbased on which update operations will\
@@ -335,7 +336,8 @@
   description: "Whether TLS should be used and enabled when establishing the connection."
   name: "cas.authn.pm.ldap[].use-start-tls"
   defaultValue: ""
-- module: "cas-server-support-pm-ldap"
+- required: true
+  module: "cas-server-support-pm-ldap"
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
   type: "java.lang.String"
   description: "Username attribute required by LDAP."
