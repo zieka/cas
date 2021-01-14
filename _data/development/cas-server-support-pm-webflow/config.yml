@@ -20,6 +20,13 @@
   name: "cas.authn.pm.enabled"
   defaultValue: false
 - module: "cas-server-support-pm-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pm.ForgotUsernamePasswordManagementProperties"
+  type: "java.lang.Boolean"
+  description: "Indicates whether forgot-username feature should activate captcha\
+    \ for ops that start the forgot-username flow."
+  name: "cas.authn.pm.forgot-username.captcha-enabled"
+  defaultValue: false
+- module: "cas-server-support-pm-webflow"
   owner: "org.apereo.cas.configuration.model.support.pm.PasswordHistoryProperties"
   type: "java.lang.Boolean"
   description: "Flag to indicate if password history tracking is enabled."
