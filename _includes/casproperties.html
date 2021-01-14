@@ -9,6 +9,8 @@
 {% assign excludes = include.excludes | split: "," %}
 {% assign properties = include.properties | split: "," %}
 {% assign thirdParty = include.thirdParty | split: "," %}
+{% assign thirdPartyExactMatch = include.thirdPartyExactMatch | split: "," %}
+{% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
 
 {% assign randomNumber = include.properties | default: include.modules | remove: "." | remove: "," | remove: "[]" %}
 
@@ -56,7 +58,7 @@
             href='#ldapProperties{{ randomNumber }}'>LDAP & Active Directory</a>
     </li>
 
-    {% if thirdParty.size > 0 %}
+    {% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
     <li class='nav-item'>
         <a class='nav-link' 
             id="linkThirdPartyProperties{{ randomNumber }}"  
@@ -307,7 +309,8 @@
     </table>
 </div>
 
-{% if thirdParty.size > 0 %}
+
+{% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
 <div class='tab-pane fade in' id='thirdPartyProperties{{ randomNumber }}'>
     <table class="properties" id='tableThirdPartyProperties{{ randomNumber }}'>
         <tbody>
@@ -316,25 +319,67 @@
             {% assign configBlock = cfg[1] %}
 
             {% for config in configBlock %}
-                {% if thirdParty contains config.name %}
 
-                    {% assign foundExcluded = false %}
-                    {% for ex in excludes %}
-                        {% if config.name contains ex %}
-                            {% assign foundExcluded = true %}
-                        {% endif %}
-                    {% endfor %}
+                {% for tp in thirdParty %}
+                    {% if config.name contains tp %}
+                        {% assign foundExcluded = false %}
+                        {% for ex in excludes %}
+                            {% if config.name contains ex %}
+                                {% assign foundExcluded = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% unless foundExcluded == true %}
+                            {% include casproperty.html 
+                                name=config.name 
+                                defaultValue=config.defaultValue 
+                                description=config.description 
+                                deprecationLevel=config.deprecationLevel
+                                deprecationReplacement=config.deprecationReplacement %}
+                        {% endunless %}
+                    {% endif %}
+                {% endfor %}
 
-                    {% unless foundExcluded == true %}
-                        {% include casproperty.html 
-                            name=config.name 
-                            defaultValue=config.defaultValue 
-                            description=config.description 
-                            deprecationLevel=config.deprecationLevel
-                            deprecationReplacement=config.deprecationReplacement %}
-                    {% endunless %}
+                {% for exm in thirdPartyExactMatch %}
+                    {% if config.name == exm %}
+                        {% assign foundExcluded = false %}
+                        {% for ex in excludes %}
+                            {% if config.name contains ex %}
+                                {% assign foundExcluded = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% unless foundExcluded == true %}
+                            {% include casproperty.html 
+                                name=config.name 
+                                defaultValue=config.defaultValue 
+                                description=config.description 
+                                deprecationLevel=config.deprecationLevel
+                                deprecationReplacement=config.deprecationReplacement %}
+                        {% endunless %}
+                    {% endif %}
+                {% endfor %}
 
-                {% endif %}
+                {% for exm in thirdPartyStartsWith %}
+                    {% assign startsWithResults = config.name | split:exm %}
+                
+                    {% if startsWithResults[0].size == 0 %}
+                        {% assign foundExcluded = false %}
+                        {% for ex in excludes %}
+                            {% if config.name contains ex %}
+                                {% assign foundExcluded = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% unless foundExcluded == true %}
+                            {% include casproperty.html 
+                                name=config.name 
+                                defaultValue=config.defaultValue 
+                                description=config.description 
+                                deprecationLevel=config.deprecationLevel
+                                deprecationReplacement=config.deprecationReplacement %}
+                        {% endunless %}
+                    {% endif %}
+
+                {% endfor %}
+
             {% endfor %}
 
         {% endfor %}
@@ -450,5 +495,14 @@
          }, 100);
     </script>
 {% endunless %}
+
+{% if requiredSettingsFound == false and optionalSettingsFound == false %}
+    <script>
+        setTimeout(function(){ 
+            elem = document.getElementById("linkThirdPartyProperties{{ randomNumber }}");
+            elem.click();
+         }, 150);
+    </script>
+{% endif %}
 
 </div>

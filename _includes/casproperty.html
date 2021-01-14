@@ -5,7 +5,7 @@
 <tr>
     <td> 
         <li style="list-style: square">
-            <code>{{ include.name | replace: "[]", "[0]"}}={{ include.defaultValue }}</code>
+            <code class="text-wrap">{{ include.name | replace: "[]", "[0]"}}={{ include.defaultValue }}</code>
         </li>
         <div class="text-wrap small">
             <p> 
@@ -13,6 +13,7 @@
                     | replace: "<p>", "<p/>"
                     | replace: "</p>", "<p/>"
                     | replace: "@code", "<code>"
+                    | replace: "@deprecation", "<code>Deprecation:</code>"
                     | replace: "@link", "<code>"
                     | replace: rbrace2, "</code>"
                     | replace: rbrace, "</code>" 
@@ -25,7 +26,13 @@
 
         {% if include.deprecationLevel.size > 0 %}
             <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
-            <sub>Deprecation status is <code>{{ include.deprecationLevel }}</code> with a replacement setting: <code>{{ include.deprecationReplacement | default: "N/A" }}</code>.</sub>
+            <sub>Deprecation status is <code>{{ include.deprecationLevel }}</code> 
+                {% if include.deprecationReplacement.size > 0 %}
+                    with a replacement setting: <code>{{ include.deprecationReplacement | default: "N/A" }}</code>.
+                {% else %}
+                    without a replacement setting.
+                {% endif %}
+            </sub>
         {% endif %}
         
     </td>
