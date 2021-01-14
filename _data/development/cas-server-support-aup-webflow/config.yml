@@ -1,5 +1,6 @@
 ---
-- module: "cas-server-support-aup-webflow"
+- required: true
+  module: "cas-server-support-aup-webflow"
   owner: "org.apereo.cas.configuration.model.support.aup.AcceptableUsagePolicyProperties"
   type: "java.lang.String"
   description: "AUP attribute to choose in order to determine whether policy has been\
@@ -17,15 +18,10 @@
     \ fetch the policy terms from the relevant message bundles."
   name: "cas.acceptable-usage-policy.aup-policy-terms-attribute-name"
   defaultValue: ""
-- module: "cas-server-support-aup-webflow"
+- required: true
+  module: "cas-server-support-aup-webflow"
   owner: "org.apereo.cas.configuration.model.support.aup.AcceptableUsagePolicyProperties"
   type: "java.lang.Boolean"
   description: "Allows AUP to be turned off on startup."
   name: "cas.acceptable-usage-policy.enabled"
   defaultValue: true
-- module: "cas-server-support-aup-webflow"
-  owner: "org.apereo.cas.configuration.model.support.aup.AcceptableUsagePolicyProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.support.aup.LdapAcceptableUsagePolicyProperties>"
-  description: "Control AUP via LDAP."
-  name: "cas.acceptable-usage-policy.ldap"
-  defaultValue: ""

@@ -81,7 +81,8 @@
     \ LDAP url will be used. </li> </ul>"
   name: "cas.consent.ldap.connection-strategy"
   defaultValue: ""
-- module: "cas-server-consent-support-ldap"
+- required: true
+  module: "cas-server-consent-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.consent.LdapConsentProperties"
   type: "java.lang.String"
   description: "Name of LDAP attribute that holds consent decisions as JSON."
@@ -319,7 +320,8 @@
     \ type indicated by the underlying Java platform."
   name: "cas.consent.ldap.trust-store-type"
   defaultValue: ""
-- module: "cas-server-consent-support-ldap"
+- required: true
+  module: "cas-server-consent-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.consent.LdapConsentProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties$LdapType"
   description: "Type of LDAP directory.GENERIC:Generic ldap type (OpenLDAP, 389ds,\
