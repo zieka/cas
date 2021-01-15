@@ -427,8 +427,7 @@
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "LdapHostnameVerifierOptions"
-  description: "Hostname verification options.\nAccepted values are {@link LdapHostnameVerifierOptions#DEFAULT}\n\
-    and {@link LdapHostnameVerifierOptions#ANY}."
+  description: "Hostname verification options."
   name: "cas.authn.attribute-repository.ldap[].hostname-verifier"
   defaultValue: ""
 - module: "cas-server-support-person-directory"

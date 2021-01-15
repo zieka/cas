@@ -7923,6 +7923,10 @@
   description: "Config file name."
   name: "spring.config.name"
   defaultValue: "application"
+- type: "java.lang.Boolean"
+  description: "Whether to enable configuration data processing legacy mode."
+  name: "spring.config.use-legacy-processing"
+  defaultValue: false
 - type: "java.util.List<java.lang.String>"
   description: "Couchbase nodes (host or IP address) to bootstrap from."
   name: "spring.couchbase.bootstrap-hosts"
