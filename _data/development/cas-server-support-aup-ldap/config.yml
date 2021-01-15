@@ -12,8 +12,7 @@
   description: "Set if multiple Entries are allowed."
   name: "cas.acceptable-usage-policy.ldap[].allow-multiple-entries"
   defaultValue: ""
-- required: true
-  module: "cas-server-support-aup-ldap"
+- module: "cas-server-support-aup-ldap"
   owner: "org.apereo.cas.configuration.model.support.aup.LdapAcceptableUsagePolicyProperties"
   type: "java.lang.String"
   description: "Attribute value that indicates whether AUP has been accepted\nfor\

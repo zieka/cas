@@ -7,7 +7,7 @@
     \ tried and tested during the authentication handler selection phase. The credential\
     \ criteria may be one of the following options:<ul> <li>1) A regular expression\
     \ pattern that is tested against the credential identifier.</li> <li>2) A fully\
-    \ qualified class name of your own design that implements {@code Predicate<Credential>}.</li>\
+    \ qualified class name of your own design that implements {@code Predicate}.</li>\
     \ <li>3) Path to an external Groovy script that implements the same interface.</li>\
     \ </ul>"
   name: "cas.authn.accept.credential-criteria"
@@ -375,30 +375,6 @@
   defaultValue: "MERGE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.support.azuread.AzureActiveDirectoryAttributesProperties>"
-  description: "Retrieve attributes from multiple Microsoft Graph instances."
-  name: "cas.authn.attribute-repository.azure-active-directory"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
-  description: "Retrieve attributes from Couchbase repositories."
-  name: "cas.authn.attribute-repository.couchbase"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.Set<java.lang.String>"
-  description: "CAS provides the ability to release a bundle of principal attributes\
-    \ to all services by default. This bundle is not defined on a per-service basis\
-    \ and is always combined with attributes produced by the specific release policy\
-    \ of the service, such that for instance, you can devise rules to always release\
-    \ {@code givenName} and {@code cn} to every application, and additionally allow\
-    \ other specific principal attributes for only some applications per their attribute\
-    \ release policy."
-  name: "cas.authn.attribute-repository.default-attributes-to-release"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
   type: "java.lang.Integer"
   description: "Indicates the global cache expiration period, once attributes are\
     \ fetched from the underlying attribute repository. A zero or negative value indicates\
@@ -411,40 +387,6 @@
   type: "java.lang.String"
   description: "Expiration caching time unit for attributes."
   name: "cas.authn.attribute-repository.expiration-time-unit"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.GroovyPrincipalAttributesProperties>"
-  description: "Retrieve attributes from multiple Groovy scripts."
-  name: "cas.authn.attribute-repository.groovy"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "org.apereo.cas.configuration.model.core.authentication.GrouperPrincipalAttributesProperties"
-  description: "Use Grouper to fetch principal attributes. You will also need to ensure\
-    \ {@code grouper.client.properties} is available on the classpath (i.e. {@code\
-    \ src/main/resources}) and it contains the following: <p> {@code grouperClient.webService.url\
-    \ = http://192.168.99.100:32768/grouper-ws/servicesRest} {@code grouperClient.webService.login\
-    \ = banderson} {@code grouperClient.webService.password = password}"
-  name: "cas.authn.attribute-repository.grouper"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.JdbcPrincipalAttributesProperties>"
-  description: "Retrieve attributes from multiple JDBC repositories."
-  name: "cas.authn.attribute-repository.jdbc"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.JsonPrincipalAttributesProperties>"
-  description: "Retrieve attributes from multiple JSON file repositories."
-  name: "cas.authn.attribute-repository.json"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties>"
-  description: "Retrieve attributes from multiple LDAP servers."
-  name: "cas.authn.attribute-repository.ldap"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
@@ -484,23 +426,9 @@
   defaultValue: false
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.RestPrincipalAttributesProperties>"
-  description: "Retrieve attributes from multiple REST endpoints."
-  name: "cas.authn.attribute-repository.rest"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.ScriptedPrincipalAttributesProperties>"
   description: "Retrieve attributes from multiple scripted repositories."
   name: "cas.authn.attribute-repository.script"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "org.apereo.cas.configuration.model.core.authentication.StubPrincipalAttributesProperties"
-  description: "Use stubbed attribute definitions as the underlying attribute repository\
-    \ source. Static attributes that need to be mapped to a hardcoded value belong\
-    \ here."
-  name: "cas.authn.attribute-repository.stub"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
@@ -1190,11 +1118,11 @@
   description: "A number of authentication handlers are allowed to determine whether\
     \ they can operate on the provided credential\nand as such lend themselves to\
     \ be tried and tested during the authentication handler selection phase.\nThe\
-    \ credential criteria may be one of the following options:<ul>\n<li>1) A regular\
+    \ credential criteria may be one of the following options:\n<ul>\n<li>1) A regular\
     \ expression pattern that is tested against the credential identifier.</li>\n\
     <li>2) A fully qualified class name of your own design that implements {@code\
-    \ Predicate<Credential>}.</li>\n<li>3) Path to an external Groovy script that\
-    \ implements the same interface.</li>\n</ul>"
+    \ Predicate}.</li>\n<li>3) Path to an external Groovy script that implements the\
+    \ same interface.</li>\n</ul>"
   name: "cas.authn.jaas[].credential-criteria"
   defaultValue: ""
 - module: "cas-server-core-authentication"
