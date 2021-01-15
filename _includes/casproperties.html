@@ -12,7 +12,16 @@
 {% assign thirdPartyExactMatch = include.thirdPartyExactMatch | split: "," %}
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
 
-{% assign randomNumber = include.properties | default: include.modules | remove: "-" | remove: "." | remove: "," | remove: "[]" %}
+{% assign randomNumber = include.properties 
+    | default: include.modules 
+    | default: include.thirdParty 
+    | default: include.thirdPartyStartsWith 
+    | default: include.thirdPartyExactMatch
+    | remove: "-" 
+    | remove: "." 
+    | remove: "," 
+    | remove: "[]" 
+    | truncate: 50, '' %}
 
 <p>The following settings and properties are available from the CAS configuration catalog:</p>
 
@@ -446,44 +455,50 @@
 </div>
 
 
-<script>
-    setTimeout(function(){ 
+<script type="text/javascript">
+
+    function defer{{ randomNumber }}(toWaitFor, method) {
+        if (window[toWaitFor]) {
+            method();
+        } else {
+            setTimeout(function () { defer{{ randomNumber }}(toWaitFor, method) }, 100);
+        }
+    }
+
+    {% unless signingEncryptionEnabled %}
+        elem = document.getElementById("linkSigningEncryption{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    {% unless optionalSettingsFound %}
+        elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    {% unless rdbmsSettingsFound %}
+        elem = document.getElementById("linkRdbms{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    {% unless emailSettingsFound %}
+        elem = document.getElementById("linkEmail{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    {% unless ldapSettingsFound %}
+        elem = document.getElementById("linkLdap{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    {% unless requiredSettingsFound %}
+        elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    defer{{ randomNumber }}('jQuery', () => {
         var elem = null;
-
-        {% unless signingEncryptionEnabled %}
-            elem = document.getElementById("linkSigningEncryption{{ randomNumber }}");
-            elem.style.display="none";
-        {% endunless %}
-
-        {% unless optionalSettingsFound %}
-            elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
-            elem.style.display="none";
-        {% endunless %}
-
-        {% unless rdbmsSettingsFound %}
-            elem = document.getElementById("linkRdbms{{ randomNumber }}");
-            elem.style.display="none";
-        {% endunless %}
-
-        {% unless emailSettingsFound %}
-            elem = document.getElementById("linkEmail{{ randomNumber }}");
-            elem.style.display="none";
-        {% endunless %}
-
-        {% unless ldapSettingsFound %}
-            elem = document.getElementById("linkLdap{{ randomNumber }}");
-            elem.style.display="none";
-        {% endunless %}
-
-        {% unless requiredSettingsFound %}
-            elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
-            elem.style.display="none";
-        {% endunless %}
-
         $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
-
-        }, 
-        500);
+    });
 </script>
 
 </div>
