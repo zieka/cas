@@ -67,6 +67,27 @@
             href='#ldapProperties{{ randomNumber }}'>LDAP & Active Directory</a>
     </li>
 
+    <li class='nav-item' id='navAuthnPredicateProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkAuthnPredicate{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#authnPredicateProperties{{ randomNumber }}'>Authentication</a>
+    </li>
+
+    <li class='nav-item' id='navPasswordEncoderProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkPasswordEncoder{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#passwordEncoderProperties{{ randomNumber }}'>Password Encoding</a>
+    </li>
+
+    <li class='nav-item' id='navPrincipalTransformationProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkPrincipalTransformation{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#principalTransformationProperties{{ randomNumber }}'>Principal Transformation</a>
+    </li>
+
     {% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
     <li class='nav-item'>
         <a class='nav-link' 
@@ -91,6 +112,9 @@
 {% assign rdbmsSettingsFound = false %}
 {% assign emailSettingsFound = false %}
 {% assign ldapSettingsFound = false %}
+{% assign authnPredicateSettingsFound = false %}
+{% assign passwordEncoderSettingsFound = false %}
+{% assign principalTransformationSettingsFound = false %}
 
 <div class='tab-content clearfix'>
 
@@ -129,6 +153,16 @@
                             {% endif %}
                             {% if config.name contains ".ldap" %}
                                 {% assign ldapSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".credential-criteria" %}
+                                {% assign authnPredicateSettingsFound = true %}
+                            {% endif %}
+
+                            {% if config.name contains ".password-encoder" %}
+                                {% assign passwordEncoderSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".principal-transformation" %}
+                                {% assign principalTransformationSettingsFound = true %}
                             {% endif %}
 
                             {% assign requiredSettingsFound = true %}
@@ -174,6 +208,16 @@
                                 {% if config.name contains ".ldap" %}
                                     {% assign ldapSettingsFound = true %}
                                 {% endif %}
+                                {% if config.name contains ".credential-criteria" %}
+                                    {% assign authnPredicateSettingsFound = true %}
+                                {% endif %}
+                                {% if config.name contains ".password-encoder" %}
+                                    {% assign passwordEncoderSettingsFound = true %}
+                                {% endif %}
+                                {% if config.name contains ".principal-transformation" %}
+                                    {% assign principalTransformationSettingsFound = true %}
+                                {% endif %}
+
 
                                 {% assign requiredSettingsFound = true %}
                                 {% include casproperty.html 
@@ -191,26 +235,6 @@
         {% endfor %}
     </tbody>
     </table>
-</div>
-
-<div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
-    {% capture signingEncConfig %}{% include {{ version }}/signing-encryption-configuration.md %}{% endcapture %}
-    {{ signingEncConfig | markdownify }}
-</div>
-
-<div class='tab-pane fade in' id='rdbmsProperties{{ randomNumber }}'>
-    {% capture rdbmsConfig %}{% include {{ version }}/rdbms-configuration.md %}{% endcapture %}
-    {{ rdbmsConfig | markdownify }}
-</div>
-
-<div class='tab-pane fade in' id='emailProperties{{ randomNumber }}'>
-    {% capture emailConfig %}{% include {{ version }}/email-notifications-configuration.md %}{% endcapture %}
-    {{ emailConfig | markdownify }}
-</div>
-
-<div class='tab-pane fade in' id='ldapProperties{{ randomNumber }}'>
-    {% capture ldapConfig %}{% include {{ version }}/ldap-configuration.md %}{% endcapture %}
-    {{ ldapConfig | markdownify }}
 </div>
 
 <div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
@@ -251,6 +275,16 @@
                             {% if config.name contains ".ldap" %}
                                 {% assign ldapSettingsFound = true %}
                             {% endif %}
+                            {% if config.name contains ".credential-criteria" %}
+                                {% assign authnPredicateSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".password-encoder" %}
+                                {% assign passwordEncoderSettingsFound = true %}
+                            {% endif %}
+                            {% if config.name contains ".principal-transformation" %}
+                                {% assign principalTransformationSettingsFound = true %}
+                            {% endif %}
+
 
                             {% assign optionalSettingsFound = true %}
                             {% include casproperty.html 
@@ -298,7 +332,16 @@
                                     {% if config.name contains ".ldap" %}
                                         {% assign ldapSettingsFound = true %}
                                     {% endif %}
-
+                                    {% if config.name contains ".credential-criteria" %}
+                                        {% assign authnPredicateSettingsFound = true %}
+                                    {% endif %}
+                                    {% if config.name contains ".password-encoder" %}
+                                        {% assign passwordEncoderSettingsFound = true %}
+                                    {% endif %}
+                                    {% if config.name contains ".principal-transformation" %}
+                                        {% assign principalTransformationSettingsFound = true %}
+                                    {% endif %}
+                                    
                                     {% assign optionalSettingsFound = true %}
                                     {% include casproperty.html 
                                         name=config.name 
@@ -403,6 +446,57 @@
 </div>
 {% endif %}
 
+{% if signingEncryptionEnabled == true %}
+<div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
+    {% capture signingEncConfig %}{% include {{ version }}/signing-encryption-configuration.md %}{% endcapture %}
+    {{ signingEncConfig | markdownify }}
+</div>
+{% endif %}
+
+{% if rdbmsSettingsFound == true %}
+<div class='tab-pane fade in' id='rdbmsProperties{{ randomNumber }}'>
+    {% capture rdbmsConfig %}{% include {{ version }}/rdbms-configuration.md %}{% endcapture %}
+    {{ rdbmsConfig | markdownify }}
+</div>
+{% endif %}
+
+{% if emailSettingsFound == true %}
+<div class='tab-pane fade in' id='emailProperties{{ randomNumber }}'>
+    {% capture emailConfig %}{% include {{ version }}/email-notifications-configuration.md %}{% endcapture %}
+    {{ emailConfig | markdownify }}
+</div>
+{% endif %}
+
+{% if ldapSettingsFound == true %}
+<div class='tab-pane fade in' id='ldapProperties{{ randomNumber }}'>
+    {% capture ldapConfig %}{% include {{ version }}/ldap-configuration.md %}{% endcapture %}
+    {{ ldapConfig | markdownify }}
+</div>
+{% endif %}
+
+
+{% if passwordEncoderSettingsFound == true %}
+<div class='tab-pane fade in' id='passwordEncoderProperties{{ randomNumber }}'>
+    {% capture passwordEncoderConfig %}{% include {{ version }}/password-encoding-configuration.md %}{% endcapture %}
+    {{ passwordEncoderConfig | markdownify }}
+</div>
+{% endif %}
+
+{% if principalTransformationSettingsFound == true %}
+<div class='tab-pane fade in' id='principalTransformationProperties{{ randomNumber }}'>
+    {% capture principalTransformationConfig %}{% include {{ version }}/principal-transformation-configuration.md %}{% endcapture %}
+    {{ principalTransformationConfig | markdownify }}
+</div>
+{% endif %}
+
+
+{% if authnPredicateSettingsFound == true %}
+<div class="tab-pane fade in" id="authnPredicateProperties{{ randomNumber }}">
+    {% capture authnConfig %}{% include {{ version }}/authentication-credential-selection-configuration.md %}{% endcapture %}
+    {{ authnConfig | markdownify }} 
+</div>
+{% endif %}
+
 <div class='tab-pane fade in' id='notes{{ randomNumber }}'>
     <hr>
     <ul>
@@ -494,6 +588,22 @@
         elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
         elem.style.display="none";
     {% endunless %}
+
+    {% unless authnPredicateSettingsFound %}
+        elem = document.getElementById("linkAuthnPredicate{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    {% unless passwordEncoderSettingsFound %}
+        elem = document.getElementById("linkPasswordEncoder{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
+    {% unless principalTransformationSettingsFound %}
+        elem = document.getElementById("linkPrincipalTransformation{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
 
     defer{{ randomNumber }}('jQuery', () => {
         var elem = null;
