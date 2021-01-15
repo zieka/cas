@@ -446,7 +446,10 @@
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Github"
   type: "java.lang.String"
-  description: "The requested scope from the provider."
+  description: "The requested scope from the provider.  The default scope is {@code\
+    \ user}, i.e. {@code read/write} access to the GitHub user account.  For a full\
+    \ list of possible scopes, <a href=\"https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/\"\
+    >see this</a>)."
   name: "cas.authn.pac4j.github.scope"
   defaultValue: ""
 - required: true

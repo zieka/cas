@@ -38,7 +38,8 @@ and the module automatically takes care of all required changes. While this is t
 you may want to manually handle all such changes. For doing so, you will need to disable the CAS auto-configuration
 of the webflow.
 
-{% include {{ version }}/spring-webflow-configuration.md %}
+{% include casproperties.html properties="cas.webflow." %}
+
 
 <div class="alert alert-warning"><strong>Note</strong><p>Only attempt to 
 modify the Spring webflow configuration files by hand when/if absolutely necessary and the
@@ -75,7 +76,7 @@ sake of establishing an SSO session without logging in to any CAS-reliant servic
 As such, CAS optionally allows adopters to not bother to prompt for credentials when no target application is presented
 and instead presents a message when users visit CAS directly without specifying a service.
 
-{% include {{ version }}/global-sso-configuration.md %}
+{% include casproperties.html properties="cas.sso.allow-missing-service-parameter,cas.sso.create-sso-cookie-on-renew-authn,cas.sso.proxy-authn-enabled,cas.sso.renew-authn-enabled,cas.sso.sso-enabled,cas.sso.required-service-pattern" %}
 
 ## Acceptable Usage Policy
 
@@ -94,7 +95,7 @@ any CAS view or webflow component using the variable `casProperties` to gain acc
 a specific setting. Remember that this syntax only allowed access to settings 
 that are *owned* by CAS, noted by its very own prefix.
 
-{% include {{ version }}/custom-settings-configuration.md %}
+{% include casproperties.html properties="cas.custom.properties" %}
 
 ## Troubleshooting
 

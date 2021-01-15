@@ -235,9 +235,8 @@
 - module: "cas-server-support-x509-webflow"
   owner: "org.apereo.cas.configuration.model.support.x509.X509LdapProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties$LdapHostnameVerifierOptions"
-  description: "Hostname verification options. Accepted values are {@link LdapHostnameVerifierOptions#DEFAULT}\
-    \ and {@link LdapHostnameVerifierOptions#ANY}.DEFAULT:Default option, forcing\
-    \ verification..ANY:Skip hostname verification and allow all.."
+  description: "Hostname verification options.DEFAULT:Default option, forcing verification..ANY:Skip\
+    \ hostname verification and allow all.."
   name: "cas.authn.x509.ldap.hostname-verifier"
   defaultValue: ""
 - module: "cas-server-support-x509-webflow"

@@ -25,3 +25,9 @@
   description: "Allows AUP to be turned off on startup."
   name: "cas.acceptable-usage-policy.enabled"
   defaultValue: true
+- module: "cas-server-support-aup-webflow"
+  owner: "org.apereo.cas.configuration.model.support.aup.AcceptableUsagePolicyProperties"
+  type: "java.util.List<org.apereo.cas.configuration.model.support.aup.LdapAcceptableUsagePolicyProperties>"
+  description: "Control AUP via LDAP."
+  name: "cas.acceptable-usage-policy.ldap"
+  defaultValue: ""
