@@ -556,7 +556,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapAuthenticationProperties"
   type: "List"
   description: "List of attributes to retrieve from LDAP.\nAttributes can be virtually\
-    \ remapped to multiple names.\nExample {@code cn:commonName,givenName,eduPersonTargettedId:SOME_IDENTIFIER}"
+    \ remapped to multiple names.\nExample {@code cn:commonName,givenName,eduPersonTargettedId:SOME_IDENTIFIER}.\n\
+    \nTo fetch and resolve attributes that carry tags/options,\nconsider tagging the\
+    \ mapped attribute as such: {@code homePostalAddress:homePostalAddress;}."
   name: "cas.authn.ldap[].principal-attribute-list"
   defaultValue: ""
 - module: "cas-server-support-ldap"
