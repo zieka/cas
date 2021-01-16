@@ -584,6 +584,11 @@
         elem.style.display="none";
     {% endunless %}
 
+    {% unless passwordPolicySettingsFound %}
+        elem = document.getElementById("linkPasswordPolicy{{ randomNumber }}");
+        elem.style.display="none";
+    {% endunless %}
+
 
     defer{{ randomNumber }}('jQuery', () => {
         var elem = null;
