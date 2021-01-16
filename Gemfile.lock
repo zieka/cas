@@ -274,6 +274,7 @@ PLATFORMS
 DEPENDENCIES
   github-pages
   html-proofer
+  jekyll-relative-links
 
 BUNDLED WITH
    2.2.5

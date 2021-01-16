@@ -2,6 +2,7 @@ exclude: [.idea]
 markdown: kramdown
 plugins:
   - jekyll-sitemap
+  - jekyll-relative-links
   # - jekyll-feed
 kramdown:
   input: GFM

@@ -88,6 +88,13 @@
             href='#principalTransformationProperties{{ randomNumber }}'>Principal Transformation</a>
     </li>
 
+    <li class='nav-item' id='navPasswordPolicyProperties{{ randomNumber }}'>
+        <a class='nav-link' 
+            id="linkPasswordPolicy{{ randomNumber }}" 
+            data-toggle='tab' 
+            href='#passwordPolicyProperties{{ randomNumber }}'>Password Policy</a>
+    </li>
+
     {% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
     <li class='nav-item'>
         <a class='nav-link' 
@@ -115,6 +122,7 @@
 {% assign authnPredicateSettingsFound = false %}
 {% assign passwordEncoderSettingsFound = false %}
 {% assign principalTransformationSettingsFound = false %}
+{% assign passwordPolicySettingsFound = false %}
 
 <div class='tab-content clearfix'>
 
@@ -164,6 +172,10 @@
                             {% if config.name contains ".principal-transformation" %}
                                 {% assign principalTransformationSettingsFound = true %}
                             {% endif %}
+                            {% if config.name contains ".password-policy" %}
+                                {% assign passwordPolicySettingsFound = true %}
+                            {% endif %}
+                            
 
                             {% assign requiredSettingsFound = true %}
                             {% include casproperty.html 
@@ -217,7 +229,9 @@
                                 {% if config.name contains ".principal-transformation" %}
                                     {% assign principalTransformationSettingsFound = true %}
                                 {% endif %}
-
+                                {% if config.name contains ".password-policy" %}
+                                    {% assign passwordPolicySettingsFound = true %}
+                                {% endif %}
 
                                 {% assign requiredSettingsFound = true %}
                                 {% include casproperty.html 
@@ -284,7 +298,9 @@
                             {% if config.name contains ".principal-transformation" %}
                                 {% assign principalTransformationSettingsFound = true %}
                             {% endif %}
-
+                            {% if config.name contains ".password-policy" %}
+                                {% assign passwordPolicySettingsFound = true %}
+                            {% endif %}
 
                             {% assign optionalSettingsFound = true %}
                             {% include casproperty.html 
@@ -341,7 +357,10 @@
                                     {% if config.name contains ".principal-transformation" %}
                                         {% assign principalTransformationSettingsFound = true %}
                                     {% endif %}
-                                    
+                                    {% if config.name contains ".password-policy" %}
+                                        {% assign passwordPolicySettingsFound = true %}
+                                    {% endif %}
+
                                     {% assign optionalSettingsFound = true %}
                                     {% include casproperty.html 
                                         name=config.name 
@@ -479,6 +498,13 @@
 <div class='tab-pane fade in' id='passwordEncoderProperties{{ randomNumber }}'>
     {% capture passwordEncoderConfig %}{% include {{ version }}/password-encoding-configuration.md %}{% endcapture %}
     {{ passwordEncoderConfig | markdownify }}
+</div>
+{% endif %}
+
+{% if passwordPolicySettingsFound == true %}
+<div class='tab-pane fade in' id='passwordPolicyProperties{{ randomNumber }}'>
+    {% capture passwordPolicyConfig %}{% include {{ version }}/password-policy-configuration.md %}{% endcapture %}
+    {{ passwordPolicyConfig | markdownify }}
 </div>
 {% endif %}
 
