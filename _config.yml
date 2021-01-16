@@ -4,6 +4,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-relative-links
   # - jekyll-feed
+relative_links:
+  enabled:     true
 kramdown:
   input: GFM
   syntax_highlighter: rouge
