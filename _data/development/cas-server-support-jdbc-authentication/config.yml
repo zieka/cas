@@ -31,8 +31,8 @@
     \ credential criteria may be one of the following options:<ul>\n<li>1) A regular\
     \ expression pattern that is tested against the credential identifier.</li>\n\
     <li>2) A fully qualified class name of your own design that implements {@code\
-    \ Predicate<Credential>}.</li>\n<li>3) Path to an external Groovy script that\
-    \ implements the same interface.</li>\n</ul>"
+    \ Predicate}.</li>\n<li>3) Path to an external Groovy script that implements the\
+    \ same interface.</li>\n</ul>"
   name: "cas.authn.jdbc.bind[].credential-criteria"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"
@@ -247,8 +247,8 @@
     \ credential criteria may be one of the following options:<ul>\n<li>1) A regular\
     \ expression pattern that is tested against the credential identifier.</li>\n\
     <li>2) A fully qualified class name of your own design that implements {@code\
-    \ Predicate<Credential>}.</li>\n<li>3) Path to an external Groovy script that\
-    \ implements the same interface.</li>\n</ul>"
+    \ Predicate}.</li>\n<li>3) Path to an external Groovy script that implements the\
+    \ same interface.</li>\n</ul>"
   name: "cas.authn.jdbc.encode[].credential-criteria"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"
@@ -504,8 +504,8 @@
     \ credential criteria may be one of the following options:<ul>\n<li>1) A regular\
     \ expression pattern that is tested against the credential identifier.</li>\n\
     <li>2) A fully qualified class name of your own design that implements {@code\
-    \ Predicate<Credential>}.</li>\n<li>3) Path to an external Groovy script that\
-    \ implements the same interface.</li>\n</ul>"
+    \ Predicate}.</li>\n<li>3) Path to an external Groovy script that implements the\
+    \ same interface.</li>\n</ul>"
   name: "cas.authn.jdbc.query[].credential-criteria"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"
@@ -740,8 +740,8 @@
     \ credential criteria may be one of the following options:<ul>\n<li>1) A regular\
     \ expression pattern that is tested against the credential identifier.</li>\n\
     <li>2) A fully qualified class name of your own design that implements {@code\
-    \ Predicate<Credential>}.</li>\n<li>3) Path to an external Groovy script that\
-    \ implements the same interface.</li>\n</ul>"
+    \ Predicate}.</li>\n<li>3) Path to an external Groovy script that implements the\
+    \ same interface.</li>\n</ul>"
   name: "cas.authn.jdbc.search[].credential-criteria"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"

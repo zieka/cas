@@ -212,44 +212,14 @@
   description: "The body of the SMS message."
   name: "cas.authn.adaptive.risk.response.sms.text"
   defaultValue: ""
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "int"
-  description: "Controls the maximum number of connections to keep\nin the pool, including\
-    \ both idle and in-use connections."
-  name: "cas.authn.attribute-repository.jdbc[].pool.max-size"
-  defaultValue: "18"
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "java.lang.String"
-  description: "Sets the maximum time in seconds that this data source will wait\n\
-    while attempting to connect to a database.\n<p>\nA value of zero specifies that\
-    \ the timeout is the default system timeout\nif there is one; otherwise, it specifies\
-    \ that there is no timeout."
-  name: "cas.authn.attribute-repository.jdbc[].pool.max-wait"
-  defaultValue: "PT2S"
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "int"
-  description: "Controls the minimum size that the pool is allowed\nto reach, including\
-    \ both idle and in-use connections."
-  name: "cas.authn.attribute-repository.jdbc[].pool.min-size"
-  defaultValue: "6"
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "boolean"
-  description: "Whether or not pool suspension is allowed.\n<p>\nThere is a performance\
-    \ impact when pool suspension is enabled.\nUnless you need it (for a redundancy\
-    \ system for example) do not enable it."
-  name: "cas.authn.attribute-repository.jdbc[].pool.suspension"
+- required: true
+  module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  name: "cas.authn.attribute-repository.attribute-definition-store.json.location"
   defaultValue: ""
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "long"
-  description: "The maximum number of milliseconds that the\npool will wait for a\
-    \ connection to be validated as alive."
-  name: "cas.authn.attribute-repository.jdbc[].pool.timeout-millis"
-  defaultValue: "1_000"
 - required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
@@ -265,14 +235,6 @@
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
   name: "cas.authn.jaas[].principal-transformation.groovy.location"
-  defaultValue: ""
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "Resource"
-  description: "The location of the resource. Resources can be URLS, or\nfiles found\
-    \ either on the classpath or outside somewhere\nin the file system."
-  name: "cas.authn.jaas[].principal.attribute-definition-store.json.location"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
@@ -1248,14 +1210,6 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
-  name: "cas.authn.openid.principal.attribute-definition-store.json.location"
-  defaultValue: ""
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
   name: "cas.authn.passwordless.delegated-authentication-selector-script.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2106,14 +2060,6 @@
     \ </ul>"
   name: "cas.authn.saml-idp.metadata.rest.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
-  name: "cas.authn.spnego.principal.attribute-definition-store.json.location"
-  defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
   type: "java.lang.Integer"
@@ -2212,14 +2158,6 @@
   description: "Set whether to validate all addresses which get passed to this helper."
   name: "cas.authn.surrogate.mail.validate-addresses"
   defaultValue: false
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
-  name: "cas.authn.surrogate.principal.attribute-definition-store.json.location"
-  defaultValue: ""
 - required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
@@ -2364,14 +2302,6 @@
     \ </ul>"
   name: "cas.authn.token.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
-  name: "cas.authn.trusted.attribute-definition-store.json.location"
-  defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
   type: "java.lang.Integer"
@@ -2516,22 +2446,6 @@
     </ul>"
   name: "cas.authn.wsfed[].cookie.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "Resource"
-  description: "The location of the resource. Resources can be URLS, or\nfiles found\
-    \ either on the classpath or outside somewhere\nin the file system."
-  name: "cas.authn.wsfed[].principal.attribute-definition-store.json.location"
-  defaultValue: ""
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
-  name: "cas.authn.x509.principal.attribute-definition-store.json.location"
-  defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
@@ -2828,14 +2742,6 @@
     \ connection to be validated as alive."
   name: "cas.monitor.ldap[].pool.timeout-millis"
   defaultValue: "1_000"
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
-  name: "cas.person-directory.attribute-definition-store.json.location"
-  defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
