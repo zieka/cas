@@ -1,6 +1,6 @@
 <hr>
 
-#### Configuration Metadata:
+#### Configuration Metadata
 
 The collection of configuration properties listed in this section are automatically generated from the CAS source and components that contain the actual field definitions, types, descriptions, modules, etc. This metadata may not always be 100% accurate, or could be lacking details and sufficient explanations. Over time and *with community contributions*, the accuracy and volume of the documentation should improve over time.
 

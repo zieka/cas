@@ -10,6 +10,7 @@ out/
 *.ipr
 *.iml
 *.iws
+*.orig
 .idea/
 .DS_Store
 .idea
