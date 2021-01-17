@@ -41,8 +41,8 @@
 - module: "cas-server-core-audit"
   owner: "org.apereo.cas.configuration.model.core.audit.AuditProperties"
   type: "java.lang.Boolean"
-  description: "Indicates whether catastrophic audit failures should simply be logged\
-    \ or whether errors should bubble up and thrown back."
+  description: "Indicates whether catastrophic audit failures should be logged or\
+    \ whether errors should bubble up and thrown back."
   name: "cas.audit.ignore-audit-failures"
   defaultValue: false
 - module: "cas-server-core-audit"

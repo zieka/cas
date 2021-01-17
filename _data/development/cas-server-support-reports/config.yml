@@ -1,12 +1,33 @@
 ---
 - module: "cas-server-support-reports"
-  owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointsMonitorProperties"
-  type: "java.util.Map<java.lang.String,org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointProperties>"
-  description: "Options for monitoring sensitive CAS endpoints and resources. Acts\
-    \ as a parent class for all endpoints and settings and exposes shortcuts so security\
-    \ and capability of endpoints can be globally controlled from one spot and then\
-    \ overridden elsewhere."
-  name: "cas.monitor.endpoints.endpoint"
+  owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointProperties"
+  type: "java.util.List<EndpointAccessLevel>"
+  description: "Define the security access level of the endpoint.\nAvailable values:\n\
+    {@code PERMIT}:Allow open access to the endpoint.{@code ANONYMOUS}:Allow anonymous\
+    \ access to the endpoint.{@code DENY}:Block access to the endpoint.{@code AUTHENTICATED}:Require\
+    \ authenticated access to the endpoint.{@code ROLE}:Require authenticated access\
+    \ to the endpoint along with a role requirement.{@code AUTHORITY}:Require authenticated\
+    \ access to the endpoint along with an authority requirement.{@code IP_ADDRESS}:Require\
+    \ authenticated access to the endpoint using a collection of IP addresses."
+  name: "cas.monitor.endpoints.endpoint.access"
+  defaultValue: ""
+- module: "cas-server-support-reports"
+  owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointProperties"
+  type: "java.util.List<String>"
+  description: "Required user authorities."
+  name: "cas.monitor.endpoints.endpoint.required-authorities"
+  defaultValue: ""
+- module: "cas-server-support-reports"
+  owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointProperties"
+  type: "java.util.List<String>"
+  description: "Required ip addresses."
+  name: "cas.monitor.endpoints.endpoint.required-ip-addresses"
+  defaultValue: ""
+- module: "cas-server-support-reports"
+  owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointProperties"
+  type: "java.util.List<String>"
+  description: "Required user roles."
+  name: "cas.monitor.endpoints.endpoint.required-roles"
   defaultValue: ""
 - module: "cas-server-support-reports"
   owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointsMonitorProperties"

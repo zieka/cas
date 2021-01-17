@@ -71,8 +71,8 @@
     \ on any logging framework except JDK logging. It has in-built adaptors for a\
     \ number of logging frameworks and also supports custom loggers by providing logging\
     \ interfaces. To use built-in adaptors you should set this setting to one of predefined\
-    \ types below. <ul> <li>jdk: JDK logging</li> <li>log4j: Log4j</li> <li>slf4j:\
-    \ Slf4j</li> <li>none: Disable logging</li> </ul>"
+    \ types below. <ul> <li>{@code jdk}: JDK logging</li> <li>{@code log4j}: Log4j</li>\
+    \ <li>{@code slf4j}: Slf4j</li> <li>{@code none}: Disable logging</li> </ul>"
   name: "cas.authn.throttle.hazelcast.cluster.logging-type"
   defaultValue: "slf4j"
 - module: "cas-server-support-hazelcast-core"
@@ -116,23 +116,24 @@
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
   type: "java.lang.String"
-  description: "<ul> <li>FREE_HEAP_PERCENTAGE: Policy based on minimum free JVM heap\
-    \ memory percentage per JVM.</li> <li>FREE_HEAP_SIZE: Policy based on minimum\
-    \ free JVM heap memory in megabytes per JVM.</li> <li>FREE_NATIVE_MEMORY_PERCENTAGE:\
-    \ Policy based on minimum free native memory percentage per Hazelcast instance.</li>\
-    \ <li>FREE_NATIVE_MEMORY_SIZE: Policy based on minimum free native memory in megabytes\
-    \ per Hazelcast instance.</li> <li>PER_NODE: Policy based on maximum number of\
-    \ entries stored per data structure (map, cache etc) on each Hazelcast instance.</li>\
-    \ <li>PER_PARTITION: Policy based on maximum number of entries stored per data\
-    \ structure (map, cache etc) on each partition.</li> <li>USED_HEAP_PERCENTAGE:\
-    \ Policy based on maximum used JVM heap memory percentage per data structure (map,\
-    \ cache etc) on each Hazelcast instance .</li> <li>USED_HEAP_SIZE: Policy based\
-    \ on maximum used JVM heap memory in megabytes per data structure (map, cache\
-    \ etc) on each Hazelcast instance.</li> <li>USED_NATIVE_MEMORY_PERCENTAGE: Policy\
-    \ based on maximum used native memory percentage per data structure (map, cache\
-    \ etc) on each Hazelcast instance.</li> <li>USED_NATIVE_MEMORY_SIZE: Policy based\
-    \ on maximum used native memory in megabytes per data structure (map, cache etc)\
-    \ on each Hazelcast instance .</li> </ul>"
+  description: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum free\
+    \ JVM heap memory percentage per JVM.</li> <li>{@code FREE_HEAP_SIZE}: Policy\
+    \ based on minimum free JVM heap memory in megabytes per JVM.</li> <li>{@code\
+    \ FREE_NATIVE_MEMORY_PERCENTAGE}: Policy based on minimum free native memory percentage\
+    \ per Hazelcast instance.</li> <li>{@code FREE_NATIVE_MEMORY_SIZE}: Policy based\
+    \ on minimum free native memory in megabytes per Hazelcast instance.</li> <li>{@code\
+    \ PER_NODE}: Policy based on maximum number of entries stored per data structure\
+    \ (map, cache etc) on each Hazelcast instance.</li> <li>{@code PER_PARTITION}:\
+    \ Policy based on maximum number of entries stored per data structure (map, cache\
+    \ etc) on each partition.</li> <li>{@code USED_HEAP_PERCENTAGE}: Policy based\
+    \ on maximum used JVM heap memory percentage per data structure (map, cache etc)\
+    \ on each Hazelcast instance .</li> <li>{@code USED_HEAP_SIZE}: Policy based on\
+    \ maximum used JVM heap memory in megabytes per data structure (map, cache etc)\
+    \ on each Hazelcast instance.</li> <li>{@code USED_NATIVE_MEMORY_PERCENTAGE}:\
+    \ Policy based on maximum used native memory percentage per data structure (map,\
+    \ cache etc) on each Hazelcast instance.</li> <li>{@code USED_NATIVE_MEMORY_SIZE}:\
+    \ Policy based on maximum used native memory in megabytes per data structure (map,\
+    \ cache etc) on each Hazelcast instance .</li> </ul>"
   name: "cas.authn.throttle.hazelcast.cluster.max-size-policy"
   defaultValue: "USED_HEAP_PERCENTAGE"
 - required: true
@@ -378,7 +379,7 @@
   defaultValue: "2"
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastWANReplicationTargetClusterProperties"
-  type: "Map<String,Comparable>"
+  type: "java.util.Map<String,Comparable>"
   description: "The WAN publisher properties."
   name: "cas.authn.throttle.hazelcast.cluster.wan-replication.targets[].properties"
   defaultValue: ""
@@ -501,8 +502,8 @@
     \ on any logging framework except JDK logging. It has in-built adaptors for a\
     \ number of logging frameworks and also supports custom loggers by providing logging\
     \ interfaces. To use built-in adaptors you should set this setting to one of predefined\
-    \ types below. <ul> <li>jdk: JDK logging</li> <li>log4j: Log4j</li> <li>slf4j:\
-    \ Slf4j</li> <li>none: Disable logging</li> </ul>"
+    \ types below. <ul> <li>{@code jdk}: JDK logging</li> <li>{@code log4j}: Log4j</li>\
+    \ <li>{@code slf4j}: Slf4j</li> <li>{@code none}: Disable logging</li> </ul>"
   name: "cas.service-registry.stream.hazelcast.config.cluster.logging-type"
   defaultValue: "slf4j"
 - module: "cas-server-support-hazelcast-core"
@@ -546,23 +547,24 @@
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
   type: "java.lang.String"
-  description: "<ul> <li>FREE_HEAP_PERCENTAGE: Policy based on minimum free JVM heap\
-    \ memory percentage per JVM.</li> <li>FREE_HEAP_SIZE: Policy based on minimum\
-    \ free JVM heap memory in megabytes per JVM.</li> <li>FREE_NATIVE_MEMORY_PERCENTAGE:\
-    \ Policy based on minimum free native memory percentage per Hazelcast instance.</li>\
-    \ <li>FREE_NATIVE_MEMORY_SIZE: Policy based on minimum free native memory in megabytes\
-    \ per Hazelcast instance.</li> <li>PER_NODE: Policy based on maximum number of\
-    \ entries stored per data structure (map, cache etc) on each Hazelcast instance.</li>\
-    \ <li>PER_PARTITION: Policy based on maximum number of entries stored per data\
-    \ structure (map, cache etc) on each partition.</li> <li>USED_HEAP_PERCENTAGE:\
-    \ Policy based on maximum used JVM heap memory percentage per data structure (map,\
-    \ cache etc) on each Hazelcast instance .</li> <li>USED_HEAP_SIZE: Policy based\
-    \ on maximum used JVM heap memory in megabytes per data structure (map, cache\
-    \ etc) on each Hazelcast instance.</li> <li>USED_NATIVE_MEMORY_PERCENTAGE: Policy\
-    \ based on maximum used native memory percentage per data structure (map, cache\
-    \ etc) on each Hazelcast instance.</li> <li>USED_NATIVE_MEMORY_SIZE: Policy based\
-    \ on maximum used native memory in megabytes per data structure (map, cache etc)\
-    \ on each Hazelcast instance .</li> </ul>"
+  description: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum free\
+    \ JVM heap memory percentage per JVM.</li> <li>{@code FREE_HEAP_SIZE}: Policy\
+    \ based on minimum free JVM heap memory in megabytes per JVM.</li> <li>{@code\
+    \ FREE_NATIVE_MEMORY_PERCENTAGE}: Policy based on minimum free native memory percentage\
+    \ per Hazelcast instance.</li> <li>{@code FREE_NATIVE_MEMORY_SIZE}: Policy based\
+    \ on minimum free native memory in megabytes per Hazelcast instance.</li> <li>{@code\
+    \ PER_NODE}: Policy based on maximum number of entries stored per data structure\
+    \ (map, cache etc) on each Hazelcast instance.</li> <li>{@code PER_PARTITION}:\
+    \ Policy based on maximum number of entries stored per data structure (map, cache\
+    \ etc) on each partition.</li> <li>{@code USED_HEAP_PERCENTAGE}: Policy based\
+    \ on maximum used JVM heap memory percentage per data structure (map, cache etc)\
+    \ on each Hazelcast instance .</li> <li>{@code USED_HEAP_SIZE}: Policy based on\
+    \ maximum used JVM heap memory in megabytes per data structure (map, cache etc)\
+    \ on each Hazelcast instance.</li> <li>{@code USED_NATIVE_MEMORY_PERCENTAGE}:\
+    \ Policy based on maximum used native memory percentage per data structure (map,\
+    \ cache etc) on each Hazelcast instance.</li> <li>{@code USED_NATIVE_MEMORY_SIZE}:\
+    \ Policy based on maximum used native memory in megabytes per data structure (map,\
+    \ cache etc) on each Hazelcast instance .</li> </ul>"
   name: "cas.service-registry.stream.hazelcast.config.cluster.max-size-policy"
   defaultValue: "USED_HEAP_PERCENTAGE"
 - required: true
@@ -808,7 +810,7 @@
   defaultValue: "2"
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastWANReplicationTargetClusterProperties"
-  type: "Map<String,Comparable>"
+  type: "java.util.Map<String,Comparable>"
   description: "The WAN publisher properties."
   name: "cas.service-registry.stream.hazelcast.config.cluster.wan-replication.targets[].properties"
   defaultValue: ""
@@ -949,8 +951,8 @@
     \ on any logging framework except JDK logging. It has in-built adaptors for a\
     \ number of logging frameworks and also supports custom loggers by providing logging\
     \ interfaces. To use built-in adaptors you should set this setting to one of predefined\
-    \ types below. <ul> <li>jdk: JDK logging</li> <li>log4j: Log4j</li> <li>slf4j:\
-    \ Slf4j</li> <li>none: Disable logging</li> </ul>"
+    \ types below. <ul> <li>{@code jdk}: JDK logging</li> <li>{@code log4j}: Log4j</li>\
+    \ <li>{@code slf4j}: Slf4j</li> <li>{@code none}: Disable logging</li> </ul>"
   name: "cas.ticket.registry.hazelcast.cluster.logging-type"
   defaultValue: "slf4j"
 - module: "cas-server-support-hazelcast-core"
@@ -994,23 +996,24 @@
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
   type: "java.lang.String"
-  description: "<ul> <li>FREE_HEAP_PERCENTAGE: Policy based on minimum free JVM heap\
-    \ memory percentage per JVM.</li> <li>FREE_HEAP_SIZE: Policy based on minimum\
-    \ free JVM heap memory in megabytes per JVM.</li> <li>FREE_NATIVE_MEMORY_PERCENTAGE:\
-    \ Policy based on minimum free native memory percentage per Hazelcast instance.</li>\
-    \ <li>FREE_NATIVE_MEMORY_SIZE: Policy based on minimum free native memory in megabytes\
-    \ per Hazelcast instance.</li> <li>PER_NODE: Policy based on maximum number of\
-    \ entries stored per data structure (map, cache etc) on each Hazelcast instance.</li>\
-    \ <li>PER_PARTITION: Policy based on maximum number of entries stored per data\
-    \ structure (map, cache etc) on each partition.</li> <li>USED_HEAP_PERCENTAGE:\
-    \ Policy based on maximum used JVM heap memory percentage per data structure (map,\
-    \ cache etc) on each Hazelcast instance .</li> <li>USED_HEAP_SIZE: Policy based\
-    \ on maximum used JVM heap memory in megabytes per data structure (map, cache\
-    \ etc) on each Hazelcast instance.</li> <li>USED_NATIVE_MEMORY_PERCENTAGE: Policy\
-    \ based on maximum used native memory percentage per data structure (map, cache\
-    \ etc) on each Hazelcast instance.</li> <li>USED_NATIVE_MEMORY_SIZE: Policy based\
-    \ on maximum used native memory in megabytes per data structure (map, cache etc)\
-    \ on each Hazelcast instance .</li> </ul>"
+  description: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum free\
+    \ JVM heap memory percentage per JVM.</li> <li>{@code FREE_HEAP_SIZE}: Policy\
+    \ based on minimum free JVM heap memory in megabytes per JVM.</li> <li>{@code\
+    \ FREE_NATIVE_MEMORY_PERCENTAGE}: Policy based on minimum free native memory percentage\
+    \ per Hazelcast instance.</li> <li>{@code FREE_NATIVE_MEMORY_SIZE}: Policy based\
+    \ on minimum free native memory in megabytes per Hazelcast instance.</li> <li>{@code\
+    \ PER_NODE}: Policy based on maximum number of entries stored per data structure\
+    \ (map, cache etc) on each Hazelcast instance.</li> <li>{@code PER_PARTITION}:\
+    \ Policy based on maximum number of entries stored per data structure (map, cache\
+    \ etc) on each partition.</li> <li>{@code USED_HEAP_PERCENTAGE}: Policy based\
+    \ on maximum used JVM heap memory percentage per data structure (map, cache etc)\
+    \ on each Hazelcast instance .</li> <li>{@code USED_HEAP_SIZE}: Policy based on\
+    \ maximum used JVM heap memory in megabytes per data structure (map, cache etc)\
+    \ on each Hazelcast instance.</li> <li>{@code USED_NATIVE_MEMORY_PERCENTAGE}:\
+    \ Policy based on maximum used native memory percentage per data structure (map,\
+    \ cache etc) on each Hazelcast instance.</li> <li>{@code USED_NATIVE_MEMORY_SIZE}:\
+    \ Policy based on maximum used native memory in megabytes per data structure (map,\
+    \ cache etc) on each Hazelcast instance .</li> </ul>"
   name: "cas.ticket.registry.hazelcast.cluster.max-size-policy"
   defaultValue: "USED_HEAP_PERCENTAGE"
 - required: true
@@ -1256,7 +1259,7 @@
   defaultValue: "2"
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastWANReplicationTargetClusterProperties"
-  type: "Map<String,Comparable>"
+  type: "java.util.Map<String,Comparable>"
   description: "The WAN publisher properties."
   name: "cas.ticket.registry.hazelcast.cluster.wan-replication.targets[].properties"
   defaultValue: ""

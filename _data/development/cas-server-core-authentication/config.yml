@@ -134,11 +134,7 @@
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties$PasswordPolicyHandlingOptions"
-  description: "Decide how authentication should handle password policy changes. Acceptable\
-    \ values are: <ul> <li>{@code DEFAULT}: Default password policy rules handling\
-    \ account states.</li> <li>{@code GROOVY}: Handle account changes and warnings\
-    \ via Groovy scripts</li> <li>{@code REJECT_RESULT_CODE}: Handle account state\
-    \ only if the authentication result code isn't blocked</li> </ul>DEFAULT:Default\
+  description: "Decide how authentication should handle password policy changes.DEFAULT:Default\
     \ option to handle policy changes..GROOVY:Handle account password policies via\
     \ Groovy..REJECT_RESULT_CODE:Strategy to only activate password policy\nif the\
     \ authentication response code is not blocked.."
@@ -172,6 +168,14 @@
     \ is within the calculated window."
   name: "cas.authn.accept.password-policy.warning-days"
   defaultValue: 30
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.accept.principal-transformation.blocking-pattern"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
@@ -339,7 +343,7 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.TimeBasedAuthenticationProperties"
-  type: "List<String>"
+  type: "java.util.List<String>"
   description: "Trigger mfa on the following days of the week."
   name: "cas.authn.adaptive.require-timed-multifactor[].on-days"
   defaultValue: ""
@@ -489,6 +493,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.azure-active-directory.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -580,6 +592,14 @@
     \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.cassandra.password-encoder.type"
   defaultValue: "NONE"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.cassandra.principal-transformation.blocking-pattern"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
@@ -675,6 +695,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.cloud-directory.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -766,6 +794,14 @@
     \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.cognito.password-encoder.type"
   defaultValue: "NONE"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.cognito.principal-transformation.blocking-pattern"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
@@ -873,6 +909,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.couch-db.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -964,6 +1008,14 @@
     \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.couchbase.password-encoder.type"
   defaultValue: "NONE"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.couchbase.principal-transformation.blocking-pattern"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
@@ -1069,6 +1121,14 @@
     \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.file.password-encoder.type"
   defaultValue: "NONE"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.file.principal-transformation.blocking-pattern"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
@@ -1275,7 +1335,7 @@
   defaultValue: "5"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
-  type: "Map<String,Class<? extends LoginException>>"
+  type: "java.util.Map<String,Class<? extends LoginException>>"
   description: "Key-value structure (Map) that indicates a list of boolean attributes\
     \ as keys.\nIf either attribute value is true, indicating an account state is\
     \ flagged,\nthe corresponding error can be thrown.\nExample {@code accountLocked=javax.security.auth.login.AccountLockedException}"
@@ -1283,12 +1343,12 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
-  type: "PasswordPolicyHandlingOptions"
+  type: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties.PasswordPolicyHandlingOptions"
   description: "Decide how authentication should handle password policy changes.\n\
-    Acceptable values are:\n<ul>\n<li>{@code DEFAULT}: Default password policy rules\
-    \ handling account states.</li>\n<li>{@code GROOVY}: Handle account changes and\
-    \ warnings via Groovy scripts</li>\n<li>{@code REJECT_RESULT_CODE}: Handle account\
-    \ state only if the authentication result code isn't blocked</li>\n</ul>"
+    Available values:\n{@code DEFAULT}:Default option to handle policy changes.{@code\
+    \ GROOVY}:Handle account password policies via Groovy.{@code REJECT_RESULT_CODE}:Strategy\
+    \ to only activate password policy\nif the authentication response code is not\
+    \ blocked."
   name: "cas.authn.jaas[].password-policy.strategy"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -1321,9 +1381,18 @@
   defaultValue: "30"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
-  type: "CaseConversion"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username\nto match\
+    \ for blocking/forbidden values.\nIf a match is found, an exception will be thrown\n\
+    and principal transformation will fail."
+  name: "cas.authn.jaas[].principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc."
+    into upper-case, lower-case, etc.\nAvailable values:\n{@code NONE}:No conversion.{@code\
+    \ LOWERCASE}:Lowercase conversion.{@code UPPERCASE}:Uppercase conversion."
   name: "cas.authn.jaas[].principal-transformation.case-conversion"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -1377,8 +1446,7 @@
   type: "boolean"
   description: "When true, throws an error back indicating that principal resolution\n\
     has failed and no principal can be found based on the authentication requirements.\n\
-    Otherwise, simply logs the condition as an error without raising a catastrophic\
-    \ error."
+    Otherwise, logs the condition as an error without raising a catastrophic error."
   name: "cas.authn.jaas[].principal.principal-resolution-failure-fatal"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -1462,9 +1530,18 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
-  type: "CaseConversion"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username\nto match\
+    \ for blocking/forbidden values.\nIf a match is found, an exception will be thrown\n\
+    and principal transformation will fail."
+  name: "cas.authn.jdbc.bind[].principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc."
+    into upper-case, lower-case, etc.\nAvailable values:\n{@code NONE}:No conversion.{@code\
+    \ LOWERCASE}:Lowercase conversion.{@code UPPERCASE}:Uppercase conversion."
   name: "cas.authn.jdbc.bind[].principal-transformation.case-conversion"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -1545,9 +1622,18 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
-  type: "CaseConversion"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username\nto match\
+    \ for blocking/forbidden values.\nIf a match is found, an exception will be thrown\n\
+    and principal transformation will fail."
+  name: "cas.authn.jdbc.encode[].principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc."
+    into upper-case, lower-case, etc.\nAvailable values:\n{@code NONE}:No conversion.{@code\
+    \ LOWERCASE}:Lowercase conversion.{@code UPPERCASE}:Uppercase conversion."
   name: "cas.authn.jdbc.encode[].principal-transformation.case-conversion"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -1628,9 +1714,18 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
-  type: "CaseConversion"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username\nto match\
+    \ for blocking/forbidden values.\nIf a match is found, an exception will be thrown\n\
+    and principal transformation will fail."
+  name: "cas.authn.jdbc.query[].principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc."
+    into upper-case, lower-case, etc.\nAvailable values:\n{@code NONE}:No conversion.{@code\
+    \ LOWERCASE}:Lowercase conversion.{@code UPPERCASE}:Uppercase conversion."
   name: "cas.authn.jdbc.query[].principal-transformation.case-conversion"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -1711,9 +1806,18 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
-  type: "CaseConversion"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username\nto match\
+    \ for blocking/forbidden values.\nIf a match is found, an exception will be thrown\n\
+    and principal transformation will fail."
+  name: "cas.authn.jdbc.search[].principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc."
+    into upper-case, lower-case, etc.\nAvailable values:\n{@code NONE}:No conversion.{@code\
+    \ LOWERCASE}:Lowercase conversion.{@code UPPERCASE}:Uppercase conversion."
   name: "cas.authn.jdbc.search[].principal-transformation.case-conversion"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -1839,11 +1943,7 @@
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties$PasswordPolicyHandlingOptions"
-  description: "Decide how authentication should handle password policy changes. Acceptable\
-    \ values are: <ul> <li>{@code DEFAULT}: Default password policy rules handling\
-    \ account states.</li> <li>{@code GROOVY}: Handle account changes and warnings\
-    \ via Groovy scripts</li> <li>{@code REJECT_RESULT_CODE}: Handle account state\
-    \ only if the authentication result code isn't blocked</li> </ul>DEFAULT:Default\
+  description: "Decide how authentication should handle password policy changes.DEFAULT:Default\
     \ option to handle policy changes..GROOVY:Handle account password policies via\
     \ Groovy..REJECT_RESULT_CODE:Strategy to only activate password policy\nif the\
     \ authentication response code is not blocked.."
@@ -1877,6 +1977,14 @@
     \ is within the calculated window."
   name: "cas.authn.json.password-policy.warning-days"
   defaultValue: 30
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.json.principal-transformation.blocking-pattern"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
@@ -1978,9 +2086,18 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
-  type: "CaseConversion"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username\nto match\
+    \ for blocking/forbidden values.\nIf a match is found, an exception will be thrown\n\
+    and principal transformation will fail."
+  name: "cas.authn.ldap[].principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc."
+    into upper-case, lower-case, etc.\nAvailable values:\n{@code NONE}:No conversion.{@code\
+    \ LOWERCASE}:Lowercase conversion.{@code UPPERCASE}:Uppercase conversion."
   name: "cas.authn.ldap[].principal-transformation.case-conversion"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -3381,6 +3498,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.mongo.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -3474,6 +3599,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.okta.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -3539,8 +3672,7 @@
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
-    \ Otherwise, simply logs the condition as an error without raising a catastrophic\
-    \ error."
+    \ Otherwise, logs the condition as an error without raising a catastrophic error."
   name: "cas.authn.openid.principal.principal-resolution-failure-fatal"
   defaultValue: false
 - module: "cas-server-core-authentication"
@@ -3817,6 +3949,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.radius.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -3910,6 +4050,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.redis.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -4001,6 +4149,14 @@
     \ </ul> @see PasswordEncoderTypes"
   name: "cas.authn.reject.password-encoder.type"
   defaultValue: "NONE"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.reject.principal-transformation.blocking-pattern"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
@@ -4153,6 +4309,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.shiro.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -4246,6 +4410,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.soap.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -4279,6 +4451,14 @@
   type: "java.lang.String"
   description: "Suffix to add to the principal id prior to authentication."
   name: "cas.authn.soap.principal-transformation.suffix"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.spnego.principal-transformation.blocking-pattern"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
@@ -4347,8 +4527,7 @@
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
-    \ Otherwise, simply logs the condition as an error without raising a catastrophic\
-    \ error."
+    \ Otherwise, logs the condition as an error without raising a catastrophic error."
   name: "cas.authn.spnego.principal.principal-resolution-failure-fatal"
   defaultValue: false
 - module: "cas-server-core-authentication"
@@ -4398,8 +4577,7 @@
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
-    \ Otherwise, simply logs the condition as an error without raising a catastrophic\
-    \ error."
+    \ Otherwise, logs the condition as an error without raising a catastrophic error."
   name: "cas.authn.surrogate.principal.principal-resolution-failure-fatal"
   defaultValue: false
 - module: "cas-server-core-authentication"
@@ -4477,6 +4655,14 @@
   defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.syncope.principal-transformation.blocking-pattern"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
     \ upper-case, lower-case, etc.NONE:No conversion..LOWERCASE:Lowercase conversion..UPPERCASE:Uppercase\
@@ -4510,6 +4696,14 @@
   type: "java.lang.String"
   description: "Suffix to add to the principal id prior to authentication."
   name: "cas.authn.syncope.principal-transformation.suffix"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.token.principal-transformation.blocking-pattern"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
@@ -4585,8 +4779,7 @@
   type: "boolean"
   description: "When true, throws an error back indicating that principal resolution\n\
     has failed and no principal can be found based on the authentication requirements.\n\
-    Otherwise, simply logs the condition as an error without raising a catastrophic\
-    \ error."
+    Otherwise, logs the condition as an error without raising a catastrophic error."
   name: "cas.authn.wsfed[].principal.principal-resolution-failure-fatal"
   defaultValue: ""
 - module: "cas-server-core-authentication"
@@ -4604,6 +4797,14 @@
     \ where\nauthentication is delegated to an external identity provider\nand a principal\
     \ is first established to then query an attribute source."
   name: "cas.authn.wsfed[].principal.use-existing-principal-id"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
+  type: "java.lang.String"
+  description: "A regular expression that will be used against the username to match\
+    \ for blocking/forbidden values. If a match is found, an exception will be thrown\
+    \ and principal transformation will fail."
+  name: "cas.authn.x509.principal-transformation.blocking-pattern"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
@@ -4672,8 +4873,7 @@
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
-    \ Otherwise, simply logs the condition as an error without raising a catastrophic\
-    \ error."
+    \ Otherwise, logs the condition as an error without raising a catastrophic error."
   name: "cas.authn.x509.principal.principal-resolution-failure-fatal"
   defaultValue: false
 - module: "cas-server-core-authentication"
@@ -4867,8 +5067,7 @@
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
-    \ Otherwise, simply logs the condition as an error without raising a catastrophic\
-    \ error."
+    \ Otherwise, logs the condition as an error without raising a catastrophic error."
   name: "cas.person-directory.principal-resolution-failure-fatal"
   defaultValue: false
 - module: "cas-server-core-authentication"

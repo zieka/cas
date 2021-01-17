@@ -1,33 +1,33 @@
 ---
 - required: true
-  module: "cas-server-support-trusted-redis"
+  module: "cas-server-support-trusted-mfa-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
   type: "java.lang.Integer"
   description: "Database index used by the connection factory."
   name: "cas.authn.mfa.trusted.redis.database"
   defaultValue: 0
 - required: true
-  module: "cas-server-support-trusted-redis"
+  module: "cas-server-support-trusted-mfa-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Redis server host."
   name: "cas.authn.mfa.trusted.redis.host"
   defaultValue: "localhost"
 - required: true
-  module: "cas-server-support-trusted-redis"
+  module: "cas-server-support-trusted-mfa-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Login password of the redis server."
   name: "cas.authn.mfa.trusted.redis.password"
   defaultValue: ""
 - required: true
-  module: "cas-server-support-trusted-redis"
+  module: "cas-server-support-trusted-mfa-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
   type: "java.lang.Integer"
   description: "Redis server port."
   name: "cas.authn.mfa.trusted.redis.port"
   defaultValue: 6379
-- module: "cas-server-support-trusted-redis"
+- module: "cas-server-support-trusted-mfa-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Setting that describes how Lettuce routes read operations to replica\
@@ -43,13 +43,13 @@
     \ version 5.2.</li> </ul>"
   name: "cas.authn.mfa.trusted.redis.read-from"
   defaultValue: ""
-- module: "cas-server-support-trusted-redis"
+- module: "cas-server-support-trusted-mfa-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
   type: "java.lang.Integer"
   description: "Connection timeout in milliseconds."
   name: "cas.authn.mfa.trusted.redis.timeout"
   defaultValue: 2000
-- module: "cas-server-support-trusted-redis"
+- module: "cas-server-support-trusted-mfa-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.RedisTrustedDevicesMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Whether or not to use SSL for connection factory."

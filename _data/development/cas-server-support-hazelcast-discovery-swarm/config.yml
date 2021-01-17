@@ -57,9 +57,9 @@
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDockerSwarmDiscoveryProperties.MemberAddressProvider"
   type: "java.lang.Integer"
   description: "The raw port that hazelcast is listening on. IMPORTANT: This is NOT\
-    \ a docker \"published\" port, nor is it necessarily a EXPOSEd port. It is simply\
-    \ the hazelcast port that the service is configured with, this must be the same\
-    \ for all matched containers in order to work, and just using the default of 5701\
+    \ a docker \"published\" port, nor is it necessarily a EXPOSEd port. It is the\
+    \ hazelcast port that the service is configured with, this must be the same for\
+    \ all matched containers in order to work, and just using the default of 5701\
     \ is the simplest way to go."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.docker-swarm.member-provider.hazelcast-peer-port"
   defaultValue: 5701
@@ -133,9 +133,9 @@
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDockerSwarmDiscoveryProperties.MemberAddressProvider"
   type: "java.lang.Integer"
   description: "The raw port that hazelcast is listening on. IMPORTANT: This is NOT\
-    \ a docker \"published\" port, nor is it necessarily a EXPOSEd port. It is simply\
-    \ the hazelcast port that the service is configured with, this must be the same\
-    \ for all matched containers in order to work, and just using the default of 5701\
+    \ a docker \"published\" port, nor is it necessarily a EXPOSEd port. It is the\
+    \ hazelcast port that the service is configured with, this must be the same for\
+    \ all matched containers in order to work, and just using the default of 5701\
     \ is the simplest way to go."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.docker-swarm.member-provider.hazelcast-peer-port"
   defaultValue: 5701
@@ -209,9 +209,9 @@
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDockerSwarmDiscoveryProperties.MemberAddressProvider"
   type: "java.lang.Integer"
   description: "The raw port that hazelcast is listening on. IMPORTANT: This is NOT\
-    \ a docker \"published\" port, nor is it necessarily a EXPOSEd port. It is simply\
-    \ the hazelcast port that the service is configured with, this must be the same\
-    \ for all matched containers in order to work, and just using the default of 5701\
+    \ a docker \"published\" port, nor is it necessarily a EXPOSEd port. It is the\
+    \ hazelcast port that the service is configured with, this must be the same for\
+    \ all matched containers in order to work, and just using the default of 5701\
     \ is the simplest way to go."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.docker-swarm.member-provider.hazelcast-peer-port"
   defaultValue: 5701

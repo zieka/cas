@@ -562,7 +562,7 @@
   owner: "org.apereo.cas.configuration.model.core.monitor.LdapSecurityActuatorEndpointsMonitorProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapAuthenticationProperties$AuthenticationTypes"
   description: "The authentication type. <ul> <li>{@code AD} - Users authenticate\
-    \ with {code sAMAccountName}. </li> <li>{@code AUTHENTICATED} - Manager bind/search\
+    \ with {@code sAMAccountName}. </li> <li>{@code AUTHENTICATED} - Manager bind/search\
     \ type of authentication. If {@code }principalAttributePassword} is empty then\
     \ a user simple bind is done to validate credentials. Otherwise the given attribute\
     \ is compared with the given {@code rincipalAttributePassword} using the {@code\

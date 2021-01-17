@@ -19,12 +19,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Bitbucket"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.bitbucket.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -96,13 +95,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.cas.Pac4jCasClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.cas[].callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -170,12 +170,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Dropbox"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.dropbox.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -242,12 +241,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Facebook"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.facebook.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -326,12 +324,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Foursquare"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.foursquare.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -398,12 +395,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Github"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.github.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -479,12 +475,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Google"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.google.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -557,12 +552,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.HiOrgServer"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.hi-org-server.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -642,12 +636,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.LinkedIn"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.linked-in.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -738,13 +731,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oauth.Pac4jOAuth20ClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.oauth2[].callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -765,7 +759,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oauth.Pac4jOAuth20ClientProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Custom parameters in form of key-value pairs sent along in authZ requests,\
     \ etc."
   name: "cas.authn.pac4j.oauth2[].custom-params"
@@ -793,7 +787,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oauth.Pac4jOAuth20ClientProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Profile attributes to request and collect in form of key-value pairs."
   name: "cas.authn.pac4j.oauth2[].profile-attrs"
   defaultValue: ""
@@ -868,13 +862,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAppleOidcClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.oidc[].apple.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -901,7 +896,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAppleOidcClientProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Custom parameters to send along in authZ requests, etc."
   name: "cas.authn.pac4j.oidc[].apple.custom-params"
   defaultValue: ""
@@ -1060,13 +1055,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAzureOidcClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.oidc[].azure.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -1093,7 +1089,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAzureOidcClientProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Custom parameters to send along in authZ requests, etc."
   name: "cas.authn.pac4j.oidc[].azure.custom-params"
   defaultValue: ""
@@ -1238,13 +1234,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.oidc[].generic.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -1271,7 +1268,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Custom parameters to send along in authZ requests, etc."
   name: "cas.authn.pac4j.oidc[].generic.custom-params"
   defaultValue: ""
@@ -1403,13 +1400,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.oidc[].google.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -1436,7 +1434,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Custom parameters to send along in authZ requests, etc."
   name: "cas.authn.pac4j.oidc[].google.custom-params"
   defaultValue: ""
@@ -1575,13 +1573,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jKeyCloakOidcClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.oidc[].keycloak.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -1608,7 +1607,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jKeyCloakOidcClientProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Custom parameters to send along in authZ requests, etc."
   name: "cas.authn.pac4j.oidc[].keycloak.custom-params"
   defaultValue: ""
@@ -1749,12 +1748,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Orcid"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.orcid.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -1827,12 +1825,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Paypal"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.paypal.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -1966,7 +1963,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "List<String>"
+  type: "java.util.List<String>"
   description: "Requested authentication context class in authn requests."
   name: "cas.authn.pac4j.saml[].authn-context-class-ref"
   defaultValue: ""
@@ -1990,7 +1987,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "List<String>"
+  type: "java.util.List<String>"
   description: "Collection of signing signature blocked algorithms, if any, to override\
     \ the global defaults."
   name: "cas.authn.pac4j.saml[].blocked-signature-signing-algorithms"
@@ -2007,13 +2004,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "CallbackUrlTypes"
+  type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nAccepted values\
-    \ are:\n\n<ul>\n    <li>{@code PATH_PARAMETER}: The client name is added to the\
-    \ path of the callback URL.</li>\n    <li>{@code QUERY_PARAMETER}: The client\
-    \ name is added to the path of a query parameter.</li>\n    <li>{@code NONE}:\
-    \ No name is added to the callback URL to be able to distinguish the client.</li>\n\
-    </ul>\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}."
+    \ are:\n\nDefault is {@link CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n\
+    {@code PATH_PARAMETER}:Path parameter callback url.\nThe client name is added\
+    \ to the path of the callback URL.{@code QUERY_PARAMETER}:Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.{@code NONE}:No\
+    \ callback url.\nNo name is added to the callback URL to be able to distinguish\
+    \ the client."
   name: "cas.authn.pac4j.saml[].callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -2100,7 +2098,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "List<ServiceProviderMappedAttribute>"
+  type: "java.util.List<ServiceProviderMappedAttribute>"
   description: "Describes the map of attributes that are to be fetched from the credential\
     \ (map keys)\nand then transformed/renamed using map values before they are put\
     \ into a profile.\nAn example might be to fetch {@code givenName} from credential\
@@ -2197,7 +2195,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "List<ServiceProviderRequestedAttribute>"
+  type: "java.util.List<ServiceProviderRequestedAttribute>"
   description: "List of attributes requested by the service provider\nthat would be\
     \ put into the service provider metadata."
   name: "cas.authn.pac4j.saml[].requested-attributes"
@@ -2244,7 +2242,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "List<String>"
+  type: "java.util.List<String>"
   description: "Collection of signing signature algorithms, if any, to override the\
     \ global defaults."
   name: "cas.authn.pac4j.saml[].signature-algorithms"
@@ -2258,7 +2256,7 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "List<String>"
+  type: "java.util.List<String>"
   description: "Collection of signing signature reference digest methods, if any,\
     \ to override the global defaults."
   name: "cas.authn.pac4j.saml[].signature-reference-digest-methods"
@@ -2301,12 +2299,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Twitter"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.twitter.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -2388,12 +2385,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.WindowsLive"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.windows-live.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -2460,12 +2456,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Wordpress"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.wordpress.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
@@ -2532,12 +2527,11 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Yahoo"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Accepted values\
-    \ are: <ul>     <li>{@code PATH_PARAMETER}: The client name is added to the path\
-    \ of the callback URL.</li>     <li>{@code QUERY_PARAMETER}: The client name is\
-    \ added to the path of a query parameter.</li>     <li>{@code NONE}: No name is\
-    \ added to the callback URL to be able to distinguish the client.</li> </ul> Default\
-    \ is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path parameter callback\
-    \ url..QUERY_PARAMETER:Query parameter callback url..NONE:No callback url.."
+    \ are: Default is {@link CallbackUrlTypes#QUERY_PARAMETER}.PATH_PARAMETER:Path\
+    \ parameter callback url.\nThe client name is added to the path of the callback\
+    \ URL..QUERY_PARAMETER:Query parameter callback url.\nThe client name is added\
+    \ to the path of a query parameter..NONE:No callback url.\nNo name is added to\
+    \ the callback URL to be able to distinguish the client.."
   name: "cas.authn.pac4j.yahoo.callback-url-type"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"

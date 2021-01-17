@@ -34,7 +34,7 @@
   defaultValue: ""
 - module: "cas-server-support-aup-ldap"
   owner: "org.apereo.cas.configuration.model.support.aup.LdapAcceptableUsagePolicyProperties"
-  type: "List<String>"
+  type: "java.util.List<String>"
   description: "Indicate the collection of attributes that are to be tagged and processed\
     \ as binary\nattributes by the underlying search resolver."
   name: "cas.acceptable-usage-policy.ldap[].binary-attributes"
@@ -109,8 +109,10 @@
   defaultValue: true
 - module: "cas-server-support-aup-ldap"
   owner: "org.apereo.cas.configuration.model.support.aup.LdapAcceptableUsagePolicyProperties"
-  type: "LdapHostnameVerifierOptions"
-  description: "Hostname verification options."
+  type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties.LdapHostnameVerifierOptions"
+  description: "Hostname verification options.\nAvailable values:\n{@code DEFAULT}:Default\
+    \ option, forcing verification.{@code ANY}:Skip hostname verification and allow\
+    \ all."
   name: "cas.acceptable-usage-policy.ldap[].hostname-verifier"
   defaultValue: ""
 - module: "cas-server-support-aup-ldap"
@@ -257,7 +259,7 @@
   defaultValue: ""
 - module: "cas-server-support-aup-ldap"
   owner: "org.apereo.cas.configuration.model.support.aup.LdapAcceptableUsagePolicyProperties"
-  type: "List<LdapSearchEntryHandlersProperties>"
+  type: "java.util.List<LdapSearchEntryHandlersProperties>"
   description: "Search handlers."
   name: "cas.acceptable-usage-policy.ldap[].search-entry-handlers"
   defaultValue: ""

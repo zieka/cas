@@ -1,5 +1,5 @@
 ---
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.Boolean"
   description: "The default auto-commit behavior of connections in the pool. Determined\
@@ -7,14 +7,14 @@
     \ waiting for an underlying transaction."
   name: "cas.authn.mfa.trusted.jpa.autocommit"
   defaultValue: false
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.Integer"
   description: "A non-zero value enables use of JDBC2 batch updates by Hibernate.\
     \ e.g. recommended values between 5 and 30."
   name: "cas.authn.mfa.trusted.jpa.batch-size"
   defaultValue: 5
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Attempts to do a JNDI data source look up for the data source name\
@@ -23,14 +23,14 @@
     \ is used."
   name: "cas.authn.mfa.trusted.jpa.data-source-name"
   defaultValue: ""
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether JNDI data sources retrieved should be proxied or\
     \ returned back verbatim."
   name: "cas.authn.mfa.trusted.jpa.data-source-proxy"
   defaultValue: false
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
@@ -38,21 +38,21 @@
     \ is starts and ends"
   name: "cas.authn.mfa.trusted.jpa.ddl-auto"
   defaultValue: "update"
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Qualifies unqualified table names with the given catalog in generated\
     \ SQL."
   name: "cas.authn.mfa.trusted.jpa.default-catalog"
   defaultValue: ""
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Qualify unqualified table names with the given schema/tablespace in\
     \ generated SQL."
   name: "cas.authn.mfa.trusted.jpa.default-schema"
   defaultValue: ""
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "The database dialect is a configuration setting for platform independent\
@@ -61,13 +61,13 @@
   name: "cas.authn.mfa.trusted.jpa.dialect"
   defaultValue: "org.hibernate.dialect.HSQLDialect"
 - required: true
-  module: "cas-server-support-trusted-jdbc"
+  module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "The JDBC driver used to connect to the database."
   name: "cas.authn.mfa.trusted.jpa.driver-class"
   defaultValue: "org.hsqldb.jdbcDriver"
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.Long"
   description: "Set the pool initialization failure timeout. <ul> <li>Any value greater\
@@ -93,20 +93,20 @@
     \ millisecond."
   name: "cas.authn.mfa.trusted.jpa.fail-fast-timeout"
   defaultValue: 1
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "The SQL query to be executed to test the validity of connections."
   name: "cas.authn.mfa.trusted.jpa.health-query"
   defaultValue: ""
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Controls the maximum amount of time that a connection is allowed to\
     \ sit idle in the pool."
   name: "cas.authn.mfa.trusted.jpa.idle-timeout"
   defaultValue: "PT10M"
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.Boolean"
   description: "This property determines whether data source isolates internal pool\
@@ -116,13 +116,13 @@
     \ is disabled."
   name: "cas.authn.mfa.trusted.jpa.isolate-internal-queries"
   defaultValue: false
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Defines the isolation level for transactions. @see org.springframework.transaction.TransactionDefinition"
   name: "cas.authn.mfa.trusted.jpa.isolation-level-name"
   defaultValue: "ISOLATION_READ_COMMITTED"
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.Integer"
   description: "Controls the amount of time that a connection can be out of the pool\
@@ -130,40 +130,40 @@
   name: "cas.authn.mfa.trusted.jpa.leak-threshold"
   defaultValue: 3000
 - required: true
-  module: "cas-server-support-trusted-jdbc"
+  module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "The database connection password."
   name: "cas.authn.mfa.trusted.jpa.password"
   defaultValue: ""
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Fully-qualified name of the class that can control the physical naming\
     \ strategy of hibernate."
   name: "cas.authn.mfa.trusted.jpa.physical-naming-strategy-class-name"
   defaultValue: "org.apereo.cas.hibernate.CasHibernatePhysicalNamingStrategy"
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "Defines the propagation behavior for transactions. @see org.springframework.transaction.TransactionDefinition"
   name: "cas.authn.mfa.trusted.jpa.propagation-behavior-name"
   defaultValue: "PROPAGATION_REQUIRED"
-- module: "cas-server-support-trusted-jdbc"
+- module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
   description: "Additional settings provided by Hibernate in form of key-value pairs."
   name: "cas.authn.mfa.trusted.jpa.properties"
   defaultValue: ""
 - required: true
-  module: "cas-server-support-trusted-jdbc"
+  module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "The database connection URL."
   name: "cas.authn.mfa.trusted.jpa.url"
   defaultValue: "jdbc:hsqldb:mem:cas-hsql-database"
 - required: true
-  module: "cas-server-support-trusted-jdbc"
+  module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
   description: "The database user. <p> The database user must have sufficient permissions\

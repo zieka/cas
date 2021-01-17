@@ -34,7 +34,8 @@ There is an implicit security policy that requires at least one handler to succe
 ## Authentication Handlers
 
 There are a variety of authentication handlers and methods supported 
-by CAS. Use the menu to navigate around the site and choose.
+by CAS. Use the menu to navigate around the site and choose. By default, CAS is configured 
+to accept a pre-defined set of credentials that are supplied via the CAS configuration.
 
 <div class="alert alert-warning"><strong>Default Credentials</strong><p>To test the default authentication scheme in CAS,
 use <strong>casuser</strong> and <strong>Mellon</strong> as the username and password respectively. These are automatically
@@ -58,7 +59,7 @@ Please see [this guide](Configuring-Authentication-Resolution.html) for more inf
 ### Authentication Sequence
 
 At runtime, CAS maintains a collection of authentication handlers/strategies that typically execute one after another. 
-Each CAS module that presents a form of authentication strategy will simply insert itself into this collection at 
+Each CAS module that presents a form of authentication strategy will insert itself into this collection at 
 bootstrap time. At the end of this process, the result of all authentication transactions is collected and optionally processed by 
 an authentication policy where success/failure of certain strategies/sources may be taken into account to fully satisfy the 
 authentication requirements. The collection of authentication handlers tries to preserve order in a rather more deterministic way. 
@@ -83,16 +84,7 @@ Please see [authentication security policies](Configuring-Authentication-Policy.
 
 ## Principal Resolution
 
-In the event that a separate resolver is put into place, control how the final principal should be constructed by default.
-
-{% include casproperties.html properties="cas.person-directory" %}
-
-### Principal Transformation
-
-Authentication handlers that generally deal with username-password credentials
-can be configured to transform the user id prior to executing the authentication sequence.
-Each authentication strategy in CAS provides settings to properly transform the principal.
-Refer to the relevant settings for the authentication strategy at hand to learn more.
+Please see [this guide](Configuring-Authentication-PrincipalResolution.html) for more details.
 
 ## Long Term Authentication
 

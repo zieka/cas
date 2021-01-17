@@ -27,7 +27,7 @@
   defaultValue: ""
 - module: "cas-server-support-pm-ldap"
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
-  type: "List<String>"
+  type: "java.util.List<String>"
   description: "Indicate the collection of attributes that are to be tagged and processed\
     \ as binary\nattributes by the underlying search resolver."
   name: "cas.authn.pm.ldap[].binary-attributes"
@@ -102,8 +102,10 @@
   defaultValue: true
 - module: "cas-server-support-pm-ldap"
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
-  type: "LdapHostnameVerifierOptions"
-  description: "Hostname verification options."
+  type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties.LdapHostnameVerifierOptions"
+  description: "Hostname verification options.\nAvailable values:\n{@code DEFAULT}:Default\
+    \ option, forcing verification.{@code ANY}:Skip hostname verification and allow\
+    \ all."
   name: "cas.authn.pm.ldap[].hostname-verifier"
   defaultValue: ""
 - module: "cas-server-support-pm-ldap"
@@ -250,7 +252,7 @@
   defaultValue: ""
 - module: "cas-server-support-pm-ldap"
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
-  type: "List<LdapSearchEntryHandlersProperties>"
+  type: "java.util.List<LdapSearchEntryHandlersProperties>"
   description: "Search handlers."
   name: "cas.authn.pm.ldap[].search-entry-handlers"
   defaultValue: ""
@@ -266,7 +268,7 @@
   defaultValue: ""
 - module: "cas-server-support-pm-ldap"
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
-  type: "Map<String,String>"
+  type: "java.util.Map<String,String>"
   description: "Collection of attribute names that indicate security questions answers.\n\
     This is done via a key-value structure where the key is the attribute name\nfor\
     \ the security question and the value is the attribute name for the answer linked\
