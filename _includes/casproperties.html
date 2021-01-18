@@ -139,10 +139,12 @@
     <br><p />
     
     {% capture copyTarget %}#copyAreaRequiredProperties{{ randomNumber }}{% endcapture %}
-    {% include propertiestoolbar.html copyTarget=copyTarget %}
+    {% capture searchTarget %}tableRequiredProperties{{ randomNumber }}{% endcapture %}
+    {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
 
     <table class="properties" id='tableRequiredProperties{{ randomNumber }}'>
     <tbody>
+       
         {% for module in modules %}
             {% for cfg in site.data[version][module] %}
                 {% assign configBlock = cfg[1] %}
@@ -276,6 +278,7 @@
                 {% endfor %}
             {% endfor %}
         {% endfor %}
+    
     </tbody>
     </table>
     <textarea style="position:absolute; left: -10000px;" 
@@ -291,11 +294,12 @@
     <br><p />
 
     {% capture copyTarget %}#copyAreaOptionalProperties{{ randomNumber }}{% endcapture %}
-    {% include propertiestoolbar.html copyTarget=copyTarget %}
+    {% capture searchTarget %}tableOptionalProperties{{ randomNumber }}{% endcapture %}
+    {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
 
     <table class="properties" id='tableOptionalProperties{{ randomNumber }}'>
     <tbody>
-        
+
         {% for module in modules %}
             {% for cfg in site.data[version][module] %}
                 {% assign configBlock = cfg[1] %}
@@ -429,7 +433,7 @@
                 {% endfor %}
             {% endfor %}
         {% endfor %}
-
+    
     </tbody>
     </table>
     <textarea style="position:absolute; left: -10000px;" 
@@ -446,7 +450,8 @@
     <br><p />
 
     {% capture copyTarget %}#copyAreaThirdPartyProperties{{ randomNumber }}{% endcapture %}
-    {% include propertiestoolbar.html copyTarget=copyTarget %}
+    {% capture searchTarget %}tableThirdPartyProperties{{ randomNumber }}{% endcapture %}
+    {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
 
     <table class="properties" id='tableThirdPartyProperties{{ randomNumber }}'>
         <tbody>
@@ -552,6 +557,7 @@
             {% endfor %}
 
         {% endfor %}
+                    
         </tbody>
     </table>
 
