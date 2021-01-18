@@ -25,18 +25,18 @@
 
 <p>The following settings and properties are available from the CAS configuration catalog:</p>
 
-<ul class='nav nav-pills' id="navPillsMenus{{ randomNumber }}">
+<ul class='nav nav-tabs' id="navPillsMenus{{ randomNumber }}">
     <li class='nav-item'>
         <a class='nav-link active' 
             id="linkRequiredProperties{{ randomNumber }}" 
             data-toggle='tab' 
-            href='#requiredProperties{{ randomNumber }}'>Required Settings</a>
+            href='#requiredProperties{{ randomNumber }}'>Required</a>
     </li>
     <li class='nav-item'>
         <a class='nav-link' 
             id="linkOptionalProperties{{ randomNumber }}" 
             data-toggle='tab' 
-            href='#optionalProperties{{ randomNumber }}'>Optional Settings</a>
+            href='#optionalProperties{{ randomNumber }}'>Optional</a>
     </li>
 
     <li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
@@ -100,7 +100,7 @@
         <a class='nav-link' 
             id="linkThirdPartyProperties{{ randomNumber }}"  
             data-toggle='tab' 
-            href='#thirdPartyProperties{{ randomNumber }}'>Third Party Settings</a>
+            href='#thirdPartyProperties{{ randomNumber }}'>Third Party</a>
     </li>
     {% endif %}
 
@@ -109,7 +109,7 @@
         
             id="linkNotes{{ randomNumber }}"  
             data-toggle='tab' 
-            href='#notes{{ randomNumber }}'>Guidelines</a>
+            href='#notes{{ randomNumber }}'>Notes</a>
     </li>
 </ul>
 
@@ -124,6 +124,10 @@
 {% assign principalTransformationSettingsFound = false %}
 {% assign passwordPolicySettingsFound = false %}
 
+{% assign textAreaRequiredProperties = blank %}
+{% assign textAreaOptionalProperties = blank %}
+{% assign textAreaThirdPartyProperties = blank %}
+
 <div class='tab-content clearfix'>
 
 
@@ -133,6 +137,10 @@
         The configuration settings listed below are tagged as <u><i>Required</i></u> in the CAS configuration metadata. This flag indicates that the presence of the setting is not strictly necessary in the end-user CAS configuration, because a default value may be assigned or the feature in question may not be immediately intended for use. You may want to own the setting and update it assigned value, assuming the intended feature controlled by the setting is utilized.
     </sub>
     <br><p />
+    
+    {% capture copyTarget %}#copyAreaRequiredProperties{{ randomNumber }}{% endcapture %}
+    {% include propertiestoolbar.html copyTarget=copyTarget %}
+
     <table class="properties" id='tableRequiredProperties{{ randomNumber }}'>
     <tbody>
         {% for module in modules %}
@@ -178,6 +186,17 @@
                             
 
                             {% assign requiredSettingsFound = true %}
+                            {% assign textAreaRequiredProperties = textAreaRequiredProperties 
+                                | append: "# "
+                                | append: config.shortDescription
+                                | append: "&#13;&#10;"
+                                | append: "&#13;&#10;"
+                                | append: "# "
+                                | append: config.name | replace: "[]", "[0]"
+                                | append: "="
+                                | append: config.defaultValue 
+                                | append: "&#13;&#10;" %}
+
                             {% include casproperty.html 
                                 name=config.name 
                                 defaultValue=config.defaultValue 
@@ -234,6 +253,16 @@
                                 {% endif %}
 
                                 {% assign requiredSettingsFound = true %}
+                                {% assign textAreaRequiredProperties = textAreaRequiredProperties 
+                                    | append: "# "
+                                    | append: config.shortDescription
+                                    | append: "&#13;&#10;"
+                                    | append: "&#13;&#10;"
+                                    | append: "# "
+                                    | append: config.name | replace: "[]", "[0]"
+                                    | append: "="
+                                    | append: config.defaultValue 
+                                    | append: "&#13;&#10;" %}
                                 {% include casproperty.html 
                                     name=config.name 
                                     defaultValue=config.defaultValue 
@@ -249,6 +278,8 @@
         {% endfor %}
     </tbody>
     </table>
+    <textarea style="position:absolute; left: -10000px;" 
+        id="copyAreaRequiredProperties{{ randomNumber }}">{{ textAreaRequiredProperties }}</textarea>
 </div>
 
 <div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
@@ -258,6 +289,9 @@
         The configuration settings listed below are tagged as <u><i>Optional</i></u> in the CAS configuration metadata. This flag indicates that the presence of the setting is not immediately necessary in the end-user CAS configuration, because a default value is assigned or the activation of the feature is not conditionally controlled by the setting value.
     </sub>
     <br><p />
+
+    {% capture copyTarget %}#copyAreaOptionalProperties{{ randomNumber }}{% endcapture %}
+    {% include propertiestoolbar.html copyTarget=copyTarget %}
 
     <table class="properties" id='tableOptionalProperties{{ randomNumber }}'>
     <tbody>
@@ -303,6 +337,16 @@
                             {% endif %}
 
                             {% assign optionalSettingsFound = true %}
+                            {% assign textAreaOptionalProperties = textAreaOptionalProperties 
+                                | append: "# "
+                                | append: config.shortDescription
+                                | append: "&#13;&#10;"
+                                | append: "&#13;&#10;"
+                                | append: "# "
+                                | append: config.name | replace: "[]", "[0]"
+                                | append: "="
+                                | append: config.defaultValue 
+                                | append: "&#13;&#10;" %}
                             {% include casproperty.html 
                                 name=config.name 
                                 defaultValue=config.defaultValue 
@@ -362,6 +406,16 @@
                                     {% endif %}
 
                                     {% assign optionalSettingsFound = true %}
+                                    {% assign textAreaOptionalProperties = textAreaOptionalProperties 
+                                        | append: "# "
+                                        | append: config.shortDescription
+                                        | append: "&#13;&#10;"
+                                        | append: "&#13;&#10;"
+                                        | append: "# "
+                                        | append: config.name | replace: "[]", "[0]"
+                                        | append: "="
+                                        | append: config.defaultValue 
+                                        | append: "&#13;&#10;" %}
                                     {% include casproperty.html 
                                         name=config.name 
                                         defaultValue=config.defaultValue 
@@ -378,6 +432,8 @@
 
     </tbody>
     </table>
+    <textarea style="position:absolute; left: -10000px;" 
+    id="copyAreaOptionalProperties{{ randomNumber }}">{{ textAreaOptionalProperties }}</textarea>
 </div>
 
 
@@ -388,6 +444,9 @@
         The configuration settings listed below are tagged as <i>Third Party</i> in the CAS configuration metadata. This flag indicates that the configuration setting is not controlled, owned or managed by the CAS ecosystem, and affects functionality that is offered by a third-party library, such as Spring Boot or Spring Cloud to CAS. For additional info, you might have to visit the third-party source to find more details.
     </sub>
     <br><p />
+
+    {% capture copyTarget %}#copyAreaThirdPartyProperties{{ randomNumber }}{% endcapture %}
+    {% include propertiestoolbar.html copyTarget=copyTarget %}
 
     <table class="properties" id='tableThirdPartyProperties{{ randomNumber }}'>
         <tbody>
@@ -406,6 +465,17 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
+                            {% assign textAreaThirdPartyProperties = textAreaOptionalProperties 
+                                | append: "# "
+                                | append: config.shortDescription
+                                | append: "&#13;&#10;"
+                                | append: "&#13;&#10;"
+                                | append: "# "
+                                | append: config.name | replace: "[]", "[0]"
+                                | append: "="
+                                | append: config.defaultValue 
+                                | append: "&#13;&#10;" %}
+                                
                             {% include casproperty.html 
                                 name=config.name 
                                 defaultValue=config.defaultValue 
@@ -425,6 +495,17 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
+                            {% assign textAreaThirdPartyProperties = textAreaOptionalProperties 
+                                | append: "# "
+                                | append: config.shortDescription
+                                | append: "&#13;&#10;"
+                                | append: "&#13;&#10;"
+                                | append: "# "
+                                | append: config.name | replace: "[]", "[0]"
+                                | append: "="
+                                | append: config.defaultValue 
+                                | append: "&#13;&#10;" %}
+
                             {% include casproperty.html 
                                 name=config.name 
                                 defaultValue=config.defaultValue 
@@ -446,6 +527,17 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
+                            {% assign textAreaThirdPartyProperties = textAreaOptionalProperties 
+                                | append: "# "
+                                | append: config.shortDescription
+                                | append: "&#13;&#10;"
+                                | append: "&#13;&#10;"
+                                | append: "# "
+                                | append: config.name | replace: "[]", "[0]"
+                                | append: "="
+                                | append: config.defaultValue 
+                                | append: "&#13;&#10;" %}
+
                             {% include casproperty.html 
                                 name=config.name 
                                 defaultValue=config.defaultValue 
@@ -462,6 +554,9 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <textarea style="position:absolute; left: -10000px;" 
+    id="copyAreaThirdPartyProperties{{ randomNumber }}">{{ textAreaThirdPartyProperties }}</textarea>
 </div>
 {% endif %}
 

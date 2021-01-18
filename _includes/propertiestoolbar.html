@@ -1,0 +1,13 @@
+<div class="btn-toolbar justify-content-between" role="toolbar">
+	<div class="input-group input-group-sm w-50">
+        <div class="input-group-prepend">
+            <div class="input-group-text"><i class="fas fa-search"> </i></div>
+          </div>
+	    <input type="text" class="form-control" placeholder="Search...">
+	</div>
+	<div class="btn-group btn-group-sm" role="group">
+        <button type="button" data-clipboard-target="{{ include.copyTarget  }}" 
+            class="btn btn-sm btn-secondary copy-button" title="Copy"><i class="fas fa-copy"></i>
+        </button>    
+	</div>
+</div>
