@@ -6,6 +6,7 @@
     \ this method will be use for queries that don't explicitly have a consistency\
     \ level. Accepted values are:{@code ALL, ANY, EACH_QUORUM, LOCAL_ONE, LOCAL_QUORUM,\
     \ LOCAL_SERIAL, ONE, QUORUM, SERIAL, THREE, TWO}."
+  shortDescription: "Query option consistency level."
   name: "cas.authn.cassandra.consistency-level"
   defaultValue: "LOCAL_QUORUM"
 - required: true
@@ -13,6 +14,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.util.List<java.lang.String>"
   description: "The list of contact points to use for the new cluster."
+  shortDescription: "The list of contact points to use for the new cluster."
   name: "cas.authn.cassandra.contact-points"
   defaultValue: ""
 - required: true
@@ -20,6 +22,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "Keyspace address to use where the cluster would connect."
+  shortDescription: "Keyspace address to use where the cluster would connect."
   name: "cas.authn.cassandra.keyspace"
   defaultValue: ""
 - module: "cas-server-support-cassandra-authentication"
@@ -31,18 +34,21 @@
     \ centers, but those are always tried after the local nodes. In other words, this\
     \ policy guarantees that no host in a remote data center will be queried unless\
     \ no host in the local data center can be reached."
+  shortDescription: "Used by a DC-ware round-robin load balancing policy."
   name: "cas.authn.cassandra.local-dc"
   defaultValue: ""
 - module: "cas-server-support-cassandra-authentication"
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "Name of the authentication handler."
+  shortDescription: "Name of the authentication handler."
   name: "cas.authn.cassandra.name"
   defaultValue: ""
 - module: "cas-server-support-cassandra-authentication"
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.Integer"
   description: "The authentication handler order in the chain."
+  shortDescription: "The authentication handler order in the chain."
   name: "cas.authn.cassandra.order"
   defaultValue: ""
 - required: true
@@ -50,6 +56,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "Password to bind and establish a connection to cassandra."
+  shortDescription: "Password to bind and establish a connection to cassandra."
   name: "cas.authn.cassandra.password"
   defaultValue: ""
 - required: true
@@ -57,12 +64,14 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "Password attribute to fetch and compare."
+  shortDescription: "Password attribute to fetch and compare."
   name: "cas.authn.cassandra.password-attribute"
   defaultValue: ""
 - module: "cas-server-support-cassandra-authentication"
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "The authentication query to use when searching for users."
+  shortDescription: "The authentication query to use when searching for users."
   name: "cas.authn.cassandra.query"
   defaultValue: "SELECT * FROM %s WHERE %s = ? ALLOW FILTERING"
 - module: "cas-server-support-cassandra-authentication"
@@ -72,6 +81,7 @@
     \ set through this method will be use for queries that don't explicitly have a\
     \ serial consistency level. Accepted values are:{@code ALL, ANY, EACH_QUORUM,\
     \ LOCAL_ONE, LOCAL_QUORUM, LOCAL_SERIAL, ONE, QUORUM, SERIAL, THREE, TWO}."
+  shortDescription: "Query option serial consistency level."
   name: "cas.authn.cassandra.serial-consistency-level"
   defaultValue: "LOCAL_SERIAL"
 - required: true
@@ -79,6 +89,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "Table name to fetch credentials."
+  shortDescription: "Table name to fetch credentials."
   name: "cas.authn.cassandra.table-name"
   defaultValue: ""
 - module: "cas-server-support-cassandra-authentication"
@@ -86,6 +97,7 @@
   type: "java.lang.String"
   description: "The request timeout. This defines how long the driver will wait for\
     \ a given Cassandra node to answer a query."
+  shortDescription: "The request timeout."
   name: "cas.authn.cassandra.timeout"
   defaultValue: "PT5S"
 - required: true
@@ -93,6 +105,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "Username to bind and establish a connection to cassandra."
+  shortDescription: "Username to bind and establish a connection to cassandra."
   name: "cas.authn.cassandra.username"
   defaultValue: ""
 - required: true
@@ -100,5 +113,6 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.authentication.CassandraAuthenticationProperties"
   type: "java.lang.String"
   description: "Username attribute to fetch and compare."
+  shortDescription: "Username attribute to fetch and compare."
   name: "cas.authn.cassandra.username-attribute"
   defaultValue: ""

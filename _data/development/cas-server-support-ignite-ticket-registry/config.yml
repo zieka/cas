@@ -5,12 +5,14 @@
   description: "Sets timeout for receiving acknowledgement for sent message. If acknowledgement\
     \ is not received within this timeout, sending is considered as failed and SPI\
     \ tries to repeat message sending."
+  shortDescription: "Sets timeout for receiving acknowledgement for sent message."
   name: "cas.ticket.registry.ignite.ack-timeout"
   defaultValue: "PT2S"
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.Boolean"
   description: "Start in client mode. If true the local node is started as a client."
+  shortDescription: "Start in client mode."
   name: "cas.ticket.registry.ignite.client-mode"
   defaultValue: false
 - module: "cas-server-support-ignite-ticket-registry"
@@ -28,6 +30,8 @@
     \ individual cluster node persists only a subset of the data, only including partitions\
     \ for which the node is either primary or backup. Collectively, the whole cluster\
     \ contains the full data set."
+  shortDescription: "Ignite native persistence is a distributed ACID and SQL-compliant\
+    \ disk store that transparently integrates with Ignite's durable memory."
   name: "cas.ticket.registry.ignite.default-persistence-enabled"
   defaultValue: false
 - module: "cas-server-support-ignite-ticket-registry"
@@ -36,6 +40,8 @@
   description: "By default, Ignite nodes consume up to 20% of the RAM available locally,\
     \ and in most cases, ​this is the only parameter you might need to change. Using\
     \ the below setting allows you to change the default region memory size."
+  shortDescription: "By default, Ignite nodes consume up to 20% of the RAM available\
+    \ locally, and in most cases, ​this is the only parameter you might need to change."
   name: "cas.ticket.registry.ignite.default-region-max-size"
   defaultValue: 0
 - module: "cas-server-support-ignite-ticket-registry"
@@ -43,6 +49,7 @@
   type: "java.lang.Boolean"
   description: "Sets force server mode flag. If true {@code TcpDiscoverySpi} is started\
     \ in server mode regardless of {@code IgniteConfiguration.isClientMode()}."
+  shortDescription: "Sets force server mode flag."
   name: "cas.ticket.registry.ignite.force-server-mode"
   defaultValue: false
 - required: true
@@ -64,6 +71,9 @@
     \ If port range is provided (e.g. host:port1..port2) the following should be considered:\
     \ <ul> <li>port1 &lt; port2 should be true;</li> <li>Both port1 and port2 should\
     \ be greater than 0.</li> </ul>"
+  shortDescription: "Used by {@code TcpDiscoveryVmIpFinder} which is an IP Finder\
+    \ which works only with pre-configured list of IP addresses specified via this\
+    \ setting."
   name: "cas.ticket.registry.ignite.ignite-address"
   defaultValue: ""
 - module: "cas-server-support-ignite-ticket-registry"
@@ -73,30 +83,37 @@
     \ to connect to any address from IP finder, node keeps trying to join within this\
     \ timeout. If all addresses are still unresponsive, exception is thrown and node\
     \ startup fails."
+  shortDescription: "Sets join timeout."
   name: "cas.ticket.registry.ignite.join-timeout"
   defaultValue: "PT1S"
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "The key algorithm to use when creating SSL context."
+  shortDescription: "The key algorithm to use when creating SSL context."
   name: "cas.ticket.registry.ignite.key-algorithm"
   defaultValue: "SunX509"
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "Keystore file path used to create a SSL context for the ticket registry."
+  shortDescription: "Keystore file path used to create a SSL context for the ticket\
+    \ registry."
   name: "cas.ticket.registry.ignite.key-store-file-path"
   defaultValue: ""
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "Keystore password used to create a SSL context for the ticket registry."
+  shortDescription: "Keystore password used to create a SSL context for the ticket\
+    \ registry."
   name: "cas.ticket.registry.ignite.key-store-password"
   defaultValue: ""
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "Keystore type used to create a SSL context for the ticket registry."
+  shortDescription: "Keystore type used to create a SSL context for the ticket registry."
   name: "cas.ticket.registry.ignite.key-store-type"
   defaultValue: "JKS"
 - module: "cas-server-support-ignite-ticket-registry"
@@ -105,6 +122,7 @@
   description: "Sets local host IP address that discovery SPI uses. If not provided,\
     \ by default a first found non-loopback address will be used. If there is no non-loopback\
     \ address available, then {@code InetAddress.getLocalHost()} will be used."
+  shortDescription: "Sets local host IP address that discovery SPI uses."
   name: "cas.ticket.registry.ignite.local-address"
   defaultValue: ""
 - required: true
@@ -112,18 +130,21 @@
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.Integer"
   description: "Sets local port to listen to."
+  shortDescription: "Sets local port to listen to."
   name: "cas.ticket.registry.ignite.local-port"
   defaultValue: -1
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "Sets maximum network timeout to use for network operations."
+  shortDescription: "Sets maximum network timeout to use for network operations."
   name: "cas.ticket.registry.ignite.network-timeout"
   defaultValue: "PT5S"
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "SSL protocol used to create a SSL context for the ticket registry."
+  shortDescription: "SSL protocol used to create a SSL context for the ticket registry."
   name: "cas.ticket.registry.ignite.protocol"
   defaultValue: "TLS"
 - module: "cas-server-support-ignite-ticket-registry"
@@ -133,6 +154,7 @@
     \ time and write-to-socket time. Note that when running Ignite on Amazon EC2,\
     \ socket timeout must be set to a value significantly greater than the default\
     \ (e.g. to 30000)."
+  shortDescription: "Sets socket operations timeout."
   name: "cas.ticket.registry.ignite.socket-timeout"
   defaultValue: "PT5S"
 - module: "cas-server-support-ignite-ticket-registry"
@@ -140,6 +162,7 @@
   type: "java.lang.Integer"
   description: "Sets thread priority. All threads within SPI will be started with\
     \ it."
+  shortDescription: "Sets thread priority."
   name: "cas.ticket.registry.ignite.thread-priority"
   defaultValue: 10
 - module: "cas-server-support-ignite-ticket-registry"
@@ -161,6 +184,7 @@
     \ and consistent with writes to the underlying persistent store, if one is configured.</li>\
     \ <li>{@code TRANSACTIONAL}: Specifies fully ACID-compliant transactional cache\
     \ behavior.</li> </ul>"
+  shortDescription: "Specifies the atomicity mode."
   name: "cas.ticket.registry.ignite.tickets-cache.atomicity-mode"
   defaultValue: "TRANSACTIONAL"
 - module: "cas-server-support-ignite-ticket-registry"
@@ -182,6 +206,7 @@
     \ cache is always fronted by local 'near' cache which stores most recent data.\
     \ You can configure the size of near cache via NearCacheConfiguration.getNearEvictionPolicy()\
     \ configuration property. </li> </ul>"
+  shortDescription: "Specified the caching mode."
   name: "cas.ticket.registry.ignite.tickets-cache.cache-mode"
   defaultValue: "REPLICATED"
 - module: "cas-server-support-ignite-ticket-registry"
@@ -202,23 +227,30 @@
     \ {@code PRIMARY_SYNC}: This flag only makes sense for CacheMode.PARTITIONED mode.\
     \ When enabled, Ignite will wait for write or commit to complete on primary node,\
     \ but will not wait for backups to be updated. </li> </ul>"
+  shortDescription: "Mode indicating how Ignite should wait for write replies from\
+    \ other nodes."
   name: "cas.ticket.registry.ignite.tickets-cache.write-synchronization-mode"
   defaultValue: "FULL_SYNC"
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "Truststore file path used to create a SSL context for the ticket registry."
+  shortDescription: "Truststore file path used to create a SSL context for the ticket\
+    \ registry."
   name: "cas.ticket.registry.ignite.trust-store-file-path"
   defaultValue: ""
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "Truststore password used to create a SSL context for the ticket registry."
+  shortDescription: "Truststore password used to create a SSL context for the ticket\
+    \ registry."
   name: "cas.ticket.registry.ignite.trust-store-password"
   defaultValue: ""
 - module: "cas-server-support-ignite-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ignite.IgniteProperties"
   type: "java.lang.String"
   description: "Truststore type used to create a SSL context for the ticket registry."
+  shortDescription: "Truststore type used to create a SSL context for the ticket registry."
   name: "cas.ticket.registry.ignite.trust-store-type"
   defaultValue: "JKS"

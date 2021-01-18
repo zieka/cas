@@ -4,6 +4,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.acceptable-usage-policy.jdbc.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -13,6 +15,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.acceptable-usage-policy.jdbc.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -20,6 +24,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.acceptable-usage-policy.jdbc.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -28,6 +34,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.acceptable-usage-policy.jdbc.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -35,6 +42,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.acceptable-usage-policy.jdbc.pool.timeout-millis"
   defaultValue: 1000
 - required: true
@@ -43,6 +52,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.acme.domain-chain.location"
   defaultValue: ""
 - required: true
@@ -51,6 +61,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.acme.domain-csr.location"
   defaultValue: ""
 - required: true
@@ -59,6 +70,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.acme.domain-key.location"
   defaultValue: ""
 - required: true
@@ -67,6 +79,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.acme.user-key.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -74,6 +87,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.audit.jdbc.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -83,6 +98,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.audit.jdbc.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -90,6 +107,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.audit.jdbc.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -98,6 +117,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.audit.jdbc.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -105,12 +125,15 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.audit.jdbc.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.audit.jdbc.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -119,6 +142,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.audit.jdbc.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -127,6 +152,8 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.audit.jdbc.schedule.start-delay"
   defaultValue: "PT15S"
 - required: true
@@ -136,18 +163,22 @@
   description: "Principal attribute name that indicates the destination email address\
     \ for this message. The attribute must already be resolved and available to the\
     \ CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination email\
+    \ address for this message."
   name: "cas.authn.adaptive.risk.response.mail.attribute-name"
   defaultValue: "mail"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email BCC address, if any."
+  shortDescription: "Email BCC address, if any."
   name: "cas.authn.adaptive.risk.response.mail.bcc"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email CC address, if any."
+  shortDescription: "Email CC address, if any."
   name: "cas.authn.adaptive.risk.response.mail.cc"
   defaultValue: ""
 - required: true
@@ -155,18 +186,22 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email from address."
+  shortDescription: "Email from address."
   name: "cas.authn.adaptive.risk.response.mail.from"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Indicate whether the message body should be evaluated as HTML text."
+  shortDescription: "Indicate whether the message body should be evaluated as HTML\
+    \ text."
   name: "cas.authn.adaptive.risk.response.mail.html"
   defaultValue: false
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email Reply-To address, if any."
+  shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.adaptive.risk.response.mail.reply-to"
   defaultValue: ""
 - required: true
@@ -174,6 +209,7 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email subject line."
+  shortDescription: "Email subject line."
   name: "cas.authn.adaptive.risk.response.mail.subject"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -181,12 +217,15 @@
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
     \ file that would serve as a template."
+  shortDescription: "Email message body."
   name: "cas.authn.adaptive.risk.response.mail.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Set whether to validate all addresses which get passed to this helper."
+  shortDescription: "Set whether to validate all addresses which get passed to this\
+    \ helper."
   name: "cas.authn.adaptive.risk.response.mail.validate-addresses"
   defaultValue: false
 - required: true
@@ -196,6 +235,8 @@
   description: "Principal attribute name that indicates the destination phone number\
     \ for this SMS message. The attribute must already be resolved and available to\
     \ the CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination phone\
+    \ number for this SMS message."
   name: "cas.authn.adaptive.risk.response.sms.attribute-name"
   defaultValue: "phone"
 - required: true
@@ -203,6 +244,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The from address for the message."
+  shortDescription: "The from address for the message."
   name: "cas.authn.adaptive.risk.response.sms.from"
   defaultValue: ""
 - required: true
@@ -210,6 +252,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The body of the SMS message."
+  shortDescription: "The body of the SMS message."
   name: "cas.authn.adaptive.risk.response.sms.text"
   defaultValue: ""
 - required: true
@@ -218,6 +261,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.attribute-repository.attribute-definition-store.json.location"
   defaultValue: ""
 - required: true
@@ -226,6 +270,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.jaas[].password-policy.groovy.location"
   defaultValue: ""
 - required: true
@@ -234,6 +279,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.jaas[].principal-transformation.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -241,6 +287,8 @@
   type: "int"
   description: "Controls the maximum number of connections to keep\nin the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.bind[].pool.max-size"
   defaultValue: "18"
 - module: "cas-server-core-util"
@@ -250,6 +298,8 @@
     while attempting to connect to a database.\n<p>\nA value of zero specifies that\
     \ the timeout is the default system timeout\nif there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.jdbc.bind[].pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -257,6 +307,8 @@
   type: "int"
   description: "Controls the minimum size that the pool is allowed\nto reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.bind[].pool.min-size"
   defaultValue: "6"
 - module: "cas-server-core-util"
@@ -265,6 +317,7 @@
   description: "Whether or not pool suspension is allowed.\n<p>\nThere is a performance\
     \ impact when pool suspension is enabled.\nUnless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.jdbc.bind[].pool.suspension"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -272,6 +325,8 @@
   type: "long"
   description: "The maximum number of milliseconds that the\npool will wait for a\
     \ connection to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.jdbc.bind[].pool.timeout-millis"
   defaultValue: "1_000"
 - required: true
@@ -280,6 +335,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.jdbc.bind[].principal-transformation.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -287,6 +343,8 @@
   type: "int"
   description: "Controls the maximum number of connections to keep\nin the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.encode[].pool.max-size"
   defaultValue: "18"
 - module: "cas-server-core-util"
@@ -296,6 +354,8 @@
     while attempting to connect to a database.\n<p>\nA value of zero specifies that\
     \ the timeout is the default system timeout\nif there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.jdbc.encode[].pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -303,6 +363,8 @@
   type: "int"
   description: "Controls the minimum size that the pool is allowed\nto reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.encode[].pool.min-size"
   defaultValue: "6"
 - module: "cas-server-core-util"
@@ -311,6 +373,7 @@
   description: "Whether or not pool suspension is allowed.\n<p>\nThere is a performance\
     \ impact when pool suspension is enabled.\nUnless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.jdbc.encode[].pool.suspension"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -318,6 +381,8 @@
   type: "long"
   description: "The maximum number of milliseconds that the\npool will wait for a\
     \ connection to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.jdbc.encode[].pool.timeout-millis"
   defaultValue: "1_000"
 - required: true
@@ -326,6 +391,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.jdbc.encode[].principal-transformation.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -333,6 +399,8 @@
   type: "int"
   description: "Controls the maximum number of connections to keep\nin the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.query[].pool.max-size"
   defaultValue: "18"
 - module: "cas-server-core-util"
@@ -342,6 +410,8 @@
     while attempting to connect to a database.\n<p>\nA value of zero specifies that\
     \ the timeout is the default system timeout\nif there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.jdbc.query[].pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -349,6 +419,8 @@
   type: "int"
   description: "Controls the minimum size that the pool is allowed\nto reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.query[].pool.min-size"
   defaultValue: "6"
 - module: "cas-server-core-util"
@@ -357,6 +429,7 @@
   description: "Whether or not pool suspension is allowed.\n<p>\nThere is a performance\
     \ impact when pool suspension is enabled.\nUnless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.jdbc.query[].pool.suspension"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -364,6 +437,8 @@
   type: "long"
   description: "The maximum number of milliseconds that the\npool will wait for a\
     \ connection to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.jdbc.query[].pool.timeout-millis"
   defaultValue: "1_000"
 - required: true
@@ -372,6 +447,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.jdbc.query[].principal-transformation.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -379,6 +455,8 @@
   type: "int"
   description: "Controls the maximum number of connections to keep\nin the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.search[].pool.max-size"
   defaultValue: "18"
 - module: "cas-server-core-util"
@@ -388,6 +466,8 @@
     while attempting to connect to a database.\n<p>\nA value of zero specifies that\
     \ the timeout is the default system timeout\nif there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.jdbc.search[].pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -395,6 +475,8 @@
   type: "int"
   description: "Controls the minimum size that the pool is allowed\nto reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.jdbc.search[].pool.min-size"
   defaultValue: "6"
 - module: "cas-server-core-util"
@@ -403,6 +485,7 @@
   description: "Whether or not pool suspension is allowed.\n<p>\nThere is a performance\
     \ impact when pool suspension is enabled.\nUnless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.jdbc.search[].pool.suspension"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -410,6 +493,8 @@
   type: "long"
   description: "The maximum number of milliseconds that the\npool will wait for a\
     \ connection to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.jdbc.search[].pool.timeout-millis"
   defaultValue: "1_000"
 - required: true
@@ -418,6 +503,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.jdbc.search[].principal-transformation.groovy.location"
   defaultValue: ""
 - required: true
@@ -426,6 +512,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.ldap[].password-policy.groovy.location"
   defaultValue: ""
 - required: true
@@ -434,6 +521,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.ldap[].principal-transformation.groovy.location"
   defaultValue: ""
 - required: true
@@ -442,6 +530,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.mfa.acceptto.registration-api-public-key.location"
   defaultValue: ""
 - required: true
@@ -450,6 +539,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.mfa.duo[].bypass.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -457,6 +547,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication,\nspecify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.authn.mfa.duo[].bypass.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -464,6 +556,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication,\nspecify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.authn.mfa.duo[].bypass.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -471,6 +565,7 @@
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint.\nExamples include\
     \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
   name: "cas.authn.mfa.duo[].bypass.rest.method"
   defaultValue: "GET"
 - required: true
@@ -478,12 +573,14 @@
   owner: "org.apereo.cas.configuration.model.RestEndpointProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.mfa.duo[].bypass.rest.url"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.authn.mfa.gauth.cleaner.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -492,6 +589,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.authn.mfa.gauth.cleaner.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -500,18 +599,22 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.authn.mfa.gauth.cleaner.schedule.start-delay"
   defaultValue: "PT15S"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.mfa.gauth.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.mfa.gauth.crypto.enabled"
   defaultValue: true
 - required: true
@@ -520,12 +623,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.gauth.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.mfa.gauth.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -534,12 +640,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.gauth.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.mfa.gauth.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -549,6 +658,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.mfa.gauth.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -556,6 +666,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.gauth.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -565,6 +677,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.mfa.gauth.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -572,6 +686,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.gauth.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -580,6 +696,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.mfa.gauth.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -587,6 +704,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.mfa.gauth.jpa.pool.timeout-millis"
   defaultValue: 1000
 - required: true
@@ -596,18 +715,22 @@
   description: "Principal attribute name that indicates the destination email address\
     \ for this message. The attribute must already be resolved and available to the\
     \ CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination email\
+    \ address for this message."
   name: "cas.authn.mfa.simple.mail.attribute-name"
   defaultValue: "mail"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email BCC address, if any."
+  shortDescription: "Email BCC address, if any."
   name: "cas.authn.mfa.simple.mail.bcc"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email CC address, if any."
+  shortDescription: "Email CC address, if any."
   name: "cas.authn.mfa.simple.mail.cc"
   defaultValue: ""
 - required: true
@@ -615,18 +738,22 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email from address."
+  shortDescription: "Email from address."
   name: "cas.authn.mfa.simple.mail.from"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Indicate whether the message body should be evaluated as HTML text."
+  shortDescription: "Indicate whether the message body should be evaluated as HTML\
+    \ text."
   name: "cas.authn.mfa.simple.mail.html"
   defaultValue: false
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email Reply-To address, if any."
+  shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.mfa.simple.mail.reply-to"
   defaultValue: ""
 - required: true
@@ -634,6 +761,7 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email subject line."
+  shortDescription: "Email subject line."
   name: "cas.authn.mfa.simple.mail.subject"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -641,12 +769,15 @@
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
     \ file that would serve as a template."
+  shortDescription: "Email message body."
   name: "cas.authn.mfa.simple.mail.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Set whether to validate all addresses which get passed to this helper."
+  shortDescription: "Set whether to validate all addresses which get passed to this\
+    \ helper."
   name: "cas.authn.mfa.simple.mail.validate-addresses"
   defaultValue: false
 - required: true
@@ -656,6 +787,8 @@
   description: "Principal attribute name that indicates the destination phone number\
     \ for this SMS message. The attribute must already be resolved and available to\
     \ the CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination phone\
+    \ number for this SMS message."
   name: "cas.authn.mfa.simple.sms.attribute-name"
   defaultValue: "phone"
 - required: true
@@ -663,6 +796,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The from address for the message."
+  shortDescription: "The from address for the message."
   name: "cas.authn.mfa.simple.sms.from"
   defaultValue: ""
 - required: true
@@ -670,12 +804,14 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The body of the SMS message."
+  shortDescription: "The body of the SMS message."
   name: "cas.authn.mfa.simple.sms.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.authn.mfa.trusted.cleaner.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -684,6 +820,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.authn.mfa.trusted.cleaner.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -692,18 +830,22 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.authn.mfa.trusted.cleaner.schedule.start-delay"
   defaultValue: "PT15S"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.mfa.trusted.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.mfa.trusted.crypto.enabled"
   defaultValue: true
 - required: true
@@ -712,12 +854,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.trusted.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.mfa.trusted.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -726,12 +871,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.trusted.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.mfa.trusted.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -741,18 +889,21 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.mfa.trusted.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.enabled"
   defaultValue: true
 - required: true
@@ -761,12 +912,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -775,12 +929,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -790,6 +947,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -797,6 +955,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.trusted.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -806,6 +966,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.mfa.trusted.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -813,6 +975,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.trusted.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -821,6 +985,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.mfa.trusted.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -828,12 +993,15 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.mfa.trusted.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.authn.mfa.u2f.cleaner.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -842,6 +1010,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.authn.mfa.u2f.cleaner.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -850,18 +1020,22 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.authn.mfa.u2f.cleaner.schedule.start-delay"
   defaultValue: "PT15S"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.mfa.u2f.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.mfa.u2f.crypto.enabled"
   defaultValue: true
 - required: true
@@ -870,12 +1044,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.u2f.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.mfa.u2f.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -884,12 +1061,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.u2f.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.mfa.u2f.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -899,6 +1079,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.mfa.u2f.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -906,6 +1087,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.u2f.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -915,6 +1098,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.mfa.u2f.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -922,6 +1107,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.u2f.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -930,6 +1117,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.mfa.u2f.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -937,12 +1125,15 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.mfa.u2f.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.authn.mfa.web-authn.cleaner.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -951,6 +1142,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.authn.mfa.web-authn.cleaner.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -959,18 +1152,22 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.authn.mfa.web-authn.cleaner.schedule.start-delay"
   defaultValue: "PT15S"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.mfa.web-authn.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.mfa.web-authn.crypto.enabled"
   defaultValue: true
 - required: true
@@ -979,12 +1176,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.web-authn.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.mfa.web-authn.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -993,12 +1193,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.web-authn.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.mfa.web-authn.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1008,6 +1211,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.mfa.web-authn.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -1015,6 +1219,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.web-authn.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -1024,6 +1230,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.mfa.web-authn.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -1031,6 +1239,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.web-authn.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -1039,6 +1249,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.mfa.web-authn.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -1046,6 +1257,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.mfa.web-authn.jpa.pool.timeout-millis"
   defaultValue: 1000
 - required: true
@@ -1054,18 +1267,21 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.mfa.web-authn.trusted-device-metadata.location"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.mfa.yubikey.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.mfa.yubikey.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1074,12 +1290,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.yubikey.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.mfa.yubikey.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1088,12 +1307,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.mfa.yubikey.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.mfa.yubikey.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1103,6 +1325,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.mfa.yubikey.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -1110,6 +1333,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.yubikey.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -1119,6 +1344,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.mfa.yubikey.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -1126,6 +1353,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.mfa.yubikey.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -1134,6 +1363,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.mfa.yubikey.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -1141,24 +1371,29 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.mfa.yubikey.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.oauth.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.oauth.crypto.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto encryption operations are enabled."
+  shortDescription: "Whether crypto encryption operations are enabled."
   name: "cas.authn.oauth.crypto.encryption-enabled"
   defaultValue: true
 - required: true
@@ -1167,18 +1402,22 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.oauth.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.oauth.crypto.encryption.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto signing operations are enabled."
+  shortDescription: "Whether crypto signing operations are enabled."
   name: "cas.authn.oauth.crypto.signing-enabled"
   defaultValue: true
 - required: true
@@ -1187,12 +1426,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.oauth.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.oauth.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1202,6 +1444,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.oauth.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - required: true
@@ -1210,18 +1453,21 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.passwordless.delegated-authentication-selector-script.location"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.passwordless.tokens.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.passwordless.tokens.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1230,12 +1476,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.passwordless.tokens.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.passwordless.tokens.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1244,12 +1493,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.passwordless.tokens.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.passwordless.tokens.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1259,12 +1511,14 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.passwordless.tokens.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.authn.passwordless.tokens.jpa.cleaner.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -1273,6 +1527,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.authn.passwordless.tokens.jpa.cleaner.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -1281,6 +1537,8 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.authn.passwordless.tokens.jpa.cleaner.schedule.start-delay"
   defaultValue: "PT15S"
 - module: "cas-server-core-util"
@@ -1288,6 +1546,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.passwordless.tokens.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -1297,6 +1557,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.passwordless.tokens.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -1304,6 +1566,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.passwordless.tokens.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -1312,6 +1576,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.passwordless.tokens.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -1319,6 +1584,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.passwordless.tokens.jpa.pool.timeout-millis"
   defaultValue: 1000
 - required: true
@@ -1328,18 +1595,22 @@
   description: "Principal attribute name that indicates the destination email address\
     \ for this message. The attribute must already be resolved and available to the\
     \ CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination email\
+    \ address for this message."
   name: "cas.authn.passwordless.tokens.mail.attribute-name"
   defaultValue: "mail"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email BCC address, if any."
+  shortDescription: "Email BCC address, if any."
   name: "cas.authn.passwordless.tokens.mail.bcc"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email CC address, if any."
+  shortDescription: "Email CC address, if any."
   name: "cas.authn.passwordless.tokens.mail.cc"
   defaultValue: ""
 - required: true
@@ -1347,18 +1618,22 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email from address."
+  shortDescription: "Email from address."
   name: "cas.authn.passwordless.tokens.mail.from"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Indicate whether the message body should be evaluated as HTML text."
+  shortDescription: "Indicate whether the message body should be evaluated as HTML\
+    \ text."
   name: "cas.authn.passwordless.tokens.mail.html"
   defaultValue: false
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email Reply-To address, if any."
+  shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.passwordless.tokens.mail.reply-to"
   defaultValue: ""
 - required: true
@@ -1366,6 +1641,7 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email subject line."
+  shortDescription: "Email subject line."
   name: "cas.authn.passwordless.tokens.mail.subject"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -1373,12 +1649,15 @@
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
     \ file that would serve as a template."
+  shortDescription: "Email message body."
   name: "cas.authn.passwordless.tokens.mail.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Set whether to validate all addresses which get passed to this helper."
+  shortDescription: "Set whether to validate all addresses which get passed to this\
+    \ helper."
   name: "cas.authn.passwordless.tokens.mail.validate-addresses"
   defaultValue: false
 - required: true
@@ -1388,6 +1667,8 @@
   description: "Principal attribute name that indicates the destination phone number\
     \ for this SMS message. The attribute must already be resolved and available to\
     \ the CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination phone\
+    \ number for this SMS message."
   name: "cas.authn.passwordless.tokens.sms.attribute-name"
   defaultValue: "phone"
 - required: true
@@ -1395,6 +1676,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The from address for the message."
+  shortDescription: "The from address for the message."
   name: "cas.authn.passwordless.tokens.sms.from"
   defaultValue: ""
 - required: true
@@ -1402,6 +1684,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The body of the SMS message."
+  shortDescription: "The body of the SMS message."
   name: "cas.authn.passwordless.tokens.sms.text"
   defaultValue: ""
 - required: true
@@ -1411,18 +1694,22 @@
   description: "Principal attribute name that indicates the destination email address\
     \ for this message. The attribute must already be resolved and available to the\
     \ CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination email\
+    \ address for this message."
   name: "cas.authn.pm.forgot-username.mail.attribute-name"
   defaultValue: "mail"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email BCC address, if any."
+  shortDescription: "Email BCC address, if any."
   name: "cas.authn.pm.forgot-username.mail.bcc"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email CC address, if any."
+  shortDescription: "Email CC address, if any."
   name: "cas.authn.pm.forgot-username.mail.cc"
   defaultValue: ""
 - required: true
@@ -1430,18 +1717,22 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email from address."
+  shortDescription: "Email from address."
   name: "cas.authn.pm.forgot-username.mail.from"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Indicate whether the message body should be evaluated as HTML text."
+  shortDescription: "Indicate whether the message body should be evaluated as HTML\
+    \ text."
   name: "cas.authn.pm.forgot-username.mail.html"
   defaultValue: false
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email Reply-To address, if any."
+  shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.pm.forgot-username.mail.reply-to"
   defaultValue: ""
 - required: true
@@ -1449,6 +1740,7 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email subject line."
+  shortDescription: "Email subject line."
   name: "cas.authn.pm.forgot-username.mail.subject"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -1456,12 +1748,15 @@
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
     \ file that would serve as a template."
+  shortDescription: "Email message body."
   name: "cas.authn.pm.forgot-username.mail.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Set whether to validate all addresses which get passed to this helper."
+  shortDescription: "Set whether to validate all addresses which get passed to this\
+    \ helper."
   name: "cas.authn.pm.forgot-username.mail.validate-addresses"
   defaultValue: false
 - required: true
@@ -1470,6 +1765,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.pm.history.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -1477,6 +1773,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.pm.jdbc.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -1486,6 +1784,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.pm.jdbc.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -1493,6 +1793,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.pm.jdbc.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -1501,6 +1803,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.pm.jdbc.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -1508,18 +1811,22 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.pm.jdbc.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.pm.reset.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.pm.reset.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1528,12 +1835,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.pm.reset.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.pm.reset.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1542,12 +1852,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.pm.reset.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.pm.reset.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1557,6 +1870,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.pm.reset.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - required: true
@@ -1566,18 +1880,22 @@
   description: "Principal attribute name that indicates the destination email address\
     \ for this message. The attribute must already be resolved and available to the\
     \ CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination email\
+    \ address for this message."
   name: "cas.authn.pm.reset.mail.attribute-name"
   defaultValue: "mail"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email BCC address, if any."
+  shortDescription: "Email BCC address, if any."
   name: "cas.authn.pm.reset.mail.bcc"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email CC address, if any."
+  shortDescription: "Email CC address, if any."
   name: "cas.authn.pm.reset.mail.cc"
   defaultValue: ""
 - required: true
@@ -1585,18 +1903,22 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email from address."
+  shortDescription: "Email from address."
   name: "cas.authn.pm.reset.mail.from"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Indicate whether the message body should be evaluated as HTML text."
+  shortDescription: "Indicate whether the message body should be evaluated as HTML\
+    \ text."
   name: "cas.authn.pm.reset.mail.html"
   defaultValue: false
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email Reply-To address, if any."
+  shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.pm.reset.mail.reply-to"
   defaultValue: ""
 - required: true
@@ -1604,6 +1926,7 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email subject line."
+  shortDescription: "Email subject line."
   name: "cas.authn.pm.reset.mail.subject"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -1611,12 +1934,15 @@
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
     \ file that would serve as a template."
+  shortDescription: "Email message body."
   name: "cas.authn.pm.reset.mail.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Set whether to validate all addresses which get passed to this helper."
+  shortDescription: "Set whether to validate all addresses which get passed to this\
+    \ helper."
   name: "cas.authn.pm.reset.mail.validate-addresses"
   defaultValue: false
 - required: true
@@ -1626,6 +1952,8 @@
   description: "Principal attribute name that indicates the destination phone number\
     \ for this SMS message. The attribute must already be resolved and available to\
     \ the CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination phone\
+    \ number for this SMS message."
   name: "cas.authn.pm.reset.sms.attribute-name"
   defaultValue: "phone"
 - required: true
@@ -1633,6 +1961,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The from address for the message."
+  shortDescription: "The from address for the message."
   name: "cas.authn.pm.reset.sms.from"
   defaultValue: ""
 - required: true
@@ -1640,6 +1969,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The body of the SMS message."
+  shortDescription: "The body of the SMS message."
   name: "cas.authn.pm.reset.sms.text"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -1647,6 +1977,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication,\nspecify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.authn.policy.rest[].basic-auth-password"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -1654,6 +1986,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication,\nspecify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.authn.policy.rest[].basic-auth-username"
   defaultValue: ""
 - required: true
@@ -1661,18 +1995,21 @@
   owner: "org.apereo.cas.configuration.model.BaseRestEndpointProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.policy.rest[].url"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1681,12 +2018,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1695,12 +2035,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1710,18 +2053,21 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1730,12 +2076,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1744,12 +2093,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1759,6 +2111,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - required: true
@@ -1767,18 +2120,21 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.saml-idp.metadata.git.clone-directory.location"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.saml-idp.metadata.git.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.saml-idp.metadata.git.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1787,12 +2143,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.git.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.saml-idp.metadata.git.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1801,12 +2160,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.git.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.saml-idp.metadata.git.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1816,6 +2178,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.saml-idp.metadata.git.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - required: true
@@ -1824,18 +2187,21 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.saml-idp.metadata.git.private-key.location"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1844,12 +2210,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1858,12 +2227,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1873,6 +2245,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -1880,6 +2253,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.saml-idp.metadata.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -1889,6 +2264,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.saml-idp.metadata.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -1896,6 +2273,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.saml-idp.metadata.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -1904,6 +2283,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.saml-idp.metadata.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -1911,18 +2291,22 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.saml-idp.metadata.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1931,12 +2315,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1945,12 +2332,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -1960,18 +2350,21 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.saml-idp.metadata.redis.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.saml-idp.metadata.redis.crypto.enabled"
   defaultValue: true
 - required: true
@@ -1980,12 +2373,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.redis.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.saml-idp.metadata.redis.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -1994,12 +2390,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.redis.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.saml-idp.metadata.redis.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -2009,18 +2408,21 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.saml-idp.metadata.redis.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.saml-idp.metadata.rest.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.saml-idp.metadata.rest.crypto.enabled"
   defaultValue: true
 - required: true
@@ -2029,12 +2431,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.rest.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.saml-idp.metadata.rest.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -2043,12 +2448,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.saml-idp.metadata.rest.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.saml-idp.metadata.rest.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -2058,6 +2466,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.saml-idp.metadata.rest.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -2065,6 +2474,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.surrogate.jdbc.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2074,6 +2485,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.surrogate.jdbc.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2081,6 +2494,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.surrogate.jdbc.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2089,6 +2504,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.surrogate.jdbc.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2096,6 +2512,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.surrogate.jdbc.pool.timeout-millis"
   defaultValue: 1000
 - required: true
@@ -2105,18 +2523,22 @@
   description: "Principal attribute name that indicates the destination email address\
     \ for this message. The attribute must already be resolved and available to the\
     \ CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination email\
+    \ address for this message."
   name: "cas.authn.surrogate.mail.attribute-name"
   defaultValue: "mail"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email BCC address, if any."
+  shortDescription: "Email BCC address, if any."
   name: "cas.authn.surrogate.mail.bcc"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email CC address, if any."
+  shortDescription: "Email CC address, if any."
   name: "cas.authn.surrogate.mail.cc"
   defaultValue: ""
 - required: true
@@ -2124,18 +2546,22 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email from address."
+  shortDescription: "Email from address."
   name: "cas.authn.surrogate.mail.from"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Indicate whether the message body should be evaluated as HTML text."
+  shortDescription: "Indicate whether the message body should be evaluated as HTML\
+    \ text."
   name: "cas.authn.surrogate.mail.html"
   defaultValue: false
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email Reply-To address, if any."
+  shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.surrogate.mail.reply-to"
   defaultValue: ""
 - required: true
@@ -2143,6 +2569,7 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email subject line."
+  shortDescription: "Email subject line."
   name: "cas.authn.surrogate.mail.subject"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2150,12 +2577,15 @@
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
     \ file that would serve as a template."
+  shortDescription: "Email message body."
   name: "cas.authn.surrogate.mail.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Set whether to validate all addresses which get passed to this helper."
+  shortDescription: "Set whether to validate all addresses which get passed to this\
+    \ helper."
   name: "cas.authn.surrogate.mail.validate-addresses"
   defaultValue: false
 - required: true
@@ -2165,6 +2595,8 @@
   description: "Principal attribute name that indicates the destination phone number\
     \ for this SMS message. The attribute must already be resolved and available to\
     \ the CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination phone\
+    \ number for this SMS message."
   name: "cas.authn.surrogate.sms.attribute-name"
   defaultValue: "phone"
 - required: true
@@ -2172,6 +2604,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The from address for the message."
+  shortDescription: "The from address for the message."
   name: "cas.authn.surrogate.sms.from"
   defaultValue: ""
 - required: true
@@ -2179,6 +2612,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The body of the SMS message."
+  shortDescription: "The body of the SMS message."
   name: "cas.authn.surrogate.sms.text"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2186,6 +2620,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.throttle.jdbc.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2195,6 +2631,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.throttle.jdbc.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2202,6 +2640,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.throttle.jdbc.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2210,6 +2650,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.throttle.jdbc.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2217,12 +2658,15 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.throttle.jdbc.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.authn.throttle.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -2231,6 +2675,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.authn.throttle.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -2239,24 +2685,29 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.authn.throttle.schedule.start-delay"
   defaultValue: "PT15S"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.token.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.token.crypto.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto encryption operations are enabled."
+  shortDescription: "Whether crypto encryption operations are enabled."
   name: "cas.authn.token.crypto.encryption-enabled"
   defaultValue: true
 - required: true
@@ -2265,18 +2716,22 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.token.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.token.crypto.encryption.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto signing operations are enabled."
+  shortDescription: "Whether crypto signing operations are enabled."
   name: "cas.authn.token.crypto.signing-enabled"
   defaultValue: true
 - required: true
@@ -2285,12 +2740,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.token.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.token.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -2300,6 +2758,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.token.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -2307,6 +2766,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.authn.uma.resource-set.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2316,6 +2777,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.authn.uma.resource-set.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2323,6 +2786,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.authn.uma.resource-set.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2331,6 +2796,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.authn.uma.resource-set.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2338,18 +2804,22 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.authn.uma.resource-set.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.wsfed-idp.sts.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.wsfed-idp.sts.crypto.enabled"
   defaultValue: true
 - required: true
@@ -2358,12 +2828,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.wsfed-idp.sts.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.wsfed-idp.sts.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -2372,12 +2845,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.wsfed-idp.sts.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.wsfed-idp.sts.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -2387,6 +2863,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.wsfed-idp.sts.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - required: true
@@ -2395,18 +2872,21 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.wsfed[].attribute-mutator-script.location"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.wsfed[].cookie.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.authn.wsfed[].cookie.crypto.enabled"
   defaultValue: true
 - required: true
@@ -2415,12 +2895,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.wsfed[].cookie.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "int"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.authn.wsfed[].cookie.crypto.encryption.key-size"
   defaultValue: "512"
 - required: true
@@ -2429,12 +2912,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.authn.wsfed[].cookie.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "int"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.authn.wsfed[].cookie.crypto.signing.key-size"
   defaultValue: "512"
 - module: "cas-server-core-util"
@@ -2444,18 +2930,21 @@
     <ul>\n    <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\n\
     \    <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\n\
     </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.wsfed[].cookie.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.clearpass.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.clearpass.crypto.enabled"
   defaultValue: true
 - required: true
@@ -2464,12 +2953,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.clearpass.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.clearpass.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -2478,12 +2970,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.clearpass.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.clearpass.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -2493,6 +2988,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.clearpass.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - required: true
@@ -2501,18 +2997,21 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.consent.activation-strategy-groovy-script.location"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.consent.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.consent.crypto.enabled"
   defaultValue: true
 - required: true
@@ -2521,12 +3020,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.consent.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.consent.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -2535,12 +3037,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.consent.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.consent.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -2550,6 +3055,7 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.consent.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
@@ -2557,6 +3063,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.consent.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2566,6 +3074,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.consent.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2573,6 +3083,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.consent.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2581,6 +3093,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.consent.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2588,6 +3101,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.consent.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
@@ -2595,6 +3110,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.events.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2604,6 +3121,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.events.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2611,6 +3130,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.events.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2619,6 +3140,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.events.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2626,6 +3148,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.events.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
@@ -2633,6 +3157,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.monitor.endpoints.jdbc.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2642,6 +3168,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.monitor.endpoints.jdbc.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2649,6 +3177,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.monitor.endpoints.jdbc.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2657,6 +3187,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.monitor.endpoints.jdbc.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2664,6 +3195,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.monitor.endpoints.jdbc.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
@@ -2671,6 +3204,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.monitor.jdbc.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2680,6 +3215,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.monitor.jdbc.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2687,6 +3224,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.monitor.jdbc.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2695,6 +3234,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.monitor.jdbc.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2702,6 +3242,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.monitor.jdbc.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
@@ -2709,6 +3251,8 @@
   type: "int"
   description: "Controls the maximum number of connections to keep\nin the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.monitor.ldap[].pool.max-size"
   defaultValue: "18"
 - module: "cas-server-core-util"
@@ -2718,6 +3262,8 @@
     while attempting to connect to a database.\n<p>\nA value of zero specifies that\
     \ the timeout is the default system timeout\nif there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.monitor.ldap[].pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2725,6 +3271,8 @@
   type: "int"
   description: "Controls the minimum size that the pool is allowed\nto reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.monitor.ldap[].pool.min-size"
   defaultValue: "6"
 - module: "cas-server-core-util"
@@ -2733,6 +3281,7 @@
   description: "Whether or not pool suspension is allowed.\n<p>\nThere is a performance\
     \ impact when pool suspension is enabled.\nUnless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.monitor.ldap[].pool.suspension"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2740,12 +3289,15 @@
   type: "long"
   description: "The maximum number of milliseconds that the\npool will wait for a\
     \ connection to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.monitor.ldap[].pool.timeout-millis"
   defaultValue: "1_000"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.saml-metadata-ui.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -2754,6 +3306,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.saml-metadata-ui.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -2762,6 +3316,8 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.saml-metadata-ui.schedule.start-delay"
   defaultValue: "PT15S"
 - required: true
@@ -2770,6 +3326,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.service-registry.git.clone-directory.location"
   defaultValue: ""
 - required: true
@@ -2778,6 +3335,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.service-registry.git.private-key.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2785,6 +3343,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.service-registry.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -2794,6 +3354,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.service-registry.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -2801,6 +3363,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.service-registry.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -2809,6 +3373,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.service-registry.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2816,6 +3381,8 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.service-registry.jpa.pool.timeout-millis"
   defaultValue: 1000
 - required: true
@@ -2825,18 +3392,22 @@
   description: "Principal attribute name that indicates the destination email address\
     \ for this message. The attribute must already be resolved and available to the\
     \ CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination email\
+    \ address for this message."
   name: "cas.service-registry.mail.attribute-name"
   defaultValue: "mail"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email BCC address, if any."
+  shortDescription: "Email BCC address, if any."
   name: "cas.service-registry.mail.bcc"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email CC address, if any."
+  shortDescription: "Email CC address, if any."
   name: "cas.service-registry.mail.cc"
   defaultValue: ""
 - required: true
@@ -2844,18 +3415,22 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email from address."
+  shortDescription: "Email from address."
   name: "cas.service-registry.mail.from"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Indicate whether the message body should be evaluated as HTML text."
+  shortDescription: "Indicate whether the message body should be evaluated as HTML\
+    \ text."
   name: "cas.service-registry.mail.html"
   defaultValue: false
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email Reply-To address, if any."
+  shortDescription: "Email Reply-To address, if any."
   name: "cas.service-registry.mail.reply-to"
   defaultValue: ""
 - required: true
@@ -2863,6 +3438,7 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email subject line."
+  shortDescription: "Email subject line."
   name: "cas.service-registry.mail.subject"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2870,12 +3446,15 @@
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
     \ file that would serve as a template."
+  shortDescription: "Email message body."
   name: "cas.service-registry.mail.text"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.Boolean"
   description: "Set whether to validate all addresses which get passed to this helper."
+  shortDescription: "Set whether to validate all addresses which get passed to this\
+    \ helper."
   name: "cas.service-registry.mail.validate-addresses"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -2883,6 +3462,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.service-registry.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2890,6 +3471,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.service-registry.rest.basic-auth-username"
   defaultValue: ""
 - required: true
@@ -2897,12 +3480,14 @@
   owner: "org.apereo.cas.configuration.model.BaseRestEndpointProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.service-registry.rest.url"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.service-registry.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -2911,6 +3496,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.service-registry.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -2919,6 +3506,8 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.service-registry.schedule.start-delay"
   defaultValue: "PT15S"
 - required: true
@@ -2928,6 +3517,8 @@
   description: "Principal attribute name that indicates the destination phone number\
     \ for this SMS message. The attribute must already be resolved and available to\
     \ the CAS principal."
+  shortDescription: "Principal attribute name that indicates the destination phone\
+    \ number for this SMS message."
   name: "cas.service-registry.sms.attribute-name"
   defaultValue: "phone"
 - required: true
@@ -2935,6 +3526,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The from address for the message."
+  shortDescription: "The from address for the message."
   name: "cas.service-registry.sms.from"
   defaultValue: ""
 - required: true
@@ -2942,6 +3534,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.SmsProperties"
   type: "java.lang.String"
   description: "The body of the SMS message."
+  shortDescription: "The body of the SMS message."
   name: "cas.service-registry.sms.text"
   defaultValue: ""
 - required: true
@@ -2950,6 +3543,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.sms-provider.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2957,6 +3551,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.sms-provider.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2964,6 +3560,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.sms-provider.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -2971,6 +3569,7 @@
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
   name: "cas.sms-provider.rest.method"
   defaultValue: "GET"
 - required: true
@@ -2978,18 +3577,21 @@
   owner: "org.apereo.cas.configuration.model.support.sms.RestfulSmsProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.sms-provider.rest.url"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.tgc.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.tgc.crypto.enabled"
   defaultValue: true
 - required: true
@@ -2998,12 +3600,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.tgc.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.tgc.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -3012,12 +3617,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.tgc.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.tgc.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -3027,18 +3635,21 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.tgc.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3047,12 +3658,15 @@
   type: "java.lang.String"
   description: "The encryption key is a JWT whose length is defined by the signing\
     \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The encryption key size."
+  shortDescription: "The encryption key size."
   name: "cas.ticket.crypto.encryption.key-size"
   defaultValue: 512
 - required: true
@@ -3061,12 +3675,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -3076,18 +3693,21 @@
     \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
     \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
     \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
   name: "cas.ticket.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.cassandra.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.cassandra.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3097,12 +3717,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.cassandra.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.cassandra.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3111,18 +3733,22 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.cassandra.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.cassandra.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
+  shortDescription: "Whether scheduler is should schedule the job to run."
   name: "cas.ticket.registry.cleaner.schedule.enabled"
   defaultValue: true
 - module: "cas-server-core-util"
@@ -3131,6 +3757,8 @@
   description: "String representation of a repeat interval of re-loading data for\
     \ an data store implementation. This is the timeout between consecutive job’s\
     \ executions."
+  shortDescription: "String representation of a repeat interval of re-loading data\
+    \ for an data store implementation."
   name: "cas.ticket.registry.cleaner.schedule.repeat-interval"
   defaultValue: "PT2M"
 - module: "cas-server-core-util"
@@ -3139,18 +3767,22 @@
   description: "String representation of a start delay of loading data for a data\
     \ store implementation. This is the delay between scheduler startup and first\
     \ job’s execution"
+  shortDescription: "String representation of a start delay of loading data for a\
+    \ data store implementation."
   name: "cas.ticket.registry.cleaner.schedule.start-delay"
   defaultValue: "PT15S"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.couch-db.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.couch-db.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3160,12 +3792,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.couch-db.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.couch-db.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3174,24 +3808,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.couch-db.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.couch-db.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.couchbase.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.couchbase.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3201,12 +3840,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.couchbase.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.couchbase.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3215,24 +3856,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.couchbase.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.couchbase.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.dynamo-db.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.dynamo-db.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3242,12 +3888,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.dynamo-db.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.dynamo-db.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3256,24 +3904,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.dynamo-db.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.dynamo-db.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.ehcache.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.ehcache.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3283,12 +3936,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.ehcache.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.ehcache.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3297,24 +3952,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.ehcache.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.ehcache.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.ehcache3.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.ehcache3.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3324,12 +3984,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.ehcache3.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.ehcache3.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3338,24 +4000,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.ehcache3.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.ehcache3.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.hazelcast.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.hazelcast.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3365,12 +4032,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.hazelcast.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.hazelcast.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3379,24 +4048,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.hazelcast.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.hazelcast.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.ignite.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.ignite.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3406,12 +4080,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.ignite.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.ignite.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3420,24 +4096,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.ignite.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.ignite.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.in-memory.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.in-memory.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3447,12 +4128,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.in-memory.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.in-memory.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3461,24 +4144,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.in-memory.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.in-memory.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.infinispan.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.infinispan.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3488,12 +4176,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.infinispan.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.infinispan.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3502,24 +4192,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.infinispan.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.infinispan.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.jms.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.jms.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3529,12 +4224,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.jms.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.jms.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3543,24 +4240,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.jms.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.jms.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.jpa.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.jpa.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3570,12 +4272,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.jpa.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.jpa.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3584,12 +4288,15 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.jpa.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.jpa.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
@@ -3597,6 +4304,8 @@
   type: "java.lang.Integer"
   description: "Controls the maximum number of connections to keep in the pool, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
   name: "cas.ticket.registry.jpa.pool.max-size"
   defaultValue: 18
 - module: "cas-server-core-util"
@@ -3606,6 +4315,8 @@
     \ attempting to connect to a database. <p> A value of zero specifies that the\
     \ timeout is the default system timeout if there is one; otherwise, it specifies\
     \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
   name: "cas.ticket.registry.jpa.pool.max-wait"
   defaultValue: "PT2S"
 - module: "cas-server-core-util"
@@ -3613,6 +4324,8 @@
   type: "java.lang.Integer"
   description: "Controls the minimum size that the pool is allowed to reach, including\
     \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
   name: "cas.ticket.registry.jpa.pool.min-size"
   defaultValue: 6
 - module: "cas-server-core-util"
@@ -3621,6 +4334,7 @@
   description: "Whether or not pool suspension is allowed. <p> There is a performance\
     \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
     \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
   name: "cas.ticket.registry.jpa.pool.suspension"
   defaultValue: false
 - module: "cas-server-core-util"
@@ -3628,18 +4342,22 @@
   type: "java.lang.Long"
   description: "The maximum number of milliseconds that the pool will wait for a connection\
     \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
   name: "cas.ticket.registry.jpa.pool.timeout-millis"
   defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.memcached.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.memcached.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3649,12 +4367,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.memcached.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.memcached.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3663,24 +4383,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.memcached.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.memcached.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.mongo.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.mongo.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3690,12 +4415,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.mongo.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.mongo.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3704,24 +4431,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.mongo.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.mongo.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.ticket.registry.redis.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.ticket.registry.redis.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3731,12 +4463,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.ticket.registry.redis.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.ticket.registry.redis.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3745,24 +4479,29 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.ticket.registry.redis.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.ticket.registry.redis.crypto.signing.key-size"
   defaultValue: 512
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.webflow.crypto.alg"
   defaultValue: "AES"
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedSigningJwtCryptographyProperties"
   type: "java.lang.Boolean"
   description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
   name: "cas.webflow.crypto.enabled"
   defaultValue: true
 - required: true
@@ -3772,12 +4511,14 @@
   description: "The encryption key. The encryption key by default and unless specified\
     \ otherwise must be randomly-generated string whose length is defined by the encryption\
     \ key size setting."
+  shortDescription: "The encryption key."
   name: "cas.webflow.crypto.encryption.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionRandomizedCryptoProperties"
   type: "java.lang.Integer"
   description: "Encryption key size."
+  shortDescription: "Encryption key size."
   name: "cas.webflow.crypto.encryption.key-size"
   defaultValue: 16
 - required: true
@@ -3786,11 +4527,14 @@
   type: "java.lang.String"
   description: "The signing key is a JWT whose length is defined by the signing key\
     \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
   name: "cas.webflow.crypto.signing.key"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
   type: "java.lang.Integer"
   description: "The signing key size."
+  shortDescription: "The signing key size."
   name: "cas.webflow.crypto.signing.key-size"
   defaultValue: 512

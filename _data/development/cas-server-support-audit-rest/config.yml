@@ -3,6 +3,7 @@
   owner: "org.apereo.cas.configuration.model.core.audit.AuditRestProperties"
   type: "java.lang.Boolean"
   description: "Make storage requests asynchronously."
+  shortDescription: "Make storage requests asynchronously."
   name: "cas.audit.rest.asynchronous"
   defaultValue: true
 - module: "cas-server-support-audit-rest"
@@ -10,6 +11,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.audit.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-support-audit-rest"
@@ -17,6 +20,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.audit.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-support-audit-rest"
@@ -24,6 +29,7 @@
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
   name: "cas.audit.rest.method"
   defaultValue: "GET"
 - required: true
@@ -31,5 +37,6 @@
   owner: "org.apereo.cas.configuration.model.core.audit.AuditRestProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.audit.rest.url"
   defaultValue: ""

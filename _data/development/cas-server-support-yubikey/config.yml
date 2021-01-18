@@ -5,12 +5,14 @@
   description: "Collection of allowed devices allowed per user. This is done using\
     \ a key-value structure where the key is the user the value is the allowed collection\
     \ of yubikey device ids."
+  shortDescription: "Collection of allowed devices allowed per user."
   name: "cas.authn.mfa.yubikey.allowed-devices"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
   type: "java.util.List<java.lang.String>"
   description: "YubiKey API urls to contact for verification of credentials."
+  shortDescription: "YubiKey API urls to contact for verification of credentials."
   name: "cas.authn.mfa.yubikey.api-urls"
   defaultValue: ""
 - required: true
@@ -18,6 +20,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
   type: "java.lang.Integer"
   description: "Yubikey client id."
+  shortDescription: "Yubikey client id."
   name: "cas.authn.mfa.yubikey.client-id"
   defaultValue: 0
 - module: "cas-server-support-yubikey"
@@ -31,6 +34,7 @@
     \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
     \ NONE}: Do not contact the provider at all to check for availability. Assume\
     \ the provider is available.</li> </ul>"
+  shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.yubikey.failure-mode"
   defaultValue: "UNDEFINED"
 - module: "cas-server-support-yubikey"
@@ -39,12 +43,14 @@
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
     \ type are configured in CAS."
+  shortDescription: "The identifier for the multifactor provider."
   name: "cas.authn.mfa.yubikey.id"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
   type: "org.springframework.core.io.Resource"
   description: "Keep device registration records inside a static JSON resource."
+  shortDescription: "Keep device registration records inside a static JSON resource."
   name: "cas.authn.mfa.yubikey.json-file"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
@@ -53,6 +59,9 @@
   description: "When enabled, allows the user/system to accept multiple accounts and\
     \ device registrations per user, allowing one to switch between or register new\
     \ devices/accounts automatically."
+  shortDescription: "When enabled, allows the user/system to accept multiple accounts\
+    \ and device registrations per user, allowing one to switch between or register\
+    \ new devices/accounts automatically."
   name: "cas.authn.mfa.yubikey.multiple-device-registration-enabled"
   defaultValue: false
 - module: "cas-server-support-yubikey"
@@ -60,12 +69,15 @@
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
+  shortDescription: "The name of the authentication handler used to verify credentials\
+    \ in MFA."
   name: "cas.authn.mfa.yubikey.name"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
+  shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.yubikey.order"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
@@ -90,6 +102,8 @@
     \ properties for each. Note that the higher the rank value is, the higher on the\
     \ security scale it remains. A provider that ranks higher with a larger weight\
     \ value trumps and override others with a lower value."
+  shortDescription: "At times, CAS needs to determine the correct provider when step-up\
+    \ authentication is required."
   name: "cas.authn.mfa.yubikey.rank"
   defaultValue: 0
 - module: "cas-server-support-yubikey"
@@ -97,6 +111,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.authn.mfa.yubikey.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
@@ -104,6 +120,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.authn.mfa.yubikey.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
@@ -111,6 +129,7 @@
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
   name: "cas.authn.mfa.yubikey.rest.method"
   defaultValue: "GET"
 - required: true
@@ -118,6 +137,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyRestfulMultifactorProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.mfa.yubikey.rest.url"
   defaultValue: ""
 - required: true
@@ -125,11 +145,13 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
   type: "java.lang.String"
   description: "Yubikey secret key."
+  shortDescription: "Yubikey secret key."
   name: "cas.authn.mfa.yubikey.secret-key"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
+  shortDescription: "Indicates whether this provider should support trusted devices."
   name: "cas.authn.mfa.yubikey.trusted-device-enabled"
   defaultValue: false

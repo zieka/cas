@@ -5,6 +5,8 @@
   description: "Total number of allowed authentication attempts with the radius mfa\
     \ server before the authentication event is considered cancelled. A negative/zero\
     \ value indicates that no limit is enforced."
+  shortDescription: "Total number of allowed authentication attempts with the radius\
+    \ mfa server before the authentication event is considered cancelled."
   name: "cas.authn.mfa.radius.allowed-authentication-attempts"
   defaultValue: -1
 - module: "cas-server-support-radius-mfa"
@@ -12,12 +14,16 @@
   type: "java.lang.Boolean"
   description: "In the event that radius authentication fails, fail over to the next\
     \ server in the list."
+  shortDescription: "In the event that radius authentication fails, fail over to the\
+    \ next server in the list."
   name: "cas.authn.mfa.radius.failover-on-authentication-failure"
   defaultValue: false
 - module: "cas-server-support-radius-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.RadiusMultifactorProperties"
   type: "java.lang.Boolean"
   description: "In the event that radius authentication fails due to a catastrophic\
+    \ event, fail over to the next server in the list."
+  shortDescription: "In the event that radius authentication fails due to a catastrophic\
     \ event, fail over to the next server in the list."
   name: "cas.authn.mfa.radius.failover-on-exception"
   defaultValue: false
@@ -32,6 +38,7 @@
     \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
     \ NONE}: Do not contact the provider at all to check for availability. Assume\
     \ the provider is available.</li> </ul>"
+  shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.radius.failure-mode"
   defaultValue: "UNDEFINED"
 - module: "cas-server-support-radius-mfa"
@@ -40,6 +47,7 @@
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
     \ type are configured in CAS."
+  shortDescription: "The identifier for the multifactor provider."
   name: "cas.authn.mfa.radius.id"
   defaultValue: ""
 - module: "cas-server-support-radius-mfa"
@@ -47,12 +55,15 @@
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
+  shortDescription: "The name of the authentication handler used to verify credentials\
+    \ in MFA."
   name: "cas.authn.mfa.radius.name"
   defaultValue: ""
 - module: "cas-server-support-radius-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.RadiusMultifactorProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
+  shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.radius.order"
   defaultValue: ""
 - module: "cas-server-support-radius-mfa"
@@ -77,11 +88,14 @@
     \ properties for each. Note that the higher the rank value is, the higher on the\
     \ security scale it remains. A provider that ranks higher with a larger weight\
     \ value trumps and override others with a lower value."
+  shortDescription: "At times, CAS needs to determine the correct provider when step-up\
+    \ authentication is required."
   name: "cas.authn.mfa.radius.rank"
   defaultValue: 0
 - module: "cas-server-support-radius-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.RadiusMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
+  shortDescription: "Indicates whether this provider should support trusted devices."
   name: "cas.authn.mfa.radius.trusted-device-enabled"
   defaultValue: false

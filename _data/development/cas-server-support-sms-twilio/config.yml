@@ -4,6 +4,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.TwilioProperties"
   type: "java.lang.String"
   description: "Twilio account identifier used for authentication."
+  shortDescription: "Twilio account identifier used for authentication."
   name: "cas.sms-provider.twilio.account-id"
   defaultValue: ""
 - required: true
@@ -11,5 +12,6 @@
   owner: "org.apereo.cas.configuration.model.support.sms.TwilioProperties"
   type: "java.lang.String"
   description: "Twilio secret token used for authentication."
+  shortDescription: "Twilio secret token used for authentication."
   name: "cas.sms-provider.twilio.token"
   defaultValue: ""

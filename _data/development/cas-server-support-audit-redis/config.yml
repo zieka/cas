@@ -4,6 +4,7 @@
   type: "java.lang.Boolean"
   description: "Execute the recording of audit records in async manner. This setting\
     \ must almost always be set to true."
+  shortDescription: "Execute the recording of audit records in async manner."
   name: "cas.audit.redis.asynchronous"
   defaultValue: true
 - required: true
@@ -11,6 +12,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
   type: "java.lang.Integer"
   description: "Database index used by the connection factory."
+  shortDescription: "Database index used by the connection factory."
   name: "cas.audit.redis.database"
   defaultValue: 0
 - required: true
@@ -18,6 +20,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
   type: "java.lang.String"
   description: "Redis server host."
+  shortDescription: "Redis server host."
   name: "cas.audit.redis.host"
   defaultValue: "localhost"
 - required: true
@@ -25,6 +28,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
   type: "java.lang.String"
   description: "Login password of the redis server."
+  shortDescription: "Login password of the redis server."
   name: "cas.audit.redis.password"
   defaultValue: ""
 - required: true
@@ -32,6 +36,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
   type: "java.lang.Integer"
   description: "Redis server port."
+  shortDescription: "Redis server port."
   name: "cas.audit.redis.port"
   defaultValue: 6379
 - module: "cas-server-support-audit-redis"
@@ -48,17 +53,21 @@
     \ from any node of the cluster with the lowest latency.</li> <li>{@code ANY}:\
     \ Read from any node of the cluster.The value should be used from lettuce-core\
     \ version 5.2.</li> </ul>"
+  shortDescription: "Setting that describes how Lettuce routes read operations to\
+    \ replica nodes."
   name: "cas.audit.redis.read-from"
   defaultValue: ""
 - module: "cas-server-support-audit-redis"
   owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
   type: "java.lang.Integer"
   description: "Connection timeout in milliseconds."
+  shortDescription: "Connection timeout in milliseconds."
   name: "cas.audit.redis.timeout"
   defaultValue: 2000
 - module: "cas-server-support-audit-redis"
   owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
   type: "java.lang.Boolean"
   description: "Whether or not to use SSL for connection factory."
+  shortDescription: "Whether or not to use SSL for connection factory."
   name: "cas.audit.redis.use-ssl"
   defaultValue: false

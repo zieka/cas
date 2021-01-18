@@ -4,6 +4,8 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.AccepttoMultifactorProperties"
   type: "java.lang.String"
   description: "Base URL for API calls to authenticate, fetch channels or verify responses."
+  shortDescription: "Base URL for API calls to authenticate, fetch channels or verify\
+    \ responses."
   name: "cas.authn.mfa.acceptto.api-url"
   defaultValue: "https://mfa.acceptto.com/api/v9/"
 - required: true
@@ -12,6 +14,7 @@
   type: "java.lang.String"
   description: "Identifier of the application. When an organization creates an application\
     \ in eGuardian dashboard this id gets generated."
+  shortDescription: "Identifier of the application."
   name: "cas.authn.mfa.acceptto.application-id"
   defaultValue: ""
 - required: true
@@ -25,6 +28,7 @@
     \ as users select Accept or Decline with the push, or verifies with a one-time\
     \ passcode, they will get redirected back to callback url that was passed by the\
     \ relying party."
+  shortDescription: "URL of the Acceptto instance for authn discovery."
   name: "cas.authn.mfa.acceptto.authn-selection-url"
   defaultValue: "https://mfa.acceptto.com/mfa/index"
 - required: true
@@ -33,6 +37,8 @@
   type: "java.lang.String"
   description: "The user attribute that collects the user's email address which the\
     \ relying party wants to authenticate."
+  shortDescription: "The user attribute that collects the user's email address which\
+    \ the relying party wants to authenticate."
   name: "cas.authn.mfa.acceptto.email-attribute"
   defaultValue: "mail"
 - module: "cas-server-support-acceptto-mfa"
@@ -46,6 +52,7 @@
     \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
     \ NONE}: Do not contact the provider at all to check for availability. Assume\
     \ the provider is available.</li> </ul>"
+  shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.acceptto.failure-mode"
   defaultValue: "UNDEFINED"
 - module: "cas-server-support-acceptto-mfa"
@@ -54,6 +61,7 @@
   description: "List of active directory group GUIDs that user is a member of. This\
     \ is used for Group based policies. If undefined, will ignore passing the groups\
     \ to Acceptto."
+  shortDescription: "List of active directory group GUIDs that user is a member of."
   name: "cas.authn.mfa.acceptto.group-attribute"
   defaultValue: ""
 - module: "cas-server-support-acceptto-mfa"
@@ -62,6 +70,7 @@
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
     \ type are configured in CAS."
+  shortDescription: "The identifier for the multifactor provider."
   name: "cas.authn.mfa.acceptto.id"
   defaultValue: ""
 - module: "cas-server-support-acceptto-mfa"
@@ -69,6 +78,7 @@
   type: "java.lang.String"
   description: "Message to deliver to the user. This message gets delivered to the\
     \ user device via push notification. e.g \"Would you like to sign in?\"."
+  shortDescription: "Message to deliver to the user."
   name: "cas.authn.mfa.acceptto.message"
   defaultValue: "Would you like to sign into CAS?"
 - module: "cas-server-support-acceptto-mfa"
@@ -76,12 +86,15 @@
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
+  shortDescription: "The name of the authentication handler used to verify credentials\
+    \ in MFA."
   name: "cas.authn.mfa.acceptto.name"
   defaultValue: ""
 - module: "cas-server-support-acceptto-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.AccepttoMultifactorProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
+  shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.acceptto.order"
   defaultValue: ""
 - required: true
@@ -89,6 +102,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.AccepttoMultifactorProperties"
   type: "java.lang.String"
   description: "Organization identifier."
+  shortDescription: "Organization identifier."
   name: "cas.authn.mfa.acceptto.organization-id"
   defaultValue: ""
 - required: true
@@ -96,12 +110,14 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.AccepttoMultifactorProperties"
   type: "java.lang.String"
   description: "Organization secret."
+  shortDescription: "Organization secret."
   name: "cas.authn.mfa.acceptto.organization-secret"
   defaultValue: ""
 - module: "cas-server-support-acceptto-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.AccepttoMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Whether QR Code login should be enabled."
+  shortDescription: "Whether QR Code login should be enabled."
   name: "cas.authn.mfa.acceptto.qr-login-enabled"
   defaultValue: true
 - module: "cas-server-support-acceptto-mfa"
@@ -126,6 +142,8 @@
     \ properties for each. Note that the higher the rank value is, the higher on the\
     \ security scale it remains. A provider that ranks higher with a larger weight\
     \ value trumps and override others with a lower value."
+  shortDescription: "At times, CAS needs to determine the correct provider when step-up\
+    \ authentication is required."
   name: "cas.authn.mfa.acceptto.rank"
   defaultValue: 0
 - required: true
@@ -133,6 +151,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.AccepttoMultifactorProperties"
   type: "java.lang.String"
   description: "URL to the enrollment/registration API."
+  shortDescription: "URL to the enrollment/registration API."
   name: "cas.authn.mfa.acceptto.registration-api-url"
   defaultValue: "https://mfa.acceptto.com/api/integration/v1/mfa/authenticate"
 - required: true
@@ -141,6 +160,7 @@
   type: "java.lang.String"
   description: "Secret of the application. When an organization creates an application\
     \ in eGuardian dashboard this secret gets generated."
+  shortDescription: "Secret of the application."
   name: "cas.authn.mfa.acceptto.secret"
   defaultValue: ""
 - module: "cas-server-support-acceptto-mfa"
@@ -150,5 +170,6 @@
     \ user does not respond in the specified time period, an authentication request\
     \ expires. The max value is 600 seconds. Setting the value any higher will cause\
     \ it to revert back to 600 seconds."
+  shortDescription: "Timeout value for the authentication request is in seconds."
   name: "cas.authn.mfa.acceptto.timeout"
   defaultValue: 120

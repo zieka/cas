@@ -5,6 +5,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.acceptable-usage-policy.groovy.location"
   defaultValue: ""
 - module: "cas-server-support-aup-core"
@@ -13,5 +14,6 @@
   description: "Scope of map where the aup selection is stored.\nAvailable values:\n\
     \ {@code GLOBAL}:Store in global in-memory map (for life of server). {@code AUTHENTICATION}:Store\
     \ aup acceptance such that user is prompted when\nthey authenticate via credentials."
+  shortDescription: "Scope of map where the aup selection is stored."
   name: "cas.acceptable-usage-policy.in-memory.scope"
   defaultValue: ""

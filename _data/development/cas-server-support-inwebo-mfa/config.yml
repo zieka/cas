@@ -4,6 +4,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "org.apereo.cas.configuration.model.core.util.ClientCertificateProperties"
   description: "The client certificate."
+  shortDescription: "The client certificate."
   name: "cas.authn.mfa.inwebo.client-certificate"
   defaultValue: ""
 - required: true
@@ -11,6 +12,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "java.lang.String"
   description: "Console admin API url."
+  shortDescription: "Console admin API url."
   name: "cas.authn.mfa.inwebo.console-admin-url"
   defaultValue: "https://api.myinwebo.com/v2/services/ConsoleAdmin"
 - module: "cas-server-support-inwebo-mfa"
@@ -24,6 +26,7 @@
     \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
     \ NONE}: Do not contact the provider at all to check for availability. Assume\
     \ the provider is available.</li> </ul>"
+  shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.inwebo.failure-mode"
   defaultValue: "UNDEFINED"
 - module: "cas-server-support-inwebo-mfa"
@@ -32,6 +35,7 @@
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
     \ type are configured in CAS."
+  shortDescription: "The identifier for the multifactor provider."
   name: "cas.authn.mfa.inwebo.id"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
@@ -39,12 +43,15 @@
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
+  shortDescription: "The name of the authentication handler used to verify credentials\
+    \ in MFA."
   name: "cas.authn.mfa.inwebo.name"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
+  shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.inwebo.order"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
@@ -69,6 +76,8 @@
     \ properties for each. Note that the higher the rank value is, the higher on the\
     \ security scale it remains. A provider that ranks higher with a larger weight\
     \ value trumps and override others with a lower value."
+  shortDescription: "At times, CAS needs to determine the correct provider when step-up\
+    \ authentication is required."
   name: "cas.authn.mfa.inwebo.rank"
   defaultValue: 0
 - required: true
@@ -76,6 +85,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "java.lang.String"
   description: "The service API url."
+  shortDescription: "The service API url."
   name: "cas.authn.mfa.inwebo.service-api-url"
   defaultValue: "https://api.myinwebo.com/FS?"
 - required: true
@@ -83,6 +93,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "java.lang.Long"
   description: "The Inwebo service id."
+  shortDescription: "The Inwebo service id."
   name: "cas.authn.mfa.inwebo.service-id"
   defaultValue: ""
 - required: true
@@ -90,17 +101,20 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "java.lang.String"
   description: "The alias of the secured site."
+  shortDescription: "The alias of the secured site."
   name: "cas.authn.mfa.inwebo.site-alias"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "java.lang.String"
   description: "The description of the secured site."
+  shortDescription: "The description of the secured site."
   name: "cas.authn.mfa.inwebo.site-description"
   defaultValue: "my secured site"
 - module: "cas-server-support-inwebo-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
+  shortDescription: "Indicates whether this provider should support trusted devices."
   name: "cas.authn.mfa.inwebo.trusted-device-enabled"
   defaultValue: false

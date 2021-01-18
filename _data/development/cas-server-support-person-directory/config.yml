@@ -3,12 +3,15 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.GrouperPrincipalAttributesProperties"
   type: "java.lang.Boolean"
   description: "Enable the attribute repository source."
+  shortDescription: "Enable the attribute repository source."
   name: "cas.authn.attribute-repository.grouper.enabled"
   defaultValue: false
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.GrouperPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "A value can be assigned to this field to uniquely identify this resolver."
+  shortDescription: "A value can be assigned to this field to uniquely identify this\
+    \ resolver."
   name: "cas.authn.attribute-repository.grouper.id"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
@@ -17,12 +20,15 @@
   description: "The order of this attribute repository in the chain of repositories.\
     \ Can be used to explicitly position this source in chain and affects merging\
     \ strategies."
+  shortDescription: "The order of this attribute repository in the chain of repositories."
   name: "cas.authn.attribute-repository.grouper.order"
   defaultValue: 0
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.ScriptedPrincipalAttributesProperties"
   type: "boolean"
   description: "Whether attribute repository should consider the underlying\nattribute\
+    \ names in a case-insensitive manner."
+  shortDescription: "Whether attribute repository should consider the underlying attribute\
     \ names in a case-insensitive manner."
   name: "cas.authn.attribute-repository.script[].case-insensitive"
   defaultValue: ""
@@ -35,12 +41,15 @@
     \ classpath in order for the engineName to be determined automatically.\nThe first\
     \ engine found claiming to support the extension of the file specified will be\
     \ used."
+  shortDescription: "Script engine name, e.g. groovy, js, python, etc."
   name: "cas.authn.attribute-repository.script[].engine-name"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.ScriptedPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "A value can be assigned to this field to uniquely identify this resolver."
+  shortDescription: "A value can be assigned to this field to uniquely identify this\
+    \ resolver."
   name: "cas.authn.attribute-repository.script[].id"
   defaultValue: ""
 - required: true
@@ -49,6 +58,7 @@
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.attribute-repository.script[].location"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
@@ -56,6 +66,7 @@
   type: "int"
   description: "The order of this attribute repository in the chain of repositories.\n\
     Can be used to explicitly position this source in chain and affects\nmerging strategies."
+  shortDescription: "The order of this attribute repository in the chain of repositories."
   name: "cas.authn.attribute-repository.script[].order"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
@@ -68,11 +79,15 @@
     \ Attributes may be allowed to be virtually renamed and remapped. The key in the\
     \ attribute map is the original attribute, and the value should be the virtually-renamed\
     \ attribute."
+  shortDescription: "Static attributes that need to be mapped to a hardcoded value\
+    \ belong here."
   name: "cas.authn.attribute-repository.stub.attributes"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.StubPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "A value can be assigned to this field to uniquely identify this resolver."
+  shortDescription: "A value can be assigned to this field to uniquely identify this\
+    \ resolver."
   name: "cas.authn.attribute-repository.stub.id"
   defaultValue: ""

@@ -3,6 +3,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
   type: "java.lang.Integer"
   description: "Length of the generated code."
+  shortDescription: "Length of the generated code."
   name: "cas.authn.mfa.gauth.code-digits"
   defaultValue: 6
 - module: "cas-server-support-gauth"
@@ -16,6 +17,7 @@
     \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
     \ NONE}: Do not contact the provider at all to check for availability. Assume\
     \ the provider is available.</li> </ul>"
+  shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.gauth.failure-mode"
   defaultValue: "UNDEFINED"
 - module: "cas-server-support-gauth"
@@ -24,6 +26,7 @@
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
     \ type are configured in CAS."
+  shortDescription: "The identifier for the multifactor provider."
   name: "cas.authn.mfa.gauth.id"
   defaultValue: ""
 - required: true
@@ -32,6 +35,8 @@
   type: "java.lang.String"
   description: "Issuer used in the barcode when dealing with device registration events.\
     \ Used in the registration URL to identify CAS."
+  shortDescription: "Issuer used in the barcode when dealing with device registration\
+    \ events."
   name: "cas.authn.mfa.gauth.issuer"
   defaultValue: "CASIssuer"
 - required: true
@@ -40,6 +45,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.mfa.gauth.json.location"
   defaultValue: ""
 - required: true
@@ -48,6 +54,8 @@
   type: "java.lang.String"
   description: "Label used in the barcode when dealing with device registration events.\
     \ Used in the registration URL to identify CAS."
+  shortDescription: "Label used in the barcode when dealing with device registration\
+    \ events."
   name: "cas.authn.mfa.gauth.label"
   defaultValue: "CASLabel"
 - module: "cas-server-support-gauth"
@@ -56,6 +64,9 @@
   description: "When enabled, allows the user/system to accept multiple accounts and\
     \ device registrations per user, allowing one to switch between or register new\
     \ devices/accounts automatically."
+  shortDescription: "When enabled, allows the user/system to accept multiple accounts\
+    \ and device registrations per user, allowing one to switch between or register\
+    \ new devices/accounts automatically."
   name: "cas.authn.mfa.gauth.multiple-device-registration-enabled"
   defaultValue: false
 - module: "cas-server-support-gauth"
@@ -63,12 +74,15 @@
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
+  shortDescription: "The name of the authentication handler used to verify credentials\
+    \ in MFA."
   name: "cas.authn.mfa.gauth.name"
   defaultValue: ""
 - module: "cas-server-support-gauth"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
+  shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.gauth.order"
   defaultValue: ""
 - module: "cas-server-support-gauth"
@@ -93,6 +107,8 @@
     \ properties for each. Note that the higher the rank value is, the higher on the\
     \ security scale it remains. A provider that ranks higher with a larger weight\
     \ value trumps and override others with a lower value."
+  shortDescription: "At times, CAS needs to determine the correct provider when step-up\
+    \ authentication is required."
   name: "cas.authn.mfa.gauth.rank"
   defaultValue: 0
 - module: "cas-server-support-gauth"
@@ -100,6 +116,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.authn.mfa.gauth.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-support-gauth"
@@ -107,6 +125,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.authn.mfa.gauth.rest.basic-auth-username"
   defaultValue: ""
 - required: true
@@ -115,6 +135,8 @@
   type: "java.lang.String"
   description: "Endpoint url of the REST resource used for tokens that are kept to\
     \ prevent replay attacks."
+  shortDescription: "Endpoint url of the REST resource used for tokens that are kept\
+    \ to prevent replay attacks."
   name: "cas.authn.mfa.gauth.rest.token-url"
   defaultValue: ""
 - required: true
@@ -122,18 +144,21 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.RestfulGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.mfa.gauth.rest.url"
   defaultValue: ""
 - module: "cas-server-support-gauth"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
   type: "java.lang.Long"
   description: "The expiration time of the generated code in seconds."
+  shortDescription: "The expiration time of the generated code in seconds."
   name: "cas.authn.mfa.gauth.time-step-size"
   defaultValue: 30
 - module: "cas-server-support-gauth"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
+  shortDescription: "Indicates whether this provider should support trusted devices."
   name: "cas.authn.mfa.gauth.trusted-device-enabled"
   defaultValue: false
 - module: "cas-server-support-gauth"
@@ -142,5 +167,8 @@
   description: "Since TOTP passwords are time-based, it is essential that the clock\
     \ of both the server and the client are synchronised within the tolerance defined\
     \ here as the window size."
+  shortDescription: "Since TOTP passwords are time-based, it is essential that the\
+    \ clock of both the server and the client are synchronised within the tolerance\
+    \ defined here as the window size."
   name: "cas.authn.mfa.gauth.window-size"
   defaultValue: 3

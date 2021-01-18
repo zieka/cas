@@ -6,6 +6,7 @@
     \ this method will be use for queries that don't explicitly have a consistency\
     \ level. Accepted values are:{@code ALL, ANY, EACH_QUORUM, LOCAL_ONE, LOCAL_QUORUM,\
     \ LOCAL_SERIAL, ONE, QUORUM, SERIAL, THREE, TWO}."
+  shortDescription: "Query option consistency level."
   name: "cas.service-registry.cassandra.consistency-level"
   defaultValue: "LOCAL_QUORUM"
 - required: true
@@ -13,6 +14,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.serviceregistry.CassandraServiceRegistryProperties"
   type: "java.util.List<java.lang.String>"
   description: "The list of contact points to use for the new cluster."
+  shortDescription: "The list of contact points to use for the new cluster."
   name: "cas.service-registry.cassandra.contact-points"
   defaultValue: ""
 - required: true
@@ -20,6 +22,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.serviceregistry.CassandraServiceRegistryProperties"
   type: "java.lang.String"
   description: "Keyspace address to use where the cluster would connect."
+  shortDescription: "Keyspace address to use where the cluster would connect."
   name: "cas.service-registry.cassandra.keyspace"
   defaultValue: ""
 - module: "cas-server-support-cassandra-service-registry"
@@ -31,6 +34,7 @@
     \ centers, but those are always tried after the local nodes. In other words, this\
     \ policy guarantees that no host in a remote data center will be queried unless\
     \ no host in the local data center can be reached."
+  shortDescription: "Used by a DC-ware round-robin load balancing policy."
   name: "cas.service-registry.cassandra.local-dc"
   defaultValue: ""
 - required: true
@@ -38,6 +42,7 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.serviceregistry.CassandraServiceRegistryProperties"
   type: "java.lang.String"
   description: "Password to bind and establish a connection to cassandra."
+  shortDescription: "Password to bind and establish a connection to cassandra."
   name: "cas.service-registry.cassandra.password"
   defaultValue: ""
 - module: "cas-server-support-cassandra-service-registry"
@@ -47,6 +52,7 @@
     \ set through this method will be use for queries that don't explicitly have a\
     \ serial consistency level. Accepted values are:{@code ALL, ANY, EACH_QUORUM,\
     \ LOCAL_ONE, LOCAL_QUORUM, LOCAL_SERIAL, ONE, QUORUM, SERIAL, THREE, TWO}."
+  shortDescription: "Query option serial consistency level."
   name: "cas.service-registry.cassandra.serial-consistency-level"
   defaultValue: "LOCAL_SERIAL"
 - module: "cas-server-support-cassandra-service-registry"
@@ -54,6 +60,7 @@
   type: "java.lang.String"
   description: "The request timeout. This defines how long the driver will wait for\
     \ a given Cassandra node to answer a query."
+  shortDescription: "The request timeout."
   name: "cas.service-registry.cassandra.timeout"
   defaultValue: "PT5S"
 - required: true
@@ -61,5 +68,6 @@
   owner: "org.apereo.cas.configuration.model.support.cassandra.serviceregistry.CassandraServiceRegistryProperties"
   type: "java.lang.String"
   description: "Username to bind and establish a connection to cassandra."
+  shortDescription: "Username to bind and establish a connection to cassandra."
   name: "cas.service-registry.cassandra.username"
   defaultValue: ""

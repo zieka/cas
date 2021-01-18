@@ -5,6 +5,8 @@
   description: "Authorization attribute name required by the REST endpoint in order\
     \ to allow for the requested operation. Attribute must be resolvable by the authenticated\
     \ principal, or must have been already."
+  shortDescription: "Authorization attribute name required by the REST endpoint in\
+    \ order to allow for the requested operation."
   name: "cas.rest.attribute-name"
   defaultValue: ""
 - module: "cas-server-support-rest"
@@ -13,6 +15,8 @@
   description: "Matching authorization attribute value, pulled from the attribute\
     \ required by the REST endpoint in order to allow for the requested operation.\
     \ The attribute value may also be constructed as a regex pattern."
+  shortDescription: "Matching authorization attribute value, pulled from the attribute\
+    \ required by the REST endpoint in order to allow for the requested operation."
   name: "cas.rest.attribute-value"
   defaultValue: ""
 - module: "cas-server-support-rest"
@@ -20,6 +24,8 @@
   type: "java.lang.Boolean"
   description: "Flag that enables {@link java.security.cert.X509Certificate} extraction\
     \ from the request body for authentication."
+  shortDescription: "Flag that enables {@link java.security.cert.X509Certificate}\
+    \ extraction from the request body for authentication."
   name: "cas.rest.body-auth"
   defaultValue: false
 - module: "cas-server-support-rest"
@@ -27,12 +33,16 @@
   type: "java.lang.Boolean"
   description: "Flag that enables {@link java.security.cert.X509Certificate} extraction\
     \ from the request headers for authentication."
+  shortDescription: "Flag that enables {@link java.security.cert.X509Certificate}\
+    \ extraction from the request headers for authentication."
   name: "cas.rest.header-auth"
   defaultValue: true
 - module: "cas-server-support-rest"
   owner: "org.apereo.cas.configuration.model.core.rest.RestProperties"
   type: "java.lang.Boolean"
   description: "Flag that enables TLS client {@link java.security.cert.X509Certificate}\
+    \ extraction from the servlet container for authentication."
+  shortDescription: "Flag that enables TLS client {@link java.security.cert.X509Certificate}\
     \ extraction from the servlet container for authentication."
   name: "cas.rest.tls-client-auth"
   defaultValue: false

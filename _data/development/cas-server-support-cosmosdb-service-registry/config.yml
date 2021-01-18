@@ -3,6 +3,7 @@
   owner: "org.apereo.cas.configuration.model.support.cosmosdb.CosmosDbServiceRegistryProperties"
   type: "java.lang.Boolean"
   description: "Whether telemetry should be enabled by default."
+  shortDescription: "Whether telemetry should be enabled by default."
   name: "cas.service-registry.cosmos-db.allow-telemetry"
   defaultValue: true
 - required: true
@@ -10,6 +11,7 @@
   owner: "org.apereo.cas.configuration.model.support.cosmosdb.CosmosDbServiceRegistryProperties"
   type: "java.lang.String"
   description: "Collection to store CAS service definitions."
+  shortDescription: "Collection to store CAS service definitions."
   name: "cas.service-registry.cosmos-db.collection"
   defaultValue: "CasCosmosDbServiceRegistry"
 - module: "cas-server-support-cosmosdb-service-registry"
@@ -32,6 +34,7 @@
     \ BoundedStaleness}: Consistent Prefix. Reads lag behind writes by k prefixes\
     \ or t interval</li> <li>{@code ConsistentPrefix}: Updates returned are some prefix\
     \ of all the updates, with no gaps</li> </ul>"
+  shortDescription: "Document Db consistency level."
   name: "cas.service-registry.cosmos-db.consistency-level"
   defaultValue: "Session"
 - required: true
@@ -39,12 +42,14 @@
   owner: "org.apereo.cas.configuration.model.support.cosmosdb.CosmosDbServiceRegistryProperties"
   type: "java.lang.String"
   description: "Database name."
+  shortDescription: "Database name."
   name: "cas.service-registry.cosmos-db.database"
   defaultValue: ""
 - module: "cas-server-support-cosmosdb-service-registry"
   owner: "org.apereo.cas.configuration.model.support.cosmosdb.CosmosDbServiceRegistryProperties"
   type: "java.lang.Boolean"
   description: "Whether collections should be dropped on startup and re-created."
+  shortDescription: "Whether collections should be dropped on startup and re-created."
   name: "cas.service-registry.cosmos-db.drop-collection"
   defaultValue: false
 - module: "cas-server-support-cosmosdb-service-registry"
@@ -62,6 +67,8 @@
     \ the index for a document collection, to save the storage cost or improve the\
     \ write throughput. Your queries will degenerate to scans of the entire collection.\
     \ </li> </ul>"
+  shortDescription: "Specifies the supported indexing modes in the Azure Cosmos DB\
+    \ database service."
   name: "cas.service-registry.cosmos-db.indexing-mode"
   defaultValue: "None"
 - required: true
@@ -69,12 +76,14 @@
   owner: "org.apereo.cas.configuration.model.support.cosmosdb.CosmosDbServiceRegistryProperties"
   type: "java.lang.String"
   description: "Document Db master key."
+  shortDescription: "Document Db master key."
   name: "cas.service-registry.cosmos-db.key"
   defaultValue: ""
 - module: "cas-server-support-cosmosdb-service-registry"
   owner: "org.apereo.cas.configuration.model.support.cosmosdb.CosmosDbServiceRegistryProperties"
   type: "java.lang.Integer"
   description: "Database throughput usually between 400 or 100,000."
+  shortDescription: "Database throughput usually between 400 or 100,000."
   name: "cas.service-registry.cosmos-db.throughput"
   defaultValue: 10000
 - required: true
@@ -82,5 +91,6 @@
   owner: "org.apereo.cas.configuration.model.support.cosmosdb.CosmosDbServiceRegistryProperties"
   type: "java.lang.String"
   description: "Document Db host address (i.e. https://localhost:8081)."
+  shortDescription: "Document Db host address (i.e. https://localhost:8081)."
   name: "cas.service-registry.cosmos-db.uri"
   defaultValue: ""

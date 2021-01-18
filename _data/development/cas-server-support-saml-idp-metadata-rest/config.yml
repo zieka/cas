@@ -4,6 +4,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.authn.saml-idp.metadata.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-support-saml-idp-metadata-rest"
@@ -11,6 +13,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.authn.saml-idp.metadata.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-support-saml-idp-metadata-rest"
@@ -18,6 +22,8 @@
   type: "java.lang.Boolean"
   description: "Whether identity provider metadata artifacts are expected to be found\
     \ in the database."
+  shortDescription: "Whether identity provider metadata artifacts are expected to\
+    \ be found in the database."
   name: "cas.authn.saml-idp.metadata.rest.idp-metadata-enabled"
   defaultValue: false
 - module: "cas-server-support-saml-idp-metadata-rest"
@@ -25,6 +31,7 @@
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
   name: "cas.authn.saml-idp.metadata.rest.method"
   defaultValue: "GET"
 - required: true
@@ -32,5 +39,6 @@
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.RestSamlMetadataProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.saml-idp.metadata.rest.url"
   defaultValue: ""

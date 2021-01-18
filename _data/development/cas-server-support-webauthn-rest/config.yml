@@ -4,6 +4,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.authn.mfa.web-authn.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-support-webauthn-rest"
@@ -11,6 +13,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.authn.mfa.web-authn.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-support-webauthn-rest"
@@ -18,6 +22,7 @@
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
   name: "cas.authn.mfa.web-authn.rest.method"
   defaultValue: "GET"
 - required: true
@@ -25,5 +30,6 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnRestfulMultifactorProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.mfa.web-authn.rest.url"
   defaultValue: ""

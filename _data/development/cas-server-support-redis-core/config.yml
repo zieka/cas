@@ -3,12 +3,14 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.acceptable-usage-policy.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.acceptable-usage-policy.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -16,18 +18,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.acceptable-usage-policy.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.acceptable-usage-policy.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.acceptable-usage-policy.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -35,6 +40,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.acceptable-usage-policy.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -42,6 +48,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.acceptable-usage-policy.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -50,6 +57,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.acceptable-usage-policy.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -57,6 +65,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.acceptable-usage-policy.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -64,6 +73,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.acceptable-usage-policy.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -71,6 +81,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.acceptable-usage-policy.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -80,6 +92,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.acceptable-usage-policy.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -87,6 +103,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.acceptable-usage-policy.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -94,6 +112,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.acceptable-usage-policy.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -102,6 +121,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.acceptable-usage-policy.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -111,6 +132,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.acceptable-usage-policy.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -118,6 +142,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.acceptable-usage-policy.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -129,6 +155,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.acceptable-usage-policy.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -140,6 +168,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.acceptable-usage-policy.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -150,6 +182,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.acceptable-usage-policy.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -159,6 +193,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.acceptable-usage-policy.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -168,6 +204,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.acceptable-usage-policy.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -178,6 +216,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.acceptable-usage-policy.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -185,24 +225,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.acceptable-usage-policy.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.acceptable-usage-policy.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.audit.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.audit.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -210,18 +254,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.audit.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.audit.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.audit.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -229,6 +276,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.audit.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -236,6 +284,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.audit.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -244,6 +293,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.audit.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -251,6 +301,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.audit.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -258,6 +309,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.audit.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -265,6 +317,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.audit.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -274,6 +328,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.audit.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -281,6 +339,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.audit.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -288,6 +348,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.audit.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -296,6 +357,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.audit.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -305,6 +368,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.audit.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -312,6 +378,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.audit.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -323,6 +391,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.audit.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -334,6 +404,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.audit.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -344,6 +418,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.audit.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -353,6 +429,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.audit.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -362,6 +440,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.audit.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -372,6 +452,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.audit.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -379,24 +461,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.audit.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.audit.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "int"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.attribute-repository.redis[].cluster.max-redirects"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.attribute-repository.redis[].cluster.nodes"
   defaultValue: ""
 - required: true
@@ -404,6 +490,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.attribute-repository.redis[].cluster.password"
   defaultValue: ""
 - required: true
@@ -411,6 +498,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.attribute-repository.redis[].pool.enabled"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -418,6 +506,8 @@
   type: "boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\n\
     fairly. True means that waiting threads are served as if waiting in a FIFO\nqueue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.attribute-repository.redis[].pool.fairness"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -427,6 +517,10 @@
     \ respect\nto idle objects - always returning the most recently used object from\
     \ the\npool, or as a FIFO (first in, first out) queue, where the pool always returns\n\
     the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.attribute-repository.redis[].pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -434,6 +528,8 @@
   type: "int"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time.\nUse a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.attribute-repository.redis[].pool.max-active"
   defaultValue: "8"
 - module: "cas-server-support-redis-core"
@@ -441,6 +537,7 @@
   type: "int"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to\nindicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.attribute-repository.redis[].pool.max-idle"
   defaultValue: "8"
 - module: "cas-server-support-redis-core"
@@ -449,6 +546,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block\nbefore throwing an exception when the pool is exhausted. Use a negative\
     \ value\nto block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.attribute-repository.redis[].pool.max-wait"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -458,6 +557,9 @@
     \ before it\nis eligible for eviction by the idle object evictor (if any - see\n\
     setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\n\
     be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.attribute-repository.redis[].pool.min-evictable-idle-time-millis"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -465,6 +567,8 @@
   type: "int"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool.\nThis setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.attribute-repository.redis[].pool.min-idle"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -477,6 +581,8 @@
     \ will be\nceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that\
     \ when\nthe value is -n roughly one nth of the idle objects will be tested per\
     \ run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.attribute-repository.redis[].pool.num-tests-per-eviction-run"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -488,6 +594,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden\nby\
     \ getMinEvictableIdleTimeMillis() (that is, if\ngetMinEvictableIdleTimeMillis()\
     \ is positive, then\ngetSoftMinEvictableIdleTimeMillis() is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.attribute-repository.redis[].pool.soft-min-evictable-idle-time-millis"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -498,6 +608,8 @@
     validateObject() method of the factory associated with the pool. If the\nobject\
     \ fails to validate, it will be removed from the pool and destroyed, and\na new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.attribute-repository.redis[].pool.test-on-borrow"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -507,6 +619,8 @@
     \ being\nreturned from the borrowObject() method. Validation is performed by the\n\
     validateObject() method of the factory associated with the pool. If the\nobject\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.attribute-repository.redis[].pool.test-on-create"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -517,6 +631,8 @@
     performed by the validateObject() method of the factory associated with the\n\
     pool. Returning objects that fail validation are destroyed rather then being\n\
     returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.attribute-repository.redis[].pool.test-on-return"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
@@ -527,6 +643,8 @@
     Validation is performed by the validateObject() method of the factory\nassociated\
     \ with the pool. If the object fails to validate, it will be removed\nfrom the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.attribute-repository.redis[].pool.test-while-idle"
   defaultValue: ""
 - required: true
@@ -534,24 +652,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.attribute-repository.redis[].sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.attribute-repository.redis[].sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.mfa.gauth.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.mfa.gauth.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -559,18 +681,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.authn.mfa.gauth.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.authn.mfa.gauth.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.authn.mfa.gauth.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -578,6 +703,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.authn.mfa.gauth.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -585,6 +711,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.authn.mfa.gauth.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -593,6 +720,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.authn.mfa.gauth.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -600,6 +728,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.mfa.gauth.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -607,6 +736,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.mfa.gauth.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -614,6 +744,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.mfa.gauth.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -623,6 +755,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.mfa.gauth.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -630,6 +766,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.mfa.gauth.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -637,6 +775,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.mfa.gauth.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -645,6 +784,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.mfa.gauth.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -654,6 +795,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.gauth.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -661,6 +805,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.mfa.gauth.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -672,6 +818,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.mfa.gauth.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -683,6 +831,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.mfa.gauth.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -693,6 +845,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.gauth.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -702,6 +856,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.gauth.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -711,6 +867,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.mfa.gauth.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -721,6 +879,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.gauth.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -728,24 +888,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.mfa.gauth.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.mfa.gauth.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.mfa.trusted.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.mfa.trusted.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -753,18 +917,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.authn.mfa.trusted.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.authn.mfa.trusted.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.authn.mfa.trusted.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -772,6 +939,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.authn.mfa.trusted.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -779,6 +947,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.authn.mfa.trusted.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -787,6 +956,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.authn.mfa.trusted.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -794,6 +964,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.mfa.trusted.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -801,6 +972,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.mfa.trusted.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -808,6 +980,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.mfa.trusted.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -817,6 +991,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.mfa.trusted.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -824,6 +1002,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.mfa.trusted.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -831,6 +1011,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.mfa.trusted.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -839,6 +1020,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.mfa.trusted.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -848,6 +1031,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.trusted.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -855,6 +1041,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.mfa.trusted.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -866,6 +1054,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.mfa.trusted.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -877,6 +1067,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.mfa.trusted.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -887,6 +1081,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.trusted.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -896,6 +1092,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.trusted.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -905,6 +1103,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.mfa.trusted.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -915,6 +1115,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.trusted.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -922,24 +1124,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.mfa.trusted.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.mfa.trusted.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.mfa.u2f.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.mfa.u2f.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -947,18 +1153,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.authn.mfa.u2f.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.authn.mfa.u2f.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.authn.mfa.u2f.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -966,6 +1175,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.authn.mfa.u2f.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -973,6 +1183,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.authn.mfa.u2f.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -981,6 +1192,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.authn.mfa.u2f.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -988,6 +1200,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.mfa.u2f.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -995,6 +1208,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.mfa.u2f.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1002,6 +1216,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.mfa.u2f.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1011,6 +1227,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.mfa.u2f.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -1018,6 +1238,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.mfa.u2f.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1025,6 +1247,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.mfa.u2f.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1033,6 +1256,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.mfa.u2f.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -1042,6 +1267,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.u2f.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1049,6 +1277,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.mfa.u2f.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1060,6 +1290,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.mfa.u2f.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1071,6 +1303,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.mfa.u2f.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1081,6 +1317,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.u2f.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1090,6 +1328,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.u2f.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1099,6 +1339,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.mfa.u2f.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1109,6 +1351,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.u2f.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -1116,24 +1360,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.mfa.u2f.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.mfa.u2f.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.mfa.web-authn.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.mfa.web-authn.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -1141,18 +1389,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.authn.mfa.web-authn.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.authn.mfa.web-authn.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.authn.mfa.web-authn.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -1160,6 +1411,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.authn.mfa.web-authn.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -1167,6 +1419,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.authn.mfa.web-authn.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -1175,6 +1428,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.authn.mfa.web-authn.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -1182,6 +1436,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.mfa.web-authn.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -1189,6 +1444,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.mfa.web-authn.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1196,6 +1452,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.mfa.web-authn.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1205,6 +1463,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.mfa.web-authn.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -1212,6 +1474,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.mfa.web-authn.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1219,6 +1483,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.mfa.web-authn.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1227,6 +1492,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.mfa.web-authn.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -1236,6 +1503,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.web-authn.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1243,6 +1513,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.mfa.web-authn.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1254,6 +1526,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.mfa.web-authn.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1265,6 +1539,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.mfa.web-authn.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1275,6 +1553,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.web-authn.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1284,6 +1564,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.web-authn.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1293,6 +1575,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.mfa.web-authn.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1303,6 +1587,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.web-authn.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -1310,24 +1596,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.mfa.web-authn.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.mfa.web-authn.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.mfa.yubikey.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.mfa.yubikey.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -1335,18 +1625,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.authn.mfa.yubikey.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.authn.mfa.yubikey.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.authn.mfa.yubikey.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -1354,6 +1647,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.authn.mfa.yubikey.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -1361,6 +1655,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.authn.mfa.yubikey.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -1369,6 +1664,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.authn.mfa.yubikey.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -1376,6 +1672,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.mfa.yubikey.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -1383,6 +1680,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.mfa.yubikey.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1390,6 +1688,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.mfa.yubikey.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1399,6 +1699,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.mfa.yubikey.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -1406,6 +1710,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.mfa.yubikey.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1413,6 +1719,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.mfa.yubikey.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1421,6 +1728,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.mfa.yubikey.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -1430,6 +1739,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.yubikey.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1437,6 +1749,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.mfa.yubikey.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1448,6 +1762,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.mfa.yubikey.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1459,6 +1775,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.mfa.yubikey.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1469,6 +1789,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.yubikey.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1478,6 +1800,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.mfa.yubikey.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1487,6 +1811,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.mfa.yubikey.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1497,6 +1823,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.mfa.yubikey.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -1504,24 +1832,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.mfa.yubikey.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.mfa.yubikey.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -1529,18 +1861,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.authn.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.authn.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.authn.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -1548,6 +1883,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.authn.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -1555,6 +1891,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.authn.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -1563,6 +1900,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.authn.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -1570,6 +1908,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -1577,6 +1916,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1584,6 +1924,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1593,6 +1935,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -1600,6 +1946,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1607,6 +1955,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1615,6 +1964,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -1624,6 +1975,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1631,6 +1985,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1642,6 +1998,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1653,6 +2011,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1663,6 +2025,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1672,6 +2036,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1681,6 +2047,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1691,6 +2059,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -1698,24 +2068,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.authn.saml-idp.metadata.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.authn.saml-idp.metadata.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -1723,18 +2097,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.authn.saml-idp.metadata.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.authn.saml-idp.metadata.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.authn.saml-idp.metadata.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -1742,6 +2119,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.authn.saml-idp.metadata.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -1749,6 +2127,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.authn.saml-idp.metadata.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -1757,6 +2136,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.authn.saml-idp.metadata.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -1764,6 +2144,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.authn.saml-idp.metadata.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -1771,6 +2152,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.authn.saml-idp.metadata.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1778,6 +2160,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.authn.saml-idp.metadata.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1787,6 +2171,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.authn.saml-idp.metadata.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -1794,6 +2182,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.authn.saml-idp.metadata.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1801,6 +2191,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.authn.saml-idp.metadata.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1809,6 +2200,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.authn.saml-idp.metadata.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -1818,6 +2211,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.saml-idp.metadata.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1825,6 +2221,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.authn.saml-idp.metadata.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1836,6 +2234,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.authn.saml-idp.metadata.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1847,6 +2247,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.authn.saml-idp.metadata.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -1857,6 +2261,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.saml-idp.metadata.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1866,6 +2272,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.authn.saml-idp.metadata.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1875,6 +2283,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.authn.saml-idp.metadata.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1885,6 +2295,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.authn.saml-idp.metadata.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -1892,24 +2304,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.authn.saml-idp.metadata.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.authn.saml-idp.metadata.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.consent.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.consent.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -1917,18 +2333,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.consent.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.consent.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.consent.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -1936,6 +2355,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.consent.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -1943,6 +2363,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.consent.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -1951,6 +2372,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.consent.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -1958,6 +2380,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.consent.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -1965,6 +2388,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.consent.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1972,6 +2396,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.consent.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -1981,6 +2407,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.consent.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -1988,6 +2418,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.consent.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -1995,6 +2427,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.consent.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -2003,6 +2436,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.consent.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -2012,6 +2447,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.consent.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2019,6 +2457,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.consent.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2030,6 +2470,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.consent.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2041,6 +2483,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.consent.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2051,6 +2497,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.consent.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2060,6 +2508,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.consent.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2069,6 +2519,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.consent.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2079,6 +2531,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.consent.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -2086,24 +2540,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.consent.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.consent.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.service-registry.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.service-registry.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -2111,18 +2569,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.service-registry.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.service-registry.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.service-registry.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -2130,6 +2591,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.service-registry.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -2137,6 +2599,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.service-registry.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -2145,6 +2608,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.service-registry.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -2152,6 +2616,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.service-registry.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -2159,6 +2624,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.service-registry.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2166,6 +2632,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.service-registry.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2175,6 +2643,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.service-registry.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -2182,6 +2654,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.service-registry.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -2189,6 +2663,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.service-registry.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -2197,6 +2672,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.service-registry.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -2206,6 +2683,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.service-registry.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2213,6 +2693,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.service-registry.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2224,6 +2706,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.service-registry.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2235,6 +2719,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.service-registry.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2245,6 +2733,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.service-registry.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2254,6 +2744,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.service-registry.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2263,6 +2755,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.service-registry.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2273,6 +2767,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.service-registry.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -2280,24 +2776,28 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.service-registry.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.service-registry.redis.sentinel.node"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.Integer"
   description: "The max number of redirects to follow."
+  shortDescription: "The max number of redirects to follow."
   name: "cas.ticket.registry.redis.cluster.max-redirects"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties>"
   description: "List of nodes available in the redis cluster."
+  shortDescription: "List of nodes available in the redis cluster."
   name: "cas.ticket.registry.redis.cluster.nodes"
   defaultValue: ""
 - required: true
@@ -2305,18 +2805,21 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Server's host address."
+  shortDescription: "Server's host address."
   name: "cas.ticket.registry.redis.cluster.nodes[].host"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Identifier of this node."
+  shortDescription: "Identifier of this node."
   name: "cas.ticket.registry.redis.cluster.nodes[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Name of this node."
+  shortDescription: "Name of this node."
   name: "cas.ticket.registry.redis.cluster.nodes[].name"
   defaultValue: ""
 - required: true
@@ -2324,6 +2827,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "int"
   description: "Server's port number."
+  shortDescription: "Server's port number."
   name: "cas.ticket.registry.redis.cluster.nodes[].port"
   defaultValue: ""
 - required: true
@@ -2331,6 +2835,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterNodeProperties"
   type: "java.lang.String"
   description: "Set the id of the master node."
+  shortDescription: "Set the id of the master node."
   name: "cas.ticket.registry.redis.cluster.nodes[].replica-of"
   defaultValue: ""
 - required: true
@@ -2339,6 +2844,7 @@
   type: "java.lang.String"
   description: "Indicate the type/role of this node.\nAccepted values are: {@code\
     \ MASTER, SLAVE}."
+  shortDescription: "Indicate the type/role of this node."
   name: "cas.ticket.registry.redis.cluster.nodes[].type"
   defaultValue: ""
 - required: true
@@ -2346,6 +2852,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisClusterProperties"
   type: "java.lang.String"
   description: "The cluster connection's password."
+  shortDescription: "The cluster connection's password."
   name: "cas.ticket.registry.redis.cluster.password"
   defaultValue: ""
 - required: true
@@ -2353,6 +2860,7 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisPoolProperties"
   type: "java.lang.Boolean"
   description: "Enable the pooling configuration."
+  shortDescription: "Enable the pooling configuration."
   name: "cas.ticket.registry.redis.pool.enabled"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2360,6 +2868,8 @@
   type: "java.lang.Boolean"
   description: "Returns whether or not the pool serves threads waiting to borrow objects\
     \ fairly. True means that waiting threads are served as if waiting in a FIFO queue."
+  shortDescription: "Returns whether or not the pool serves threads waiting to borrow\
+    \ objects fairly."
   name: "cas.ticket.registry.redis.pool.fairness"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2369,6 +2879,10 @@
     \ respect to idle objects - always returning the most recently used object from\
     \ the pool, or as a FIFO (first in, first out) queue, where the pool always returns\
     \ the oldest object in the idle object pool."
+  shortDescription: "Returns whether the pool has LIFO (last in, first out) behaviour\
+    \ with respect to idle objects - always returning the most recently used object\
+    \ from the pool, or as a FIFO (first in, first out) queue, where the pool always\
+    \ returns the oldest object in the idle object pool."
   name: "cas.ticket.registry.redis.pool.lifo"
   defaultValue: true
 - module: "cas-server-support-redis-core"
@@ -2376,6 +2890,8 @@
   type: "java.lang.Integer"
   description: "Max number of connections that can be allocated by the pool at a given\
     \ time. Use a negative value for no limit."
+  shortDescription: "Max number of connections that can be allocated by the pool at\
+    \ a given time."
   name: "cas.ticket.registry.redis.pool.max-active"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -2383,6 +2899,7 @@
   type: "java.lang.Integer"
   description: "Max number of \"idle\" connections in the pool. Use a negative value\
     \ to indicate an unlimited number of idle connections."
+  shortDescription: "Max number of \"idle\" connections in the pool."
   name: "cas.ticket.registry.redis.pool.max-idle"
   defaultValue: 8
 - module: "cas-server-support-redis-core"
@@ -2391,6 +2908,8 @@
   description: "Maximum amount of time (in milliseconds) a connection allocation should\
     \ block before throwing an exception when the pool is exhausted. Use a negative\
     \ value to block indefinitely."
+  shortDescription: "Maximum amount of time (in milliseconds) a connection allocation\
+    \ should block before throwing an exception when the pool is exhausted."
   name: "cas.ticket.registry.redis.pool.max-wait"
   defaultValue: -1
 - module: "cas-server-support-redis-core"
@@ -2400,6 +2919,9 @@
     \ before it is eligible for eviction by the idle object evictor (if any - see\
     \ setTimeBetweenEvictionRunsMillis(long)). When non-positive, no objects will\
     \ be evicted from the pool due to idle time alone."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.ticket.registry.redis.pool.min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2407,6 +2929,8 @@
   type: "java.lang.Integer"
   description: "Target for the minimum number of idle connections to maintain in the\
     \ pool. This setting only has an effect if it is positive."
+  shortDescription: "Target for the minimum number of idle connections to maintain\
+    \ in the pool."
   name: "cas.ticket.registry.redis.pool.min-idle"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2418,6 +2942,8 @@
     \ instances in the pool. When negative, the number of tests performed will be\
     \ ceil(getNumIdle()/ abs(getNumTestsPerEvictionRun())) which means that when the\
     \ value is -n roughly one nth of the idle objects will be tested per run."
+  shortDescription: "Sets the maximum number of objects to examine during each run\
+    \ (if any) of the idle object evictor thread."
   name: "cas.ticket.registry.redis.pool.num-tests-per-eviction-run"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2429,6 +2955,10 @@
     \ minIdle object instances remain in the pool. This setting is overridden by getMinEvictableIdleTimeMillis()\
     \ (that is, if getMinEvictableIdleTimeMillis() is positive, then getSoftMinEvictableIdleTimeMillis()\
     \ is ignored)."
+  shortDescription: "Sets the minimum amount of time an object may sit idle in the\
+    \ pool before it is eligible for eviction by the idle object evictor (if any -\
+    \ see setTimeBetweenEvictionRunsMillis(long)), with the extra condition that at\
+    \ least minIdle object instances remain in the pool."
   name: "cas.ticket.registry.redis.pool.soft-min-evictable-idle-time-millis"
   defaultValue: 0
 - module: "cas-server-support-redis-core"
@@ -2439,6 +2969,8 @@
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, it will be removed from the pool and destroyed, and a new\
     \ attempt will be made to borrow an object from the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.ticket.registry.redis.pool.test-on-borrow"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2448,6 +2980,8 @@
     \ being returned from the borrowObject() method. Validation is performed by the\
     \ validateObject() method of the factory associated with the pool. If the object\
     \ fails to validate, then borrowObject() will fail."
+  shortDescription: "Returns whether objects created for the pool will be validated\
+    \ before being returned from the borrowObject() method."
   name: "cas.ticket.registry.redis.pool.test-on-create"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2457,6 +2991,8 @@
     \ they are returned to the pool via the returnObject() method. Validation is performed\
     \ by the validateObject() method of the factory associated with the pool. Returning\
     \ objects that fail validation are destroyed rather then being returned the pool."
+  shortDescription: "Returns whether objects borrowed from the pool will be validated\
+    \ when they are returned to the pool via the returnObject() method."
   name: "cas.ticket.registry.redis.pool.test-on-return"
   defaultValue: false
 - module: "cas-server-support-redis-core"
@@ -2467,6 +3003,8 @@
     \ Validation is performed by the validateObject() method of the factory associated\
     \ with the pool. If the object fails to validate, it will be removed from the\
     \ pool and destroyed."
+  shortDescription: "Returns whether objects sitting idle in the pool will be validated\
+    \ by the idle object evictor ( if any - see setTimeBetweenEvictionRunsMillis(long))."
   name: "cas.ticket.registry.redis.pool.test-while-idle"
   defaultValue: false
 - required: true
@@ -2474,11 +3012,13 @@
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.lang.String"
   description: "Name of Redis server."
+  shortDescription: "Name of Redis server."
   name: "cas.ticket.registry.redis.sentinel.master"
   defaultValue: ""
 - module: "cas-server-support-redis-core"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisSentinelProperties"
   type: "java.util.List<java.lang.String>"
   description: "list of host:port pairs."
+  shortDescription: "list of host:port pairs."
   name: "cas.ticket.registry.redis.sentinel.node"
   defaultValue: ""

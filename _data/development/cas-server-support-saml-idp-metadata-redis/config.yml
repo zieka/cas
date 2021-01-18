@@ -4,6 +4,7 @@
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.RedisSamlMetadataProperties"
   type: "java.lang.Integer"
   description: "Database index used by the connection factory."
+  shortDescription: "Database index used by the connection factory."
   name: "cas.authn.saml-idp.metadata.redis.database"
   defaultValue: 0
 - required: true
@@ -11,6 +12,7 @@
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.RedisSamlMetadataProperties"
   type: "java.lang.String"
   description: "Redis server host."
+  shortDescription: "Redis server host."
   name: "cas.authn.saml-idp.metadata.redis.host"
   defaultValue: "localhost"
 - module: "cas-server-support-saml-idp-metadata-redis"
@@ -18,6 +20,8 @@
   type: "java.lang.Boolean"
   description: "Whether identity provider metadata artifacts are expected to be found\
     \ in the database."
+  shortDescription: "Whether identity provider metadata artifacts are expected to\
+    \ be found in the database."
   name: "cas.authn.saml-idp.metadata.redis.idp-metadata-enabled"
   defaultValue: false
 - required: true
@@ -25,6 +29,7 @@
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.RedisSamlMetadataProperties"
   type: "java.lang.String"
   description: "Login password of the redis server."
+  shortDescription: "Login password of the redis server."
   name: "cas.authn.saml-idp.metadata.redis.password"
   defaultValue: ""
 - required: true
@@ -32,6 +37,7 @@
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.RedisSamlMetadataProperties"
   type: "java.lang.Integer"
   description: "Redis server port."
+  shortDescription: "Redis server port."
   name: "cas.authn.saml-idp.metadata.redis.port"
   defaultValue: 6379
 - module: "cas-server-support-saml-idp-metadata-redis"
@@ -48,17 +54,21 @@
     \ from any node of the cluster with the lowest latency.</li> <li>{@code ANY}:\
     \ Read from any node of the cluster.The value should be used from lettuce-core\
     \ version 5.2.</li> </ul>"
+  shortDescription: "Setting that describes how Lettuce routes read operations to\
+    \ replica nodes."
   name: "cas.authn.saml-idp.metadata.redis.read-from"
   defaultValue: ""
 - module: "cas-server-support-saml-idp-metadata-redis"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.RedisSamlMetadataProperties"
   type: "java.lang.Integer"
   description: "Connection timeout in milliseconds."
+  shortDescription: "Connection timeout in milliseconds."
   name: "cas.authn.saml-idp.metadata.redis.timeout"
   defaultValue: 2000
 - module: "cas-server-support-saml-idp-metadata-redis"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.RedisSamlMetadataProperties"
   type: "java.lang.Boolean"
   description: "Whether or not to use SSL for connection factory."
+  shortDescription: "Whether or not to use SSL for connection factory."
   name: "cas.authn.saml-idp.metadata.redis.use-ssl"
   defaultValue: false

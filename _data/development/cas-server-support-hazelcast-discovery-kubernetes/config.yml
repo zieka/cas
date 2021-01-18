@@ -5,6 +5,8 @@
   description: "Defines an oauth token for the kubernetes client to access the kubernetes\
     \ REST API. Defaults to reading the token from the auto-injected file at: {@code\
     \ /var/run/secrets/kubernetes.io/serviceaccount/token}."
+  shortDescription: "Defines an oauth token for the kubernetes client to access the\
+    \ kubernetes REST API."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.api-token"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
@@ -12,6 +14,7 @@
   type: "java.lang.String"
   description: "Defines an alternative address for the kubernetes master. Defaults\
     \ to: {@code https://kubernetes.default.svc}"
+  shortDescription: "Defines an alternative address for the kubernetes master."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.kubernetes-master"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
@@ -19,12 +22,16 @@
   type: "java.lang.String"
   description: "Defines the namespace of the application POD through the Service Discovery\
     \ REST API of Kubernetes."
+  shortDescription: "Defines the namespace of the application POD through the Service\
+    \ Discovery REST API of Kubernetes."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.namespace"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.Boolean"
   description: "Defines if not ready addresses should be evaluated to be discovered\
+    \ on startup."
+  shortDescription: "Defines if not ready addresses should be evaluated to be discovered\
     \ on startup."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.resolve-not-ready-addresses"
   defaultValue: false
@@ -33,18 +40,22 @@
   type: "java.lang.String"
   description: "Defines the DNS service lookup domain. This is defined as something\
     \ similar to {@code my-svc.my-namespace.svc.cluster.local}."
+  shortDescription: "Defines the DNS service lookup domain."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.service-dns"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.Integer"
   description: "Defines the DNS service lookup timeout in seconds. Defaults to 5 secs."
+  shortDescription: "Defines the DNS service lookup timeout in seconds."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.service-dns-timeout"
   defaultValue: -1
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.String"
   description: "Defines the service label to lookup through the Service Discovery\
+    \ REST API of Kubernetes."
+  shortDescription: "Defines the service label to lookup through the Service Discovery\
     \ REST API of Kubernetes."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.service-label-name"
   defaultValue: ""
@@ -53,12 +64,16 @@
   type: "java.lang.String"
   description: "Defines the service label value to lookup through the Service Discovery\
     \ REST API of Kubernetes."
+  shortDescription: "Defines the service label value to lookup through the Service\
+    \ Discovery REST API of Kubernetes."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.service-label-value"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.String"
   description: "Defines the service name of the POD to lookup through the Service\
+    \ Discovery REST API of Kubernetes."
+  shortDescription: "Defines the service name of the POD to lookup through the Service\
     \ Discovery REST API of Kubernetes."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.kubernetes.service-name"
   defaultValue: ""
@@ -68,6 +83,8 @@
   description: "Defines an oauth token for the kubernetes client to access the kubernetes\
     \ REST API. Defaults to reading the token from the auto-injected file at: {@code\
     \ /var/run/secrets/kubernetes.io/serviceaccount/token}."
+  shortDescription: "Defines an oauth token for the kubernetes client to access the\
+    \ kubernetes REST API."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.api-token"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
@@ -75,6 +92,7 @@
   type: "java.lang.String"
   description: "Defines an alternative address for the kubernetes master. Defaults\
     \ to: {@code https://kubernetes.default.svc}"
+  shortDescription: "Defines an alternative address for the kubernetes master."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.kubernetes-master"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
@@ -82,12 +100,16 @@
   type: "java.lang.String"
   description: "Defines the namespace of the application POD through the Service Discovery\
     \ REST API of Kubernetes."
+  shortDescription: "Defines the namespace of the application POD through the Service\
+    \ Discovery REST API of Kubernetes."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.namespace"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.Boolean"
   description: "Defines if not ready addresses should be evaluated to be discovered\
+    \ on startup."
+  shortDescription: "Defines if not ready addresses should be evaluated to be discovered\
     \ on startup."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.resolve-not-ready-addresses"
   defaultValue: false
@@ -96,18 +118,22 @@
   type: "java.lang.String"
   description: "Defines the DNS service lookup domain. This is defined as something\
     \ similar to {@code my-svc.my-namespace.svc.cluster.local}."
+  shortDescription: "Defines the DNS service lookup domain."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.service-dns"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.Integer"
   description: "Defines the DNS service lookup timeout in seconds. Defaults to 5 secs."
+  shortDescription: "Defines the DNS service lookup timeout in seconds."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.service-dns-timeout"
   defaultValue: -1
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.String"
   description: "Defines the service label to lookup through the Service Discovery\
+    \ REST API of Kubernetes."
+  shortDescription: "Defines the service label to lookup through the Service Discovery\
     \ REST API of Kubernetes."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.service-label-name"
   defaultValue: ""
@@ -116,12 +142,16 @@
   type: "java.lang.String"
   description: "Defines the service label value to lookup through the Service Discovery\
     \ REST API of Kubernetes."
+  shortDescription: "Defines the service label value to lookup through the Service\
+    \ Discovery REST API of Kubernetes."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.service-label-value"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.String"
   description: "Defines the service name of the POD to lookup through the Service\
+    \ Discovery REST API of Kubernetes."
+  shortDescription: "Defines the service name of the POD to lookup through the Service\
     \ Discovery REST API of Kubernetes."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.kubernetes.service-name"
   defaultValue: ""
@@ -131,6 +161,8 @@
   description: "Defines an oauth token for the kubernetes client to access the kubernetes\
     \ REST API. Defaults to reading the token from the auto-injected file at: {@code\
     \ /var/run/secrets/kubernetes.io/serviceaccount/token}."
+  shortDescription: "Defines an oauth token for the kubernetes client to access the\
+    \ kubernetes REST API."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.api-token"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
@@ -138,6 +170,7 @@
   type: "java.lang.String"
   description: "Defines an alternative address for the kubernetes master. Defaults\
     \ to: {@code https://kubernetes.default.svc}"
+  shortDescription: "Defines an alternative address for the kubernetes master."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.kubernetes-master"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
@@ -145,12 +178,16 @@
   type: "java.lang.String"
   description: "Defines the namespace of the application POD through the Service Discovery\
     \ REST API of Kubernetes."
+  shortDescription: "Defines the namespace of the application POD through the Service\
+    \ Discovery REST API of Kubernetes."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.namespace"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.Boolean"
   description: "Defines if not ready addresses should be evaluated to be discovered\
+    \ on startup."
+  shortDescription: "Defines if not ready addresses should be evaluated to be discovered\
     \ on startup."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.resolve-not-ready-addresses"
   defaultValue: false
@@ -159,18 +196,22 @@
   type: "java.lang.String"
   description: "Defines the DNS service lookup domain. This is defined as something\
     \ similar to {@code my-svc.my-namespace.svc.cluster.local}."
+  shortDescription: "Defines the DNS service lookup domain."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.service-dns"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.Integer"
   description: "Defines the DNS service lookup timeout in seconds. Defaults to 5 secs."
+  shortDescription: "Defines the DNS service lookup timeout in seconds."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.service-dns-timeout"
   defaultValue: -1
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.String"
   description: "Defines the service label to lookup through the Service Discovery\
+    \ REST API of Kubernetes."
+  shortDescription: "Defines the service label to lookup through the Service Discovery\
     \ REST API of Kubernetes."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.service-label-name"
   defaultValue: ""
@@ -179,12 +220,16 @@
   type: "java.lang.String"
   description: "Defines the service label value to lookup through the Service Discovery\
     \ REST API of Kubernetes."
+  shortDescription: "Defines the service label value to lookup through the Service\
+    \ Discovery REST API of Kubernetes."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.service-label-value"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-discovery-kubernetes"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastKubernetesDiscoveryProperties"
   type: "java.lang.String"
   description: "Defines the service name of the POD to lookup through the Service\
+    \ Discovery REST API of Kubernetes."
+  shortDescription: "Defines the service name of the POD to lookup through the Service\
     \ Discovery REST API of Kubernetes."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.kubernetes.service-name"
   defaultValue: ""

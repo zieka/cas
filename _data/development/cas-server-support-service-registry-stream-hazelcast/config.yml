@@ -8,5 +8,7 @@
     \ needs to be adjusted if the latency between the CAS nodes in the cluster is\
     \ too large. Having too short a value will cause the record to expire before it\
     \ reaches other members of the cluster."
+  shortDescription: "Duration that indicates how long should items be kept in the\
+    \ hazelcast cache."
   name: "cas.service-registry.stream.hazelcast.duration"
   defaultValue: "PT1M"

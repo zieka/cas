@@ -7,5 +7,7 @@
     \ where the application code provides key-value pairs which can then be inserted\
     \ by the logging framework in log messages. MDC data can also be highly helpful\
     \ in filtering messages or triggering certain actions."
+  shortDescription: "Allow CAS to add http request details into the logging's MDC\
+    \ filter."
   name: "cas.logging.mdc-enabled"
   defaultValue: true

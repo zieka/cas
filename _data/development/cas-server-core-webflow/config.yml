@@ -3,36 +3,44 @@
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
   description: "The order in which the webflow is configured."
+  shortDescription: "The order in which the webflow is configured."
   name: "cas.authn.pm.webflow.order"
   defaultValue: 0
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
   description: "The order in which the webflow is configured."
+  shortDescription: "The order in which the webflow is configured."
   name: "cas.authn.spnego.webflow.order"
   defaultValue: 0
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
   description: "The order in which the webflow is configured."
+  shortDescription: "The order in which the webflow is configured."
   name: "cas.authn.token.webflow.order"
   defaultValue: 0
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
   description: "The order in which the webflow is configured."
+  shortDescription: "The order in which the webflow is configured."
   name: "cas.consent.webflow.order"
   defaultValue: 0
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowProperties"
   type: "java.lang.Boolean"
   description: "Whether flow executions should redirect after they pause before rendering."
+  shortDescription: "Whether flow executions should redirect after they pause before\
+    \ rendering."
   name: "cas.webflow.always-pause-redirect"
   defaultValue: false
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowProperties"
   type: "java.lang.Boolean"
   description: "Whether CAS should take control of all spring webflow modifications\
+    \ and dynamically alter views, states and actions."
+  shortDescription: "Whether CAS should take control of all spring webflow modifications\
     \ and dynamically alter views, states and actions."
   name: "cas.webflow.autoconfigure"
   defaultValue: true
@@ -42,6 +50,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.webflow.groovy.location"
   defaultValue: ""
 - required: true
@@ -50,6 +59,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.webflow.login-decorator.groovy.location"
   defaultValue: ""
 - module: "cas-server-core-webflow"
@@ -57,6 +67,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
   name: "cas.webflow.login-decorator.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-core-webflow"
@@ -64,6 +76,8 @@
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
   name: "cas.webflow.login-decorator.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-core-webflow"
@@ -71,6 +85,7 @@
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
   name: "cas.webflow.login-decorator.rest.method"
   defaultValue: "GET"
 - required: true
@@ -78,12 +93,15 @@
   owner: "org.apereo.cas.configuration.model.core.web.flow.RestfulWebflowLoginDecoratorProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.webflow.login-decorator.rest.url"
   defaultValue: ""
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowProperties"
   type: "java.lang.Boolean"
   description: "Whether flow executions redirect after they pause for transitions\
+    \ that remain in the same view state."
+  shortDescription: "Whether flow executions redirect after they pause for transitions\
     \ that remain in the same view state."
   name: "cas.webflow.redirect-same-state"
   defaultValue: false
@@ -93,12 +111,15 @@
   description: "Whether webflow should remain in \"live reload\" mode, able to auto\
     \ detect changes and react. This is useful if the location of the webflow is externalized\
     \ and changes are done ad-hoc to the webflow to accommodate changes."
+  shortDescription: "Whether webflow should remain in \"live reload\" mode, able to\
+    \ auto detect changes and react."
   name: "cas.webflow.refresh"
   defaultValue: false
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowSessionManagementProperties"
   type: "java.lang.Boolean"
   description: "Whether or not the snapshots should be compressed."
+  shortDescription: "Whether or not the snapshots should be compressed."
   name: "cas.webflow.session.compress"
   defaultValue: false
 - module: "cas-server-core-webflow"
@@ -107,6 +128,8 @@
   description: "If sessions are to be replicated via Hazelcast, defines the location\
     \ of a {@code hazelcast.xml} file that defines how state should be replicated.\
     \ Only relevant if session storage is done on the server."
+  shortDescription: "If sessions are to be replicated via Hazelcast, defines the location\
+    \ of a {@code hazelcast.xml} file that defines how state should be replicated."
   name: "cas.webflow.session.hz-location"
   defaultValue: ""
 - module: "cas-server-core-webflow"
@@ -115,6 +138,8 @@
   description: "Sets the time period that can elapse before a timeout occurs on an\
     \ attempt to acquire a conversation lock. The default is 30 seconds. Only relevant\
     \ if session storage is done on the server."
+  shortDescription: "Sets the time period that can elapse before a timeout occurs\
+    \ on an attempt to acquire a conversation lock."
   name: "cas.webflow.session.lock-timeout"
   defaultValue: "PT30S"
 - module: "cas-server-core-webflow"
@@ -127,6 +152,8 @@
     \ limit. Setting maxConversations to 1 allows easy resource cleanup in situations\
     \ where there should only be one active conversation per session. Only relevant\
     \ if session storage is done on the server."
+  shortDescription: "Using the maxConversations property, you can limit the number\
+    \ of concurrently active conversations allowed in a single session."
   name: "cas.webflow.session.max-conversations"
   defaultValue: 5
 - module: "cas-server-core-webflow"
@@ -135,5 +162,7 @@
   description: "Controls whether spring webflow sessions are to be stored server-side\
     \ or client side. By default state is managed on the client side, that is also\
     \ signed and encrypted."
+  shortDescription: "Controls whether spring webflow sessions are to be stored server-side\
+    \ or client side."
   name: "cas.webflow.session.storage"
   defaultValue: false

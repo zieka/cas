@@ -7,30 +7,37 @@
     \ that indicates this behavior. Applications must further account for the scenario\
     \ where they ask for an MFA mode and yet don’t receive confirmation of it in the\
     \ response given the authentication session was trusted and MFA bypassed."
+  shortDescription: "If an MFA request is bypassed due to a trusted authentication\
+    \ decision, applications will receive a special attribute as part of the validation\
+    \ payload that indicates this behavior."
   name: "cas.authn.mfa.trusted.authentication-context-attribute"
   defaultValue: "isFromTrustedMultifactorAuthentication"
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.ClientIp"
   type: "java.lang.Boolean"
   description: "Is this component enabled or not."
+  shortDescription: "Is this component enabled or not."
   name: "cas.authn.mfa.trusted.device-fingerprint.client-ip.enabled"
   defaultValue: false
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.ClientIp"
   type: "java.lang.Integer"
   description: "Indicates the order of components when generating a device fingerprint."
+  shortDescription: "Indicates the order of components when generating a device fingerprint."
   name: "cas.authn.mfa.trusted.device-fingerprint.client-ip.order"
   defaultValue: 0
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties"
   type: "java.lang.String"
   description: "Component Separator for device fingerprints."
+  shortDescription: "Component Separator for device fingerprints."
   name: "cas.authn.mfa.trusted.device-fingerprint.component-separator"
   defaultValue: "@"
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.Cookie"
   type: "java.lang.String"
   description: "CAS Cookie comment, describes the cookie's usage and purpose."
+  shortDescription: "CAS Cookie comment, describes the cookie's usage and purpose."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.comment"
   defaultValue: "CAS Cookie"
 - module: "cas-server-support-trusted-mfa"
@@ -42,12 +49,14 @@
     \ in a specified Domain Name System (DNS) zone (for example, www.foo.com, but\
     \ not a.b.foo.com). By default, cookies are only returned to the server that sent\
     \ them."
+  shortDescription: "Cookie domain."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.domain"
   defaultValue: ""
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.Cookie"
   type: "java.lang.Boolean"
   description: "Is this component enabled or not."
+  shortDescription: "Is this component enabled or not."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.enabled"
   defaultValue: true
 - module: "cas-server-support-trusted-mfa"
@@ -55,6 +64,7 @@
   type: "java.lang.Boolean"
   description: "true if this cookie contains the HttpOnly attribute. This means that\
     \ the cookie should not be accessible to scripting engines, like javascript."
+  shortDescription: "true if this cookie contains the HttpOnly attribute."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.http-only"
   defaultValue: true
 - module: "cas-server-support-trusted-mfa"
@@ -67,6 +77,7 @@
     \ current age. A negative value means that the cookie is not stored persistently\
     \ and will be deleted when the Web browser exits. A zero value causes the cookie\
     \ to be deleted."
+  shortDescription: "The maximum age of the cookie, specified in seconds."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.max-age"
   defaultValue: -1
 - module: "cas-server-support-trusted-mfa"
@@ -80,12 +91,14 @@
     \ Cookie names are automatically calculated assigned by CAS at runtime, and there\
     \ is usually no need to customize the name or assign it a different value unless\
     \ a special use case warrants the change."
+  shortDescription: "Cookie name."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.name"
   defaultValue: ""
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.Cookie"
   type: "java.lang.Integer"
   description: "Indicates the order of components when generating a device fingerprint."
+  shortDescription: "Indicates the order of components when generating a device fingerprint."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.order"
   defaultValue: 1
 - module: "cas-server-support-trusted-mfa"
@@ -98,12 +111,16 @@
     \ the cookie visible to all directories on the server under /catalog. Consult\
     \ RFC 2965 (available on the Internet) for more information on setting path names\
     \ for cookies."
+  shortDescription: "Cookie path."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.path"
   defaultValue: ""
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.Cookie"
   type: "java.lang.Boolean"
   description: "When generating cookie values, determine whether the value should\
+    \ be compounded and signed with the properties of the current session, such as\
+    \ IP address, user-agent, etc."
+  shortDescription: "When generating cookie values, determine whether the value should\
     \ be compounded and signed with the properties of the current session, such as\
     \ IP address, user-agent, etc."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.pin-to-session"
@@ -121,6 +138,9 @@
     \ is present, an additional {@code Secure} attribute is used so cross-site cookies\
     \ can only be accessed over HTTPS connections. </p> <p>Accepted values are: {@code\
     \ Lax}, {@code Strict},  {@code None}.</p>"
+  shortDescription: "If a cookie is only intended to be accessed in a first party\
+    \ context, the developer has the option to apply one of settings {@code SameSite=Lax}\
+    \ or {@code SameSite=Strict} or {@code SameSite=None} to prevent external access."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.same-site-policy"
   defaultValue: ""
 - module: "cas-server-support-trusted-mfa"
@@ -128,30 +148,36 @@
   type: "java.lang.Boolean"
   description: "True if sending this cookie should be restricted to a secure protocol,\
     \ or false if the it can be sent using any protocol."
+  shortDescription: "True if sending this cookie should be restricted to a secure\
+    \ protocol, or false if the it can be sent using any protocol."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.secure"
   defaultValue: true
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.GeoLocation"
   type: "java.lang.Boolean"
   description: "Is this component enabled or not."
+  shortDescription: "Is this component enabled or not."
   name: "cas.authn.mfa.trusted.device-fingerprint.geolocation.enabled"
   defaultValue: false
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.GeoLocation"
   type: "java.lang.Integer"
   description: "Indicates the order of components when generating a device fingerprint."
+  shortDescription: "Indicates the order of components when generating a device fingerprint."
   name: "cas.authn.mfa.trusted.device-fingerprint.geolocation.order"
   defaultValue: 0
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.UserAgent"
   type: "java.lang.Boolean"
   description: "Is this component enabled or not."
+  shortDescription: "Is this component enabled or not."
   name: "cas.authn.mfa.trusted.device-fingerprint.user-agent.enabled"
   defaultValue: false
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.UserAgent"
   type: "java.lang.Integer"
   description: "Indicates the order of components when generating a device fingerprint."
+  shortDescription: "Indicates the order of components when generating a device fingerprint."
   name: "cas.authn.mfa.trusted.device-fingerprint.user-agent.order"
   defaultValue: 0
 - module: "cas-server-support-trusted-mfa"
@@ -159,6 +185,8 @@
   type: "java.lang.Boolean"
   description: "Indicates whether CAS should ask for device registration consent or\
     \ execute it automatically."
+  shortDescription: "Indicates whether CAS should ask for device registration consent\
+    \ or execute it automatically."
   name: "cas.authn.mfa.trusted.device-registration-enabled"
   defaultValue: true
 - required: true
@@ -167,6 +195,7 @@
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
   name: "cas.authn.mfa.trusted.json.location"
   defaultValue: ""
 - module: "cas-server-support-trusted-mfa"
@@ -178,5 +207,7 @@
     \ the username, device name and device fingerprint to generate the device key.</li>\
     \ <li>{@code LEGACY}: Deprecated. Uses a combination of the username, record date\
     \ and device fingerprint to generate the device key.</li> </ul>"
+  shortDescription: "Indicates how record keys for trusted devices would be generated\
+    \ so they can be signed/verified on fetch operations."
   name: "cas.authn.mfa.trusted.key-generator-type"
   defaultValue: "default"

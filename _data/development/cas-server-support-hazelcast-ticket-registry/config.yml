@@ -3,18 +3,21 @@
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastTicketRegistryProperties"
   type: "java.lang.Boolean"
   description: "Enables compression when default java serialization is used."
+  shortDescription: "Enables compression when default java serialization is used."
   name: "cas.ticket.registry.hazelcast.enable-compression"
   defaultValue: false
 - module: "cas-server-support-hazelcast-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastTicketRegistryProperties"
   type: "java.lang.Boolean"
   description: "Enables scripting from Management Center."
+  shortDescription: "Enables scripting from Management Center."
   name: "cas.ticket.registry.hazelcast.enable-management-center-scripting"
   defaultValue: true
 - module: "cas-server-support-hazelcast-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastTicketRegistryProperties"
   type: "java.lang.String"
   description: "Hazelcast enterprise license key."
+  shortDescription: "Hazelcast enterprise license key."
   name: "cas.ticket.registry.hazelcast.license-key"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-ticket-registry"
@@ -22,5 +25,7 @@
   type: "java.lang.Long"
   description: "Page size is used by a special Predicate which helps to get a page-by-page\
     \ result of a query."
+  shortDescription: "Page size is used by a special Predicate which helps to get a\
+    \ page-by-page result of a query."
   name: "cas.ticket.registry.hazelcast.page-size"
   defaultValue: 500

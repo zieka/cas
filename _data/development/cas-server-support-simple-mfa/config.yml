@@ -10,6 +10,7 @@
     \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
     \ NONE}: Do not contact the provider at all to check for availability. Assume\
     \ the provider is available.</li> </ul>"
+  shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.simple.failure-mode"
   defaultValue: "UNDEFINED"
 - module: "cas-server-support-simple-mfa"
@@ -18,6 +19,7 @@
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
     \ type are configured in CAS."
+  shortDescription: "The identifier for the multifactor provider."
   name: "cas.authn.mfa.simple.id"
   defaultValue: ""
 - module: "cas-server-support-simple-mfa"
@@ -25,12 +27,15 @@
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
+  shortDescription: "The name of the authentication handler used to verify credentials\
+    \ in MFA."
   name: "cas.authn.mfa.simple.name"
   defaultValue: ""
 - module: "cas-server-support-simple-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.CasSimpleMultifactorProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
+  shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.simple.order"
   defaultValue: ""
 - module: "cas-server-support-simple-mfa"
@@ -55,23 +60,29 @@
     \ properties for each. Note that the higher the rank value is, the higher on the\
     \ security scale it remains. A provider that ranks higher with a larger weight\
     \ value trumps and override others with a lower value."
+  shortDescription: "At times, CAS needs to determine the correct provider when step-up\
+    \ authentication is required."
   name: "cas.authn.mfa.simple.rank"
   defaultValue: 0
 - module: "cas-server-support-simple-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.CasSimpleMultifactorProperties"
   type: "java.lang.Long"
   description: "Time in seconds that CAS tokens should be considered live in CAS server."
+  shortDescription: "Time in seconds that CAS tokens should be considered live in\
+    \ CAS server."
   name: "cas.authn.mfa.simple.time-to-kill-in-seconds"
   defaultValue: 30
 - module: "cas-server-support-simple-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.CasSimpleMultifactorProperties"
   type: "java.lang.Integer"
   description: "The length of the generated token."
+  shortDescription: "The length of the generated token."
   name: "cas.authn.mfa.simple.token-length"
   defaultValue: 6
 - module: "cas-server-support-simple-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.CasSimpleMultifactorProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
+  shortDescription: "Indicates whether this provider should support trusted devices."
   name: "cas.authn.mfa.simple.trusted-device-enabled"
   defaultValue: false
