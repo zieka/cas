@@ -190,11 +190,11 @@
                                 | append: "# "
                                 | append: config.shortDescription
                                 | append: "&#13;&#10;"
-                                | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
-                                | append: config.defaultValue 
+                                | append: config.defaultValue
+                                | append: "&#13;&#10;" 
                                 | append: "&#13;&#10;" %}
 
                             {% include casproperty.html 
@@ -257,11 +257,11 @@
                                     | append: "# "
                                     | append: config.shortDescription
                                     | append: "&#13;&#10;"
-                                    | append: "&#13;&#10;"
                                     | append: "# "
                                     | append: config.name | replace: "[]", "[0]"
                                     | append: "="
                                     | append: config.defaultValue 
+                                    | append: "&#13;&#10;"
                                     | append: "&#13;&#10;" %}
                                 {% include casproperty.html 
                                     name=config.name 
@@ -341,11 +341,11 @@
                                 | append: "# "
                                 | append: config.shortDescription
                                 | append: "&#13;&#10;"
-                                | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
-                                | append: config.defaultValue 
+                                | append: config.defaultValue
+                                | append: "&#13;&#10;" 
                                 | append: "&#13;&#10;" %}
                             {% include casproperty.html 
                                 name=config.name 
@@ -410,11 +410,11 @@
                                         | append: "# "
                                         | append: config.shortDescription
                                         | append: "&#13;&#10;"
-                                        | append: "&#13;&#10;"
                                         | append: "# "
                                         | append: config.name | replace: "[]", "[0]"
                                         | append: "="
                                         | append: config.defaultValue 
+                                        | append: "&#13;&#10;"
                                         | append: "&#13;&#10;" %}
                                     {% include casproperty.html 
                                         name=config.name 
@@ -465,15 +465,15 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaOptionalProperties 
+                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
                                 | append: "# "
                                 | append: config.shortDescription
-                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
                                 | append: config.defaultValue 
+                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
                                 
                             {% include casproperty.html 
@@ -495,15 +495,15 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaOptionalProperties 
+                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
                                 | append: "# "
                                 | append: config.shortDescription
-                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
                                 | append: config.defaultValue 
+                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
                             {% include casproperty.html 
@@ -527,15 +527,15 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaOptionalProperties 
+                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
                                 | append: "# "
                                 | append: config.shortDescription
-                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
                                 | append: config.defaultValue 
+                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
                             {% include casproperty.html 
