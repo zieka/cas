@@ -56,15 +56,17 @@
     \ to be deleted."
   name: "cas.authn.wsfed[].cookie.max-age"
   defaultValue: ""
-- required: true
-  module: "cas-server-support-wsfederation-webflow"
+- module: "cas-server-support-wsfederation-webflow"
   owner: "org.apereo.cas.configuration.model.support.wsfed.WsFederationDelegatedCookieProperties"
   type: "java.lang.String"
   description: "Cookie name. Constructs a cookie with a specified name and value.\n\
     The name must conform to RFC 2965. That means it can contain only ASCII alphanumeric\
     \ characters and\ncannot contain commas, semicolons, or white space or begin with\
     \ a {@code $} character.\nThe cookie's name cannot be changed after creation.\n\
-    By default, cookies are created according to the RFC 2965 cookie specification."
+    By default, cookies are created according to the RFC 2965 cookie specification.\n\
+    Cookie names are automatically calculated assigned by CAS at runtime, and there\
+    \ is usually\nno need to customize the name or assign it a different value unless\
+    \ a special use case warrants the change."
   name: "cas.authn.wsfed[].cookie.name"
   defaultValue: ""
 - module: "cas-server-support-wsfederation-webflow"

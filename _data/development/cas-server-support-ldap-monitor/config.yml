@@ -96,8 +96,8 @@
 - module: "cas-server-support-ldap-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.LdapMonitorProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties.LdapHostnameVerifierOptions"
-  description: "Hostname verification options.\nAvailable values:\n{@code DEFAULT}:Default\
-    \ option, forcing verification.{@code ANY}:Skip hostname verification and allow\
+  description: "Hostname verification options.\nAvailable values:\n {@code DEFAULT}:Default\
+    \ option, forcing verification. {@code ANY}:Skip hostname verification and allow\
     \ all."
   name: "cas.monitor.ldap[].hostname-verifier"
   defaultValue: ""

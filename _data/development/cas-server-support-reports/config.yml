@@ -3,11 +3,11 @@
   owner: "org.apereo.cas.configuration.model.core.monitor.ActuatorEndpointProperties"
   type: "java.util.List<EndpointAccessLevel>"
   description: "Define the security access level of the endpoint.\nAvailable values:\n\
-    {@code PERMIT}:Allow open access to the endpoint.{@code ANONYMOUS}:Allow anonymous\
-    \ access to the endpoint.{@code DENY}:Block access to the endpoint.{@code AUTHENTICATED}:Require\
-    \ authenticated access to the endpoint.{@code ROLE}:Require authenticated access\
-    \ to the endpoint along with a role requirement.{@code AUTHORITY}:Require authenticated\
-    \ access to the endpoint along with an authority requirement.{@code IP_ADDRESS}:Require\
+    \ {@code PERMIT}:Allow open access to the endpoint. {@code ANONYMOUS}:Allow anonymous\
+    \ access to the endpoint. {@code DENY}:Block access to the endpoint. {@code AUTHENTICATED}:Require\
+    \ authenticated access to the endpoint. {@code ROLE}:Require authenticated access\
+    \ to the endpoint along with a role requirement. {@code AUTHORITY}:Require authenticated\
+    \ access to the endpoint along with an authority requirement. {@code IP_ADDRESS}:Require\
     \ authenticated access to the endpoint using a collection of IP addresses."
   name: "cas.monitor.endpoints.endpoint.access"
   defaultValue: ""

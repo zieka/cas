@@ -59,6 +59,7 @@
   owner: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties"
   type: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties$RecaptchaVersions"
   description: "Indicate the version of the recaptcha api. Accepted values are: {@code\
-    \ V2, V3}.V2:V2 version of the recaptcha API..V3:V3 version of the recaptcha API.."
+    \ V2, V3}.\nAvailable values:\n {@code V2}:V2 version of the recaptcha API. {@code\
+    \ V3}:V3 version of the recaptcha API."
   name: "cas.google-recaptcha.version"
   defaultValue: ""
