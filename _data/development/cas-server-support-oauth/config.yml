@@ -49,9 +49,10 @@
   owner: "org.apereo.cas.configuration.model.support.oauth.OAuthProperties"
   type: "org.apereo.cas.configuration.model.support.oauth.OAuthProperties$UserProfileViewTypes"
   description: "User profile view type determines how the final user profile should\
-    \ be rendered once an access token is \"validated\".NESTED:Return and render the\
-    \ user profile view in nested mode.\nThis is the default option, most usually..FLAT:Return\
-    \ and render the user profile view in flattened mode\nwhere all attributes are\
-    \ flattened down to one level only.."
+    \ be rendered once an access token is \"validated\".\nAvailable values:\n {@code\
+    \ NESTED}:Return and render the user profile view in nested mode.\nThis is the\
+    \ default option, most usually. {@code FLAT}:Return and render the user profile\
+    \ view in flattened mode\nwhere all attributes are flattened down to one level\
+    \ only."
   name: "cas.authn.oauth.user-profile-view-type"
   defaultValue: ""

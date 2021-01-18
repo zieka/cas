@@ -14,9 +14,10 @@
 - module: "cas-server-support-ehcache3-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ehcache.Ehcache3Properties"
   type: "org.apereo.cas.configuration.model.support.ehcache.Ehcache3Properties$Consistency"
-  description: "Cluster consistency may be STRONG or EVENTUAL.EVENTUAL:Indicates that\
-    \ the visibility of mutative operations is not guaranteed on operation completion..STRONG:Indicates\
-    \ that the visibility of mutative operations is guaranteed on operation completion.."
+  description: "Cluster consistency may be STRONG or EVENTUAL.\nAvailable values:\n\
+    \ {@code EVENTUAL}:Indicates that the visibility of mutative operations is not\
+    \ guaranteed on operation completion. {@code STRONG}:Indicates that the visibility\
+    \ of mutative operations is guaranteed on operation completion."
   name: "cas.ticket.registry.ehcache3.clustered-cache-consistency"
   defaultValue: ""
 - module: "cas-server-support-ehcache3-ticket-registry"

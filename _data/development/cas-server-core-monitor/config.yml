@@ -336,8 +336,9 @@
 - module: "cas-server-core-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.LdapSecurityActuatorEndpointsMonitorProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties$LdapHostnameVerifierOptions"
-  description: "Hostname verification options.DEFAULT:Default option, forcing verification..ANY:Skip\
-    \ hostname verification and allow all.."
+  description: "Hostname verification options.\nAvailable values:\n {@code DEFAULT}:Default\
+    \ option, forcing verification. {@code ANY}:Skip hostname verification and allow\
+    \ all."
   name: "cas.monitor.endpoints.ldap.hostname-verifier"
   defaultValue: ""
 - module: "cas-server-core-monitor"
@@ -577,8 +578,8 @@
     \ cases for this type are: 1) All users are under a single branch in the directory,\
     \ {@code e.g. ou=Users,dc=example,dc=org.} 2) The username provided on the CAS\
     \ login form is part of the DN, e.g. {@code uid=%s,ou=Users,dc=example,dc=org}.</li>\
-    \  </ul>AD:Active Directory..AUTHENTICATED:Authenticated Search..DIRECT:Direct\
-    \ Bind..ANONYMOUS:Anonymous Search.."
+    \  </ul>\nAvailable values:\n {@code AD}:Active Directory. {@code AUTHENTICATED}:Authenticated\
+    \ Search. {@code DIRECT}:Direct Bind. {@code ANONYMOUS}:Anonymous Search."
   name: "cas.monitor.endpoints.ldap.type"
   defaultValue: ""
 - module: "cas-server-core-monitor"

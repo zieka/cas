@@ -110,8 +110,9 @@
 - module: "cas-server-support-consent-ldap"
   owner: "org.apereo.cas.configuration.model.support.consent.LdapConsentProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties$LdapHostnameVerifierOptions"
-  description: "Hostname verification options.DEFAULT:Default option, forcing verification..ANY:Skip\
-    \ hostname verification and allow all.."
+  description: "Hostname verification options.\nAvailable values:\n {@code DEFAULT}:Default\
+    \ option, forcing verification. {@code ANY}:Skip hostname verification and allow\
+    \ all."
   name: "cas.consent.ldap.hostname-verifier"
   defaultValue: ""
 - module: "cas-server-support-consent-ldap"
@@ -323,8 +324,9 @@
   module: "cas-server-support-consent-ldap"
   owner: "org.apereo.cas.configuration.model.support.consent.LdapConsentProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties$LdapType"
-  description: "Type of LDAP directory.GENERIC:Generic ldap type (OpenLDAP, 389ds,\
-    \ etc)..AD:Active directory..FreeIPA:FreeIPA directory..EDirectory:EDirectory.."
+  description: "Type of LDAP directory.\nAvailable values:\n {@code GENERIC}:Generic\
+    \ ldap type (OpenLDAP, 389ds, etc). {@code AD}:Active directory. {@code FreeIPA}:FreeIPA\
+    \ directory. {@code EDirectory}:EDirectory."
   name: "cas.consent.ldap.type"
   defaultValue: ""
 - module: "cas-server-support-consent-ldap"

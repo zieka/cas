@@ -103,8 +103,8 @@
 - module: "cas-server-support-pm-ldap"
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties.LdapHostnameVerifierOptions"
-  description: "Hostname verification options.\nAvailable values:\n{@code DEFAULT}:Default\
-    \ option, forcing verification.{@code ANY}:Skip hostname verification and allow\
+  description: "Hostname verification options.\nAvailable values:\n {@code DEFAULT}:Default\
+    \ option, forcing verification. {@code ANY}:Skip hostname verification and allow\
     \ all."
   name: "cas.authn.pm.ldap[].hostname-verifier"
   defaultValue: ""

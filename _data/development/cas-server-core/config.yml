@@ -10,9 +10,10 @@
   owner: "org.apereo.cas.configuration.model.core.CasJavaClientProperties"
   type: "org.apereo.cas.configuration.model.core.CasJavaClientProperties$ClientTicketValidatorTypes"
   description: "Determines the type of ticket validator that CAS should create from\
-    \ the Java CAS client when attempting to issue in-bound ticket validation calls.CAS10:CAS10\
-    \ ticket validator..CAS20:CAS20 ticket validator..CAS30:CAS30 ticket validator..JSON:JSON\
-    \ ticket validator.."
+    \ the Java CAS client when attempting to issue in-bound ticket validation calls.\n\
+    Available values:\n {@code CAS10}:CAS10 ticket validator. {@code CAS20}:CAS20\
+    \ ticket validator. {@code CAS30}:CAS30 ticket validator. {@code JSON}:JSON ticket\
+    \ validator."
   name: "cas.client.validator-type"
   defaultValue: ""
 - module: "cas-server-core"
