@@ -272,8 +272,8 @@
   owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPResponseProperties"
   type: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPResponseProperties$SignatureCredentialTypes"
   description: "Indicate the encoding type of the credential used when rendering the\
-    \ saml response.\nAvailable values:\n {@code BASIC}:DER-Encoded format. {@code\
-    \ X509}:PEM-encoded X509 format."
+    \ saml response.\nAvailable values are as follows:\n<ul><li>{@code BASIC}: DER-Encoded\
+    \ format.</li><li>{@code X509}: PEM-encoded X509 format.</li></ul>"
   shortDescription: "Indicate the encoding type of the credential used when rendering\
     \ the saml response."
   name: "cas.authn.saml-idp.response.credential-type"

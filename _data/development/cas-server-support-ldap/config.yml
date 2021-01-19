@@ -142,22 +142,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.gua.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -420,9 +421,9 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapAuthenticationProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties.LdapHostnameVerifierOptions"
-  description: "Hostname verification options.\nAvailable values:\n {@code DEFAULT}:Default\
-    \ option, forcing verification. {@code ANY}:Skip hostname verification and allow\
-    \ all."
+  description: "Hostname verification options.\nAvailable values are as follows:\n\
+    <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code\
+    \ ANY}: Skip hostname verification and allow all.</li></ul>"
   shortDescription: "Hostname verification options."
   name: "cas.authn.ldap[].hostname-verifier"
   defaultValue: ""
@@ -566,10 +567,10 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapPasswordPolicyProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties.PasswordPolicyHandlingOptions"
   description: "Decide how authentication should handle password policy changes.\n\
-    Available values:\n {@code DEFAULT}:Default option to handle policy changes. {@code\
-    \ GROOVY}:Handle account password policies via Groovy. {@code REJECT_RESULT_CODE}:Strategy\
-    \ to only activate password policy\nif the authentication response code is not\
-    \ blocked."
+    Available values are as follows:\n<ul><li>{@code DEFAULT}: Default option to handle\
+    \ policy changes.</li><li>{@code GROOVY}: Handle account password policies via\
+    \ Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password\
+    \ policy\nif the authentication response code is not blocked.</li></ul>"
   shortDescription: "Decide how authentication should handle password policy changes."
   name: "cas.authn.ldap[].password-policy.strategy"
   defaultValue: ""
@@ -840,8 +841,9 @@
     Use cases for this type are:\n1) All users are under a single branch in the directory,\
     \ {@code e.g. ou=Users,dc=example,dc=org.}\n2) The username provided on the CAS\
     \ login form is part of the DN, e.g.\n{@code uid=%s,ou=Users,dc=example,dc=org}.</li>\n\
-    \n</ul>\nAvailable values:\n {@code AD}:Active Directory. {@code AUTHENTICATED}:Authenticated\
-    \ Search. {@code DIRECT}:Direct Bind. {@code ANONYMOUS}:Anonymous Search."
+    \n</ul>\nAvailable values are as follows:\n<ul><li>{@code AD}: Active Directory.</li><li>{@code\
+    \ AUTHENTICATED}: Authenticated Search.</li><li>{@code DIRECT}: Direct Bind.</li><li>{@code\
+    \ ANONYMOUS}: Anonymous Search.</li></ul>"
   shortDescription: "The authentication type."
   name: "cas.authn.ldap[].type"
   defaultValue: ""
@@ -1027,22 +1029,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.mfa.gauth.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -1189,22 +1192,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.mfa.web-authn.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -1392,9 +1396,9 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.core.authentication.passwordsync.LdapPasswordSynchronizationProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapProperties.LdapHostnameVerifierOptions"
-  description: "Hostname verification options.\nAvailable values:\n {@code DEFAULT}:Default\
-    \ option, forcing verification. {@code ANY}:Skip hostname verification and allow\
-    \ all."
+  description: "Hostname verification options.\nAvailable values are as follows:\n\
+    <ul><li>{@code DEFAULT}: Default option, forcing verification.</li><li>{@code\
+    \ ANY}: Skip hostname verification and allow all.</li></ul>"
   shortDescription: "Hostname verification options."
   name: "cas.authn.password-sync.ldap[].hostname-verifier"
   defaultValue: ""
@@ -1818,22 +1822,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.passwordless.accounts.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -2036,22 +2041,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.spnego.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -2198,22 +2204,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.surrogate.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -2360,22 +2367,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.surrogate.simple.search-entry-handlers[].type"
   defaultValue: ""
@@ -2522,22 +2530,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.authn.x509.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -2684,22 +2693,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.consent.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -2922,22 +2932,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.monitor.endpoints.ldap.search-entry-handlers[].type"
   defaultValue: ""
@@ -3140,22 +3151,23 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
-  description: "The type of search entry handler to choose.\nAvailable values:\n {@code\
-    \ OBJECT_GUID}:Object guid search entry handler.\nHandles the {@code objectGUID}\
-    \ attribute fetching and conversion. {@code OBJECT_SID}:Object sid search entry\
-    \ handler.\nHandles the {@code objectSid} attribute fetching and conversion. {@code\
-    \ CASE_CHANGE}:Case change search entry handler.\nProvides the ability to modify\
-    \ the case of search entry DNs, attribute names, and attribute values. {@code\
-    \ DN_ATTRIBUTE_ENTRY}:DN attribute entry handler.\nAdds the entry DN as an attribute\
-    \ to the result set. Provides\na client side implementation of RFC 5020. {@code\
-    \ MERGE}:Merge search entry handler.\nMerges the values of one or more attributes\
-    \ into a single attribute. {@code PRIMARY_GROUP}:Primary group search handler.\n\
+  description: "The type of search entry handler to choose.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
+    \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
+    \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
+    \ search entry handler.\nProvides the ability to modify the case of search entry\
+    \ DNs, attribute names, and attribute values.</li><li>{@code DN_ATTRIBUTE_ENTRY}:\
+    \ DN attribute entry handler.\nAdds the entry DN as an attribute to the result\
+    \ set. Provides\na client side implementation of RFC 5020.</li><li>{@code MERGE}:\
+    \ Merge search entry handler.\nMerges the values of one or more attributes into\
+    \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry. {@code RANGE_ENTRY}:Range\
-    \ entry search handler.\nRewrites attributes returned from Active Directory to\n\
-    include all values by performing additional searches. {@code RECURSIVE_ENTRY}:Recursive\
-    \ entry search handler.\nThis recursively searches based on a supplied\nattribute\
-    \ and merges those results into the original entry."
+    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
+    \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
+    \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
+    \ based on a supplied\nattribute and merges those results into the original entry.</li></ul>"
   shortDescription: "The type of search entry handler to choose."
   name: "cas.service-registry.ldap.search-entry-handlers[].type"
   defaultValue: ""

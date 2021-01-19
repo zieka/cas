@@ -22,11 +22,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Bitbucket"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.bitbucket.callback-url-type"
   defaultValue: ""
@@ -114,11 +115,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.cas.Pac4jCasClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.cas[].callback-url-type"
   defaultValue: ""
@@ -198,11 +200,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Dropbox"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.dropbox.callback-url-type"
   defaultValue: ""
@@ -281,11 +284,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Facebook"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.facebook.callback-url-type"
   defaultValue: ""
@@ -378,11 +382,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Foursquare"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.foursquare.callback-url-type"
   defaultValue: ""
@@ -461,11 +466,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Github"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.github.callback-url-type"
   defaultValue: ""
@@ -554,11 +560,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Google"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.google.callback-url-type"
   defaultValue: ""
@@ -644,11 +651,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.HiOrgServer"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.hi-org-server.callback-url-type"
   defaultValue: ""
@@ -743,11 +751,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.LinkedIn"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.linked-in.callback-url-type"
   defaultValue: ""
@@ -857,11 +866,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.oauth.Pac4jOAuth20ClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oauth2[].callback-url-type"
   defaultValue: ""
@@ -1012,11 +1022,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAppleOidcClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].apple.callback-url-type"
   defaultValue: ""
@@ -1239,11 +1250,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAzureOidcClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].azure.callback-url-type"
   defaultValue: ""
@@ -1449,11 +1461,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].generic.callback-url-type"
   defaultValue: ""
@@ -1645,11 +1658,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].google.callback-url-type"
   defaultValue: ""
@@ -1849,11 +1863,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jKeyCloakOidcClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].keycloak.callback-url-type"
   defaultValue: ""
@@ -2053,11 +2068,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Orcid"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.orcid.callback-url-type"
   defaultValue: ""
@@ -2143,11 +2159,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Paypal"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.paypal.callback-url-type"
   defaultValue: ""
@@ -2359,11 +2376,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties.CallbackUrlTypes"
   description: "Determine how the callback url should be resolved.\nDefault is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.saml[].callback-url-type"
   defaultValue: ""
@@ -2712,11 +2730,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Twitter"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.twitter.callback-url-type"
   defaultValue: ""
@@ -2814,11 +2833,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.WindowsLive"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.windows-live.callback-url-type"
   defaultValue: ""
@@ -2897,11 +2917,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Wordpress"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.wordpress.callback-url-type"
   defaultValue: ""
@@ -2980,11 +3001,12 @@
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Yahoo"
   type: "org.apereo.cas.configuration.model.support.pac4j.Pac4jBaseClientProperties$CallbackUrlTypes"
   description: "Determine how the callback url should be resolved. Default is {@link\
-    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values:\n {@code PATH_PARAMETER}:Path\
-    \ parameter callback url.\nThe client name is added to the path of the callback\
-    \ URL. {@code QUERY_PARAMETER}:Query parameter callback url.\nThe client name\
-    \ is added to the path of a query parameter. {@code NONE}:No callback url.\nNo\
-    \ name is added to the callback URL to be able to distinguish the client."
+    \ CallbackUrlTypes#QUERY_PARAMETER}.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PATH_PARAMETER}: Path parameter callback url.\nThe client name is added to the\
+    \ path of the callback URL.</li><li>{@code QUERY_PARAMETER}: Query parameter callback\
+    \ url.\nThe client name is added to the path of a query parameter.</li><li>{@code\
+    \ NONE}: No callback url.\nNo name is added to the callback URL to be able to\
+    \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.yahoo.callback-url-type"
   defaultValue: ""

@@ -2,8 +2,26 @@
 - module: "cas-server-support-consent-rest"
   owner: "org.apereo.cas.configuration.model.support.consent.RestfulConsentProperties"
   type: "java.lang.String"
-  description: "REST endpoint to use to which consent decision records will be submitted."
-  shortDescription: "REST endpoint to use to which consent decision records will be\
-    \ submitted."
-  name: "cas.consent.rest.endpoint"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
+  name: "cas.consent.rest.basic-auth-password"
+  defaultValue: ""
+- module: "cas-server-support-consent-rest"
+  owner: "org.apereo.cas.configuration.model.support.consent.RestfulConsentProperties"
+  type: "java.lang.String"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
+  name: "cas.consent.rest.basic-auth-username"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-consent-rest"
+  owner: "org.apereo.cas.configuration.model.support.consent.RestfulConsentProperties"
+  type: "java.lang.String"
+  description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
+  name: "cas.consent.rest.url"
   defaultValue: ""

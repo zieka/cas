@@ -8,15 +8,6 @@
     \ login automatically."
   name: "cas.authn.pm.auto-login"
   defaultValue: false
-- module: "cas-server-support-pm-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties"
-  type: "java.lang.Boolean"
-  description: "Indicates whether password management should activate captcha for\
-    \ password reset ops, etc."
-  shortDescription: "Indicates whether password management should activate captcha\
-    \ for password reset ops, etc."
-  name: "cas.authn.pm.captcha-enabled"
-  defaultValue: false
 - required: true
   module: "cas-server-support-pm-webflow"
   owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties"
@@ -24,15 +15,6 @@
   description: "Flag to indicate if password management facility is enabled."
   shortDescription: "Flag to indicate if password management facility is enabled."
   name: "cas.authn.pm.enabled"
-  defaultValue: false
-- module: "cas-server-support-pm-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pm.ForgotUsernamePasswordManagementProperties"
-  type: "java.lang.Boolean"
-  description: "Indicates whether forgot-username feature should activate captcha\
-    \ for ops that start the forgot-username flow."
-  shortDescription: "Indicates whether forgot-username feature should activate captcha\
-    \ for ops that start the forgot-username flow."
-  name: "cas.authn.pm.forgot-username.captcha-enabled"
   defaultValue: false
 - module: "cas-server-support-pm-webflow"
   owner: "org.apereo.cas.configuration.model.support.pm.PasswordHistoryProperties"

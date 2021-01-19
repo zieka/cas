@@ -428,9 +428,9 @@
     \ formatted. Options available are: <ul> <li>{@code DEFAULT}: The default option\
     \ implements the rendering strategy specified by the CAS protocol.</li> <li>{@code\
     \ VALUES_PER_LINE}: Includes the attribute value on each single line. (Values\
-    \ are comma-separated, if multiple).</li> </ul>\nAvailable values:\n {@code DEFAULT}:Render\
-    \ attributes using CAS protocol suggestions. {@code VALUES_PER_LINE}:Inline attribute\
-    \ value(s) on each line."
+    \ are comma-separated, if multiple).</li> </ul>\nAvailable values are as follows:\n\
+    <ul><li>{@code DEFAULT}: Render attributes using CAS protocol suggestions.</li><li>{@code\
+    \ VALUES_PER_LINE}: Inline attribute value(s) on each line.</li></ul>"
   shortDescription: "Indicates how attributes in the final validation response should\
     \ be formatted."
   name: "cas.view.cas1.attribute-renderer-type"
@@ -479,8 +479,9 @@
     \ formatted. Options available are: <ul> <li>{@code DEFAULT}: The default option\
     \ implements the rendering strategy specified by the CAS protocol.</li> <li>{@code\
     \ INLINE}: Includes the attribute name and value as XML attributes.</li> </ul>\n\
-    Available values:\n {@code DEFAULT}:Render attributes using CAS protocol suggestions.\
-    \ {@code INLINE}:Inline attribute name/value as XML attributes."
+    Available values are as follows:\n<ul><li>{@code DEFAULT}: Render attributes using\
+    \ CAS protocol suggestions.</li><li>{@code INLINE}: Inline attribute name/value\
+    \ as XML attributes.</li></ul>"
   shortDescription: "Indicates how attributes in the final validation response should\
     \ be formatted."
   name: "cas.view.cas3.attribute-renderer-type"
@@ -505,7 +506,7 @@
   description: "The id of the custom converter to use to convert bound property values."
   shortDescription: "The id of the custom converter to use to convert bound property\
     \ values."
-  name: "cas.view.custom-login-form-fields.converter"
+  name: "cas.view.custom-login-form-fields.[key].converter"
   defaultValue: ""
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.view.CustomLoginFieldViewProperties"
@@ -514,14 +515,14 @@
     \ a label/text in CAS views."
   shortDescription: "The key for this field found in the message bundle used to present\
     \ a label/text in CAS views."
-  name: "cas.view.custom-login-form-fields.message-bundle-key"
+  name: "cas.view.custom-login-form-fields.[key].message-bundle-key"
   defaultValue: ""
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.view.CustomLoginFieldViewProperties"
   type: "boolean"
   description: "Whether this field is required to have a value."
   shortDescription: "Whether this field is required to have a value."
-  name: "cas.view.custom-login-form-fields.required"
+  name: "cas.view.custom-login-form-fields.[key].required"
   defaultValue: ""
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.view.ViewProperties"

@@ -158,10 +158,10 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties$PasswordPolicyHandlingOptions"
   description: "Decide how authentication should handle password policy changes.\n\
-    Available values:\n {@code DEFAULT}:Default option to handle policy changes. {@code\
-    \ GROOVY}:Handle account password policies via Groovy. {@code REJECT_RESULT_CODE}:Strategy\
-    \ to only activate password policy\nif the authentication response code is not\
-    \ blocked."
+    Available values are as follows:\n<ul><li>{@code DEFAULT}: Default option to handle\
+    \ policy changes.</li><li>{@code GROOVY}: Handle account password policies via\
+    \ Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password\
+    \ policy\nif the authentication response code is not blocked.</li></ul>"
   shortDescription: "Decide how authentication should handle password policy changes."
   name: "cas.authn.accept.password-policy.strategy"
   defaultValue: ""
@@ -215,8 +215,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.accept.principal-transformation.case-conversion"
@@ -596,8 +597,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.azure-active-directory.principal-transformation.case-conversion"
@@ -712,8 +714,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.cassandra.principal-transformation.case-conversion"
@@ -828,8 +831,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.cloud-directory.principal-transformation.case-conversion"
@@ -944,8 +948,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.cognito.principal-transformation.case-conversion"
@@ -983,19 +988,23 @@
   shortDescription: "Suffix to add to the principal id prior to authentication."
   name: "cas.authn.cognito.principal-transformation.suffix"
   defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.AuthenticationEngineProperties"
-  type: "org.apereo.cas.configuration.model.core.authentication.GroovyAuthenticationEngineProcessorProperties"
-  description: "Groovy script to handle the authentication post-processor."
-  shortDescription: "Groovy script to handle the authentication post-processor."
-  name: "cas.authn.core.engine.groovy-post-processor"
+- required: true
+  module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.GroovyAuthenticationEngineProcessorProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
+  name: "cas.authn.core.engine.groovy-post-processor.location"
   defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.AuthenticationEngineProperties"
-  type: "org.apereo.cas.configuration.model.core.authentication.GroovyAuthenticationEngineProcessorProperties"
-  description: "Groovy script to handle the authentication pre-processor."
-  shortDescription: "Groovy script to handle the authentication pre-processor."
-  name: "cas.authn.core.engine.groovy-pre-processor"
+- required: true
+  module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.GroovyAuthenticationEngineProcessorProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
+  name: "cas.authn.core.engine.groovy-pre-processor.location"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
@@ -1074,8 +1083,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.couch-db.principal-transformation.case-conversion"
@@ -1190,8 +1200,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.couchbase.principal-transformation.case-conversion"
@@ -1320,8 +1331,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.file.principal-transformation.case-conversion"
@@ -1569,10 +1581,10 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties.PasswordPolicyHandlingOptions"
   description: "Decide how authentication should handle password policy changes.\n\
-    Available values:\n {@code DEFAULT}:Default option to handle policy changes. {@code\
-    \ GROOVY}:Handle account password policies via Groovy. {@code REJECT_RESULT_CODE}:Strategy\
-    \ to only activate password policy\nif the authentication response code is not\
-    \ blocked."
+    Available values are as follows:\n<ul><li>{@code DEFAULT}: Default option to handle\
+    \ policy changes.</li><li>{@code GROOVY}: Handle account password policies via\
+    \ Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password\
+    \ policy\nif the authentication response code is not blocked.</li></ul>"
   shortDescription: "Decide how authentication should handle password policy changes."
   name: "cas.authn.jaas[].password-policy.strategy"
   defaultValue: ""
@@ -1626,8 +1638,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    into upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jaas[].principal-transformation.case-conversion"
@@ -1802,8 +1815,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    into upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.bind[].principal-transformation.case-conversion"
@@ -1908,8 +1922,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    into upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.encode[].principal-transformation.case-conversion"
@@ -2014,8 +2029,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    into upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.query[].principal-transformation.case-conversion"
@@ -2120,8 +2136,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    into upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.search[].principal-transformation.case-conversion"
@@ -2271,10 +2288,10 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties$PasswordPolicyHandlingOptions"
   description: "Decide how authentication should handle password policy changes.\n\
-    Available values:\n {@code DEFAULT}:Default option to handle policy changes. {@code\
-    \ GROOVY}:Handle account password policies via Groovy. {@code REJECT_RESULT_CODE}:Strategy\
-    \ to only activate password policy\nif the authentication response code is not\
-    \ blocked."
+    Available values are as follows:\n<ul><li>{@code DEFAULT}: Default option to handle\
+    \ policy changes.</li><li>{@code GROOVY}: Handle account password policies via\
+    \ Groovy.</li><li>{@code REJECT_RESULT_CODE}: Strategy to only activate password\
+    \ policy\nif the authentication response code is not blocked.</li></ul>"
   shortDescription: "Decide how authentication should handle password policy changes."
   name: "cas.authn.json.password-policy.strategy"
   defaultValue: ""
@@ -2328,8 +2345,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.json.principal-transformation.case-conversion"
@@ -2451,8 +2469,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties.CaseConversion"
   description: "Indicate whether the principal identifier should be transformed\n\
-    into upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    into upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.ldap[].principal-transformation.case-conversion"
@@ -4193,8 +4212,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.mongo.principal-transformation.case-conversion"
@@ -4309,8 +4329,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.okta.principal-transformation.case-conversion"
@@ -4719,8 +4740,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.radius.principal-transformation.case-conversion"
@@ -4835,8 +4857,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.redis.principal-transformation.case-conversion"
@@ -4951,8 +4974,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.reject.principal-transformation.case-conversion"
@@ -5130,8 +5154,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.shiro.principal-transformation.case-conversion"
@@ -5246,8 +5271,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.soap.principal-transformation.case-conversion"
@@ -5299,8 +5325,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.spnego.principal-transformation.case-conversion"
@@ -5539,8 +5566,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.syncope.principal-transformation.case-conversion"
@@ -5592,8 +5620,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.token.principal-transformation.case-conversion"
@@ -5715,8 +5744,9 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties$CaseConversion"
   description: "Indicate whether the principal identifier should be transformed into\
-    \ upper-case, lower-case, etc.\nAvailable values:\n {@code NONE}:No conversion.\
-    \ {@code LOWERCASE}:Lowercase conversion. {@code UPPERCASE}:Uppercase conversion."
+    \ upper-case, lower-case, etc.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ NONE}: No conversion.</li><li>{@code LOWERCASE}: Lowercase conversion.</li><li>{@code\
+    \ UPPERCASE}: Uppercase conversion.</li></ul>"
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.x509.principal-transformation.case-conversion"
@@ -5816,7 +5846,8 @@
     \ in order to run person directory queries."
   name: "cas.authn.x509.principal.use-existing-principal-id"
   defaultValue: false
-- module: "cas-server-core-authentication"
+- required: true
+  module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.clearpass.ClearpassProperties"
   type: "java.lang.Boolean"
   description: "Enable clearpass and allow CAS to cache credentials."
