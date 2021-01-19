@@ -204,16 +204,16 @@
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
   type: "java.lang.String"
   description: "You may receive unexpected LDAP failures, when CAS is configured to\
-    \ authenticate\nusing DIRECT or AUTHENTICATED types and LDAP is locked down to\
-    \ not allow anonymous binds/searches.\nEvery second attempt with a given LDAP\
-    \ connection from the pool would fail if it was on\nthe same connection as a failed\
-    \ login attempt, and the regular connection validator would\nsimilarly fail. When\
-    \ a connection is returned back to a pool,\nit still may contain the principal\
-    \ and credentials from the previous attempt.\nBefore the next bind attempt using\
-    \ that connection, the validator tries to\nvalidate the connection again but fails\
-    \ because it’s no longer trying with the\nconfigured bind credentials but with\
-    \ whatever user DN was used in the previous step.\nGiven the validation failure,\
-    \ the connection is closed and CAS would deny\naccess by default. Passivators\
+    \ authenticate\nusing {@code DIRECT} or {@code AUTHENTICATED} types and LDAP is\
+    \ locked down to not allow anonymous binds/searches.\nEvery second attempt with\
+    \ a given LDAP connection from the pool would fail if it was on\nthe same connection\
+    \ as a failed login attempt, and the regular connection validator would\nsimilarly\
+    \ fail. When a connection is returned back to a pool,\nit still may contain the\
+    \ principal and credentials from the previous attempt.\nBefore the next bind attempt\
+    \ using that connection, the validator tries to\nvalidate the connection again\
+    \ but fails because it’s no longer trying with the\nconfigured bind credentials\
+    \ but with whatever user DN was used in the previous step.\nGiven the validation\
+    \ failure, the connection is closed and CAS would deny\naccess by default. Passivators\
     \ attempt to reconnect\nto LDAP with the configured bind credentials, effectively\
     \ resetting the connection\nto what it should be after each bind request.\nFurthermore\
     \ if you are seeing errors in the logs that resemble\na 'Operation exception encountered,\
@@ -228,8 +228,8 @@
     \ on it. This option requires the availability of bind credentials when establishing\
     \ connections to LDAP.</li>\n</ul>"
   shortDescription: "You may receive unexpected LDAP failures, when CAS is configured\
-    \ to authenticate using DIRECT or AUTHENTICATED types and LDAP is locked down\
-    \ to not allow anonymous binds/searches."
+    \ to authenticate using {@code DIRECT} or {@code AUTHENTICATED} types and LDAP\
+    \ is locked down to not allow anonymous binds/searches."
   name: "cas.authn.pm.ldap[].pool-passivator"
   defaultValue: "BIND"
 - module: "cas-server-support-pm-ldap"

@@ -44,15 +44,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status:\n<ul>\n<li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation.\nValidation is considered successful if the search result\
-    \ size is greater than zero.</li>\n<li>{@code none}: No validation takes place.</li>\n\
-    <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li>\n</ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.\n\nThe following LDAP validators\
+    \ can be used to test connection health status:\n<ul>\n<li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation.\nValidation is considered\
+    \ successful if the search result size is greater than zero.</li>\n<li>{@code\
+    \ none}: No validation takes place.</li>\n<li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li>\n</ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.acceptable-usage-policy.ldap[].validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -207,15 +205,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.gua.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -621,16 +617,16 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapAuthenticationProperties"
   type: "java.lang.String"
   description: "You may receive unexpected LDAP failures, when CAS is configured to\
-    \ authenticate\nusing DIRECT or AUTHENTICATED types and LDAP is locked down to\
-    \ not allow anonymous binds/searches.\nEvery second attempt with a given LDAP\
-    \ connection from the pool would fail if it was on\nthe same connection as a failed\
-    \ login attempt, and the regular connection validator would\nsimilarly fail. When\
-    \ a connection is returned back to a pool,\nit still may contain the principal\
-    \ and credentials from the previous attempt.\nBefore the next bind attempt using\
-    \ that connection, the validator tries to\nvalidate the connection again but fails\
-    \ because it’s no longer trying with the\nconfigured bind credentials but with\
-    \ whatever user DN was used in the previous step.\nGiven the validation failure,\
-    \ the connection is closed and CAS would deny\naccess by default. Passivators\
+    \ authenticate\nusing {@code DIRECT} or {@code AUTHENTICATED} types and LDAP is\
+    \ locked down to not allow anonymous binds/searches.\nEvery second attempt with\
+    \ a given LDAP connection from the pool would fail if it was on\nthe same connection\
+    \ as a failed login attempt, and the regular connection validator would\nsimilarly\
+    \ fail. When a connection is returned back to a pool,\nit still may contain the\
+    \ principal and credentials from the previous attempt.\nBefore the next bind attempt\
+    \ using that connection, the validator tries to\nvalidate the connection again\
+    \ but fails because it’s no longer trying with the\nconfigured bind credentials\
+    \ but with whatever user DN was used in the previous step.\nGiven the validation\
+    \ failure, the connection is closed and CAS would deny\naccess by default. Passivators\
     \ attempt to reconnect\nto LDAP with the configured bind credentials, effectively\
     \ resetting the connection\nto what it should be after each bind request.\nFurthermore\
     \ if you are seeing errors in the logs that resemble\na 'Operation exception encountered,\
@@ -645,8 +641,8 @@
     \ on it. This option requires the availability of bind credentials when establishing\
     \ connections to LDAP.</li>\n</ul>"
   shortDescription: "You may receive unexpected LDAP failures, when CAS is configured\
-    \ to authenticate using DIRECT or AUTHENTICATED types and LDAP is locked down\
-    \ to not allow anonymous binds/searches."
+    \ to authenticate using {@code DIRECT} or {@code AUTHENTICATED} types and LDAP\
+    \ is locked down to not allow anonymous binds/searches."
   name: "cas.authn.ldap[].pool-passivator"
   defaultValue: "BIND"
 - module: "cas-server-support-ldap"
@@ -931,15 +927,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status:\n<ul>\n<li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation.\nValidation is considered successful if the search result\
-    \ size is greater than zero.</li>\n<li>{@code none}: No validation takes place.</li>\n\
-    <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li>\n</ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.\n\nThe following LDAP validators\
+    \ can be used to test connection health status:\n<ul>\n<li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation.\nValidation is considered\
+    \ successful if the search result size is greater than zero.</li>\n<li>{@code\
+    \ none}: No validation takes place.</li>\n<li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li>\n</ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.ldap[].validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -1094,15 +1088,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.mfa.gauth.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -1257,15 +1249,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.mfa.web-authn.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -1481,16 +1471,16 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.passwordsync.LdapPasswordSynchronizationProperties"
   type: "java.lang.String"
   description: "You may receive unexpected LDAP failures, when CAS is configured to\
-    \ authenticate\nusing DIRECT or AUTHENTICATED types and LDAP is locked down to\
-    \ not allow anonymous binds/searches.\nEvery second attempt with a given LDAP\
-    \ connection from the pool would fail if it was on\nthe same connection as a failed\
-    \ login attempt, and the regular connection validator would\nsimilarly fail. When\
-    \ a connection is returned back to a pool,\nit still may contain the principal\
-    \ and credentials from the previous attempt.\nBefore the next bind attempt using\
-    \ that connection, the validator tries to\nvalidate the connection again but fails\
-    \ because it’s no longer trying with the\nconfigured bind credentials but with\
-    \ whatever user DN was used in the previous step.\nGiven the validation failure,\
-    \ the connection is closed and CAS would deny\naccess by default. Passivators\
+    \ authenticate\nusing {@code DIRECT} or {@code AUTHENTICATED} types and LDAP is\
+    \ locked down to not allow anonymous binds/searches.\nEvery second attempt with\
+    \ a given LDAP connection from the pool would fail if it was on\nthe same connection\
+    \ as a failed login attempt, and the regular connection validator would\nsimilarly\
+    \ fail. When a connection is returned back to a pool,\nit still may contain the\
+    \ principal and credentials from the previous attempt.\nBefore the next bind attempt\
+    \ using that connection, the validator tries to\nvalidate the connection again\
+    \ but fails because it’s no longer trying with the\nconfigured bind credentials\
+    \ but with whatever user DN was used in the previous step.\nGiven the validation\
+    \ failure, the connection is closed and CAS would deny\naccess by default. Passivators\
     \ attempt to reconnect\nto LDAP with the configured bind credentials, effectively\
     \ resetting the connection\nto what it should be after each bind request.\nFurthermore\
     \ if you are seeing errors in the logs that resemble\na 'Operation exception encountered,\
@@ -1505,8 +1495,8 @@
     \ on it. This option requires the availability of bind credentials when establishing\
     \ connections to LDAP.</li>\n</ul>"
   shortDescription: "You may receive unexpected LDAP failures, when CAS is configured\
-    \ to authenticate using DIRECT or AUTHENTICATED types and LDAP is locked down\
-    \ to not allow anonymous binds/searches."
+    \ to authenticate using {@code DIRECT} or {@code AUTHENTICATED} types and LDAP\
+    \ is locked down to not allow anonymous binds/searches."
   name: "cas.authn.password-sync.ldap[].pool-passivator"
   defaultValue: "BIND"
 - module: "cas-server-support-ldap"
@@ -1724,15 +1714,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status:\n<ul>\n<li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation.\nValidation is considered successful if the search result\
-    \ size is greater than zero.</li>\n<li>{@code none}: No validation takes place.</li>\n\
-    <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li>\n</ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.\n\nThe following LDAP validators\
+    \ can be used to test connection health status:\n<ul>\n<li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation.\nValidation is considered\
+    \ successful if the search result size is greater than zero.</li>\n<li>{@code\
+    \ none}: No validation takes place.</li>\n<li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li>\n</ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.password-sync.ldap[].validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -1887,15 +1875,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.passwordless.accounts.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -1943,15 +1929,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status:\n<ul>\n<li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation.\nValidation is considered successful if the search result\
-    \ size is greater than zero.</li>\n<li>{@code none}: No validation takes place.</li>\n\
-    <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li>\n</ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.\n\nThe following LDAP validators\
+    \ can be used to test connection health status:\n<ul>\n<li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation.\nValidation is considered\
+    \ successful if the search result size is greater than zero.</li>\n<li>{@code\
+    \ none}: No validation takes place.</li>\n<li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li>\n</ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.pm.ldap[].validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -2106,15 +2090,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.spnego.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -2269,15 +2251,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.surrogate.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -2432,15 +2412,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.surrogate.simple.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -2595,15 +2573,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.authn.x509.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -2758,15 +2734,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.consent.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -2997,15 +2971,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.monitor.endpoints.ldap.validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -3053,15 +3025,13 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status:\n<ul>\n<li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation.\nValidation is considered successful if the search result\
-    \ size is greater than zero.</li>\n<li>{@code none}: No validation takes place.</li>\n\
-    <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li>\n</ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.\n\nThe following LDAP validators\
+    \ can be used to test connection health status:\n<ul>\n<li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation.\nValidation is considered\
+    \ successful if the search result size is greater than zero.</li>\n<li>{@code\
+    \ none}: No validation takes place.</li>\n<li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li>\n</ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.monitor.ldap[].validator.type"
   defaultValue: "search"
 - module: "cas-server-support-ldap"
@@ -3216,14 +3186,12 @@
 - module: "cas-server-support-ldap"
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapValidatorProperties"
   type: "java.lang.String"
-  description: "The following LDAP validators can be used to test connection health\
-    \ status: <ul> <li>{@code search}: Validates a connection is healthy by performing\
-    \ a search operation. Validation is considered successful if the search result\
-    \ size is greater than zero.</li> <li>{@code none}: No validation takes place.</li>\
-    \ <li>{@code compare}: Validates a connection is healthy by performing a compare\
-    \ operation.</li> </ul>"
-  shortDescription: "The following LDAP validators can be used to test connection\
-    \ health status: <ul> <li>{@code search}: Validates a connection is healthy by\
-    \ performing a search operation."
+  description: "Determine the LDAP validator type.  The following LDAP validators\
+    \ can be used to test connection health status: <ul> <li>{@code search}: Validates\
+    \ a connection is healthy by performing a search operation. Validation is considered\
+    \ successful if the search result size is greater than zero.</li> <li>{@code none}:\
+    \ No validation takes place.</li> <li>{@code compare}: Validates a connection\
+    \ is healthy by performing a compare operation.</li> </ul>"
+  shortDescription: "Determine the LDAP validator type."
   name: "cas.service-registry.ldap.validator.type"
   defaultValue: "search"
