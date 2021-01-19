@@ -641,9 +641,6 @@
     }
 
     defer{{ randomNumber }}('jQuery', () => {
-        var elem = null;
-        $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
-
         {% unless optionalSettingsFound %}
             $("#linkOptionalProperties{{ randomNumber }}").css("display", "none");
         {% endunless %}
@@ -674,6 +671,8 @@
         {% unless ldapSettingsFound %}
             $("#linkLdap{{ randomNumber }}").css("display", "none");
         {% endunless %}
+        
+        $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
     });
 </script>
 
