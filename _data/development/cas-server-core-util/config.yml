@@ -3458,32 +3458,6 @@
   name: "cas.service-registry.mail.validate-addresses"
   defaultValue: false
 - module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.BaseRestEndpointProperties"
-  type: "java.lang.String"
-  description: "If REST endpoint is protected via basic authentication, specify the\
-    \ password for authentication."
-  shortDescription: "If REST endpoint is protected via basic authentication, specify\
-    \ the password for authentication."
-  name: "cas.service-registry.rest.basic-auth-password"
-  defaultValue: ""
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.BaseRestEndpointProperties"
-  type: "java.lang.String"
-  description: "If REST endpoint is protected via basic authentication, specify the\
-    \ username for authentication."
-  shortDescription: "If REST endpoint is protected via basic authentication, specify\
-    \ the username for authentication."
-  name: "cas.service-registry.rest.basic-auth-username"
-  defaultValue: ""
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.BaseRestEndpointProperties"
-  type: "java.lang.String"
-  description: "The endpoint URL to contact and retrieve attributes."
-  shortDescription: "The endpoint URL to contact and retrieve attributes."
-  name: "cas.service-registry.rest.url"
-  defaultValue: ""
-- module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
   description: "Whether scheduler is should schedule the job to run."
