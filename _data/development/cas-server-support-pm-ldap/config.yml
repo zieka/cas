@@ -302,7 +302,7 @@
   owner: "org.apereo.cas.configuration.model.support.pm.LdapPasswordManagementProperties"
   type: "java.lang.String"
   description: "User filter to use for searching.\nSyntax is {@code cn={user}} or\
-    \ {@code cn={0}}.\nYou may also provide an external groovy script\nin the syntax\
+    \ {@code cn={0}}.\n\nYou may also provide an external groovy script\nin the syntax\
     \ of {@code file:/path/to/GroovyScript.groovy}\nto fully build the final filter\
     \ template dynamically."
   shortDescription: "User filter to use for searching."

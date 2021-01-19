@@ -311,7 +311,7 @@
   owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnLdapMultifactorProperties"
   type: "java.lang.String"
   description: "User filter to use for searching. Syntax is {@code cn={user}} or {@code\
-    \ cn={0}}. You may also provide an external groovy script in the syntax of {@code\
+    \ cn={0}}.  You may also provide an external groovy script in the syntax of {@code\
     \ file:/path/to/GroovyScript.groovy} to fully build the final filter template\
     \ dynamically."
   shortDescription: "User filter to use for searching."
