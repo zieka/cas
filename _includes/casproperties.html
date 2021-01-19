@@ -436,8 +436,8 @@
     
     </tbody>
     </table>
-    <textarea style="position:absolute; left: -10000px;" 
-    id="copyAreaOptionalProperties{{ randomNumber }}">{{ textAreaOptionalProperties }}</textarea>
+
+    <textarea style="position:absolute; left: -10000px;" id="copyAreaOptionalProperties{{ randomNumber }}">{{ textAreaOptionalProperties }}</textarea>
 </div>
 
 
@@ -630,7 +630,7 @@
 </div>
 
 
-<script type="text/javascript">
+<script>
 
     function defer{{ randomNumber }}(toWaitFor, method) {
         if (window[toWaitFor]) {
@@ -640,60 +640,40 @@
         }
     }
 
-    {% unless signingEncryptionEnabled %}
-        elem = document.getElementById("linkSigningEncryption{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless optionalSettingsFound %}
-        elem = document.getElementById("linkOptionalProperties{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless rdbmsSettingsFound %}
-        elem = document.getElementById("linkRdbms{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless emailSettingsFound %}
-        elem = document.getElementById("linkEmail{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless ldapSettingsFound %}
-        elem = document.getElementById("linkLdap{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless requiredSettingsFound %}
-        elem = document.getElementById("linkRequiredProperties{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless authnPredicateSettingsFound %}
-        elem = document.getElementById("linkAuthnPredicate{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless passwordEncoderSettingsFound %}
-        elem = document.getElementById("linkPasswordEncoder{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless principalTransformationSettingsFound %}
-        elem = document.getElementById("linkPrincipalTransformation{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-    {% unless passwordPolicySettingsFound %}
-        elem = document.getElementById("linkPasswordPolicy{{ randomNumber }}");
-        elem.style.display="none";
-    {% endunless %}
-
-
     defer{{ randomNumber }}('jQuery', () => {
         var elem = null;
         $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
+
+        {% unless optionalSettingsFound %}
+            $("#linkOptionalProperties{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless rdbmsSettingsFound %}
+            $("#linkRdbms{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless emailSettingsFound %}
+            $("#linkEmail{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless signingEncryptionEnabled %}
+            $("#linkSigningEncryption{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless requiredSettingsFound %}
+            $("#linkRequiredProperties{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless passwordPolicySettingsFound %}
+            $("#linkPasswordPolicy{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless principalTransformationSettingsFound %}
+            $("#linkPrincipalTransformation{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless passwordEncoderSettingsFound %}
+            $("#linkPasswordEncoder{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless authnPredicateSettingsFound %}
+            $("#linkAuthnPredicate{{ randomNumber }}").css("display", "none");
+        {% endunless %}
+        {% unless ldapSettingsFound %}
+            $("#linkLdap{{ randomNumber }}").css("display", "none");
+        {% endunless %}
     });
 </script>
 
