@@ -430,8 +430,8 @@
   module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatBasicAuthenticationProperties"
   type: "java.lang.Boolean"
-  description: "Enable the SSL valve for apache tomcat."
-  shortDescription: "Enable the SSL valve for apache tomcat."
+  description: "Enable Basic authentication for Tomcat."
+  shortDescription: "Enable Basic authentication for Tomcat."
   name: "cas.server.tomcat.basic-authn.enabled"
   defaultValue: false
 - module: "cas-server-webapp-tomcat"
