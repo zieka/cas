@@ -264,6 +264,53 @@
   shortDescription: "The location of the resource."
   name: "cas.authn.attribute-repository.attribute-definition-store.json.location"
   defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "int"
+  description: "Controls the maximum number of connections to keep\nin the pool, including\
+    \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
+  name: "cas.authn.attribute-repository.jdbc[].pool.max-size"
+  defaultValue: "18"
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "java.lang.String"
+  description: "Sets the maximum time in seconds that this data source will wait\n\
+    while attempting to connect to a database.\n<p>\nA value of zero specifies that\
+    \ the timeout is the default system timeout\nif there is one; otherwise, it specifies\
+    \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
+  name: "cas.authn.attribute-repository.jdbc[].pool.max-wait"
+  defaultValue: "PT2S"
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "int"
+  description: "Controls the minimum size that the pool is allowed\nto reach, including\
+    \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
+  name: "cas.authn.attribute-repository.jdbc[].pool.min-size"
+  defaultValue: "6"
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "boolean"
+  description: "Whether or not pool suspension is allowed.\n<p>\nThere is a performance\
+    \ impact when pool suspension is enabled.\nUnless you need it (for a redundancy\
+    \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
+  name: "cas.authn.attribute-repository.jdbc[].pool.suspension"
+  defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "long"
+  description: "The maximum number of milliseconds that the\npool will wait for a\
+    \ connection to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
+  name: "cas.authn.attribute-repository.jdbc[].pool.timeout-millis"
+  defaultValue: "1_000"
 - required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
