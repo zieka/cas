@@ -121,7 +121,7 @@
   owner: "org.apereo.cas.configuration.model.support.sms.AmazonSnsProperties"
   type: "java.lang.String"
   description: "A custom ID that contains up to 11 alphanumeric characters, including\
-    \ at least one letter and no spaces. The sender ID is displayed as the message\
+    \ at least one letter and no spaces.  The sender ID is displayed as the message\
     \ sender on the receiving device. For example, you can use your business brand\
     \ to make the message source easier to recognize. Support for sender IDs varies\
     \ by country and/or region. For example, messages delivered to U.S. phone numbers\
@@ -136,14 +136,13 @@
 - module: "cas-server-support-sms-aws-sns"
   owner: "org.apereo.cas.configuration.model.support.sms.AmazonSnsProperties"
   type: "java.lang.String"
-  description: "The type of message that you are sending: <ul> <li>Promotional - Noncritical\
+  description: "The type of message that you are sending. <ul> <li>Promotional - Noncritical\
     \ messages, such as marketing messages. Amazon SNS optimizes the message delivery\
-    \ to incur the lowest cost.    </li> <li>Transactional – Critical messages that\
-    \ support customer transactions, such as one-time passcodes for multi-factor authentication.\
+    \ to incur the lowest cost.</li> <li>Transactional – Critical messages that support\
+    \ customer transactions, such as one-time passcodes for multi-factor authentication.\
     \ Amazon SNS optimizes the message delivery to achieve the highest reliability.\
     \ </li> </ul>"
-  shortDescription: "The type of message that you are sending: <ul> <li>Promotional\
-    \ - Noncritical messages, such as marketing messages."
+  shortDescription: "The type of message that you are sending."
   name: "cas.sms-provider.sns.sms-type"
   defaultValue: "Transactional"
 - module: "cas-server-support-sms-aws-sns"
