@@ -82,14 +82,13 @@
 - module: "cas-server-support-x509-webflow"
   owner: "org.apereo.cas.configuration.model.support.x509.X509Properties"
   type: "java.lang.String"
-  description: "To fetch CRLs, the following options are available: <ul> <li>{@code\
-    \ RESOURCE}: By default, all revocation checks use fixed resources to fetch the\
-    \ CRL resource from the specified location.</li> <li>{@code LDAP}: A CRL resource\
-    \ may be fetched from a pre-configured attribute, in the event that the CRL resource\
-    \ location is an LDAP URI.</li> </ul>"
-  shortDescription: "To fetch CRLs, the following options are available: <ul> <li>{@code\
-    \ RESOURCE}: By default, all revocation checks use fixed resources to fetch the\
-    \ CRL resource from the specified location."
+  description: "Options to describe how to fetch CRL resources.  To fetch CRLs, the\
+    \ following options are available: <ul> <li>{@code RESOURCE}: By default, all\
+    \ revocation checks use fixed resources to fetch the CRL resource from the specified\
+    \ location.</li> <li>{@code LDAP}: A CRL resource may be fetched from a pre-configured\
+    \ attribute, in the event that the CRL resource location is an LDAP URI.</li>\
+    \ </ul>"
+  shortDescription: "Options to describe how to fetch CRL resources."
   name: "cas.authn.x509.crl-fetcher"
   defaultValue: "RESOURCE"
 - module: "cas-server-support-x509-webflow"
