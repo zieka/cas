@@ -265,6 +265,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
+    webrick (1.7.0)
     yell (2.2.2)
     zeitwerk (2.4.2)
 
@@ -275,6 +276,7 @@ DEPENDENCIES
   github-pages
   html-proofer
   jekyll-relative-links
+  webrick
 
 BUNDLED WITH
    2.2.6
