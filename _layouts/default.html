@@ -110,11 +110,11 @@
 <script src="{{ relative }}javascripts/URI.js"></script>
 <script src="{{ relative }}javascripts/main.js"></script>
 
-
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 <script type="text/javascript">
   new ClipboardJS('.copy-button');
-
+  $('[data-toggle="tooltip"]').tooltip();
+  
   docsearch({
     apiKey: 'e574b72c1301f8a28e49ec9644096c79',
     indexName: 'apereo',
