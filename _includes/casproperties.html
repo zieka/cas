@@ -190,7 +190,7 @@
                             {% assign requiredSettingsFound = true %}
                             {% assign textAreaRequiredProperties = textAreaRequiredProperties 
                                 | append: "# "
-                                | append: config.shortDescription
+                                | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
@@ -257,7 +257,7 @@
                                 {% assign requiredSettingsFound = true %}
                                 {% assign textAreaRequiredProperties = textAreaRequiredProperties 
                                     | append: "# "
-                                    | append: config.shortDescription
+                                    | append: config.shortDescription | strip_html
                                     | append: "&#13;&#10;"
                                     | append: "# "
                                     | append: config.name | replace: "[]", "[0]"
@@ -343,7 +343,7 @@
                             {% assign optionalSettingsFound = true %}
                             {% assign textAreaOptionalProperties = textAreaOptionalProperties 
                                 | append: "# "
-                                | append: config.shortDescription
+                                | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
@@ -412,7 +412,7 @@
                                     {% assign optionalSettingsFound = true %}
                                     {% assign textAreaOptionalProperties = textAreaOptionalProperties 
                                         | append: "# "
-                                        | append: config.shortDescription
+                                        | append: config.shortDescription | strip_html
                                         | append: "&#13;&#10;"
                                         | append: "# "
                                         | append: config.name | replace: "[]", "[0]"
@@ -472,7 +472,7 @@
                         {% unless foundExcluded == true %}
                             {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
                                 | append: "# "
-                                | append: config.shortDescription
+                                | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
@@ -502,7 +502,7 @@
                         {% unless foundExcluded == true %}
                             {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
                                 | append: "# "
-                                | append: config.shortDescription
+                                | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
@@ -534,7 +534,7 @@
                         {% unless foundExcluded == true %}
                             {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
                                 | append: "# "
-                                | append: config.shortDescription
+                                | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
