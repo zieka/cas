@@ -33,7 +33,10 @@
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastAwsDiscoveryProperties"
   type: "java.lang.String"
   description: "If you do not want to use access key and secret key, you can specify\
-    \ iam-role. Hazelcast fetches your credentials by using your IAM role."
+    \ iam-role. Hazelcast fetches your credentials by using your IAM role. This setting\
+    \ only affects deployments on Amazon EC2. If you are deploying CAS in an Amazon\
+    \ ECS environment, the role should not be specified. The role is fetched from\
+    \ the task definition that is assigned to run CAS."
   shortDescription: "If you do not want to use access key and secret key, you can\
     \ specify iam-role."
   name: "cas.authn.throttle.hazelcast.cluster.discovery.aws.iam-role"
@@ -123,7 +126,10 @@
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastAwsDiscoveryProperties"
   type: "java.lang.String"
   description: "If you do not want to use access key and secret key, you can specify\
-    \ iam-role. Hazelcast fetches your credentials by using your IAM role."
+    \ iam-role. Hazelcast fetches your credentials by using your IAM role. This setting\
+    \ only affects deployments on Amazon EC2. If you are deploying CAS in an Amazon\
+    \ ECS environment, the role should not be specified. The role is fetched from\
+    \ the task definition that is assigned to run CAS."
   shortDescription: "If you do not want to use access key and secret key, you can\
     \ specify iam-role."
   name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.aws.iam-role"
@@ -213,7 +219,10 @@
   owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastAwsDiscoveryProperties"
   type: "java.lang.String"
   description: "If you do not want to use access key and secret key, you can specify\
-    \ iam-role. Hazelcast fetches your credentials by using your IAM role."
+    \ iam-role. Hazelcast fetches your credentials by using your IAM role. This setting\
+    \ only affects deployments on Amazon EC2. If you are deploying CAS in an Amazon\
+    \ ECS environment, the role should not be specified. The role is fetched from\
+    \ the task definition that is assigned to run CAS."
   shortDescription: "If you do not want to use access key and secret key, you can\
     \ specify iam-role."
   name: "cas.ticket.registry.hazelcast.cluster.discovery.aws.iam-role"
