@@ -27,11 +27,11 @@
   name: "cas.authn.pm.core.policy-pattern"
   defaultValue: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,10}"
 - module: "cas-server-support-pm-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pm.PasswordHistoryProperties"
+  owner: "org.apereo.cas.configuration.model.support.pm.PasswordHistoryCoreProperties"
   type: "java.lang.Boolean"
   description: "Flag to indicate if password history tracking is enabled."
   shortDescription: "Flag to indicate if password history tracking is enabled."
-  name: "cas.authn.pm.history.enabled"
+  name: "cas.authn.pm.history.core.enabled"
   defaultValue: false
 - module: "cas-server-support-pm-webflow"
   owner: "org.apereo.cas.configuration.model.support.pm.PasswordManagementProperties"
