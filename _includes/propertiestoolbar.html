@@ -1,11 +1,11 @@
 <div class="btn-toolbar justify-content-between" role="toolbar">
-	<div class="input-group" style="width: 97%">
+	<div class="input-group search-properties-group" style="width: 97%">
         <div class="input-group-prepend">
             <div class="input-group-text"><i class="fas fa-search"> </i></div>
           </div>
 	    <input type="text" id="input{{ include.searchTarget }}" class="form-control" onkeyup="search{{ include.searchTarget  }}(this)" placeholder="Search...">
 	</div>
-	<div class="btn-group btn-group-sm" role="group">
+	<div class="btn-group btn-group-sm copy-button-group" role="group">
         <button class="btn btn-secondary" data-toggle="tooltip" data-placement="top" 
             type="button" data-clipboard-target="{{ include.copyTarget  }}" 
             class="btn btn-sm btn-secondary copy-button" title="Copy Properties"><i class="fas fa-copy"></i>
