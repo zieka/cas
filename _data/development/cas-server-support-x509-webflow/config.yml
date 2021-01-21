@@ -783,6 +783,13 @@
   defaultValue: "want"
 - module: "cas-server-support-x509-webflow"
   owner: "org.apereo.cas.configuration.model.support.x509.X509WebflowAutoConfigurationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether webflow auto-configuration should be enabled."
+  shortDescription: "Whether webflow auto-configuration should be enabled."
+  name: "cas.authn.x509.webflow.enabled"
+  defaultValue: true
+- module: "cas-server-support-x509-webflow"
+  owner: "org.apereo.cas.configuration.model.support.x509.X509WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
   description: "The order in which the webflow is configured."
   shortDescription: "The order in which the webflow is configured."

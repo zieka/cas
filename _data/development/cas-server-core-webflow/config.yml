@@ -1,11 +1,25 @@
 ---
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether webflow auto-configuration should be enabled."
+  shortDescription: "Whether webflow auto-configuration should be enabled."
+  name: "cas.authn.pm.webflow.enabled"
+  defaultValue: true
+- module: "cas-server-core-webflow"
+  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
   description: "The order in which the webflow is configured."
   shortDescription: "The order in which the webflow is configured."
   name: "cas.authn.pm.webflow.order"
   defaultValue: 0
+- module: "cas-server-core-webflow"
+  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether webflow auto-configuration should be enabled."
+  shortDescription: "Whether webflow auto-configuration should be enabled."
+  name: "cas.authn.spnego.webflow.enabled"
+  defaultValue: true
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
@@ -15,11 +29,25 @@
   defaultValue: 0
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether webflow auto-configuration should be enabled."
+  shortDescription: "Whether webflow auto-configuration should be enabled."
+  name: "cas.authn.token.webflow.enabled"
+  defaultValue: true
+- module: "cas-server-core-webflow"
+  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
   description: "The order in which the webflow is configured."
   shortDescription: "The order in which the webflow is configured."
   name: "cas.authn.token.webflow.order"
   defaultValue: 0
+- module: "cas-server-core-webflow"
+  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether webflow auto-configuration should be enabled."
+  shortDescription: "Whether webflow auto-configuration should be enabled."
+  name: "cas.consent.webflow.enabled"
+  defaultValue: true
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Integer"
@@ -28,22 +56,19 @@
   name: "cas.consent.webflow.order"
   defaultValue: 0
 - module: "cas-server-core-webflow"
-  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowProperties"
+  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
   type: "java.lang.Boolean"
-  description: "Whether flow executions should redirect after they pause before rendering."
-  shortDescription: "Whether flow executions should redirect after they pause before\
-    \ rendering."
-  name: "cas.webflow.always-pause-redirect"
-  defaultValue: false
-- module: "cas-server-core-webflow"
-  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowProperties"
-  type: "java.lang.Boolean"
-  description: "Whether CAS should take control of all spring webflow modifications\
-    \ and dynamically alter views, states and actions."
-  shortDescription: "Whether CAS should take control of all spring webflow modifications\
-    \ and dynamically alter views, states and actions."
-  name: "cas.webflow.autoconfigure"
+  description: "Whether webflow auto-configuration should be enabled."
+  shortDescription: "Whether webflow auto-configuration should be enabled."
+  name: "cas.webflow.auto-configuration.enabled"
   defaultValue: true
+- module: "cas-server-core-webflow"
+  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowAutoConfigurationProperties"
+  type: "java.lang.Integer"
+  description: "The order in which the webflow is configured."
+  shortDescription: "The order in which the webflow is configured."
+  name: "cas.webflow.auto-configuration.order"
+  defaultValue: 0
 - required: true
   module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.GroovyWebflowProperties"
@@ -96,25 +121,6 @@
   shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.webflow.login-decorator.rest.url"
   defaultValue: ""
-- module: "cas-server-core-webflow"
-  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowProperties"
-  type: "java.lang.Boolean"
-  description: "Whether flow executions redirect after they pause for transitions\
-    \ that remain in the same view state."
-  shortDescription: "Whether flow executions redirect after they pause for transitions\
-    \ that remain in the same view state."
-  name: "cas.webflow.redirect-same-state"
-  defaultValue: false
-- module: "cas-server-core-webflow"
-  owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowProperties"
-  type: "java.lang.Boolean"
-  description: "Whether webflow should remain in \"live reload\" mode, able to auto\
-    \ detect changes and react. This is useful if the location of the webflow is externalized\
-    \ and changes are done ad-hoc to the webflow to accommodate changes."
-  shortDescription: "Whether webflow should remain in \"live reload\" mode, able to\
-    \ auto detect changes and react."
-  name: "cas.webflow.refresh"
-  defaultValue: false
 - module: "cas-server-core-webflow"
   owner: "org.apereo.cas.configuration.model.core.web.flow.WebflowSessionManagementProperties"
   type: "java.lang.Boolean"
