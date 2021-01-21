@@ -3,7 +3,7 @@
   owner: "org.apereo.cas.configuration.model.support.aup.JdbcAcceptableUsagePolicyProperties"
   type: "java.lang.String"
   description: "The column to store the AUP attribute. May differ from the profile\
-    \ attribute defined by {@link AcceptableUsagePolicyProperties#getAupAttributeName()}.\
+    \ attribute defined by {@link AcceptableUsagePolicyCoreProperties#getAupAttributeName()}.\
     \ SQL query can be further customized by setting {@link #sqlUpdate}."
   shortDescription: "The column to store the AUP attribute."
   name: "cas.acceptable-usage-policy.jdbc.aup-column"

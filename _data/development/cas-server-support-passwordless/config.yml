@@ -52,7 +52,7 @@
   name: "cas.authn.passwordless.accounts.rest.url"
   defaultValue: ""
 - module: "cas-server-support-passwordless"
-  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationProperties.Accounts"
+  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationAccountsProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
   description: "Passwordless authentication settings using static accounts. The key\
     \ is the user identifier, while the value is the form of contact such as email,\
@@ -61,7 +61,7 @@
   name: "cas.authn.passwordless.accounts.simple"
   defaultValue: ""
 - module: "cas-server-support-passwordless"
-  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationCoreProperties"
   type: "java.lang.Boolean"
   description: "Allow passwordless authentication to skip its own flow in favor of\
     \ delegated authentication providers that may be available and defined in CAS.\
@@ -71,10 +71,10 @@
     \ commence as usual."
   shortDescription: "Allow passwordless authentication to skip its own flow in favor\
     \ of delegated authentication providers that may be available and defined in CAS."
-  name: "cas.authn.passwordless.delegated-authentication-activated"
+  name: "cas.authn.passwordless.core.delegated-authentication-activated"
   defaultValue: false
 - module: "cas-server-support-passwordless"
-  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationCoreProperties"
   type: "java.lang.Boolean"
   description: "Allow passwordless authentication to skip its own flow in favor of\
     \ multifactor authentication providers that may be available and defined in CAS.\
@@ -87,10 +87,10 @@
   shortDescription: "Allow passwordless authentication to skip its own flow in favor\
     \ of multifactor authentication providers that may be available and defined in\
     \ CAS."
-  name: "cas.authn.passwordless.multifactor-authentication-activated"
+  name: "cas.authn.passwordless.core.multifactor-authentication-activated"
   defaultValue: false
 - module: "cas-server-support-passwordless"
-  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationProperties.Tokens"
+  owner: "org.apereo.cas.configuration.model.support.passwordless.PasswordlessAuthenticationTokensProperties"
   type: "java.lang.Integer"
   description: "Indicate how long should the token be considered valid."
   shortDescription: "Indicate how long should the token be considered valid."
