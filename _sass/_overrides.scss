@@ -88,7 +88,7 @@ blockquote em{
   font-style: italic;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1800px) {
   .copy-button-group {
     display: none;
   }
@@ -97,8 +97,8 @@ blockquote em{
   }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (min-width: 1810px) {
   .search-properties-group {
-    width: 96%;
+    width: 95%;
   }
 }
