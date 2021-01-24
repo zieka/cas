@@ -69,10 +69,21 @@
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.security.HttpCorsRequestProperties"
   type: "java.util.List<java.lang.String>"
+  description: "Comma-separated list of origin patterns to allow. Unlike allowed origins\
+    \ which only supports '*', origin patterns are more flexible (for example 'https://*.example.com')\
+    \ and can be used when credentials are allowed. When no allowed origin patterns\
+    \ or allowed origins are set, CORS support is disabled."
+  shortDescription: "Comma-separated list of origin patterns to allow."
+  name: "cas.http-web-request.cors.allow-origin-patterns"
+  defaultValue: ""
+- module: "cas-server-core-web"
+  owner: "org.apereo.cas.configuration.model.core.web.security.HttpCorsRequestProperties"
+  type: "java.util.List<java.lang.String>"
   description: "The Origin header indicates the origin of the cross-site access request\
     \ or preflight request. The origin is a URI indicating the server from which the\
-    \ request initiated. It does not include any path information, but only the server\
-    \ name."
+    \ request initiated. When credentials are allowed, '*' cannot be used and origin\
+    \ patterns should be configured instead. It does not include any path information,\
+    \ but only the server name."
   shortDescription: "The Origin header indicates the origin of the cross-site access\
     \ request or preflight request."
   name: "cas.http-web-request.cors.allow-origins"
