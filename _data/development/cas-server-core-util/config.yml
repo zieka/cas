@@ -1427,6 +1427,78 @@
   type: "java.lang.String"
   description: "The signing/encryption algorithm to use."
   shortDescription: "The signing/encryption algorithm to use."
+  name: "cas.authn.oauth.access-token.crypto.alg"
+  defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
+  type: "java.lang.Boolean"
+  description: "Whether crypto operations are enabled."
+  shortDescription: "Whether crypto operations are enabled."
+  name: "cas.authn.oauth.access-token.crypto.enabled"
+  defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
+  type: "java.lang.Boolean"
+  description: "Whether crypto encryption operations are enabled."
+  shortDescription: "Whether crypto encryption operations are enabled."
+  name: "cas.authn.oauth.access-token.crypto.encryption-enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
+  type: "java.lang.String"
+  description: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
+  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+    \ key size setting."
+  name: "cas.authn.oauth.access-token.crypto.encryption.key"
+  defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
+  type: "java.lang.Integer"
+  description: "The encryption key size."
+  shortDescription: "The encryption key size."
+  name: "cas.authn.oauth.access-token.crypto.encryption.key-size"
+  defaultValue: 512
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
+  type: "java.lang.Boolean"
+  description: "Whether crypto signing operations are enabled."
+  shortDescription: "Whether crypto signing operations are enabled."
+  name: "cas.authn.oauth.access-token.crypto.signing-enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
+  type: "java.lang.String"
+  description: "The signing key is a JWT whose length is defined by the signing key\
+    \ size setting."
+  shortDescription: "The signing key is a JWT whose length is defined by the signing\
+    \ key size setting."
+  name: "cas.authn.oauth.access-token.crypto.signing.key"
+  defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.SigningJwtCryptoProperties"
+  type: "java.lang.Integer"
+  description: "The signing key size."
+  shortDescription: "The signing key size."
+  name: "cas.authn.oauth.access-token.crypto.signing.key-size"
+  defaultValue: 512
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
+  type: "java.lang.String"
+  description: "Control the cipher sequence of operations. The accepted values are:\
+    \ <ul>     <li>{@code ENCRYPT_AND_SIGN}: Encrypt the value first, and then sign.</li>\
+    \     <li>{@code SIGN_AND_ENCRYPT}: Sign the value first, and then encrypt.</li>\
+    \ </ul>"
+  shortDescription: "Control the cipher sequence of operations."
+  name: "cas.authn.oauth.access-token.crypto.strategy-type"
+  defaultValue: "ENCRYPT_AND_SIGN"
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.core.util.EncryptionOptionalSigningOptionalJwtCryptographyProperties"
+  type: "java.lang.String"
+  description: "The signing/encryption algorithm to use."
+  shortDescription: "The signing/encryption algorithm to use."
   name: "cas.authn.oauth.crypto.alg"
   defaultValue: ""
 - module: "cas-server-core-util"
@@ -1494,6 +1566,62 @@
   shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.oauth.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
+- required: true
+  module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
+  name: "cas.authn.oauth.uma.requesting-party-token.jwks-file.location"
+  defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "java.lang.Integer"
+  description: "Controls the maximum number of connections to keep in the pool, including\
+    \ both idle and in-use connections."
+  shortDescription: "Controls the maximum number of connections to keep in the pool,\
+    \ including both idle and in-use connections."
+  name: "cas.authn.oauth.uma.resource-set.jpa.pool.max-size"
+  defaultValue: 18
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "java.lang.String"
+  description: "Sets the maximum time in seconds that this data source will wait while\
+    \ attempting to connect to a database. <p> A value of zero specifies that the\
+    \ timeout is the default system timeout if there is one; otherwise, it specifies\
+    \ that there is no timeout."
+  shortDescription: "Sets the maximum time in seconds that this data source will wait\
+    \ while attempting to connect to a database."
+  name: "cas.authn.oauth.uma.resource-set.jpa.pool.max-wait"
+  defaultValue: "PT2S"
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "java.lang.Integer"
+  description: "Controls the minimum size that the pool is allowed to reach, including\
+    \ both idle and in-use connections."
+  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
+    \ including both idle and in-use connections."
+  name: "cas.authn.oauth.uma.resource-set.jpa.pool.min-size"
+  defaultValue: 6
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "java.lang.Boolean"
+  description: "Whether or not pool suspension is allowed. <p> There is a performance\
+    \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
+    \ system for example) do not enable it."
+  shortDescription: "Whether or not pool suspension is allowed."
+  name: "cas.authn.oauth.uma.resource-set.jpa.pool.suspension"
+  defaultValue: false
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
+  type: "java.lang.Long"
+  description: "The maximum number of milliseconds that the pool will wait for a connection\
+    \ to be validated as alive."
+  shortDescription: "The maximum number of milliseconds that the pool will wait for\
+    \ a connection to be validated as alive."
+  name: "cas.authn.oauth.uma.resource-set.jpa.pool.timeout-millis"
+  defaultValue: 1000
 - required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
@@ -2808,62 +2936,6 @@
   shortDescription: "Control the cipher sequence of operations."
   name: "cas.authn.token.crypto.strategy-type"
   defaultValue: "ENCRYPT_AND_SIGN"
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
-  shortDescription: "The location of the resource."
-  name: "cas.authn.uma.requesting-party-token.jwks-file.location"
-  defaultValue: ""
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "java.lang.Integer"
-  description: "Controls the maximum number of connections to keep in the pool, including\
-    \ both idle and in-use connections."
-  shortDescription: "Controls the maximum number of connections to keep in the pool,\
-    \ including both idle and in-use connections."
-  name: "cas.authn.uma.resource-set.jpa.pool.max-size"
-  defaultValue: 18
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "java.lang.String"
-  description: "Sets the maximum time in seconds that this data source will wait while\
-    \ attempting to connect to a database. <p> A value of zero specifies that the\
-    \ timeout is the default system timeout if there is one; otherwise, it specifies\
-    \ that there is no timeout."
-  shortDescription: "Sets the maximum time in seconds that this data source will wait\
-    \ while attempting to connect to a database."
-  name: "cas.authn.uma.resource-set.jpa.pool.max-wait"
-  defaultValue: "PT2S"
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "java.lang.Integer"
-  description: "Controls the minimum size that the pool is allowed to reach, including\
-    \ both idle and in-use connections."
-  shortDescription: "Controls the minimum size that the pool is allowed to reach,\
-    \ including both idle and in-use connections."
-  name: "cas.authn.uma.resource-set.jpa.pool.min-size"
-  defaultValue: 6
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "java.lang.Boolean"
-  description: "Whether or not pool suspension is allowed. <p> There is a performance\
-    \ impact when pool suspension is enabled. Unless you need it (for a redundancy\
-    \ system for example) do not enable it."
-  shortDescription: "Whether or not pool suspension is allowed."
-  name: "cas.authn.uma.resource-set.jpa.pool.suspension"
-  defaultValue: false
-- module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.support.ConnectionPoolingProperties"
-  type: "java.lang.Long"
-  description: "The maximum number of milliseconds that the pool will wait for a connection\
-    \ to be validated as alive."
-  shortDescription: "The maximum number of milliseconds that the pool will wait for\
-    \ a connection to be validated as alive."
-  name: "cas.authn.uma.resource-set.jpa.pool.timeout-millis"
-  defaultValue: 1000
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"

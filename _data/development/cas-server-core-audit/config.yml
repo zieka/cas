@@ -29,6 +29,15 @@
   defaultValue: "CAS"
 - module: "cas-server-core-audit"
   owner: "org.apereo.cas.configuration.model.core.audit.AuditEngineProperties"
+  type: "org.apereo.cas.configuration.model.core.audit.AuditEngineProperties$AuditFormatTypes"
+  description: "The audit format to use in the logs.\nAvailable values are as follows:\n\
+    <ul><li>{@code DEFAULT}: Default audit format.</li><li>{@code JSON}: Output audit\
+    \ logs as JSON strings\nwhere necessary/possible.</li></ul>"
+  shortDescription: "The audit format to use in the logs."
+  name: "cas.audit.engine.audit-format"
+  defaultValue: ""
+- module: "cas-server-core-audit"
+  owner: "org.apereo.cas.configuration.model.core.audit.AuditEngineProperties"
   type: "java.lang.Boolean"
   description: "Whether auditing functionality should be enabled."
   shortDescription: "Whether auditing functionality should be enabled."
@@ -94,14 +103,6 @@
     \ for the CAS server address."
   name: "cas.audit.engine.use-server-host-address"
   defaultValue: false
-- module: "cas-server-core-audit"
-  owner: "org.apereo.cas.configuration.model.core.audit.AuditSlf4jLogProperties"
-  type: "java.lang.String"
-  description: "The audit format to use in the logs. Accepted value are: DEFAULT,\
-    \ JSON."
-  shortDescription: "The audit format to use in the logs."
-  name: "cas.audit.slf4j.audit-format"
-  defaultValue: "DEFAULT"
 - module: "cas-server-core-audit"
   owner: "org.apereo.cas.configuration.model.core.audit.AuditSlf4jLogProperties"
   type: "java.lang.Boolean"

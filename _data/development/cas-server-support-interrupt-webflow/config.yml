@@ -19,7 +19,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-interrupt-webflow"
-  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Groovy"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.GroovyInterruptProperties"
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
@@ -28,7 +28,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-interrupt-webflow"
-  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Json"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.JsonInterruptProperties"
   type: "org.springframework.core.io.Resource"
   description: "The location of the resource. Resources can be URLS, or files found\
     \ either on the classpath or outside somewhere in the file system."
@@ -36,7 +36,7 @@
   name: "cas.interrupt.json.location"
   defaultValue: ""
 - module: "cas-server-support-interrupt-webflow"
-  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.RestfulInterruptProperties"
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ password for authentication."
@@ -45,7 +45,7 @@
   name: "cas.interrupt.rest.basic-auth-password"
   defaultValue: ""
 - module: "cas-server-support-interrupt-webflow"
-  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.RestfulInterruptProperties"
   type: "java.lang.String"
   description: "If REST endpoint is protected via basic authentication, specify the\
     \ username for authentication."
@@ -54,7 +54,7 @@
   name: "cas.interrupt.rest.basic-auth-username"
   defaultValue: ""
 - module: "cas-server-support-interrupt-webflow"
-  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.RestfulInterruptProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -63,7 +63,7 @@
   defaultValue: "GET"
 - required: true
   module: "cas-server-support-interrupt-webflow"
-  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptProperties.Rest"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.RestfulInterruptProperties"
   type: "java.lang.String"
   description: "The endpoint URL to contact and retrieve attributes."
   shortDescription: "The endpoint URL to contact and retrieve attributes."

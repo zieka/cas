@@ -1,25 +1,25 @@
 ---
 - required: true
   module: "cas-server-support-oauth-uma"
-  owner: "org.apereo.cas.configuration.model.support.uma.UmaProperties"
+  owner: "org.apereo.cas.configuration.model.support.uma.UmaCoreProperties"
   type: "java.lang.String"
   description: "UMA issuer."
   shortDescription: "UMA issuer."
-  name: "cas.authn.uma.issuer"
+  name: "cas.authn.oauth.uma.core.issuer"
   defaultValue: "http://localhost:8080/cas"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaPermissionTicketProperties"
   type: "java.lang.String"
   description: "Hard timeout to kill the access token and expire it."
   shortDescription: "Hard timeout to kill the access token and expire it."
-  name: "cas.authn.uma.permission-ticket.max-time-to-live-in-seconds"
+  name: "cas.authn.oauth.uma.permission-ticket.max-time-to-live-in-seconds"
   defaultValue: "PT3M"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaRequestingPartyTokenProperties"
   type: "java.lang.String"
   description: "Hard timeout to kill the access token and expire it."
   shortDescription: "Hard timeout to kill the access token and expire it."
-  name: "cas.authn.uma.requesting-party-token.max-time-to-live-in-seconds"
+  name: "cas.authn.oauth.uma.requesting-party-token.max-time-to-live-in-seconds"
   defaultValue: "PT3M"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -28,7 +28,7 @@
     \ whether queries such as update/insert should be immediately executed without\
     \ waiting for an underlying transaction."
   shortDescription: "The default auto-commit behavior of connections in the pool."
-  name: "cas.authn.uma.resource-set.jpa.autocommit"
+  name: "cas.authn.oauth.uma.resource-set.jpa.autocommit"
   defaultValue: false
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -37,7 +37,7 @@
     \ e.g. recommended values between 5 and 30."
   shortDescription: "A non-zero value enables use of JDBC2 batch updates by Hibernate.\
     \ e.g. recommended values between 5 and 30."
-  name: "cas.authn.uma.resource-set.jpa.batch-size"
+  name: "cas.authn.oauth.uma.resource-set.jpa.batch-size"
   defaultValue: 5
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -48,7 +48,7 @@
     \ is used."
   shortDescription: "Attempts to do a JNDI data source look up for the data source\
     \ name specified."
-  name: "cas.authn.uma.resource-set.jpa.data-source-name"
+  name: "cas.authn.oauth.uma.resource-set.jpa.data-source-name"
   defaultValue: ""
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -57,7 +57,7 @@
     \ returned back verbatim."
   shortDescription: "Indicates whether JNDI data sources retrieved should be proxied\
     \ or returned back verbatim."
-  name: "cas.authn.uma.resource-set.jpa.data-source-proxy"
+  name: "cas.authn.oauth.uma.resource-set.jpa.data-source-proxy"
   defaultValue: false
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -67,7 +67,7 @@
     \ is starts and ends"
   shortDescription: "Hibernate feature to automatically validate and exports DDL to\
     \ the schema."
-  name: "cas.authn.uma.resource-set.jpa.ddl-auto"
+  name: "cas.authn.oauth.uma.resource-set.jpa.ddl-auto"
   defaultValue: "update"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -76,7 +76,7 @@
     \ SQL."
   shortDescription: "Qualifies unqualified table names with the given catalog in generated\
     \ SQL."
-  name: "cas.authn.uma.resource-set.jpa.default-catalog"
+  name: "cas.authn.oauth.uma.resource-set.jpa.default-catalog"
   defaultValue: ""
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -85,7 +85,7 @@
     \ generated SQL."
   shortDescription: "Qualify unqualified table names with the given schema/tablespace\
     \ in generated SQL."
-  name: "cas.authn.uma.resource-set.jpa.default-schema"
+  name: "cas.authn.oauth.uma.resource-set.jpa.default-schema"
   defaultValue: ""
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -96,7 +96,7 @@
   shortDescription: "The database dialect is a configuration setting for platform\
     \ independent software (JPA, Hibernate, etc) which allows such software to translate\
     \ its generic SQL statements into vendor specific DDL, DML."
-  name: "cas.authn.uma.resource-set.jpa.dialect"
+  name: "cas.authn.oauth.uma.resource-set.jpa.dialect"
   defaultValue: "org.hibernate.dialect.HSQLDialect"
 - required: true
   module: "cas-server-support-oauth-uma"
@@ -104,7 +104,7 @@
   type: "java.lang.String"
   description: "The JDBC driver used to connect to the database."
   shortDescription: "The JDBC driver used to connect to the database."
-  name: "cas.authn.uma.resource-set.jpa.driver-class"
+  name: "cas.authn.oauth.uma.resource-set.jpa.driver-class"
   defaultValue: "org.hsqldb.jdbcDriver"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -131,14 +131,14 @@
     \ they will be honored before this timeout is applied.  The default value is one\
     \ millisecond."
   shortDescription: "Set the pool initialization failure timeout."
-  name: "cas.authn.uma.resource-set.jpa.fail-fast-timeout"
+  name: "cas.authn.oauth.uma.resource-set.jpa.fail-fast-timeout"
   defaultValue: 1
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
   type: "java.lang.String"
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
-  name: "cas.authn.uma.resource-set.jpa.health-query"
+  name: "cas.authn.oauth.uma.resource-set.jpa.health-query"
   defaultValue: ""
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -147,7 +147,7 @@
     \ sit idle in the pool."
   shortDescription: "Controls the maximum amount of time that a connection is allowed\
     \ to sit idle in the pool."
-  name: "cas.authn.uma.resource-set.jpa.idle-timeout"
+  name: "cas.authn.oauth.uma.resource-set.jpa.idle-timeout"
   defaultValue: "PT10M"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -159,14 +159,14 @@
     \ is disabled."
   shortDescription: "This property determines whether data source isolates internal\
     \ pool queries, such as the connection alive test, in their own transaction."
-  name: "cas.authn.uma.resource-set.jpa.isolate-internal-queries"
+  name: "cas.authn.oauth.uma.resource-set.jpa.isolate-internal-queries"
   defaultValue: false
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
   type: "java.lang.String"
   description: "Defines the isolation level for transactions. @see org.springframework.transaction.TransactionDefinition"
   shortDescription: "Defines the isolation level for transactions."
-  name: "cas.authn.uma.resource-set.jpa.isolation-level-name"
+  name: "cas.authn.oauth.uma.resource-set.jpa.isolation-level-name"
   defaultValue: "ISOLATION_READ_COMMITTED"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -175,7 +175,7 @@
     \ before a message is logged indicating a possible connection leak."
   shortDescription: "Controls the amount of time that a connection can be out of the\
     \ pool before a message is logged indicating a possible connection leak."
-  name: "cas.authn.uma.resource-set.jpa.leak-threshold"
+  name: "cas.authn.oauth.uma.resource-set.jpa.leak-threshold"
   defaultValue: 3000
 - required: true
   module: "cas-server-support-oauth-uma"
@@ -183,7 +183,7 @@
   type: "java.lang.String"
   description: "The database connection password."
   shortDescription: "The database connection password."
-  name: "cas.authn.uma.resource-set.jpa.password"
+  name: "cas.authn.oauth.uma.resource-set.jpa.password"
   defaultValue: ""
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -192,14 +192,14 @@
     \ strategy of hibernate."
   shortDescription: "Fully-qualified name of the class that can control the physical\
     \ naming strategy of hibernate."
-  name: "cas.authn.uma.resource-set.jpa.physical-naming-strategy-class-name"
+  name: "cas.authn.oauth.uma.resource-set.jpa.physical-naming-strategy-class-name"
   defaultValue: "org.apereo.cas.hibernate.CasHibernatePhysicalNamingStrategy"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
   type: "java.lang.String"
   description: "Defines the propagation behavior for transactions. @see org.springframework.transaction.TransactionDefinition"
   shortDescription: "Defines the propagation behavior for transactions."
-  name: "cas.authn.uma.resource-set.jpa.propagation-behavior-name"
+  name: "cas.authn.oauth.uma.resource-set.jpa.propagation-behavior-name"
   defaultValue: "PROPAGATION_REQUIRED"
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
@@ -207,7 +207,7 @@
   description: "Additional settings provided by Hibernate in form of key-value pairs."
   shortDescription: "Additional settings provided by Hibernate in form of key-value\
     \ pairs."
-  name: "cas.authn.uma.resource-set.jpa.properties"
+  name: "cas.authn.oauth.uma.resource-set.jpa.properties"
   defaultValue: ""
 - required: true
   module: "cas-server-support-oauth-uma"
@@ -215,7 +215,7 @@
   type: "java.lang.String"
   description: "The database connection URL."
   shortDescription: "The database connection URL."
-  name: "cas.authn.uma.resource-set.jpa.url"
+  name: "cas.authn.oauth.uma.resource-set.jpa.url"
   defaultValue: "jdbc:hsqldb:mem:cas-hsql-database"
 - required: true
   module: "cas-server-support-oauth-uma"
@@ -224,5 +224,5 @@
   description: "The database user. <p> The database user must have sufficient permissions\
     \ to be able to handle schema changes and updates, when needed."
   shortDescription: "The database user."
-  name: "cas.authn.uma.resource-set.jpa.user"
+  name: "cas.authn.oauth.uma.resource-set.jpa.user"
   defaultValue: "sa"
