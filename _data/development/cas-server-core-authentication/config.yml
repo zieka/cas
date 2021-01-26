@@ -5913,7 +5913,7 @@
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
   type: "java.lang.Boolean"
-  description: "Whether CAS should accept local logout URLs. For example http(s)://localhost/logout"
+  description: "Whether CAS should accept local logout URLs. For example {@code http(s)://localhost/logout}."
   shortDescription: "Whether CAS should accept local logout URLs."
   name: "cas.http-client.allow-local-logout-urls"
   defaultValue: false
@@ -5926,25 +5926,25 @@
   defaultValue: "PT5S"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
+  type: "java.lang.Boolean"
+  description: "Whether the regular expression specified with {@link #authorityValidationRegex}\
+    \ should be handled as case-sensitive ({@code true}) or case-insensitive ({@code\
+    \ false}). If no {@link #authorityValidationRegex} is set, this value does not\
+    \ have any effect."
+  shortDescription: "Whether the regular expression specified with {@link #authorityValidationRegex}\
+    \ should be handled as case-sensitive ({@code true}) or case-insensitive ({@code\
+    \ false})."
+  name: "cas.http-client.authority-validation-reg-ex-case-sensitive"
+  defaultValue: true
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
   type: "java.lang.String"
   description: "If specified the regular expression will be used to validate the url's\
     \ authority."
   shortDescription: "If specified the regular expression will be used to validate\
     \ the url's authority."
-  name: "cas.http-client.authority-validation-reg-ex"
+  name: "cas.http-client.authority-validation-regex"
   defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
-  type: "java.lang.Boolean"
-  description: "Whether the regular expression specified with {@code authorityValidationRegEx}\
-    \ should be handled as case-sensitive ({@code true}) or case-insensitive ({@code\
-    \ false}). If no {@code authorityValidationRegEx} is set, this value does not\
-    \ have any effect."
-  shortDescription: "Whether the regular expression specified with {@code authorityValidationRegEx}\
-    \ should be handled as case-sensitive ({@code true}) or case-insensitive ({@code\
-    \ false})."
-  name: "cas.http-client.authority-validation-reg-ex-case-sensitive"
-  defaultValue: true
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
   type: "java.lang.String"
