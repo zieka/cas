@@ -82,7 +82,7 @@ The change has a number of major advantages when it comes to maintainability and
 
 - Configuration settings no longer need to be manually documented. If a setting is removed, renamed or updated in any way in the CAS codebase, its relevant reference in the documentation will be automatically updated
 - The documentation of each setting is directly extracted from the source code and the Javadoc for the field itself. If a setting is owned by a third-party library, its explanation no longer needs to be duplicated in the CAS documentation.
-- If a setting does not present any or adequate documentation, you're advised and encourages to find the relevant source and update its documentation in form of a contribution or pull request, whether it's owned by CAS or some other third-party library. Stop writing code, and write it where belongs. 
+- If a setting does not present any or adequate documentation, you're advised and encouraged to find the relevant source and update its documentation in form of a contribution or pull request, whether it's owned by CAS or some other third-party library.
 
 ### Spring Boot 2.4
                   
@@ -117,6 +117,10 @@ and modify reCAPTCHA settings.
 
 The construction of various [Spring Webflow flows](../webflow/Webflow-Customization.html) and (multifactor authentication) subflows 
 has now removed the requirement for an XML foundation, allowing the construction of all flows to be dynamic.
+
+### AWS SQS Logging
+
+A dedicated logging appender is now available to support routing logs to [AWS SQS](../logging/Logging-SQS.html).
 
 ### WebAuthN REST Device Management
 
@@ -177,9 +181,13 @@ decisions for multifactor authentication may also be kept inside a Redis instanc
      
 - [Hazelcast cluster configuration](../ticketing/Hazelcast-Ticket-Registry.html) allows specification of network interfaces.
 - Delegated authentication configuration can allow for a pre-defined callback/redirect URI.
+- [Spring Expression Language](../configuration/Configuration-Spring-Expressions.html) now includes a few additional expressions common for date/time operations.
 - Configuration metadata is corrected in a number of cases to make sure `@NestedConfigurationProperty` is properly set on fields.
 - Publishing Maven metadata into the local maven repository is corrected to include all CAS-required repositories.
+- [Audit logs](../audits/Audits.html) attempt to produce syntactically correct JSON output for certain resources rather than relying on `toString()` methods for nested objects, when audit format is configured to produce JSON payloads.
 - [REST Service Registry](../services/REST-Service-Management.html) has changed its `DELETE` specification, and will use the service numeric identifier as a path variable for expected delete operations. 
+- [Time-based service access strategy](../services/Configuring-Service-Access-Strategy.html) can now take advantage of [Spring Expression Language](../configuration/Configuration-Spring-Expressions.html) for its configuration.
+
 ## Library Upgrades
 
 - Spring Framework
@@ -190,6 +198,8 @@ decisions for multifactor authentication may also be kept inside a Redis instanc
 - Hazelcast
 - Joda Time
 - Gradle  
+- HikariCP
+- CouchDb Client
 - Thymeleaf Dialect
 - Apache Ignite
 - BouncyCastle
