@@ -37,6 +37,17 @@
   defaultValue: ""
 - module: "cas-server-support-passwordless"
   owner: "org.apereo.cas.configuration.model.support.passwordless.account.PasswordlessAuthenticationRestAccountsProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.passwordless.accounts.rest.headers"
+  defaultValue: ""
+- module: "cas-server-support-passwordless"
+  owner: "org.apereo.cas.configuration.model.support.passwordless.account.PasswordlessAuthenticationRestAccountsProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -113,6 +124,17 @@
   shortDescription: "If REST endpoint is protected via basic authentication, specify\
     \ the username for authentication."
   name: "cas.authn.passwordless.tokens.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-support-passwordless"
+  owner: "org.apereo.cas.configuration.model.support.passwordless.token.PasswordlessAuthenticationRestTokensProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.passwordless.tokens.rest.headers"
   defaultValue: ""
 - module: "cas-server-support-passwordless"
   owner: "org.apereo.cas.configuration.model.support.passwordless.token.PasswordlessAuthenticationRestTokensProperties"

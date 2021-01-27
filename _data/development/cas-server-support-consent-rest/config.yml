@@ -17,6 +17,17 @@
     \ the username for authentication."
   name: "cas.consent.rest.basic-auth-username"
   defaultValue: ""
+- module: "cas-server-support-consent-rest"
+  owner: "org.apereo.cas.configuration.model.support.consent.RestfulConsentProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.consent.rest.headers"
+  defaultValue: ""
 - required: true
   module: "cas-server-support-consent-rest"
   owner: "org.apereo.cas.configuration.model.support.consent.RestfulConsentProperties"

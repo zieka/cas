@@ -609,6 +609,17 @@
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.RestEndpointProperties"
+  type: "java.util.Map<String,String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call.\nWill overwrite any header that CAS is pre-defined to\nsend and include\
+    \ in the request. Key in the map should be the header name\nand the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.duo[].bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.RestEndpointProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint.\nExamples include\
     \ {@code GET, POST}, etc."
@@ -2165,6 +2176,17 @@
     \ the username for authentication."
   name: "cas.authn.policy.rest[].basic-auth-username"
   defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.BaseRestEndpointProperties"
+  type: "java.util.Map<String,String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call.\nWill overwrite any header that CAS is pre-defined to\nsend and include\
+    \ in the request. Key in the map should be the header name\nand the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.policy.rest[].headers"
+  defaultValue: ""
 - required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.BaseRestEndpointProperties"
@@ -3665,6 +3687,17 @@
   shortDescription: "If REST endpoint is protected via basic authentication, specify\
     \ the username for authentication."
   name: "cas.sms-provider.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.sms.RestfulSmsProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.sms-provider.rest.headers"
   defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.sms.RestfulSmsProperties"

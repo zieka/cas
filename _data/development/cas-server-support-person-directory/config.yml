@@ -867,6 +867,17 @@
   defaultValue: ""
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.RestPrincipalAttributesProperties"
+  type: "java.util.Map<String,String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call.\nWill overwrite any header that CAS is pre-defined to\nsend and include\
+    \ in the request. Key in the map should be the header name\nand the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.attribute-repository.rest[].headers"
+  defaultValue: ""
+- module: "cas-server-support-person-directory"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RestPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "A value can be assigned to this field to uniquely identify this resolver."
   shortDescription: "A value can be assigned to this field to uniquely identify this\

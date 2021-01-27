@@ -342,6 +342,17 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.RestfulAdaptiveAuthenticationIPIntelligenceProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.adaptive.ip-intel.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RestfulAdaptiveAuthenticationIPIntelligenceProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -2672,6 +2683,17 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.acceptto.bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -2810,6 +2832,17 @@
   shortDescription: "If REST endpoint is protected via basic authentication, specify\
     \ the username for authentication."
   name: "cas.authn.mfa.authy.bypass.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.authy.bypass.rest.headers"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
@@ -3047,6 +3080,17 @@
   shortDescription: "If REST endpoint is protected via basic authentication, specify\
     \ the username for authentication."
   name: "cas.authn.mfa.gauth.bypass.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.gauth.bypass.rest.headers"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
@@ -3293,6 +3337,17 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.inwebo.bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -3456,6 +3511,17 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.radius.bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -3512,6 +3578,17 @@
   shortDescription: "If REST endpoint is protected via basic authentication, specify\
     \ the username for authentication."
   name: "cas.authn.mfa.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.rest.headers"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
@@ -3657,6 +3734,17 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.simple.bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -3784,6 +3872,17 @@
   shortDescription: "If REST endpoint is protected via basic authentication, specify\
     \ the username for authentication."
   name: "cas.authn.mfa.swivel.bypass.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.swivel.bypass.rest.headers"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
@@ -3917,6 +4016,17 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.u2f.bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -4047,6 +4157,17 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.web-authn.bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
@@ -4174,6 +4295,17 @@
   shortDescription: "If REST endpoint is protected via basic authentication, specify\
     \ the username for authentication."
   name: "cas.authn.mfa.yubikey.bypass.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.yubikey.bypass.rest.headers"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"

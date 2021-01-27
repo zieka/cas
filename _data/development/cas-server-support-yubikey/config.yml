@@ -126,6 +126,17 @@
   defaultValue: ""
 - module: "cas-server-support-yubikey"
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyRestfulMultifactorProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.yubikey.rest.headers"
+  defaultValue: ""
+- module: "cas-server-support-yubikey"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyRestfulMultifactorProperties"
   type: "java.lang.String"
   description: "HTTP method to use when contacting the rest endpoint. Examples include\
     \ {@code GET, POST}, etc."
