@@ -610,15 +610,21 @@
   owner: "org.apereo.cas.configuration.model.support.x509.X509Properties"
   type: "org.apereo.cas.configuration.model.support.x509.X509Properties$PrincipalTypes"
   description: "Indicates the type of principal resolution for X509.\nAvailable values\
-    \ are as follows:\n<ul><li>{@code SUBJECT}: Create principal by subject.</li><li>{@code\
-    \ SUBJECT_DN}: Create principal by subject DN.</li><li>{@code SERIAL_NO}: Create\
-    \ principal by serial no.</li><li>{@code SERIAL_NO_DN}: Create principal by serial\
-    \ no and DN.</li><li>{@code SUBJECT_ALT_NAME}: Create principal by subject alternative\
-    \ name.</li><li>{@code CN_EDIPI}: Create principal by common name and EDIPI.</li><li>{@code\
-    \ RFC822_EMAIL}: Create principal from the RFC822 type name (aka email address)\
-    \ in the subject alternative name field.\nThe subject alternative name field contains\
-    \ a list of various types of names, one type is RFC822 e-mail\naddress. This will\
-    \ return the first e-mail address that is found (if there are more than one).</li></ul>"
+    \ are as follows:\n<ul><li>{@code CN_EDIPI}: Create principal by common name and\
+    \ EDIPI.</li><li>{@code RFC822_EMAIL}: Create principal from the RFC822 type name\
+    \ (aka email address) in the subject alternative name field.\nThe subject alternative\
+    \ name field contains a list of various types of names, one type is RFC822 e-mail\n\
+    address. This will return the first e-mail address that is found (if there are\
+    \ more than one).</li><li>{@code SERIAL_NO}: Create principal by serial no.\n\
+    Resolve the principal by the serial number with a configurable <strong>radix</strong>,\
+    \ ranging from 2 to 36.\nIf {@code radix} is {@code 16}, then the serial number\
+    \ could be filled with leading zeros to even the number of digits.</li><li>{@code\
+    \ SERIAL_NO_DN}: Create principal by serial no and DN.</li><li>{@code SUBJECT}:\
+    \ Create principal by subject.\nResolve the principal by extracting one or more\
+    \ attribute values from the\ncertificate subject DN and combining them with intervening\
+    \ delimiters.</li><li>{@code SUBJECT_ALT_NAME}: Create principal by subject alternative\
+    \ name.\nResolve the principal by the subject alternative name extension. (type:\
+    \ otherName).</li><li>{@code SUBJECT_DN}: Create principal by subject DN.</li></ul>"
   shortDescription: "Indicates the type of principal resolution for X509."
   name: "cas.authn.x509.principal-type"
   defaultValue: ""
@@ -758,8 +764,16 @@
     Javadocs designate this method as \"denigrated\" for not being portable and/or\
     \ not being well defined.\nIt is what has been used by CAS for a long time so\
     \ it remains the default.</li><li>{@code RFC1779}: RFC 1779 String format of Distinguished\
-    \ Names.</li><li>{@code RFC2253}: RFC 2253 String format of Distinguished Names.</li><li>{@code\
-    \ CANONICAL}: Canonical String format of Distinguished Names.</li></ul>"
+    \ Names.\nCalls {@code X500Principal.getName(\"RFC1779\")} which emits a subject\
+    \ DN with the attribute keywords defined\nin RFC 1779 (CN, L, ST, O, OU, C, STREET).\
+    \ Any other attribute type is emitted as an OID.</li><li>{@code RFC2253}: RFC\
+    \ 2253 String format of Distinguished Names.\nCalls {@code X500Principal.getName(\"\
+    RFC2253\")} which emits a subject DN with the attribute keywords defined in\n\
+    RFC 2253 (CN, L, ST, O, OU, C, STREET, DC, UID). Any other attribute type is emitted\
+    \ as an OID.</li><li>{@code CANONICAL}: Canonical String format of Distinguished\
+    \ Names.\nCalls X500Principal.getName(\"CANONICAL\" which emits a subject DN that\
+    \ starts with RFC 2253 and applies\nadditional canonicalizations described in\
+    \ the javadoc.</li></ul>"
   shortDescription: "Format of subject DN to use."
   name: "cas.authn.x509.subject-dn.format"
   defaultValue: ""

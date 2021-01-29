@@ -63,40 +63,60 @@
   name: "cas.authn.saml-idp.algs.override-signature-reference-digest-methods"
   defaultValue: ""
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPAlgorithmsProperties"
+  type: "java.lang.String"
+  description: "Algorithm name to use when generating or locating private key for\
+    \ signing operations.."
+  shortDescription: "Algorithm name to use when generating or locating private key\
+    \ for signing operations.."
+  name: "cas.authn.saml-idp.algs.private-key-alg-name"
+  defaultValue: "RSA"
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPCoreProperties"
   type: "java.util.List<java.lang.String>"
   description: "A mapping of attribute names to their friendly names, defined globally.\
     \ Example might be {@code urn:oid:1.3.6.1.4.1.5923.1.1.1.6->eduPersonPrincipalName}."
   shortDescription: "A mapping of attribute names to their friendly names, defined\
     \ globally."
-  name: "cas.authn.saml-idp.attribute-friendly-names"
+  name: "cas.authn.saml-idp.core.attribute-friendly-names"
   defaultValue: ""
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPCoreProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether attribute query profile is enabled. Enabling this\
     \ setting would allow CAS to record SAML responses and have them be made available\
     \ later for attribute lookups."
   shortDescription: "Indicates whether attribute query profile is enabled."
-  name: "cas.authn.saml-idp.attribute-query-profile-enabled"
+  name: "cas.authn.saml-idp.core.attribute-query-profile-enabled"
   defaultValue: false
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPCoreProperties"
   type: "java.util.List<java.lang.String>"
   description: "A mapping of authentication context class refs. This is where specific\
-    \ authentication context classes are references and mapped one ones that CAS may\
-    \ support mainly for MFA purposes. <p> Example might be {@code urn:oasis:names:tc:SAML:2.0:ac:classes:SomeClassName->mfa-duo}."
+    \ authentication context classes are reference and mapped to providers that CAS\
+    \ may support mainly for MFA purposes. <p> Example might be {@code urn:oasis:names:tc:SAML:2.0:ac:classes:SomeClassName->mfa-duo}."
   shortDescription: "A mapping of authentication context class refs."
-  name: "cas.authn.saml-idp.authentication-context-class-mappings"
+  name: "cas.authn.saml-idp.core.authentication-context-class-mappings"
   defaultValue: ""
 - required: true
   module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPCoreProperties"
   type: "java.lang.String"
   description: "The SAML entity id for the deployment."
   shortDescription: "The SAML entity id for the deployment."
-  name: "cas.authn.saml-idp.entity-id"
+  name: "cas.authn.saml-idp.core.entity-id"
   defaultValue: "https://cas.example.org/idp"
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPCoreProperties"
+  type: "java.lang.Boolean"
+  description: "Indicates whether saml requests, and other session data, collected\
+    \ as part of SAML flows and requests that are kept by the container http session,\
+    \ should be replicated across the cluster."
+  shortDescription: "Indicates whether saml requests, and other session data, collected\
+    \ as part of SAML flows and requests that are kept by the container http session,\
+    \ should be replicated across the cluster."
+  name: "cas.authn.saml-idp.core.replicate-sessions"
+  defaultValue: false
 - module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPLogoutProperties"
   type: "java.lang.Boolean"
@@ -137,90 +157,84 @@
   name: "cas.authn.saml-idp.logout.single-logout-callbacks-disabled"
   defaultValue: false
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
-  type: "java.lang.String"
-  description: "Basic auth password in case the metadata instance is connecting to\
-    \ an MDQ server."
-  shortDescription: "Basic auth password in case the metadata instance is connecting\
-    \ to an MDQ server."
-  name: "cas.authn.saml-idp.metadata.basic-authn-password"
-  defaultValue: ""
-- module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
-  type: "java.lang.String"
-  description: "Basic auth username in case the metadata instance is connecting to\
-    \ an MDQ server."
-  shortDescription: "Basic auth username in case the metadata instance is connecting\
-    \ to an MDQ server."
-  name: "cas.authn.saml-idp.metadata.basic-authn-username"
-  defaultValue: ""
-- module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
   type: "java.lang.Long"
   description: "How long should metadata be cached in minutes."
   shortDescription: "How long should metadata be cached in minutes."
-  name: "cas.authn.saml-idp.metadata.cache-expiration-minutes"
+  name: "cas.authn.saml-idp.metadata.core.cache-expiration-minutes"
   defaultValue: 1
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
   type: "java.lang.Boolean"
   description: "Whether invalid metadata should eagerly fail quickly on startup once\
     \ the resource is parsed."
   shortDescription: "Whether invalid metadata should eagerly fail quickly on startup\
     \ once the resource is parsed."
-  name: "cas.authn.saml-idp.metadata.fail-fast"
+  name: "cas.authn.saml-idp.metadata.core.fail-fast"
   defaultValue: true
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
+  type: "java.lang.Boolean"
+  description: "Whether valid metadata is required."
+  shortDescription: "Whether valid metadata is required."
+  name: "cas.authn.saml-idp.metadata.core.require-valid-metadata"
+  defaultValue: true
+- required: true
+  module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.FileSystemSamlMetadataProperties"
+  type: "java.lang.String"
+  description: "Directory location of SAML metadata and signing/encryption keys. This\
+    \ directory will be used to hold the configuration files."
+  shortDescription: "Directory location of SAML metadata and signing/encryption keys."
+  name: "cas.authn.saml-idp.metadata.file-system.location"
+  defaultValue: "file:/etc/cas/saml"
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.HttpSamlMetadataProperties"
   type: "java.lang.Boolean"
   description: "Forcefully download and fetch metadata files form URL sources and\
     \ disregard any cached copies of the metadata."
   shortDescription: "Forcefully download and fetch metadata files form URL sources\
     \ and disregard any cached copies of the metadata."
-  name: "cas.authn.saml-idp.metadata.force-metadata-refresh"
+  name: "cas.authn.saml-idp.metadata.http.force-metadata-refresh"
   defaultValue: true
-- required: true
-  module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
-  type: "java.lang.String"
-  description: "Directory location of SAML metadata and signing/encryption keys. This\
-    \ directory will be used to hold the configuration files."
-  shortDescription: "Directory location of SAML metadata and signing/encryption keys."
-  name: "cas.authn.saml-idp.metadata.location"
-  defaultValue: "file:/etc/cas/saml"
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.HttpSamlMetadataProperties"
   type: "java.lang.String"
   description: "Directory location where downloaded SAML metadata is cached as backup\
-    \ files. If left undefined, the directory is calculated off of {@link #getLocation()}.\
-    \ The directory location should also support and be resolvable via Spring expression\
-    \ language."
+    \ files. If left undefined, the directory is calculated off of the metadata location\
+    \ on disk when specified. The directory location should also support and be resolvable\
+    \ via Spring expression language."
   shortDescription: "Directory location where downloaded SAML metadata is cached as\
     \ backup files."
-  name: "cas.authn.saml-idp.metadata.metadata-backup-location"
+  name: "cas.authn.saml-idp.metadata.http.metadata-backup-location"
   defaultValue: ""
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.MDQSamlMetadataProperties"
   type: "java.lang.String"
-  description: "Algorithm name to use when generating private key."
-  shortDescription: "Algorithm name to use when generating private key."
-  name: "cas.authn.saml-idp.metadata.private-key-alg-name"
-  defaultValue: "RSA"
+  description: "Basic auth password in case the metadata instance is connecting to\
+    \ an MDQ server."
+  shortDescription: "Basic auth password in case the metadata instance is connecting\
+    \ to an MDQ server."
+  name: "cas.authn.saml-idp.metadata.mdq.basic-authn-password"
+  defaultValue: ""
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
-  type: "java.lang.Boolean"
-  description: "Whether valid metadata is required."
-  shortDescription: "Whether valid metadata is required."
-  name: "cas.authn.saml-idp.metadata.require-valid-metadata"
-  defaultValue: true
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.MDQSamlMetadataProperties"
+  type: "java.lang.String"
+  description: "Basic auth username in case the metadata instance is connecting to\
+    \ an MDQ server."
+  shortDescription: "Basic auth username in case the metadata instance is connecting\
+    \ to an MDQ server."
+  name: "cas.authn.saml-idp.metadata.mdq.basic-authn-username"
+  defaultValue: ""
 - module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.SamlIdPMetadataProperties"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.MDQSamlMetadataProperties"
   type: "java.util.List<java.lang.String>"
   description: "Supported content types in case the metadata instance is connecting\
-    \ to an MDQ server."
+    \ to an MDQ server. {@link MediaType#APPLICATION_XML_VALUE} and {@link MediaType#TEXT_XML_VALUE}\
+    \ are supported by default."
   shortDescription: "Supported content types in case the metadata instance is connecting\
     \ to an MDQ server."
-  name: "cas.authn.saml-idp.metadata.supported-content-types"
+  name: "cas.authn.saml-idp.metadata.mdq.supported-content-types"
   defaultValue: ""
 - module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPProfileProperties.Saml2SloProfile"
@@ -248,17 +262,6 @@
   shortDescription: "Whether the initial request should be explicitly url-decoded\
     \ before it's consumed by the decoder."
   name: "cas.authn.saml-idp.profile.sso.url-decode-redirect-request"
-  defaultValue: false
-- module: "cas-server-support-saml-idp"
-  owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPProperties"
-  type: "java.lang.Boolean"
-  description: "Indicates whether saml requests, and other session data, collected\
-    \ as part of SAML flows and requests that are kept by the container session, should\
-    \ be replicated across the cluster."
-  shortDescription: "Indicates whether saml requests, and other session data, collected\
-    \ as part of SAML flows and requests that are kept by the container session, should\
-    \ be replicated across the cluster."
-  name: "cas.authn.saml-idp.replicate-sessions"
   defaultValue: false
 - module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPResponseProperties"
