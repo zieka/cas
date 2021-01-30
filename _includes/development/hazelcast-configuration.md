@@ -3,7 +3,12 @@
 {% capture cfgkey %}{{ include.configKey }}.core{% endcapture %}
 {% include casproperties.html properties=cfgkey %}
    
-#### Hazelcast Clusters
+#### Hazelcast Cluster Core
 
-{% capture cfgkey %}{{ include.configKey }}.cluster.{% endcapture %}
-{% include casproperties.html properties=cfgkey excludes="wan-replication,aws,azure,jclouds,swarm,kubernetes" %}
+{% capture cfgkey %}{{ include.configKey }}.cluster.core{% endcapture %}
+{% include casproperties.html properties=cfgkey %}
+
+#### Hazelcast Cluster Networking
+
+{% capture cfgkey %}{{ include.configKey }}.cluster.network{% endcapture %}
+{% include casproperties.html properties=cfgkey %}

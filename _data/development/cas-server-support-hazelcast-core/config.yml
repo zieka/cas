@@ -1,6 +1,6 @@
 ---
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Hazelcast supports both synchronous and asynchronous backups. By default,\
     \ backup operations are synchronous. In this case, backup operations block operations\
@@ -11,10 +11,10 @@
     \ are fire and forget and do not require acknowledgements; the backup operations\
     \ are performed at some point in time."
   shortDescription: "Hazelcast supports both synchronous and asynchronous backups."
-  name: "cas.authn.throttle.hazelcast.cluster.async-backup-count"
+  name: "cas.authn.throttle.hazelcast.cluster.core.async-backup-count"
   defaultValue: 0
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "To provide data safety, Hazelcast allows you to specify the number\
     \ of backup copies you want to have. That way, data on a cluster member will be\
@@ -27,56 +27,28 @@
     \ a blocking cost which may lead to latency issues."
   shortDescription: "To provide data safety, Hazelcast allows you to specify the number\
     \ of backup copies you want to have."
-  name: "cas.authn.throttle.hazelcast.cluster.backup-count"
+  name: "cas.authn.throttle.hazelcast.cluster.core.backup-count"
   defaultValue: 1
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDiscoveryProperties"
-  type: "java.lang.Boolean"
-  description: "Whether discovery should be enabled via the configured strategies\
-    \ below."
-  shortDescription: "Whether discovery should be enabled via the configured strategies\
-    \ below."
-  name: "cas.authn.throttle.hazelcast.cluster.discovery.enabled"
-  defaultValue: false
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast supports policy-based eviction for distributed maps. Currently\
     \ supported policies are LRU (Least Recently Used) and LFU (Least Frequently Used)\
     \ and NONE. See <a href=\"http://docs.hazelcast.org/docs/latest-development/manual/html/Distributed_Data_Structures/Map/Map_Eviction.html\"\
     >this</a> for more info."
   shortDescription: "Hazelcast supports policy-based eviction for distributed maps."
-  name: "cas.authn.throttle.hazelcast.cluster.eviction-policy"
+  name: "cas.authn.throttle.hazelcast.cluster.core.eviction-policy"
   defaultValue: "LRU"
 - required: true
   module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "The instance name."
   shortDescription: "The instance name."
-  name: "cas.authn.throttle.hazelcast.cluster.instance-name"
+  name: "cas.authn.throttle.hazelcast.cluster.core.instance-name"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.Boolean"
-  description: "IPv6 support has been switched off by default, since some platforms\
-    \ have issues in use of IPv6 stack. And some other platforms such as Amazon AWS\
-    \ have no support at all. To enable IPv6 support set this setting to false."
-  shortDescription: "IPv6 support has been switched off by default, since some platforms\
-    \ have issues in use of IPv6 stack."
-  name: "cas.authn.throttle.hazelcast.cluster.ipv4-enabled"
-  defaultValue: true
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.String"
-  description: "If this property is set, then this is the address where the server\
-    \ socket is bound to."
-  shortDescription: "If this property is set, then this is the address where the server\
-    \ socket is bound to."
-  name: "cas.authn.throttle.hazelcast.cluster.local-address"
-  defaultValue: ""
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast has a flexible logging configuration and doesn't depend\
     \ on any logging framework except JDK logging. It has in-built adaptors for a\
@@ -86,10 +58,10 @@
     \ <li>{@code slf4j}: Slf4j</li> <li>{@code none}: Disable logging</li> </ul>"
   shortDescription: "Hazelcast has a flexible logging configuration and doesn't depend\
     \ on any logging framework except JDK logging."
-  name: "cas.authn.throttle.hazelcast.cluster.logging-type"
+  name: "cas.authn.throttle.hazelcast.cluster.core.logging-type"
   defaultValue: "slf4j"
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Define how data items in Hazelcast maps are merged together from source\
     \ to destination. By default, merges map entries from source to destination if\
@@ -114,25 +86,25 @@
     \ </ul>"
   shortDescription: "Define how data items in Hazelcast maps are merged together from\
     \ source to destination."
-  name: "cas.authn.throttle.hazelcast.cluster.map-merge-policy"
+  name: "cas.authn.throttle.hazelcast.cluster.core.map-merge-policy"
   defaultValue: "PUT_IF_ABSENT"
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Max timeout of heartbeat in seconds for a node to assume it is dead."
   shortDescription: "Max timeout of heartbeat in seconds for a node to assume it is\
     \ dead."
-  name: "cas.authn.throttle.hazelcast.cluster.max-no-heartbeat-seconds"
+  name: "cas.authn.throttle.hazelcast.cluster.core.max-no-heartbeat-seconds"
   defaultValue: 300
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Sets the maximum size of the map."
   shortDescription: "Sets the maximum size of the map."
-  name: "cas.authn.throttle.hazelcast.cluster.max-size"
+  name: "cas.authn.throttle.hazelcast.cluster.core.max-size"
   defaultValue: 85
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum free\
     \ JVM heap memory percentage per JVM.</li> <li>{@code FREE_HEAP_SIZE}: Policy\
@@ -154,21 +126,59 @@
     \ cache etc) on each Hazelcast instance .</li> </ul>"
   shortDescription: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum\
     \ free JVM heap memory percentage per JVM."
-  name: "cas.authn.throttle.hazelcast.cluster.max-size-policy"
+  name: "cas.authn.throttle.hazelcast.cluster.core.max-size-policy"
   defaultValue: "USED_HEAP_PERCENTAGE"
-- required: true
-  module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.util.List<java.lang.String>"
-  description: "Sets the well known members. If members is empty, calling this method\
-    \ will have the same effect as calling clear(). A member can be a comma separated\
-    \ string, e..g '10.11.12.1,10.11.12.2' which indicates multiple members are going\
-    \ to be added."
-  shortDescription: "Sets the well known members."
-  name: "cas.authn.throttle.hazelcast.cluster.members"
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.String"
+  description: "With {@code PartitionGroupConfig}, you can control how primary and\
+    \ backup partitions are mapped to physical Members. Hazelcast will always place\
+    \ partitions on different partition groups so as to provide redundancy. Accepted\
+    \ value are: {@code PER_MEMBER, HOST_AWARE, CUSTOM, ZONE_AWARE, SPI}. In all cases\
+    \ a partition will never be created on the same group. If there are more partitions\
+    \ defined than there are partition groups, then only those partitions, up to the\
+    \ number of partition groups, will be created. For example, if you define 2 backups,\
+    \ then with the primary, that makes 3. If you have only two partition groups only\
+    \ two will be created. <ul> <li>{@code}PER_MEMBER Partition Groups}: This is the\
+    \ default partition scheme and is used if no other scheme is defined. Each Member\
+    \ is in a group of its own.</li> <li>{@code}HOST_AWARE Partition Groups}: In this\
+    \ scheme, a group corresponds to a host, based on its IP address. Partitions will\
+    \ not be written to any other members on the same host. This scheme provides good\
+    \ redundancy when multiple instances are being run on the same host.</li> <li>{@code}CUSTOM\
+    \ Partition Groups}: In this scheme, IP addresses, or IP address ranges, are allocated\
+    \ to groups. Partitions are not written to the same group. This is very useful\
+    \ for ensuring partitions are written to different racks or even availability\
+    \ zones.</li> <li>{@code}ZONE_AWARE Partition Groups}: In this scheme, groups\
+    \ are allocated according to the metadata provided by Discovery SPI Partitions\
+    \ are not written to the same group. This is very useful for ensuring partitions\
+    \ are written to availability zones or different racks without providing the IP\
+    \ addresses to the config ahead.</li> <li>{@code}SPI Partition Groups}:  In this\
+    \ scheme, groups are allocated according to the implementation provided by Discovery\
+    \ SPI.</li> </ul>"
+  shortDescription: "With {@code PartitionGroupConfig}, you can control how primary\
+    \ and backup partitions are mapped to physical Members."
+  name: "cas.authn.throttle.hazelcast.cluster.core.partition-member-group-type"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.Integer"
+  description: "Connection timeout in seconds for the TCP/IP config and members joining\
+    \ the cluster."
+  shortDescription: "Connection timeout in seconds for the TCP/IP config and members\
+    \ joining the cluster."
+  name: "cas.authn.throttle.hazelcast.cluster.core.timeout"
+  defaultValue: 5
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDiscoveryProperties"
+  type: "java.lang.Boolean"
+  description: "Whether discovery should be enabled via the configured strategies\
+    \ below."
+  shortDescription: "Whether discovery should be enabled via the configured strategies\
+    \ below."
+  name: "cas.authn.throttle.hazelcast.cluster.discovery.enabled"
+  defaultValue: false
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Boolean"
   description: "Enables a multicast configuration using a group address and port.\
     \ Contains the configuration for the multicast discovery mechanism. With the multicast\
@@ -178,10 +188,10 @@
     \ multicast is possible or allowed; otherwise you need to have a look at the tcp/ip\
     \ cluster"
   shortDescription: "Enables a multicast configuration using a group address and port."
-  name: "cas.authn.throttle.hazelcast.cluster.multicast-enabled"
+  name: "cas.authn.throttle.hazelcast.cluster.discovery.multicast.enabled"
   defaultValue: false
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.String"
   description: "The multicast group address used for discovery. With the multicast\
     \ auto-discovery mechanism, Hazelcast allows cluster members to find each other\
@@ -189,25 +199,25 @@
     \ addresses of the other members, as they just multicast to all the other members\
     \ for listening. Whether multicast is possible or allowed depends on your environment."
   shortDescription: "The multicast group address used for discovery."
-  name: "cas.authn.throttle.hazelcast.cluster.multicast-group"
+  name: "cas.authn.throttle.hazelcast.cluster.discovery.multicast.group"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "The multicast port used for discovery."
   shortDescription: "The multicast port used for discovery."
-  name: "cas.authn.throttle.hazelcast.cluster.multicast-port"
+  name: "cas.authn.throttle.hazelcast.cluster.discovery.multicast.port"
   defaultValue: 0
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "Gets the time to live for the multicast package in seconds. This is\
     \ the default time-to-live for multicast packets sent out on the socket"
   shortDescription: "Gets the time to live for the multicast package in seconds."
-  name: "cas.authn.throttle.hazelcast.cluster.multicast-time-to-live"
+  name: "cas.authn.throttle.hazelcast.cluster.discovery.multicast.time-to-live"
   defaultValue: 32
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "specifies the time in seconds that a member should wait for a valid\
     \ multicast response from another member running in the network before declaring\
@@ -221,10 +231,10 @@
     \ valid multicast response from another member running in the network before declaring\
     \ itself the leader member (the first member joined to the cluster) and creating\
     \ its own cluster."
-  name: "cas.authn.throttle.hazelcast.cluster.multicast-timeout"
+  name: "cas.authn.throttle.hazelcast.cluster.discovery.multicast.timeout"
   defaultValue: 2
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.String"
   description: "Multicast trusted interfaces for discovery. With the multicast auto-discovery\
     \ mechanism, Hazelcast allows cluster members to find each other using multicast\
@@ -232,10 +242,40 @@
     \ of the other members, as they just multicast to all the other members for listening.\
     \ Whether multicast is possible or allowed depends on your environment."
   shortDescription: "Multicast trusted interfaces for discovery."
-  name: "cas.authn.throttle.hazelcast.cluster.multicast-trusted-interfaces"
+  name: "cas.authn.throttle.hazelcast.cluster.discovery.multicast.trusted-interfaces"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.lang.Boolean"
+  description: "IPv6 support has been switched off by default, since some platforms\
+    \ have issues in use of IPv6 stack. And some other platforms such as Amazon AWS\
+    \ have no support at all. To enable IPv6 support set this setting to false."
+  shortDescription: "IPv6 support has been switched off by default, since some platforms\
+    \ have issues in use of IPv6 stack."
+  name: "cas.authn.throttle.hazelcast.cluster.network.ipv4-enabled"
+  defaultValue: true
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.lang.String"
+  description: "If this property is set, then this is the address where the server\
+    \ socket is bound to."
+  shortDescription: "If this property is set, then this is the address where the server\
+    \ socket is bound to."
+  name: "cas.authn.throttle.hazelcast.cluster.network.local-address"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.util.List<java.lang.String>"
+  description: "Sets the well known members. If members is empty, calling this method\
+    \ will have the same effect as calling clear(). A member can be a comma separated\
+    \ string, e..g '10.11.12.1,10.11.12.2' which indicates multiple members are going\
+    \ to be added."
+  shortDescription: "Sets the well known members."
+  name: "cas.authn.throttle.hazelcast.cluster.network.members"
+  defaultValue: ""
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.String"
   description: "You can specify which network interfaces that Hazelcast should use.\
     \ Servers mostly have more than one network interface, so you may want to list\
@@ -248,49 +288,18 @@
     \ by a comma."
   shortDescription: "You can specify which network interfaces that Hazelcast should\
     \ use."
-  name: "cas.authn.throttle.hazelcast.cluster.network-interfaces"
+  name: "cas.authn.throttle.hazelcast.cluster.network.network-interfaces"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.util.List<java.lang.String>"
   description: "The outbound ports for the Hazelcast configuration."
   shortDescription: "The outbound ports for the Hazelcast configuration."
-  name: "cas.authn.throttle.hazelcast.cluster.outbound-ports"
-  defaultValue: ""
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.String"
-  description: "With PartitionGroupConfig, you can control how primary and backup\
-    \ partitions are mapped to physical Members. Hazelcast will always place partitions\
-    \ on different partition groups so as to provide redundancy. Accepted value are:\
-    \ {@code PER_MEMBER, HOST_AWARE, CUSTOM, ZONE_AWARE, SPI}. In all cases a partition\
-    \ will never be created on the same group. If there are more partitions defined\
-    \ than there are partition groups, then only those partitions, up to the number\
-    \ of partition groups, will be created. For example, if you define 2 backups,\
-    \ then with the primary, that makes 3. If you have only two partition groups only\
-    \ two will be created. <ul> <li>{@code}PER_MEMBER Partition Groups}: This is the\
-    \ default partition scheme and is used if no other scheme is defined. Each Member\
-    \ is in a group of its own.</li> <li>{@code}HOST_AWARE Partition Groups}: In this\
-    \ scheme, a group corresponds to a host, based on its IP address. Partitions will\
-    \ not be written to any other members on the same host. This scheme provides good\
-    \ redundancy when multiple instances are being run on the same host.</li> <li>{@code}CUSTOM\
-    \ Partition Groups}: In this scheme, IP addresses, or IP address ranges, are allocated\
-    \ to groups. Partitions are not written to the same group. This is very useful\
-    \ for ensuring partitions are written to different racks or even availability\
-    \ zones.</li> <li>{@code}ZONE_AWARE Partition Groups}:  In this scheme, groups\
-    \ are allocated according to the metadata provided by Discovery SPI Partitions\
-    \ are not written to the same group. This is very useful for ensuring partitions\
-    \ are written to availability zones or different racks without providing the IP\
-    \ addresses to the config ahead.</li> <li>{@code}SPI Partition Groups}:  In this\
-    \ scheme, groups are allocated according to the implementation provided by Discovery\
-    \ SPI.</li> </ul>"
-  shortDescription: "With PartitionGroupConfig, you can control how primary and backup\
-    \ partitions are mapped to physical Members."
-  name: "cas.authn.throttle.hazelcast.cluster.partition-member-group-type"
+  name: "cas.authn.throttle.hazelcast.cluster.network.outbound-ports"
   defaultValue: ""
 - required: true
   module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Integer"
   description: "You can specify the ports which Hazelcast will use to communicate\
     \ between cluster members. The name of the parameter for this is port and its\
@@ -299,27 +308,27 @@
     \ Hazelcast tries to find ports between 5701 and 5801."
   shortDescription: "You can specify the ports which Hazelcast will use to communicate\
     \ between cluster members."
-  name: "cas.authn.throttle.hazelcast.cluster.port"
+  name: "cas.authn.throttle.hazelcast.cluster.network.port"
   defaultValue: 5701
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Boolean"
   description: "You may also want to choose to use only one port. In that case, you\
     \ can disable the auto-increment feature of port."
   shortDescription: "You may also want to choose to use only one port."
-  name: "cas.authn.throttle.hazelcast.cluster.port-auto-increment"
+  name: "cas.authn.throttle.hazelcast.cluster.network.port-auto-increment"
   defaultValue: true
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.String"
   description: "The default public address to be advertised to other cluster members\
     \ and clients."
   shortDescription: "The default public address to be advertised to other cluster\
     \ members and clients."
-  name: "cas.authn.throttle.hazelcast.cluster.public-address"
+  name: "cas.authn.throttle.hazelcast.cluster.network.public-address"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Boolean"
   description: "Enable TCP/IP config. Contains the configuration for the Tcp/Ip join\
     \ mechanism. The Tcp/Ip join mechanism relies on one or more well known members.\
@@ -327,17 +336,8 @@
     \ of the well known members. If it is able to connect, it will now about all members\
     \ in the cluster and doesn't rely on these well known members anymore."
   shortDescription: "Enable TCP/IP config."
-  name: "cas.authn.throttle.hazelcast.cluster.tcpip-enabled"
+  name: "cas.authn.throttle.hazelcast.cluster.network.tcpip-enabled"
   defaultValue: true
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.Integer"
-  description: "Connection timeout in seconds for the TCP/IP config and members joining\
-    \ the cluster."
-  shortDescription: "Connection timeout in seconds for the TCP/IP config and members\
-    \ joining the cluster."
-  name: "cas.authn.throttle.hazelcast.cluster.timeout"
-  defaultValue: 5
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastWANReplicationProperties"
   type: "java.lang.Boolean"
@@ -522,7 +522,7 @@
   name: "cas.authn.throttle.hazelcast.core.license-key"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Hazelcast supports both synchronous and asynchronous backups. By default,\
     \ backup operations are synchronous. In this case, backup operations block operations\
@@ -533,10 +533,10 @@
     \ are fire and forget and do not require acknowledgements; the backup operations\
     \ are performed at some point in time."
   shortDescription: "Hazelcast supports both synchronous and asynchronous backups."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.async-backup-count"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.async-backup-count"
   defaultValue: 0
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "To provide data safety, Hazelcast allows you to specify the number\
     \ of backup copies you want to have. That way, data on a cluster member will be\
@@ -549,56 +549,28 @@
     \ a blocking cost which may lead to latency issues."
   shortDescription: "To provide data safety, Hazelcast allows you to specify the number\
     \ of backup copies you want to have."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.backup-count"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.backup-count"
   defaultValue: 1
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDiscoveryProperties"
-  type: "java.lang.Boolean"
-  description: "Whether discovery should be enabled via the configured strategies\
-    \ below."
-  shortDescription: "Whether discovery should be enabled via the configured strategies\
-    \ below."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.enabled"
-  defaultValue: false
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast supports policy-based eviction for distributed maps. Currently\
     \ supported policies are LRU (Least Recently Used) and LFU (Least Frequently Used)\
     \ and NONE. See <a href=\"http://docs.hazelcast.org/docs/latest-development/manual/html/Distributed_Data_Structures/Map/Map_Eviction.html\"\
     >this</a> for more info."
   shortDescription: "Hazelcast supports policy-based eviction for distributed maps."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.eviction-policy"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.eviction-policy"
   defaultValue: "LRU"
 - required: true
   module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "The instance name."
   shortDescription: "The instance name."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.instance-name"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.instance-name"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.Boolean"
-  description: "IPv6 support has been switched off by default, since some platforms\
-    \ have issues in use of IPv6 stack. And some other platforms such as Amazon AWS\
-    \ have no support at all. To enable IPv6 support set this setting to false."
-  shortDescription: "IPv6 support has been switched off by default, since some platforms\
-    \ have issues in use of IPv6 stack."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.ipv4-enabled"
-  defaultValue: true
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.String"
-  description: "If this property is set, then this is the address where the server\
-    \ socket is bound to."
-  shortDescription: "If this property is set, then this is the address where the server\
-    \ socket is bound to."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.local-address"
-  defaultValue: ""
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast has a flexible logging configuration and doesn't depend\
     \ on any logging framework except JDK logging. It has in-built adaptors for a\
@@ -608,10 +580,10 @@
     \ <li>{@code slf4j}: Slf4j</li> <li>{@code none}: Disable logging</li> </ul>"
   shortDescription: "Hazelcast has a flexible logging configuration and doesn't depend\
     \ on any logging framework except JDK logging."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.logging-type"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.logging-type"
   defaultValue: "slf4j"
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Define how data items in Hazelcast maps are merged together from source\
     \ to destination. By default, merges map entries from source to destination if\
@@ -636,25 +608,25 @@
     \ </ul>"
   shortDescription: "Define how data items in Hazelcast maps are merged together from\
     \ source to destination."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.map-merge-policy"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.map-merge-policy"
   defaultValue: "PUT_IF_ABSENT"
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Max timeout of heartbeat in seconds for a node to assume it is dead."
   shortDescription: "Max timeout of heartbeat in seconds for a node to assume it is\
     \ dead."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.max-no-heartbeat-seconds"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.max-no-heartbeat-seconds"
   defaultValue: 300
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Sets the maximum size of the map."
   shortDescription: "Sets the maximum size of the map."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.max-size"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.max-size"
   defaultValue: 85
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum free\
     \ JVM heap memory percentage per JVM.</li> <li>{@code FREE_HEAP_SIZE}: Policy\
@@ -676,21 +648,59 @@
     \ cache etc) on each Hazelcast instance .</li> </ul>"
   shortDescription: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum\
     \ free JVM heap memory percentage per JVM."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.max-size-policy"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.max-size-policy"
   defaultValue: "USED_HEAP_PERCENTAGE"
-- required: true
-  module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.util.List<java.lang.String>"
-  description: "Sets the well known members. If members is empty, calling this method\
-    \ will have the same effect as calling clear(). A member can be a comma separated\
-    \ string, e..g '10.11.12.1,10.11.12.2' which indicates multiple members are going\
-    \ to be added."
-  shortDescription: "Sets the well known members."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.members"
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.String"
+  description: "With {@code PartitionGroupConfig}, you can control how primary and\
+    \ backup partitions are mapped to physical Members. Hazelcast will always place\
+    \ partitions on different partition groups so as to provide redundancy. Accepted\
+    \ value are: {@code PER_MEMBER, HOST_AWARE, CUSTOM, ZONE_AWARE, SPI}. In all cases\
+    \ a partition will never be created on the same group. If there are more partitions\
+    \ defined than there are partition groups, then only those partitions, up to the\
+    \ number of partition groups, will be created. For example, if you define 2 backups,\
+    \ then with the primary, that makes 3. If you have only two partition groups only\
+    \ two will be created. <ul> <li>{@code}PER_MEMBER Partition Groups}: This is the\
+    \ default partition scheme and is used if no other scheme is defined. Each Member\
+    \ is in a group of its own.</li> <li>{@code}HOST_AWARE Partition Groups}: In this\
+    \ scheme, a group corresponds to a host, based on its IP address. Partitions will\
+    \ not be written to any other members on the same host. This scheme provides good\
+    \ redundancy when multiple instances are being run on the same host.</li> <li>{@code}CUSTOM\
+    \ Partition Groups}: In this scheme, IP addresses, or IP address ranges, are allocated\
+    \ to groups. Partitions are not written to the same group. This is very useful\
+    \ for ensuring partitions are written to different racks or even availability\
+    \ zones.</li> <li>{@code}ZONE_AWARE Partition Groups}: In this scheme, groups\
+    \ are allocated according to the metadata provided by Discovery SPI Partitions\
+    \ are not written to the same group. This is very useful for ensuring partitions\
+    \ are written to availability zones or different racks without providing the IP\
+    \ addresses to the config ahead.</li> <li>{@code}SPI Partition Groups}:  In this\
+    \ scheme, groups are allocated according to the implementation provided by Discovery\
+    \ SPI.</li> </ul>"
+  shortDescription: "With {@code PartitionGroupConfig}, you can control how primary\
+    \ and backup partitions are mapped to physical Members."
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.partition-member-group-type"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.Integer"
+  description: "Connection timeout in seconds for the TCP/IP config and members joining\
+    \ the cluster."
+  shortDescription: "Connection timeout in seconds for the TCP/IP config and members\
+    \ joining the cluster."
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.timeout"
+  defaultValue: 5
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDiscoveryProperties"
+  type: "java.lang.Boolean"
+  description: "Whether discovery should be enabled via the configured strategies\
+    \ below."
+  shortDescription: "Whether discovery should be enabled via the configured strategies\
+    \ below."
+  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.enabled"
+  defaultValue: false
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Boolean"
   description: "Enables a multicast configuration using a group address and port.\
     \ Contains the configuration for the multicast discovery mechanism. With the multicast\
@@ -700,10 +710,10 @@
     \ multicast is possible or allowed; otherwise you need to have a look at the tcp/ip\
     \ cluster"
   shortDescription: "Enables a multicast configuration using a group address and port."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.multicast-enabled"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.multicast.enabled"
   defaultValue: false
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.String"
   description: "The multicast group address used for discovery. With the multicast\
     \ auto-discovery mechanism, Hazelcast allows cluster members to find each other\
@@ -711,25 +721,25 @@
     \ addresses of the other members, as they just multicast to all the other members\
     \ for listening. Whether multicast is possible or allowed depends on your environment."
   shortDescription: "The multicast group address used for discovery."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.multicast-group"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.multicast.group"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "The multicast port used for discovery."
   shortDescription: "The multicast port used for discovery."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.multicast-port"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.multicast.port"
   defaultValue: 0
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "Gets the time to live for the multicast package in seconds. This is\
     \ the default time-to-live for multicast packets sent out on the socket"
   shortDescription: "Gets the time to live for the multicast package in seconds."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.multicast-time-to-live"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.multicast.time-to-live"
   defaultValue: 32
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "specifies the time in seconds that a member should wait for a valid\
     \ multicast response from another member running in the network before declaring\
@@ -743,10 +753,10 @@
     \ valid multicast response from another member running in the network before declaring\
     \ itself the leader member (the first member joined to the cluster) and creating\
     \ its own cluster."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.multicast-timeout"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.multicast.timeout"
   defaultValue: 2
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.String"
   description: "Multicast trusted interfaces for discovery. With the multicast auto-discovery\
     \ mechanism, Hazelcast allows cluster members to find each other using multicast\
@@ -754,10 +764,40 @@
     \ of the other members, as they just multicast to all the other members for listening.\
     \ Whether multicast is possible or allowed depends on your environment."
   shortDescription: "Multicast trusted interfaces for discovery."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.multicast-trusted-interfaces"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.discovery.multicast.trusted-interfaces"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.lang.Boolean"
+  description: "IPv6 support has been switched off by default, since some platforms\
+    \ have issues in use of IPv6 stack. And some other platforms such as Amazon AWS\
+    \ have no support at all. To enable IPv6 support set this setting to false."
+  shortDescription: "IPv6 support has been switched off by default, since some platforms\
+    \ have issues in use of IPv6 stack."
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.ipv4-enabled"
+  defaultValue: true
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.lang.String"
+  description: "If this property is set, then this is the address where the server\
+    \ socket is bound to."
+  shortDescription: "If this property is set, then this is the address where the server\
+    \ socket is bound to."
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.local-address"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.util.List<java.lang.String>"
+  description: "Sets the well known members. If members is empty, calling this method\
+    \ will have the same effect as calling clear(). A member can be a comma separated\
+    \ string, e..g '10.11.12.1,10.11.12.2' which indicates multiple members are going\
+    \ to be added."
+  shortDescription: "Sets the well known members."
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.members"
+  defaultValue: ""
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.String"
   description: "You can specify which network interfaces that Hazelcast should use.\
     \ Servers mostly have more than one network interface, so you may want to list\
@@ -770,49 +810,18 @@
     \ by a comma."
   shortDescription: "You can specify which network interfaces that Hazelcast should\
     \ use."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.network-interfaces"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.network-interfaces"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.util.List<java.lang.String>"
   description: "The outbound ports for the Hazelcast configuration."
   shortDescription: "The outbound ports for the Hazelcast configuration."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.outbound-ports"
-  defaultValue: ""
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.String"
-  description: "With PartitionGroupConfig, you can control how primary and backup\
-    \ partitions are mapped to physical Members. Hazelcast will always place partitions\
-    \ on different partition groups so as to provide redundancy. Accepted value are:\
-    \ {@code PER_MEMBER, HOST_AWARE, CUSTOM, ZONE_AWARE, SPI}. In all cases a partition\
-    \ will never be created on the same group. If there are more partitions defined\
-    \ than there are partition groups, then only those partitions, up to the number\
-    \ of partition groups, will be created. For example, if you define 2 backups,\
-    \ then with the primary, that makes 3. If you have only two partition groups only\
-    \ two will be created. <ul> <li>{@code}PER_MEMBER Partition Groups}: This is the\
-    \ default partition scheme and is used if no other scheme is defined. Each Member\
-    \ is in a group of its own.</li> <li>{@code}HOST_AWARE Partition Groups}: In this\
-    \ scheme, a group corresponds to a host, based on its IP address. Partitions will\
-    \ not be written to any other members on the same host. This scheme provides good\
-    \ redundancy when multiple instances are being run on the same host.</li> <li>{@code}CUSTOM\
-    \ Partition Groups}: In this scheme, IP addresses, or IP address ranges, are allocated\
-    \ to groups. Partitions are not written to the same group. This is very useful\
-    \ for ensuring partitions are written to different racks or even availability\
-    \ zones.</li> <li>{@code}ZONE_AWARE Partition Groups}:  In this scheme, groups\
-    \ are allocated according to the metadata provided by Discovery SPI Partitions\
-    \ are not written to the same group. This is very useful for ensuring partitions\
-    \ are written to availability zones or different racks without providing the IP\
-    \ addresses to the config ahead.</li> <li>{@code}SPI Partition Groups}:  In this\
-    \ scheme, groups are allocated according to the implementation provided by Discovery\
-    \ SPI.</li> </ul>"
-  shortDescription: "With PartitionGroupConfig, you can control how primary and backup\
-    \ partitions are mapped to physical Members."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.partition-member-group-type"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.outbound-ports"
   defaultValue: ""
 - required: true
   module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Integer"
   description: "You can specify the ports which Hazelcast will use to communicate\
     \ between cluster members. The name of the parameter for this is port and its\
@@ -821,27 +830,27 @@
     \ Hazelcast tries to find ports between 5701 and 5801."
   shortDescription: "You can specify the ports which Hazelcast will use to communicate\
     \ between cluster members."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.port"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.port"
   defaultValue: 5701
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Boolean"
   description: "You may also want to choose to use only one port. In that case, you\
     \ can disable the auto-increment feature of port."
   shortDescription: "You may also want to choose to use only one port."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.port-auto-increment"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.port-auto-increment"
   defaultValue: true
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.String"
   description: "The default public address to be advertised to other cluster members\
     \ and clients."
   shortDescription: "The default public address to be advertised to other cluster\
     \ members and clients."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.public-address"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.public-address"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Boolean"
   description: "Enable TCP/IP config. Contains the configuration for the Tcp/Ip join\
     \ mechanism. The Tcp/Ip join mechanism relies on one or more well known members.\
@@ -849,17 +858,8 @@
     \ of the well known members. If it is able to connect, it will now about all members\
     \ in the cluster and doesn't rely on these well known members anymore."
   shortDescription: "Enable TCP/IP config."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.tcpip-enabled"
+  name: "cas.service-registry.stream.hazelcast.config.cluster.network.tcpip-enabled"
   defaultValue: true
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.Integer"
-  description: "Connection timeout in seconds for the TCP/IP config and members joining\
-    \ the cluster."
-  shortDescription: "Connection timeout in seconds for the TCP/IP config and members\
-    \ joining the cluster."
-  name: "cas.service-registry.stream.hazelcast.config.cluster.timeout"
-  defaultValue: 5
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastWANReplicationProperties"
   type: "java.lang.Boolean"
@@ -1044,7 +1044,7 @@
   name: "cas.service-registry.stream.hazelcast.config.core.license-key"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Hazelcast supports both synchronous and asynchronous backups. By default,\
     \ backup operations are synchronous. In this case, backup operations block operations\
@@ -1055,10 +1055,10 @@
     \ are fire and forget and do not require acknowledgements; the backup operations\
     \ are performed at some point in time."
   shortDescription: "Hazelcast supports both synchronous and asynchronous backups."
-  name: "cas.ticket.registry.hazelcast.cluster.async-backup-count"
+  name: "cas.ticket.registry.hazelcast.cluster.core.async-backup-count"
   defaultValue: 0
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "To provide data safety, Hazelcast allows you to specify the number\
     \ of backup copies you want to have. That way, data on a cluster member will be\
@@ -1071,56 +1071,28 @@
     \ a blocking cost which may lead to latency issues."
   shortDescription: "To provide data safety, Hazelcast allows you to specify the number\
     \ of backup copies you want to have."
-  name: "cas.ticket.registry.hazelcast.cluster.backup-count"
+  name: "cas.ticket.registry.hazelcast.cluster.core.backup-count"
   defaultValue: 1
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDiscoveryProperties"
-  type: "java.lang.Boolean"
-  description: "Whether discovery should be enabled via the configured strategies\
-    \ below."
-  shortDescription: "Whether discovery should be enabled via the configured strategies\
-    \ below."
-  name: "cas.ticket.registry.hazelcast.cluster.discovery.enabled"
-  defaultValue: false
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast supports policy-based eviction for distributed maps. Currently\
     \ supported policies are LRU (Least Recently Used) and LFU (Least Frequently Used)\
     \ and NONE. See <a href=\"http://docs.hazelcast.org/docs/latest-development/manual/html/Distributed_Data_Structures/Map/Map_Eviction.html\"\
     >this</a> for more info."
   shortDescription: "Hazelcast supports policy-based eviction for distributed maps."
-  name: "cas.ticket.registry.hazelcast.cluster.eviction-policy"
+  name: "cas.ticket.registry.hazelcast.cluster.core.eviction-policy"
   defaultValue: "LRU"
 - required: true
   module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "The instance name."
   shortDescription: "The instance name."
-  name: "cas.ticket.registry.hazelcast.cluster.instance-name"
+  name: "cas.ticket.registry.hazelcast.cluster.core.instance-name"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.Boolean"
-  description: "IPv6 support has been switched off by default, since some platforms\
-    \ have issues in use of IPv6 stack. And some other platforms such as Amazon AWS\
-    \ have no support at all. To enable IPv6 support set this setting to false."
-  shortDescription: "IPv6 support has been switched off by default, since some platforms\
-    \ have issues in use of IPv6 stack."
-  name: "cas.ticket.registry.hazelcast.cluster.ipv4-enabled"
-  defaultValue: true
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.String"
-  description: "If this property is set, then this is the address where the server\
-    \ socket is bound to."
-  shortDescription: "If this property is set, then this is the address where the server\
-    \ socket is bound to."
-  name: "cas.ticket.registry.hazelcast.cluster.local-address"
-  defaultValue: ""
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast has a flexible logging configuration and doesn't depend\
     \ on any logging framework except JDK logging. It has in-built adaptors for a\
@@ -1130,10 +1102,10 @@
     \ <li>{@code slf4j}: Slf4j</li> <li>{@code none}: Disable logging</li> </ul>"
   shortDescription: "Hazelcast has a flexible logging configuration and doesn't depend\
     \ on any logging framework except JDK logging."
-  name: "cas.ticket.registry.hazelcast.cluster.logging-type"
+  name: "cas.ticket.registry.hazelcast.cluster.core.logging-type"
   defaultValue: "slf4j"
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Define how data items in Hazelcast maps are merged together from source\
     \ to destination. By default, merges map entries from source to destination if\
@@ -1158,25 +1130,25 @@
     \ </ul>"
   shortDescription: "Define how data items in Hazelcast maps are merged together from\
     \ source to destination."
-  name: "cas.ticket.registry.hazelcast.cluster.map-merge-policy"
+  name: "cas.ticket.registry.hazelcast.cluster.core.map-merge-policy"
   defaultValue: "PUT_IF_ABSENT"
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Max timeout of heartbeat in seconds for a node to assume it is dead."
   shortDescription: "Max timeout of heartbeat in seconds for a node to assume it is\
     \ dead."
-  name: "cas.ticket.registry.hazelcast.cluster.max-no-heartbeat-seconds"
+  name: "cas.ticket.registry.hazelcast.cluster.core.max-no-heartbeat-seconds"
   defaultValue: 300
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.Integer"
   description: "Sets the maximum size of the map."
   shortDescription: "Sets the maximum size of the map."
-  name: "cas.ticket.registry.hazelcast.cluster.max-size"
+  name: "cas.ticket.registry.hazelcast.cluster.core.max-size"
   defaultValue: 85
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum free\
     \ JVM heap memory percentage per JVM.</li> <li>{@code FREE_HEAP_SIZE}: Policy\
@@ -1198,21 +1170,59 @@
     \ cache etc) on each Hazelcast instance .</li> </ul>"
   shortDescription: "<ul> <li>{@code FREE_HEAP_PERCENTAGE}: Policy based on minimum\
     \ free JVM heap memory percentage per JVM."
-  name: "cas.ticket.registry.hazelcast.cluster.max-size-policy"
+  name: "cas.ticket.registry.hazelcast.cluster.core.max-size-policy"
   defaultValue: "USED_HEAP_PERCENTAGE"
-- required: true
-  module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.util.List<java.lang.String>"
-  description: "Sets the well known members. If members is empty, calling this method\
-    \ will have the same effect as calling clear(). A member can be a comma separated\
-    \ string, e..g '10.11.12.1,10.11.12.2' which indicates multiple members are going\
-    \ to be added."
-  shortDescription: "Sets the well known members."
-  name: "cas.ticket.registry.hazelcast.cluster.members"
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.String"
+  description: "With {@code PartitionGroupConfig}, you can control how primary and\
+    \ backup partitions are mapped to physical Members. Hazelcast will always place\
+    \ partitions on different partition groups so as to provide redundancy. Accepted\
+    \ value are: {@code PER_MEMBER, HOST_AWARE, CUSTOM, ZONE_AWARE, SPI}. In all cases\
+    \ a partition will never be created on the same group. If there are more partitions\
+    \ defined than there are partition groups, then only those partitions, up to the\
+    \ number of partition groups, will be created. For example, if you define 2 backups,\
+    \ then with the primary, that makes 3. If you have only two partition groups only\
+    \ two will be created. <ul> <li>{@code}PER_MEMBER Partition Groups}: This is the\
+    \ default partition scheme and is used if no other scheme is defined. Each Member\
+    \ is in a group of its own.</li> <li>{@code}HOST_AWARE Partition Groups}: In this\
+    \ scheme, a group corresponds to a host, based on its IP address. Partitions will\
+    \ not be written to any other members on the same host. This scheme provides good\
+    \ redundancy when multiple instances are being run on the same host.</li> <li>{@code}CUSTOM\
+    \ Partition Groups}: In this scheme, IP addresses, or IP address ranges, are allocated\
+    \ to groups. Partitions are not written to the same group. This is very useful\
+    \ for ensuring partitions are written to different racks or even availability\
+    \ zones.</li> <li>{@code}ZONE_AWARE Partition Groups}: In this scheme, groups\
+    \ are allocated according to the metadata provided by Discovery SPI Partitions\
+    \ are not written to the same group. This is very useful for ensuring partitions\
+    \ are written to availability zones or different racks without providing the IP\
+    \ addresses to the config ahead.</li> <li>{@code}SPI Partition Groups}:  In this\
+    \ scheme, groups are allocated according to the implementation provided by Discovery\
+    \ SPI.</li> </ul>"
+  shortDescription: "With {@code PartitionGroupConfig}, you can control how primary\
+    \ and backup partitions are mapped to physical Members."
+  name: "cas.ticket.registry.hazelcast.cluster.core.partition-member-group-type"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.Integer"
+  description: "Connection timeout in seconds for the TCP/IP config and members joining\
+    \ the cluster."
+  shortDescription: "Connection timeout in seconds for the TCP/IP config and members\
+    \ joining the cluster."
+  name: "cas.ticket.registry.hazelcast.cluster.core.timeout"
+  defaultValue: 5
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.discovery.HazelcastDiscoveryProperties"
+  type: "java.lang.Boolean"
+  description: "Whether discovery should be enabled via the configured strategies\
+    \ below."
+  shortDescription: "Whether discovery should be enabled via the configured strategies\
+    \ below."
+  name: "cas.ticket.registry.hazelcast.cluster.discovery.enabled"
+  defaultValue: false
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Boolean"
   description: "Enables a multicast configuration using a group address and port.\
     \ Contains the configuration for the multicast discovery mechanism. With the multicast\
@@ -1222,10 +1232,10 @@
     \ multicast is possible or allowed; otherwise you need to have a look at the tcp/ip\
     \ cluster"
   shortDescription: "Enables a multicast configuration using a group address and port."
-  name: "cas.ticket.registry.hazelcast.cluster.multicast-enabled"
+  name: "cas.ticket.registry.hazelcast.cluster.discovery.multicast.enabled"
   defaultValue: false
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.String"
   description: "The multicast group address used for discovery. With the multicast\
     \ auto-discovery mechanism, Hazelcast allows cluster members to find each other\
@@ -1233,25 +1243,25 @@
     \ addresses of the other members, as they just multicast to all the other members\
     \ for listening. Whether multicast is possible or allowed depends on your environment."
   shortDescription: "The multicast group address used for discovery."
-  name: "cas.ticket.registry.hazelcast.cluster.multicast-group"
+  name: "cas.ticket.registry.hazelcast.cluster.discovery.multicast.group"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "The multicast port used for discovery."
   shortDescription: "The multicast port used for discovery."
-  name: "cas.ticket.registry.hazelcast.cluster.multicast-port"
+  name: "cas.ticket.registry.hazelcast.cluster.discovery.multicast.port"
   defaultValue: 0
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "Gets the time to live for the multicast package in seconds. This is\
     \ the default time-to-live for multicast packets sent out on the socket"
   shortDescription: "Gets the time to live for the multicast package in seconds."
-  name: "cas.ticket.registry.hazelcast.cluster.multicast-time-to-live"
+  name: "cas.ticket.registry.hazelcast.cluster.discovery.multicast.time-to-live"
   defaultValue: 32
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.Integer"
   description: "specifies the time in seconds that a member should wait for a valid\
     \ multicast response from another member running in the network before declaring\
@@ -1265,10 +1275,10 @@
     \ valid multicast response from another member running in the network before declaring\
     \ itself the leader member (the first member joined to the cluster) and creating\
     \ its own cluster."
-  name: "cas.ticket.registry.hazelcast.cluster.multicast-timeout"
+  name: "cas.ticket.registry.hazelcast.cluster.discovery.multicast.timeout"
   defaultValue: 2
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterMulticastProperties"
   type: "java.lang.String"
   description: "Multicast trusted interfaces for discovery. With the multicast auto-discovery\
     \ mechanism, Hazelcast allows cluster members to find each other using multicast\
@@ -1276,10 +1286,40 @@
     \ of the other members, as they just multicast to all the other members for listening.\
     \ Whether multicast is possible or allowed depends on your environment."
   shortDescription: "Multicast trusted interfaces for discovery."
-  name: "cas.ticket.registry.hazelcast.cluster.multicast-trusted-interfaces"
+  name: "cas.ticket.registry.hazelcast.cluster.discovery.multicast.trusted-interfaces"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.lang.Boolean"
+  description: "IPv6 support has been switched off by default, since some platforms\
+    \ have issues in use of IPv6 stack. And some other platforms such as Amazon AWS\
+    \ have no support at all. To enable IPv6 support set this setting to false."
+  shortDescription: "IPv6 support has been switched off by default, since some platforms\
+    \ have issues in use of IPv6 stack."
+  name: "cas.ticket.registry.hazelcast.cluster.network.ipv4-enabled"
+  defaultValue: true
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.lang.String"
+  description: "If this property is set, then this is the address where the server\
+    \ socket is bound to."
+  shortDescription: "If this property is set, then this is the address where the server\
+    \ socket is bound to."
+  name: "cas.ticket.registry.hazelcast.cluster.network.local-address"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
+  type: "java.util.List<java.lang.String>"
+  description: "Sets the well known members. If members is empty, calling this method\
+    \ will have the same effect as calling clear(). A member can be a comma separated\
+    \ string, e..g '10.11.12.1,10.11.12.2' which indicates multiple members are going\
+    \ to be added."
+  shortDescription: "Sets the well known members."
+  name: "cas.ticket.registry.hazelcast.cluster.network.members"
+  defaultValue: ""
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.String"
   description: "You can specify which network interfaces that Hazelcast should use.\
     \ Servers mostly have more than one network interface, so you may want to list\
@@ -1292,49 +1332,18 @@
     \ by a comma."
   shortDescription: "You can specify which network interfaces that Hazelcast should\
     \ use."
-  name: "cas.ticket.registry.hazelcast.cluster.network-interfaces"
+  name: "cas.ticket.registry.hazelcast.cluster.network.network-interfaces"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.util.List<java.lang.String>"
   description: "The outbound ports for the Hazelcast configuration."
   shortDescription: "The outbound ports for the Hazelcast configuration."
-  name: "cas.ticket.registry.hazelcast.cluster.outbound-ports"
-  defaultValue: ""
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.String"
-  description: "With PartitionGroupConfig, you can control how primary and backup\
-    \ partitions are mapped to physical Members. Hazelcast will always place partitions\
-    \ on different partition groups so as to provide redundancy. Accepted value are:\
-    \ {@code PER_MEMBER, HOST_AWARE, CUSTOM, ZONE_AWARE, SPI}. In all cases a partition\
-    \ will never be created on the same group. If there are more partitions defined\
-    \ than there are partition groups, then only those partitions, up to the number\
-    \ of partition groups, will be created. For example, if you define 2 backups,\
-    \ then with the primary, that makes 3. If you have only two partition groups only\
-    \ two will be created. <ul> <li>{@code}PER_MEMBER Partition Groups}: This is the\
-    \ default partition scheme and is used if no other scheme is defined. Each Member\
-    \ is in a group of its own.</li> <li>{@code}HOST_AWARE Partition Groups}: In this\
-    \ scheme, a group corresponds to a host, based on its IP address. Partitions will\
-    \ not be written to any other members on the same host. This scheme provides good\
-    \ redundancy when multiple instances are being run on the same host.</li> <li>{@code}CUSTOM\
-    \ Partition Groups}: In this scheme, IP addresses, or IP address ranges, are allocated\
-    \ to groups. Partitions are not written to the same group. This is very useful\
-    \ for ensuring partitions are written to different racks or even availability\
-    \ zones.</li> <li>{@code}ZONE_AWARE Partition Groups}:  In this scheme, groups\
-    \ are allocated according to the metadata provided by Discovery SPI Partitions\
-    \ are not written to the same group. This is very useful for ensuring partitions\
-    \ are written to availability zones or different racks without providing the IP\
-    \ addresses to the config ahead.</li> <li>{@code}SPI Partition Groups}:  In this\
-    \ scheme, groups are allocated according to the implementation provided by Discovery\
-    \ SPI.</li> </ul>"
-  shortDescription: "With PartitionGroupConfig, you can control how primary and backup\
-    \ partitions are mapped to physical Members."
-  name: "cas.ticket.registry.hazelcast.cluster.partition-member-group-type"
+  name: "cas.ticket.registry.hazelcast.cluster.network.outbound-ports"
   defaultValue: ""
 - required: true
   module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Integer"
   description: "You can specify the ports which Hazelcast will use to communicate\
     \ between cluster members. The name of the parameter for this is port and its\
@@ -1343,27 +1352,27 @@
     \ Hazelcast tries to find ports between 5701 and 5801."
   shortDescription: "You can specify the ports which Hazelcast will use to communicate\
     \ between cluster members."
-  name: "cas.ticket.registry.hazelcast.cluster.port"
+  name: "cas.ticket.registry.hazelcast.cluster.network.port"
   defaultValue: 5701
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Boolean"
   description: "You may also want to choose to use only one port. In that case, you\
     \ can disable the auto-increment feature of port."
   shortDescription: "You may also want to choose to use only one port."
-  name: "cas.ticket.registry.hazelcast.cluster.port-auto-increment"
+  name: "cas.ticket.registry.hazelcast.cluster.network.port-auto-increment"
   defaultValue: true
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.String"
   description: "The default public address to be advertised to other cluster members\
     \ and clients."
   shortDescription: "The default public address to be advertised to other cluster\
     \ members and clients."
-  name: "cas.ticket.registry.hazelcast.cluster.public-address"
+  name: "cas.ticket.registry.hazelcast.cluster.network.public-address"
   defaultValue: ""
 - module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastNetworkClusterProperties"
   type: "java.lang.Boolean"
   description: "Enable TCP/IP config. Contains the configuration for the Tcp/Ip join\
     \ mechanism. The Tcp/Ip join mechanism relies on one or more well known members.\
@@ -1371,17 +1380,8 @@
     \ of the well known members. If it is able to connect, it will now about all members\
     \ in the cluster and doesn't rely on these well known members anymore."
   shortDescription: "Enable TCP/IP config."
-  name: "cas.ticket.registry.hazelcast.cluster.tcpip-enabled"
+  name: "cas.ticket.registry.hazelcast.cluster.network.tcpip-enabled"
   defaultValue: true
-- module: "cas-server-support-hazelcast-core"
-  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastClusterProperties"
-  type: "java.lang.Integer"
-  description: "Connection timeout in seconds for the TCP/IP config and members joining\
-    \ the cluster."
-  shortDescription: "Connection timeout in seconds for the TCP/IP config and members\
-    \ joining the cluster."
-  name: "cas.ticket.registry.hazelcast.cluster.timeout"
-  defaultValue: 5
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastWANReplicationProperties"
   type: "java.lang.Boolean"

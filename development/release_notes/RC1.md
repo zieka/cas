@@ -72,8 +72,9 @@ to make the generation of configuration metadata and relevant documentation snip
 are moved into a new `.core.` or `.engine.` namespace. Some of the settings that are affected by this effort
 are: 
 
-- `cas.oidc`
+- `cas.authn.oidc`
 - `cas.authn.oauth.uma`
+- `cas.authn.saml-idp`
 - `cas.events`
 - `cas.acceptable-usage-policy` 
 - `cas.ticket.registry.hazelcast` 
