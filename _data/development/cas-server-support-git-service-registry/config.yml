@@ -3,29 +3,30 @@
   module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"
-  description: "The branch to checkout and activate."
-  shortDescription: "The branch to checkout and activate."
+  description: "The branch to checkout and activate, defaults to {@code master}."
+  shortDescription: "The branch to checkout and activate, defaults to {@code master}."
   name: "cas.service-registry.git.active-branch"
   defaultValue: "master"
 - required: true
   module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"
-  description: "If the repository is to be cloned, this will allow the list of branches\
-    \ to be fetched separated by commas."
-  shortDescription: "If the repository is to be cloned, this will allow the list of\
-    \ branches to be fetched separated by commas."
+  description: "If the repository is to be cloned, this will allow a select list of\
+    \ branches to be fetched. List the branch names separated by commas or use {@code\
+    \ *} to clone all branches. Defaults to all branches."
+  shortDescription: "If the repository is to be cloned, this will allow a select list\
+    \ of branches to be fetched."
   name: "cas.service-registry.git.branches-to-clone"
-  defaultValue: "master"
+  defaultValue: "*"
 - module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.Boolean"
   description: "When establishing an ssh session, determine if default identities\
     \ loaded on the machine should be excluded/removed and identity should only be\
-    \ limitd to those loaded from given keys."
+    \ limited to those loaded from given keys."
   shortDescription: "When establishing an ssh session, determine if default identities\
     \ loaded on the machine should be excluded/removed and identity should only be\
-    \ limitd to those loaded from given keys."
+    \ limited to those loaded from given keys."
   name: "cas.service-registry.git.clear-existing-identities"
   defaultValue: false
 - module: "cas-server-support-git-service-registry"

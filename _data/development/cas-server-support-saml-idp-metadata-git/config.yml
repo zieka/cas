@@ -3,29 +3,30 @@
   module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.String"
-  description: "The branch to checkout and activate."
-  shortDescription: "The branch to checkout and activate."
+  description: "The branch to checkout and activate, defaults to {@code master}."
+  shortDescription: "The branch to checkout and activate, defaults to {@code master}."
   name: "cas.authn.saml-idp.metadata.git.active-branch"
   defaultValue: "master"
 - required: true
   module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.String"
-  description: "If the repository is to be cloned, this will allow the list of branches\
-    \ to be fetched separated by commas."
-  shortDescription: "If the repository is to be cloned, this will allow the list of\
-    \ branches to be fetched separated by commas."
+  description: "If the repository is to be cloned, this will allow a select list of\
+    \ branches to be fetched. List the branch names separated by commas or use {@code\
+    \ *} to clone all branches. Defaults to all branches."
+  shortDescription: "If the repository is to be cloned, this will allow a select list\
+    \ of branches to be fetched."
   name: "cas.authn.saml-idp.metadata.git.branches-to-clone"
-  defaultValue: "master"
+  defaultValue: "*"
 - module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.Boolean"
   description: "When establishing an ssh session, determine if default identities\
     \ loaded on the machine should be excluded/removed and identity should only be\
-    \ limitd to those loaded from given keys."
+    \ limited to those loaded from given keys."
   shortDescription: "When establishing an ssh session, determine if default identities\
     \ loaded on the machine should be excluded/removed and identity should only be\
-    \ limitd to those loaded from given keys."
+    \ limited to those loaded from given keys."
   name: "cas.authn.saml-idp.metadata.git.clear-existing-identities"
   defaultValue: false
 - module: "cas-server-support-saml-idp-metadata-git"
