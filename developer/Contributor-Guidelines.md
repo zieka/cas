@@ -132,7 +132,7 @@ If you find that the project is not moving forward at a pace you find reasonable
 
 ## How fast can I consume the change?
 
-Typically, `SNAPSHOT` releases are published by the automatic [Travis CI process](https://travis-ci.org/apereo/cas/builds). As soon as a patch is merged, you want to track its build status and once it turns green, you should be good to update snapshots in your build script. Practically, this process can take up to 50 minutes or less. Refer to the `README` file of the build script and the project documentation to learn how you may update the overlay to take advantage of the change.
+Typically, `SNAPSHOT` releases are published by the automatic [CI process](https://github.com/apereo/cas/actions). As soon as a patch is merged, you want to track its build status and once it turns green, you should be good to update snapshots in your build script. Practically, this process can take up to 50 minutes or less. Refer to the `README` file of the build script and the project documentation to learn how you may update the overlay to take advantage of the change.
 
 This practically usually involves running the build with a `-U` or `--refresh-dependencies` command for Apache Maven and Gradle respectively.
 
