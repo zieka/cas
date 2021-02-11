@@ -1,6 +1,6 @@
 ---
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
   description: "Collection of allowed devices allowed per user. This is done using\
     \ a key-value structure where the key is the user the value is the allowed collection\
@@ -9,7 +9,7 @@
   name: "cas.authn.mfa.yubikey.allowed-devices"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.util.List<java.lang.String>"
   description: "YubiKey API urls to contact for verification of credentials."
   shortDescription: "YubiKey API urls to contact for verification of credentials."
@@ -17,28 +17,34 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Yubikey client id."
   shortDescription: "Yubikey client id."
   name: "cas.authn.mfa.yubikey.client-id"
   defaultValue: 0
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
-  type: "java.lang.String"
-  description: "The failure mode policy for this MFA provider. The following failure\
-    \ modes are supported: <ul>     <li>{@code CLOSED}: Authentication is blocked\
-    \ if the provider cannot be reached.</li>     <li>{@code OPEN}: Authentication\
-    \ proceeds yet requested MFA is NOT     communicated to the client if provider\
-    \ is unavailable.</li>     <li>{@code PHANTOM}: Authentication proceeds and requested\
-    \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
-    \ NONE}: Do not contact the provider at all to check for availability. Assume\
-    \ the provider is available.</li> </ul>"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
+  type: "org.apereo.cas.configuration.model.support.mfa.BaseMultifactorAuthenticationProviderProperties$MultifactorAuthenticationProviderFailureModes"
+  description: "The failure mode policy for this MFA provider. The authentication\
+    \ policy by default supports fail-closed mode, which means that if you attempt\
+    \ to exercise a particular provider available to CAS and the provider cannot be\
+    \ reached, authentication will be stopped and an error will be displayed. You\
+    \ can of course change this behavior so that authentication proceeds without exercising\
+    \ the provider functionality, if that provider cannot respond. Each defined multifactor\
+    \ authentication provider can set its own failure mode policy. Failure modes set\
+    \ at this location will override the global failure mode, but defer to any failure\
+    \ mode set by the registered service.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ OPEN}: Disallow MFA, proceed with authentication but don't communicate MFA to\
+    \ the RP.</li><li>{@code CLOSED}: Disallow MFA, block with authentication.</li><li>{@code\
+    \ PHANTOM}: Disallow MFA, proceed with authentication and communicate MFA to the\
+    \ RP.</li><li>{@code NONE}: Do not check for failure at all.</li><li>{@code UNDEFINED}:\
+    \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.yubikey.failure-mode"
-  defaultValue: "UNDEFINED"
+  defaultValue: ""
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
@@ -47,14 +53,14 @@
   name: "cas.authn.mfa.yubikey.id"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "org.springframework.core.io.Resource"
   description: "Keep device registration records inside a static JSON resource."
   shortDescription: "Keep device registration records inside a static JSON resource."
   name: "cas.authn.mfa.yubikey.json-file"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "When enabled, allows the user/system to accept multiple accounts and\
     \ device registrations per user, allowing one to switch between or register new\
@@ -65,7 +71,7 @@
   name: "cas.authn.mfa.yubikey.multiple-device-registration-enabled"
   defaultValue: false
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
@@ -74,14 +80,14 @@
   name: "cas.authn.mfa.yubikey.name"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
   shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.yubikey.order"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "At times, CAS needs to determine the correct provider when step-up\
     \ authentication is required. Consider for a moment that CAS already has established\
@@ -153,14 +159,14 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Yubikey secret key."
   shortDescription: "Yubikey secret key."
   name: "cas.authn.mfa.yubikey.secret-key"
   defaultValue: ""
 - module: "cas-server-support-yubikey"
-  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
   shortDescription: "Indicates whether this provider should support trusted devices."

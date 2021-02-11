@@ -8382,12 +8382,11 @@
     \ or rebound."
   name: "spring.cloud.refresh.never-refreshable"
   defaultValue: true
-- owner: "org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationProperties"
-  type: "java.lang.Boolean"
-  description: "Whether service auto-registration is enabled. Defaults to true."
-  shortDescription: "Whether service auto-registration is enabled."
+- type: "java.lang.Boolean"
+  description: "Enables Service Registry Auto-registration."
+  shortDescription: "Enables Service Registry Auto-registration."
   name: "spring.cloud.service-registry.auto-registration.enabled"
-  defaultValue: true
+  defaultValue: "true"
 - owner: "org.springframework.cloud.client.serviceregistry.AutoServiceRegistrationProperties"
   type: "java.lang.Boolean"
   description: "Whether startup fails if there is no AutoServiceRegistration. Defaults\

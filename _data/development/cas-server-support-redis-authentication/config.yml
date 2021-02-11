@@ -10,6 +10,14 @@
 - required: true
   module: "cas-server-support-redis-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "boolean"
+  description: "Whether the module is enabled or not, defaults to true."
+  shortDescription: "Whether the module is enabled or not, defaults to true."
+  name: "cas.authn.attribute-repository.redis[].enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Redis server host."
   shortDescription: "Redis server host."
@@ -87,6 +95,14 @@
   shortDescription: "Database index used by the connection factory."
   name: "cas.authn.redis.database"
   defaultValue: 0
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether the module is enabled or not, defaults to true."
+  shortDescription: "Whether the module is enabled or not, defaults to true."
+  name: "cas.authn.redis.enabled"
+  defaultValue: true
 - required: true
   module: "cas-server-support-redis-authentication"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"

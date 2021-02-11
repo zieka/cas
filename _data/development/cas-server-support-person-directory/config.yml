@@ -142,10 +142,6 @@
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.JdbcPrincipalAttributesProperties"
   type: "boolean"
-  description: "Indicates whether JNDI data sources retrieved should be proxied\n\
-    or returned back verbatim."
-  shortDescription: "Indicates whether JNDI data sources retrieved should be proxied\
-    \ or returned back verbatim."
   name: "cas.authn.attribute-repository.jdbc[].data-source-proxy"
   defaultValue: ""
 - module: "cas-server-support-person-directory"
@@ -153,7 +149,20 @@
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
     \ schema.\nBy default, creates and drops the schema automatically when a session\
-    \ is starts and ends"
+    \ is starts and ends.\nSetting the value to {@code validate} or {@code none} may\
+    \ be more desirable for production,\nbut any of the following options can be used:\n\
+    <ul>\n    <li>{@code validate}: Validate the schema, but make no changes to the\
+    \ database.</li>\n    <li>{@code update}: Update the schema.</li>\n    <li>{@code\
+    \ create}: Create the schema, destroying previous data.</li>\n    <li>{@code create-drop}:\
+    \ Drop the schema at the end of the session.</li>\n    <li>{@code none}: Do nothing.</li>\n\
+    </ul>\n<p>\nNote that during a version migration where any schema has changed\
+    \ {@code create-drop} will result\nin the loss of all data as soon as CAS is started.\
+    \ For transient data like tickets this is probably\nnot an issue, but in cases\
+    \ like the audit table important data could be lost. Using `update`, while safe\n\
+    for data, is confirmed to result in invalid database state. {@code validate} or\
+    \ {@code none} settings\nare likely the only safe options for production use.\n\
+    </p>\nFor more info, <a href=\"http://docs.spring.io/spring-framework/docs/current/javadoc-api\"\
+    >see this</a>."
   shortDescription: "Hibernate feature to automatically validate and exports DDL to\
     \ the schema."
   name: "cas.authn.attribute-repository.jdbc[].ddl-auto"
@@ -228,7 +237,7 @@
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
   name: "cas.authn.attribute-repository.jdbc[].health-query"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.JdbcPrincipalAttributesProperties"
   type: "java.lang.String"
@@ -289,7 +298,7 @@
   description: "The database connection password."
   shortDescription: "The database connection password."
   name: "cas.authn.attribute-repository.jdbc[].password"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.JdbcPrincipalAttributesProperties"
   type: "java.lang.String"
@@ -544,7 +553,7 @@
     \ ANY}: Skip hostname verification and allow all.</li></ul>"
   shortDescription: "Hostname verification options."
   name: "cas.authn.attribute-repository.ldap[].hostname-verifier"
-  defaultValue: ""
+  defaultValue: "DEFAULT"
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
   type: "java.lang.String"
@@ -700,7 +709,7 @@
   defaultValue: ""
 - module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.core.authentication.LdapPrincipalAttributesProperties"
-  type: "Boolean"
+  type: "java.lang.Boolean"
   description: "SASL mutual auth is enabled?"
   shortDescription: "SASL mutual auth is enabled?"
   name: "cas.authn.attribute-repository.ldap[].sasl-mutual-auth"

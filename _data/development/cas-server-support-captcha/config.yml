@@ -68,8 +68,9 @@
   owner: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties"
   type: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties$RecaptchaVersions"
   description: "Indicate the version of the recaptcha api. Accepted values are: {@code\
-    \ V2, V3}.\nAvailable values are as follows:\n<ul><li>{@code V2}: V2 version of\
-    \ the recaptcha API.</li><li>{@code V3}: V3 version of the recaptcha API.</li></ul>"
+    \ V2, V3}.\nAvailable values are as follows:\n<ul><li>{@code GOOGLE_RECAPTCHA_V2}:\
+    \ V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version\
+    \ of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>"
   shortDescription: "Indicate the version of the recaptcha api."
   name: "cas.authn.pm.forgot-username.google-recaptcha.version"
   defaultValue: ""
@@ -142,8 +143,9 @@
   owner: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties"
   type: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties$RecaptchaVersions"
   description: "Indicate the version of the recaptcha api. Accepted values are: {@code\
-    \ V2, V3}.\nAvailable values are as follows:\n<ul><li>{@code V2}: V2 version of\
-    \ the recaptcha API.</li><li>{@code V3}: V3 version of the recaptcha API.</li></ul>"
+    \ V2, V3}.\nAvailable values are as follows:\n<ul><li>{@code GOOGLE_RECAPTCHA_V2}:\
+    \ V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version\
+    \ of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>"
   shortDescription: "Indicate the version of the recaptcha api."
   name: "cas.authn.pm.google-recaptcha.version"
   defaultValue: ""
@@ -216,8 +218,9 @@
   owner: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties"
   type: "org.apereo.cas.configuration.model.support.captcha.GoogleRecaptchaProperties$RecaptchaVersions"
   description: "Indicate the version of the recaptcha api. Accepted values are: {@code\
-    \ V2, V3}.\nAvailable values are as follows:\n<ul><li>{@code V2}: V2 version of\
-    \ the recaptcha API.</li><li>{@code V3}: V3 version of the recaptcha API.</li></ul>"
+    \ V2, V3}.\nAvailable values are as follows:\n<ul><li>{@code GOOGLE_RECAPTCHA_V2}:\
+    \ V2 version of the recaptcha API.</li><li>{@code GOOGLE_RECAPTCHA_V3}: V3 version\
+    \ of the recaptcha API.</li><li>{@code HCAPTCHA}: hCaptcha.</li></ul>"
   shortDescription: "Indicate the version of the recaptcha api."
   name: "cas.google-recaptcha.version"
   defaultValue: ""

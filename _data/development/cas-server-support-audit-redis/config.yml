@@ -18,6 +18,14 @@
 - required: true
   module: "cas-server-support-audit-redis"
   owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
+  type: "java.lang.Boolean"
+  description: "Whether the module is enabled or not, defaults to true."
+  shortDescription: "Whether the module is enabled or not, defaults to true."
+  name: "cas.audit.redis.enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-support-audit-redis"
+  owner: "org.apereo.cas.configuration.model.support.redis.AuditRedisProperties"
   type: "java.lang.String"
   description: "Redis server host."
   shortDescription: "Redis server host."

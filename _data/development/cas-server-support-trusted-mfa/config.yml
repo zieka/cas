@@ -1,6 +1,6 @@
 ---
 - module: "cas-server-support-trusted-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorCoreProperties"
   type: "java.lang.String"
   description: "If an MFA request is bypassed due to a trusted authentication decision,\
     \ applications will receive a special attribute as part of the validation payload\
@@ -10,8 +10,30 @@
   shortDescription: "If an MFA request is bypassed due to a trusted authentication\
     \ decision, applications will receive a special attribute as part of the validation\
     \ payload that indicates this behavior."
-  name: "cas.authn.mfa.trusted.authentication-context-attribute"
+  name: "cas.authn.mfa.trusted.core.authentication-context-attribute"
   defaultValue: "isFromTrustedMultifactorAuthentication"
+- module: "cas-server-support-trusted-mfa"
+  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorCoreProperties"
+  type: "java.lang.Boolean"
+  description: "Indicates whether CAS should ask for device registration consent or\
+    \ execute it automatically."
+  shortDescription: "Indicates whether CAS should ask for device registration consent\
+    \ or execute it automatically."
+  name: "cas.authn.mfa.trusted.core.device-registration-enabled"
+  defaultValue: true
+- module: "cas-server-support-trusted-mfa"
+  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorCoreProperties"
+  type: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorCoreProperties$TrustedDevicesKeyGeneratorTypes"
+  description: "Indicates how record keys for trusted devices would be generated so\
+    \ they can be signed/verified on fetch operations.\nAvailable values are as follows:\n\
+    <ul><li>{@code DEFAULT}: Uses a combination of the username, device name and device\
+    \ fingerprint to generate the device key.</li><li>{@code LEGACY}: Deprecated.\
+    \ Uses a combination of the username, record date and device fingerprint to generate\
+    \ the device key.</li></ul>"
+  shortDescription: "Indicates how record keys for trusted devices would be generated\
+    \ so they can be signed/verified on fetch operations."
+  name: "cas.authn.mfa.trusted.core.key-generator-type"
+  defaultValue: ""
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.ClientIp"
   type: "java.lang.Boolean"
@@ -180,15 +202,6 @@
   shortDescription: "Indicates the order of components when generating a device fingerprint."
   name: "cas.authn.mfa.trusted.device-fingerprint.user-agent.order"
   defaultValue: 0
-- module: "cas-server-support-trusted-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorProperties"
-  type: "java.lang.Boolean"
-  description: "Indicates whether CAS should ask for device registration consent or\
-    \ execute it automatically."
-  shortDescription: "Indicates whether CAS should ask for device registration consent\
-    \ or execute it automatically."
-  name: "cas.authn.mfa.trusted.device-registration-enabled"
-  defaultValue: true
 - required: true
   module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JsonTrustedDevicesMultifactorProperties"
@@ -198,16 +211,3 @@
   shortDescription: "The location of the resource."
   name: "cas.authn.mfa.trusted.json.location"
   defaultValue: ""
-- module: "cas-server-support-trusted-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorProperties"
-  type: "java.lang.String"
-  description: "Indicates how record keys for trusted devices would be generated so\
-    \ they can be signed/verified on fetch operations. Acceptable values are {@code\
-    \ default}, {@code legacy}. * <ul> <li>{@code DEFAULT}: Uses a combination of\
-    \ the username, device name and device fingerprint to generate the device key.</li>\
-    \ <li>{@code LEGACY}: Deprecated. Uses a combination of the username, record date\
-    \ and device fingerprint to generate the device key.</li> </ul>"
-  shortDescription: "Indicates how record keys for trusted devices would be generated\
-    \ so they can be signed/verified on fetch operations."
-  name: "cas.authn.mfa.trusted.key-generator-type"
-  defaultValue: "default"

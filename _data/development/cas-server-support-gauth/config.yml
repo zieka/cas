@@ -1,27 +1,33 @@
 ---
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Length of the generated code."
   shortDescription: "Length of the generated code."
   name: "cas.authn.mfa.gauth.code-digits"
   defaultValue: 6
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
-  type: "java.lang.String"
-  description: "The failure mode policy for this MFA provider. The following failure\
-    \ modes are supported: <ul>     <li>{@code CLOSED}: Authentication is blocked\
-    \ if the provider cannot be reached.</li>     <li>{@code OPEN}: Authentication\
-    \ proceeds yet requested MFA is NOT     communicated to the client if provider\
-    \ is unavailable.</li>     <li>{@code PHANTOM}: Authentication proceeds and requested\
-    \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
-    \ NONE}: Do not contact the provider at all to check for availability. Assume\
-    \ the provider is available.</li> </ul>"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
+  type: "org.apereo.cas.configuration.model.support.mfa.BaseMultifactorAuthenticationProviderProperties$MultifactorAuthenticationProviderFailureModes"
+  description: "The failure mode policy for this MFA provider. The authentication\
+    \ policy by default supports fail-closed mode, which means that if you attempt\
+    \ to exercise a particular provider available to CAS and the provider cannot be\
+    \ reached, authentication will be stopped and an error will be displayed. You\
+    \ can of course change this behavior so that authentication proceeds without exercising\
+    \ the provider functionality, if that provider cannot respond. Each defined multifactor\
+    \ authentication provider can set its own failure mode policy. Failure modes set\
+    \ at this location will override the global failure mode, but defer to any failure\
+    \ mode set by the registered service.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ OPEN}: Disallow MFA, proceed with authentication but don't communicate MFA to\
+    \ the RP.</li><li>{@code CLOSED}: Disallow MFA, block with authentication.</li><li>{@code\
+    \ PHANTOM}: Disallow MFA, proceed with authentication and communicate MFA to the\
+    \ RP.</li><li>{@code NONE}: Do not check for failure at all.</li><li>{@code UNDEFINED}:\
+    \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.gauth.failure-mode"
-  defaultValue: "UNDEFINED"
+  defaultValue: ""
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
@@ -31,7 +37,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Issuer used in the barcode when dealing with device registration events.\
     \ Used in the registration URL to identify CAS."
@@ -50,7 +56,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Label used in the barcode when dealing with device registration events.\
     \ Used in the registration URL to identify CAS."
@@ -59,7 +65,7 @@
   name: "cas.authn.mfa.gauth.label"
   defaultValue: "CASLabel"
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "When enabled, allows the user/system to accept multiple accounts and\
     \ device registrations per user, allowing one to switch between or register new\
@@ -70,7 +76,7 @@
   name: "cas.authn.mfa.gauth.multiple-device-registration-enabled"
   defaultValue: false
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
@@ -79,14 +85,14 @@
   name: "cas.authn.mfa.gauth.name"
   defaultValue: ""
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
   shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.gauth.order"
   defaultValue: ""
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "At times, CAS needs to determine the correct provider when step-up\
     \ authentication is required. Consider for a moment that CAS already has established\
@@ -159,21 +165,21 @@
   name: "cas.authn.mfa.gauth.rest.url"
   defaultValue: ""
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.Long"
   description: "The expiration time of the generated code in seconds."
   shortDescription: "The expiration time of the generated code in seconds."
   name: "cas.authn.mfa.gauth.time-step-size"
   defaultValue: 30
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
   shortDescription: "Indicates whether this provider should support trusted devices."
   name: "cas.authn.mfa.gauth.trusted-device-enabled"
   defaultValue: false
 - module: "cas-server-support-gauth"
-  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Since TOTP passwords are time-based, it is essential that the clock\
     \ of both the server and the client are synchronised within the tolerance defined\

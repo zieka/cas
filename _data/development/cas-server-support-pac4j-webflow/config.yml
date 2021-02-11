@@ -123,7 +123,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.cas[].callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.cas.Pac4jCasClientProperties"
   type: "java.lang.String"
@@ -177,6 +177,60 @@
   shortDescription: "CAS protocol to use."
   name: "cas.authn.pac4j.cas[].protocol"
   defaultValue: "CAS20"
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationCoreProperties"
+  type: "java.lang.Boolean"
+  description: "Whether initialization of delegated identity providers should be done\
+    \ eagerly typically during startup."
+  shortDescription: "Whether initialization of delegated identity providers should\
+    \ be done eagerly typically during startup."
+  name: "cas.authn.pac4j.core.lazy-init"
+  defaultValue: true
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationCoreProperties"
+  type: "java.lang.String"
+  description: "The name of the authentication handler in CAS used for delegation."
+  shortDescription: "The name of the authentication handler in CAS used for delegation."
+  name: "cas.authn.pac4j.core.name"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationCoreProperties"
+  type: "java.lang.Integer"
+  description: "Order of the authentication handler in the chain."
+  shortDescription: "Order of the authentication handler in the chain."
+  name: "cas.authn.pac4j.core.order"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationCoreProperties"
+  type: "java.lang.String"
+  description: "The attribute to use as the principal identifier built during and\
+    \ upon a successful authentication attempt."
+  shortDescription: "The attribute to use as the principal identifier built during\
+    \ and upon a successful authentication attempt."
+  name: "cas.authn.pac4j.core.principal-attribute-id"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationCoreProperties"
+  type: "java.lang.Boolean"
+  description: "Indicates whether profiles and other session data, collected as part\
+    \ of pac4j flows and requests that are kept by the container session, should be\
+    \ replicated across the cluster using CAS and its own ticket registry. Without\
+    \ this option, profile data and other related pieces of information should be\
+    \ manually replicated via means and libraries outside of CAS."
+  shortDescription: "Indicates whether profiles and other session data, collected\
+    \ as part of pac4j flows and requests that are kept by the container session,\
+    \ should be replicated across the cluster using CAS and its own ticket registry."
+  name: "cas.authn.pac4j.core.replicate-sessions"
+  defaultValue: true
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationCoreProperties"
+  type: "java.lang.Boolean"
+  description: "When constructing the final user profile from the delegated provider,\
+    \ determines if the provider id should be combined with the principal id."
+  shortDescription: "When constructing the final user profile from the delegated provider,\
+    \ determines if the provider id should be combined with the principal id."
+  name: "cas.authn.pac4j.core.typed-id-used"
+  defaultValue: false
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Dropbox"
   type: "java.lang.Boolean"
@@ -720,15 +774,6 @@
   name: "cas.authn.pac4j.hi-org-server.secret"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties"
-  type: "java.lang.Boolean"
-  description: "Whether initialization of delegated identity providers should be done\
-    \ eagerly typically during startup."
-  shortDescription: "Whether initialization of delegated identity providers should\
-    \ be done eagerly typically during startup."
-  name: "cas.authn.pac4j.lazy-init"
-  defaultValue: true
-- module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.LinkedIn"
   type: "java.lang.Boolean"
   description: "Auto-redirect to this client."
@@ -821,13 +866,6 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties"
-  type: "java.lang.String"
-  description: "The name of the authentication handler in CAS used for delegation."
-  shortDescription: "The name of the authentication handler in CAS used for delegation."
-  name: "cas.authn.pac4j.name"
-  defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.support.pac4j.oauth.Pac4jOAuth20ClientProperties>"
   description: "Settings that deal with having OAuth2-capable providers as an external\
     \ delegated-to authentication provider."
@@ -874,7 +912,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oauth2[].callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oauth.Pac4jOAuth20ClientProperties"
   type: "java.lang.String"
@@ -1030,7 +1068,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].apple.callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAppleOidcClientProperties"
   type: "java.lang.String"
@@ -1258,7 +1296,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].azure.callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAzureOidcClientProperties"
   type: "java.lang.String"
@@ -1469,7 +1507,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].generic.callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
   type: "java.lang.String"
@@ -1666,7 +1704,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].google.callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
   type: "java.lang.String"
@@ -1871,7 +1909,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.oidc[].keycloak.callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jKeyCloakOidcClientProperties"
   type: "java.lang.String"
@@ -2130,13 +2168,6 @@
   name: "cas.authn.pac4j.orcid.secret"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties"
-  type: "java.lang.Integer"
-  description: "Order of the authentication handler in the chain."
-  shortDescription: "Order of the authentication handler in the chain."
-  name: "cas.authn.pac4j.order"
-  defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Paypal"
   type: "java.lang.Boolean"
   description: "Auto-redirect to this client."
@@ -2220,28 +2251,6 @@
   shortDescription: "The client secret."
   name: "cas.authn.pac4j.paypal.secret"
   defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties"
-  type: "java.lang.String"
-  description: "The attribute to use as the principal identifier built during and\
-    \ upon a successful authentication attempt."
-  shortDescription: "The attribute to use as the principal identifier built during\
-    \ and upon a successful authentication attempt."
-  name: "cas.authn.pac4j.principal-attribute-id"
-  defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties"
-  type: "java.lang.Boolean"
-  description: "Indicates whether profiles and other session data, collected as part\
-    \ of pac4j flows and requests that are kept by the container session, should be\
-    \ replicated across the cluster using CAS and its own ticket registry. Without\
-    \ this option, profile data and other related pieces of information should be\
-    \ manually replicated via means and libraries outside of CAS."
-  shortDescription: "Indicates whether profiles and other session data, collected\
-    \ as part of pac4j flows and requests that are kept by the container session,\
-    \ should be replicated across the cluster using CAS and its own ticket registry."
-  name: "cas.authn.pac4j.replicate-sessions"
-  defaultValue: true
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.Rest"
   type: "java.lang.String"
@@ -2395,7 +2404,7 @@
     \ distinguish the client.</li></ul>"
   shortDescription: "Determine how the callback url should be resolved."
   name: "cas.authn.pac4j.saml[].callback-url-type"
-  defaultValue: ""
+  defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
   type: "java.lang.String"
@@ -2559,7 +2568,7 @@
   shortDescription: "Flag to indicate whether the allow-create flags for nameid policies\
     \ should be set to true, false or ignored/defined."
   name: "cas.authn.pac4j.saml[].name-id-policy-allow-create"
-  defaultValue: ""
+  defaultValue: "TRUE"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
   type: "java.lang.String"
@@ -2812,15 +2821,6 @@
   shortDescription: "The client secret."
   name: "cas.authn.pac4j.twitter.secret"
   defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties"
-  type: "java.lang.Boolean"
-  description: "When constructing the final user profile from the delegated provider,\
-    \ determines if the provider id should be combined with the principal id."
-  shortDescription: "When constructing the final user profile from the delegated provider,\
-    \ determines if the provider id should be combined with the principal id."
-  name: "cas.authn.pac4j.typed-id-used"
-  defaultValue: false
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationProperties.WindowsLive"
   type: "java.lang.Boolean"

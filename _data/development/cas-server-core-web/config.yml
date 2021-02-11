@@ -360,6 +360,15 @@
   defaultValue: "en"
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.LocaleProperties"
+  type: "java.lang.Boolean"
+  description: "When set to true, locale resolution via request parameters and such\
+    \ is ignored and the locale default value is always enforced."
+  shortDescription: "When set to true, locale resolution via request parameters and\
+    \ such is ignored and the locale default value is always enforced."
+  name: "cas.locale.force-default-locale"
+  defaultValue: false
+- module: "cas-server-core-web"
+  owner: "org.apereo.cas.configuration.model.core.web.LocaleProperties"
   type: "java.lang.String"
   description: "Parameter name to use when switching locales."
   shortDescription: "Parameter name to use when switching locales."

@@ -1,7 +1,7 @@
 ---
 - required: true
   module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Duo API host and url."
   shortDescription: "Duo API host and url."
@@ -9,7 +9,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The application key is a string, at least 40 characters long,\nthat\
     \ you generate and keep secret from Duo.\nThis is a required setting for the WebSDK\
@@ -22,7 +22,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Duo integration key."
   shortDescription: "Duo integration key."
@@ -30,28 +30,35 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Duo secret key."
   shortDescription: "Duo secret key."
   name: "cas.authn.mfa.duo[].duo-secret-key"
   defaultValue: ""
 - module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
-  type: "java.lang.String"
-  description: "The failure mode policy for this MFA provider.\nThe following failure\
-    \ modes are supported:\n<ul>\n    <li>{@code CLOSED}: Authentication is blocked\
-    \ if the provider cannot be reached.</li>\n    <li>{@code OPEN}: Authentication\
-    \ proceeds yet requested MFA is NOT\n    communicated to the client if provider\
-    \ is unavailable.</li>\n    <li>{@code PHANTOM}: Authentication proceeds and requested\
-    \ MFA is\n    communicated to the client if provider is unavailable.</li>\n  \
-    \  <li>{@code NONE}: Do not contact the provider at all to check for availability.\
-    \ Assume the provider is available.</li>\n</ul>"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
+  type: "org.apereo.cas.configuration.model.support.mfa.BaseMultifactorAuthenticationProviderProperties.MultifactorAuthenticationProviderFailureModes"
+  description: "The failure mode policy for this MFA provider. The authentication\
+    \ policy by default\nsupports fail-closed mode, which means that if you attempt\
+    \ to\nexercise a particular provider available to CAS and the provider cannot\
+    \ be reached, authentication\nwill be stopped and an error will be displayed.\
+    \ You can of course change this behavior so that authentication\nproceeds without\
+    \ exercising the provider functionality, if that provider cannot respond.\nEach\
+    \ defined multifactor authentication provider can set its own failure mode policy.\
+    \ Failure modes set at this location\nwill override the global failure mode, but\
+    \ defer to any failure mode set by the registered service.\nAvailable values are\
+    \ as follows:\n<ul><li>{@code OPEN}: Disallow MFA, proceed with authentication\
+    \ but don't communicate MFA to the RP.</li><li>{@code CLOSED}: Disallow MFA, block\
+    \ with authentication.</li><li>{@code PHANTOM}: Disallow MFA, proceed with authentication\
+    \ and communicate MFA to the RP.</li><li>{@code NONE}: Do not check for failure\
+    \ at all.</li><li>{@code UNDEFINED}: The default one indicating that no failure\
+    \ mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.duo[].failure-mode"
-  defaultValue: "UNDEFINED"
+  defaultValue: "CLOSED"
 - module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The identifier for the multifactor provider.\nIn most cases, this\
     \ need not be configured explicitly, unless\nmultiple instances of the same provider\
@@ -60,7 +67,7 @@
   name: "cas.authn.mfa.duo[].id"
   defaultValue: ""
 - module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
@@ -69,14 +76,14 @@
   name: "cas.authn.mfa.duo[].name"
   defaultValue: ""
 - module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "int"
   description: "The order of the authentication handler in the chain."
   shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.duo[].order"
-  defaultValue: ""
+  defaultValue: "MAX_VALUE"
 - module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "int"
   description: "At times, CAS needs to determine the correct provider when step-up\
     \ authentication is required.\nConsider for a moment that CAS already has established\
@@ -102,7 +109,7 @@
   name: "cas.authn.mfa.duo[].rank"
   defaultValue: ""
 - module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Link to a registration app, typically developed in-house\nin order\
     \ to allow new users to sign-up for duo functionality.\nIf the user account status\
@@ -114,7 +121,7 @@
   name: "cas.authn.mfa.duo[].registration-url"
   defaultValue: ""
 - module: "cas-server-support-duo"
-  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
   type: "boolean"
   description: "Indicates whether this provider should support trusted devices."
   shortDescription: "Indicates whether this provider should support trusted devices."

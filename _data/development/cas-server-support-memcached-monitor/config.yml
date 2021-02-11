@@ -140,12 +140,18 @@
   defaultValue: 2
 - module: "cas-server-support-memcached-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.MemcachedMonitorProperties"
-  type: "java.lang.String"
-  description: "Indicate the transcoder type. Accepted values are {@code KRYO, SERIAL,\
-    \ WHALIN, WHALINV1}. The default is {@code KRYO}."
+  type: "org.apereo.cas.configuration.model.support.memcached.BaseMemcachedProperties$TranscoderTypes"
+  description: "Indicate the transcoder type.\nAvailable values are as follows:\n\
+    <ul><li>{@code KRYO}: CAS transcoder implementation based on Kryo fast serialization\
+    \ framework\nsuited for efficient serialization of tickets. Provides pooling mechanisms\n\
+    as well as control over object registration and sequences.</li><li>{@code SERIAL}:\
+    \ Kryp native transcoder that serializes and compresses objects.</li><li>{@code\
+    \ WHALIN}: Transcoder that provides compatibility with Greg Whalin's memcached\
+    \ client.</li><li>{@code WHALINV1}: Handles old whalin encoding: data type is\
+    \ in the first byte of the value.</li></ul>"
   shortDescription: "Indicate the transcoder type."
   name: "cas.monitor.memcached.transcoder"
-  defaultValue: "KRYO"
+  defaultValue: ""
 - module: "cas-server-support-memcached-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.MemcachedMonitorProperties"
   type: "java.lang.Integer"

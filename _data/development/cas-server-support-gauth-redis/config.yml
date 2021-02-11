@@ -10,6 +10,14 @@
 - required: true
   module: "cas-server-support-gauth-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.RedisGoogleAuthenticatorMultifactorProperties"
+  type: "java.lang.Boolean"
+  description: "Whether the module is enabled or not, defaults to true."
+  shortDescription: "Whether the module is enabled or not, defaults to true."
+  name: "cas.authn.mfa.gauth.redis.enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-support-gauth-redis"
+  owner: "org.apereo.cas.configuration.model.support.mfa.gauth.RedisGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"
   description: "Redis server host."
   shortDescription: "Redis server host."

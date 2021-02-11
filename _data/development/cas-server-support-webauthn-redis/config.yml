@@ -10,6 +10,14 @@
 - required: true
   module: "cas-server-support-webauthn-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnRedisMultifactorProperties"
+  type: "java.lang.Boolean"
+  description: "Whether the module is enabled or not, defaults to true."
+  shortDescription: "Whether the module is enabled or not, defaults to true."
+  name: "cas.authn.mfa.web-authn.redis.enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-support-webauthn-redis"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnRedisMultifactorProperties"
   type: "java.lang.String"
   description: "Redis server host."
   shortDescription: "Redis server host."

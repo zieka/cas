@@ -82,21 +82,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.accept.password-encoder.type"
   defaultValue: "NONE"
@@ -368,34 +367,34 @@
   name: "cas.authn.adaptive.ip-intel.rest.url"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationPolicyProperties"
   type: "java.lang.String"
   description: "Comma-separated list of strings representing browser user agents to\
     \ be rejected from participating in authentication transactions."
   shortDescription: "Comma-separated list of strings representing browser user agents\
     \ to be rejected from participating in authentication transactions."
-  name: "cas.authn.adaptive.reject-browsers"
+  name: "cas.authn.adaptive.policy.reject-browsers"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationPolicyProperties"
   type: "java.lang.String"
   description: "Comma-separated list of strings representing countries to be rejected\
     \ from participating in authentication transactions."
   shortDescription: "Comma-separated list of strings representing countries to be\
     \ rejected from participating in authentication transactions."
-  name: "cas.authn.adaptive.reject-countries"
+  name: "cas.authn.adaptive.policy.reject-countries"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationPolicyProperties"
   type: "java.lang.String"
   description: "Comma-separated list of strings representing IP addresses to be rejected\
     \ from participating in authentication transactions."
   shortDescription: "Comma-separated list of strings representing IP addresses to\
     \ be rejected from participating in authentication transactions."
-  name: "cas.authn.adaptive.reject-ip-addresses"
+  name: "cas.authn.adaptive.policy.reject-ip-addresses"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationPolicyProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
   description: "A map of ({@code mfaProviderId -> adaptiveRegexPattern}) that tells\
     \ CAS when to trigger an MFA authentication transaction. <p> This property binds\
@@ -405,10 +404,10 @@
     \ transaction is triggered for an MFA provider represented by the map's key. </p>"
   shortDescription: "A map of ({@code mfaProviderId -> adaptiveRegexPattern}) that\
     \ tells CAS when to trigger an MFA authentication transaction."
-  name: "cas.authn.adaptive.require-multifactor"
+  name: "cas.authn.adaptive.policy.require-multifactor"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.AdaptiveAuthenticationPolicyProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.TimeBasedAuthenticationProperties>"
   description: "This property binds a valid mfa provider to a collection of rules\
     \ that deal with triggering mfa based on that provider based on properties of\
@@ -418,38 +417,46 @@
   shortDescription: "This property binds a valid mfa provider to a collection of rules\
     \ that deal with triggering mfa based on that provider based on properties of\
     \ date/time."
-  name: "cas.authn.adaptive.require-timed-multifactor"
+  name: "cas.authn.adaptive.policy.require-timed-multifactor"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.TimeBasedAuthenticationProperties"
   type: "java.util.List<String>"
   description: "Trigger mfa on the following days of the week."
   shortDescription: "Trigger mfa on the following days of the week."
-  name: "cas.authn.adaptive.require-timed-multifactor[].on-days"
+  name: "cas.authn.adaptive.policy.require-timed-multifactor[].on-days"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.TimeBasedAuthenticationProperties"
   type: "long"
   description: "Trigger mfa after this hour, specified in 24-hour format."
   shortDescription: "Trigger mfa after this hour, specified in 24-hour format."
-  name: "cas.authn.adaptive.require-timed-multifactor[].on-or-after-hour"
+  name: "cas.authn.adaptive.policy.require-timed-multifactor[].on-or-after-hour"
   defaultValue: "20"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.TimeBasedAuthenticationProperties"
   type: "long"
   description: "Trigger mfa before this hour, specified in 24-hour format."
   shortDescription: "Trigger mfa before this hour, specified in 24-hour format."
-  name: "cas.authn.adaptive.require-timed-multifactor[].on-or-before-hour"
+  name: "cas.authn.adaptive.policy.require-timed-multifactor[].on-or-before-hour"
   defaultValue: "7"
-- module: "cas-server-core-authentication"
+- required: true
+  module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.TimeBasedAuthenticationProperties"
   type: "java.lang.String"
   description: "The mfa provider id that should be triggered."
   shortDescription: "The mfa provider id that should be triggered."
-  name: "cas.authn.adaptive.require-timed-multifactor[].provider-id"
+  name: "cas.authn.adaptive.policy.require-timed-multifactor[].provider-id"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
+  type: "java.util.List<org.apereo.cas.configuration.model.support.azuread.AzureActiveDirectoryAttributesProperties>"
+  description: "Retrieve attributes from multiple Microsoft Graph instances."
+  shortDescription: "Retrieve attributes from multiple Microsoft Graph instances."
+  name: "cas.authn.attribute-repository.azure-active-directory"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
   type: "java.lang.String"
   description: "Indicates how the results of multiple attribute repositories should\
     \ be aggregated together. Accepted values are {@code MERGE}, or {@code CASCADE}.\
@@ -460,17 +467,10 @@
     \ result set are used as the query for the next repository. </li> </ul>"
   shortDescription: "Indicates how the results of multiple attribute repositories\
     \ should be aggregated together."
-  name: "cas.authn.attribute-repository.aggregation"
+  name: "cas.authn.attribute-repository.core.aggregation"
   defaultValue: "MERGE"
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.support.azuread.AzureActiveDirectoryAttributesProperties>"
-  description: "Retrieve attributes from multiple Microsoft Graph instances."
-  shortDescription: "Retrieve attributes from multiple Microsoft Graph instances."
-  name: "cas.authn.attribute-repository.azure-active-directory"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
   type: "java.util.Set<java.lang.String>"
   description: "CAS provides the ability to release a bundle of principal attributes\
     \ to all services by default. This bundle is not defined on a per-service basis\
@@ -481,10 +481,10 @@
     \ release policy."
   shortDescription: "CAS provides the ability to release a bundle of principal attributes\
     \ to all services by default."
-  name: "cas.authn.attribute-repository.default-attributes-to-release"
+  name: "cas.authn.attribute-repository.core.default-attributes-to-release"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
   type: "java.lang.Integer"
   description: "Indicates the global cache expiration period, once attributes are\
     \ fetched from the underlying attribute repository. A zero or negative value indicates\
@@ -492,15 +492,52 @@
     \ fetched from the source."
   shortDescription: "Indicates the global cache expiration period, once attributes\
     \ are fetched from the underlying attribute repository."
-  name: "cas.authn.attribute-repository.expiration-time"
+  name: "cas.authn.attribute-repository.core.expiration-time"
   defaultValue: 30
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
   type: "java.lang.String"
   description: "Expiration caching time unit for attributes."
   shortDescription: "Expiration caching time unit for attributes."
-  name: "cas.authn.attribute-repository.expiration-time-unit"
+  name: "cas.authn.attribute-repository.core.expiration-time-unit"
   defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
+  type: "java.lang.Integer"
+  description: "Indicates the global cache size used to store attributes retrieved\
+    \ from the attribute repository."
+  shortDescription: "Indicates the global cache size used to store attributes retrieved\
+    \ from the attribute repository."
+  name: "cas.authn.attribute-repository.core.maximum-cache-size"
+  defaultValue: 10000
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
+  type: "java.lang.String"
+  description: "Merging strategies can be used to resolve conflicts when the same\
+    \ attribute are found from multiple sources. Accepted values are the following:\
+    \ <ul> <li>{@code REPLACE}: Overwrites existing attribute values, if any.</li>\
+    \ <li>{@code ADD}: Retains existing attribute values if any, and ignores values\
+    \ from subsequent sources in the resolution chain.</li> <li>{@code MULTIVALUED}:\
+    \ Combines all values into a single attribute, essentially creating a multi-valued\
+    \ attribute. </li> <li>{@code NONE}: Doesn't merge attributes, ignores attributes\
+    \ from non-authentication attribute repositories </li> </ul>"
+  shortDescription: "Merging strategies can be used to resolve conflicts when the\
+    \ same attribute are found from multiple sources."
+  name: "cas.authn.attribute-repository.core.merger"
+  defaultValue: "REPLACE"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
+  type: "java.lang.Boolean"
+  description: "In the event that multiple attribute repositories are defined, setting\
+    \ this option to {@code true} forces all repositories to produce a person object.\
+    \ If any of the repositories fails to produce a person or person attributes, the\
+    \ resolution engine will halt to short-circuit the process, failing to resolve\
+    \ the person altogether."
+  shortDescription: "In the event that multiple attribute repositories are defined,\
+    \ setting this option to {@code true} forces all repositories to produce a person\
+    \ object."
+  name: "cas.authn.attribute-repository.core.require-all-repository-sources"
+  defaultValue: false
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.GroovyPrincipalAttributesProperties>"
@@ -531,48 +568,11 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.lang.Integer"
-  description: "Indicates the global cache size used to store attributes retrieved\
-    \ from the attribute repository."
-  shortDescription: "Indicates the global cache size used to store attributes retrieved\
-    \ from the attribute repository."
-  name: "cas.authn.attribute-repository.maximum-cache-size"
-  defaultValue: 10000
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.lang.String"
-  description: "Merging strategies can be used to resolve conflicts when the same\
-    \ attribute are found from multiple sources. Accepted values are the following:\
-    \ <ul> <li>{@code REPLACE}: Overwrites existing attribute values, if any.</li>\
-    \ <li>{@code ADD}: Retains existing attribute values if any, and ignores values\
-    \ from subsequent sources in the resolution chain.</li> <li>{@code MULTIVALUED}:\
-    \ Combines all values into a single attribute, essentially creating a multi-valued\
-    \ attribute. </li> <li>{@code NONE}: Doesn't merge attributes, ignores attributes\
-    \ from non-authentication attribute repositories </li> </ul>"
-  shortDescription: "Merging strategies can be used to resolve conflicts when the\
-    \ same attribute are found from multiple sources."
-  name: "cas.authn.attribute-repository.merger"
-  defaultValue: "REPLACE"
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties>"
   description: "Retrieve attributes from redis repositories."
   shortDescription: "Retrieve attributes from redis repositories."
   name: "cas.authn.attribute-repository.redis"
   defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
-  type: "java.lang.Boolean"
-  description: "In the event that multiple attribute repositories are defined, setting\
-    \ this option to {@code true} forces all repositories to produce a person object.\
-    \ If any of the repositories fails to produce a person or person attributes, the\
-    \ resolution engine will halt to short-circuit the process, failing to resolve\
-    \ the person altogether."
-  shortDescription: "In the event that multiple attribute repositories are defined,\
-    \ setting this option to {@code true} forces all repositories to produce a person\
-    \ object."
-  name: "cas.authn.attribute-repository.require-all-repository-sources"
-  defaultValue: false
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesProperties"
   type: "java.util.List<org.apereo.cas.configuration.model.core.authentication.RestPrincipalAttributesProperties>"
@@ -632,21 +632,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.azure-active-directory.password-encoder.type"
   defaultValue: "NONE"
@@ -749,21 +748,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.cassandra.password-encoder.type"
   defaultValue: "NONE"
@@ -866,21 +864,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.cloud-directory.password-encoder.type"
   defaultValue: "NONE"
@@ -983,21 +980,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.cognito.password-encoder.type"
   defaultValue: "NONE"
@@ -1118,21 +1114,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.couch-db.password-encoder.type"
   defaultValue: "NONE"
@@ -1235,21 +1230,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.couchbase.password-encoder.type"
   defaultValue: "NONE"
@@ -1366,21 +1360,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.file.password-encoder.type"
   defaultValue: "NONE"
@@ -1536,7 +1529,7 @@
   description: "Order of the authentication handler in the chain."
   shortDescription: "Order of the authentication handler in the chain."
   name: "cas.authn.jaas[].order"
-  defaultValue: ""
+  defaultValue: "MAX_VALUE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
@@ -1582,7 +1575,7 @@
     if you wish you define your own encoder.\n\nThe following types may be used:\n\
     <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
     \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
     \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
     \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
     \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
@@ -1654,7 +1647,7 @@
     \ policy\nif the authentication response code is not blocked.</li></ul>"
   shortDescription: "Decide how authentication should handle password policy changes."
   name: "cas.authn.jaas[].password-policy.strategy"
-  defaultValue: ""
+  defaultValue: "DEFAULT"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordPolicyProperties"
   type: "boolean"
@@ -1711,7 +1704,7 @@
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jaas[].principal-transformation.case-conversion"
-  defaultValue: ""
+  defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "java.lang.String"
@@ -1851,7 +1844,7 @@
     if you wish you define your own encoder.\n\nThe following types may be used:\n\
     <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
     \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
     \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
     \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
     \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
@@ -1888,7 +1881,7 @@
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.bind[].principal-transformation.case-conversion"
-  defaultValue: ""
+  defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "java.lang.String"
@@ -1958,7 +1951,7 @@
     if you wish you define your own encoder.\n\nThe following types may be used:\n\
     <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
     \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
     \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
     \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
     \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
@@ -1995,7 +1988,7 @@
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.encode[].principal-transformation.case-conversion"
-  defaultValue: ""
+  defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "java.lang.String"
@@ -2065,7 +2058,7 @@
     if you wish you define your own encoder.\n\nThe following types may be used:\n\
     <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
     \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
     \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
     \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
     \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
@@ -2102,7 +2095,7 @@
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.query[].principal-transformation.case-conversion"
-  defaultValue: ""
+  defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "java.lang.String"
@@ -2172,7 +2165,7 @@
     if you wish you define your own encoder.\n\nThe following types may be used:\n\
     <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
     \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
     \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
     \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
     \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
@@ -2209,7 +2202,7 @@
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.jdbc.search[].principal-transformation.case-conversion"
-  defaultValue: ""
+  defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "java.lang.String"
@@ -2279,21 +2272,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.json.password-encoder.type"
   defaultValue: "NONE"
@@ -2505,7 +2497,7 @@
     if you wish you define your own encoder.\n\nThe following types may be used:\n\
     <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
     \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@link #getCharacterEncoding()} and {@link #getCharacterEncoding()}.</li>\n\
+    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
     \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
     \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
     \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
@@ -2542,7 +2534,7 @@
   shortDescription: "Indicate whether the principal identifier should be transformed\
     \ into upper-case, lower-case, etc."
   name: "cas.authn.ldap[].principal-transformation.case-conversion"
-  defaultValue: ""
+  defaultValue: "NONE"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "java.lang.String"
@@ -2709,17 +2701,6 @@
   name: "cas.authn.mfa.acceptto.bypass.rest.url"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "Attribute returned in the final CAS validation payload that indicates\
-    \ the authentication context class satisfied in the event of a multifactor authentication\
-    \ attempt."
-  shortDescription: "Attribute returned in the final CAS validation payload that indicates\
-    \ the authentication context class satisfied in the event of a multifactor authentication\
-    \ attempt."
-  name: "cas.authn.mfa.authentication-context-attribute"
-  defaultValue: "authnContextClass"
-- module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "Skip multifactor authentication based on designated authentication\
@@ -2861,7 +2842,18 @@
   name: "cas.authn.mfa.authy.bypass.rest.url"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationCoreProperties"
+  type: "java.lang.String"
+  description: "Attribute returned in the final CAS validation payload that indicates\
+    \ the authentication context class satisfied in the event of a multifactor authentication\
+    \ attempt."
+  shortDescription: "Attribute returned in the final CAS validation payload that indicates\
+    \ the authentication context class satisfied in the event of a multifactor authentication\
+    \ attempt."
+  name: "cas.authn.mfa.core.authentication-context-attribute"
+  defaultValue: "authnContextClass"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationCoreProperties"
   type: "java.lang.String"
   description: "Content-type that is expected to be specified by non-web clients such\
     \ as curl, etc in the event that the provider supports variations of non-browser\
@@ -2869,11 +2861,41 @@
   shortDescription: "Content-type that is expected to be specified by non-web clients\
     \ such as curl, etc in the event that the provider supports variations of non-browser\
     \ based MFA."
-  name: "cas.authn.mfa.content-type"
+  name: "cas.authn.mfa.core.content-type"
   defaultValue: "application/cas"
 - module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationCoreProperties"
+  type: "org.apereo.cas.configuration.model.support.mfa.BaseMultifactorAuthenticationProviderProperties$MultifactorAuthenticationProviderFailureModes"
+  description: "Defines the global failure mode for the entire deployment. This is\
+    \ meant to be used a shortcut to define the policy globally rather than per application.\
+    \ Applications registered with CAS can still define a failure mode and override\
+    \ the global.\nAvailable values are as follows:\n<ul><li>{@code OPEN}: Disallow\
+    \ MFA, proceed with authentication but don't communicate MFA to the RP.</li><li>{@code\
+    \ CLOSED}: Disallow MFA, block with authentication.</li><li>{@code PHANTOM}: Disallow\
+    \ MFA, proceed with authentication and communicate MFA to the RP.</li><li>{@code\
+    \ NONE}: Do not check for failure at all.</li><li>{@code UNDEFINED}: The default\
+    \ one indicating that no failure mode is set at all.</li></ul>"
+  shortDescription: "Defines the global failure mode for the entire deployment."
+  name: "cas.authn.mfa.core.global-failure-mode"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationCoreProperties"
+  type: "java.lang.Boolean"
+  description: "In the event that multiple multifactor authentication providers are\
+    \ determined for a multifactor authentication transaction, this setting will allow\
+    \ one to interactively choose a provider out of the list of available providers.\
+    \ A trigger may be designed to support more than one provider, and rather than\
+    \ letting CAS auto-determine the selected provider via scripts or ranking strategies,\
+    \ this method puts the choice back onto the user to decide which provider makes\
+    \ the most sense at any given time."
+  shortDescription: "In the event that multiple multifactor authentication providers\
+    \ are determined for a multifactor authentication transaction, this setting will\
+    \ allow one to interactively choose a provider out of the list of available providers."
+  name: "cas.authn.mfa.core.provider-selection-enabled"
+  defaultValue: false
+- module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.util.List<org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorProperties>"
+  type: "java.util.List<org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties>"
   description: "Activate and configure a multifactor authentication provider via Duo\
     \ Security."
   shortDescription: "Activate and configure a multifactor authentication provider\
@@ -3109,119 +3131,6 @@
   name: "cas.authn.mfa.gauth.bypass.rest.url"
   defaultValue: ""
 - module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "MFA can be triggered for all users/subjects whose authentication event/metadata\
-    \ has resolved a specific attribute that matches one of the below conditions:\
-    \ <ul> <li>Trigger MFA based on a authentication attribute(s) whose value(s) matches\
-    \ a regex pattern. Note that this behavior is only applicable if there is only\
-    \ a single MFA provider configured, since that would allow CAS to know what provider\
-    \ to next activate. </li> <li>Trigger MFA based on a authentication attribute(s)\
-    \ whose value(s) EXACTLY matches an MFA provider. This option is more relevant\
-    \ if you have more than one provider configured or if you have the flexibility\
-    \ of assigning provider ids to attributes as values. </li> </ul> Needless to say,\
-    \ the attributes need to have been resolved for the authentication event prior\
-    \ to this step. This trigger is generally useful when the underlying authentication\
-    \ engine signals CAS to perform additional validation of credentials. This signal\
-    \ may be captured by CAS as an attribute that is part of the authentication event\
-    \ metadata which can then trigger additional multifactor authentication events."
-  shortDescription: "MFA can be triggered for all users/subjects whose authentication\
-    \ event/metadata has resolved a specific attribute that matches one of the below\
-    \ conditions: <ul> <li>Trigger MFA based on a authentication attribute(s) whose\
-    \ value(s) matches a regex pattern."
-  name: "cas.authn.mfa.global-authentication-attribute-name-triggers"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "The regular expression that is cross matches against the authentication\
-    \ attribute to determine if the account is qualified for multifactor authentication."
-  shortDescription: "The regular expression that is cross matches against the authentication\
-    \ attribute to determine if the account is qualified for multifactor authentication."
-  name: "cas.authn.mfa.global-authentication-attribute-value-regex"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "Defines the global failure mode for the entire deployment. This is\
-    \ meant to be used a shortcut to define the policy globally rather than per application.\
-    \ Applications registered with CAS can still define a failure mode and override\
-    \ the global."
-  shortDescription: "Defines the global failure mode for the entire deployment."
-  name: "cas.authn.mfa.global-failure-mode"
-  defaultValue: "CLOSED"
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "MFA can be triggered for all users/subjects carrying a specific attribute\
-    \ that matches one of the conditions below. <ul> <li>Trigger MFA based on a principal\
-    \ attribute(s) whose value(s) matches a regex pattern. Note that this behavior\
-    \ is only applicable if there is only a single MFA provider configured, since\
-    \ that would allow CAS to know what provider to next activate.</li> <li>Trigger\
-    \ MFA based on a principal attribute(s) whose value(s) EXACTLY matches an MFA\
-    \ provider. This option is more relevant if you have more than one provider configured\
-    \ or if you have the flexibility of assigning provider ids to attributes as values.</li>\
-    \ </ul> Needless to say, the attributes need to have been resolved for the principal\
-    \ prior to this step."
-  shortDescription: "MFA can be triggered for all users/subjects carrying a specific\
-    \ attribute that matches one of the conditions below."
-  name: "cas.authn.mfa.global-principal-attribute-name-triggers"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "This is a more generic variant of the {@link #globalPrincipalAttributeNameTriggers}.\
-    \ It may be useful in cases where there is more than one provider configured and\
-    \ available in the application runtime and you need to design a strategy to dynamically\
-    \ decide on the provider that should be activated for the request. The decision\
-    \ is handed off to a Predicate implementation that define in a Groovy script whose\
-    \ location is taught to CAS."
-  shortDescription: "This is a more generic variant of the {@link #globalPrincipalAttributeNameTriggers}."
-  name: "cas.authn.mfa.global-principal-attribute-predicate"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "The regular expression that is cross matches against the principal\
-    \ attribute to determine if the account is qualified for multifactor authentication."
-  shortDescription: "The regular expression that is cross matches against the principal\
-    \ attribute to determine if the account is qualified for multifactor authentication."
-  name: "cas.authn.mfa.global-principal-attribute-value-regex"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "MFA can be triggered for all applications and users regardless of\
-    \ individual settings. This setting holds the value of an MFA provider that shall\
-    \ be activated for all requests, regardless."
-  shortDescription: "MFA can be triggered for all applications and users regardless\
-    \ of individual settings."
-  name: "cas.authn.mfa.global-provider-id"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "MFA can be triggered based on the results of a groovy script of your\
-    \ own design. The outcome of the script should determine the MFA provider id that\
-    \ CAS should attempt to activate."
-  shortDescription: "MFA can be triggered based on the results of a groovy script\
-    \ of your own design."
-  name: "cas.authn.mfa.groovy-script"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "MFA can be triggered by Grouper groups to which the authenticated\
-    \ principal is assigned. Groups are collected by CAS and then cross-checked against\
-    \ all available/configured MFA providers. The group’s comparing factor MUST be\
-    \ defined in CAS to activate this behavior and it can be based on the group’s\
-    \ name, display name, etc where a successful match against a provider id shall\
-    \ activate the chosen MFA provider."
-  shortDescription: "MFA can be triggered by Grouper groups to which the authenticated\
-    \ principal is assigned."
-  name: "cas.authn.mfa.grouper-group-field"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
   description: "Skip multifactor authentication based on designated authentication\
@@ -3361,39 +3270,6 @@
   description: "The endpoint URL to contact and retrieve attributes."
   shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.mfa.inwebo.bypass.rest.url"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.Boolean"
-  description: "In the event that multiple multifactor authentication providers are\
-    \ determined for a multifactor authentication transaction, this setting will allow\
-    \ one to interactively choose a provider out of the list of available providers.\
-    \ A trigger may be designed to support more than one provider, and rather than\
-    \ letting CAS auto-determine the selected provider via scripts or ranking strategies,\
-    \ this method puts the choice back onto the user to decide which provider makes\
-    \ the most sense at any given time."
-  shortDescription: "In the event that multiple multifactor authentication providers\
-    \ are determined for a multifactor authentication transaction, this setting will\
-    \ allow one to interactively choose a provider out of the list of available providers."
-  name: "cas.authn.mfa.provider-selection-enabled"
-  defaultValue: false
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "In the event that multiple multifactor authentication providers are\
-    \ determined for a multifactor authentication transaction, by default CAS will\
-    \ attempt to sort the collection of providers based on their rank and will pick\
-    \ one with the highest priority. This use case may arise if multiple triggers\
-    \ are defined where each decides on a different multifactor authentication provider,\
-    \ or the same provider instance is configured multiple times with many instances.\
-    \ Provider selection may also be carried out using Groovy scripting strategies\
-    \ more dynamically. The following example should serve as an outline of how to\
-    \ select multifactor providers based on a Groovy script."
-  shortDescription: "In the event that multiple multifactor authentication providers\
-    \ are determined for a multifactor authentication transaction, by default CAS\
-    \ will attempt to sort the collection of providers based on their rank and will\
-    \ pick one with the highest priority."
-  name: "cas.authn.mfa.provider-selector-groovy-script"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
@@ -3536,88 +3412,6 @@
   shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.mfa.radius.bypass.rest.url"
   defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "MFA can be triggered for a specific authentication request, provided\
-    \ the initial request to the CAS /login endpoint contains a request header that\
-    \ indicates the required MFA authentication flow. The header name is configurable,\
-    \ but its value must match the authentication provider id of an available MFA\
-    \ provider."
-  shortDescription: "MFA can be triggered for a specific authentication request, provided\
-    \ the initial request to the CAS /login endpoint contains a request header that\
-    \ indicates the required MFA authentication flow."
-  name: "cas.authn.mfa.request-header"
-  defaultValue: "authn_method"
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "MFA can be triggered for a specific authentication request, provided\
-    \ the initial request to the CAS /login endpoint contains a parameter that indicates\
-    \ the required MFA authentication flow. The parameter name is configurable, but\
-    \ its value must match the authentication provider id of an available MFA provider."
-  shortDescription: "MFA can be triggered for a specific authentication request, provided\
-    \ the initial request to the CAS /login endpoint contains a parameter that indicates\
-    \ the required MFA authentication flow."
-  name: "cas.authn.mfa.request-parameter"
-  defaultValue: "authn_method"
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "If REST endpoint is protected via basic authentication, specify the\
-    \ password for authentication."
-  shortDescription: "If REST endpoint is protected via basic authentication, specify\
-    \ the password for authentication."
-  name: "cas.authn.mfa.rest.basic-auth-password"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "If REST endpoint is protected via basic authentication, specify the\
-    \ username for authentication."
-  shortDescription: "If REST endpoint is protected via basic authentication, specify\
-    \ the username for authentication."
-  name: "cas.authn.mfa.rest.basic-auth-username"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
-  type: "java.util.Map<java.lang.String,java.lang.String>"
-  description: "Headers, defined as a Map, to include in the request when making the\
-    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
-    \ in the request. Key in the map should be the header name and the value in the\
-    \ map should be the header value."
-  shortDescription: "Headers, defined as a Map, to include in the request when making\
-    \ the REST call."
-  name: "cas.authn.mfa.rest.headers"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "HTTP method to use when contacting the rest endpoint. Examples include\
-    \ {@code GET, POST}, etc."
-  shortDescription: "HTTP method to use when contacting the rest endpoint."
-  name: "cas.authn.mfa.rest.method"
-  defaultValue: "GET"
-- required: true
-  module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "The endpoint URL to contact and retrieve attributes."
-  shortDescription: "The endpoint URL to contact and retrieve attributes."
-  name: "cas.authn.mfa.rest.url"
-  defaultValue: ""
-- module: "cas-server-core-authentication"
-  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "MFA can be triggered for a specific authentication request, provided\
-    \ the  request  contains a session/request attribute that indicates the required\
-    \ MFA authentication flow. The attribute name is configurable, but its value must\
-    \ match the authentication provider id of an available MFA provider."
-  shortDescription: "MFA can be triggered for a specific authentication request, provided\
-    \ the  request  contains a session/request attribute that indicates the required\
-    \ MFA authentication flow."
-  name: "cas.authn.mfa.session-attribute"
-  defaultValue: "authn_method"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
   type: "java.lang.String"
@@ -3899,6 +3693,169 @@
   description: "The endpoint URL to contact and retrieve attributes."
   shortDescription: "The endpoint URL to contact and retrieve attributes."
   name: "cas.authn.mfa.swivel.bypass.rest.url"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.AuthenticationAttributeMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "MFA can be triggered for all users/subjects whose authentication event/metadata\
+    \ has resolved a specific attribute that matches one of the below conditions:\
+    \ <ul> <li>Trigger MFA based on a authentication attribute(s) whose value(s) matches\
+    \ a regex pattern. Note that this behavior is only applicable if there is only\
+    \ a single MFA provider configured, since that would allow CAS to know what provider\
+    \ to next activate. </li> <li>Trigger MFA based on a authentication attribute(s)\
+    \ whose value(s) EXACTLY matches an MFA provider. This option is more relevant\
+    \ if you have more than one provider configured or if you have the flexibility\
+    \ of assigning provider ids to attributes as values. </li> </ul> Needless to say,\
+    \ the attributes need to have been resolved for the authentication event prior\
+    \ to this step. This trigger is generally useful when the underlying authentication\
+    \ engine signals CAS to perform additional validation of credentials. This signal\
+    \ may be captured by CAS as an attribute that is part of the authentication event\
+    \ metadata which can then trigger additional multifactor authentication events."
+  shortDescription: "MFA can be triggered for all users/subjects whose authentication\
+    \ event/metadata has resolved a specific attribute that matches one of the below\
+    \ conditions: <ul> <li>Trigger MFA based on a authentication attribute(s) whose\
+    \ value(s) matches a regex pattern."
+  name: "cas.authn.mfa.triggers.authentication.global-authentication-attribute-name-triggers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.AuthenticationAttributeMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "The regular expression that is cross matches against the authentication\
+    \ attribute to determine if the account is qualified for multifactor authentication."
+  shortDescription: "The regular expression that is cross matches against the authentication\
+    \ attribute to determine if the account is qualified for multifactor authentication."
+  name: "cas.authn.mfa.triggers.authentication.global-authentication-attribute-value-regex"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.GlobalMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "MFA can be triggered for all applications and users regardless of\
+    \ individual settings. This setting holds the value of an MFA provider that shall\
+    \ be activated for all requests, regardless."
+  shortDescription: "MFA can be triggered for all applications and users regardless\
+    \ of individual settings."
+  name: "cas.authn.mfa.triggers.global.global-provider-id"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.GrouperMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "MFA can be triggered by Grouper groups to which the authenticated\
+    \ principal is assigned. Groups are collected by CAS and then cross-checked against\
+    \ all available/configured MFA providers. The group’s comparing factor MUST be\
+    \ defined in CAS to activate this behavior and it can be based on the group’s\
+    \ name, display name, etc where a successful match against a provider id shall\
+    \ activate the chosen MFA provider."
+  shortDescription: "MFA can be triggered by Grouper groups to which the authenticated\
+    \ principal is assigned."
+  name: "cas.authn.mfa.triggers.grouper.grouper-group-field"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationHttpTriggerProperties"
+  type: "java.lang.String"
+  description: "MFA can be triggered for a specific authentication request, provided\
+    \ the initial request to the CAS /login endpoint contains a request header that\
+    \ indicates the required MFA authentication flow. The header name is configurable,\
+    \ but its value must match the authentication provider id of an available MFA\
+    \ provider."
+  shortDescription: "MFA can be triggered for a specific authentication request, provided\
+    \ the initial request to the CAS /login endpoint contains a request header that\
+    \ indicates the required MFA authentication flow."
+  name: "cas.authn.mfa.triggers.http.request-header"
+  defaultValue: "authn_method"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationHttpTriggerProperties"
+  type: "java.lang.String"
+  description: "MFA can be triggered for a specific authentication request, provided\
+    \ the initial request to the CAS /login endpoint contains a parameter that indicates\
+    \ the required MFA authentication flow. The parameter name is configurable, but\
+    \ its value must match the authentication provider id of an available MFA provider."
+  shortDescription: "MFA can be triggered for a specific authentication request, provided\
+    \ the initial request to the CAS /login endpoint contains a parameter that indicates\
+    \ the required MFA authentication flow."
+  name: "cas.authn.mfa.triggers.http.request-parameter"
+  defaultValue: "authn_method"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationHttpTriggerProperties"
+  type: "java.lang.String"
+  description: "MFA can be triggered for a specific authentication request, provided\
+    \ the  request  contains a session/request attribute that indicates the required\
+    \ MFA authentication flow. The attribute name is configurable, but its value must\
+    \ match the authentication provider id of an available MFA provider."
+  shortDescription: "MFA can be triggered for a specific authentication request, provided\
+    \ the  request  contains a session/request attribute that indicates the required\
+    \ MFA authentication flow."
+  name: "cas.authn.mfa.triggers.http.session-attribute"
+  defaultValue: "authn_method"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.PrincipalAttributeMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "MFA can be triggered for all users/subjects carrying a specific attribute\
+    \ that matches one of the conditions below. <ul> <li>Trigger MFA based on a principal\
+    \ attribute(s) whose value(s) matches a regex pattern. Note that this behavior\
+    \ is only applicable if there is only a single MFA provider configured, since\
+    \ that would allow CAS to know what provider to next activate.</li> <li>Trigger\
+    \ MFA based on a principal attribute(s) whose value(s) EXACTLY matches an MFA\
+    \ provider. This option is more relevant if you have more than one provider configured\
+    \ or if you have the flexibility of assigning provider ids to attributes as values.</li>\
+    \ </ul> Needless to say, the attributes need to have been resolved for the principal\
+    \ prior to this step."
+  shortDescription: "MFA can be triggered for all users/subjects carrying a specific\
+    \ attribute that matches one of the conditions below."
+  name: "cas.authn.mfa.triggers.principal.global-principal-attribute-name-triggers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.PrincipalAttributeMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "The regular expression that is cross matches against the principal\
+    \ attribute to determine if the account is qualified for multifactor authentication."
+  shortDescription: "The regular expression that is cross matches against the principal\
+    \ attribute to determine if the account is qualified for multifactor authentication."
+  name: "cas.authn.mfa.triggers.principal.global-principal-attribute-value-regex"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
+  name: "cas.authn.mfa.triggers.rest.basic-auth-password"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
+  name: "cas.authn.mfa.triggers.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.triggers.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "HTTP method to use when contacting the rest endpoint. Examples include\
+    \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
+  name: "cas.authn.mfa.triggers.rest.method"
+  defaultValue: "GET"
+- required: true
+  module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProperties"
+  type: "java.lang.String"
+  description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
+  name: "cas.authn.mfa.triggers.rest.url"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
@@ -4368,21 +4325,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.mongo.password-encoder.type"
   defaultValue: "NONE"
@@ -4485,21 +4441,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.okta.password-encoder.type"
   defaultValue: "NONE"
@@ -4678,21 +4633,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.pm.jdbc.password-encoder.type"
   defaultValue: "NONE"
@@ -4896,21 +4850,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.radius.password-encoder.type"
   defaultValue: "NONE"
@@ -5013,21 +4966,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.redis.password-encoder.type"
   defaultValue: "NONE"
@@ -5130,21 +5082,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.reject.password-encoder.type"
   defaultValue: "NONE"
@@ -5247,21 +5198,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.rest.password-encoder.type"
   defaultValue: "NONE"
@@ -5310,21 +5260,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.shiro.password-encoder.type"
   defaultValue: "NONE"
@@ -5427,21 +5376,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.soap.password-encoder.type"
   defaultValue: "NONE"
@@ -5722,21 +5670,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.syncope.password-encoder.type"
   defaultValue: "NONE"
@@ -6086,6 +6033,15 @@
   defaultValue: "PT5S"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "The default headers to use for any HTTP connection. This is defined\
+    \ as map, where the key is the header name and the value is the header value that\
+    \ should be sent along with request."
+  shortDescription: "The default headers to use for any HTTP connection."
+  name: "cas.http-client.default-headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
   type: "java.lang.String"
   description: "Enable hostname verification when attempting to contact URL endpoints.\
     \ May also be set to {@code none} to disable verification."
@@ -6184,21 +6140,20 @@
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
     \     <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For\
-    \ message-digest     algorithms via {@link #getCharacterEncoding()} and {@link\
-    \ #getCharacterEncoding()}.</li>     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
-    \ based on the strength provided and an optional secret.</li>     <li>{@code SCRYPT}:\
-    \ Use the {@code SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the\
-    \ {@code Pbkdf2PasswordEncoder} based on the strength provided and an optional\
-    \ secret.</li>     <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
-    \ based on the secret provided.</li>     <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
-    \ supports Ldap SHA and SSHA (salted-SHA). The values     are base-64 encoded\
-    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code\
-    \ GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on the     {@code\
-    \ encoding-algorithm}, strength provided and an optional secret.</li>     <li>{@code\
-    \ org.example.MyEncoder}: An implementation of {@code PasswordEncoder} of your\
-    \ own choosing.</li>     <li>{@code file:///path/to/script.groovy}: Path to a\
-    \ Groovy script charged with handling password encoding operations.</li> </ul>\
-    \ @see PasswordEncoderTypes"
+    \ message-digest     algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\
+    \     <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
+    \ provided and an optional secret.</li>     <li>{@code SCRYPT}: Use the {@code\
+    \ SCryptPasswordEncoder}.</li>     <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ based on the strength provided and an optional secret.</li>     <li>{@code STANDARD}:\
+    \ Use the {@code StandardPasswordEncoder} based on the secret provided.</li> \
+    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
+    \ and SSHA (salted-SHA). The values     are base-64 encoded and have the label\
+    \ {SHA} or {SSHA} prepended to the encoded hash.</li>     <li>{@code GLIBC_CRYPT}:\
+    \ Use the {@code GlibcCryptPasswordEncoder} based on the     {@code encoding-algorithm},\
+    \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
+    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
+    \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
+    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
   shortDescription: "Define the password encoder type to use."
   name: "cas.monitor.endpoints.jdbc.password-encoder.type"
   defaultValue: "NONE"

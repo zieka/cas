@@ -1,7 +1,7 @@
 ---
 - required: true
   module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "org.apereo.cas.configuration.model.core.util.ClientCertificateProperties"
   description: "The client certificate."
   shortDescription: "The client certificate."
@@ -9,28 +9,34 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Console admin API url."
   shortDescription: "Console admin API url."
   name: "cas.authn.mfa.inwebo.console-admin-url"
   defaultValue: "https://api.myinwebo.com/v2/services/ConsoleAdmin"
 - module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
-  type: "java.lang.String"
-  description: "The failure mode policy for this MFA provider. The following failure\
-    \ modes are supported: <ul>     <li>{@code CLOSED}: Authentication is blocked\
-    \ if the provider cannot be reached.</li>     <li>{@code OPEN}: Authentication\
-    \ proceeds yet requested MFA is NOT     communicated to the client if provider\
-    \ is unavailable.</li>     <li>{@code PHANTOM}: Authentication proceeds and requested\
-    \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
-    \ NONE}: Do not contact the provider at all to check for availability. Assume\
-    \ the provider is available.</li> </ul>"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
+  type: "org.apereo.cas.configuration.model.support.mfa.BaseMultifactorAuthenticationProviderProperties$MultifactorAuthenticationProviderFailureModes"
+  description: "The failure mode policy for this MFA provider. The authentication\
+    \ policy by default supports fail-closed mode, which means that if you attempt\
+    \ to exercise a particular provider available to CAS and the provider cannot be\
+    \ reached, authentication will be stopped and an error will be displayed. You\
+    \ can of course change this behavior so that authentication proceeds without exercising\
+    \ the provider functionality, if that provider cannot respond. Each defined multifactor\
+    \ authentication provider can set its own failure mode policy. Failure modes set\
+    \ at this location will override the global failure mode, but defer to any failure\
+    \ mode set by the registered service.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ OPEN}: Disallow MFA, proceed with authentication but don't communicate MFA to\
+    \ the RP.</li><li>{@code CLOSED}: Disallow MFA, block with authentication.</li><li>{@code\
+    \ PHANTOM}: Disallow MFA, proceed with authentication and communicate MFA to the\
+    \ RP.</li><li>{@code NONE}: Do not check for failure at all.</li><li>{@code UNDEFINED}:\
+    \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.inwebo.failure-mode"
-  defaultValue: "UNDEFINED"
+  defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
@@ -39,7 +45,7 @@
   name: "cas.authn.mfa.inwebo.id"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
@@ -48,14 +54,14 @@
   name: "cas.authn.mfa.inwebo.name"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
   shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.inwebo.order"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "At times, CAS needs to determine the correct provider when step-up\
     \ authentication is required. Consider for a moment that CAS already has established\
@@ -82,7 +88,7 @@
   defaultValue: 0
 - required: true
   module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The service API url."
   shortDescription: "The service API url."
@@ -90,7 +96,7 @@
   defaultValue: "https://api.myinwebo.com/FS?"
 - required: true
   module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.Long"
   description: "The Inwebo service id."
   shortDescription: "The Inwebo service id."
@@ -98,21 +104,21 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The alias of the secured site."
   shortDescription: "The alias of the secured site."
   name: "cas.authn.mfa.inwebo.site-alias"
   defaultValue: ""
 - module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The description of the secured site."
   shortDescription: "The description of the secured site."
   name: "cas.authn.mfa.inwebo.site-description"
   defaultValue: "my secured site"
 - module: "cas-server-support-inwebo-mfa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.InweboMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
   shortDescription: "Indicates whether this provider should support trusted devices."

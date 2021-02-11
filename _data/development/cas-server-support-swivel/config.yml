@@ -1,20 +1,26 @@
 ---
 - module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
-  type: "java.lang.String"
-  description: "The failure mode policy for this MFA provider. The following failure\
-    \ modes are supported: <ul>     <li>{@code CLOSED}: Authentication is blocked\
-    \ if the provider cannot be reached.</li>     <li>{@code OPEN}: Authentication\
-    \ proceeds yet requested MFA is NOT     communicated to the client if provider\
-    \ is unavailable.</li>     <li>{@code PHANTOM}: Authentication proceeds and requested\
-    \ MFA is     communicated to the client if provider is unavailable.</li>     <li>{@code\
-    \ NONE}: Do not contact the provider at all to check for availability. Assume\
-    \ the provider is available.</li> </ul>"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
+  type: "org.apereo.cas.configuration.model.support.mfa.BaseMultifactorAuthenticationProviderProperties$MultifactorAuthenticationProviderFailureModes"
+  description: "The failure mode policy for this MFA provider. The authentication\
+    \ policy by default supports fail-closed mode, which means that if you attempt\
+    \ to exercise a particular provider available to CAS and the provider cannot be\
+    \ reached, authentication will be stopped and an error will be displayed. You\
+    \ can of course change this behavior so that authentication proceeds without exercising\
+    \ the provider functionality, if that provider cannot respond. Each defined multifactor\
+    \ authentication provider can set its own failure mode policy. Failure modes set\
+    \ at this location will override the global failure mode, but defer to any failure\
+    \ mode set by the registered service.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ OPEN}: Disallow MFA, proceed with authentication but don't communicate MFA to\
+    \ the RP.</li><li>{@code CLOSED}: Disallow MFA, block with authentication.</li><li>{@code\
+    \ PHANTOM}: Disallow MFA, proceed with authentication and communicate MFA to the\
+    \ RP.</li><li>{@code NONE}: Do not check for failure at all.</li><li>{@code UNDEFINED}:\
+    \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.swivel.failure-mode"
-  defaultValue: "UNDEFINED"
+  defaultValue: ""
 - module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The identifier for the multifactor provider. In most cases, this need\
     \ not be configured explicitly, unless multiple instances of the same provider\
@@ -23,14 +29,14 @@
   name: "cas.authn.mfa.swivel.id"
   defaultValue: ""
 - module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Control whether SSL errors should be ignored by the swivel server."
   shortDescription: "Control whether SSL errors should be ignored by the swivel server."
   name: "cas.authn.mfa.swivel.ignore-ssl-errors"
   defaultValue: false
 - module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The name of the authentication handler used to verify credentials\
     \ in MFA."
@@ -39,14 +45,14 @@
   name: "cas.authn.mfa.swivel.name"
   defaultValue: ""
 - module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "The order of the authentication handler in the chain."
   shortDescription: "The order of the authentication handler in the chain."
   name: "cas.authn.mfa.swivel.order"
   defaultValue: ""
 - module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "At times, CAS needs to determine the correct provider when step-up\
     \ authentication is required. Consider for a moment that CAS already has established\
@@ -73,7 +79,7 @@
   defaultValue: 0
 - required: true
   module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Shared secret to authenticate against the swivel server."
   shortDescription: "Shared secret to authenticate against the swivel server."
@@ -81,7 +87,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "URL endpoint response to generate a turing image."
   shortDescription: "URL endpoint response to generate a turing image."
@@ -89,14 +95,14 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Swivel endpoint url for verification of credentials."
   shortDescription: "Swivel endpoint url for verification of credentials."
   name: "cas.authn.mfa.swivel.swivel-url"
   defaultValue: ""
 - module: "cas-server-support-swivel"
-  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Indicates whether this provider should support trusted devices."
   shortDescription: "Indicates whether this provider should support trusted devices."

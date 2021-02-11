@@ -56,10 +56,6 @@
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.BaseJdbcAuthenticationProperties"
   type: "boolean"
-  description: "Indicates whether JNDI data sources retrieved should be proxied\n\
-    or returned back verbatim."
-  shortDescription: "Indicates whether JNDI data sources retrieved should be proxied\
-    \ or returned back verbatim."
   name: "cas.authn.jdbc.bind[].data-source-proxy"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"
@@ -67,7 +63,20 @@
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
     \ schema.\nBy default, creates and drops the schema automatically when a session\
-    \ is starts and ends"
+    \ is starts and ends.\nSetting the value to {@code validate} or {@code none} may\
+    \ be more desirable for production,\nbut any of the following options can be used:\n\
+    <ul>\n    <li>{@code validate}: Validate the schema, but make no changes to the\
+    \ database.</li>\n    <li>{@code update}: Update the schema.</li>\n    <li>{@code\
+    \ create}: Create the schema, destroying previous data.</li>\n    <li>{@code create-drop}:\
+    \ Drop the schema at the end of the session.</li>\n    <li>{@code none}: Do nothing.</li>\n\
+    </ul>\n<p>\nNote that during a version migration where any schema has changed\
+    \ {@code create-drop} will result\nin the loss of all data as soon as CAS is started.\
+    \ For transient data like tickets this is probably\nnot an issue, but in cases\
+    \ like the audit table important data could be lost. Using `update`, while safe\n\
+    for data, is confirmed to result in invalid database state. {@code validate} or\
+    \ {@code none} settings\nare likely the only safe options for production use.\n\
+    </p>\nFor more info, <a href=\"http://docs.spring.io/spring-framework/docs/current/javadoc-api\"\
+    >see this</a>."
   shortDescription: "Hibernate feature to automatically validate and exports DDL to\
     \ the schema."
   name: "cas.authn.jdbc.bind[].ddl-auto"
@@ -142,7 +151,7 @@
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
   name: "cas.authn.jdbc.bind[].health-query"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.BaseJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -193,7 +202,7 @@
   description: "Order of the authentication handler in the chain."
   shortDescription: "Order of the authentication handler in the chain."
   name: "cas.authn.jdbc.bind[].order"
-  defaultValue: ""
+  defaultValue: "MAX_VALUE"
 - required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.BaseJdbcAuthenticationProperties"
@@ -201,7 +210,7 @@
   description: "The database connection password."
   shortDescription: "The database connection password."
   name: "cas.authn.jdbc.bind[].password"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.BaseJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -313,10 +322,6 @@
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryEncodeJdbcAuthenticationProperties"
   type: "boolean"
-  description: "Indicates whether JNDI data sources retrieved should be proxied\n\
-    or returned back verbatim."
-  shortDescription: "Indicates whether JNDI data sources retrieved should be proxied\
-    \ or returned back verbatim."
   name: "cas.authn.jdbc.encode[].data-source-proxy"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"
@@ -324,7 +329,20 @@
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
     \ schema.\nBy default, creates and drops the schema automatically when a session\
-    \ is starts and ends"
+    \ is starts and ends.\nSetting the value to {@code validate} or {@code none} may\
+    \ be more desirable for production,\nbut any of the following options can be used:\n\
+    <ul>\n    <li>{@code validate}: Validate the schema, but make no changes to the\
+    \ database.</li>\n    <li>{@code update}: Update the schema.</li>\n    <li>{@code\
+    \ create}: Create the schema, destroying previous data.</li>\n    <li>{@code create-drop}:\
+    \ Drop the schema at the end of the session.</li>\n    <li>{@code none}: Do nothing.</li>\n\
+    </ul>\n<p>\nNote that during a version migration where any schema has changed\
+    \ {@code create-drop} will result\nin the loss of all data as soon as CAS is started.\
+    \ For transient data like tickets this is probably\nnot an issue, but in cases\
+    \ like the audit table important data could be lost. Using `update`, while safe\n\
+    for data, is confirmed to result in invalid database state. {@code validate} or\
+    \ {@code none} settings\nare likely the only safe options for production use.\n\
+    </p>\nFor more info, <a href=\"http://docs.spring.io/spring-framework/docs/current/javadoc-api\"\
+    >see this</a>."
   shortDescription: "Hibernate feature to automatically validate and exports DDL to\
     \ the schema."
   name: "cas.authn.jdbc.encode[].ddl-auto"
@@ -413,7 +431,7 @@
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
   name: "cas.authn.jdbc.encode[].health-query"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryEncodeJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -480,7 +498,7 @@
   description: "Order of the authentication handler in the chain."
   shortDescription: "Order of the authentication handler in the chain."
   name: "cas.authn.jdbc.encode[].order"
-  defaultValue: ""
+  defaultValue: "MAX_VALUE"
 - required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryEncodeJdbcAuthenticationProperties"
@@ -488,7 +506,7 @@
   description: "The database connection password."
   shortDescription: "The database connection password."
   name: "cas.authn.jdbc.encode[].password"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryEncodeJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -619,10 +637,6 @@
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryJdbcAuthenticationProperties"
   type: "boolean"
-  description: "Indicates whether JNDI data sources retrieved should be proxied\n\
-    or returned back verbatim."
-  shortDescription: "Indicates whether JNDI data sources retrieved should be proxied\
-    \ or returned back verbatim."
   name: "cas.authn.jdbc.query[].data-source-proxy"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"
@@ -630,7 +644,20 @@
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
     \ schema.\nBy default, creates and drops the schema automatically when a session\
-    \ is starts and ends"
+    \ is starts and ends.\nSetting the value to {@code validate} or {@code none} may\
+    \ be more desirable for production,\nbut any of the following options can be used:\n\
+    <ul>\n    <li>{@code validate}: Validate the schema, but make no changes to the\
+    \ database.</li>\n    <li>{@code update}: Update the schema.</li>\n    <li>{@code\
+    \ create}: Create the schema, destroying previous data.</li>\n    <li>{@code create-drop}:\
+    \ Drop the schema at the end of the session.</li>\n    <li>{@code none}: Do nothing.</li>\n\
+    </ul>\n<p>\nNote that during a version migration where any schema has changed\
+    \ {@code create-drop} will result\nin the loss of all data as soon as CAS is started.\
+    \ For transient data like tickets this is probably\nnot an issue, but in cases\
+    \ like the audit table important data could be lost. Using `update`, while safe\n\
+    for data, is confirmed to result in invalid database state. {@code validate} or\
+    \ {@code none} settings\nare likely the only safe options for production use.\n\
+    </p>\nFor more info, <a href=\"http://docs.spring.io/spring-framework/docs/current/javadoc-api\"\
+    >see this</a>."
   shortDescription: "Hibernate feature to automatically validate and exports DDL to\
     \ the schema."
   name: "cas.authn.jdbc.query[].ddl-auto"
@@ -727,7 +754,7 @@
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
   name: "cas.authn.jdbc.query[].health-query"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -778,7 +805,7 @@
   description: "Order of the authentication handler in the chain."
   shortDescription: "Order of the authentication handler in the chain."
   name: "cas.authn.jdbc.query[].order"
-  defaultValue: ""
+  defaultValue: "MAX_VALUE"
 - required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryJdbcAuthenticationProperties"
@@ -786,7 +813,7 @@
   description: "The database connection password."
   shortDescription: "The database connection password."
   name: "cas.authn.jdbc.query[].password"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -900,10 +927,6 @@
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.SearchJdbcAuthenticationProperties"
   type: "boolean"
-  description: "Indicates whether JNDI data sources retrieved should be proxied\n\
-    or returned back verbatim."
-  shortDescription: "Indicates whether JNDI data sources retrieved should be proxied\
-    \ or returned back verbatim."
   name: "cas.authn.jdbc.search[].data-source-proxy"
   defaultValue: ""
 - module: "cas-server-support-jdbc-authentication"
@@ -911,7 +934,20 @@
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
     \ schema.\nBy default, creates and drops the schema automatically when a session\
-    \ is starts and ends"
+    \ is starts and ends.\nSetting the value to {@code validate} or {@code none} may\
+    \ be more desirable for production,\nbut any of the following options can be used:\n\
+    <ul>\n    <li>{@code validate}: Validate the schema, but make no changes to the\
+    \ database.</li>\n    <li>{@code update}: Update the schema.</li>\n    <li>{@code\
+    \ create}: Create the schema, destroying previous data.</li>\n    <li>{@code create-drop}:\
+    \ Drop the schema at the end of the session.</li>\n    <li>{@code none}: Do nothing.</li>\n\
+    </ul>\n<p>\nNote that during a version migration where any schema has changed\
+    \ {@code create-drop} will result\nin the loss of all data as soon as CAS is started.\
+    \ For transient data like tickets this is probably\nnot an issue, but in cases\
+    \ like the audit table important data could be lost. Using `update`, while safe\n\
+    for data, is confirmed to result in invalid database state. {@code validate} or\
+    \ {@code none} settings\nare likely the only safe options for production use.\n\
+    </p>\nFor more info, <a href=\"http://docs.spring.io/spring-framework/docs/current/javadoc-api\"\
+    >see this</a>."
   shortDescription: "Hibernate feature to automatically validate and exports DDL to\
     \ the schema."
   name: "cas.authn.jdbc.search[].ddl-auto"
@@ -1002,7 +1038,7 @@
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
   name: "cas.authn.jdbc.search[].health-query"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.SearchJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -1053,7 +1089,7 @@
   description: "Order of the authentication handler in the chain."
   shortDescription: "Order of the authentication handler in the chain."
   name: "cas.authn.jdbc.search[].order"
-  defaultValue: ""
+  defaultValue: "MAX_VALUE"
 - required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.SearchJdbcAuthenticationProperties"
@@ -1061,7 +1097,7 @@
   description: "The database connection password."
   shortDescription: "The database connection password."
   name: "cas.authn.jdbc.search[].password"
-  defaultValue: ""
+  defaultValue: "EMPTY"
 - module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.SearchJdbcAuthenticationProperties"
   type: "java.lang.String"
