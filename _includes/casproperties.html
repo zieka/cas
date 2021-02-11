@@ -11,6 +11,7 @@
 {% assign thirdParty = include.thirdParty | split: "," %}
 {% assign thirdPartyExactMatch = include.thirdPartyExactMatch | split: "," %}
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
+{% assign includeRsaKeys = include.includeRsaKeys %}
 
 {% assign randomNumber = include.properties 
     | default: include.modules 
@@ -568,7 +569,7 @@
 
 {% if signingEncryptionEnabled == true %}
 <div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
-    {% capture signingEncConfig %}{% include {{ version }}/signing-encryption-configuration.md %}{% endcapture %}
+    {% capture signingEncConfig %}{% include {{ version }}/signing-encryption-configuration.md includeRsaKeys=includeRsaKeys %}{% endcapture %}
     {{ signingEncConfig | markdownify }}
 </div>
 {% endif %}
