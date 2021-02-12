@@ -24,7 +24,3 @@ Configuration properties are automatically validated on CAS startup to report is
 #### Indexed Settings
 
 CAS settings able to accept multiple values are typically documented with an index, such as `cas.some.setting[0]=value`. The index `[0]` is meant to be incremented by the adopter to allow for distinct multiple configuration blocks.
-
-#### Time Unit of Measure
-
-All CAS settings that deal with time units, unless noted otherwise, should support the duration syntax for full clarity on unit of measure: `PT20S, PT15M, PT10H, PT6D, P2DT3H4M`.
