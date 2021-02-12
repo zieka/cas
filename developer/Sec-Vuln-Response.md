@@ -78,7 +78,8 @@ Once the release is made available, the following procedure may be observed:
 Please note that the CAS project cannot disclose details about the security issue and its effects to private individuals without first verifying
 their identity and Apereo foundation membership status. If you consider yourself a trusted contact for your institution who is registered and vetted
 by the Apereo foundation, please provide the project with enough background information so we can happily proceed to explain the details in a relaxed
-and trusted environment. 
+and trusted environment. If you are not a trusted member yet, please be patient during the grace period and allow other trusted contacts to properly
+and securely take action to remedy the issue before the issue publicly disclosed to the wider user community.
 
 To learn more about how to become an Apereo foundation member and a registered trusted contact, please [contact Apereo directly](https://www.apereo.org).
 
