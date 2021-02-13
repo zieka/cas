@@ -138,6 +138,14 @@ This is a private closed-list open to the CAS PMC members. PMC bylaws are [publi
 
 [View and/or subscribe](https://groups.google.com/a/apereo.org/forum/#!forum/cas-pmc)
 
+## CAS Chair (cas-chair@apereo.org)
+
+_Focus_: Project chairman and vice chairman contact channel
+
+This is a private closed-list reserved for the CAS project chairman and vice chairman, in cotact with the Apereo foundation.
+
+[View and/or subscribe](https://groups.google.com/a/apereo.org/forum/#!forum/cas-chair)
+
 
 ## Foreign Language Lists
 
