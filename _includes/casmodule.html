@@ -25,20 +25,15 @@ function tabClicked(idx) {
   {% endif %}
 
   <li role='presentation' class='nav-item dropdown'>
-    <a class='nav-link dropdown-toggle' onclick="javascript:tabClicked(3)" data-toggle='dropdown' href='#' role='button'>Resources<span
-        class='caret'></span></a>
+    <a class='nav-link dropdown-toggle' onclick="javascript:tabClicked(3)" data-toggle='dropdown' href='#' role='button'>Resources
+      <span class='caret'></span>
+    </a>
     <div class='dropdown-menu'>
-      <a class='dropdown-item' href='https://github.com/apereo/cas-overlay-template'>CAS Server WAR Overlay</a>
-      <a class='dropdown-item' href="javascript:generateOverlay('{{include.module}}');">Generate CAS Server WAR
-        Overlay</a>
-      <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='https://github.com/apereo/cas-management-overlay'>CAS Management WAR Overlay</a>
-      <div class='dropdown-divider'></div>
-      <a class='dropdown-item' href='https://github.com/apereo/cas-configserver-overlay'>CAS Configuration Server
-        Overlay</a>
-      <a class='dropdown-item' href='https://github.com/apereo/cas-discoveryserver-overlay'>CAS Discovery Server
-        Overlay</a>
-      <a class='dropdown-item' href='https://github.com/apereo/cas-bootadmin-overlay'>CAS Spring Boot Admin Server</a>
+      <a class='dropdown-item' href="javascript:generateOverlay('{{include.module}}', 'cas-overlay');">Generate CAS Server WAR Overlay</a>
+      <a class='dropdown-item' href="javascript:generateOverlay('{{include.module}}', 'cas-mgmt-overlay');">Generate CAS Management Server WAR Overlay</a>
+      <a class='dropdown-item' href="javascript:generateOverlay('{{include.module}}', 'cas-config-server-overlay');">Generate CAS Configuration Server WAR Overlay</a>
+      <a class='dropdown-item' href="javascript:generateOverlay('', 'cas-discovery-server-overlay');">Generate CAS Discovery Server WAR Overlay</a>
+      <a class='dropdown-item' href="javascript:generateOverlay('', 'cas-bootadmin-server-overlay');">Generate CAS Spring Boot Admin Server WAR Overlay</a>
     </div>
   </li>
 </ul>

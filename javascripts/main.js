@@ -306,14 +306,16 @@ function enableBootstrapTooltips() {
   $('[data-toggle="tooltip"]').tooltip();
 }
 
-function generateOverlay(artifactId) {
+function generateOverlay(artifactId, type) {
   var id = artifactId.replace("cas-server-", "")
   
   $("#overlayform").remove();
   $('body').append(" \
   <form id='overlayform' action='https://casinit.herokuapp.com/starter.zip' method='post'> \
-  <input type='submit' value='submit' /> \
-  <input type='hidden' name='dependencies' value='" + id + "' /> </form>");
+    <input type='submit' value='submit' /> \
+    <input type='hidden' name='dependencies' value='" + id + "' /> \
+    <input type='hidden' name='type' value='" + type + "' /> \
+  </form>");
   $("#overlayform").submit();
 }
 
