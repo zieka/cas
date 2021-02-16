@@ -531,7 +531,7 @@
                 {% for exm in thirdPartyStartsWith %}
                     {% assign startsWithResults = config.name | split:exm %}
                 
-                    {% if startsWithResults[0].size == 0 %}
+                    {% if startsWithResults[0].size == 0 or config.name == exm %}
                         {% assign foundExcluded = false %}
                         {% for ex in excludes %}
                             {% if config.name contains ex %}
