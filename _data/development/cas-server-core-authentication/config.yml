@@ -457,18 +457,18 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
-  type: "java.lang.String"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties$AggregationStrategyTypes"
   description: "Indicates how the results of multiple attribute repositories should\
-    \ be aggregated together. Accepted values are {@code MERGE}, or {@code CASCADE}.\
-    \ <ul> <li>{@code MERGE}: Default. Designed to query multiple repositories in\
-    \ order and merge the results into a single result set.</li> <li>{@code CASCADE}:\
-    \ Query multiple repositories in order and merge the results into a single result\
-    \ set. As each repository is queried the attributes from the first query in the\
-    \ result set are used as the query for the next repository. </li> </ul>"
+    \ be aggregated together.\nAvailable values are as follows:\n<ul><li>{@code MERGE}:\
+    \ Default. Designed to query multiple repositories\nin order and merge the results\
+    \ into a single result set.</li><li>{@code CASCADE}:  Query multiple repositories\
+    \ in order and merge the results into\n a single result set. As each repository\
+    \ is queried\n the attributes from the first query in the result set are\n used\
+    \ as the query for the next repository.</li></ul>"
   shortDescription: "Indicates how the results of multiple attribute repositories\
     \ should be aggregated together."
   name: "cas.authn.attribute-repository.core.aggregation"
-  defaultValue: "MERGE"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
   type: "java.util.Set<java.lang.String>"
@@ -512,19 +512,20 @@
   defaultValue: 10000
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
-  type: "java.lang.String"
+  type: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties$MergingStrategyTypes"
   description: "Merging strategies can be used to resolve conflicts when the same\
-    \ attribute are found from multiple sources. Accepted values are the following:\
-    \ <ul> <li>{@code REPLACE}: Overwrites existing attribute values, if any.</li>\
-    \ <li>{@code ADD}: Retains existing attribute values if any, and ignores values\
-    \ from subsequent sources in the resolution chain.</li> <li>{@code MULTIVALUED}:\
-    \ Combines all values into a single attribute, essentially creating a multi-valued\
-    \ attribute. </li> <li>{@code NONE}: Doesn't merge attributes, ignores attributes\
-    \ from non-authentication attribute repositories </li> </ul>"
+    \ attribute are found from multiple sources.\nAvailable values are as follows:\n\
+    <ul><li>{@code REPLACE}: Replace attributes.  Overwrites existing attribute values,\
+    \ if any.</li><li>{@code ADD}: Add attributes.\nRetains existing attribute values\
+    \ if any, and ignores values from subsequent sources in the resolution chain.</li><li>{@code\
+    \ NONE}: No merging.\nDoesn't merge attributes, ignores attributes from non-authentication\
+    \ attribute repositories.</li><li>{@code MULTIVALUED}: Multivalued attributes.\n\
+    Combines all values into a single attribute, essentially creating a multi-valued\
+    \ attribute.</li></ul>"
   shortDescription: "Merging strategies can be used to resolve conflicts when the\
     \ same attribute are found from multiple sources."
   name: "cas.authn.attribute-repository.core.merger"
-  defaultValue: "REPLACE"
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalAttributesCoreProperties"
   type: "java.lang.Boolean"
