@@ -86,17 +86,6 @@
   defaultValue: ""
 - module: "cas-server-support-google-analytics"
   owner: "org.apereo.cas.configuration.model.support.analytics.GoogleAnalyticsCookieProperties"
-  type: "java.lang.Boolean"
-  description: "When generating cookie values, determine whether the value should\
-    \ be compounded and signed with the properties of the current session, such as\
-    \ IP address, user-agent, etc."
-  shortDescription: "When generating cookie values, determine whether the value should\
-    \ be compounded and signed with the properties of the current session, such as\
-    \ IP address, user-agent, etc."
-  name: "cas.google-analytics.cookie.pin-to-session"
-  defaultValue: true
-- module: "cas-server-support-google-analytics"
-  owner: "org.apereo.cas.configuration.model.support.analytics.GoogleAnalyticsCookieProperties"
   type: "java.lang.String"
   description: "If a cookie is only intended to be accessed in a first party context,\
     \ the developer has the option to apply one of settings {@code SameSite=Lax} or\
