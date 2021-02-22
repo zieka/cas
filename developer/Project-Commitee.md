@@ -14,6 +14,7 @@ The current members of the PMC are:
 
 - [Julien Huon](https://github.com/julienhuon)
 - [Dmitriy Kopylenko](https://github.com/dima767)
+- [Travis Schmidt](https://github.com/tsschmidt)
 - [Jérôme Leleu](https://github.com/leleuj) [Vice Chairman]
 - [Hal Deadman](https://github.com/hdeadman)
 - [Misagh Moayyed](https://github.com/mmoayyed) [Chairman]
@@ -22,7 +23,6 @@ The current members of the PMC are:
 Emeritus members are:
 
 - [Daniel Frett](https://github.com/frett)
-- [Travis Schmidt](https://github.com/tsschmidt)
 - [Timur Duehr](https://github.com/tduehr)
 - [Scott Battaglia](https://github.com/battags)
 - [Jeff Sittler](https://github.com/mindblender)
