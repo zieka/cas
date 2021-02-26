@@ -444,6 +444,17 @@
   name: "cas.message-bundle.use-code-message"
   defaultValue: true
 - module: "cas-server-core-web"
+  owner: "org.apereo.cas.configuration.model.core.web.view.ViewProperties"
+  type: "java.lang.Boolean"
+  description: "When set to {@code true}, attempts to calculate and display the list\
+    \ of authorized services for the authenticated user on successful authentication\
+    \ attempts."
+  shortDescription: "When set to {@code true}, attempts to calculate and display the\
+    \ list of authorized services for the authenticated user on successful authentication\
+    \ attempts."
+  name: "cas.view.authorized-services-on-successful-login"
+  defaultValue: false
+- module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.view.Cas10ViewProperties"
   type: "org.apereo.cas.configuration.model.core.web.view.Cas10ViewProperties$ValidationAttributesRendererTypes"
   description: "Indicates how attributes in the final validation response should be\

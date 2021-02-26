@@ -95,7 +95,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.accept.password-encoder.type"
   defaultValue: "NONE"
@@ -646,7 +646,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.azure-active-directory.password-encoder.type"
   defaultValue: "NONE"
@@ -762,7 +762,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.cassandra.password-encoder.type"
   defaultValue: "NONE"
@@ -878,7 +878,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.cloud-directory.password-encoder.type"
   defaultValue: "NONE"
@@ -994,7 +994,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.cognito.password-encoder.type"
   defaultValue: "NONE"
@@ -1128,7 +1128,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.couch-db.password-encoder.type"
   defaultValue: "NONE"
@@ -1244,7 +1244,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.couchbase.password-encoder.type"
   defaultValue: "NONE"
@@ -1374,7 +1374,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.file.password-encoder.type"
   defaultValue: "NONE"
@@ -2286,7 +2286,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.json.password-encoder.type"
   defaultValue: "NONE"
@@ -4339,7 +4339,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.mongo.password-encoder.type"
   defaultValue: "NONE"
@@ -4455,7 +4455,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.okta.password-encoder.type"
   defaultValue: "NONE"
@@ -4647,7 +4647,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.pm.jdbc.password-encoder.type"
   defaultValue: "NONE"
@@ -4864,7 +4864,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.radius.password-encoder.type"
   defaultValue: "NONE"
@@ -4980,7 +4980,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.redis.password-encoder.type"
   defaultValue: "NONE"
@@ -5096,7 +5096,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.reject.password-encoder.type"
   defaultValue: "NONE"
@@ -5212,7 +5212,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.rest.password-encoder.type"
   defaultValue: "NONE"
@@ -5274,7 +5274,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.shiro.password-encoder.type"
   defaultValue: "NONE"
@@ -5390,7 +5390,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.soap.password-encoder.type"
   defaultValue: "NONE"
@@ -5684,7 +5684,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.syncope.password-encoder.type"
   defaultValue: "NONE"
@@ -5993,9 +5993,9 @@
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.HttpClientProperties"
   type: "java.lang.Boolean"
-  description: "Whether CAS should accept local logout URLs. For example {@code http(s)://localhost/logout}."
-  shortDescription: "Whether CAS should accept local logout URLs."
-  name: "cas.http-client.allow-local-logout-urls"
+  description: "Whether CAS should accept local URLs. For example {@code http(s)://localhost/logout}."
+  shortDescription: "Whether CAS should accept local URLs."
+  name: "cas.http-client.allow-local-urls"
   defaultValue: false
 - duration: true
   module: "cas-server-core-authentication"
@@ -6157,7 +6157,7 @@
     \ strength provided and an optional secret.</li>     <li>{@code org.example.MyEncoder}:\
     \ An implementation of {@code PasswordEncoder} of your own choosing.</li>    \
     \ <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged with\
-    \ handling password encoding operations.</li> </ul> @see PasswordEncoderTypes"
+    \ handling password encoding operations.</li> </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.monitor.endpoints.jdbc.password-encoder.type"
   defaultValue: "NONE"

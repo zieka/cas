@@ -2321,14 +2321,15 @@
     \ authentication provider."
   name: "cas.authn.pac4j.saml"
   defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
+- duration: true
+  module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "int"
+  type: "java.lang.String"
   description: "Maximum skew in seconds between SP and IDP clocks.\nThis skew is added\
     \ onto the {@code NotOnOrAfter} field in seconds\nfor the SAML response validation."
   shortDescription: "Maximum skew in seconds between SP and IDP clocks."
   name: "cas.authn.pac4j.saml[].accepted-skew"
-  defaultValue: "300"
+  defaultValue: "PT300S"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
   type: "boolean"
@@ -2537,9 +2538,10 @@
   shortDescription: "The name that should be used to rename {@link #name}."
   name: "cas.authn.pac4j.saml[].mapped-to"
   defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
+- duration: true
+  module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "int"
+  type: "java.lang.String"
   description: "Once you have an authenticated session on the identity provider, usually\
     \ it won't prompt you again to enter your\ncredentials and it will automatically\
     \ generate a new assertion for you. By default, the SAML client\nwill accept assertions\
@@ -2549,7 +2551,7 @@
     \ usually it won't prompt you again to enter your credentials and it will automatically\
     \ generate a new assertion for you."
   name: "cas.authn.pac4j.saml[].maximum-authentication-lifetime"
-  defaultValue: "3600"
+  defaultValue: "PT3600S"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
   type: "java.lang.String"
