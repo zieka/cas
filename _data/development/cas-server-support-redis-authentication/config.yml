@@ -1,0 +1,175 @@
+---
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "int"
+  description: "Database index used by the connection factory."
+  shortDescription: "Database index used by the connection factory."
+  name: "cas.authn.attribute-repository.redis[].database"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "boolean"
+  description: "Whether the module is enabled or not, defaults to true."
+  shortDescription: "Whether the module is enabled or not, defaults to true."
+  name: "cas.authn.attribute-repository.redis[].enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "java.lang.String"
+  description: "Redis server host."
+  shortDescription: "Redis server host."
+  name: "cas.authn.attribute-repository.redis[].host"
+  defaultValue: "localhost"
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "java.lang.String"
+  description: "A value can be assigned to this field to uniquely identify this resolver."
+  shortDescription: "A value can be assigned to this field to uniquely identify this\
+    \ resolver."
+  name: "cas.authn.attribute-repository.redis[].id"
+  defaultValue: ""
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "int"
+  description: "The order of this attribute repository in the chain of repositories.\n\
+    Can be used to explicitly position this source in chain and affects\nmerging strategies."
+  shortDescription: "The order of this attribute repository in the chain of repositories."
+  name: "cas.authn.attribute-repository.redis[].order"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "java.lang.String"
+  description: "Login password of the redis server."
+  shortDescription: "Login password of the redis server."
+  name: "cas.authn.attribute-repository.redis[].password"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "int"
+  description: "Redis server port."
+  shortDescription: "Redis server port."
+  name: "cas.authn.attribute-repository.redis[].port"
+  defaultValue: "6379"
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "java.lang.String"
+  description: "Setting that describes how Lettuce routes read operations to replica\
+    \ nodes.\nAccepted mode are :\n<ul>\n<li>{@code MASTER}: Default mode. Read from\
+    \ the current master node.</li>\n<li>{@code MASTER_PREFERRED}: Read from the master,\
+    \ but if it is unavailable, read from replica nodes.</li>\n<li>{@code REPLICA/SLAVE}:\
+    \ Read from replica nodes. The value REPLICA should be used from lettuce-core\
+    \ version\n5.2.</li>\n<li>{@code REPLICA_PREFERRED/SLAVE_PREFERRED}: Read from\
+    \ the replica nodes, but if none is unavailable, read\nfrom the master. The value\
+    \ REPLICA_PREFERRED should be used from lettuce-core version 5.2.</li>\n<li>{@code\
+    \ NEAREST}: Read from any node of the cluster with the lowest latency.</li>\n\
+    <li>{@code ANY}: Read from any node of the cluster.The value should be used from\
+    \ lettuce-core version 5.2.</li>\n</ul>"
+  shortDescription: "Setting that describes how Lettuce routes read operations to\
+    \ replica nodes."
+  name: "cas.authn.attribute-repository.redis[].read-from"
+  defaultValue: ""
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "int"
+  description: "Connection timeout in milliseconds."
+  shortDescription: "Connection timeout in milliseconds."
+  name: "cas.authn.attribute-repository.redis[].timeout"
+  defaultValue: "2000"
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  type: "boolean"
+  description: "Whether or not to use SSL for connection factory."
+  shortDescription: "Whether or not to use SSL for connection factory."
+  name: "cas.authn.attribute-repository.redis[].use-ssl"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.Integer"
+  description: "Database index used by the connection factory."
+  shortDescription: "Database index used by the connection factory."
+  name: "cas.authn.redis.database"
+  defaultValue: 0
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether the module is enabled or not, defaults to true."
+  shortDescription: "Whether the module is enabled or not, defaults to true."
+  name: "cas.authn.redis.enabled"
+  defaultValue: true
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.String"
+  description: "Redis server host."
+  shortDescription: "Redis server host."
+  name: "cas.authn.redis.host"
+  defaultValue: "localhost"
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.String"
+  description: "The name of the authentication handler."
+  shortDescription: "The name of the authentication handler."
+  name: "cas.authn.redis.name"
+  defaultValue: ""
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.Integer"
+  description: "Order of authentication handler in chain."
+  shortDescription: "Order of authentication handler in chain."
+  name: "cas.authn.redis.order"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.String"
+  description: "Login password of the redis server."
+  shortDescription: "Login password of the redis server."
+  name: "cas.authn.redis.password"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.Integer"
+  description: "Redis server port."
+  shortDescription: "Redis server port."
+  name: "cas.authn.redis.port"
+  defaultValue: 6379
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.String"
+  description: "Setting that describes how Lettuce routes read operations to replica\
+    \ nodes. Accepted mode are : <ul> <li>{@code MASTER}: Default mode. Read from\
+    \ the current master node.</li> <li>{@code MASTER_PREFERRED}: Read from the master,\
+    \ but if it is unavailable, read from replica nodes.</li> <li>{@code REPLICA/SLAVE}:\
+    \ Read from replica nodes. The value REPLICA should be used from lettuce-core\
+    \ version 5.2.</li> <li>{@code REPLICA_PREFERRED/SLAVE_PREFERRED}: Read from the\
+    \ replica nodes, but if none is unavailable, read from the master. The value REPLICA_PREFERRED\
+    \ should be used from lettuce-core version 5.2.</li> <li>{@code NEAREST}: Read\
+    \ from any node of the cluster with the lowest latency.</li> <li>{@code ANY}:\
+    \ Read from any node of the cluster.The value should be used from lettuce-core\
+    \ version 5.2.</li> </ul>"
+  shortDescription: "Setting that describes how Lettuce routes read operations to\
+    \ replica nodes."
+  name: "cas.authn.redis.read-from"
+  defaultValue: ""
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.Integer"
+  description: "Connection timeout in milliseconds."
+  shortDescription: "Connection timeout in milliseconds."
+  name: "cas.authn.redis.timeout"
+  defaultValue: 2000
+- module: "cas-server-support-redis-authentication"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisAuthenticationProperties"
+  type: "java.lang.Boolean"
+  description: "Whether or not to use SSL for connection factory."
+  shortDescription: "Whether or not to use SSL for connection factory."
+  name: "cas.authn.redis.use-ssl"
+  defaultValue: false
