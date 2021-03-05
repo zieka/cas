@@ -1764,6 +1764,19 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves\nmore than\
+    \ one principal, (specially if such principals in the chain\nhave different identifiers),\
+    \ this setting determines strategy by which\nthe principal id would be chosen\
+    \ from the chain.\nAccepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.authn.jaas[].principal.principal-resolution-conflict-strategy"
+  defaultValue: "last"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "boolean"
   description: "When true, throws an error back indicating that principal resolution\n\
     has failed and no principal can be found based on the authentication requirements.\n\
@@ -4547,6 +4560,19 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves more than\
+    \ one principal, (specially if such principals in the chain have different identifiers),\
+    \ this setting determines strategy by which the principal id would be chosen from\
+    \ the chain. Accepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.authn.openid.principal.principal-resolution-conflict-strategy"
+  defaultValue: "last"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
@@ -5536,6 +5562,19 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves more than\
+    \ one principal, (specially if such principals in the chain have different identifiers),\
+    \ this setting determines strategy by which the principal id would be chosen from\
+    \ the chain. Accepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.authn.spnego.principal.principal-resolution-conflict-strategy"
+  defaultValue: "last"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
@@ -5596,6 +5635,19 @@
     \ constructed."
   name: "cas.authn.surrogate.principal.principal-attribute"
   defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves more than\
+    \ one principal, (specially if such principals in the chain have different identifiers),\
+    \ this setting determines strategy by which the principal id would be chosen from\
+    \ the chain. Accepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.authn.surrogate.principal.principal-resolution-conflict-strategy"
+  defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.Boolean"
@@ -5838,6 +5890,19 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves\nmore than\
+    \ one principal, (specially if such principals in the chain\nhave different identifiers),\
+    \ this setting determines strategy by which\nthe principal id would be chosen\
+    \ from the chain.\nAccepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.authn.wsfed[].principal.principal-resolution-conflict-strategy"
+  defaultValue: "last"
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "boolean"
   description: "When true, throws an error back indicating that principal resolution\n\
     has failed and no principal can be found based on the authentication requirements.\n\
@@ -5952,6 +6017,19 @@
     \ constructed."
   name: "cas.authn.x509.principal.principal-attribute"
   defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves more than\
+    \ one principal, (specially if such principals in the chain have different identifiers),\
+    \ this setting determines strategy by which the principal id would be chosen from\
+    \ the chain. Accepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.authn.x509.principal.principal-resolution-conflict-strategy"
+  defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.Boolean"
@@ -6193,6 +6271,19 @@
     \ constructed."
   name: "cas.person-directory.principal-attribute"
   defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves more than\
+    \ one principal, (specially if such principals in the chain have different identifiers),\
+    \ this setting determines strategy by which the principal id would be chosen from\
+    \ the chain. Accepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.person-directory.principal-resolution-conflict-strategy"
+  defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.Boolean"

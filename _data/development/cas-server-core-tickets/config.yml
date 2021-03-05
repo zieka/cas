@@ -129,6 +129,29 @@
   defaultValue: false
 - module: "cas-server-core-tickets"
   owner: "org.apereo.cas.configuration.model.core.ticket.RememberMeAuthenticationProperties"
+  type: "java.lang.String"
+  description: "Regular expression that, when defined, forces CAS to create a remember-me\
+    \ authentication session if the current client ip (remote) address matches this\
+    \ pattern. If a match is not found, remember-me is ignored. If left undefined,\
+    \ remember-me authentication will proceed with the default CAS behavior."
+  shortDescription: "Regular expression that, when defined, forces CAS to create a\
+    \ remember-me authentication session if the current client ip (remote) address\
+    \ matches this pattern."
+  name: "cas.ticket.tgt.remember-me.supported-ip-addresses"
+  defaultValue: ""
+- module: "cas-server-core-tickets"
+  owner: "org.apereo.cas.configuration.model.core.ticket.RememberMeAuthenticationProperties"
+  type: "java.lang.String"
+  description: "Regular expression that, when defined, forces CAS to create a remember-me\
+    \ authentication session if the current user-agent matches this pattern. If a\
+    \ match is not found, remember-me is ignored. If left undefined, remember-me authentication\
+    \ will proceed with the default CAS behavior."
+  shortDescription: "Regular expression that, when defined, forces CAS to create a\
+    \ remember-me authentication session if the current user-agent matches this pattern."
+  name: "cas.ticket.tgt.remember-me.supported-user-agents"
+  defaultValue: ""
+- module: "cas-server-core-tickets"
+  owner: "org.apereo.cas.configuration.model.core.ticket.RememberMeAuthenticationProperties"
   type: "java.lang.Long"
   description: "Time in seconds after which remember-me enabled SSO session will be\
     \ destroyed."

@@ -47,6 +47,19 @@
   defaultValue: ""
 - module: "cas-server-support-trusted-webflow"
   owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
+  type: "java.lang.String"
+  description: "In the event that the principal resolution engine resolves more than\
+    \ one principal, (specially if such principals in the chain have different identifiers),\
+    \ this setting determines strategy by which the principal id would be chosen from\
+    \ the chain. Accepted values are: {@code last}, {@code first}."
+  shortDescription: "In the event that the principal resolution engine resolves more\
+    \ than one principal, (specially if such principals in the chain have different\
+    \ identifiers), this setting determines strategy by which the principal id would\
+    \ be chosen from the chain."
+  name: "cas.authn.trusted.principal-resolution-conflict-strategy"
+  defaultValue: "last"
+- module: "cas-server-support-trusted-webflow"
+  owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
