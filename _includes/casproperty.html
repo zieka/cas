@@ -3,13 +3,13 @@
 {% assign lbrace = "{" %}
 
 <tr>
-    <td> 
+    <td>
         <li class="property-name text-left" style="list-style: square">
             <code class="text-wrap">{{ include.name | replace: "[]", "[0]"}}={{ include.defaultValue }}</code>
         </li>
         <div class="text-wrap small">
-            <p> 
-                {{ include.description 
+            <p>
+                {{ include.description
                     | replace: "<p>", "<p/>"
                     | replace: "</p>", "<p/>"
                     | replace: "@code", "<code>"
@@ -18,23 +18,26 @@
                     | replace: "@deprecated", "<code>Deprecation:</code>"
                     | replace: "@link", "<code>"
                     | replace: rbrace2, rbrace
-                    | replace: rbrace, "</code>" 
-                    | replace: "&lt;", "<" 
-                    | replace: "&gt;", ">" 
+                    | replace: rbrace, "</code>"
+                    | replace: "&lt;", "<"
+                    | replace: "&gt;", ">"
                     | remove: lbrace
                 }}
             </p>
 
             {% if include.duration %}
             <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
-            <sub>This settings supports the <code>java.time.Duration</code> syntax. The format of the value will be <code>PTnHnMnS</code>, where <code>n</code> is the relevant hours, minutes or seconds part of the duration. Any fractional seconds are placed after a decimal point in the seconds section. If a section has a zero value, it is omitted. The hours, minutes and seconds will all have the same sign. Example values 
-            could be in the form of <code>PT20S</code>, <code>PT15M</code>, <code>PT10H</code>, <code>PT6D</code>, <code>P2DT3H4M</code>.</sub>
+            <sub>This settings supports the <code>java.time.Duration</code> syntax. The format of the value will be <code>PTnHnMnS</code>, where <code>n</code> is the relevant hours, minutes or seconds part of the duration. Any fractional seconds are placed after a decimal point in the seconds section. If a section has a zero value, it is omitted. The hours, minutes and seconds will all have the same sign. Example values
+            could be in the form of <code>PT20S</code>, <code>PT15M</code>, <code>PT10H</code>, <code>PT6D</code>, <code>P2DT3H4M</code>.
+            If the value is set to <code>0</code> or <code>never</code>, the duration will be set to zero. If the value is blank, set to <code>-1</code>,
+            or <code>infinite</code>, the value will effectively represent an unending duration.
+            </sub>
             {% endif %}
         </div>
 
         {% if include.deprecationLevel.size > 0 %}
             <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
-            <sub>Deprecation status is <code>{{ include.deprecationLevel }}</code> 
+            <sub>Deprecation status is <code>{{ include.deprecationLevel }}</code>
                 {% if include.deprecationReplacement.size > 0 %}
                     with a replacement setting: <code>{{ include.deprecationReplacement | default: "N/A" }}</code>.
                 {% else %}
@@ -42,6 +45,6 @@
                 {% endif %}
             </sub>
         {% endif %}
-        
+
     </td>
 </tr>
