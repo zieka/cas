@@ -699,9 +699,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.mfa.gauth.crypto.encryption.key"
   defaultValue: ""
@@ -951,9 +951,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.mfa.trusted.crypto.encryption.key"
   defaultValue: ""
@@ -1009,9 +1009,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.mfa.trusted.device-fingerprint.cookie.crypto.encryption.key"
   defaultValue: ""
@@ -1144,9 +1144,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.mfa.u2f.crypto.encryption.key"
   defaultValue: ""
@@ -1279,9 +1279,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.mfa.web-authn.crypto.encryption.key"
   defaultValue: ""
@@ -1394,9 +1394,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.mfa.yubikey.crypto.encryption.key"
   defaultValue: ""
@@ -1507,9 +1507,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.oauth.access-token.crypto.encryption.key"
   defaultValue: ""
@@ -1579,9 +1579,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.oauth.crypto.encryption.key"
   defaultValue: ""
@@ -1710,9 +1710,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.passwordless.tokens.crypto.encryption.key"
   defaultValue: ""
@@ -2073,9 +2073,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.pm.reset.crypto.encryption.key"
   defaultValue: ""
@@ -2267,9 +2267,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.saml-idp.metadata.amazon-s3.crypto.encryption.key"
   defaultValue: ""
@@ -2325,9 +2325,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.saml-idp.metadata.couch-db.crypto.encryption.key"
   defaultValue: ""
@@ -2392,9 +2392,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.saml-idp.metadata.git.crypto.encryption.key"
   defaultValue: ""
@@ -2459,9 +2459,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.saml-idp.metadata.jpa.crypto.encryption.key"
   defaultValue: ""
@@ -2565,9 +2565,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.saml-idp.metadata.mongo.crypto.encryption.key"
   defaultValue: ""
@@ -2623,9 +2623,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.saml-idp.metadata.redis.crypto.encryption.key"
   defaultValue: ""
@@ -2681,9 +2681,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.saml-idp.metadata.rest.crypto.encryption.key"
   defaultValue: ""
@@ -2970,9 +2970,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.token.crypto.encryption.key"
   defaultValue: ""
@@ -3035,9 +3035,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.wsfed-idp.sts.crypto.encryption.key"
   defaultValue: ""
@@ -3102,9 +3102,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.authn.wsfed[].cookie.crypto.encryption.key"
   defaultValue: "EMPTY"
@@ -3160,9 +3160,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.clearpass.crypto.encryption.key"
   defaultValue: ""
@@ -3227,9 +3227,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.consent.crypto.encryption.key"
   defaultValue: ""
@@ -3802,9 +3802,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.tgc.crypto.encryption.key"
   defaultValue: ""
@@ -3860,9 +3860,9 @@
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtCryptoProperties"
   type: "java.lang.String"
-  description: "The encryption key is a JWT whose length is defined by the signing\
+  description: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
-  shortDescription: "The encryption key is a JWT whose length is defined by the signing\
+  shortDescription: "The encryption key is a JWT whose length is defined by the encryption\
     \ key size setting."
   name: "cas.ticket.crypto.encryption.key"
   defaultValue: ""
