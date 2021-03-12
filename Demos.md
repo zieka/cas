@@ -10,7 +10,7 @@ and integration tests and they can be quite unstable in terms of uptime and avai
 
 The following demos are provided by the Apereo CAS project:
 
-| Topic                                                                                      | Source Branch            | Location | Heroku
+| Topic                                                                                      | Source/Branch            | Location | Heroku
 |-------------------------------------|----------------------|--------------------------------------------------------|---------------------------------------
 | [CAS Web Application Server](index.html)                                                  | `heroku-caswebapp`       | [Link](https://casserver.herokuapp.com/cas) | ![](https://heroku-badge.herokuapp.com/?app=casserver&root=cas)
 | [CAS Management Server](services/Installing-ServicesMgmt-Webapp.html)        | `heroku-mgmtwebapp` | [Link](https://casservermgmt.herokuapp.com/cas-management)  | ![](https://heroku-badge.herokuapp.com/?app=casservermgmt&root=cas-management)
@@ -26,9 +26,9 @@ Credentials used for the above CAS demos, where needed, are: `casuser` / `Mellon
 
 The following internal tools are managed by the Apereo CAS project:
 
-| Topic                                                                                      | Source Branch            | Location | Heroku
+| Topic                                                                                      | Source/Branch            | Location | Heroku
 |-------------------------------------|----------------------|--------------------------------------------------------|---------------------------------------
-| [CAS Overlay Initializr](installation/WAR-Overlay-Installation.html)            | `heroku-casinit`   | [Link](https://casinit.herokuapp.com) | ![](https://heroku-badge.herokuapp.com/?app=casinit)
+| [CAS Overlay Initializr](installation/WAR-Overlay-Installation.html)            | [See this](https://github.com/apereo/cas-initializr)   | [Link](https://casinit.herokuapp.com) | ![](https://heroku-badge.herokuapp.com/?app=casinit)
 | CAS GitHub Repository Bot | `heroku-githubbot` | [Link](https://apereocas-githubbot.herokuapp.com/) | ![](https://heroku-badge.herokuapp.com/?app=apereocas-githubbot)
 | CAS Gradle Build Remote Cache | `heroku-gradle-buildcache` | [Link](https://cas-gradle-buildcache.herokuapp.com/) | ![](https://heroku-badge.herokuapp.com/?app=cas-gradle-buildcache)
 
