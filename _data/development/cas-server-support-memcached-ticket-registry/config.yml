@@ -107,6 +107,13 @@
   shortDescription: "Set the default operation timeout in milliseconds."
   name: "cas.ticket.registry.memcached.op-timeout"
   defaultValue: -1
+- module: "cas-server-support-memcached-ticket-registry"
+  owner: "org.apereo.cas.configuration.model.support.memcached.MemcachedTicketRegistryProperties"
+  type: "java.lang.String"
+  description: "Protocol. Acceptable values are {@code TEXT, BINARY}."
+  shortDescription: "Protocol."
+  name: "cas.ticket.registry.memcached.protocol"
+  defaultValue: "TEXT"
 - required: true
   module: "cas-server-support-memcached-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.memcached.MemcachedTicketRegistryProperties"
