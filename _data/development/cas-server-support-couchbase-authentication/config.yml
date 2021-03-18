@@ -1,7 +1,7 @@
 ---
 - required: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.util.List<java.lang.String>"
   description: "Node addresses."
   shortDescription: "Node addresses."
@@ -9,7 +9,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Bucket name."
   shortDescription: "Bucket name."
@@ -17,7 +17,7 @@
   defaultValue: "testbucket"
 - required: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Cluster password."
   shortDescription: "Cluster password."
@@ -25,7 +25,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Cluster username."
   shortDescription: "Cluster username."
@@ -33,14 +33,14 @@
   defaultValue: ""
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of connection timeout."
   shortDescription: "String representation of connection timeout."
   name: "cas.authn.attribute-repository.couchbase.connection-timeout"
   defaultValue: "PT60S"
 - module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "A value can be assigned to this field to uniquely identify this resolver."
   shortDescription: "A value can be assigned to this field to uniquely identify this\
@@ -49,7 +49,7 @@
   defaultValue: ""
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of idle connection timeout."
   shortDescription: "String representation of idle connection timeout."
@@ -57,21 +57,21 @@
   defaultValue: "PT60S"
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of KV timeout."
   shortDescription: "String representation of KV timeout."
   name: "cas.authn.attribute-repository.couchbase.kv-timeout"
   defaultValue: "PT30S"
 - module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.Integer"
   description: "Maximum number of connections made to the cluster."
   shortDescription: "Maximum number of connections made to the cluster."
   name: "cas.authn.attribute-repository.couchbase.max-http-connections"
   defaultValue: 5
 - module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.Long"
   description: "Allows to customize the maximum number of requests allowed in the\
     \ retry timer."
@@ -80,14 +80,14 @@
   name: "cas.authn.attribute-repository.couchbase.max-num-requests-in-retry"
   defaultValue: 32768
 - module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.Integer"
   description: "Maximum number of parallel threads made for queries."
   shortDescription: "Maximum number of parallel threads made for queries."
   name: "cas.authn.attribute-repository.couchbase.max-parallelism"
   defaultValue: 0
 - module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.Integer"
   description: "The order of this attribute repository in the chain of repositories.\
     \ Can be used to explicitly position this source in chain and affects merging\
@@ -97,7 +97,7 @@
   defaultValue: 0
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of query threshold."
   shortDescription: "String representation of query threshold."
@@ -105,14 +105,14 @@
   defaultValue: "PT30S"
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of query timeout."
   shortDescription: "String representation of query timeout."
   name: "cas.authn.attribute-repository.couchbase.query-timeout"
   defaultValue: "PT30S"
 - module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Query scan consistency. By default, the query engine will return whatever\
     \ is currently in the index at the time of query (this mode is also called {@code\
@@ -126,7 +126,7 @@
   defaultValue: "NOT_BOUNDED"
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of scan timeout."
   shortDescription: "String representation of scan timeout."
@@ -134,7 +134,7 @@
   defaultValue: "PT30S"
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of search timeout."
   shortDescription: "String representation of search timeout."
@@ -142,7 +142,7 @@
   defaultValue: "PT30S"
 - required: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Username attribute to fetch attributes by."
   shortDescription: "Username attribute to fetch attributes by."
@@ -150,7 +150,7 @@
   defaultValue: "username"
 - duration: true
   module: "cas-server-support-couchbase-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.CouchbasePrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.couchbase.authentication.CouchbasePrincipalAttributesProperties"
   type: "java.lang.String"
   description: "String representation of view timeout."
   shortDescription: "String representation of view timeout."

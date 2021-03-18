@@ -319,6 +319,15 @@
 - required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
+  name: "cas.authn.attribute-repository.okta.private-key.location"
+  defaultValue: ""
+- required: true
+  module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
   type: "Resource"
   description: "The location of the resource. Resources can be URLS, or\nfiles found\
     \ either on the classpath or outside somewhere\nin the file system."

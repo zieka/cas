@@ -1,7 +1,7 @@
 ---
 - required: true
   module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "int"
   description: "Database index used by the connection factory."
   shortDescription: "Database index used by the connection factory."
@@ -9,7 +9,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "boolean"
   description: "Whether the module is enabled or not, defaults to true."
   shortDescription: "Whether the module is enabled or not, defaults to true."
@@ -17,14 +17,14 @@
   defaultValue: true
 - required: true
   module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Redis server host."
   shortDescription: "Redis server host."
   name: "cas.authn.attribute-repository.redis[].host"
   defaultValue: "localhost"
 - module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "A value can be assigned to this field to uniquely identify this resolver."
   shortDescription: "A value can be assigned to this field to uniquely identify this\
@@ -32,7 +32,7 @@
   name: "cas.authn.attribute-repository.redis[].id"
   defaultValue: ""
 - module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "int"
   description: "The order of this attribute repository in the chain of repositories.\n\
     Can be used to explicitly position this source in chain and affects\nmerging strategies."
@@ -41,7 +41,7 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Login password of the redis server."
   shortDescription: "Login password of the redis server."
@@ -49,14 +49,14 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "int"
   description: "Redis server port."
   shortDescription: "Redis server port."
   name: "cas.authn.attribute-repository.redis[].port"
   defaultValue: "6379"
 - module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "java.lang.String"
   description: "Setting that describes how Lettuce routes read operations to replica\
     \ nodes.\nAccepted mode are :\n<ul>\n<li>{@code MASTER}: Default mode. Read from\
@@ -74,14 +74,14 @@
   name: "cas.authn.attribute-repository.redis[].read-from"
   defaultValue: ""
 - module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "int"
   description: "Connection timeout in milliseconds."
   shortDescription: "Connection timeout in milliseconds."
   name: "cas.authn.attribute-repository.redis[].timeout"
   defaultValue: "2000"
 - module: "cas-server-support-redis-authentication"
-  owner: "org.apereo.cas.configuration.model.core.authentication.RedisPrincipalAttributesProperties"
+  owner: "org.apereo.cas.configuration.model.support.redis.RedisPrincipalAttributesProperties"
   type: "boolean"
   description: "Whether or not to use SSL for connection factory."
   shortDescription: "Whether or not to use SSL for connection factory."
