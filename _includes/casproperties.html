@@ -13,103 +13,103 @@
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
 {% assign includeRsaKeys = include.includeRsaKeys %}
 
-{% assign randomNumber = include.properties 
-    | default: include.modules 
-    | default: include.thirdParty 
-    | default: include.thirdPartyStartsWith 
+{% assign randomNumber = include.properties
+    | default: include.modules
+    | default: include.thirdParty
+    | default: include.thirdPartyStartsWith
     | default: include.thirdPartyExactMatch
-    | remove: "-" 
-    | remove: "." 
-    | remove: "," 
-    | remove: "[]" 
+    | remove: "-"
+    | remove: "."
+    | remove: ","
+    | remove: "[]"
     | truncate: 50, '' %}
 
 <p>The following settings and properties are available from the CAS configuration catalog:</p>
 
 <ul class='nav nav-tabs' id="navPillsMenus{{ randomNumber }}">
     <li class='nav-item'>
-        <a class='nav-link active' 
-            id="linkRequiredProperties{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link active'
+            id="linkRequiredProperties{{ randomNumber }}"
+            data-toggle='tab'
             href='#requiredProperties{{ randomNumber }}'>Required</a>
     </li>
     <li class='nav-item'>
-        <a class='nav-link' 
-            id="linkOptionalProperties{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkOptionalProperties{{ randomNumber }}"
+            data-toggle='tab'
             href='#optionalProperties{{ randomNumber }}'>Optional</a>
     </li>
 
     <li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkSigningEncryption{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkSigningEncryption{{ randomNumber }}"
+            data-toggle='tab'
             href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
     </li>
 
     <li class='nav-item' id='navRdbmsProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkRdbms{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkRdbms{{ randomNumber }}"
+            data-toggle='tab'
             href='#rdbmsProperties{{ randomNumber }}'>Hibernate & JDBC</a>
     </li>
 
     <li class='nav-item' id='navEmailProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkEmail{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkEmail{{ randomNumber }}"
+            data-toggle='tab'
             href='#emailProperties{{ randomNumber }}'>Email Servers</a>
     </li>
 
     <li class='nav-item' id='navLdapProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkLdap{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkLdap{{ randomNumber }}"
+            data-toggle='tab'
             href='#ldapProperties{{ randomNumber }}'>LDAP & Active Directory</a>
     </li>
 
     <li class='nav-item' id='navAuthnPredicateProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkAuthnPredicate{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkAuthnPredicate{{ randomNumber }}"
+            data-toggle='tab'
             href='#authnPredicateProperties{{ randomNumber }}'>Authentication</a>
     </li>
 
     <li class='nav-item' id='navPasswordEncoderProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkPasswordEncoder{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkPasswordEncoder{{ randomNumber }}"
+            data-toggle='tab'
             href='#passwordEncoderProperties{{ randomNumber }}'>Password Encoding</a>
     </li>
 
     <li class='nav-item' id='navPrincipalTransformationProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkPrincipalTransformation{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkPrincipalTransformation{{ randomNumber }}"
+            data-toggle='tab'
             href='#principalTransformationProperties{{ randomNumber }}'>Principal Transformation</a>
     </li>
 
     <li class='nav-item' id='navPasswordPolicyProperties{{ randomNumber }}'>
-        <a class='nav-link' 
-            id="linkPasswordPolicy{{ randomNumber }}" 
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkPasswordPolicy{{ randomNumber }}"
+            data-toggle='tab'
             href='#passwordPolicyProperties{{ randomNumber }}'>Password Policy</a>
     </li>
 
     {% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
     <li class='nav-item'>
-        <a class='nav-link' 
-            id="linkThirdPartyProperties{{ randomNumber }}"  
-            data-toggle='tab' 
+        <a class='nav-link'
+            id="linkThirdPartyProperties{{ randomNumber }}"
+            data-toggle='tab'
             href='#thirdPartyProperties{{ randomNumber }}'>Third Party</a>
     </li>
     {% endif %}
 
     <li class='nav-item'>
-        <a class='nav-link' 
-        
-            id="linkNotes{{ randomNumber }}"  
-            data-toggle='tab' 
+        <a class='nav-link'
+
+            id="linkNotes{{ randomNumber }}"
+            data-toggle='tab'
             href='#notes{{ randomNumber }}'>Notes</a>
     </li>
 </ul>
@@ -135,17 +135,17 @@
 <div class='tab-pane fade in active show' id='requiredProperties{{ randomNumber }}'>
     <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
     <sub>
-        The configuration settings listed below are tagged as <u><i>Required</i></u> in the CAS configuration metadata. This flag indicates that the presence of the setting may be needed to activate or affect the behavior of the CAS feature and generally should be reviewed, possibly owned and adjusted. If the setting is assigned a default value, you do not need to strictly put the setting in your copy of the configuration, but should review it nonetheless to make sure it matches your deployment expectations. 
+        The configuration settings listed below are tagged as <u><i>Required</i></u> in the CAS configuration metadata. This flag indicates that the presence of the setting may be needed to activate or affect the behavior of the CAS feature and generally should be reviewed, possibly owned and adjusted. If the setting is assigned a default value, you do not need to strictly put the setting in your copy of the configuration, but should review it nonetheless to make sure it matches your deployment expectations.
     </sub>
     <br><p />
-    
+
     {% capture copyTarget %}#copyAreaRequiredProperties{{ randomNumber }}{% endcapture %}
     {% capture searchTarget %}tableRequiredProperties{{ randomNumber }}{% endcapture %}
     {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
 
     <table class="properties" id='tableRequiredProperties{{ randomNumber }}'>
     <tbody>
-       
+
         {% for module in modules %}
             {% for cfg in site.data[version][module] %}
                 {% assign configBlock = cfg[1] %}
@@ -186,10 +186,10 @@
                             {% if config.name contains ".password-policy" %}
                                 {% assign passwordPolicySettingsFound = true %}
                             {% endif %}
-                            
+
 
                             {% assign requiredSettingsFound = true %}
-                            {% assign textAreaRequiredProperties = textAreaRequiredProperties 
+                            {% assign textAreaRequiredProperties = textAreaRequiredProperties
                                 | append: "# "
                                 | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
@@ -197,14 +197,15 @@
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
                                 | append: config.defaultValue
-                                | append: "&#13;&#10;" 
+                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
-                            {% include casproperty.html 
-                                name=config.name 
-                                defaultValue=config.defaultValue 
-                                description=config.description 
+                            {% include casproperty.html
+                                name=config.name
+                                defaultValue=config.defaultValue
+                                description=config.description
                                 duration=config.duration
+                                expressionLanguage=config.expressionLanguage
                                 deprecationLevel=config.deprecationLevel
                                 deprecationReplacement=config.deprecationReplacement %}
                         {% endunless %}
@@ -214,7 +215,7 @@
         {% endfor %}
 
 
-        {% for prop in properties %} 
+        {% for prop in properties %}
             {% for module in site.data[version] %}
                 {% assign moduleEntry = module[1] %}
                 {% for cfg in moduleEntry %}
@@ -222,7 +223,7 @@
 
                     {% for config in configBlock %}
                         {% if config.required == true and config.name contains prop %}
-                            
+
                             {% assign foundExcluded = false %}
                             {% for ex in excludes %}
                                 {% if config.name contains ex %}
@@ -257,21 +258,22 @@
                                 {% endif %}
 
                                 {% assign requiredSettingsFound = true %}
-                                {% assign textAreaRequiredProperties = textAreaRequiredProperties 
+                                {% assign textAreaRequiredProperties = textAreaRequiredProperties
                                     | append: "# "
                                     | append: config.shortDescription | strip_html
                                     | append: "&#13;&#10;"
                                     | append: "# "
                                     | append: config.name | replace: "[]", "[0]"
                                     | append: "="
-                                    | append: config.defaultValue 
+                                    | append: config.defaultValue
                                     | append: "&#13;&#10;"
                                     | append: "&#13;&#10;" %}
-                                {% include casproperty.html 
-                                    name=config.name 
+                                {% include casproperty.html
+                                    name=config.name
                                     duration=config.duration
-                                    defaultValue=config.defaultValue 
-                                    description=config.description 
+                                    expressionLanguage=config.expressionLanguage
+                                    defaultValue=config.defaultValue
+                                    description=config.description
                                     deprecationLevel=config.deprecationLevel
                                     deprecationReplacement=config.deprecationReplacement %}
                             {% endunless %}
@@ -281,10 +283,10 @@
                 {% endfor %}
             {% endfor %}
         {% endfor %}
-    
+
     </tbody>
     </table>
-    <textarea style="position:absolute; left: -10000px;" 
+    <textarea style="position:absolute; left: -10000px;"
         id="copyAreaRequiredProperties{{ randomNumber }}">{{ textAreaRequiredProperties }}</textarea>
 </div>
 
@@ -309,7 +311,7 @@
 
                 {% for config in configBlock %}
                     {% unless config.required == true %}
-                        
+
                         {% assign foundExcluded = false %}
                         {% for ex in excludes %}
                             {% if config.name contains ex %}
@@ -344,7 +346,7 @@
                             {% endif %}
 
                             {% assign optionalSettingsFound = true %}
-                            {% assign textAreaOptionalProperties = textAreaOptionalProperties 
+                            {% assign textAreaOptionalProperties = textAreaOptionalProperties
                                 | append: "# "
                                 | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
@@ -352,13 +354,14 @@
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
                                 | append: config.defaultValue
-                                | append: "&#13;&#10;" 
+                                | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
-                            {% include casproperty.html 
-                                name=config.name 
+                            {% include casproperty.html
+                                name=config.name
                                 duration=config.duration
-                                defaultValue=config.defaultValue 
-                                description=config.description 
+                                expressionLanguage=config.expressionLanguage
+                                defaultValue=config.defaultValue
+                                description=config.description
                                 deprecationLevel=config.deprecationLevel
                                 deprecationReplacement=config.deprecationReplacement %}
                         {% endunless %}
@@ -368,24 +371,24 @@
             {% endfor %}
         {% endfor %}
 
-        {% for prop in properties %} 
+        {% for prop in properties %}
             {% for module in site.data[version] %}
                 {% assign moduleEntry = module[1] %}
                 {% for cfg in moduleEntry %}
                     {% assign configBlock = cfg[1] %}
 
                     {% for config in configBlock %}
-                            
-                        {% if config.name contains prop %}  
+
+                        {% if config.name contains prop %}
                             {% unless config.required == true %}
 
-                                {% assign foundExcluded = false %}  
+                                {% assign foundExcluded = false %}
                                 {% for ex in excludes %}
                                     {% if config.name contains ex %}
                                         {% assign foundExcluded = true %}
                                     {% endif %}
                                 {% endfor %}
-    
+
                                 {% unless foundExcluded == true %}
                                     {% if config.name contains ".crypto" %}
                                         {% assign signingEncryptionEnabled = true %}
@@ -414,21 +417,22 @@
                                     {% endif %}
 
                                     {% assign optionalSettingsFound = true %}
-                                    {% assign textAreaOptionalProperties = textAreaOptionalProperties 
+                                    {% assign textAreaOptionalProperties = textAreaOptionalProperties
                                         | append: "# "
                                         | append: config.shortDescription | strip_html
                                         | append: "&#13;&#10;"
                                         | append: "# "
                                         | append: config.name | replace: "[]", "[0]"
                                         | append: "="
-                                        | append: config.defaultValue 
+                                        | append: config.defaultValue
                                         | append: "&#13;&#10;"
                                         | append: "&#13;&#10;" %}
-                                    {% include casproperty.html 
-                                        name=config.name 
+                                    {% include casproperty.html
+                                        name=config.name
                                         duration=config.duration
-                                        defaultValue=config.defaultValue 
-                                        description=config.description 
+                                        expressionLanguage=config.expressionLanguage
+                                        defaultValue=config.defaultValue
+                                        description=config.description
                                         deprecationLevel=config.deprecationLevel
                                         deprecationReplacement=config.deprecationReplacement %}
                                 {% endunless %}
@@ -438,7 +442,7 @@
                 {% endfor %}
             {% endfor %}
         {% endfor %}
-    
+
     </tbody>
     </table>
 
@@ -475,22 +479,23 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
+                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties
                                 | append: "# "
                                 | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
-                                | append: config.defaultValue 
+                                | append: config.defaultValue
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
-                                
-                            {% include casproperty.html 
-                                name=config.name 
+
+                            {% include casproperty.html
+                                name=config.name
                                 duration=config.duration
-                                defaultValue=config.defaultValue 
-                                description=config.description 
+                                expressionLanguage=config.expressionLanguage
+                                defaultValue=config.defaultValue
+                                description=config.description
                                 deprecationLevel=config.deprecationLevel
                                 deprecationReplacement=config.deprecationReplacement %}
                         {% endunless %}
@@ -506,22 +511,23 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
+                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties
                                 | append: "# "
                                 | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
-                                | append: config.defaultValue 
+                                | append: config.defaultValue
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
-                            {% include casproperty.html 
-                                name=config.name 
+                            {% include casproperty.html
+                                name=config.name
                                 duration=config.duration
-                                defaultValue=config.defaultValue 
-                                description=config.description 
+                                expressionLanguage=config.expressionLanguage
+                                defaultValue=config.defaultValue
+                                description=config.description
                                 deprecationLevel=config.deprecationLevel
                                 deprecationReplacement=config.deprecationReplacement %}
                         {% endunless %}
@@ -530,7 +536,7 @@
 
                 {% for exm in thirdPartyStartsWith %}
                     {% assign startsWithResults = config.name | split:exm %}
-                
+
                     {% if startsWithResults[0].size == 0 or config.name == exm %}
                         {% assign foundExcluded = false %}
                         {% for ex in excludes %}
@@ -539,22 +545,23 @@
                             {% endif %}
                         {% endfor %}
                         {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties 
+                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties
                                 | append: "# "
                                 | append: config.shortDescription | strip_html
                                 | append: "&#13;&#10;"
                                 | append: "# "
                                 | append: config.name | replace: "[]", "[0]"
                                 | append: "="
-                                | append: config.defaultValue 
+                                | append: config.defaultValue
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
-                            {% include casproperty.html 
-                                name=config.name 
+                            {% include casproperty.html
+                                name=config.name
                                 duration=config.duration
-                                defaultValue=config.defaultValue 
-                                description=config.description 
+                                expressionLanguage=config.expressionLanguage
+                                defaultValue=config.defaultValue
+                                description=config.description
                                 deprecationLevel=config.deprecationLevel
                                 deprecationReplacement=config.deprecationReplacement %}
                         {% endunless %}
@@ -565,11 +572,11 @@
             {% endfor %}
 
         {% endfor %}
-                    
+
         </tbody>
     </table>
 
-    <textarea style="position:absolute; left: -10000px;" 
+    <textarea style="position:absolute; left: -10000px;"
     id="copyAreaThirdPartyProperties{{ randomNumber }}">{{ textAreaThirdPartyProperties }}</textarea>
 </div>
 {% endif %}
@@ -628,13 +635,13 @@
 {% if authnPredicateSettingsFound == true %}
 <div class="tab-pane fade in" id="authnPredicateProperties{{ randomNumber }}">
     {% capture authnConfig %}{% include {{ version }}/authentication-credential-selection-configuration.md %}{% endcapture %}
-    {{ authnConfig | markdownify }} 
+    {{ authnConfig | markdownify }}
 </div>
 {% endif %}
 
 <div class='tab-pane fade in' id='notes{{ randomNumber }}'>
     {% capture notesConfig %}{% include config-guidelines.md %}{% endcapture %}
-    {{ notesConfig | markdownify }} 
+    {{ notesConfig | markdownify }}
 </div>
 
 
@@ -679,7 +686,7 @@
         {% unless ldapSettingsFound %}
             $("#linkLdap{{ randomNumber }}").css("display", "none");
         {% endunless %}
-        
+
         $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
     });
 </script>

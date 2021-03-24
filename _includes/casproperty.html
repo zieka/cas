@@ -33,6 +33,11 @@
             or <code>infinite</code>, the value will effectively represent an unending duration.
             </sub>
             {% endif %}
+
+            {% if include.expressionLanguage %}
+            <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
+            <sub>This setting supports the <a href="/cas/{{ version }}/configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a>.</sub>
+            {% endif %}
         </div>
 
         {% if include.deprecationLevel.size > 0 %}
