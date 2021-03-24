@@ -252,7 +252,8 @@
     \ pairs."
   name: "cas.monitor.jdbc.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-jdbc-monitor"
   owner: "org.apereo.cas.configuration.model.core.monitor.JdbcMonitorProperties"
   type: "java.lang.String"

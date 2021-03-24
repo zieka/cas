@@ -152,7 +152,8 @@
     \ in cache."
   name: "cas.authn.oidc.jwks.jwks-cache-in-minutes"
   defaultValue: 60
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-oidc"
   owner: "org.apereo.cas.configuration.model.support.oidc.OidcJsonWebKeystoreProperties"
   type: "java.lang.String"

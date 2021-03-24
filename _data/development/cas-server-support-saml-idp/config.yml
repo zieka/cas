@@ -98,7 +98,8 @@
   shortDescription: "A mapping of authentication context class refs."
   name: "cas.authn.saml-idp.core.authentication-context-class-mappings"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPCoreProperties"
   type: "java.lang.String"
@@ -180,7 +181,8 @@
   shortDescription: "Whether valid metadata is required."
   name: "cas.authn.saml-idp.metadata.core.require-valid-metadata"
   defaultValue: true
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.FileSystemSamlMetadataProperties"
   type: "java.lang.String"
@@ -207,7 +209,8 @@
     \ and disregard any cached copies of the metadata."
   name: "cas.authn.saml-idp.metadata.http.force-metadata-refresh"
   defaultValue: true
-- module: "cas-server-support-saml-idp"
+- expressionLanguage: true
+  module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.HttpSamlMetadataProperties"
   type: "java.lang.String"
   description: "Directory location where downloaded SAML metadata is cached as backup\

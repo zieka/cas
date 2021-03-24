@@ -240,7 +240,8 @@
     \ pairs."
   name: "cas.authn.mfa.u2f.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-u2f-jpa"
   owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
   type: "java.lang.String"

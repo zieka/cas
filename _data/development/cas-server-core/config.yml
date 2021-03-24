@@ -40,7 +40,8 @@
   shortDescription: "Full name of the CAS server."
   name: "cas.server.name"
   defaultValue: "https://cas.example.org:8443"
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core"
   owner: "org.apereo.cas.configuration.model.core.CasServerProperties"
   type: "java.lang.String"
@@ -49,7 +50,8 @@
   shortDescription: "A concatenation of the server name plus the CAS context path."
   name: "cas.server.prefix"
   defaultValue: "/cas"
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core"
   owner: "org.apereo.cas.configuration.model.core.CasServerProperties"
   type: "java.lang.String"

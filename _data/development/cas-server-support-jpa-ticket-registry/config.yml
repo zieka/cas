@@ -258,7 +258,8 @@
   shortDescription: "Ticket locking type."
   name: "cas.ticket.registry.jpa.ticket-lock-type"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-jpa-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.jpa.ticketregistry.JpaTicketRegistryProperties"
   type: "java.lang.String"

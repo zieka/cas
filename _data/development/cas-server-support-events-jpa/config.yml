@@ -240,7 +240,8 @@
     \ pairs."
   name: "cas.events.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-events-jpa"
   owner: "org.apereo.cas.configuration.model.core.events.JpaEventsProperties"
   type: "java.lang.String"

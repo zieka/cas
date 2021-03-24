@@ -282,7 +282,8 @@
   shortDescription: "SQL query that provides a template to fetch audit records."
   name: "cas.audit.jdbc.select-sql-query-template"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-audit-jdbc"
   owner: "org.apereo.cas.configuration.model.core.audit.AuditJdbcProperties"
   type: "java.lang.String"

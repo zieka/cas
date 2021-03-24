@@ -249,7 +249,8 @@
     \ pairs."
   name: "cas.authn.saml-idp.metadata.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-saml-idp-metadata-jpa"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.JpaSamlMetadataProperties"
   type: "java.lang.String"

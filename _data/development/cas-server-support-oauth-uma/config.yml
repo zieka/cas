@@ -264,7 +264,8 @@
     \ pairs."
   name: "cas.authn.oauth.uma.resource-set.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
   type: "java.lang.String"

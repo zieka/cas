@@ -397,7 +397,8 @@
   shortDescription: "The SQL statement to execute and fetch attributes."
   name: "cas.authn.attribute-repository.jdbc[].sql"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-person-directory"
   owner: "org.apereo.cas.configuration.model.support.jdbc.JdbcPrincipalAttributesProperties"
   type: "java.lang.String"

@@ -1,5 +1,6 @@
 ---
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.String"
@@ -60,7 +61,8 @@
     \ repository."
   name: "cas.authn.saml-idp.metadata.git.push-changes"
   defaultValue: false
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.String"

@@ -240,7 +240,8 @@
     \ pairs."
   name: "cas.authn.passwordless.tokens.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-passwordless-jpa"
   owner: "org.apereo.cas.configuration.model.support.passwordless.token.PasswordlessAuthenticationJpaTokensProperties"
   type: "java.lang.String"

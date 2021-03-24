@@ -240,7 +240,8 @@
     \ pairs."
   name: "cas.consent.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-consent-jdbc"
   owner: "org.apereo.cas.configuration.model.support.consent.JpaConsentProperties"
   type: "java.lang.String"

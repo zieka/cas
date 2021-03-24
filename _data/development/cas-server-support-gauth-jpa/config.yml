@@ -240,7 +240,8 @@
     \ pairs."
   name: "cas.authn.mfa.gauth.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-gauth-jpa"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.JpaGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.String"

@@ -260,7 +260,8 @@
     \ impersonate another user."
   name: "cas.authn.surrogate.jdbc.surrogate-search-query"
   defaultValue: "SELECT COUNT(*) FROM surrogate WHERE username=?"
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-surrogate-authentication-jdbc"
   owner: "org.apereo.cas.configuration.model.support.surrogate.SurrogateJdbcAuthenticationProperties"
   type: "java.lang.String"

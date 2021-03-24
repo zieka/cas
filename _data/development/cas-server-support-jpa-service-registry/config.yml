@@ -251,7 +251,8 @@
     \ pairs."
   name: "cas.service-registry.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-jpa-service-registry"
   owner: "org.apereo.cas.configuration.model.support.jpa.serviceregistry.JpaServiceRegistryProperties"
   type: "java.lang.String"

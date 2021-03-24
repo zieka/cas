@@ -31,6 +31,21 @@
   defaultValue: 1
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.Integer"
+  description: "CP Subsystem is a component of a Hazelcast cluster that builds a strongly\
+    \ consistent layer for a set of distributed data structures. Its data structures\
+    \ are CP with respect to the CAP principle, i.e., they always maintain linearizability\
+    \ and prefer consistency over availability during network partitions. Besides\
+    \ network partitions, CP Subsystem withstands server and client failures. All\
+    \ members of a Hazelcast cluster do not necessarily take part in CP Subsystem.\
+    \ The number of Hazelcast members that take part in CP Subsystem is specified\
+    \ here. CP Subsystem must have at least 3 CP members."
+  shortDescription: "CP Subsystem is a component of a Hazelcast cluster that builds\
+    \ a strongly consistent layer for a set of distributed data structures."
+  name: "cas.authn.throttle.hazelcast.cluster.core.cp-member-count"
+  defaultValue: 0
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast supports policy-based eviction for distributed maps. Currently\
     \ supported policies are LRU (Least Recently Used) and LFU (Least Frequently Used)\
@@ -553,6 +568,21 @@
   defaultValue: 1
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.Integer"
+  description: "CP Subsystem is a component of a Hazelcast cluster that builds a strongly\
+    \ consistent layer for a set of distributed data structures. Its data structures\
+    \ are CP with respect to the CAP principle, i.e., they always maintain linearizability\
+    \ and prefer consistency over availability during network partitions. Besides\
+    \ network partitions, CP Subsystem withstands server and client failures. All\
+    \ members of a Hazelcast cluster do not necessarily take part in CP Subsystem.\
+    \ The number of Hazelcast members that take part in CP Subsystem is specified\
+    \ here. CP Subsystem must have at least 3 CP members."
+  shortDescription: "CP Subsystem is a component of a Hazelcast cluster that builds\
+    \ a strongly consistent layer for a set of distributed data structures."
+  name: "cas.service-registry.stream.hazelcast.config.cluster.core.cp-member-count"
+  defaultValue: 0
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"
   description: "Hazelcast supports policy-based eviction for distributed maps. Currently\
     \ supported policies are LRU (Least Recently Used) and LFU (Least Frequently Used)\
@@ -1073,6 +1103,21 @@
     \ of backup copies you want to have."
   name: "cas.ticket.registry.hazelcast.cluster.core.backup-count"
   defaultValue: 1
+- module: "cas-server-support-hazelcast-core"
+  owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
+  type: "java.lang.Integer"
+  description: "CP Subsystem is a component of a Hazelcast cluster that builds a strongly\
+    \ consistent layer for a set of distributed data structures. Its data structures\
+    \ are CP with respect to the CAP principle, i.e., they always maintain linearizability\
+    \ and prefer consistency over availability during network partitions. Besides\
+    \ network partitions, CP Subsystem withstands server and client failures. All\
+    \ members of a Hazelcast cluster do not necessarily take part in CP Subsystem.\
+    \ The number of Hazelcast members that take part in CP Subsystem is specified\
+    \ here. CP Subsystem must have at least 3 CP members."
+  shortDescription: "CP Subsystem is a component of a Hazelcast cluster that builds\
+    \ a strongly consistent layer for a set of distributed data structures."
+  name: "cas.ticket.registry.hazelcast.cluster.core.cp-member-count"
+  defaultValue: 0
 - module: "cas-server-support-hazelcast-core"
   owner: "org.apereo.cas.configuration.model.support.hazelcast.HazelcastCoreClusterProperties"
   type: "java.lang.String"

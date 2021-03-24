@@ -236,7 +236,8 @@
     \ pairs."
   name: "cas.authn.jdbc.bind[].properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.BaseJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -564,7 +565,8 @@
   shortDescription: "Static salt to be used for hashing."
   name: "cas.authn.jdbc.encode[].static-salt"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryEncodeJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -856,7 +858,8 @@
   shortDescription: "SQL query to execute."
   name: "cas.authn.jdbc.query[].sql"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.QueryJdbcAuthenticationProperties"
   type: "java.lang.String"
@@ -1134,7 +1137,8 @@
   shortDescription: "Table name where accounts are held."
   name: "cas.authn.jdbc.search[].table-users"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-jdbc-authentication"
   owner: "org.apereo.cas.configuration.model.support.jdbc.authn.SearchJdbcAuthenticationProperties"
   type: "java.lang.String"

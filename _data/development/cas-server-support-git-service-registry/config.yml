@@ -1,5 +1,6 @@
 ---
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"
@@ -62,7 +63,8 @@
     \ repository."
   name: "cas.service-registry.git.push-changes"
   defaultValue: false
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"

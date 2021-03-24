@@ -240,7 +240,8 @@
     \ pairs."
   name: "cas.authn.mfa.yubikey.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-yubikey-jpa"
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyJpaMultifactorProperties"
   type: "java.lang.String"

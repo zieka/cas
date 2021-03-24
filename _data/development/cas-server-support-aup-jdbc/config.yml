@@ -293,7 +293,8 @@
     \ update for the user."
   name: "cas.acceptable-usage-policy.jdbc.table-name"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-aup-jdbc"
   owner: "org.apereo.cas.configuration.model.support.aup.JdbcAcceptableUsagePolicyProperties"
   type: "java.lang.String"

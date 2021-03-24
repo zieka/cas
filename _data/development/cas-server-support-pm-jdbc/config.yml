@@ -279,7 +279,8 @@
   shortDescription: "SQL query to locate security questions for the account, if any."
   name: "cas.authn.pm.jdbc.sql-security-questions"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-pm-jdbc"
   owner: "org.apereo.cas.configuration.model.support.pm.JdbcPasswordManagementProperties"
   type: "java.lang.String"

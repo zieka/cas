@@ -240,7 +240,8 @@
     \ pairs."
   name: "cas.authn.mfa.trusted.jpa.properties"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-support-trusted-mfa-jdbc"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.JpaTrustedDevicesMultifactorProperties"
   type: "java.lang.String"
