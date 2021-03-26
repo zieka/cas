@@ -1,4 +1,24 @@
 ---
+- module: "cas-server-support-configuration-cloud-dynamodb"
+  owner: "org.apereo.cas.configuration.model.core.config.cloud.SpringCloudConfigurationProperties.AmazonDynamoDb"
+  type: "org.apereo.cas.configuration.model.support.dynamodb.AbstractDynamoDbProperties$BillingMode"
+  description: "Billing mode specifies how you are charged for read and write throughput\
+    \ and how you manage capacity.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PROVISIONED}: Provisioned mode means that you specify the number of reads and\
+    \ writes per second that you expect your\napplication to use.\n<br/><br/>\nProvisioned\
+    \ mode is a good option if any of the following are true:\n\n    <ul><li>You have\
+    \ predictable application traffic.</li>\n\n    <li>You run applications whose\
+    \ traffic is consistent or ramps gradually.</li>\n\n    <li>You can forecast capacity\
+    \ requirements to control costs.</li></ul>.</li><li>{@code PAY_PER_REQUEST}: Pay-per-request\
+    \ or on-demand billing means that you're charged for only the read/write\nrequests\
+    \ that you use.\n<br/><br/>\nOn-demand mode is a good option if any of the following\
+    \ are true:\n\n    <ul><li>You create new tables with unknown workloads.</li>\n\
+    \n    <li>You have unpredictable application traffic.</li>\n\n    <li>You prefer\
+    \ the ease of paying for only what you use.</li></ul>.</li></ul>"
+  shortDescription: "Billing mode specifies how you are charged for read and write\
+    \ throughput and how you manage capacity."
+  name: "cas.spring.cloud.aws.dynamo-db.billing-mode"
+  defaultValue: ""
 - duration: true
   module: "cas-server-support-configuration-cloud-dynamodb"
   owner: "org.apereo.cas.configuration.model.core.config.cloud.SpringCloudConfigurationProperties.AmazonDynamoDb"
@@ -165,6 +185,26 @@
   shortDescription: "Write capacity."
   name: "cas.spring.cloud.aws.dynamo-db.write-capacity"
   defaultValue: 10
+- module: "cas-server-support-configuration-cloud-dynamodb"
+  owner: "org.apereo.cas.configuration.model.core.config.cloud.SpringCloudConfigurationProperties.AmazonDynamoDb"
+  type: "org.apereo.cas.configuration.model.support.dynamodb.AbstractDynamoDbProperties$BillingMode"
+  description: "Billing mode specifies how you are charged for read and write throughput\
+    \ and how you manage capacity.\nAvailable values are as follows:\n<ul><li>{@code\
+    \ PROVISIONED}: Provisioned mode means that you specify the number of reads and\
+    \ writes per second that you expect your\napplication to use.\n<br/><br/>\nProvisioned\
+    \ mode is a good option if any of the following are true:\n\n    <ul><li>You have\
+    \ predictable application traffic.</li>\n\n    <li>You run applications whose\
+    \ traffic is consistent or ramps gradually.</li>\n\n    <li>You can forecast capacity\
+    \ requirements to control costs.</li></ul>.</li><li>{@code PAY_PER_REQUEST}: Pay-per-request\
+    \ or on-demand billing means that you're charged for only the read/write\nrequests\
+    \ that you use.\n<br/><br/>\nOn-demand mode is a good option if any of the following\
+    \ are true:\n\n    <ul><li>You create new tables with unknown workloads.</li>\n\
+    \n    <li>You have unpredictable application traffic.</li>\n\n    <li>You prefer\
+    \ the ease of paying for only what you use.</li></ul>.</li></ul>"
+  shortDescription: "Billing mode specifies how you are charged for read and write\
+    \ throughput and how you manage capacity."
+  name: "cas.spring.cloud.dynamo-db.billing-mode"
+  defaultValue: ""
 - duration: true
   module: "cas-server-support-configuration-cloud-dynamodb"
   owner: "org.apereo.cas.configuration.model.core.config.cloud.SpringCloudConfigurationProperties.AmazonDynamoDb"
