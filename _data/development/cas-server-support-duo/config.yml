@@ -1,4 +1,16 @@
 ---
+- module: "cas-server-support-duo"
+  owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"
+  type: "boolean"
+  description: "When set to {@code true}, CAS will contact Duo Security\nto check\
+    \ for user's account status and to evaluate whether\nuser qualifies for multifactor\
+    \ authentication from Duo's perspective.\nWhen disabled, user account status is\
+    \ set to authenticate with Duo\nand the API call will never be made."
+  shortDescription: "When set to {@code true}, CAS will contact Duo Security to check\
+    \ for user's account status and to evaluate whether user qualifies for multifactor\
+    \ authentication from Duo's perspective."
+  name: "cas.authn.mfa.duo[].account-status-enabled"
+  defaultValue: true
 - required: true
   module: "cas-server-support-duo"
   owner: "org.apereo.cas.configuration.model.support.mfa.DuoSecurityMultifactorAuthenticationProperties"

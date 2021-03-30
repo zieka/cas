@@ -50,7 +50,8 @@ The following items are new improvements and enhancements presented in this rele
 
 ## CAS Initializr
 
-[CAS Initializr](../installation/WAR-Overlay-Initializr.html) is now moved to its own separate repository.
+[CAS Initializr](../installation/WAR-Overlay-Initializr.html) is now moved to its own separate repository. Furthermore,
+the service is now able to generate overlay project templates for different CAS versions per request.
 
 <div class="alert alert-info">
 <strong>Note</strong><br/>It is expected that at some point in the not-too-distant future, previous/existing
@@ -61,6 +62,10 @@ to be the one true way to generate a starting template project for all CAS deplo
 ## Okta Attribute Resolution
 
 CAS attribute resolution engine now allows for fetching [user attributes from Okta](../integration/Attribute-Resolution-Okta.html).
+ 
+## Gradle 7
+
+The CAS codebase and the continuous integration workflows by extension have now switched to Gradle 7 for internal builds and validation.
 
 ## Other Stuff
          
@@ -76,9 +81,13 @@ CAS attribute resolution engine now allows for fetching [user attributes from Ok
 - [Surrogate authentication](../authentication/Surrogate-Authentication.html) can correctly identify the primary principal's attributes for MFA activation.
 - SAML2 registered services are correctly located from the authentication request and are matched against service provider's entity id.
 - Person directory principal resolution can use attributes from the *current authentication attempt* to build the final principal.
-- The ability to retry failing tests is removed from CI to prevent test coverage miscalculations.
-- Triggering CI jobs and workflow runs is no longer automatically triggered to help reduce the load on the backlog.
+- The ability to retry failing tests is removed from continuous integration builds to prevent test coverage miscalculations.
+- Triggering continuous integration jobs and workflow runs is no longer automatically triggered to help reduce the load on the backlog.
+- CAS settings able to [Spring Expression Language](../configuration/Configuration-Spring-Expressions.html) now advertise this capability in the documentation. 
 - Small improvements to CI test execution to ensure coverage results can be correctly calculated.
+- DynamoDb integrations can now specify the `billing-mode` in the CAS configuration.
+- Triggering multifactor authentication via principal attributes can now be configured to deny/block authentication attempts if no match is produced.
+- Cookie session pinning can now allow for a set of authorized and known IP addresses to bypass failures in case mismatches are found.
 
 ## Library Upgrades
 
@@ -91,7 +100,9 @@ CAS attribute resolution engine now allows for fetching [user attributes from Ok
 - Apache Velocity
 - Apache jClouds
 - Kryo
+- Pac4j
 - Okta
+- Gradle
 - OpenSAML  
 - Hazelcast
 - Infinispan

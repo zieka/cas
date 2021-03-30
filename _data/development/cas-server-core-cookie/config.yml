@@ -95,6 +95,18 @@
   defaultValue: true
 - module: "cas-server-core-cookie"
   owner: "org.apereo.cas.configuration.model.support.cookie.TicketGrantingCookieProperties"
+  type: "java.lang.String"
+  description: "A regular expression pattern that indicates the set of allowed IP\
+    \ addresses, when {@link #isPinToSession()} is cofigured. In the event that there\
+    \ is a mismatch between the cookie IP address and the current request-provided\
+    \ IP address (i.e. network switches, VPN, etc), the cookie can still be considered\
+    \ valid if the new IP address matches the pattern specified here."
+  shortDescription: "A regular expression pattern that indicates the set of allowed\
+    \ IP addresses, when {@link #isPinToSession()} is cofigured."
+  name: "cas.tgc.allowed-ip-addresses-pattern"
+  defaultValue: ""
+- module: "cas-server-core-cookie"
+  owner: "org.apereo.cas.configuration.model.support.cookie.TicketGrantingCookieProperties"
   type: "java.lang.Boolean"
   description: "Decide if cookie paths should be automatically configured based on\
     \ the application context path, when the cookie path is not configured."
@@ -215,6 +227,18 @@
     \ protocol, or false if the it can be sent using any protocol."
   name: "cas.tgc.secure"
   defaultValue: true
+- module: "cas-server-core-cookie"
+  owner: "org.apereo.cas.configuration.model.support.cookie.WarningCookieProperties"
+  type: "java.lang.String"
+  description: "A regular expression pattern that indicates the set of allowed IP\
+    \ addresses, when {@link #isPinToSession()} is cofigured. In the event that there\
+    \ is a mismatch between the cookie IP address and the current request-provided\
+    \ IP address (i.e. network switches, VPN, etc), the cookie can still be considered\
+    \ valid if the new IP address matches the pattern specified here."
+  shortDescription: "A regular expression pattern that indicates the set of allowed\
+    \ IP addresses, when {@link #isPinToSession()} is cofigured."
+  name: "cas.warning-cookie.allowed-ip-addresses-pattern"
+  defaultValue: ""
 - module: "cas-server-core-cookie"
   owner: "org.apereo.cas.configuration.model.support.cookie.WarningCookieProperties"
   type: "java.lang.Boolean"

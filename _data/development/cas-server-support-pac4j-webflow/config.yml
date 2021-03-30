@@ -2536,6 +2536,15 @@
   defaultValue: "QUERY_PARAMETER"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
+  type: "int"
+  description: "Define the validity period for the certificate\nin number of days.\
+    \ The end-date of the certificate\nis controlled by this setting, when defined\
+    \ as a value\ngreater than zero."
+  shortDescription: "Define the validity period for the certificate in number of days."
+  name: "cas.authn.pac4j.saml[].certificate-expiration-days"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
   type: "java.lang.String"
   description: "A name to append to signing certificates generated.\nThe named part\
     \ appended can be useful to identify for which clientName it was generated\nIf\
@@ -2543,6 +2552,13 @@
   shortDescription: "A name to append to signing certificates generated."
   name: "cas.authn.pac4j.saml[].certificate-name-to-append"
   defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
+  type: "java.lang.String"
+  description: "Certificate signature algorithm to use\nwhen generating the certificate."
+  shortDescription: "Certificate signature algorithm to use when generating the certificate."
+  name: "cas.authn.pac4j.saml[].certificate-signature-alg"
+  defaultValue: "SHA1WithRSA"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
   type: "java.lang.String"

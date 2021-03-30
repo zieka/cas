@@ -3804,6 +3804,17 @@
   defaultValue: "authn_method"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.mfa.PrincipalAttributeMultifactorAuthenticationProperties"
+  type: "java.lang.Boolean"
+  description: "Force CAS to deny and block the authentication attempt altogether\
+    \ if attribute name/value configuration cannot produce a successful match to trigger\
+    \ multifactor authentication."
+  shortDescription: "Force CAS to deny and block the authentication attempt altogether\
+    \ if attribute name/value configuration cannot produce a successful match to trigger\
+    \ multifactor authentication."
+  name: "cas.authn.mfa.triggers.principal.deny-if-unmatched"
+  defaultValue: false
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.PrincipalAttributeMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "MFA can be triggered for all users/subjects carrying a specific attribute\
     \ that matches one of the conditions below. <ul> <li>Trigger MFA based on a principal\

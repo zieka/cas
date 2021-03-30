@@ -4,17 +4,22 @@
   type: "org.apereo.cas.configuration.model.support.dynamodb.AbstractDynamoDbProperties$BillingMode"
   description: "Billing mode specifies how you are charged for read and write throughput\
     \ and how you manage capacity.\nAvailable values are as follows:\n<ul><li>{@code\
-    \ PROVISIONED}: Provisioned mode means that you specify the number of reads and\
-    \ writes per second that you expect your\napplication to use.\n<br/><br/>\nProvisioned\
-    \ mode is a good option if any of the following are true:\n\n    <ul><li>You have\
-    \ predictable application traffic.</li>\n\n    <li>You run applications whose\
-    \ traffic is consistent or ramps gradually.</li>\n\n    <li>You can forecast capacity\
-    \ requirements to control costs.</li></ul>.</li><li>{@code PAY_PER_REQUEST}: Pay-per-request\
-    \ or on-demand billing means that you're charged for only the read/write\nrequests\
-    \ that you use.\n<br/><br/>\nOn-demand mode is a good option if any of the following\
-    \ are true:\n\n    <ul><li>You create new tables with unknown workloads.</li>\n\
-    \n    <li>You have unpredictable application traffic.</li>\n\n    <li>You prefer\
-    \ the ease of paying for only what you use.</li></ul>.</li></ul>"
+    \ PROVISIONED}: Provisioned mode means that you specify the number of reads\n\
+    and writes per second that you expect your\napplication to use.\n<br/><br/>\n\
+    Provisioned mode is a good option if any of the following are true:\n\n<ul>\n\
+    \ <li>You have predictable application traffic.</li>\n <li>You run applications\
+    \ whose traffic is consistent or ramps gradually.</li>\n <li>You can forecast\
+    \ capacity requirements to control costs.</li>\n</ul>\nYou can use auto scaling\
+    \ to automatically adjust\ncapacity based on the specified utilization rate\n\
+    to ensure application performance while reducing costs.</li><li>{@code PAY_PER_REQUEST}:\
+    \ Pay-per-request or on-demand billing means that you're charged for only the\
+    \ read/write\nrequests that you use.\n<br/><br/>\nOn-demand mode is a good option\
+    \ if any of the following are true:\n<ul>\n    <li>You create new tables with\
+    \ unknown workloads.</li>\n    <li>You have unpredictable application traffic.</li>\n\
+    \    <li>You prefer the ease of paying for only what you use.</li>\n</ul>\nTables\
+    \ using on-demand mode support all DynamoDB\nfeatures (such as encryption at rest,\
+    \ point-in-time recovery, global\ntables, and so on) with the exception of auto\
+    \ scaling,\nwhich is not applicable with this mode.</li></ul>"
   shortDescription: "Billing mode specifies how you are charged for read and write\
     \ throughput and how you manage capacity."
   name: "cas.authn.mfa.u2f.dynamo-db.billing-mode"

@@ -28,6 +28,18 @@
 - module: "cas-server-support-wsfederation-webflow"
   owner: "org.apereo.cas.configuration.model.support.wsfed.WsFederationDelegatedCookieProperties"
   type: "java.lang.String"
+  description: "A regular expression pattern that indicates the set of allowed IP\
+    \ addresses,\nwhen {@link #isPinToSession()} is cofigured. In the event that there\
+    \ is a mismatch\nbetween the cookie IP address and the current request-provided\
+    \ IP address (i.e. network switches, VPN, etc),\nthe cookie can still be considered\
+    \ valid if the new IP address matches the pattern\nspecified here."
+  shortDescription: "A regular expression pattern that indicates the set of allowed\
+    \ IP addresses, when {@link #isPinToSession()} is cofigured."
+  name: "cas.authn.wsfed[].cookie.allowed-ip-addresses-pattern"
+  defaultValue: ""
+- module: "cas-server-support-wsfederation-webflow"
+  owner: "org.apereo.cas.configuration.model.support.wsfed.WsFederationDelegatedCookieProperties"
+  type: "java.lang.String"
   description: "CAS Cookie comment, describes the cookie's usage and purpose."
   shortDescription: "CAS Cookie comment, describes the cookie's usage and purpose."
   name: "cas.authn.wsfed[].cookie.comment"

@@ -57,6 +57,17 @@
   defaultValue: ""
 - module: "cas-server-support-aws-cognito-authentication"
   owner: "org.apereo.cas.configuration.model.support.cognito.AmazonCognitoAuthenticationProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Map of attributes to rename after fetching from the user pool. Mapped\
+    \ attributes are defined using a key-value structure where CAS allows the attribute\
+    \ name/key to be renamed virtually to a different attribute. The key is the attribute\
+    \ fetched from the user pool and the value is the attribute name CAS should use\
+    \ for virtual renames."
+  shortDescription: "Map of attributes to rename after fetching from the user pool."
+  name: "cas.authn.cognito.mapped-attributes"
+  defaultValue: ""
+- module: "cas-server-support-aws-cognito-authentication"
+  owner: "org.apereo.cas.configuration.model.support.cognito.AmazonCognitoAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Maximum connections setting."
   shortDescription: "Maximum connections setting."

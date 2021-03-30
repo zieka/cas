@@ -1,5 +1,6 @@
 ---
-- module: "cas-server-support-saml-idp-metadata-aws-s3"
+- expressionLanguage: true
+  module: "cas-server-support-saml-idp-metadata-aws-s3"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.AmazonS3SamlMetadataProperties"
   type: "java.lang.String"
   description: "S3 bucket that contains metadata files."
@@ -46,7 +47,8 @@
   shortDescription: "AWS custom endpoint."
   name: "cas.authn.saml-idp.metadata.amazon-s3.endpoint"
   defaultValue: ""
-- module: "cas-server-support-saml-idp-metadata-aws-s3"
+- expressionLanguage: true
+  module: "cas-server-support-saml-idp-metadata-aws-s3"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.AmazonS3SamlMetadataProperties"
   type: "java.lang.String"
   description: "The collection name that is responsible to hold the identity provider\
