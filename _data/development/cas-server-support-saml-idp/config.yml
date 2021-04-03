@@ -181,6 +181,60 @@
   shortDescription: "Whether valid metadata is required."
   name: "cas.authn.saml-idp.metadata.core.require-valid-metadata"
   defaultValue: true
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
+  type: "java.lang.Boolean"
+  description: "Whether metadata generation process should support SLO service POST\
+    \ binding."
+  shortDescription: "Whether metadata generation process should support SLO service\
+    \ POST binding."
+  name: "cas.authn.saml-idp.metadata.core.slo-service-post-binding-enabled"
+  defaultValue: true
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
+  type: "java.lang.Boolean"
+  description: "Whether metadata generation process should support SLO service REDIRECT\
+    \ binding."
+  shortDescription: "Whether metadata generation process should support SLO service\
+    \ REDIRECT binding."
+  name: "cas.authn.saml-idp.metadata.core.slo-service-redirect-binding-enabled"
+  defaultValue: true
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
+  type: "java.lang.Boolean"
+  description: "Whether metadata generation process should support SSO service POST\
+    \ binding."
+  shortDescription: "Whether metadata generation process should support SSO service\
+    \ POST binding."
+  name: "cas.authn.saml-idp.metadata.core.sso-service-post-binding-enabled"
+  defaultValue: true
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
+  type: "java.lang.Boolean"
+  description: "Whether metadata generation process should support SSO service POST\
+    \ SimpleSign binding."
+  shortDescription: "Whether metadata generation process should support SSO service\
+    \ POST SimpleSign binding."
+  name: "cas.authn.saml-idp.metadata.core.sso-service-post-simple-sign-binding-enabled"
+  defaultValue: true
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
+  type: "java.lang.Boolean"
+  description: "Whether metadata generation process should support SSO service REDIRECT\
+    \ binding."
+  shortDescription: "Whether metadata generation process should support SSO service\
+    \ REDIRECT binding."
+  name: "cas.authn.saml-idp.metadata.core.sso-service-redirect-binding-enabled"
+  defaultValue: true
+- module: "cas-server-support-saml-idp"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.CoreSamlMetadataProperties"
+  type: "java.lang.Boolean"
+  description: "Whether metadata generation process should support SSO service SOAP\
+    \ binding."
+  shortDescription: "Whether metadata generation process should support SSO service\
+    \ SOAP binding."
+  name: "cas.authn.saml-idp.metadata.core.sso-service-soap-binding-enabled"
+  defaultValue: true
 - expressionLanguage: true
   required: true
   module: "cas-server-support-saml-idp"
