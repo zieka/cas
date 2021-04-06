@@ -1270,6 +1270,15 @@
     \ data store implementation."
   name: "cas.authn.mfa.web-authn.cleaner.schedule.start-delay"
   defaultValue: "PT15S"
+- required: true
+  module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
+  name: "cas.authn.mfa.web-authn.core.trusted-device-metadata.location"
+  defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"
@@ -1376,15 +1385,6 @@
     \ a connection to be validated as alive."
   name: "cas.authn.mfa.web-authn.jpa.pool.timeout-millis"
   defaultValue: 1000
-- required: true
-  module: "cas-server-core-util"
-  owner: "org.apereo.cas.configuration.model.SpringResourceProperties"
-  type: "org.springframework.core.io.Resource"
-  description: "The location of the resource. Resources can be URLS, or files found\
-    \ either on the classpath or outside somewhere in the file system."
-  shortDescription: "The location of the resource."
-  name: "cas.authn.mfa.web-authn.trusted-device-metadata.location"
-  defaultValue: ""
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.core.util.EncryptionJwtSigningJwtCryptographyProperties"
   type: "java.lang.String"

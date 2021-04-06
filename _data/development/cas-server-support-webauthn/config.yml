@@ -1,6 +1,6 @@
 ---
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.Boolean"
   description: "Configure the authentication flow to allow web-authn to be used as\
     \ the first primary factor for authentication. Registered accounts with a valid\
@@ -8,20 +8,20 @@
     \ step."
   shortDescription: "Configure the authentication flow to allow web-authn to be used\
     \ as the first primary factor for authentication."
-  name: "cas.authn.mfa.web-authn.allow-primary-authentication"
+  name: "cas.authn.mfa.web-authn.core.allow-primary-authentication"
   defaultValue: false
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.Boolean"
   description: "If {@code true} finish registration op and finish assertion will accept\
     \ responses containing extension outputs for which there was no extension input."
   shortDescription: "If {@code true} finish registration op and finish assertion will\
     \ accept responses containing extension outputs for which there was no extension\
     \ input."
-  name: "cas.authn.mfa.web-authn.allow-unrequested-extensions"
+  name: "cas.authn.mfa.web-authn.core.allow-unrequested-extensions"
   defaultValue: false
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.Boolean"
   description: "If false finish registration op will only allow registrations where\
     \ the attestation signature can be linked to a trusted attestation root. This\
@@ -31,21 +31,21 @@
     \ be rejected even if this option is set to true."
   shortDescription: "If false finish registration op will only allow registrations\
     \ where the attestation signature can be linked to a trusted attestation root."
-  name: "cas.authn.mfa.web-authn.allow-untrusted-attestation"
+  name: "cas.authn.mfa.web-authn.core.allow-untrusted-attestation"
   defaultValue: false
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.String"
   description: "The allowed origins that returned authenticator responses will be\
     \ compared against. The default is set to the server name. A successful registration\
     \ or authentication operation requires origins to exactly equal one of these values."
   shortDescription: "The allowed origins that returned authenticator responses will\
     \ be compared against."
-  name: "cas.authn.mfa.web-authn.allowed-origins"
+  name: "cas.authn.mfa.web-authn.core.allowed-origins"
   defaultValue: ""
 - required: true
   module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.String"
   description: "The extension input to set for the {@code appid} extension when initiating\
     \ authentication operations. If this member is set, starting an assertion op will\
@@ -54,10 +54,10 @@
     \ to the RP ID. By default, this is not set."
   shortDescription: "The extension input to set for the {@code appid} extension when\
     \ initiating authentication operations."
-  name: "cas.authn.mfa.web-authn.application-id"
+  name: "cas.authn.mfa.web-authn.core.application-id"
   defaultValue: ""
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.String"
   description: "Accepted values are: {@code DIRECT}, {@code INDIRECT}, {@code NONE}.\
     \ The argument for the attestation parameter in registration operations. Unless\
@@ -65,31 +65,69 @@
     \ recommended to leave this parameter undefined."
   shortDescription: "Accepted values are: {@code DIRECT}, {@code INDIRECT}, {@code\
     \ NONE}."
-  name: "cas.authn.mfa.web-authn.attestation-conveyance-preference"
+  name: "cas.authn.mfa.web-authn.core.attestation-conveyance-preference"
   defaultValue: "DIRECT"
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.String"
   description: "Name of the principal attribute that indicates the principal's display\
     \ name, primarily used for device registration."
   shortDescription: "Name of the principal attribute that indicates the principal's\
     \ display name, primarily used for device registration."
-  name: "cas.authn.mfa.web-authn.display-name-attribute"
+  name: "cas.authn.mfa.web-authn.core.display-name-attribute"
   defaultValue: "displayName"
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.lang.Long"
   description: "Expire and forget device registration records after this period."
   shortDescription: "Expire and forget device registration records after this period."
-  name: "cas.authn.mfa.web-authn.expire-devices"
+  name: "cas.authn.mfa.web-authn.core.expire-devices"
   defaultValue: 30
 - module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
   type: "java.util.concurrent.TimeUnit"
   description: "Device registration record expiration time unit."
   shortDescription: "Device registration record expiration time unit."
-  name: "cas.authn.mfa.web-authn.expire-devices-time-unit"
+  name: "cas.authn.mfa.web-authn.core.expire-devices-time-unit"
   defaultValue: ""
+- required: true
+  module: "cas-server-support-webauthn"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
+  type: "java.lang.String"
+  description: "The id that will be set as the rp parameter when initiating registration\
+    \ operations, and which id hash will be compared against. This is a required parameter.\
+    \ A successful registration or authentication operation requires rp id hash to\
+    \ exactly equal the SHA-256 hash of this id member. Alternatively, it may instead\
+    \ equal the SHA-256 hash of application id if the latter is present."
+  shortDescription: "The id that will be set as the rp parameter when initiating registration\
+    \ operations, and which id hash will be compared against."
+  name: "cas.authn.mfa.web-authn.core.relying-party-id"
+  defaultValue: ""
+- required: true
+  module: "cas-server-support-webauthn"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
+  type: "java.lang.String"
+  description: "The human-palatable name of the Relaying Party."
+  shortDescription: "The human-palatable name of the Relaying Party."
+  name: "cas.authn.mfa.web-authn.core.relying-party-name"
+  defaultValue: ""
+- module: "cas-server-support-webauthn"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
+  type: "java.lang.Boolean"
+  description: "Indicates whether this provider should support trusted devices."
+  shortDescription: "Indicates whether this provider should support trusted devices."
+  name: "cas.authn.mfa.web-authn.core.trusted-device-enabled"
+  defaultValue: false
+- module: "cas-server-support-webauthn"
+  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationCoreProperties"
+  type: "java.lang.Boolean"
+  description: "If true, finish assertion op will fail if the  signature counter value\
+    \ in the response is not strictly greater than the stored signature counter value."
+  shortDescription: "If true, finish assertion op will fail if the  signature counter\
+    \ value in the response is not strictly greater than the stored signature counter\
+    \ value."
+  name: "cas.authn.mfa.web-authn.core.validate-signature-counter"
+  defaultValue: true
 - module: "cas-server-support-webauthn"
   owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
   type: "org.apereo.cas.configuration.model.support.mfa.BaseMultifactorAuthenticationProviderProperties$MultifactorAuthenticationProviderFailureModes"
@@ -170,41 +208,3 @@
     \ authentication is required."
   name: "cas.authn.mfa.web-authn.rank"
   defaultValue: 0
-- required: true
-  module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "The id that will be set as the rp parameter when initiating registration\
-    \ operations, and which id hash will be compared against. This is a required parameter.\
-    \ A successful registration or authentication operation requires rp id hash to\
-    \ exactly equal the SHA-256 hash of this id member. Alternatively, it may instead\
-    \ equal the SHA-256 hash of application id if the latter is present."
-  shortDescription: "The id that will be set as the rp parameter when initiating registration\
-    \ operations, and which id hash will be compared against."
-  name: "cas.authn.mfa.web-authn.relying-party-id"
-  defaultValue: ""
-- required: true
-  module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
-  type: "java.lang.String"
-  description: "The human-palatable name of the Relaying Party."
-  shortDescription: "The human-palatable name of the Relaying Party."
-  name: "cas.authn.mfa.web-authn.relying-party-name"
-  defaultValue: ""
-- module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
-  type: "java.lang.Boolean"
-  description: "Indicates whether this provider should support trusted devices."
-  shortDescription: "Indicates whether this provider should support trusted devices."
-  name: "cas.authn.mfa.web-authn.trusted-device-enabled"
-  defaultValue: false
-- module: "cas-server-support-webauthn"
-  owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
-  type: "java.lang.Boolean"
-  description: "If true, finish assertion op will fail if the  signature counter value\
-    \ in the response is not strictly greater than the stored signature counter value."
-  shortDescription: "If true, finish assertion op will fail if the  signature counter\
-    \ value in the response is not strictly greater than the stored signature counter\
-    \ value."
-  name: "cas.authn.mfa.web-authn.validate-signature-counter"
-  defaultValue: true
