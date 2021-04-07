@@ -1,4 +1,18 @@
 ---
+- module: "cas-server-support-interrupt-webflow"
+  owner: "org.apereo.cas.configuration.model.support.interrupt.InterruptCoreProperties"
+  type: "org.apereo.cas.configuration.model.support.interrupt.InterruptCoreProperties$InterruptTriggerModes"
+  description: "Define how interrupt notifications should be triggered in the authentication\
+    \ flow.\nAvailable values are as follows:\n<ul><li>{@code AFTER_AUTHENTICATION}:\
+    \ Trigger interrupt notifications and inquiry\nafter authentication events and\
+    \ before\nsingle sign-on has been established.</li><li>{@code AFTER_SSO}: Trigger\
+    \ interrupt notifications and inquiry\nafter single sign-on has been established.\n\
+    Interrupt queries that execute after single sign-on\ncannot control the creation\
+    \ of the\nSSO session conditionally.</li></ul>"
+  shortDescription: "Define how interrupt notifications should be triggered in the\
+    \ authentication flow."
+  name: "cas.interrupt.core.trigger-mode"
+  defaultValue: ""
 - required: true
   module: "cas-server-support-interrupt-webflow"
   owner: "org.apereo.cas.configuration.model.support.interrupt.GroovyInterruptProperties"
