@@ -40,12 +40,3 @@
     \ App Engine's URL Fetch API."
   name: "cas.google-maps.google-apps-engine"
   defaultValue: false
-- module: "cas-server-support-geolocation-googlemaps"
-  owner: "org.apereo.cas.configuration.model.support.geo.googlemaps.GoogleMapsProperties"
-  type: "java.lang.String"
-  description: "The access key for ip-stack used to look up ip addresses for geo locations.\
-    \ See <a href=\"http://ipstack.com\">this link</a> for more info."
-  shortDescription: "The access key for ip-stack used to look up ip addresses for\
-    \ geo locations."
-  name: "cas.google-maps.ip-stack-api-access-key"
-  defaultValue: ""

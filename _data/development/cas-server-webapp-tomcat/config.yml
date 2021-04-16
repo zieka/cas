@@ -475,7 +475,7 @@
   shortDescription: "Cloud membership provider, values are case sensitive and only\
     \ used with clusteringType {@code CLOUD}."
   name: "cas.server.tomcat.clustering.cloud-membership-provider"
-  defaultValue: "kubernetes"
+  defaultValue: "dns"
 - module: "cas-server-webapp-tomcat"
   owner: "org.apereo.cas.configuration.model.core.web.tomcat.CasEmbeddedApacheTomcatClusteringProperties"
   type: "java.lang.String"

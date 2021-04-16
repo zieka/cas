@@ -220,7 +220,12 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
-    \ file that would serve as a template."
+    \ file that would serve as a template. If specified as a path to an external file\
+    \ with an extension {@code .gtemplate}, then the email message body would be processed\
+    \ using the Groovy template engine. The template engine uses JSP style &lt;% %&gt;\
+    \ script and &lt;%= %&gt; expression syntax or GString style expressions. The\
+    \ variable {@code out} is bound to the writer that the template is being written\
+    \ to."
   shortDescription: "Email message body."
   name: "cas.authn.adaptive.risk.response.mail.text"
   defaultValue: ""
@@ -865,7 +870,12 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
-    \ file that would serve as a template."
+    \ file that would serve as a template. If specified as a path to an external file\
+    \ with an extension {@code .gtemplate}, then the email message body would be processed\
+    \ using the Groovy template engine. The template engine uses JSP style &lt;% %&gt;\
+    \ script and &lt;%= %&gt; expression syntax or GString style expressions. The\
+    \ variable {@code out} is bound to the writer that the template is being written\
+    \ to."
   shortDescription: "Email message body."
   name: "cas.authn.mfa.simple.mail.text"
   defaultValue: ""
@@ -1896,7 +1906,12 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
-    \ file that would serve as a template."
+    \ file that would serve as a template. If specified as a path to an external file\
+    \ with an extension {@code .gtemplate}, then the email message body would be processed\
+    \ using the Groovy template engine. The template engine uses JSP style &lt;% %&gt;\
+    \ script and &lt;%= %&gt; expression syntax or GString style expressions. The\
+    \ variable {@code out} is bound to the writer that the template is being written\
+    \ to."
   shortDescription: "Email message body."
   name: "cas.authn.passwordless.tokens.mail.text"
   defaultValue: ""
@@ -1995,7 +2010,12 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
-    \ file that would serve as a template."
+    \ file that would serve as a template. If specified as a path to an external file\
+    \ with an extension {@code .gtemplate}, then the email message body would be processed\
+    \ using the Groovy template engine. The template engine uses JSP style &lt;% %&gt;\
+    \ script and &lt;%= %&gt; expression syntax or GString style expressions. The\
+    \ variable {@code out} is bound to the writer that the template is being written\
+    \ to."
   shortDescription: "Email message body."
   name: "cas.authn.pm.forgot-username.mail.text"
   defaultValue: ""
@@ -2182,7 +2202,12 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
-    \ file that would serve as a template."
+    \ file that would serve as a template. If specified as a path to an external file\
+    \ with an extension {@code .gtemplate}, then the email message body would be processed\
+    \ using the Groovy template engine. The template engine uses JSP style &lt;% %&gt;\
+    \ script and &lt;%= %&gt; expression syntax or GString style expressions. The\
+    \ variable {@code out} is bound to the writer that the template is being written\
+    \ to."
   shortDescription: "Email message body."
   name: "cas.authn.pm.reset.mail.text"
   defaultValue: ""
@@ -2838,7 +2863,12 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
-    \ file that would serve as a template."
+    \ file that would serve as a template. If specified as a path to an external file\
+    \ with an extension {@code .gtemplate}, then the email message body would be processed\
+    \ using the Groovy template engine. The template engine uses JSP style &lt;% %&gt;\
+    \ script and &lt;%= %&gt; expression syntax or GString style expressions. The\
+    \ variable {@code out} is bound to the writer that the template is being written\
+    \ to."
   shortDescription: "Email message body."
   name: "cas.authn.surrogate.mail.text"
   defaultValue: ""
@@ -3671,7 +3701,12 @@
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
   description: "Email message body. Could be plain text or a reference to an external\
-    \ file that would serve as a template."
+    \ file that would serve as a template. If specified as a path to an external file\
+    \ with an extension {@code .gtemplate}, then the email message body would be processed\
+    \ using the Groovy template engine. The template engine uses JSP style &lt;% %&gt;\
+    \ script and &lt;%= %&gt; expression syntax or GString style expressions. The\
+    \ variable {@code out} is bound to the writer that the template is being written\
+    \ to."
   shortDescription: "Email message body."
   name: "cas.service-registry.mail.text"
   defaultValue: ""
