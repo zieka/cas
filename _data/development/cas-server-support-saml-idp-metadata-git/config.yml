@@ -32,6 +32,20 @@
   defaultValue: false
 - module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
+  type: "org.apereo.cas.configuration.model.support.git.services.BaseGitProperties$HttpClientType"
+  description: "Implementation of HTTP client to use when doing git operations via\
+    \ http/https. The jgit library sets the connection factory statically (globally)\
+    \ so this property should be set to the same value for all git repositories (services,\
+    \ saml, etc). Not doing so might result in one connection factory being used for\
+    \ clone and another for subsequent fetches.\nAvailable values are as follows:\n\
+    <ul><li>{@code JDK}: Built-in JDK http/https client.</li><li>{@code HTTP_CLIENT}:\
+    \ Apache HTTP Client http/https client.</li></ul>"
+  shortDescription: "Implementation of HTTP client to use when doing git operations\
+    \ via http/https."
+  name: "cas.authn.saml-idp.metadata.git.http-client-type"
+  defaultValue: ""
+- module: "cas-server-support-saml-idp-metadata-git"
+  owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.Boolean"
   description: "Whether identity provider metadata artifacts are expected to be found\
     \ in the database."
