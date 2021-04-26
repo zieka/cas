@@ -32,7 +32,7 @@
   defaultValue: false
 - module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
-  type: "org.apereo.cas.configuration.model.support.git.services.BaseGitProperties$HttpClientType"
+  type: "org.apereo.cas.configuration.model.support.git.services.BaseGitProperties$HttpClientTypes"
   description: "Implementation of HTTP client to use when doing git operations via\
     \ http/https. The jgit library sets the connection factory statically (globally)\
     \ so this property should be set to the same value for all git repositories (services,\

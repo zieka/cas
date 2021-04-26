@@ -7,7 +7,7 @@
   shortDescription: "Services cache capacity sets the minimum total size for the internal\
     \ data structures."
   name: "cas.service-registry.cache.cache-capacity"
-  defaultValue: 1000
+  defaultValue: 2000
 - module: "cas-server-core-services"
   owner: "org.apereo.cas.configuration.model.core.services.ServiceRegistryCacheProperties"
   type: "java.lang.Long"
@@ -16,7 +16,7 @@
   shortDescription: "Services cache size specifies the maximum number of entries the\
     \ cache may contain."
   name: "cas.service-registry.cache.cache-size"
-  defaultValue: 1000
+  defaultValue: 2000
 - duration: true
   module: "cas-server-core-services"
   owner: "org.apereo.cas.configuration.model.core.services.ServiceRegistryCacheProperties"

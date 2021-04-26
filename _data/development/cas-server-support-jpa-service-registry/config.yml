@@ -16,7 +16,7 @@
   shortDescription: "A non-zero value enables use of JDBC2 batch updates by Hibernate.\
     \ e.g. recommended values between 5 and 30."
   name: "cas.service-registry.jpa.batch-size"
-  defaultValue: 5
+  defaultValue: 100
 - module: "cas-server-support-jpa-service-registry"
   owner: "org.apereo.cas.configuration.model.support.jpa.serviceregistry.JpaServiceRegistryProperties"
   type: "java.lang.String"
@@ -165,6 +165,20 @@
   defaultValue: 1
 - module: "cas-server-support-jpa-service-registry"
   owner: "org.apereo.cas.configuration.model.support.jpa.serviceregistry.JpaServiceRegistryProperties"
+  type: "java.lang.Integer"
+  description: "Used to specify number of rows to be fetched in a select query."
+  shortDescription: "Used to specify number of rows to be fetched in a select query."
+  name: "cas.service-registry.jpa.fetch-size"
+  defaultValue: 100
+- module: "cas-server-support-jpa-service-registry"
+  owner: "org.apereo.cas.configuration.model.support.jpa.serviceregistry.JpaServiceRegistryProperties"
+  type: "java.lang.Boolean"
+  description: "Allow hibernate to generate query statistics."
+  shortDescription: "Allow hibernate to generate query statistics."
+  name: "cas.service-registry.jpa.generate-statistics"
+  defaultValue: false
+- module: "cas-server-support-jpa-service-registry"
+  owner: "org.apereo.cas.configuration.model.support.jpa.serviceregistry.JpaServiceRegistryProperties"
   type: "java.lang.String"
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
@@ -208,17 +222,6 @@
     \ pool before a message is logged indicating a possible connection leak."
   name: "cas.service-registry.jpa.leak-threshold"
   defaultValue: 3000
-- module: "cas-server-support-jpa-service-registry"
-  owner: "org.apereo.cas.configuration.model.support.jpa.serviceregistry.JpaServiceRegistryProperties"
-  type: "java.util.List<java.lang.String>"
-  description: "List of class names, fully qualified, that should be managed by the\
-    \ JPA persistence unit in addition to what CAS may discover dynamically from various\
-    \ extensions at runtime."
-  shortDescription: "List of class names, fully qualified, that should be managed\
-    \ by the JPA persistence unit in addition to what CAS may discover dynamically\
-    \ from various extensions at runtime."
-  name: "cas.service-registry.jpa.managed-entities"
-  defaultValue: ""
 - required: true
   module: "cas-server-support-jpa-service-registry"
   owner: "org.apereo.cas.configuration.model.support.jpa.serviceregistry.JpaServiceRegistryProperties"

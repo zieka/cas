@@ -8,18 +8,23 @@ category: Planning
 
 We strongly recommend that you take advantage of the release candidates as they come out. Waiting for a `GA` release is only going to set
 you up for unpleasant surprises. A `GA` is [a tag and nothing more](https://apereo.github.io/2017/03/08/the-myth-of-ga-rel/). Note that CAS
-releases are *strictly* time-based releases; they are not scheduled or based on specific benchmarks, statistics or completion of features. To gain
-confidence in a particular release, it is strongly recommended that you start early by experimenting with release candidates and/or follow-up snapshots.
+releases are *strictly* time-based releases; they are not scheduled 
+or based on specific benchmarks, statistics or completion of features. To gain
+confidence in a particular release, it is strongly recommended that you 
+start early by experimenting with release candidates and/or follow-up snapshots.
 
 ## Apereo Membership
 
-If you benefit from Apereo CAS as free and open-source software, we invite you to [join the Apereo Foundation](https://www.apereo.org/content/apereo-membership)
+If you benefit from Apereo CAS as free and open-source software, we invite 
+you to [join the Apereo Foundation](https://www.apereo.org/content/apereo-membership)
 and financially support the project at a capacity that best suits your deployment. Note that all development activity
-is performed *almost exclusively* on a voluntary basis with no expectations, commitments or strings attached. Having the financial means to better
-sustain engineering activities will allow the developer community to allocate *dedicated and committed* time for long-term support,
+is performed *almost exclusively* on a voluntary basis with no expectations, commitments 
+or strings attached. Having the financial means to better sustain engineering activities will 
+allow the developer community to allocate *dedicated and committed* time for long-term support,
 maintenance and release planning, especially when it comes to addressing critical and security issues in a timely manner. Funding will
 ensure support for the software you rely on and you gain an advantage and say in the way Apereo, and the CAS project at that, runs
-and operates. If you consider your CAS deployment to be a critical part of the identity and access management ecosystem, this is a viable option to consider.
+and operates. If you consider your CAS deployment to be a critical part of the identity 
+and access management ecosystem, this is a viable option to consider.
 
 ## Get Involved
 
@@ -70,6 +75,28 @@ CAS test coverage across all modules in the codebase has now reached `91%` and c
 Initial groundwork to integrate the OpenID Connect conformance test suite with the CAS CI to then
 ensure compatibility and compliance of the CAS implementation with the OpenID Connect test suite.
 
+### AWS Integration
+
+A dedicated [integration module](../integration/AWS-Integration.html) and endpoint is 
+now available to obtain temporary AWS access credentials from AWS STS.
+
+### Duo Security Passcode Authentication
+
+Multifactor authentication with [Duo Security](../mfa/DuoSecurity-Authentication.html) is now given the ability to support passcodes
+as credentials, mainly for CLI or REST-based authentication requests.
+ 
+### Multifactor Authentication via REST Protocol
+
+<div class="alert alert-info">
+  <strong>Workers Ahead</strong><br/>This is a work-in-progress and will be improved and refined in future releases. 
+</div>
+
+Operations provided by the [CAS REST Protocol](../protocol/REST-Protocol.html) that allow one to 
+[authenticate credentials](../protocol/REST-Protocol-CredentialAuthentication.html)
+or [generate ticket-granting tickets](../protocol/REST-Protocol-Request-TicketGrantingTicket.html) are 
+now put through multifactor authentication, if the authentication request is deemed eligible
+via the configured [multifactor authentication triggers](../mfa/Configuring-Multifactor-Authentication-Triggers.html).
+
 ## Other Stuff
 
 - CAS CI builds are updated to ensure all web application types can be deployed successfully via external servlet containers.
@@ -80,6 +107,11 @@ ensure compatibility and compliance of the CAS implementation with the OpenID Co
 - Minor improvements to SAML2 SLO responses to handle and recognize `Asynchronous` logout requests.
 - Puppeteer tests to ensure actuator endpoints can produce the expected output for `GET/READ` operations.
 - Puppeteer tests to password reset flows with security questions.
+- Git-based integrations are given the option to specify the HTTP client used for remote operations.
+- Multiple Javascript and/or CSS files can be specified in theme configurations, separated via comma.
+- JDBC/JPA integrations are given the option to specify the database `fetch-size`. Furthermore, a number of JPA collections 
+  and relationships associated with registered services are now marked as lazy to improve query performance for load operations.
+- A new `casModules` [actuator endpoint](../configuration/Configuration-Metadata-Repository.html) to output the collection of CAS modules activated and included at runtime.
 
 ## Library Upgrades
 
@@ -102,4 +134,3 @@ ensure compatibility and compliance of the CAS implementation with the OpenID Co
 - Spring Boot
 - DropWizard
 - Gradle
-

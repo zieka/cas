@@ -25,7 +25,7 @@
   shortDescription: "A non-zero value enables use of JDBC2 batch updates by Hibernate.\
     \ e.g. recommended values between 5 and 30."
   name: "cas.acceptable-usage-policy.jdbc.batch-size"
-  defaultValue: 5
+  defaultValue: 100
 - module: "cas-server-support-aup-jdbc"
   owner: "org.apereo.cas.configuration.model.support.aup.JdbcAcceptableUsagePolicyProperties"
   type: "java.lang.String"
@@ -172,6 +172,20 @@
   shortDescription: "Set the pool initialization failure timeout."
   name: "cas.acceptable-usage-policy.jdbc.fail-fast-timeout"
   defaultValue: 1
+- module: "cas-server-support-aup-jdbc"
+  owner: "org.apereo.cas.configuration.model.support.aup.JdbcAcceptableUsagePolicyProperties"
+  type: "java.lang.Integer"
+  description: "Used to specify number of rows to be fetched in a select query."
+  shortDescription: "Used to specify number of rows to be fetched in a select query."
+  name: "cas.acceptable-usage-policy.jdbc.fetch-size"
+  defaultValue: 100
+- module: "cas-server-support-aup-jdbc"
+  owner: "org.apereo.cas.configuration.model.support.aup.JdbcAcceptableUsagePolicyProperties"
+  type: "java.lang.Boolean"
+  description: "Allow hibernate to generate query statistics."
+  shortDescription: "Allow hibernate to generate query statistics."
+  name: "cas.acceptable-usage-policy.jdbc.generate-statistics"
+  defaultValue: false
 - module: "cas-server-support-aup-jdbc"
   owner: "org.apereo.cas.configuration.model.support.aup.JdbcAcceptableUsagePolicyProperties"
   type: "java.lang.String"

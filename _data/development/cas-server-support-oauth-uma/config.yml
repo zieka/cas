@@ -40,7 +40,7 @@
   shortDescription: "A non-zero value enables use of JDBC2 batch updates by Hibernate.\
     \ e.g. recommended values between 5 and 30."
   name: "cas.authn.oauth.uma.resource-set.jpa.batch-size"
-  defaultValue: 5
+  defaultValue: 100
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
   type: "java.lang.String"
@@ -187,6 +187,20 @@
   shortDescription: "Set the pool initialization failure timeout."
   name: "cas.authn.oauth.uma.resource-set.jpa.fail-fast-timeout"
   defaultValue: 1
+- module: "cas-server-support-oauth-uma"
+  owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
+  type: "java.lang.Integer"
+  description: "Used to specify number of rows to be fetched in a select query."
+  shortDescription: "Used to specify number of rows to be fetched in a select query."
+  name: "cas.authn.oauth.uma.resource-set.jpa.fetch-size"
+  defaultValue: 100
+- module: "cas-server-support-oauth-uma"
+  owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
+  type: "java.lang.Boolean"
+  description: "Allow hibernate to generate query statistics."
+  shortDescription: "Allow hibernate to generate query statistics."
+  name: "cas.authn.oauth.uma.resource-set.jpa.generate-statistics"
+  defaultValue: false
 - module: "cas-server-support-oauth-uma"
   owner: "org.apereo.cas.configuration.model.support.uma.UmaResourceSetJpaProperties"
   type: "java.lang.String"

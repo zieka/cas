@@ -43,7 +43,7 @@
   defaultValue: true
 - module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
-  type: "org.apereo.cas.configuration.model.support.git.services.BaseGitProperties$HttpClientType"
+  type: "org.apereo.cas.configuration.model.support.git.services.BaseGitProperties$HttpClientTypes"
   description: "Implementation of HTTP client to use when doing git operations via\
     \ http/https. The jgit library sets the connection factory statically (globally)\
     \ so this property should be set to the same value for all git repositories (services,\
