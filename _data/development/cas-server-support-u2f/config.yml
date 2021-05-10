@@ -46,7 +46,7 @@
     \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.u2f.failure-mode"
-  defaultValue: ""
+  defaultValue: "CLOSED"
 - required: true
   module: "cas-server-support-u2f"
   owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FGroovyMultifactorProperties"

@@ -33,7 +33,7 @@
   shortDescription: "Indicates how record keys for trusted devices would be generated\
     \ so they can be signed/verified on fetch operations."
   name: "cas.authn.mfa.trusted.core.key-generator-type"
-  defaultValue: ""
+  defaultValue: "DEFAULT"
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.DeviceFingerprintProperties.ClientIp"
   type: "java.lang.Boolean"

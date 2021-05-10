@@ -30,7 +30,7 @@
   shortDescription: "Billing mode specifies how you are charged for read and write\
     \ throughput and how you manage capacity."
   name: "cas.audit.dynamo-db.billing-mode"
-  defaultValue: ""
+  defaultValue: "PROVISIONED"
 - duration: true
   module: "cas-server-support-audit-dynamodb"
   owner: "org.apereo.cas.configuration.model.support.dynamodb.AuditDynamoDbProperties"

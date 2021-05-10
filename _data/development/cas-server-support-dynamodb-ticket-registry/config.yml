@@ -23,7 +23,7 @@
   shortDescription: "Billing mode specifies how you are charged for read and write\
     \ throughput and how you manage capacity."
   name: "cas.ticket.registry.dynamo-db.billing-mode"
-  defaultValue: ""
+  defaultValue: "PROVISIONED"
 - duration: true
   module: "cas-server-support-dynamodb-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.dynamodb.DynamoDbTicketRegistryProperties"

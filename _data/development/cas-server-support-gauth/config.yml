@@ -25,7 +25,7 @@
     \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.gauth.failure-mode"
-  defaultValue: ""
+  defaultValue: "CLOSED"
 - module: "cas-server-support-gauth"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.GoogleAuthenticatorMultifactorAuthenticationProperties"
   type: "java.lang.String"

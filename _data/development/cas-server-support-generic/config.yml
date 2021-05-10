@@ -74,6 +74,15 @@
   name: "cas.authn.json.name"
   defaultValue: ""
 - module: "cas-server-support-generic"
+  owner: "org.apereo.cas.configuration.model.support.generic.JsonResourceAuthenticationProperties"
+  type: "org.apereo.cas.configuration.model.core.authentication.AuthenticationHandlerStates"
+  description: "Define the scope and state of this authentication handler and the\
+    \ lifecycle in which it can be invoked or activated."
+  shortDescription: "Define the scope and state of this authentication handler and\
+    \ the lifecycle in which it can be invoked or activated."
+  name: "cas.authn.json.state"
+  defaultValue: ""
+- module: "cas-server-support-generic"
   owner: "org.apereo.cas.configuration.model.support.generic.RejectAuthenticationProperties"
   type: "java.lang.String"
   description: "Name of the authentication handler."

@@ -35,7 +35,7 @@
     \ logs as JSON strings\nwhere necessary/possible.</li></ul>"
   shortDescription: "The audit format to use in the logs."
   name: "cas.audit.engine.audit-format"
-  defaultValue: ""
+  defaultValue: "DEFAULT"
 - module: "cas-server-core-audit"
   owner: "org.apereo.cas.configuration.model.core.audit.AuditEngineProperties"
   type: "java.lang.Boolean"

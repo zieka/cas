@@ -54,7 +54,7 @@
   shortDescription: "Implementation of HTTP client to use when doing git operations\
     \ via http/https."
   name: "cas.service-registry.git.http-client-type"
-  defaultValue: ""
+  defaultValue: "JDK"
 - module: "cas-server-support-git-service-registry"
   owner: "org.apereo.cas.configuration.model.support.git.services.GitServiceRegistryProperties"
   type: "java.lang.String"

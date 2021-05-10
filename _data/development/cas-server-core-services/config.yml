@@ -52,4 +52,4 @@
   shortDescription: "Determine how services are internally managed, queried, cached\
     \ and reloaded by CAS."
   name: "cas.service-registry.core.management-type"
-  defaultValue: ""
+  defaultValue: "DEFAULT"

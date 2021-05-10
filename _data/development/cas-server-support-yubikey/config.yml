@@ -42,7 +42,7 @@
     \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.yubikey.failure-mode"
-  defaultValue: ""
+  defaultValue: "CLOSED"
 - module: "cas-server-support-yubikey"
   owner: "org.apereo.cas.configuration.model.support.mfa.yubikey.YubiKeyMultifactorAuthenticationProperties"
   type: "java.lang.String"

@@ -60,7 +60,7 @@
   shortDescription: "Setting that describes how Lettuce routes read operations to\
     \ replica nodes."
   name: "cas.ticket.registry.redis.read-from"
-  defaultValue: ""
+  defaultValue: "2000"
 - module: "cas-server-support-redis-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.redis.RedisTicketRegistryProperties"
   type: "java.lang.Integer"

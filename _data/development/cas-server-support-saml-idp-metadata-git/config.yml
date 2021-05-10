@@ -43,7 +43,7 @@
   shortDescription: "Implementation of HTTP client to use when doing git operations\
     \ via http/https."
   name: "cas.authn.saml-idp.metadata.git.http-client-type"
-  defaultValue: ""
+  defaultValue: "JDK"
 - module: "cas-server-support-saml-idp-metadata-git"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.metadata.GitSamlMetadataProperties"
   type: "java.lang.Boolean"

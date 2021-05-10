@@ -23,7 +23,7 @@
   shortDescription: "Billing mode specifies how you are charged for read and write\
     \ throughput and how you manage capacity."
   name: "cas.spring.cloud.aws.dynamo-db.billing-mode"
-  defaultValue: ""
+  defaultValue: "PROVISIONED"
 - duration: true
   module: "cas-server-support-configuration-cloud-dynamodb"
   owner: "org.apereo.cas.configuration.model.core.config.cloud.SpringCloudConfigurationProperties.AmazonDynamoDb"
@@ -214,7 +214,7 @@
   shortDescription: "Billing mode specifies how you are charged for read and write\
     \ throughput and how you manage capacity."
   name: "cas.spring.cloud.dynamo-db.billing-mode"
-  defaultValue: ""
+  defaultValue: "PROVISIONED"
 - duration: true
   module: "cas-server-support-configuration-cloud-dynamodb"
   owner: "org.apereo.cas.configuration.model.core.config.cloud.SpringCloudConfigurationProperties.AmazonDynamoDb"

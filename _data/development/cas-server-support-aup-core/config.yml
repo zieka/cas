@@ -17,4 +17,4 @@
     \ user is prompted when\nthey authenticate via credentials.</li></ul>"
   shortDescription: "Scope of map where the aup selection is stored."
   name: "cas.acceptable-usage-policy.in-memory.scope"
-  defaultValue: ""
+  defaultValue: "GLOBAL"

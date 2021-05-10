@@ -18,7 +18,7 @@
     \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.simple.failure-mode"
-  defaultValue: ""
+  defaultValue: "CLOSED"
 - module: "cas-server-support-simple-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.CasSimpleMultifactorAuthenticationProperties"
   type: "java.lang.String"

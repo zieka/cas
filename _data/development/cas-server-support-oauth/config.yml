@@ -114,4 +114,4 @@
   shortDescription: "User profile view type determines how the final user profile\
     \ should be rendered once an access token is \"validated\"."
   name: "cas.authn.oauth.user-profile-view-type"
-  defaultValue: ""
+  defaultValue: "NESTED"

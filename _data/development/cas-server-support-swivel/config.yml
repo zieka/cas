@@ -18,7 +18,7 @@
     \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.swivel.failure-mode"
-  defaultValue: ""
+  defaultValue: "CLOSED"
 - module: "cas-server-support-swivel"
   owner: "org.apereo.cas.configuration.model.support.mfa.SwivelMultifactorAuthenticationProperties"
   type: "java.lang.String"

@@ -23,7 +23,7 @@
     \ completion.</li></ul>"
   shortDescription: "Cluster consistency may be STRONG or EVENTUAL."
   name: "cas.ticket.registry.ehcache3.clustered-cache-consistency"
-  defaultValue: ""
+  defaultValue: "STRONG"
 - module: "cas-server-support-ehcache3-ticket-registry"
   owner: "org.apereo.cas.configuration.model.support.ehcache.Ehcache3Properties"
   type: "java.lang.String"

@@ -147,7 +147,7 @@
     \ The default one indicating that no failure mode is set at all.</li></ul>"
   shortDescription: "The failure mode policy for this MFA provider."
   name: "cas.authn.mfa.web-authn.failure-mode"
-  defaultValue: ""
+  defaultValue: "CLOSED"
 - module: "cas-server-support-webauthn"
   owner: "org.apereo.cas.configuration.model.support.mfa.webauthn.WebAuthnMultifactorAuthenticationProperties"
   type: "java.lang.String"

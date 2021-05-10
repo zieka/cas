@@ -20,7 +20,7 @@
     \ from the Java CAS client when attempting to issue in-bound ticket validation\
     \ calls."
   name: "cas.client.validator-type"
-  defaultValue: ""
+  defaultValue: "CAS30"
 - module: "cas-server-core"
   owner: "org.apereo.cas.configuration.model.core.CasServerHostProperties"
   type: "java.lang.String"

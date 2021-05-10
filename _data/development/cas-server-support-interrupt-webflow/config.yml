@@ -12,7 +12,7 @@
   shortDescription: "Define how interrupt notifications should be triggered in the\
     \ authentication flow."
   name: "cas.interrupt.core.trigger-mode"
-  defaultValue: ""
+  defaultValue: "AFTER_AUTHENTICATION"
 - required: true
   module: "cas-server-support-interrupt-webflow"
   owner: "org.apereo.cas.configuration.model.support.interrupt.GroovyInterruptProperties"

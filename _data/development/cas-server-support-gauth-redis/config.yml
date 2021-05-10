@@ -60,7 +60,7 @@
   shortDescription: "Setting that describes how Lettuce routes read operations to\
     \ replica nodes."
   name: "cas.authn.mfa.gauth.redis.read-from"
-  defaultValue: ""
+  defaultValue: "2000"
 - module: "cas-server-support-gauth-redis"
   owner: "org.apereo.cas.configuration.model.support.mfa.gauth.RedisGoogleAuthenticatorMultifactorProperties"
   type: "java.lang.Integer"

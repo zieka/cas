@@ -60,7 +60,7 @@
   shortDescription: "Setting that describes how Lettuce routes read operations to\
     \ replica nodes."
   name: "cas.consent.redis.read-from"
-  defaultValue: ""
+  defaultValue: "2000"
 - module: "cas-server-support-consent-redis"
   owner: "org.apereo.cas.configuration.model.support.consent.RedisConsentProperties"
   type: "java.lang.Integer"

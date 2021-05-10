@@ -479,7 +479,7 @@
   shortDescription: "Indicates how attributes in the final validation response should\
     \ be formatted."
   name: "cas.view.cas1.attribute-renderer-type"
-  defaultValue: ""
+  defaultValue: "DEFAULT"
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.view.Cas20ViewProperties"
   type: "java.lang.String"
@@ -530,7 +530,7 @@
   shortDescription: "Indicates how attributes in the final validation response should\
     \ be formatted."
   name: "cas.view.cas3.attribute-renderer-type"
-  defaultValue: ""
+  defaultValue: "DEFAULT"
 - module: "cas-server-core-web"
   owner: "org.apereo.cas.configuration.model.core.web.view.Cas30ViewProperties"
   type: "java.lang.String"
