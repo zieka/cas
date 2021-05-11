@@ -1,0 +1,36 @@
+
+<p>The following properties are available and recognized by CAS for various modules and features:</p>
+
+<table>
+    <thead>
+        <tr>
+          <th>Name</th>
+          <th>Default Value</th>
+          <th>Type</th>
+          <th>Group</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cfg in site.data[version]["registered-service-properties"] %}
+                {% assign configBlock = cfg[1] %}
+
+                {% for config in configBlock %}
+                <tr>
+                    <td>
+                        <code class="text-wrap">{{ config.name }}</code>
+                    </td>
+                    <td>
+                        <code class="text-wrap">{{ config.defaultValue }}</code>
+                    </td>
+                    <td>
+                        <code class="text-wrap">{{ config.type }}</code>
+                    </td>
+                    <td>
+                        <code class="text-wrap">{{ config.group }}</code>
+                    </td>
+                </tr>
+                {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+
