@@ -122,7 +122,9 @@ By simply delivering the change and having it get merged into the codebase relev
 
 No. There are no plans.
 
-CAS project development activity is largely based on **volunteer time and contributions**. Officially, there are no contracts, commitments, timelines, schedules, or funding to plan for changes. Planning for future changes and roadmap discussions in the absence of a time commitment, solid funding or sponsorship seems unnecessary and can only feel like ceremonial, premature busywork specially as due dates for such plans inevitably and almost always get pushed back and continue to eat dust given the absence of tooling and resources. CAS open-source development is never done in vacuums. Generally speaking, work items are done with contributors propose, discuss and show up with pull requests or when funding and sponsorship for a change is made available.
+CAS project development activity is largely based on **volunteer time and contributions**. Officially, there are no contracts, commitments, timelines, schedules, or funding to plan for changes. Planning for future changes and roadmap discussions in the absence of a time commitment, solid funding or sponsorship seems unnecessary and can only feel like ceremonial, premature busywork specially as due dates for such plans inevitably and almost always get pushed back and continue to eat dust given the absence of tooling and resources. CAS open-source development is never done in vacuums. Generally speaking, work items are done when contributors propose, discuss and show up with pull requests or when funding and sponsorship for a change is made available. If you would like to see a change or feature in CAS, you're most welcome to discuss and contribute or fund someone else's time and make it worth their while to do that for you.
+
+<div class="alert alert-info"><strong>The Hitchhiker's Guide to the CAS Galaxy</strong><p>A <i>problem</i> is only a problem, if  and when something is done about the problem. Otherwise and by definition, there is no problem.</p></div>
 
 ## How often are changes released?
 
