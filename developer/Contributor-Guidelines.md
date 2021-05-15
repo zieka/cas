@@ -5,34 +5,34 @@ title: CAS - Contributor Guidelines
 
 # Contributor Guidelines
 
-We want to start off by saying thank you for using CAS. This project is a labor of love, and we appreciate the work done by all 
-who catch bugs, make performance improvements and help with documentation. Every contribution is meaningful, so thank you 
+We want to start by saying thank you for using CAS. This project is a labor of love, and we appreciate the work done by all
+who catch bugs, make performance improvements and help with documentation. Every contribution is meaningful, so thank you
 for participating. That being said, here are a few guidelines that we ask you to follow so we can successfully address your patch.
 
-The goal of this guide is to, very simply put, help you learn how to catch fish. 
+The goal of this guide is to, very simply put, help you learn how to catch fish.
 
 Shed all of your fears of making a mistake as part of your contributions to the project. Practice makes perfect and
 we are all here to help you as much as we can so you can ultimately become an independent contributor to the project. It's OK
 to make mistakes and it does take some time, effort and energy to improve the state of proposals and contributions. So do not be discouraged, keep at it
-and if you find anything that is unclear along the way, do not hesitate to ask questions. 
+and if you find anything that is unclear along the way, do not hesitate to ask questions.
 
 The overarching theme of this guide starts with the following questions:
 
 1. What is the Apereo CAS project policy on accepting contributions?
-2. How may one, seriously and in a step-wise fashion, get started with contributions? 
+2. How may one, seriously and in a step-wise fashion, get started with contributions?
 
 ## What do I work on?
- 
-Certain number of projects in open source try to advertise work items and tasks which they think might be [good candidates for contributions](https://github.com/spring-projects/spring-boot/issues?q=is%3Aopen+is%3Aissue+label%3A%22status%3A+ideal-for-contribution%22). This is generally and often *not* the Apereo CAS project policy. The policy is much simpler than that. 
+
+A certain number of projects in open source try to advertise work items and tasks which they think might be [good candidates for contributions](https://github.com/spring-projects/spring-boot/issues?q=is%3Aopen+is%3Aissue+label%3A%22status%3A+ideal-for-contribution%22). This is generally and often *not* the Apereo CAS project policy. The policy is much simpler than that.
 
 It goes something like this:
 
 > Everything is ideal for contributions.
 
-In other words, 
+In other words,
 
-- There is no *"We vs. You"*. 
-- There is no *"Some folks can only fix certain issues and some can't"*. 
+- There is no *"We vs. You"*.
+- There is no *"Some folks can only fix certain issues and some can't"*.
 - There is no *"Person X made the change; so X must fix it too"* (aka code ownership)
 - There is no *"I am just a user; you are the developers"*.
 
@@ -42,7 +42,7 @@ Remember that you are deploying open source software, which means you have autom
 
 ## What can I work on?
 
-All contributions are extremely welcomed with open arms regardless of shape, size and color. You may be interested in helping with fixing typos, writing documentation, authoring test cases, developing code, squashing bugs, etc. All is welcome. 
+All contributions are extremely welcomed with open arms regardless of shape, size, and color. You may be interested in helping with fixing typos, writing documentation, authoring test cases, developing code, squashing bugs, etc. All is welcome.
 
 [More contributions simply equal more confidence](https://apereo.github.io/2017/03/08/the-myth-of-ga-rel/).
 
@@ -52,7 +52,7 @@ If you find that contributing to the project is at the moment out of your reach,
 
 ## Do I need an issue first?
 
-No. 
+No.
 
 If you have already identified an enhancement or a bug, it is STRONGLY recommended that you simply submit a pull request to address the case. There is no need for special ceremony to create separate issues. The pull request **IS** the issue and it will be tracked and tagged as such. Remember that this is open source software in an open and collaborative community. It's not "Some folks report issues and some folks fix problems" software. You are for the most part and at all costs encouraged to submit patches that fix the reported issue and remove pain, rather than waiting for someone to come along and fix it. As prescribed, there is no *"We vs. You"*.
 
@@ -60,7 +60,7 @@ Very simply put:
 
 > You are the one you have been waiting for.
 
-Remember that doing something about an issue does not necessarily equal to you, the individual contributor, writing code. That is only one of many [possible options](https://apereo.github.io/cas/Support.html). That said, if you'd rather just report and catalog the issue to have others benefit from your discovery, it would be best if you could share the use case and the problem at hand via community mailing lists, chatrooms and the likes of StackOverflow under appropriate tags for easier discovery. 
+Remember that doing something about an issue does not necessarily equal to you, the individual contributor, writing code. That is only one of many [possible options](https://apereo.github.io/cas/Support.html). That said, if you'd rather just report and catalog the issue to have others benefit from your discovery, it would be best if you could share the use case and the problem at hand via community mailing lists, chatrooms and the likes of StackOverflow under appropriate tags for easier discovery.
 
 ## What if I am not a developer?
 
@@ -68,7 +68,7 @@ If you have already diagnosed a problem or have found a use case for an attracti
 
 Reporting an issue and hoping/waiting for someone else to magically come along and spend time, money and energy to provide a fix for you is never an acceptable strategy. Quit waiting for the light at the end of the tunnel and light it yourself.
 
-If you insist on being treated like a user, you then need to revisit and realign expectations with [folks and resources](https://apereo.github.io/cas/Support.html) that can provide you with the treatment you need. All of the work that goes into the development of a rich comprehensive software platform is almost exclusively done on a voluntary basis. Therefor, if you have expectations that resemble something of a commercial support agreement with clauses that include promises, guarantee, SLAs and follow-ups, you simply need to level up with an entity that actually provides that sort of functionality.
+If you insist on being treated like a user, you then need to revisit and realign expectations with [folks and resources](https://apereo.github.io/cas/Support.html) that can provide you with the treatment you need. All of the work that goes into the development of a rich comprehensive software platform is almost exclusively done voluntarily. Therefore, if you have expectations that resemble something of a commercial support agreement with clauses that include promises, guarantees, SLAs and follow-ups, you simply need to level up with an entity that actually provides that sort of functionality.
 
 ## I have an idea; It would be nice if...
 
@@ -76,23 +76,23 @@ It _would_ be nice. No, it would be fantastic, superb, marvelous and ultra great
 
 ## I found a problem. Should I...?
 
-Yes, you should. If you find something that you consider to be odd, wrong or wobbly behavior _**and**_ have found an alternative solution that removes the obstacle or delivers the case, please consider reporting and sharing that improvement in form of a patch to the project so it can be discussed and potentially accepted. There is no down-side to this, as you engage and collaborate with community members concretely and in action; It is quite possible that they may have found a better solution and might be able to share that with you for longer prosperity. Be not afraid; the worst that could happen is someone stepping up to help you out with better options.
+Yes, you should. If you find something that you consider to be odd, wrong or wobbly behavior _**and**_ have found an alternative solution that removes the obstacle or delivers the case, please consider reporting and sharing that improvement in form of a patch to the project so it can be discussed and potentially accepted. There is no downside to this, as you engage and collaborate with community members concretely and in action; It is quite possible that they may have found a better solution and might be able to share that with you for longer prosperity. Be not afraid; the worst that could happen is someone stepping up to help you out with better options.
 
 ## How do I know who's working on what?
 
-- Follow the *WIP Pattern* and submit [early pull requests](https://ben.straub.cc/2015/04/02/wip-pull-request/). This is in fact the recommended strategy from Github:
+- Follow the *WIP Pattern* and submit [early pull requests](https://ben.straub.cc/2015/04/02/wip-pull-request/). This is the recommended strategy from Github:
 
 > Pull Requests are a great way to start a conversation of a feature, so start one as soon as possible- even before you are finished with the code. Your team can comment on the feature as it evolves, instead of providing all their feedback at the very end.
 
 Or put another way:
 
-> You’re opening pull requests when you start work, not when you’re finished. 
+> You’re opening pull requests when you start work, not when you’re finished.
 
 There is of course the alternative: [ask](https://apereo.github.io/cas/Mailing-Lists.html).
 
 ## How frequently should I make progress?
 
-If you do have a pending pull request available and one that might also be tagged as *WIP*, you are most welcome to keep pushing to the underlying branch as frequently as you prefer. There is nothing spammy or annoying about making progress on a *WIP* pull request. Nobody is going to get mad at you for making progress and pushing changes, (That's what email filters, etc are for), so do not ever worry about annoying other contributors and/or project members with the frequency of your progress notifications. Continue working on the use case as often as you like and be sure to keep asking for feedback as you make progress. 
+If you do have a pending pull request available and one that might also be tagged as *WIP*, you are most welcome to keep pushing to the underlying branch as frequently as you prefer. There is nothing spammy or annoying about making progress on a *WIP* pull request. Nobody is going to get mad at you for making progress and pushing changes, (That's what email filters, etc are for), so do not ever worry about annoying other contributors and/or project members with the frequency of your progress notifications. Continue working on the use case as often as you like and be sure to keep asking for feedback as you make progress.
 
 <div class="alert alert-success">
   <strong>Inactivity</strong><br/>Note that contributions and pull requests that remain inactive for a certain period of time get tagged as <i>Pending</i> and will be eventually closed automatically. Staleness is only allowed to a certain degree, but worry not. Any stale closed pull request can always be reopened and progress resumed without data loss.
@@ -100,7 +100,7 @@ If you do have a pending pull request available and one that might also be tagge
 
 ## Can I backport a change to a maintenance branch?
 
-Yes, absolutely. Provided the change fits the scope of the maintenance branch and its tracking release and assuming the branch is still under care, you are more than welcome to move changes across the codebase various branches as much as needed to remove pain and improve.  
+Yes, absolutely. Provided the change fits the scope of the maintenance branch and its tracking release and assuming the branch is still under care, you are more than welcome to move changes across the codebase various branches as much as needed to remove pain and improve.
 
 <div class="alert alert-success">
   <strong>Port Forward</strong><br/>Remember that changes applied to previous branches that target CAS versions in maintenance mode <b>MUST</b> be ported forward to the master branch as well, via a separate pull request.
@@ -112,19 +112,21 @@ Start by reviewing the [release policy](https://apereo.github.io/cas/developer/R
 
 ## Is it worth it?
 
-The CAS project generally operates based on its own [maintenance policy](https://apereo.github.io/cas/developer/Maintenance-Policy.html). Before making changes, you want to cross check the CAS deployment you have today and ensure it is still and to what extent considered viable and maintained by the project.
+The CAS project generally operates based on its own [maintenance policy](https://apereo.github.io/cas/developer/Maintenance-Policy.html). Before making changes, you want to cross-check the CAS deployment you have today and ensure it is still and to what extent considered viable and maintained by the project.
 
 ## How do I get on the roadmap?
 
-By simply delivering the change and having it get merged into the codebase relevant branches. There is no predefined roadmap for the project. Work items get completed based on community's availability, interest, time and money. **The roadmap is what you intend to work on.**
+By simply delivering the change and having it get merged into the codebase relevant branches. There is no predefined roadmap for the project. Work items get completed based on the community's availability, interest, time and money. **The roadmap is what you intend to work on.**
 
 ## Are there plans to...?
 
-CAS project development activity is largely based on volunteer time and contributions. Planning for future changes and roadmap discussions in the absence of a time commitment, solid funding or sponsorship seems unnecessary and can only feel like ceremonial, premature busywork specially as due dates for such plans inevitably and almost always get pushed back and continue to eat dust given the absence of tooling and resources. So, there are no plans. There are only pending pull requests and solid contributions to the CAS codebase when and if they arrive. 
+No. There are no plans.
+
+CAS project development activity is largely based on **volunteer time and contributions**. Officially, there are no contracts, commitments, timelines, schedules, or funding to plan for changes. Planning for future changes and roadmap discussions in the absence of a time commitment, solid funding or sponsorship seems unnecessary and can only feel like ceremonial, premature busywork specially as due dates for such plans inevitably and almost always get pushed back and continue to eat dust given the absence of tooling and resources. CAS open-source development is never done in vacuums. Generally speaking, work items are done with contributors propose, discuss and show up with pull requests or when funding and sponsorship for a change is made available.
 
 ## How often are changes released?
 
-You can review the [release schedule](https://github.com/apereo/cas/milestones). Note that the dates specified for each milestone are somewhat tentative and may be pushed around depending on need and severity. 
+You can review the [release schedule](https://github.com/apereo/cas/milestones). Note that the dates specified for each milestone are somewhat tentative and may be pushed around depending on need and severity.
 
 As for general contributions, patches in form of pull requests are generally merged as fast as possible provided they are in *good health*. This means a given pull request must pass a series of automated checks that examine style, tests and such before it becomes eligible for a merge. If your proposed pull request does not yet have the green marking, worry not. Keep pushing to the branch that contains your change to auto-update the pull request and make life green again.
 
@@ -134,15 +136,15 @@ If you find that the project is not moving forward at a pace you find reasonable
 
 Typically, `SNAPSHOT` releases are published by the automatic [CI process](https://github.com/apereo/cas/actions). As soon as a patch is merged, you want to track its build status and once it turns green, you should be good to update snapshots in your build script. Practically, this process can take up to 50 minutes or less. Refer to the `README` file of the build script and the project documentation to learn how you may update the overlay to take advantage of the change.
 
-This practically usually involves running the build with a `-U` or `--refresh-dependencies` command for Apache Maven and Gradle respectively.
+This practically involves running the build with a `-U` or `--refresh-dependencies` command for Apache Maven and Gradle respectively.
 
 ## Why isn't my proposal accepted and merged yet?
 
 Patches submitted to the codebase in form of pull requests are generally reviewed as quickly as possible and most are often accepted. If you find your contribution to take longer
-than *usual* to be merged, it's possible that the proposed changeset violates one or more of the following principals:
+than *usual* to be merged, it's possible that the proposed changeset violates one or more of the following principles:
 
 - The patch fails to pass automated unit or integration tests.
-- The patch fails to adhere to the project's styleing guidelines.
+- The patch fails to adhere to the project's styling guidelines.
 - The patch fails to provide adequate unit or integration tests for the proposed changes.
 - The patch fails to provide an explanation or objective for the proposed changes.
 - The patch has remained stale for quite a while without any sign of contributor activity.
@@ -150,22 +152,22 @@ than *usual* to be merged, it's possible that the proposed changeset violates on
 - The patch modifies a large number files, more than one could practically review in a timely manner.
 - The patch presents a feature or behavior that is deemed too specialized or custom with unwarranted assumptions.
 - The patch introduces (i.e. formatting) changes that are not related to the proposal's objective.
-- The patch violates the general design principals of the codebase or introduces inconsistent or contradictory concepts that would be difficult to maintain.
+- The patch violates the general design principles of the codebase or introduces inconsistent or contradictory concepts that would be difficult to maintain.
 
 <div class="alert alert-success">
-  <strong>Remember</strong><br/>If you need help, please ask and seek clarification as often as you prefer. The shared objective of a pull request is not to judge or point fingers, but to collaborate together and make progress. Remain positive, optimistic with a healthy attitude towards comments and constructive feedback.
+  <strong>Remember</strong><br/>If you need help, please ask and seek clarification as often as you prefer. The shared objective of a pull request is not to judge or point fingers but to collaborate and make progress. Remain positive, optimistic with a healthy attitude towards comments and constructive feedback.
 </div>
 
-There may be accidental mistakes or infrastructure mishaps along the way. You're most welcome to ping the pull request and provide an 
+There may be accidental mistakes or infrastructure mishaps along the way. You're most welcome to ping the pull request and provide an
 explanation and/or comment. In most, if not all, cases the patch is accepted.
 
 ## Functional Build
 
-Before you do anything else, make sure you have a [functional build](Build-Process.html). 
+Before you do anything else, make sure you have a [functional build](Build-Process.html).
 
 ## How do I do this?
 
-In order to successfully finish this exercise you need:
+To successfully finish this exercise you need:
 
 1. [Git](https://git-scm.com/downloads)
 2. [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), eclipse or NetBeans (Depending on the change, `vim` may be perfectly fine too)
@@ -229,7 +231,7 @@ When you're ready to commit changes after having made changes, execute:
 git add --all && git commit -am "This change fixes a problem"
 ```
 
-Note that the `--all` flag adds *all* modified files in the project directory. If you wish to pick and choose, you can either individually add files via a `git add fileName` command one at a time or perhaps, it might be best to simply opt for a GUI client such as [SourceTree](https://www.sourcetreeapp.com/) or [Git Extensions](https://github.com/gitextensions/gitextensions). 
+Note that the `--all` flag adds *all* modified files in the project directory. If you wish to pick and choose, you can either individually add files via a `git add fileName` command one at a time or perhaps, it might be best to simply opt for a GUI client such as [SourceTree](https://www.sourcetreeapp.com/) or [Git Extensions](https://github.com/gitextensions/gitextensions).
 
 ### Push Changes
 
