@@ -1,0 +1,33 @@
+
+<p>The following user interface templates are available and recognized by CAS for various modules and features:</p>
+
+<table>
+    <thead>
+        <tr>
+          <th>Category</th>
+          <th>Name</th>
+          <th>Full Path</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cfg in site.data[version]["userinterface-templates"] %}
+                {% assign configBlock = cfg[1] %}
+                {% for config in configBlock %}
+
+                    {% assign words = config.name | remove: "/src/main/resources/templates/" | split: '/' %}
+                    <tr>
+                        <td>
+                            <code class="text-wrap text-break">{{ words | first }}</code>
+                        </td>
+                        <td>
+                            <code class="text-wrap text-break">{{ words | last }}</code>
+                        </td>
+                        <td>
+                            <code class="text-wrap text-break">{{ config.name }}</code>
+                        </td>
+                    </tr>
+                {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+
