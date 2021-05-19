@@ -16,8 +16,8 @@
   border-bottom-right-radius: 0;
 }
 
-code.highlighter-rouge {
-  color: #318f7b 
+code, code.highlighter-rouge {
+  color: #318f7b;
 }
 
 
@@ -86,6 +86,14 @@ blockquote a:hover{
 
 blockquote em{
   font-style: italic;
+}
+
+.paginated-table tr {
+  display: none;
+}
+
+.table-responsive {
+  display: inline-table;
 }
 
 @media only screen and (max-width: 1800px) {

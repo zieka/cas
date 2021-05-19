@@ -350,3 +350,60 @@ $(function () {
     }
   });
 });
+
+let ROWS = 10;
+
+function next(id) {
+  
+  let rows = $(`#${id} tbody tr`);
+  let rowCount = rows.length;
+
+  let s = 0;
+  s = rows.attr("start");
+  if (s == undefined) {
+    s = 0;
+  } else {
+    if (parseInt(s) + ROWS < rowCount) {
+      s = parseInt(s) + ROWS;
+    }
+  }
+
+  let e = 0;
+  e = rows.attr("end");
+  if (e == undefined) {
+    e = ROWS;
+  } else {
+    e = parseInt(e) + ROWS;
+  }
+  if (e > rowCount) e = rowCount;
+
+
+  rows.hide().slice(s, e).show();
+  console.log("start " + s + " end " + e);
+
+  rows.attr("start", s);
+  rows.attr("end", e);
+
+  $(`#${id} thead tr`).show();
+}
+
+function previous(id) {
+  let rows = $(`#${id} tbody tr`);
+  let rowCount = rows.length;
+
+  let start = parseInt(rows.attr("start"));
+  let end = parseInt(rows.attr("end"));
+
+  start = start - ROWS;
+  if (start < 0) start = 0;
+  end = end - ROWS;
+  if (end < ROWS) end = ROWS;
+
+  rows.hide().slice(start, end).show();
+  console.log("start " + start + " end " + end);
+
+  rows.attr("start", start);
+  rows.attr("end", end);
+
+  $(`#${id} thead tr`).show();
+}
