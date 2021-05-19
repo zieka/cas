@@ -31,7 +31,7 @@
                     {% assign words = config.name | remove: "/src/main/resources/templates/" | split: '/' %}
                     <tr>
                         <td>
-                            <code>{{ words | first }}</code>
+                            <code>{{ words | first | remove: ".html" }}</code>
                         </td>
                         <td>
                             <code>{{ words | last }}</code>
