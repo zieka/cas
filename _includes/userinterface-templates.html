@@ -31,10 +31,10 @@
                     {% assign words = config.name | remove: "/src/main/resources/templates/" | split: '/' %}
                     <tr>
                         <td>
-                            <code class="text-wrap">{{ words | first }}</code>
+                            <code>{{ words | first }}</code>
                         </td>
                         <td>
-                            <code class="text-wrap">{{ words | last }}</code>
+                            <code>{{ words | last }}</code>
                         </td>
                         <td>
                             <code class="text-wrap text-break">{{ config.name }}</code>
