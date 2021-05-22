@@ -394,10 +394,13 @@ function previous(id) {
   let start = parseInt(rows.attr("start"));
   let end = parseInt(rows.attr("end"));
 
+  console.log("current start " + start + " current end " + end);
+
   start = start - ROWS;
   if (start < 0) start = 0;
   end = end - ROWS;
   if (end < ROWS) end = ROWS;
+  if (end - start < ROWS) end = start + ROWS;
 
   rows.hide().slice(start, end).show();
   console.log("start " + start + " end " + end);
