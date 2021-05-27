@@ -15,6 +15,7 @@ The following settings may also need to be defined to describe the mail server s
                     {% if config.name contains prop %}  
                         {% include casproperty.html 
                             name=config.name 
+                            owner=config.owner
                             defaultValue=config.defaultValue 
                             description=config.description 
                             deprecationLevel=config.deprecationLevel

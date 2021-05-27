@@ -38,6 +38,11 @@
             <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
             <sub>This setting supports the <a href="/cas/{{ version }}/configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a>.</sub>
             {% endif %}
+
+            {% if include.owner != "" %}
+            <i style="vertical-align: sub;" class="fas fa-code"></i>
+            <sub>This setting is owned by <code>{{ include.owner }}.</code></sub>
+            {% endif %}
         </div>
 
         {% if include.deprecationLevel.size > 0 %}

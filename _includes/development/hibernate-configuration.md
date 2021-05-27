@@ -17,6 +17,7 @@ connections and queries.
                     {% if config.name contains prop %}  
                         {% include casproperty.html 
                             name=config.name 
+                            owner=config.owner
                             defaultValue=config.defaultValue 
                             description=config.description 
                             deprecationLevel=config.deprecationLevel
