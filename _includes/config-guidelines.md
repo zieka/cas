@@ -10,7 +10,7 @@ This section is meant as a guide only. Do NOT copy/paste the entire collection o
 
 #### YAGNI
 
-Note that for nearly ALL use cases, declaring and configuring properties listed below is sufficient. You should NOT have to explicitly massage a CAS XML/Java/etc configuration file to design an authentication handler, create attribute release policies, etc. CAS at runtime will auto-configure all required changes for you. If you are unsure about the meaning of a given CAS setting, do NOT turn it on without hesitation. Review the codebase or better yet, ask questions to clarify the intended behavior.
+Note that for nearly ALL use cases, declaring and configuring properties listed here is sufficient. You should NOT have to explicitly massage a CAS XML/Java/etc configuration file to design an authentication handler, create attribute release policies, etc. CAS at runtime will auto-configure all required changes for you. If you are unsure about the meaning of a given CAS setting, do NOT turn it on without hesitation. Review the codebase or better yet, ask questions to clarify the intended behavior.
 
 #### Naming Convention
 
