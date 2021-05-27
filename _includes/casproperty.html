@@ -38,7 +38,7 @@
             <p/><sub><i class="fas fa-info-circle"></i> This setting supports the <a href="/cas/{{ version }}/configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a>.</sub>
             {% endif %}
 
-            {% if include.owner != "" %}
+            {% if include.owner.size > 0 %}
             <p/><sub><i class="fas fa-code"></i> This setting is owned by <code>{{ include.owner }}.</code></sub>
             {% endif %}
         </div>
