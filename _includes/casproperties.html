@@ -128,6 +128,7 @@
 {% assign textAreaRequiredProperties = blank %}
 {% assign textAreaOptionalProperties = blank %}
 {% assign textAreaThirdPartyProperties = blank %}
+{% assign textAreaCryptoProperties = blank %}
 
 <div class='tab-content clearfix'>
 
@@ -161,8 +162,10 @@
                         {% endfor %}
 
                         {% unless foundExcluded == true %}
+                            {% assign signingEncryptionCollected = false %}
                             {% if config.name contains ".crypto" %}
                                 {% assign signingEncryptionEnabled = true %}
+                                {% assign signingEncryptionCollected = true %}
                             {% endif %}
                             {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
                                 {% assign rdbmsSettingsFound = true %}
@@ -200,15 +203,20 @@
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
-                            {% include casproperty.html
-                                name=config.name
-                                owner=config.owner
-                                defaultValue=config.defaultValue
-                                description=config.description
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
-                                deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}
+                                {% capture renderedProperties %}{% include casproperty.html
+                                    name=config.name
+                                    owner=config.owner
+                                    defaultValue=config.defaultValue
+                                    description=config.description
+                                    duration=config.duration
+                                    expressionLanguage=config.expressionLanguage
+                                    deprecationLevel=config.deprecationLevel
+                                    deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
+                                {{ renderedProperties | markdownify }}
+
+                                {% if signingEncryptionCollected == true %}
+                                {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
+                                {% endif %}
                         {% endunless %}
                     {% endif %}
                 {% endfor %}
@@ -233,8 +241,10 @@
                             {% endfor %}
 
                             {% unless foundExcluded == true %}
+                                {% assign signingEncryptionCollected = false %}
                                 {% if config.name contains ".crypto" %}
                                     {% assign signingEncryptionEnabled = true %}
+                                    {% assign signingEncryptionCollected = true %}
                                 {% endif %}
                                 {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
                                     {% assign rdbmsSettingsFound = true %}
@@ -269,15 +279,20 @@
                                     | append: config.defaultValue
                                     | append: "&#13;&#10;"
                                     | append: "&#13;&#10;" %}
-                                {% include casproperty.html
-                                    name=config.name
-                                    owner=config.owner
-                                    duration=config.duration
-                                    expressionLanguage=config.expressionLanguage
-                                    defaultValue=config.defaultValue
-                                    description=config.description
-                                    deprecationLevel=config.deprecationLevel
-                                    deprecationReplacement=config.deprecationReplacement %}
+
+                                    {% capture renderedProperties %}{% include casproperty.html
+                                        name=config.name
+                                        owner=config.owner
+                                        defaultValue=config.defaultValue
+                                        description=config.description
+                                        duration=config.duration
+                                        expressionLanguage=config.expressionLanguage
+                                        deprecationLevel=config.deprecationLevel
+                                        deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
+                                    {{ renderedProperties | markdownify }}
+                                    {% if signingEncryptionCollected == true %}
+                                    {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
+                                    {% endif %}
                             {% endunless %}
 
                         {% endif %}
@@ -322,8 +337,10 @@
                         {% endfor %}
 
                         {% unless foundExcluded == true %}
+                            {% assign signingEncryptionCollected = false %}
                             {% if config.name contains ".crypto" %}
                                 {% assign signingEncryptionEnabled = true %}
+                                {% assign signingEncryptionCollected = true %}
                             {% endif %}
                             {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
                                 {% assign rdbmsSettingsFound = true %}
@@ -358,15 +375,19 @@
                                 | append: config.defaultValue
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
-                            {% include casproperty.html
+                            {% capture renderedProperties %}{% include casproperty.html
                                 name=config.name
                                 owner=config.owner
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
                                 defaultValue=config.defaultValue
                                 description=config.description
+                                duration=config.duration
+                                expressionLanguage=config.expressionLanguage
                                 deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}
+                                deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
+                            {{ renderedProperties | markdownify }}
+                            {% if signingEncryptionCollected == true %}
+                            {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
+                            {% endif %}
                         {% endunless %}
 
                     {% endunless %}
@@ -383,7 +404,9 @@
                     {% for config in configBlock %}
 
                         {% if config.name contains prop %}
+
                             {% unless config.required == true %}
+
 
                                 {% assign foundExcluded = false %}
                                 {% for ex in excludes %}
@@ -393,8 +416,11 @@
                                 {% endfor %}
 
                                 {% unless foundExcluded == true %}
+                                    {% assign signingEncryptionCollected = false %}
+
                                     {% if config.name contains ".crypto" %}
                                         {% assign signingEncryptionEnabled = true %}
+                                        {% assign signingEncryptionCollected = true %}
                                     {% endif %}
 
                                     {% if config.name contains ".jpa" or config.name contains ".jdbc" %}
@@ -430,15 +456,19 @@
                                         | append: config.defaultValue
                                         | append: "&#13;&#10;"
                                         | append: "&#13;&#10;" %}
-                                    {% include casproperty.html
+                                    {% capture renderedProperties %}{% include casproperty.html
                                         name=config.name
                                         owner=config.owner
-                                        duration=config.duration
-                                        expressionLanguage=config.expressionLanguage
                                         defaultValue=config.defaultValue
                                         description=config.description
+                                        duration=config.duration
+                                        expressionLanguage=config.expressionLanguage
                                         deprecationLevel=config.deprecationLevel
-                                        deprecationReplacement=config.deprecationReplacement %}
+                                        deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
+                                    {{ renderedProperties | markdownify }}
+                                    {% if signingEncryptionCollected == true %}
+                                    {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
+                                    {% endif %}
                                 {% endunless %}
                             {% endunless %}
                         {% endif %}
@@ -494,15 +524,19 @@
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
-                            {% include casproperty.html
+                            {% capture renderedProperties %}{% include casproperty.html
                                 name=config.name
                                 owner=config.owner
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
                                 defaultValue=config.defaultValue
                                 description=config.description
+                                duration=config.duration
+                                expressionLanguage=config.expressionLanguage
                                 deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}
+                                deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
+                            {{ renderedProperties | markdownify }}
+                            {% if signingEncryptionCollected == true %}
+                            {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
+                            {% endif %}
                         {% endunless %}
                     {% endif %}
                 {% endfor %}
@@ -527,15 +561,19 @@
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
 
-                            {% include casproperty.html
+                            {% capture renderedProperties %}{% include casproperty.html
                                 name=config.name
                                 owner=config.owner
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
                                 defaultValue=config.defaultValue
                                 description=config.description
+                                duration=config.duration
+                                expressionLanguage=config.expressionLanguage
                                 deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}
+                                deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
+                            {{ renderedProperties | markdownify }}
+                            {% if signingEncryptionCollected == true %}
+                            {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
+                            {% endif %}
                         {% endunless %}
                     {% endif %}
                 {% endfor %}
@@ -561,16 +599,19 @@
                                 | append: config.defaultValue
                                 | append: "&#13;&#10;"
                                 | append: "&#13;&#10;" %}
-
-                            {% include casproperty.html
+                            {% capture renderedProperties %}{% include casproperty.html
                                 name=config.name
                                 owner=config.owner
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
                                 defaultValue=config.defaultValue
                                 description=config.description
+                                duration=config.duration
+                                expressionLanguage=config.expressionLanguage
                                 deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}
+                                deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
+                            {{ renderedProperties | markdownify }}
+                            {% if signingEncryptionCollected == true %}
+                            {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
+                            {% endif %}
                         {% endunless %}
                     {% endif %}
 
@@ -590,6 +631,11 @@
 
 {% if signingEncryptionEnabled == true %}
 <div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
+
+    <table class="properties" id='tableSigningEncryptionProperties{{ randomNumber }}'>
+        <tbody>{{ textAreaCryptoProperties }} </tbody>
+    </table>
+
     {% capture signingEncConfig %}{% include {{ version }}/signing-encryption-configuration.md includeRsaKeys=includeRsaKeys %}{% endcapture %}
     {{ signingEncConfig | markdownify }}
 </div>
