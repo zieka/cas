@@ -31,7 +31,8 @@
   shortDescription: "The location of the resource."
   name: "cas.interrupt.json.location"
   defaultValue: ""
-- module: "cas-server-support-interrupt-webflow"
+- required: true
+  module: "cas-server-support-interrupt-webflow"
   owner: "org.apereo.cas.configuration.model.support.interrupt.RegexInterruptProperties"
   type: "java.lang.String"
   description: "A regex pattern on the attribute name that if matches will successfully\
@@ -40,7 +41,8 @@
     \ complete the first condition for the interrupt notifications trigger."
   name: "cas.interrupt.regex.attribute-name"
   defaultValue: ""
-- module: "cas-server-support-interrupt-webflow"
+- required: true
+  module: "cas-server-support-interrupt-webflow"
   owner: "org.apereo.cas.configuration.model.support.interrupt.RegexInterruptProperties"
   type: "java.lang.String"
   description: "A regex pattern on the attribute value that if matches will successfully\

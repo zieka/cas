@@ -195,7 +195,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -1094,7 +1096,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -1255,7 +1259,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -1888,7 +1894,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -2103,7 +2111,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -2264,7 +2274,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -2425,7 +2437,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -2586,7 +2600,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -2747,7 +2763,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -2984,7 +3002,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
@@ -3199,7 +3219,9 @@
   owner: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties"
   type: "org.apereo.cas.configuration.model.support.ldap.LdapSearchEntryHandlersProperties.SearchEntryHandlerTypes"
   description: "The type of search entry handler to choose.\nAvailable values are\
-    \ as follows:\n<ul><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
+    \ as follows:\n<ul><li>{@code ACTIVE_DIRECTORY}: Process the entry results fetched\
+    \ from active directory and\ncheck for account status controls for disabled/expired\
+    \ accounts, etc.</li><li>{@code OBJECT_GUID}: Object guid search entry handler.\n\
     Handles the {@code objectGUID} attribute fetching and conversion.</li><li>{@code\
     \ OBJECT_SID}: Object sid search entry handler.\nHandles the {@code objectSid}\
     \ attribute fetching and conversion.</li><li>{@code CASE_CHANGE}: Case change\
