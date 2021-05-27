@@ -208,7 +208,8 @@
   shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.adaptive.risk.response.mail.reply-to"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
@@ -858,7 +859,8 @@
   shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.mfa.simple.mail.reply-to"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
@@ -1894,7 +1896,8 @@
   shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.passwordless.tokens.mail.reply-to"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
@@ -1998,7 +2001,8 @@
   shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.pm.forgot-username.mail.reply-to"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
@@ -2190,7 +2194,8 @@
   shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.pm.reset.mail.reply-to"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
@@ -2851,7 +2856,8 @@
   shortDescription: "Email Reply-To address, if any."
   name: "cas.authn.surrogate.mail.reply-to"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
@@ -3689,7 +3695,8 @@
   shortDescription: "Email Reply-To address, if any."
   name: "cas.service-registry.mail.reply-to"
   defaultValue: ""
-- required: true
+- expressionLanguage: true
+  required: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.email.EmailProperties"
   type: "java.lang.String"
