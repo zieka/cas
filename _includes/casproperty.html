@@ -26,7 +26,7 @@
             </p>
 
             {% if include.duration %}
-            <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
+            <i class="fas fa-clock"></i>
             <sub>This settings supports the <code>java.time.Duration</code> syntax. The format of the value will be <code>PTnHnMnS</code>, where <code>n</code> is the relevant hours, minutes or seconds part of the duration. Any fractional seconds are placed after a decimal point in the seconds section. If a section has a zero value, it is omitted. The hours, minutes and seconds will all have the same sign. Example values
             could be in the form of <code>PT20S</code>, <code>PT15M</code>, <code>PT10H</code>, <code>PT6D</code>, <code>P2DT3H4M</code>.
             If the value is set to <code>0</code> or <code>never</code>, the duration will be set to zero. If the value is blank, set to <code>-1</code>,
@@ -35,19 +35,16 @@
             {% endif %}
 
             {% if include.expressionLanguage %}
-            <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
-            <sub>This setting supports the <a href="/cas/{{ version }}/configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a>.</sub>
+            <sub><i class="fas fa-info-circle"></i> This setting supports the <a href="/cas/{{ version }}/configuration/Configuration-Spring-Expressions.html">Spring Expression Language</a>.</sub>
             {% endif %}
 
             {% if include.owner != "" %}
-            <i style="vertical-align: sub;" class="fas fa-code"></i>
-            <sub>This setting is owned by <code>{{ include.owner }}.</code></sub>
+            <sub><i class="fas fa-code"></i> This setting is owned by <code>{{ include.owner }}.</code></sub>
             {% endif %}
         </div>
 
         {% if include.deprecationLevel.size > 0 %}
-            <i style="vertical-align: sub;" class="fas fa-exclamation-circle"></i>
-            <sub>Deprecation status is <code>{{ include.deprecationLevel }}</code>
+            <sub><i class="fas fa-skull"></i> Deprecation status is <code>{{ include.deprecationLevel }}</code>
                 {% if include.deprecationReplacement.size > 0 %}
                     with a replacement setting: <code>{{ include.deprecationReplacement | default: "N/A" }}</code>.
                 {% else %}
