@@ -1,6 +1,7 @@
 .classpath
 !/.project
 .project
+.history
 .settings
 target
 .jekyll-metadata

@@ -159,7 +159,7 @@
             </li>
         </ul>
     </nav>
-    <table class="properties" id='tableRequiredProperties{{ randomNumber }}'>
+    <table class="properties paginated-table" id='tableRequiredProperties{{ randomNumber }}'>
     <tbody>
 
         {% for module in modules %}
@@ -351,7 +351,7 @@
         </ul>
     </nav>
 
-    <table class="properties" id='tableOptionalProperties{{ randomNumber }}'>
+    <table class="properties paginated-table" id='tableOptionalProperties{{ randomNumber }}'>
     <tbody>
 
         {% for module in modules %}
@@ -543,7 +543,7 @@
             </li>
         </ul>
     </nav>
-    <table class="properties" id='tableThirdPartyProperties{{ randomNumber }}'>
+    <table class="properties paginated-table" id='tableThirdPartyProperties{{ randomNumber }}'>
         <tbody>
 
         {% for cfg in site.data[version]["third-party"] %}
@@ -751,7 +751,7 @@
         if (window[toWaitFor]) {
             method();
         } else {
-            setTimeout(function () { defer{{ randomNumber }}(toWaitFor, method) }, 500);
+            setTimeout(function () { defer{{ randomNumber }}(toWaitFor, method) }, 300);
         }
     }
 
@@ -789,27 +789,22 @@
 
         $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
 
+        next('tableRequiredProperties{{ randomNumber }}');
+        next('tableOptionalProperties{{ randomNumber }}');
+        next('tableThirdPartyProperties{{ randomNumber }}');
+
         let c = $("#tableRequiredProperties{{ randomNumber }} li.property-name code").length;
         if (c <= ROWS) {
             $("#navRequiredProperties{{ randomNumber }}").hide();
-        } else {
-            next('tableRequiredProperties{{ randomNumber }}');
         }
-
         c = $("#tableOptionalProperties{{ randomNumber }} li.property-name code").length;
         if (c <= ROWS) {
             $("#navOptionalProperties{{ randomNumber }}").hide();
-        } else {
-            next('tableOptionalProperties{{ randomNumber }}');
         }
-
         c = $("#tableThirdPartyProperties{{ randomNumber }} li.property-name code").length;
         if (c <= ROWS) {
             $("#navThirdPartyProperties{{ randomNumber }}").hide();
-        } else {
-            next('tableThirdPartyProperties{{ randomNumber }}');
         }
-
     });
 </script>
 
