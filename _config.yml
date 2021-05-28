@@ -1,4 +1,6 @@
-exclude: [.idea]
+exclude:
+  - .idea
+  - .sass-cache
 markdown: kramdown
 plugins:
   - jekyll-sitemap
