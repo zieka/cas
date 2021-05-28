@@ -41,7 +41,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.accept.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -49,26 +49,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.accept.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.accept.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.accept.password-encoder.strength"
   defaultValue: 16
@@ -77,7 +77,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -603,7 +603,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.azure-active-directory.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -611,26 +611,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.azure-active-directory.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.azure-active-directory.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.azure-active-directory.password-encoder.strength"
   defaultValue: 16
@@ -639,7 +639,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -719,7 +719,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.cassandra.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -727,26 +727,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.cassandra.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.cassandra.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.cassandra.password-encoder.strength"
   defaultValue: 16
@@ -755,7 +755,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -835,7 +835,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.cloud-directory.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -843,26 +843,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.cloud-directory.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.cloud-directory.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.cloud-directory.password-encoder.strength"
   defaultValue: 16
@@ -871,7 +871,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -951,7 +951,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.cognito.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -959,26 +959,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.cognito.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.cognito.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.cognito.password-encoder.strength"
   defaultValue: 16
@@ -987,7 +987,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -1085,7 +1085,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.couch-db.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -1093,26 +1093,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.couch-db.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.couch-db.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.couch-db.password-encoder.strength"
   defaultValue: 16
@@ -1121,7 +1121,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -1201,7 +1201,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.couchbase.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -1209,26 +1209,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.couchbase.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.couchbase.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.couchbase.password-encoder.strength"
   defaultValue: 16
@@ -1237,7 +1237,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -1331,7 +1331,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.file.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -1339,26 +1339,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.file.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.file.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.file.password-encoder.strength"
   defaultValue: 16
@@ -1367,7 +1367,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -1546,7 +1546,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'.\nRelevant when the\
-    \ type used is 'DEFAULT'."
+    \ type used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.jaas[].password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -1554,26 +1554,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'.\nRelevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}.\nRelevant when\
+    \ the type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.jaas[].password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders.\nSecret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders.\nSecret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.jaas[].password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "int"
   description: "Strength or number of iterations to use for password hashing.\nUsually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders.\nUsed by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders.\nUsed\
+    \ by {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.jaas[].password-encoder.strength"
   defaultValue: "16"
@@ -1582,25 +1582,26 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use.\nType may be specified as\
-    \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
-    \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder.\n\nThe following types may be used:\n\
-    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
-    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
-    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
-    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
-    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ blank or {@code NONE} to disable password encoding.\nIt may also refer to a\
+    \ fully-qualified class name that implements\nthe Spring Security's {@code PasswordEncoder}\
+    \ interface\nif you wish you define your own encoder.\n\nThe following types may\
+    \ be used:\n<ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text)\
+    \ takes place.</li>\n    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder}\
+    \ of CAS. For message-digest\n    algorithms via {@code character-encoding} and\
+    \ {@code encoding-algorithm}.</li>\n    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
     \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
-    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
-    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
-    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
-    \ {SHA} or {SSHA} prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
-    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
-    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
-    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
-    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
-    \ with handling password encoding operations.</li>\n</ul>"
+    \ SCRYPT}: Use the {@code SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}:\
+    \ Use the {@code Pbkdf2PasswordEncoder} based on the strength provided and an\
+    \ optional secret.</li>\n    <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>\n    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values\n    are base-64 encoded\
+    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>\n   \
+    \ <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the\n    {@code encoding-algorithm}, strength provided and an optional secret.</li>\n\
+    \    <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>\n    <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\n\
+    </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.jaas[].password-encoder.type"
   defaultValue: "NONE"
@@ -1837,7 +1838,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'.\nRelevant when the\
-    \ type used is 'DEFAULT'."
+    \ type used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.jdbc.bind[].password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -1845,26 +1846,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'.\nRelevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}.\nRelevant when\
+    \ the type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.jdbc.bind[].password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders.\nSecret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders.\nSecret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.jdbc.bind[].password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "int"
   description: "Strength or number of iterations to use for password hashing.\nUsually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders.\nUsed by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders.\nUsed\
+    \ by {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.jdbc.bind[].password-encoder.strength"
   defaultValue: "16"
@@ -1873,25 +1874,26 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use.\nType may be specified as\
-    \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
-    \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder.\n\nThe following types may be used:\n\
-    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
-    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
-    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
-    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
-    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ blank or {@code NONE} to disable password encoding.\nIt may also refer to a\
+    \ fully-qualified class name that implements\nthe Spring Security's {@code PasswordEncoder}\
+    \ interface\nif you wish you define your own encoder.\n\nThe following types may\
+    \ be used:\n<ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text)\
+    \ takes place.</li>\n    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder}\
+    \ of CAS. For message-digest\n    algorithms via {@code character-encoding} and\
+    \ {@code encoding-algorithm}.</li>\n    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
     \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
-    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
-    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
-    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
-    \ {SHA} or {SSHA} prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
-    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
-    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
-    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
-    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
-    \ with handling password encoding operations.</li>\n</ul>"
+    \ SCRYPT}: Use the {@code SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}:\
+    \ Use the {@code Pbkdf2PasswordEncoder} based on the strength provided and an\
+    \ optional secret.</li>\n    <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>\n    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values\n    are base-64 encoded\
+    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>\n   \
+    \ <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the\n    {@code encoding-algorithm}, strength provided and an optional secret.</li>\n\
+    \    <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>\n    <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\n\
+    </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.jdbc.bind[].password-encoder.type"
   defaultValue: "NONE"
@@ -1944,7 +1946,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'.\nRelevant when the\
-    \ type used is 'DEFAULT'."
+    \ type used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.jdbc.encode[].password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -1952,26 +1954,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'.\nRelevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}.\nRelevant when\
+    \ the type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.jdbc.encode[].password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders.\nSecret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders.\nSecret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.jdbc.encode[].password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "int"
   description: "Strength or number of iterations to use for password hashing.\nUsually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders.\nUsed by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders.\nUsed\
+    \ by {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.jdbc.encode[].password-encoder.strength"
   defaultValue: "16"
@@ -1980,25 +1982,26 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use.\nType may be specified as\
-    \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
-    \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder.\n\nThe following types may be used:\n\
-    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
-    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
-    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
-    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
-    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ blank or {@code NONE} to disable password encoding.\nIt may also refer to a\
+    \ fully-qualified class name that implements\nthe Spring Security's {@code PasswordEncoder}\
+    \ interface\nif you wish you define your own encoder.\n\nThe following types may\
+    \ be used:\n<ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text)\
+    \ takes place.</li>\n    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder}\
+    \ of CAS. For message-digest\n    algorithms via {@code character-encoding} and\
+    \ {@code encoding-algorithm}.</li>\n    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
     \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
-    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
-    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
-    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
-    \ {SHA} or {SSHA} prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
-    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
-    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
-    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
-    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
-    \ with handling password encoding operations.</li>\n</ul>"
+    \ SCRYPT}: Use the {@code SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}:\
+    \ Use the {@code Pbkdf2PasswordEncoder} based on the strength provided and an\
+    \ optional secret.</li>\n    <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>\n    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values\n    are base-64 encoded\
+    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>\n   \
+    \ <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the\n    {@code encoding-algorithm}, strength provided and an optional secret.</li>\n\
+    \    <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>\n    <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\n\
+    </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.jdbc.encode[].password-encoder.type"
   defaultValue: "NONE"
@@ -2051,7 +2054,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'.\nRelevant when the\
-    \ type used is 'DEFAULT'."
+    \ type used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.jdbc.query[].password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -2059,26 +2062,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'.\nRelevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}.\nRelevant when\
+    \ the type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.jdbc.query[].password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders.\nSecret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders.\nSecret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.jdbc.query[].password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "int"
   description: "Strength or number of iterations to use for password hashing.\nUsually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders.\nUsed by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders.\nUsed\
+    \ by {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.jdbc.query[].password-encoder.strength"
   defaultValue: "16"
@@ -2087,25 +2090,26 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use.\nType may be specified as\
-    \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
-    \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder.\n\nThe following types may be used:\n\
-    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
-    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
-    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
-    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
-    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ blank or {@code NONE} to disable password encoding.\nIt may also refer to a\
+    \ fully-qualified class name that implements\nthe Spring Security's {@code PasswordEncoder}\
+    \ interface\nif you wish you define your own encoder.\n\nThe following types may\
+    \ be used:\n<ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text)\
+    \ takes place.</li>\n    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder}\
+    \ of CAS. For message-digest\n    algorithms via {@code character-encoding} and\
+    \ {@code encoding-algorithm}.</li>\n    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
     \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
-    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
-    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
-    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
-    \ {SHA} or {SSHA} prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
-    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
-    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
-    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
-    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
-    \ with handling password encoding operations.</li>\n</ul>"
+    \ SCRYPT}: Use the {@code SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}:\
+    \ Use the {@code Pbkdf2PasswordEncoder} based on the strength provided and an\
+    \ optional secret.</li>\n    <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>\n    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values\n    are base-64 encoded\
+    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>\n   \
+    \ <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the\n    {@code encoding-algorithm}, strength provided and an optional secret.</li>\n\
+    \    <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>\n    <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\n\
+    </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.jdbc.query[].password-encoder.type"
   defaultValue: "NONE"
@@ -2158,7 +2162,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'.\nRelevant when the\
-    \ type used is 'DEFAULT'."
+    \ type used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.jdbc.search[].password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -2166,26 +2170,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'.\nRelevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}.\nRelevant when\
+    \ the type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.jdbc.search[].password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders.\nSecret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders.\nSecret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.jdbc.search[].password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "int"
   description: "Strength or number of iterations to use for password hashing.\nUsually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders.\nUsed by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders.\nUsed\
+    \ by {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.jdbc.search[].password-encoder.strength"
   defaultValue: "16"
@@ -2194,25 +2198,26 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use.\nType may be specified as\
-    \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
-    \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder.\n\nThe following types may be used:\n\
-    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
-    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
-    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
-    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
-    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ blank or {@code NONE} to disable password encoding.\nIt may also refer to a\
+    \ fully-qualified class name that implements\nthe Spring Security's {@code PasswordEncoder}\
+    \ interface\nif you wish you define your own encoder.\n\nThe following types may\
+    \ be used:\n<ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text)\
+    \ takes place.</li>\n    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder}\
+    \ of CAS. For message-digest\n    algorithms via {@code character-encoding} and\
+    \ {@code encoding-algorithm}.</li>\n    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
     \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
-    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
-    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
-    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
-    \ {SHA} or {SSHA} prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
-    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
-    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
-    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
-    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
-    \ with handling password encoding operations.</li>\n</ul>"
+    \ SCRYPT}: Use the {@code SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}:\
+    \ Use the {@code Pbkdf2PasswordEncoder} based on the strength provided and an\
+    \ optional secret.</li>\n    <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>\n    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values\n    are base-64 encoded\
+    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>\n   \
+    \ <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the\n    {@code encoding-algorithm}, strength provided and an optional secret.</li>\n\
+    \    <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>\n    <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\n\
+    </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.jdbc.search[].password-encoder.type"
   defaultValue: "NONE"
@@ -2265,7 +2270,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.json.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -2273,26 +2278,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.json.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.json.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.json.password-encoder.strength"
   defaultValue: 16
@@ -2301,7 +2306,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -2490,7 +2495,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'.\nRelevant when the\
-    \ type used is 'DEFAULT'."
+    \ type used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.ldap[].password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -2498,26 +2503,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'.\nRelevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}.\nRelevant when\
+    \ the type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.ldap[].password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders.\nSecret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders.\nSecret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.ldap[].password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "int"
   description: "Strength or number of iterations to use for password hashing.\nUsually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders.\nUsed by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders.\nUsed\
+    \ by {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.ldap[].password-encoder.strength"
   defaultValue: "16"
@@ -2526,25 +2531,26 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use.\nType may be specified as\
-    \ blank or 'NONE' to disable password encoding.\nIt may also refer to a fully-qualified\
-    \ class name that implements\nthe Spring Security's {@code PasswordEncoder} interface\n\
-    if you wish you define your own encoder.\n\nThe following types may be used:\n\
-    <ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\n\
-    \    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder} of CAS. For message-digest\n\
-    \    algorithms via {@code character-encoding} and {@code encoding-algorithm}.</li>\n\
-    \    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder} based on the strength\
-    \ provided and an optional secret.</li>\n    <li>{@code SCRYPT}: Use the {@code\
-    \ SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}: Use the {@code Pbkdf2PasswordEncoder}\
+    \ blank or {@code NONE} to disable password encoding.\nIt may also refer to a\
+    \ fully-qualified class name that implements\nthe Spring Security's {@code PasswordEncoder}\
+    \ interface\nif you wish you define your own encoder.\n\nThe following types may\
+    \ be used:\n<ul>\n    <li>{@code NONE}: No password encoding (i.e. plain-text)\
+    \ takes place.</li>\n    <li>{@code DEFAULT}: Use the {@code DefaultPasswordEncoder}\
+    \ of CAS. For message-digest\n    algorithms via {@code character-encoding} and\
+    \ {@code encoding-algorithm}.</li>\n    <li>{@code BCRYPT}: Use the {@code BCryptPasswordEncoder}\
     \ based on the strength provided and an optional secret.</li>\n    <li>{@code\
-    \ STANDARD}: Use the {@code StandardPasswordEncoder} based on the secret provided.</li>\n\
-    \    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder} supports Ldap SHA\
-    \ and SSHA (salted-SHA). The values\n    are base-64 encoded and have the label\
-    \ {SHA} or {SSHA} prepended to the encoded hash.</li>\n    <li>{@code GLIBC_CRYPT}:\
-    \ Use the {@code GlibcCryptPasswordEncoder} based on the\n    {@code encoding-algorithm},\
-    \ strength provided and an optional secret.</li>\n    <li>{@code org.example.MyEncoder}:\
-    \ An implementation of {@code PasswordEncoder} of your own choosing.</li>\n  \
-    \  <li>{@code file:///path/to/script.groovy}: Path to a Groovy script charged\
-    \ with handling password encoding operations.</li>\n</ul>"
+    \ SCRYPT}: Use the {@code SCryptPasswordEncoder}.</li>\n    <li>{@code PBKDF2}:\
+    \ Use the {@code Pbkdf2PasswordEncoder} based on the strength provided and an\
+    \ optional secret.</li>\n    <li>{@code STANDARD}: Use the {@code StandardPasswordEncoder}\
+    \ based on the secret provided.</li>\n    <li>{@code SSHA}: Use the {@code LdapShaPasswordEncoder}\
+    \ supports Ldap SHA and SSHA (salted-SHA). The values\n    are base-64 encoded\
+    \ and have the label {SHA} or {SSHA} prepended to the encoded hash.</li>\n   \
+    \ <li>{@code GLIBC_CRYPT}: Use the {@code GlibcCryptPasswordEncoder} based on\
+    \ the\n    {@code encoding-algorithm}, strength provided and an optional secret.</li>\n\
+    \    <li>{@code org.example.MyEncoder}: An implementation of {@code PasswordEncoder}\
+    \ of your own choosing.</li>\n    <li>{@code file:///path/to/script.groovy}: Path\
+    \ to a Groovy script charged with handling password encoding operations.</li>\n\
+    </ul>"
   shortDescription: "Define the password encoder type to use."
   name: "cas.authn.ldap[].password-encoder.type"
   defaultValue: "NONE"
@@ -4329,7 +4335,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.mongo.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -4337,26 +4343,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.mongo.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.mongo.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.mongo.password-encoder.strength"
   defaultValue: 16
@@ -4365,7 +4371,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -4445,7 +4451,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.okta.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -4453,26 +4459,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.okta.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.okta.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.okta.password-encoder.strength"
   defaultValue: 16
@@ -4481,7 +4487,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -4650,7 +4656,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.pm.jdbc.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -4658,26 +4664,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.pm.jdbc.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.pm.jdbc.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.pm.jdbc.password-encoder.strength"
   defaultValue: 16
@@ -4686,7 +4692,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -4867,7 +4873,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.radius.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -4875,26 +4881,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.radius.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.radius.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.radius.password-encoder.strength"
   defaultValue: 16
@@ -4903,7 +4909,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -4983,7 +4989,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.redis.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -4991,26 +4997,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.redis.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.redis.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.redis.password-encoder.strength"
   defaultValue: 16
@@ -5019,7 +5025,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -5099,7 +5105,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.reject.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -5107,26 +5113,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.reject.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.reject.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.reject.password-encoder.strength"
   defaultValue: 16
@@ -5135,7 +5141,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -5215,7 +5221,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.rest.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -5223,26 +5229,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.rest.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.rest.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.rest.password-encoder.strength"
   defaultValue: 16
@@ -5251,7 +5257,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -5277,7 +5283,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.shiro.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -5285,26 +5291,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.shiro.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.shiro.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.shiro.password-encoder.strength"
   defaultValue: 16
@@ -5313,7 +5319,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -5393,7 +5399,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.soap.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -5401,26 +5407,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.soap.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.soap.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.soap.password-encoder.strength"
   defaultValue: 16
@@ -5429,7 +5435,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -5713,7 +5719,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.authn.syncope.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -5721,26 +5727,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.authn.syncope.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.authn.syncope.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.authn.syncope.password-encoder.strength"
   defaultValue: 16
@@ -5749,7 +5755,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\
@@ -6212,7 +6218,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "The encoding algorithm to use such as 'UTF-8'. Relevant when the type\
-    \ used is 'DEFAULT'."
+    \ used is {@code DEFAULT}."
   shortDescription: "The encoding algorithm to use such as 'UTF-8'."
   name: "cas.monitor.endpoints.jdbc.password-encoder.character-encoding"
   defaultValue: "UTF-8"
@@ -6220,26 +6226,26 @@
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "The encoding algorithm to use such as 'MD5'. Relevant when the type\
-    \ used is 'DEFAULT' or 'GLIBC_CRYPT'."
-  shortDescription: "The encoding algorithm to use such as 'MD5'."
+  description: "The encoding algorithm to use such as {@code MD5}. Relevant when the\
+    \ type used is {@code DEFAULT} or {@code GLIBC_CRYPT}."
+  shortDescription: "The encoding algorithm to use such as {@code MD5}."
   name: "cas.monitor.endpoints.jdbc.password-encoder.encoding-algorithm"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
-  description: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders. Secret usually is an optional setting."
-  shortDescription: "Secret to use with STANDARD, PBKDF2, BCRYPT, GLIBC_CRYPT password\
-    \ encoders."
+  description: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders. Secret usually is an optional setting."
+  shortDescription: "Secret to use with {@code STANDARD}, {@code PBKDF2}, {@code BCRYPT},\
+    \ {@code GLIBC_CRYPT} password encoders."
   name: "cas.monitor.endpoints.jdbc.password-encoder.secret"
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.Integer"
   description: "Strength or number of iterations to use for password hashing. Usually\
-    \ relevant when dealing with PBKDF2 or BCRYPT encoders. Used by GLIBC_CRYPT encoders\
-    \ as well."
+    \ relevant when dealing with {@code PBKDF2} or {@code BCRYPT} encoders. Used by\
+    \ {@code GLIBC_CRYPT} encoders as well."
   shortDescription: "Strength or number of iterations to use for password hashing."
   name: "cas.monitor.endpoints.jdbc.password-encoder.strength"
   defaultValue: 16
@@ -6248,7 +6254,7 @@
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
   description: "Define the password encoder type to use. Type may be specified as\
-    \ blank or 'NONE' to disable password encoding. It may also refer to a fully-qualified\
+    \ blank or {@code NONE} to disable password encoding. It may also refer to a fully-qualified\
     \ class name that implements the Spring Security's {@code PasswordEncoder} interface\
     \ if you wish you define your own encoder. The following types may be used: <ul>\
     \     <li>{@code NONE}: No password encoding (i.e. plain-text) takes place.</li>\

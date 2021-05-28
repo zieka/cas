@@ -134,8 +134,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.audit.jdbc.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -670,8 +670,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.gauth.cleaner.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -928,8 +928,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.trusted.cleaner.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -1121,8 +1121,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.u2f.cleaner.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -1256,8 +1256,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.web-authn.cleaner.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -1774,8 +1774,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.passwordless.tokens.jpa.cleaner.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -2964,8 +2964,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.throttle.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -3555,8 +3555,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.saml-metadata-ui.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -3728,8 +3728,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.service-registry.schedule.enabled"
   defaultValue: true
 - duration: true
@@ -4002,8 +4002,8 @@
 - module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
   type: "java.lang.Boolean"
-  description: "Whether scheduler is should schedule the job to run."
-  shortDescription: "Whether scheduler is should schedule the job to run."
+  description: "Whether scheduler should be enabled to schedule the job to run."
+  shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.ticket.registry.cleaner.schedule.enabled"
   defaultValue: true
 - duration: true

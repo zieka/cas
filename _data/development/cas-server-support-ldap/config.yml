@@ -208,7 +208,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -1109,7 +1109,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -1272,7 +1272,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -1907,7 +1907,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -2124,7 +2124,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -2287,7 +2287,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -2450,7 +2450,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -2613,7 +2613,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -2776,7 +2776,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -3015,7 +3015,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
@@ -3232,7 +3232,7 @@
     \ Merge search entry handler.\nMerges the values of one or more attributes into\
     \ a single attribute.</li><li>{@code PRIMARY_GROUP}: Primary group search handler.\n\
     Constructs the primary group SID and then searches for\nthat group and puts it's\
-    \ DN in the 'memberOf' attribute of the original search entry.</li><li>{@code\
+    \ DN in the {@code memberOf} attribute of the original search entry.</li><li>{@code\
     \ RANGE_ENTRY}: Range entry search handler.\nRewrites attributes returned from\
     \ Active Directory to\ninclude all values by performing additional searches.</li><li>{@code\
     \ RECURSIVE_ENTRY}: Recursive entry search handler.\nThis recursively searches\
