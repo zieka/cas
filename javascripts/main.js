@@ -351,7 +351,7 @@ $(function () {
   });
 });
 
-let ROWS = 10;
+let ROWS = 5;
 
 function next(id) {
   

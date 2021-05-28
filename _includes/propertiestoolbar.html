@@ -16,12 +16,19 @@
 <script type="text/javascript">
     function search{{ include.searchTarget  }}(input) {
         let filter = input.value.toUpperCase();
-        
-        $("#{{ include.searchTarget }} li.property-name code").each(function(i) {
-            let txtValue = $(this).text();
-            let result = txtValue.toUpperCase().indexOf(filter) > -1;
-            $(this).parents("td").css("display", result ? "" : "none");
-        });
-        
+        if (filter === "") {
+            $("#{{ include.searchTarget }} tr").css("display", "none");
+            $("#{{ include.searchTarget }} tr").slice(0, ROWS).css("display", "block");
+        } else {
+            console.log("Search target: #{{ include.searchTarget }}");
+            $("#{{ include.searchTarget }} li.property-name code").each(function(i) {
+                let txtValue = $(this).text();
+                let result = txtValue.toUpperCase().indexOf(filter) > -1;
+                if (result) {
+                    console.log("Found " + txtValue);
+                }
+                $(this).parents("tr").css("display", result ? "block" : "none");
+            });
+        }
     }
 </script>
