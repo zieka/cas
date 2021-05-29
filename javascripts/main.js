@@ -105,12 +105,15 @@ function loadSidebarForActiveVersion() {
       generateSidebarLinksForActiveVersion();
 
       var uri = new URI(document.location);
+      if (uri.filename() === "index.html" || uri.filename() === '') {
+        return;
+      }
+
       let element = $("#sidebarTopics a[href*='/" + uri.filename() + "']");
       let parent = element.parent();
       while (parent != null && parent != undefined) {
         // parent.collapse('toggle');
         let id = parent.attr("id");
-        console.log(id);
         if (id === "sidebarTopics") {
           break;
         }
