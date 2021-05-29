@@ -109,17 +109,19 @@ function loadSidebarForActiveVersion() {
         return;
       }
 
+      let count = 0;
       let element = $("#sidebarTopics a[href*='/" + uri.filename() + "']");
       let parent = element.parent();
       while (parent != null && parent != undefined) {
         // parent.collapse('toggle');
         let id = parent.attr("id");
-        if (id === "sidebarTopics") {
+        if (id === "sidebarTopics" || count >= 10) {
           break;
         }
         if (id != undefined) {
           parent.collapse('show');
         }
+        count++;
         parent = parent.parent();
       }
       element.css("font-weight", "bold").addClass("text-info");
