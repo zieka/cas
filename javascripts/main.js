@@ -1,8 +1,8 @@
 var CONST_CURRENT_VER = "development";
-var CONST_SITE_TARGET_DIR = "/_site/";
+
 
 function isDocumentationSiteViewedLocally() {
-  return location.href.indexOf(CONST_SITE_TARGET_DIR) != -1;
+  return location.href.startsWith("http://localhost:4000");
 }
 
 function generateNavigationBarAndCrumbs() {
@@ -36,7 +36,7 @@ function generateNavigationBarAndCrumbs() {
 function getActiveDocumentationVersionInView(returnBlankIfNoVersion) {
   var currentVersion = CONST_CURRENT_VER;
   var href = location.href;
-  var index = isDocumentationSiteViewedLocally() ? href.indexOf(CONST_SITE_TARGET_DIR) : -1;
+  var index = isDocumentationSiteViewedLocally() ? href.indexOf("4000/") : -1;
 
   if (index == -1) {
     var uri = new URI(document.location);
@@ -47,7 +47,7 @@ function getActiveDocumentationVersionInView(returnBlankIfNoVersion) {
       return "";
     }
   } else {
-    href = href.substring(index + 7);
+    href = href.substring(index + 5);
     index = href.indexOf("/");
     currentVersion = href.substring(0, index);
   }
@@ -56,8 +56,8 @@ function getActiveDocumentationVersionInView(returnBlankIfNoVersion) {
 
 
 function loadSidebarForActiveVersion() {
-  $.get("/cas/" + getActiveDocumentationVersionInView() + "/sidebar.html", function (data) {
-
+  let prefix = isDocumentationSiteViewedLocally() ? "/" : "/cas/";
+  $.get(prefix + getActiveDocumentationVersionInView() + "/sidebar.html", function (data) {
     var menu = $(data);
 
     if (menu.first().is('ul')) {
@@ -74,11 +74,13 @@ function loadSidebarForActiveVersion() {
 
       topLevel.each(function () {
         var el = $(this);
+        //console.log("Top level: " + el);
         sidebarTopNav(el);
       });
 
       topLevelUl.each(function () {
         var el = $(this);
+        //console.log("Top level UL: " + el);
         el.attr({
           'data-parent': '#sidebarTopics'
         });
@@ -89,10 +91,12 @@ function loadSidebarForActiveVersion() {
       });
 
       subLevel.each(function () {
+        //console.log("Sub level: " + this);
         sidebarSubNav($(this));
       });
 
       nestedMenu.each(function () {
+        //console.log("Sub level nested: " + this);
         sidebarTopNav($(this));
       });
 
@@ -100,6 +104,30 @@ function loadSidebarForActiveVersion() {
 
       generateSidebarLinksForActiveVersion();
 
+      var uri = new URI(document.location);
+      let element = $("#sidebarTopics a[href*='/" + uri.filename() + "']");
+      let parent = element.parent();
+      while (parent != null && parent != undefined) {
+        // parent.collapse('toggle');
+        let id = parent.attr("id");
+        console.log(id);
+        if (id === "sidebarTopics") {
+          break;
+        }
+        if (id != undefined) {
+          parent.collapse('show');
+        }
+        parent = parent.parent();
+      }
+      element.css("font-weight", "bold").addClass("text-info");
+      let txt = element.text();
+      element.prepend("<i class='fa fa-angle-double-right'></i>&nbsp;");
+
+      setTimeout(function(){
+        let offset = $(element).offset().top;
+        //console.log(offset)
+        $("#sidebar").animate({scrollTop: offset }, 1000);
+      }, 100);
     }
   });
 }
@@ -140,13 +168,16 @@ function sidebarSubNav(el) {
 }
 
 function generateSidebarLinksForActiveVersion() {
+  let prefix = isDocumentationSiteViewedLocally() ? "" : "cas/";
+
   $('#sidebar a').each(function () {
     var href = this.href;
-
-    if (href.indexOf("$version") != -1) {
-      href = href.replace("$version", "cas/" + getActiveDocumentationVersionInView());
-      $(this).attr('href', href);
+    if (href.includes("#")) {
+      href = href.substring(href.indexOf("#"));
+    } else if (isDocumentationSiteViewedLocally()) {
+      href = href.replace("/cas", "");
     }
+    $(this).attr('href', href);
   });
 }
 
@@ -167,16 +198,7 @@ function generateToolbarIcons() {
   if (editablePage == "") {
     editablePage = "index.md";
   }
-
-  var imagesPath = "/cas/images/";
-  if (isDocumentationSiteViewedLocally()) {
-    var loc = location.href;
-    var index = loc.indexOf(CONST_SITE_TARGET_DIR);
-    var uri2 = loc.substring(0, index + CONST_SITE_TARGET_DIR.length);
-    imagesPath = uri2 + "images/"
-  }
-
-
+  
   if (activeVersion != CONST_CURRENT_VER && activeVersion != "") {
     var linkToDev = "/cas/" + page.replace(activeVersion, CONST_CURRENT_VER).replace("//", "/");
     linkToDev = linkToDev.replace("html/", "html");
