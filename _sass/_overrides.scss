@@ -88,31 +88,6 @@ blockquote em{
   font-style: italic;
 }
 
-.paginated-table tr {
-  display: none;
-}
-
-.table-responsive {
-  display: inline-table;
-}
-
-.tooltip-inner {
-  max-width: 850px;
-  text-align: left;
-}
-
-sup {
-  cursor: pointer;
-}
-
-.zoom {
-  transition: transform .2s;
-}
-
-.zoom:hover {
-  transform: scale(1.2); 
-}
-
 @media only screen and (max-width: 1800px) {
   .copy-button-group {
     display: none;

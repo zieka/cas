@@ -344,3 +344,32 @@ a i.expand:before {
 .table td:first-child {
   white-space: nowrap;
 }
+
+.small {
+  font-size: 88%;
+}
+
+.paginated-table tr {
+  display: none;
+}
+
+.table-responsive {
+  display: inline-table;
+}
+
+.tooltip-inner {
+  max-width: 850px;
+  text-align: left;
+}
+
+sup {
+  cursor: pointer;
+}
+
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.2); 
+}
