@@ -129,8 +129,9 @@ function loadSidebarForActiveVersion() {
       element.prepend("<i class='fa fa-angle-double-right'></i>&nbsp;");
 
       setTimeout(function(){
-        let offset = 70; //$(element).offset().top;
-        //console.log(offset)
+        let top = $(element).offset().top;
+        console.log("Element top position: " + top);
+        let offset = top <= 200 ? 30 : 130;
         $("#sidebar").animate({scrollTop: offset }, 1000);
       }, 100);
     }
@@ -198,7 +199,7 @@ function generateToolbarIcons() {
   var segments = uri.segment();
   var page = "";
 
-  for (var i = 1; i < segments.length; i++) {
+  for (var i = isDocumentationSiteViewedLocally() ? 0 : 1; i < segments.length; i++) {
     page += segments[i] + "/";
   }
   editablePage = page.replace(".html", ".md");
