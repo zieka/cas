@@ -177,9 +177,13 @@ function generateSidebarLinksForActiveVersion() {
 
   $('#sidebar a').each(function () {
     var href = this.href;
+    if (href.indexOf("$version") != -1) {
+      href = href.replace("$version", "cas/" + getActiveDocumentationVersionInView());
+    }
+    
     if (href.includes("#")) {
       href = href.substring(href.indexOf("#"));
-    } else if (isDocumentationSiteViewedLocally()) {
+    } else if (isDocumentationSiteViewedLocally() && href.includes("http://localhost")) {
       href = href.replace("/cas", "");
     }
     $(this).attr('href', href);
@@ -203,9 +207,10 @@ function generateToolbarIcons() {
   if (editablePage == "") {
     editablePage = "index.md";
   }
-  
+
   if (activeVersion != CONST_CURRENT_VER && activeVersion != "") {
-    var linkToDev = "/cas/" + page.replace(activeVersion, CONST_CURRENT_VER).replace("//", "/");
+    let prefix = isDocumentationSiteViewedLocally() ? "/" : "/cas/";
+    var linkToDev = prefix + page.replace(activeVersion, CONST_CURRENT_VER).replace("//", "/");
     linkToDev = linkToDev.replace("html/", "html");
 
     $('#toolbarIcons').append("<a href='" + linkToDev +
@@ -335,7 +340,7 @@ function enableBootstrapTooltips() {
 
 function generateOverlay(artifactId, type) {
   var id = artifactId.replace("cas-server-", "")
-  
+
   $("#overlayform").remove();
   $('body').append(" \
   <form id='overlayform' action='https://casinit.herokuapp.com/starter.zip' method='post'> \
@@ -381,7 +386,7 @@ $(function () {
 let ROWS = 5;
 
 function next(id) {
-  
+
   let rows = $(`#${id} tbody tr`);
   let rowCount = rows.length;
 
