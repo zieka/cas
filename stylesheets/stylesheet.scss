@@ -24,11 +24,7 @@ html, body {
 }
 
 header {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#153e50+0,003380+100 */
-  background: #153e50; /* Old browsers */
-  background: -moz-linear-gradient(top, #153e50 0%, #003380 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, #153e50 0%, #003380 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, #153e50 0%, #003380 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: linear-gradient(to bottom right, #053752 50%, #09679a 50%); 
   color: #fff;
   padding: 10px;
 
@@ -106,7 +102,7 @@ pre {
 
 footer {
   border-top: 1px solid #333;
-  background: #3d664f;
+  background: #06476a;
   clear: both;
   padding: 10px;
   color: #f2f2f2;
