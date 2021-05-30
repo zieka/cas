@@ -7003,6 +7003,12 @@
     \ a specific one."
   name: "spring.cloud.config.server.default-profile"
   defaultValue: "default"
+- owner: "org.springframework.cloud.config.server.config.ConfigServerProperties"
+  type: "java.lang.Boolean"
+  description: "Flag indicating config server is enabled."
+  shortDescription: "Flag indicating config server is enabled."
+  name: "spring.cloud.config.server.enabled"
+  defaultValue: true
 - owner: "org.springframework.cloud.config.server.config.ConfigServerProperties$Encrypt"
   type: "java.lang.Boolean"
   description: "Enable decryption of environment properties before sending to client."
@@ -8109,6 +8115,11 @@
   shortDescription: "Multiplier for next interval."
   name: "spring.cloud.consul.retry.multiplier"
   defaultValue: 1.1
+- type: "java.lang.Boolean"
+  description: "Enables Consul and Ribbon integration."
+  shortDescription: "Enables Consul and Ribbon integration."
+  name: "spring.cloud.consul.ribbon.enabled"
+  defaultValue: "true"
 - owner: "org.springframework.cloud.consul.ConsulProperties"
   type: "java.lang.String"
   description: "Consul agent scheme (HTTP/HTTPS). If there is no scheme in address\
@@ -8188,7 +8199,7 @@
   type: "java.util.Map<java.lang.String,java.util.List<org.springframework.cloud.client.DefaultServiceInstance>>"
   name: "spring.cloud.discovery.client.simple.instances"
   defaultValue: ""
-- owner: "org.springframework.cloud.client.discovery.simple.reactive.SimpleReactiveDiscoveryProperties"
+- owner: "org.springframework.cloud.client.discovery.simple.SimpleDiscoveryProperties"
   type: "java.lang.Integer"
   name: "spring.cloud.discovery.client.simple.order"
   defaultValue: ""
@@ -8202,6 +8213,14 @@
   shortDescription: "Enables the features endpoint."
   name: "spring.cloud.features.enabled"
   defaultValue: true
+- owner: "org.springframework.cloud.function.context.FunctionProperties"
+  type: "org.springframework.context.ApplicationContext"
+  name: "spring.cloud.function.application-context"
+  defaultValue: ""
+- owner: "org.springframework.cloud.function.context.FunctionProperties"
+  type: "java.util.Map<java.lang.String,org.springframework.cloud.function.context.FunctionProperties$FunctionConfigurationProperties>"
+  name: "spring.cloud.function.configuration"
+  defaultValue: ""
 - owner: "org.springframework.cloud.function.context.FunctionProperties"
   type: "java.lang.String"
   description: "Definition of the function to be used. This could be function name\
@@ -8315,6 +8334,11 @@
   shortDescription: "Enables a predefined LoadBalancer configuration."
   name: "spring.cloud.loadbalancer.configurations"
   defaultValue: "default"
+- type: "java.lang.Boolean"
+  description: "Enables Spring Cloud LoadBalancer."
+  shortDescription: "Enables Spring Cloud LoadBalancer."
+  name: "spring.cloud.loadbalancer.enabled"
+  defaultValue: "true"
 - owner: "org.springframework.cloud.netflix.eureka.loadbalancer.EurekaLoadBalancerProperties"
   type: "java.lang.Boolean"
   description: "Used to determine whether we should try to get the `zone` value from\
@@ -8443,11 +8467,6 @@
   shortDescription: "A {@link Set} of status codes that should trigger a retry."
   name: "spring.cloud.loadbalancer.retry.retryable-status-codes"
   defaultValue: ""
-- type: "java.lang.Boolean"
-  description: "Causes `RibbonLoadBalancerClient` to be used by default."
-  shortDescription: "Causes `RibbonLoadBalancerClient` to be used by default."
-  name: "spring.cloud.loadbalancer.ribbon.enabled"
-  defaultValue: true
 - type: "java.lang.String"
   description: "String representation of Duration of the timeout for calls to service\
     \ discovery."
@@ -8588,13 +8607,6 @@
 - owner: "org.springframework.cloud.stream.function.StreamFunctionProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
   name: "spring.cloud.stream.function.bindings"
-  defaultValue: ""
-- owner: "org.springframework.cloud.stream.function.StreamFunctionProperties"
-  type: "java.lang.String"
-  description: "Definition of functions to bind. If several functions need to be composed\
-    \ into one, use pipes (e.g., 'fooFunc|barFunc')"
-  shortDescription: "Definition of functions to bind."
-  name: "spring.cloud.stream.function.definition"
   defaultValue: ""
 - owner: "org.springframework.cloud.stream.config.BindingServiceProperties"
   type: "java.lang.Integer"
@@ -17750,6 +17762,14 @@
   shortDescription: "Name of the ActiveMQ queue where spans should be sent to Zipkin."
   name: "spring.zipkin.activemq.queue"
   defaultValue: "zipkin"
+- owner: "org.springframework.cloud.sleuth.zipkin2.ZipkinProperties"
+  type: "java.lang.String"
+  description: "The API path to append to baseUrl (above) as suffix. This applies\
+    \ if you use other monitoring tools, such as New Relic. The trace API doesn't\
+    \ need the API path, so you can set it to blank (\"\") in the configuration."
+  shortDescription: "The API path to append to baseUrl (above) as suffix."
+  name: "spring.zipkin.api-path"
+  defaultValue: ""
 - owner: "org.springframework.cloud.sleuth.zipkin2.ZipkinProperties"
   type: "java.lang.String"
   description: "URL of the zipkin query server instance. You can also provide the\
