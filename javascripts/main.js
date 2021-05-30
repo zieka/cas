@@ -208,6 +208,9 @@ function generateToolbarIcons() {
     editablePage = "index.md";
   }
 
+  let href = location.href.replace("https://apereo.github.io/cas", "http://localhost:4000");
+  $('#toolbarIcons').append("<a href='" + href + "'><i class='fab fa-codepen' title='See this page running on localhost'></i></a>");
+
   if (activeVersion != CONST_CURRENT_VER && activeVersion != "") {
     let prefix = isDocumentationSiteViewedLocally() ? "/" : "/cas/";
     var linkToDev = prefix + page.replace(activeVersion, CONST_CURRENT_VER).replace("//", "/");
@@ -216,7 +219,7 @@ function generateToolbarIcons() {
     $('#toolbarIcons').append("<a href='" + linkToDev +
       "'><i class='fa fa-code' title='See the latest version of this page'></i></a>");
   }
-
+ 
   var baseLink = CAS_REPO_URL_GITHUB;
   var editLink = "";
   var historyLink = "";
