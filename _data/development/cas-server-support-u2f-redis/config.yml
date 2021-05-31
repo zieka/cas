@@ -1,7 +1,7 @@
 ---
 - required: true
   module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Database index used by the connection factory."
   shortDescription: "Database index used by the connection factory."
@@ -9,7 +9,7 @@
   defaultValue: 0
 - required: true
   module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Whether the module is enabled or not, defaults to true."
   shortDescription: "Whether the module is enabled or not, defaults to true."
@@ -17,7 +17,7 @@
   defaultValue: true
 - required: true
   module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Redis server host."
   shortDescription: "Redis server host."
@@ -25,7 +25,7 @@
   defaultValue: "localhost"
 - required: true
   module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Login password of the redis server."
   shortDescription: "Login password of the redis server."
@@ -33,14 +33,14 @@
   defaultValue: ""
 - required: true
   module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Redis server port."
   shortDescription: "Redis server port."
   name: "cas.authn.mfa.u2f.redis.port"
   defaultValue: 6379
 - module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "org.apereo.cas.configuration.model.support.redis.BaseRedisProperties$RedisReadFromTypes"
   description: "Setting that describes how Lettuce routes read operations to replica\
     \ nodes. Note that modes referencing MASTER/SLAVE are deprecated (but still supported)\
@@ -62,14 +62,14 @@
   name: "cas.authn.mfa.u2f.redis.read-from"
   defaultValue: "2000"
 - module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Connection timeout in milliseconds."
   shortDescription: "Connection timeout in milliseconds."
   name: "cas.authn.mfa.u2f.redis.timeout"
   defaultValue: 2000
 - module: "cas-server-support-u2f-redis"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FRedisMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Whether or not to use SSL for connection factory."
   shortDescription: "Whether or not to use SSL for connection factory."

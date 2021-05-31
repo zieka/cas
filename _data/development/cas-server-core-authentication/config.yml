@@ -4056,6 +4056,147 @@
     \ attribute names."
   shortDescription: "Skip multifactor authentication based on designated authentication\
     \ attribute names."
+  name: "cas.authn.mfa.u2f.core.bypass.authentication-attribute-name"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Optionally, skip multifactor authentication based on designated authentication\
+    \ attribute values."
+  shortDescription: "Optionally, skip multifactor authentication based on designated\
+    \ authentication attribute values."
+  name: "cas.authn.mfa.u2f.core.bypass.authentication-attribute-value"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Skip multifactor authentication depending on form of primary authentication\
+    \ execution. Specifically, skip multifactor if the a particular authentication\
+    \ handler noted by its name successfully is able to authenticate credentials in\
+    \ the primary factor."
+  shortDescription: "Skip multifactor authentication depending on form of primary\
+    \ authentication execution."
+  name: "cas.authn.mfa.u2f.core.bypass.authentication-handler-name"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Skip multifactor authentication depending on method/form of primary\
+    \ authentication execution. Specifically, skip multifactor if the authentication\
+    \ method attribute collected as part of authentication metadata matches a certain\
+    \ value."
+  shortDescription: "Skip multifactor authentication depending on method/form of primary\
+    \ authentication execution."
+  name: "cas.authn.mfa.u2f.core.bypass.authentication-method-name"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Skip multifactor authentication depending on form of primary credentials.\
+    \ Value must equal the fully qualified class name of the credential type."
+  shortDescription: "Skip multifactor authentication depending on form of primary\
+    \ credentials."
+  name: "cas.authn.mfa.u2f.core.bypass.credential-class-type"
+  defaultValue: ""
+- required: true
+  module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.GroovyMultifactorAuthenticationProviderBypassProperties"
+  type: "org.springframework.core.io.Resource"
+  description: "The location of the resource. Resources can be URLS, or files found\
+    \ either on the classpath or outside somewhere in the file system."
+  shortDescription: "The location of the resource."
+  name: "cas.authn.mfa.u2f.core.bypass.groovy.location"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Skip multifactor authentication if the http request contains the defined\
+    \ header names. Header names may be comma-separated and can be regular expressions;\
+    \ values are ignored."
+  shortDescription: "Skip multifactor authentication if the http request contains\
+    \ the defined header names."
+  name: "cas.authn.mfa.u2f.core.bypass.http-request-headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Skip multifactor authentication if the http request's remote address\
+    \ or host matches the value defined here. The value may be specified as a regular\
+    \ expression."
+  shortDescription: "Skip multifactor authentication if the http request's remote\
+    \ address or host matches the value defined here."
+  name: "cas.authn.mfa.u2f.core.bypass.http-request-remote-address"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Skip multifactor authentication based on designated principal attribute\
+    \ names."
+  shortDescription: "Skip multifactor authentication based on designated principal\
+    \ attribute names."
+  name: "cas.authn.mfa.u2f.core.bypass.principal-attribute-name"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Optionally, skip multifactor authentication based on designated principal\
+    \ attribute values."
+  shortDescription: "Optionally, skip multifactor authentication based on designated\
+    \ principal attribute values."
+  name: "cas.authn.mfa.u2f.core.bypass.principal-attribute-value"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ password for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the password for authentication."
+  name: "cas.authn.mfa.u2f.core.bypass.rest.basic-auth-password"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "If REST endpoint is protected via basic authentication, specify the\
+    \ username for authentication."
+  shortDescription: "If REST endpoint is protected via basic authentication, specify\
+    \ the username for authentication."
+  name: "cas.authn.mfa.u2f.core.bypass.rest.basic-auth-username"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.util.Map<java.lang.String,java.lang.String>"
+  description: "Headers, defined as a Map, to include in the request when making the\
+    \ REST call. Will overwrite any header that CAS is pre-defined to send and include\
+    \ in the request. Key in the map should be the header name and the value in the\
+    \ map should be the header value."
+  shortDescription: "Headers, defined as a Map, to include in the request when making\
+    \ the REST call."
+  name: "cas.authn.mfa.u2f.core.bypass.rest.headers"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "HTTP method to use when contacting the rest endpoint. Examples include\
+    \ {@code GET, POST}, etc."
+  shortDescription: "HTTP method to use when contacting the rest endpoint."
+  name: "cas.authn.mfa.u2f.core.bypass.rest.method"
+  defaultValue: "GET"
+- required: true
+  module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.RestfulMultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "The endpoint URL to contact and retrieve attributes."
+  shortDescription: "The endpoint URL to contact and retrieve attributes."
+  name: "cas.authn.mfa.u2f.core.bypass.rest.url"
+  defaultValue: ""
+- module: "cas-server-core-authentication"
+  owner: "org.apereo.cas.configuration.model.support.mfa.MultifactorAuthenticationProviderBypassProperties"
+  type: "java.lang.String"
+  description: "Skip multifactor authentication based on designated authentication\
+    \ attribute names."
+  shortDescription: "Skip multifactor authentication based on designated authentication\
+    \ attribute names."
   name: "cas.authn.mfa.web-authn.bypass.authentication-attribute-name"
   defaultValue: ""
 - module: "cas-server-core-authentication"
