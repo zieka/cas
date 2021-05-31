@@ -1,6 +1,6 @@
 ---
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "The default auto-commit behavior of connections in the pool. Determined\
     \ whether queries such as update/insert should be immediately executed without\
@@ -9,7 +9,7 @@
   name: "cas.authn.mfa.u2f.jpa.autocommit"
   defaultValue: false
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "A non-zero value enables use of JDBC2 batch updates by Hibernate.\
     \ e.g. recommended values between 5 and 30."
@@ -18,7 +18,7 @@
   name: "cas.authn.mfa.u2f.jpa.batch-size"
   defaultValue: 100
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Attempts to do a JNDI data source look up for the data source name\
     \ specified. Will attempt to locate the data source object as is."
@@ -27,7 +27,7 @@
   name: "cas.authn.mfa.u2f.jpa.data-source-name"
   defaultValue: ""
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Hibernate feature to automatically validate and exports DDL to the\
     \ schema. By default, creates and drops the schema automatically when a session\
@@ -50,7 +50,7 @@
   name: "cas.authn.mfa.u2f.jpa.ddl-auto"
   defaultValue: "update"
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Qualifies unqualified table names with the given catalog in generated\
     \ SQL."
@@ -59,7 +59,7 @@
   name: "cas.authn.mfa.u2f.jpa.default-catalog"
   defaultValue: ""
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Qualify unqualified table names with the given schema/tablespace in\
     \ generated SQL."
@@ -68,7 +68,7 @@
   name: "cas.authn.mfa.u2f.jpa.default-schema"
   defaultValue: ""
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The database dialect is a configuration setting for platform independent\
     \ software (JPA, Hibernate, etc) which allows such software to translate its generic\
@@ -80,14 +80,14 @@
   defaultValue: "org.hibernate.dialect.HSQLDialect"
 - required: true
   module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The JDBC driver used to connect to the database."
   shortDescription: "The JDBC driver used to connect to the database."
   name: "cas.authn.mfa.u2f.jpa.driver-class"
   defaultValue: "org.hsqldb.jdbcDriver"
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.Long"
   description: "Set the pool initialization failure timeout. <ul> <li>Any value greater\
     \ than zero will be treated as a timeout for pool initialization. The calling\
@@ -114,21 +114,21 @@
   name: "cas.authn.mfa.u2f.jpa.fail-fast-timeout"
   defaultValue: 1
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Used to specify number of rows to be fetched in a select query."
   shortDescription: "Used to specify number of rows to be fetched in a select query."
   name: "cas.authn.mfa.u2f.jpa.fetch-size"
   defaultValue: 100
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "Allow hibernate to generate query statistics."
   shortDescription: "Allow hibernate to generate query statistics."
   name: "cas.authn.mfa.u2f.jpa.generate-statistics"
   defaultValue: false
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The SQL query to be executed to test the validity of connections."
   shortDescription: "The SQL query to be executed to test the validity of connections."
@@ -136,7 +136,7 @@
   defaultValue: ""
 - duration: true
   module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Controls the maximum amount of time that a connection is allowed to\
     \ sit idle in the pool."
@@ -145,7 +145,7 @@
   name: "cas.authn.mfa.u2f.jpa.idle-timeout"
   defaultValue: "PT10M"
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.Boolean"
   description: "This property determines whether data source isolates internal pool\
     \ queries, such as the connection alive test, in their own transaction. <p> Since\
@@ -157,14 +157,14 @@
   name: "cas.authn.mfa.u2f.jpa.isolate-internal-queries"
   defaultValue: false
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Defines the isolation level for transactions. @see org.springframework.transaction.TransactionDefinition"
   shortDescription: "Defines the isolation level for transactions."
   name: "cas.authn.mfa.u2f.jpa.isolation-level-name"
   defaultValue: "ISOLATION_READ_COMMITTED"
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.Integer"
   description: "Controls the amount of time that a connection can be out of the pool\
     \ before a message is logged indicating a possible connection leak."
@@ -174,14 +174,14 @@
   defaultValue: 3000
 - required: true
   module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The database connection password."
   shortDescription: "The database connection password."
   name: "cas.authn.mfa.u2f.jpa.password"
   defaultValue: ""
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Fully-qualified name of the class that can control the physical naming\
     \ strategy of hibernate."
@@ -190,14 +190,14 @@
   name: "cas.authn.mfa.u2f.jpa.physical-naming-strategy-class-name"
   defaultValue: "org.apereo.cas.hibernate.CasHibernatePhysicalNamingStrategy"
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "Defines the propagation behavior for transactions. @see org.springframework.transaction.TransactionDefinition"
   shortDescription: "Defines the propagation behavior for transactions."
   name: "cas.authn.mfa.u2f.jpa.propagation-behavior-name"
   defaultValue: "PROPAGATION_REQUIRED"
 - module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
   description: "Additional settings provided by Hibernate in form of key-value pairs."
   shortDescription: "Additional settings provided by Hibernate in form of key-value\
@@ -207,7 +207,7 @@
 - expressionLanguage: true
   required: true
   module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The database connection URL."
   shortDescription: "The database connection URL."
@@ -215,7 +215,7 @@
   defaultValue: "jdbc:hsqldb:mem:cas-hsql-database"
 - required: true
   module: "cas-server-support-u2f-jpa"
-  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorProperties"
+  owner: "org.apereo.cas.configuration.model.support.mfa.u2f.U2FJpaMultifactorAuthenticationProperties"
   type: "java.lang.String"
   description: "The database user. <p> The database user must have sufficient permissions\
     \ to be able to handle schema changes and updates, when needed."
