@@ -15,6 +15,15 @@
 - module: "cas-server-support-trusted-mfa"
   owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorCoreProperties"
   type: "java.lang.Boolean"
+  description: "When device registration is enabled, indicate whether a device name\
+    \ should be automatically selected and assigned by CAS."
+  shortDescription: "When device registration is enabled, indicate whether a device\
+    \ name should be automatically selected and assigned by CAS."
+  name: "cas.authn.mfa.trusted.core.auto-assign-device-name"
+  defaultValue: false
+- module: "cas-server-support-trusted-mfa"
+  owner: "org.apereo.cas.configuration.model.support.mfa.trusteddevice.TrustedDevicesMultifactorCoreProperties"
+  type: "java.lang.Boolean"
   description: "Indicates whether CAS should ask for device registration consent or\
     \ execute it automatically."
   shortDescription: "Indicates whether CAS should ask for device registration consent\

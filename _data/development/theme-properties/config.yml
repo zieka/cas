@@ -28,3 +28,14 @@
 - name: "cas.favicon.file"
   value: ""
   description: "Path to the theme favicon Example: `/themes/example/images/favicon.ico`"
+- name: "cas.theme.description"
+  value: "Central"
+  description: ""
+- name: "cas.hero-banner.file"
+  value: ""
+  description: "Path to a \"hero\" styled image/logo that would be displayed on the\
+    \ login form."
+- name: "cas.js.core.enabled"
+  value: "true"
+  description: "Whether core/default Javascript libraries should be included in the\
+    \ theme."
