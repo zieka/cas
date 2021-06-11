@@ -12,7 +12,6 @@ members MUST take place on the [mailing list](/cas/Mailing-Lists.html).
 
 The current members of the PMC are:
 
-- [Julien Huon](https://github.com/julienhuon)
 - [Dmitriy Kopylenko](https://github.com/dima767)
 - [Travis Schmidt](https://github.com/tsschmidt)
 - [Jérôme Leleu](https://github.com/leleuj) [Vice Chairman]
@@ -27,6 +26,7 @@ Emeritus members are:
 - [Scott Battaglia](https://github.com/battags)
 - [Jeff Sittler](https://github.com/mindblender)
 - [Andrew Petro](https://github.com/apetro)
+- [Julien Huon](https://github.com/julienhuon)
 - [Bill Thompson](https://github.com/wgthom)
 - [Robert Oschwald](https://github.com/robertoschwald)
 - [Marvin Addison](https://github.com/serac)
