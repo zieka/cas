@@ -138,6 +138,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.audit.jdbc.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.audit.jdbc.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -674,6 +687,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.gauth.cleaner.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.authn.mfa.gauth.cleaner.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -932,6 +958,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.trusted.cleaner.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.authn.mfa.trusted.cleaner.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -1125,6 +1164,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.u2f.cleaner.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.authn.mfa.u2f.cleaner.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -1260,6 +1312,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.mfa.web-authn.cleaner.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.authn.mfa.web-authn.cleaner.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -1778,6 +1843,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.passwordless.tokens.jpa.cleaner.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.authn.passwordless.tokens.jpa.cleaner.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -2968,6 +3046,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.authn.throttle.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.authn.throttle.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -3559,6 +3650,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.saml-metadata-ui.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.saml-metadata-ui.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -3732,6 +3836,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.service-registry.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.service-registry.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
@@ -4006,6 +4123,19 @@
   shortDescription: "Whether scheduler should be enabled to schedule the job to run."
   name: "cas.ticket.registry.cleaner.schedule.enabled"
   defaultValue: true
+- module: "cas-server-core-util"
+  owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
+  type: "java.lang.String"
+  description: "Overrides {@link SchedulingProperties#enabled} property value of true\
+    \ if this property does not match hostname of CAS server. This can be useful if\
+    \ deploying CAS with an image in a statefulset where all names are predicatable\
+    \ but where having different configurations for different servers is hard. The\
+    \ value can be an exact hostname or a regular expression that will be used to\
+    \ match the hostname."
+  shortDescription: "Overrides {@link SchedulingProperties#enabled} property value\
+    \ of true if this property does not match hostname of CAS server."
+  name: "cas.ticket.registry.cleaner.schedule.enabled-on-host"
+  defaultValue: ".*"
 - duration: true
   module: "cas-server-core-util"
   owner: "org.apereo.cas.configuration.model.support.quartz.SchedulingProperties"
