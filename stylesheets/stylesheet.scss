@@ -349,8 +349,17 @@ a i.expand:before {
   font-size: 88%;
 }
 
+.properties {
+  position: relative;
+  top: -30px;
+}
+
 .paginated-table tr {
   display: none;
+}
+
+.table td {
+  border-top: none !important;
 }
 
 .table-responsive {
