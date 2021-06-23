@@ -1,0 +1,60 @@
+{% assign min = 1 %}
+{% assign max = 999999 %}
+{% assign diff = max | minus: min %}
+{% assign endpoint = include.endpoint %}
+{% assign rbrace = "}" %}
+{% assign lbrace = "{" %}
+
+<div class="accordion" id="{{ endpoint }}">
+    {% assign showClass = "show" %}
+    {% for configblock in site.data[version].actuators[endpoint] %}
+    {% assign config = configblock[1] | sort: "method" %}
+
+        {% for cfg in config %}
+
+        {% assign key = cfg.path
+            | append: cfg.method
+            | remove: "["
+            | remove: "]"
+            | remove: '"'
+            | remove: '/'
+            | remove: '$'
+            | remove: rbrace
+            | remove: lbrace %}
+
+        <h7 class="accordion-header" id="heading{{key}}">
+            <button
+                {% if showClass contains "show" %}
+                class="accordion-button"
+                {% else %}
+                class="accordion-button collapsed"
+                {% endif %}
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse{{key}}"
+                {% if showClass contains "show" %}aria-expanded="true" {% endif %}
+                style="height: 40px; padding-top: 30px;"
+                aria-controls="collapse{{key}}">
+                <table style="border: none;">
+                    <tr>
+                        <td style="width: 6%; border-bottom:none;"><span class="badge bg-primary">{{ cfg.method }} </span></td>
+                        <td style="border-bottom:none;"><span><code>{{ cfg.path }}</code></span></td>
+                    </tr>
+                </table>
+            </button>
+        </h7>
+
+        <div id="collapse{{key}}" class="accordion-collapse collapse {{ showClass }}"
+            aria-labelledby="heading{{key}}"
+            data-bs-parent="#{{ endpoint }}">
+
+            <div class="accordion-body">
+                {{ cfg.summary }}
+            </div>
+        </div>
+        {% assign showClass = "" %}
+        {% endfor %}
+
+    {% endfor %}
+</div>
+

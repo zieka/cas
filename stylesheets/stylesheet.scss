@@ -19,6 +19,12 @@ html, body {
   //background: #333;
 }
 
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 #sidebarTopics a {
   text-align: left;
 }
@@ -351,7 +357,7 @@ a i.expand:before {
 
 .properties {
   position: relative;
-  top: -30px;
+  // top: -30px;
 }
 
 .paginated-table tr {
@@ -360,6 +366,7 @@ a i.expand:before {
 
 .table td, .table th {
   border-top: none !important;
+  // border-bottom: none !important;
 }
 
 .table-responsive {

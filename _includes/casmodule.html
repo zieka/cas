@@ -15,17 +15,17 @@ function tabClicked(idx) {
 {% assign randomNumber = page.content | size | date: "%s" | modulo: diff | plus: min %}
  {{include.ignoreBOM}}
 <ul class='nav nav-pills'>
-  <li class='nav-item'><a class='nav-link' onclick="javascript:tabClicked(0)" data-toggle='tab' href='#maven{{ randomNumber }}'>Maven</a></li>
-  <li class='nav-item'><a class='nav-link active' onclick="javascript:tabClicked(1)" data-toggle='tab' href='#gradle{{ randomNumber }}'>Gradle</a></li>
+  <li class='nav-item'><a class='nav-link' onclick="javascript:tabClicked(0)" data-bs-toggle='tab' href='#maven{{ randomNumber }}'>Maven</a></li>
+  <li class='nav-item'><a class='nav-link active' onclick="javascript:tabClicked(1)" data-bs-toggle='tab' href='#gradle{{ randomNumber }}'>Gradle</a></li>
 
   {% if include.ignoreBOM == "true" %}
 
   {% else %}
-    <li class='nav-item'><a class='nav-link' onclick="javascript:tabClicked(2)" data-toggle='tab' href='#bom{{ randomNumber }}'>BOM</a></li>
+    <li class='nav-item'><a class='nav-link' onclick="javascript:tabClicked(2)" data-bs-toggle='tab' href='#bom{{ randomNumber }}'>BOM</a></li>
   {% endif %}
 
   <li role='presentation' class='nav-item dropdown'>
-    <a class='nav-link dropdown-toggle' onclick="javascript:tabClicked(3)" data-toggle='dropdown' href='#' role='button'>Resources
+    <a class='nav-link dropdown-toggle' onclick="javascript:tabClicked(3)" data-bs-toggle='dropdown' href='#' role='button'>Resources
       <span class='caret'></span>
     </a>
     <div class='dropdown-menu'>

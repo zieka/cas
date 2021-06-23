@@ -30,69 +30,69 @@
     <li class='nav-item'>
         <a class='nav-link active'
             id="linkRequiredProperties{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#requiredProperties{{ randomNumber }}'>Required</a>
     </li>
     <li class='nav-item'>
         <a class='nav-link'
             id="linkOptionalProperties{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#optionalProperties{{ randomNumber }}'>Optional</a>
     </li>
 
     <li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkSigningEncryption{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
     </li>
 
     <li class='nav-item' id='navRdbmsProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkRdbms{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#rdbmsProperties{{ randomNumber }}'>Hibernate & JDBC</a>
     </li>
 
     <li class='nav-item' id='navEmailProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkEmail{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#emailProperties{{ randomNumber }}'>Email Servers</a>
     </li>
 
     <li class='nav-item' id='navLdapProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkLdap{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#ldapProperties{{ randomNumber }}'>LDAP & Active Directory</a>
     </li>
 
     <li class='nav-item' id='navAuthnPredicateProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkAuthnPredicate{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#authnPredicateProperties{{ randomNumber }}'>Authentication</a>
     </li>
 
     <li class='nav-item' id='navPasswordEncoderProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkPasswordEncoder{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#passwordEncoderProperties{{ randomNumber }}'>Password Encoding</a>
     </li>
 
     <li class='nav-item' id='navPrincipalTransformationProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkPrincipalTransformation{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#principalTransformationProperties{{ randomNumber }}'>Principal Transformation</a>
     </li>
 
     <li class='nav-item' id='navPasswordPolicyProperties{{ randomNumber }}'>
         <a class='nav-link'
             id="linkPasswordPolicy{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#passwordPolicyProperties{{ randomNumber }}'>Password Policy</a>
     </li>
 
@@ -100,7 +100,7 @@
     <li class='nav-item'>
         <a class='nav-link'
             id="linkThirdPartyProperties{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#thirdPartyProperties{{ randomNumber }}'>Third Party</a>
     </li>
     {% endif %}
@@ -109,7 +109,7 @@
         <a class='nav-link'
 
             id="linkNotes{{ randomNumber }}"
-            data-toggle='tab'
+            data-bs-toggle='tab'
             href='#notes{{ randomNumber }}'>Notes</a>
     </li>
 </ul>
@@ -834,7 +834,10 @@
             $("#linkLdap{{ randomNumber }}").css("display", "none");
         {% endunless %}
 
-        $("#navPillsMenus{{ randomNumber }} a:visible:first").click();
+        var id="#" + $("#navPillsMenus{{ randomNumber }} a:visible:first").prop('id');
+        var firstTabEl = document.querySelector(id);
+        var firstTab = new bootstrap.Tab(firstTabEl);
+        firstTab.show()
 
         next('tableRequiredProperties{{ randomNumber }}');
         next('tableOptionalProperties{{ randomNumber }}');
@@ -842,17 +845,17 @@
 
         let c = $("#tableRequiredProperties{{ randomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navRequiredProperties{{ randomNumber }}").hide();
-            $("#navRequiredPropertiesLeft{{ randomNumber }}").hide();
+            $("#navRequiredProperties{{ randomNumber }}").closest("table").remove()
+            $("#navRequiredPropertiesLeft{{ randomNumber }}").closest("table").remove()
         }
         c = $("#tableOptionalProperties{{ randomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navOptionalProperties{{ randomNumber }}").hide();
-            $("#navOptionalPropertiesLeft{{ randomNumber }}").hide();
+            $("#navOptionalProperties{{ randomNumber }}").closest("table").remove()
+            $("#navOptionalPropertiesLeft{{ randomNumber }}").closest("table").remove()
         }
         c = $("#tableThirdPartyProperties{{ randomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navThirdPartyProperties{{ randomNumber }}").hide();
+            $("#navThirdPartyProperties{{ randomNumber }}").closest("table").remove()
         }
     });
 </script>

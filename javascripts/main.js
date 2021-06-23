@@ -82,7 +82,7 @@ function loadSidebarForActiveVersion() {
         var el = $(this);
         //console.log("Top level UL: " + el);
         el.attr({
-          'data-parent': '#sidebarTopics'
+          'data-bs-parent': '#sidebarTopics'
         });
 
         if (!el.prev().hasClass('collapsed')) {
@@ -142,7 +142,7 @@ function sidebarTopNav(el) {
   // If the link is an anchor, then wire up toggle functionality, otherwise leave it.
   if (el.attr('href').search(/(?:^|)#/g) >= 0) {
     el.attr({
-      'data-toggle': "collapse",
+      'data-bs-toggle': "collapse",
       'aria-expanded': "false",
       title: $(this)[0].innerText,
       class: 'collapsed'
@@ -167,9 +167,9 @@ function sidebarSubNav(el) {
   }
 
   if (!prevId == '') {
-    $(el).addClass('nav flex-column collapse subnav ml-3').attr('id', prevId);
+    $(el).addClass('nav flex-column collapse subnav ms-3').attr('id', prevId);
   } else {
-    $(el).addClass('nav flex-column subnav ml-3');
+    $(el).addClass('nav flex-column subnav ms-3');
   }
 }
 
@@ -339,7 +339,7 @@ function responsiveTables() {
 
 
 function enableBootstrapTooltips() {
-  $('[data-toggle="tooltip"]').tooltip();
+  $('[data-bs-toggle="tooltip"]').tooltip();
 }
 
 function generateOverlay(artifactId, type) {
