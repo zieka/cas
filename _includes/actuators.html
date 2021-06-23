@@ -6,7 +6,7 @@
 {% assign lbrace = "{" %}
 
 <div class="accordion" id="{{ endpoint }}">
-    {% assign showClass = "show" %}
+    {% assign showClass = "" %}
     {% for configblock in site.data[version].actuators[endpoint] %}
     {% assign config = configblock[1] | sort: "method" %}
 
@@ -33,12 +33,23 @@
                 data-bs-toggle="collapse"
                 data-bs-target="#collapse{{key}}"
                 {% if showClass contains "show" %}aria-expanded="true" {% endif %}
-                style="height: 40px; padding-top: 30px;"
+                style="height: 40px; padding-top: 30px; border-radius: 6px;"
                 aria-controls="collapse{{key}}">
                 <table style="border: none;">
                     <tr>
-                        <td style="width: 6%; border-bottom:none;"><span class="badge bg-primary">{{ cfg.method }} </span></td>
-                        <td style="border-bottom:none;"><span><code>{{ cfg.path }}</code></span></td>
+                        <td style="width: 6%; border-bottom:none;">
+                            {% if cfg.method == "DELETE" %}
+                            <span class="badge bg-danger">
+                            {% elsif cfg.method == "GET" %}
+                            <span class="badge bg-primary">
+                            {% elsif cfg.method == "POST" %}
+                            <span class="badge bg-success">
+                            {% else %}
+                            <span class="badge bg-secondary">
+                            {%endif %}
+                            {{ cfg.method }} </span>
+                        </td>
+                        <td style="border-bottom:none;"><span><code>/cas/actuator/{{ cfg.path }}</code></span></td>
                     </tr>
                 </table>
             </button>
@@ -47,14 +58,22 @@
         <div id="collapse{{key}}" class="accordion-collapse collapse {{ showClass }}"
             aria-labelledby="heading{{key}}"
             data-bs-parent="#{{ endpoint }}">
-
             <div class="accordion-body">
-                {{ cfg.summary }}
+                <p class="small text-left">{{cfg.summary}}</p>
+                <p class="small text-left"><i class="fas fa-info-circle"></i> Return: <code>{{cfg.returnType}}</code></p>
+                <p class="small text-left"> <i class="fas fa-info-circle"></i> Signature: <code>{{cfg.signature}}</code></p>
+                {% if cfg.consumes.size > 0 %}
+                <p class="small text-left"> <i class="fas fa-sign-in-alt"></i> Consumes: <code>{{cfg.consumes}}</code></p>
+                {% endif %}
+                {% if cfg.produces.size > 0 %}
+                <p class="small text-left"> <i class="fas fa-sign-out-alt"></i> Produces: <code>{{cfg.produces}}</code></p>
+                {% endif %}
             </div>
         </div>
+
         {% assign showClass = "" %}
         {% endfor %}
-
     {% endfor %}
 </div>
 
+<br/>

@@ -91,6 +91,10 @@ blockquote em{
   font-style: italic;
 }
 
+.accordion-button::after  {
+  margin-top: -10px
+}
+
 .breadcrumb {
     padding-top: 12px;
     background-color: rgb(233, 236, 239);
