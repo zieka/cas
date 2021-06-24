@@ -1,0 +1,13 @@
+---
+- method: "GET"
+  path: "health"
+  signature: "HealthEndpoint.health()"
+  returnType: "HealthComponent"
+- method: "GET"
+  path: "health/${path}"
+  signature: "HealthEndpoint.healthForPath(java.lang.String...)"
+  returnType: "HealthComponent"
+  parameters:
+  - required: true
+    type: "String[]"
+    selector: true

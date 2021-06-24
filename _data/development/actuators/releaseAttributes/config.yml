@@ -1,0 +1,37 @@
+---
+- method: "GET"
+  path: "releaseAttributes"
+  signature: "CasReleaseAttributesReportEndpoint.releasePrincipalAttributes(java.lang.String,java.lang.String,java.lang.String)"
+  returnType: "Map"
+  summary: "Get collection of released attributes for the user and application."
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+    name: "username"
+  - required: true
+    type: "String"
+    selector: false
+    name: "password"
+  - required: true
+    type: "String"
+    selector: false
+    name: "service"
+- method: "POST"
+  path: "releaseAttributes"
+  signature: "CasReleaseAttributesReportEndpoint.releaseAttributes(java.lang.String,java.lang.String,java.lang.String)"
+  returnType: "Map"
+  summary: "Get collection of released attributes for the user and application."
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+    name: "username"
+  - required: true
+    type: "String"
+    selector: false
+    name: "password"
+  - required: true
+    type: "String"
+    selector: false
+    name: "service"

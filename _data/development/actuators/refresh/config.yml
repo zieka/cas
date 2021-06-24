@@ -1,0 +1,5 @@
+---
+- method: "POST"
+  path: "refresh"
+  signature: "RefreshEndpoint.refresh()"
+  returnType: "Collection"

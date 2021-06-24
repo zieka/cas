@@ -1,0 +1,14 @@
+---
+- method: "GET"
+  path: "jwtTicketSigningPublicKey"
+  signature: "JwtTokenCipherSigningPublicKeyEndpoint.fetchPublicKey(java.lang.String)\
+    \ throws java.lang.Exception"
+  returnType: "String"
+  summary: "Get public key for signing operations."
+  parameters:
+  - required: false
+    type: "String"
+    selector: false
+    name: "service"
+  produces:
+  - "text/plain"

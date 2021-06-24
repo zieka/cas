@@ -1,0 +1,17 @@
+---
+- method: "GET"
+  path: "env/${toMatch}"
+  signature: "EnvironmentEndpoint$EnvironmentEntryDescriptor org.springframework.boot.actuate.env.EnvironmentEndpoint.environmentEntry(java.lang.String)"
+  returnType: "EnvironmentEntryDescriptor"
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+- method: "GET"
+  path: "env"
+  signature: "EnvironmentEndpoint$EnvironmentDescriptor org.springframework.boot.actuate.env.EnvironmentEndpoint.environment(java.lang.String)"
+  returnType: "EnvironmentDescriptor"
+  parameters:
+  - required: false
+    type: "String"
+    selector: false

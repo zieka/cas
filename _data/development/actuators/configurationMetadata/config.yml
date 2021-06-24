@@ -1,0 +1,16 @@
+---
+- method: "GET"
+  path: "configurationMetadata"
+  signature: "CasConfigurationMetadataServerEndpoint.properties()"
+  returnType: "Map"
+  summary: "Get all properties from the repository."
+- method: "GET"
+  path: "configurationMetadata/${name}"
+  signature: "CasConfigurationMetadataServerEndpoint.search(java.lang.String)"
+  returnType: "List"
+  summary: "Get all properties from the repository that match the name."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "name"

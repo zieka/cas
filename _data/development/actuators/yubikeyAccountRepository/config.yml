@@ -1,0 +1,62 @@
+---
+- method: "GET"
+  path:
+  - "yubikeyAccountRepository/export"
+  signature: "YubiKeyAccountRegistryEndpoint.export()"
+  returnType: "ResponseEntity"
+  summary: "Export all Yubikey accounts as a zip file."
+  produces:
+  - "application/octet-stream"
+- method: "GET"
+  path:
+  - "yubikeyAccountRepository/{username}"
+  signature: "YubiKeyAccountRegistryEndpoint.get(java.lang.String)"
+  returnType: "YubiKeyAccount"
+  summary: "Get Yubikey account for username."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  produces:
+  - "application/json"
+- method: "GET"
+  path: "yubikeyAccountRepository"
+  signature: "YubiKeyAccountRegistryEndpoint.load()"
+  returnType: "Collection"
+  summary: "Get all Yubikey accounts."
+  produces:
+  - "application/json"
+- method: "DELETE"
+  path: "yubikeyAccountRepository"
+  signature: "YubiKeyAccountRegistryEndpoint.deleteAll()"
+  returnType: "void"
+  summary: "Delete all Yubikey accounts."
+  produces:
+  - "application/json"
+- method: "DELETE"
+  path:
+  - "yubikeyAccountRepository/{username}"
+  signature: "YubiKeyAccountRegistryEndpoint.delete(java.lang.String)"
+  returnType: "void"
+  summary: "Delete Yubikey account for username."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  produces:
+  - "application/json"
+- method: "POST"
+  path:
+  - "yubikeyAccountRepository/import"
+  signature: "YubiKeyAccountRegistryEndpoint.importAccount(javax.servlet.http.HttpServletRequest)\
+    \ throws java.lang.Exception"
+  returnType: "HttpStatus"
+  summary: "Import a Yubikey account as a JSON document."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  consumes:
+  - "application/json"

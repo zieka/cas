@@ -1,0 +1,35 @@
+---
+- method: "GET"
+  path: "qrDevices/${principal}"
+  signature: "QRAuthenticationDeviceRepositoryEndpoint.devices(java.lang.String)"
+  returnType: "Collection"
+  summary: "Get registered and authorized devices for the principal."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "principal"
+- method: "POST"
+  path: "qrDevices/${principal}/${deviceId}"
+  signature: "QRAuthenticationDeviceRepositoryEndpoint.registerDevice(java.lang.String,java.lang.String)"
+  returnType: "void"
+  summary: "Register device using the principal id and device id."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "principal"
+  - required: true
+    type: "String"
+    selector: true
+    name: "deviceId"
+- method: "DELETE"
+  path: "qrDevices/${deviceId}"
+  signature: "QRAuthenticationDeviceRepositoryEndpoint.removeDevice(java.lang.String)"
+  returnType: "void"
+  summary: "Remove authorized device using the device id."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "deviceId"

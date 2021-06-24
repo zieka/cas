@@ -1,0 +1,6 @@
+---
+- method: "GET"
+  path: "statistics"
+  signature: "StatisticsEndpoint.handle()"
+  returnType: "Map"
+  summary: "Get a report of CAS statistics."

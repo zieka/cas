@@ -1,0 +1,26 @@
+---
+- method: "GET"
+  path: "oauthTokens"
+  signature: "OAuth20TokenManagementEndpoint.getTokens()"
+  returnType: "Collection"
+  summary: "Get access and/or refresh tokens."
+- method: "GET"
+  path: "oauthTokens/${token}"
+  signature: "OAuth20TokenManagementEndpoint.getToken(java.lang.String)"
+  returnType: "Ticket"
+  summary: "Get single token by id."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "token"
+- method: "DELETE"
+  path: "oauthTokens/${ticketId}"
+  signature: "OAuth20TokenManagementEndpoint.deleteToken(java.lang.String)"
+  returnType: "void"
+  summary: "Delete token by id."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "ticketId"

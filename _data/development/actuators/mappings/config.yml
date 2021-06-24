@@ -1,0 +1,5 @@
+---
+- method: "GET"
+  path: "mappings"
+  signature: "MappingsEndpoint$ApplicationMappings org.springframework.boot.actuate.web.mappings.MappingsEndpoint.mappings()"
+  returnType: "ApplicationMappings"

@@ -1,0 +1,5 @@
+---
+- method: "GET"
+  path: "beans"
+  signature: "BeansEndpoint$ApplicationBeans org.springframework.boot.actuate.beans.BeansEndpoint.beans()"
+  returnType: "ApplicationBeans"

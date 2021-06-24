@@ -1,0 +1,7 @@
+---
+- method: "GET"
+  path: "status"
+  signature: "StatusEndpoint.handle()"
+  returnType: "Map"
+  deprecated: true
+  summary: "Provides CAS server's health status."

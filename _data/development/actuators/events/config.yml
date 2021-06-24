@@ -1,0 +1,6 @@
+---
+- method: "GET"
+  path: "events"
+  signature: "CasEventsReportEndpoint.events()"
+  returnType: "Collection"
+  summary: "Provide a report of CAS events in the event repository."

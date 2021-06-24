@@ -1,0 +1,13 @@
+---
+- method: "POST"
+  path: "busrefresh"
+  signature: "RefreshBusEndpoint.busRefresh()"
+  returnType: "void"
+- method: "POST"
+  path: "busrefresh/${destinations}"
+  signature: "RefreshBusEndpoint.busRefreshWithDestination(java.lang.String[])"
+  returnType: "void"
+  parameters:
+  - required: true
+    type: "String[]"
+    selector: true

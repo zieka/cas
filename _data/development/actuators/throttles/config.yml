@@ -1,0 +1,6 @@
+---
+- method: "GET"
+  path: "throttles"
+  signature: "ThrottledSubmissionHandlerEndpoint.getRecords()"
+  returnType: "List"
+  summary: "Get throttled authentication records."

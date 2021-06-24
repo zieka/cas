@@ -1,0 +1,34 @@
+---
+- method: "POST"
+  path: "awsSts"
+  signature: "AmazonSecurityTokenServiceEndpoint.fetchCredentials(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,org.springframework.util.MultiValueMap<java.lang.String,\
+    \ java.lang.String>,javax.servlet.http.HttpServletRequest)"
+  returnType: "ResponseEntity"
+  summary: "Fetch temporary credentials from Amazon Security Token Service."
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+    name: "duration"
+  - required: true
+    type: "String"
+    selector: false
+    name: "tokenCode"
+  - required: true
+    type: "String"
+    selector: false
+    name: "profile"
+  - required: true
+    type: "String"
+    selector: false
+    name: "serialNumber"
+  - required: true
+    type: "String"
+    selector: false
+    name: "roleArn"
+  - required: true
+    type: "MultiValueMap"
+    selector: false
+  - required: true
+    type: "HttpServletRequest"
+    selector: false

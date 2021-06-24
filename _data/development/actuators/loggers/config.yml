@@ -1,0 +1,24 @@
+---
+- method: "GET"
+  path: "loggers"
+  signature: "LoggersEndpoint.loggers()"
+  returnType: "Map"
+- method: "GET"
+  path: "loggers/${name}"
+  signature: "LoggersEndpoint$LoggerLevels org.springframework.boot.actuate.logging.LoggersEndpoint.loggerLevels(java.lang.String)"
+  returnType: "LoggerLevels"
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+- method: "POST"
+  path: "loggers/${name}"
+  signature: "LoggersEndpoint.configureLogLevel(java.lang.String,org.springframework.boot.logging.LogLevel)"
+  returnType: "void"
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+  - required: false
+    type: "LogLevel"
+    selector: false

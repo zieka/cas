@@ -1,0 +1,9 @@
+---
+- method: "GET"
+  path: "integrationgraph"
+  signature: "IntegrationGraphEndpoint.graph()"
+  returnType: "Graph"
+- method: "POST"
+  path: "integrationgraph"
+  signature: "IntegrationGraphEndpoint.rebuild()"
+  returnType: "void"

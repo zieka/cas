@@ -1,0 +1,5 @@
+---
+- method: "GET"
+  path: "features"
+  signature: "FeaturesEndpoint$Features org.springframework.cloud.client.actuator.FeaturesEndpoint.features()"
+  returnType: "Features"

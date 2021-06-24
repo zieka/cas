@@ -1,0 +1,13 @@
+---
+- method: "GET"
+  path: "serviceregistry"
+  signature: "ServiceRegistryEndpoint.getStatus()"
+  returnType: "ResponseEntity"
+- method: "POST"
+  path: "serviceregistry"
+  signature: "ServiceRegistryEndpoint.setStatus(java.lang.String)"
+  returnType: "ResponseEntity"
+  parameters:
+  - required: true
+    type: "String"
+    selector: false

@@ -1,0 +1,5 @@
+---
+- method: "POST"
+  path: "pause"
+  signature: "PauseEndpoint.pause()"
+  returnType: "Boolean"

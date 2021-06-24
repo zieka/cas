@@ -1,0 +1,19 @@
+---
+- method: "GET"
+  path: "samlValidate"
+  signature: "SamlValidateEndpoint.handle(java.lang.String,java.lang.String,java.lang.String)"
+  returnType: "Map"
+  summary: "Handle validation request and produce saml1 payload."
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+    name: "username"
+  - required: true
+    type: "String"
+    selector: false
+    name: "password"
+  - required: true
+    type: "String"
+    selector: false
+    name: "service"

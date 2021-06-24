@@ -1,0 +1,5 @@
+---
+- method: "GET"
+  path: "consul"
+  signature: "ConsulEndpoint$ConsulData org.springframework.cloud.consul.ConsulEndpoint.invoke()"
+  returnType: "ConsulData"

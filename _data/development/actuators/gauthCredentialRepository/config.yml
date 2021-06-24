@@ -1,0 +1,62 @@
+---
+- method: "GET"
+  path:
+  - "gauthCredentialRepository/export"
+  signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.exportAccounts()"
+  returnType: "ResponseEntity"
+  summary: "Export accounts as a zip file."
+  produces:
+  - "application/octet-stream"
+- method: "GET"
+  path:
+  - "gauthCredentialRepository/{username}"
+  signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.get(java.lang.String)"
+  returnType: "Collection"
+  summary: "Load and get all accounts for the user."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  produces:
+  - "application/json"
+- method: "GET"
+  path: "gauthCredentialRepository"
+  signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.load()"
+  returnType: "Collection"
+  summary: "Load and get all accounts."
+  produces:
+  - "application/json"
+- method: "DELETE"
+  path: "gauthCredentialRepository"
+  signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.deleteAll()"
+  returnType: "void"
+  summary: "Delete all accounts."
+  produces:
+  - "application/json"
+- method: "DELETE"
+  path:
+  - "gauthCredentialRepository/{username}"
+  signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.delete(java.lang.String)"
+  returnType: "void"
+  summary: "Delete account for the user."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  produces:
+  - "application/json"
+- method: "POST"
+  path:
+  - "gauthCredentialRepository/import"
+  signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.importAccount(javax.servlet.http.HttpServletRequest)\
+    \ throws java.lang.Exception"
+  returnType: "HttpStatus"
+  summary: "Import account as a JSON document."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  consumes:
+  - "application/json"

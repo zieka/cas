@@ -1,0 +1,34 @@
+---
+- method: "GET"
+  path: "samlPostProfileResponse"
+  signature: "SSOSamlIdPPostProfileHandlerEndpoint.produceGet(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)"
+  returnType: "ResponseEntity"
+  summary: "Produce SAML2 response entity."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  - required: true
+    type: "HttpServletResponse"
+    selector: false
+  produces:
+  - "application/xml"
+- method: "POST"
+  path: "samlPostProfileResponse"
+  signature: "SSOSamlIdPPostProfileHandlerEndpoint.producePost(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.util.Map<java.lang.String,\
+    \ java.lang.String>)"
+  returnType: "ResponseEntity"
+  summary: "Produce SAML2 response entity."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  - required: true
+    type: "HttpServletResponse"
+    selector: false
+  - required: true
+    type: "Map"
+    selector: false
+    name: "entityId"
+  produces:
+  - "application/xml"

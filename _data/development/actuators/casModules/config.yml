@@ -1,0 +1,6 @@
+---
+- method: "GET"
+  path: "casModules"
+  signature: "CasRuntimeModulesEndpoint.reportModules()"
+  returnType: "List"
+  summary: "Get all available CAS runtime module descriptors."

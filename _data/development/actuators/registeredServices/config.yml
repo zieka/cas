@@ -1,0 +1,64 @@
+---
+- method: "GET"
+  path:
+  - "registeredServices/export"
+  signature: "RegisteredServicesEndpoint.export()"
+  returnType: "ResponseEntity"
+  summary: "Export registered services as a zip file."
+  produces:
+  - "application/octet-stream"
+- method: "GET"
+  path:
+  - "registeredServices/{id}"
+  signature: "RegisteredServicesEndpoint.fetchService(java.lang.String) throws java.lang.Exception"
+  returnType: "ResponseEntity"
+  summary: "Fetch service either by numeric id or service id pattern."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "id"
+  produces:
+  - "application/vnd.spring-boot.actuator.v2+json"
+  - "application/vnd.cas.services+yaml"
+  - "application/json"
+- method: "GET"
+  path: "registeredServices"
+  signature: "RegisteredServicesEndpoint.handle() throws java.lang.Exception"
+  returnType: "ResponseEntity"
+  summary: "Handle and produce a list of services from registry."
+  produces:
+  - "application/vnd.spring-boot.actuator.v2+json"
+  - "application/vnd.cas.services+yaml"
+  - "application/json"
+- method: "DELETE"
+  path:
+  - "registeredServices/{id}"
+  signature: "RegisteredServicesEndpoint.deleteService(java.lang.String) throws java.lang.Exception"
+  returnType: "ResponseEntity"
+  summary: "Delete registered service by id."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "id"
+  produces:
+  - "application/vnd.spring-boot.actuator.v2+json"
+  - "application/vnd.cas.services+yaml"
+  - "application/json"
+- method: "POST"
+  path:
+  - "registeredServices/import"
+  signature: "RegisteredServicesEndpoint.importService(javax.servlet.http.HttpServletRequest)\
+    \ throws java.lang.Exception"
+  returnType: "ResponseEntity"
+  summary: "Import registered services as a JSON document or a zip file."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  consumes:
+  - "application/octet-stream"
+  - "application/vnd.spring-boot.actuator.v2+json"
+  - "application/vnd.cas.services+yaml"
+  - "application/json"

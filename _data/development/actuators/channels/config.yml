@@ -1,0 +1,5 @@
+---
+- method: "GET"
+  path: "channels"
+  signature: "ChannelsEndpoint.channels()"
+  returnType: "Map"

@@ -1,0 +1,8 @@
+---
+- method: "GET"
+  path: "discoveryProfile"
+  signature: "CasServerDiscoveryProfileEndpoint.discovery()"
+  returnType: "Map"
+  summary: "Produce CAS discovery profile."
+  produces:
+  - "application/json"

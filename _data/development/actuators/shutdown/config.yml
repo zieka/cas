@@ -1,0 +1,5 @@
+---
+- method: "POST"
+  path: "shutdown"
+  signature: "ShutdownEndpoint.shutdown()"
+  returnType: "Map"

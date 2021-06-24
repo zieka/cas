@@ -1,0 +1,5 @@
+---
+- method: "GET"
+  path: "flyway"
+  signature: "FlywayEndpoint$ApplicationFlywayBeans org.springframework.boot.actuate.flyway.FlywayEndpoint.flywayBeans()"
+  returnType: "ApplicationFlywayBeans"

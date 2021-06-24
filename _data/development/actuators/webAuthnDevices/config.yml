@@ -1,0 +1,84 @@
+---
+- method: "GET"
+  path:
+  - "webAuthnDevices/export"
+  signature: "WebAuthnRegisteredDevicesEndpoint.export()"
+  returnType: "ResponseEntity"
+  summary: "Export device registrations as a zip file."
+  produces:
+  - "application/octet-stream"
+- method: "GET"
+  path:
+  - "webAuthnDevices/{username}"
+  signature: "WebAuthnRegisteredDevicesEndpoint.fetch(java.lang.String)"
+  returnType: "Collection"
+  summary: "Fetch registered devices for username."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  produces:
+  - "application/json"
+- method: "DELETE"
+  path:
+  - "webAuthnDevices/{username}"
+  signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String)"
+  returnType: "void"
+  summary: "Remove device registrations for username."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  produces:
+  - "application/json"
+- method: "DELETE"
+  path:
+  - "webAuthnDevices/{username}/{credentialId}"
+  signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String,java.lang.String)\
+    \ throws java.lang.Exception"
+  returnType: "void"
+  summary: "Remove device registration for username and credential id."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  - required: true
+    type: "String"
+    selector: true
+    name: "credentialId"
+  produces:
+  - "application/json"
+- method: "POST"
+  path:
+  - "webAuthnDevices/import"
+  signature: "WebAuthnRegisteredDevicesEndpoint.importAccount(javax.servlet.http.HttpServletRequest)\
+    \ throws java.lang.Exception"
+  returnType: "HttpStatus"
+  summary: "Import a device registration as a JSON document."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  consumes:
+  - "application/json"
+- method: "POST"
+  path:
+  - "webAuthnDevices/{username}"
+  signature: "WebAuthnRegisteredDevicesEndpoint.write(java.lang.String,java.lang.String)\
+    \ throws java.lang.Exception"
+  returnType: "boolean"
+  summary: "Add device registration for username."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "username"
+  - required: true
+    type: "String"
+    selector: false
+    name: "record"
+  produces:
+  - "application/json"

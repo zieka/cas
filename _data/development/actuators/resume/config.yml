@@ -1,0 +1,5 @@
+---
+- method: "POST"
+  path: "resume"
+  signature: "ResumeEndpoint.resume()"
+  returnType: "Boolean"

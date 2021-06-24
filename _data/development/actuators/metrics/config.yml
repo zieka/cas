@@ -1,0 +1,16 @@
+---
+- method: "GET"
+  path: "metrics/${requiredMetricName}"
+  signature: "MetricsEndpoint$MetricResponse org.springframework.boot.actuate.metrics.MetricsEndpoint.metric(java.lang.String,java.util.List<java.lang.String>)"
+  returnType: "MetricResponse"
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+  - required: false
+    type: "List"
+    selector: false
+- method: "GET"
+  path: "metrics"
+  signature: "MetricsEndpoint$ListNamesResponse org.springframework.boot.actuate.metrics.MetricsEndpoint.listNames()"
+  returnType: "ListNamesResponse"

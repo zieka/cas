@@ -1,0 +1,6 @@
+---
+- method: "GET"
+  path: "quartz"
+  signature: "QuartzEndpoint$QuartzReport org.springframework.boot.actuate.quartz.QuartzEndpoint.quartzReport()\
+    \ throws org.quartz.SchedulerException"
+  returnType: "QuartzReport"

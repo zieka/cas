@@ -1,0 +1,12 @@
+---
+- method: "GET"
+  path: "sso"
+  signature: "SingleSignOnSessionStatusEndpoint.ssoStatus(javax.servlet.http.HttpServletRequest)"
+  returnType: "ResponseEntity"
+  summary: "Get current status of single sign-on."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  produces:
+  - "application/json"

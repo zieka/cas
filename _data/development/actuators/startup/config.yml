@@ -1,0 +1,9 @@
+---
+- method: "GET"
+  path: "startup"
+  signature: "StartupEndpoint$StartupResponse org.springframework.boot.actuate.startup.StartupEndpoint.startupSnapshot()"
+  returnType: "StartupResponse"
+- method: "POST"
+  path: "startup"
+  signature: "StartupEndpoint$StartupResponse org.springframework.boot.actuate.startup.StartupEndpoint.startup()"
+  returnType: "StartupResponse"

@@ -1,0 +1,52 @@
+---
+- method: "GET"
+  path:
+  - "attributeConsent/export"
+  signature: "AttributeConsentReportEndpoint.export()"
+  returnType: "ResponseEntity"
+  summary: "Export consent decisions as a zip file."
+  produces:
+  - "application/octet-stream"
+- method: "GET"
+  path:
+  - "attributeConsent/{principal}"
+  signature: "AttributeConsentReportEndpoint.consentDecisions(java.lang.String)"
+  returnType: "Collection"
+  summary: "Get consent decisions for principal."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "principal"
+  produces:
+  - "application/json"
+- method: "DELETE"
+  path:
+  - "attributeConsent/{principal}/{decisionId}"
+  signature: "AttributeConsentReportEndpoint.revokeConsents(java.lang.String,long)"
+  returnType: "boolean"
+  summary: "Delete a consent decision for principal using a decision id."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "principal"
+  - required: true
+    type: "long"
+    selector: true
+    name: "decisionId"
+  produces:
+  - "application/json"
+- method: "POST"
+  path:
+  - "attributeConsent/import"
+  signature: "AttributeConsentReportEndpoint.importAccount(javax.servlet.http.HttpServletRequest)\
+    \ throws java.lang.Exception"
+  returnType: "HttpStatus"
+  summary: "Import a consent decision as a JSON document."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  consumes:
+  - "application/json"

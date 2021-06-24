@@ -1,0 +1,11 @@
+---
+- method: "GET"
+  path: "springWebflow"
+  signature: "SpringWebflowEndpoint.getReport(java.lang.String)"
+  returnType: "Map"
+  summary: "Get Spring webflow report using an optional flow id."
+  parameters:
+  - required: false
+    type: "String"
+    selector: false
+    name: "flowId"

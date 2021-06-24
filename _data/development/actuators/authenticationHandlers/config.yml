@@ -1,0 +1,26 @@
+---
+- method: "GET"
+  path: "authenticationHandlers/${name}"
+  signature: "RegisteredAuthenticationHandlersEndpoint$AuthenticationHandlerDetails\
+    \ org.apereo.cas.web.report.RegisteredAuthenticationHandlersEndpoint.fetchAuthnHandler(java.lang.String)"
+  returnType: "AuthenticationHandlerDetails"
+  summary: "Get available authentication handler by name."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "name"
+  produces:
+  - "application/vnd.spring-boot.actuator.v2+json"
+  - "application/vnd.cas.services+yaml"
+  - "application/json"
+- method: "GET"
+  path: "authenticationHandlers"
+  signature: "RegisteredAuthenticationHandlersEndpoint$AuthenticationHandlerDetails>\
+    \ org.apereo.cas.web.report.RegisteredAuthenticationHandlersEndpoint.handle()"
+  returnType: "Collection"
+  summary: "Get collection of available authentication handlers."
+  produces:
+  - "application/vnd.spring-boot.actuator.v2+json"
+  - "application/vnd.cas.services+yaml"
+  - "application/json"

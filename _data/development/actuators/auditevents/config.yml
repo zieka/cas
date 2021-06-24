@@ -1,0 +1,15 @@
+---
+- method: "GET"
+  path: "auditevents"
+  signature: "AuditEventsEndpoint$AuditEventsDescriptor org.springframework.boot.actuate.audit.AuditEventsEndpoint.events(java.lang.String,java.time.OffsetDateTime,java.lang.String)"
+  returnType: "AuditEventsDescriptor"
+  parameters:
+  - required: false
+    type: "String"
+    selector: false
+  - required: false
+    type: "OffsetDateTime"
+    selector: false
+  - required: false
+    type: "String"
+    selector: false
