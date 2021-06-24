@@ -8,6 +8,7 @@
 {% assign randomNumber = include.endpoints | remove: "," | truncate: 50, '' %}
 {% assign endpoints = include.endpoints | split: "," %}
 
+
 <div class="accordion" id="{{ randomNumber }}">
     {% assign showClass = "" %}
 
@@ -55,7 +56,7 @@
                                 <span class="badge bg-secondary">
                                 {%endif %}
 
-                                {% if cfg.casEndpoint.size > 0 %}
+                                {% if cfg.casEndpoint == true %}
                                 <i class="fas fa-copyright"></i>
                                 {% else %}
                                 <i class="fab fa-codepen"></i>
@@ -63,7 +64,22 @@
 
                                 {{ cfg.method }} </span>
                             </td>
-                            <td style="border-bottom:none;"><span><code>/cas/actuator/{{ cfg.path }}</code></span></td>
+                            <td style="border-bottom:none;"><span><code>/cas/actuator/{{ cfg.path }}</code>
+                            <sup>
+                                {% if cfg.casEndpoint == true %}
+                                    <img class="undecorated img-fluid" 
+                                        width="42px" 
+                                        src="../../images/cas-sm.png" 
+                                        data-bs-toggle="tooltip" data-bs-placment="top" 
+                                        data-bs-html="true" title="This endpoint is owned, provided and controlled by CAS." 
+                                        class="fas fa-copyright">
+                                {% else %}
+                                    <i data-bs-toggle="tooltip" data-bs-placment="top" 
+                                        data-bs-html="true" title="This endpoint is provided by a third-party framework to CAS." 
+                                        class="fas fa-codepen"></i>
+                                {% endif %}
+                            </sup>
+                            </span></td>
                         </tr>
                     </table>
                 </button>
@@ -73,56 +89,116 @@
                 aria-labelledby="heading{{key}}"
                 data-bs-parent="#{{ randomNumber }}">
                 <div class="accordion-body">
-                    <p class="small text-left">{{cfg.summary}}</p>
+                    <p class="small text-left">
+                        {% if cfg.summary.size > 0 %}
+                            {{cfg.summary}}
+                        {% else %}
+                            {% unless cfg.casEndpoint == true %}
+                            There is no documentation available for this endpoint. The functionality presented here is provided to CAS 
+                            via a third-party library or framework, which provides no documentation as part of endpoint definition's metadata.
+                            {% endunless %}
+                        {% endif %}
+                    </p>
 
-                    <table>
+                    <table style="table-layout: fixed;">
                         <tr>
                             {% if cfg.returnType.size > 0 %}
-                            <td width="25%"><i data-bs-toggle="tooltip" data-bs-placment="top" 
+                            <td><i data-bs-toggle="tooltip" data-bs-placment="top" 
                                 data-bs-html="true" title="Return Type" 
                                 class="fas fa-exchange-alt"></i> <code>{{cfg.returnType}}</code></td>
                             {% endif %}
 
                             {% if cfg.consumes.size > 0 %}
-                            <td width="25%"> <i data-bs-toggle="tooltip" data-bs-placment="top" 
+                            <td> <i data-bs-toggle="tooltip" data-bs-placment="top" 
                                 data-bs-html="true" title="Narrows the primary mapping by media types that can be consumed by the mapped handler. Consists of one or more media types one of which must match to the request <code>Content-Type</code> header." class="fas fa-sign-in-alt"></i> <code>{{cfg.consumes}}</code></td>
                             {% endif %}
 
                             {% if cfg.produces.size > 0 %}
-                            <td width="25%"><i data-bs-toggle="tooltip" data-bs-placment="top" 
+                            <td><i data-bs-toggle="tooltip" data-bs-placment="top" 
                                 data-bs-html="true" title="Narrows the primary mapping by media types that can be produced by the mapped handler. Consists of one or more media types one of which must be chosen via content negotiation against the <i>acceptable</i> media types of the request. Typically those are extracted from the <code>Accept</code> header but may be derived from query parameters, or other." class="fas fa-sign-out-alt"></i> <code>{{cfg.produces}}</code></td>
                             {% endif %}
-
-                            <td>
-                            {% if cfg.casEndpoint.size > 0 %}
-                                <img class="undecorated img-fluid" 
-                                    width="42px" 
-                                    src="../../images/cas-sm.png" 
-                                    data-bs-toggle="tooltip" data-bs-placment="top" 
-                                    data-bs-html="true" title="This endpoint is owned, provided and controlled by CAS." 
-                                    class="fas fa-copyright"></i>
-                            {% else %}
-                                <i data-bs-toggle="tooltip" data-bs-placment="top" 
-                                    data-bs-html="true" title="This endpoint is provided by a third-party framework to CAS." 
-                                    class="fas fa-codepen"></i>
-                            {% endif %}
-                            </td>
-                        
-                            {% if cfg.deprecated.size > 0 %}
-                                <td width="25%">
+                            {% if cfg.deprecated == true %}
+                                <td>
+                                    <span class="badge bg-danger">
                                     <i data-bs-toggle="tooltip" data-bs-placment="top" 
                                     data-bs-html="true" title="This endpoint is deprecated and may be removed in future CAS releases."  
-                                    class="fas fa-exclamation-circle"></i>
+                                    class="fas fa-exclamation-circle"></i> Deprecated
+                                    </span>
                                 </td>
                             {% endif %}
                         </tr>
 
                         <tr>
-                            <td width="85%"><i data-bs-toggle="tooltip" 
+                            <td><i data-bs-toggle="tooltip" 
                                 data-bs-placment="top" data-bs-html="true" title="Method Signature" 
-                                class="fas fa-signature"></i> <code class="text-wrap text-break">{{cfg.signature}}</code></td>
+                                class="fas fa-signature"></i> <code>{{cfg.signature}}</code></td>
+                        </tr>
+                        <tr>
+                            <td><i data-bs-toggle="tooltip" 
+                                data-bs-placment="top" data-bs-html="true" title="Endpoint Owner" 
+                                class="fas fa-code"></i> <code>{{cfg.owner}}</code></td>
                         </tr>
                     </table>
+
+                    <p>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" 
+                                data-bs-target="#{{key}}ModalConfig">Configuration</button>
+
+                        <div class="modal fade" id="{{key}}ModalConfig" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Endpoint Configuration</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {% capture endpointProps %}
+```properties
+cas.monitor.endpoints.endpoint.{{endpoint}}.access=ANONYMOUS
+
+management.endpoint.{{endpoint}}.enabled=true
+management.endpoints.web.exposure.include={{endpoint}}
+```                                    
+                                    {% endcapture %}
+
+                                    <span id="{{key}}EndpointProperties">
+                                    {{ endpointProps | markdownify }}
+                                    </span>
+
+                                    <div>
+                                        {% include casproperties.html thirdPartyStartsWith="management.endpoints" %}
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" 
+                                        data-clipboard-target="#{{key}}EndpointProperties" 
+                                        id="{{key}}CopyButton">Copy</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="{{key}}CloseButton">Close</button>
+
+                                    <script type="text/javascript">
+                                        setTimeout(function() {
+                                            new ClipboardJS('#{{key}}CopyButton', {
+                                                container: document.getElementById('{{key}}ModalConfig'),
+
+                                                text: function(trigger) {
+                                                    let txt = $("#{{key}}EndpointProperties table td.rouge-code").text();
+                                                    console.log("Copying text: " + txt);
+                                                    return txt;
+                                                }
+                                            })
+                                            .on('success', function(e) {
+                                                $("#{{key}}CloseButton").click();
+                                            });
+
+                                        }, 500);
+                                        
+                                    </script>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </p>
                 </div>
             </div>
 
@@ -133,3 +209,5 @@
 </div>
 
 <br/>
+
+
