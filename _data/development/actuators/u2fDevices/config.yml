@@ -1,5 +1,12 @@
 ---
 - method: "GET"
+  path: "u2fDevices"
+  signature: "U2FRegisteredDevicesEndpoint.fetchAll()"
+  returnType: "Collection"
+  summary: "Get all registered devices."
+  produces:
+  - "application/json"
+- method: "GET"
   path: "u2fDevices/${username}"
   signature: "U2FRegisteredDevicesEndpoint.fetchBy(java.lang.String)"
   returnType: "Collection"
@@ -9,13 +16,6 @@
     type: "String"
     selector: true
     name: "username"
-  produces:
-  - "application/json"
-- method: "GET"
-  path: "u2fDevices"
-  signature: "U2FRegisteredDevicesEndpoint.fetchAll()"
-  returnType: "Collection"
-  summary: "Get all registered devices."
   produces:
   - "application/json"
 - method: "DELETE"
