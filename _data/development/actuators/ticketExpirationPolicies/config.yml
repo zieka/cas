@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "ticketExpirationPolicies"
+  name: "ticketExpirationPolicies"
+  endpointType: "Endpoint"
   signature: "TicketExpirationPoliciesEndpoint.handle(java.lang.String) "
   owner: "org.apereo.cas.web.report.TicketExpirationPoliciesEndpoint"
   returnType: "Map"

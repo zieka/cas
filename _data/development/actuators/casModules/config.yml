@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "casModules"
+  name: "casModules"
+  endpointType: "Endpoint"
   signature: "CasRuntimeModulesEndpoint.reportModules()"
   owner: "org.apereo.cas.web.report.CasRuntimeModulesEndpoint"
   returnType: "List"

@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "qrDevices/${principal}"
+  name: "qrDevices"
+  endpointType: "Endpoint"
   signature: "QRAuthenticationDeviceRepositoryEndpoint.devices(java.lang.String)"
   owner: "org.apereo.cas.qr.web.QRAuthenticationDeviceRepositoryEndpoint"
   returnType: "Collection"
@@ -13,6 +15,8 @@
     name: "principal"
 - method: "POST"
   path: "qrDevices/${principal}/${deviceId}"
+  name: "qrDevices"
+  endpointType: "Endpoint"
   signature: "QRAuthenticationDeviceRepositoryEndpoint.registerDevice(java.lang.String,java.lang.String)"
   owner: "org.apereo.cas.qr.web.QRAuthenticationDeviceRepositoryEndpoint"
   casEndpoint: true
@@ -28,6 +32,8 @@
     name: "deviceId"
 - method: "DELETE"
   path: "qrDevices/${deviceId}"
+  name: "qrDevices"
+  endpointType: "Endpoint"
   signature: "QRAuthenticationDeviceRepositoryEndpoint.removeDevice(java.lang.String)"
   owner: "org.apereo.cas.qr.web.QRAuthenticationDeviceRepositoryEndpoint"
   casEndpoint: true

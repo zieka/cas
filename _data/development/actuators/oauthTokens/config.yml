@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "oauthTokens"
+  name: "oauthTokens"
+  endpointType: "Endpoint"
   signature: "OAuth20TokenManagementEndpoint.getTokens()"
   owner: "org.apereo.cas.support.oauth.web.mgmt.OAuth20TokenManagementEndpoint"
   returnType: "Collection"
@@ -8,6 +10,8 @@
   summary: "Get access and/or refresh tokens."
 - method: "GET"
   path: "oauthTokens/${token}"
+  name: "oauthTokens"
+  endpointType: "Endpoint"
   signature: "OAuth20TokenManagementEndpoint.getToken(java.lang.String)"
   owner: "org.apereo.cas.support.oauth.web.mgmt.OAuth20TokenManagementEndpoint"
   returnType: "Ticket"
@@ -20,6 +24,8 @@
     name: "token"
 - method: "DELETE"
   path: "oauthTokens/${ticketId}"
+  name: "oauthTokens"
+  endpointType: "Endpoint"
   signature: "OAuth20TokenManagementEndpoint.deleteToken(java.lang.String)"
   owner: "org.apereo.cas.support.oauth.web.mgmt.OAuth20TokenManagementEndpoint"
   casEndpoint: true

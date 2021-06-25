@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "duoPing"
+  name: "duoPing"
+  endpointType: "Endpoint"
   signature: "DuoSecurityPingEndpoint.pingDuo(java.lang.String)"
   owner: "org.apereo.cas.adaptors.duo.web.DuoSecurityPingEndpoint"
   returnType: "Map"

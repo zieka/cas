@@ -1,6 +1,8 @@
 ---
 - method: "POST"
   path: "awsSts"
+  name: "awsSts"
+  endpointType: "RestControllerEndpoint"
   signature: "AmazonSecurityTokenServiceEndpoint.fetchCredentials(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,org.springframework.util.MultiValueMap<java.lang.String,\
     \ java.lang.String>,javax.servlet.http.HttpServletRequest)"
   owner: "org.apereo.cas.aws.AmazonSecurityTokenServiceEndpoint"

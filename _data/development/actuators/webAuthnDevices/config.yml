@@ -2,6 +2,8 @@
 - method: "GET"
   path:
   - "webAuthnDevices/export"
+  name: "webAuthnDevices"
+  endpointType: "RestControllerEndpoint"
   signature: "WebAuthnRegisteredDevicesEndpoint.export()"
   owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   returnType: "ResponseEntity"
@@ -12,6 +14,8 @@
 - method: "GET"
   path:
   - "webAuthnDevices/{username}"
+  name: "webAuthnDevices"
+  endpointType: "RestControllerEndpoint"
   signature: "WebAuthnRegisteredDevicesEndpoint.fetch(java.lang.String)"
   owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   returnType: "Collection"
@@ -27,6 +31,8 @@
 - method: "DELETE"
   path:
   - "webAuthnDevices/{username}/{credentialId}"
+  name: "webAuthnDevices"
+  endpointType: "RestControllerEndpoint"
   signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String,java.lang.String) "
   owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   casEndpoint: true
@@ -45,6 +51,8 @@
 - method: "DELETE"
   path:
   - "webAuthnDevices/{username}"
+  name: "webAuthnDevices"
+  endpointType: "RestControllerEndpoint"
   signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String)"
   owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   casEndpoint: true
@@ -59,6 +67,8 @@
 - method: "POST"
   path:
   - "webAuthnDevices/{username}"
+  name: "webAuthnDevices"
+  endpointType: "RestControllerEndpoint"
   signature: "WebAuthnRegisteredDevicesEndpoint.write(java.lang.String,java.lang.String) "
   owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   returnType: "boolean"
@@ -78,6 +88,8 @@
 - method: "POST"
   path:
   - "webAuthnDevices/import"
+  name: "webAuthnDevices"
+  endpointType: "RestControllerEndpoint"
   signature: "WebAuthnRegisteredDevicesEndpoint.importAccount(javax.servlet.http.HttpServletRequest) "
   owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   returnType: "HttpStatus"

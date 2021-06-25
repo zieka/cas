@@ -2,6 +2,8 @@
 - method: "GET"
   path:
   - "gauthCredentialRepository/{username}"
+  name: "gauthCredentialRepository"
+  endpointType: "RestControllerEndpoint"
   signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.get(java.lang.String)"
   owner: "org.apereo.cas.gauth.credential.GoogleAuthenticatorTokenCredentialRepositoryEndpoint"
   returnType: "Collection"
@@ -16,6 +18,8 @@
   - "application/json"
 - method: "GET"
   path: "gauthCredentialRepository"
+  name: "gauthCredentialRepository"
+  endpointType: "RestControllerEndpoint"
   signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.load()"
   owner: "org.apereo.cas.gauth.credential.GoogleAuthenticatorTokenCredentialRepositoryEndpoint"
   returnType: "Collection"
@@ -26,6 +30,8 @@
 - method: "GET"
   path:
   - "gauthCredentialRepository/export"
+  name: "gauthCredentialRepository"
+  endpointType: "RestControllerEndpoint"
   signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.exportAccounts()"
   owner: "org.apereo.cas.gauth.credential.GoogleAuthenticatorTokenCredentialRepositoryEndpoint"
   returnType: "ResponseEntity"
@@ -36,6 +42,8 @@
 - method: "DELETE"
   path:
   - "gauthCredentialRepository/{username}"
+  name: "gauthCredentialRepository"
+  endpointType: "RestControllerEndpoint"
   signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.delete(java.lang.String)"
   owner: "org.apereo.cas.gauth.credential.GoogleAuthenticatorTokenCredentialRepositoryEndpoint"
   casEndpoint: true
@@ -49,6 +57,8 @@
   - "application/json"
 - method: "DELETE"
   path: "gauthCredentialRepository"
+  name: "gauthCredentialRepository"
+  endpointType: "RestControllerEndpoint"
   signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.deleteAll()"
   owner: "org.apereo.cas.gauth.credential.GoogleAuthenticatorTokenCredentialRepositoryEndpoint"
   casEndpoint: true
@@ -58,6 +68,8 @@
 - method: "POST"
   path:
   - "gauthCredentialRepository/import"
+  name: "gauthCredentialRepository"
+  endpointType: "RestControllerEndpoint"
   signature: "GoogleAuthenticatorTokenCredentialRepositoryEndpoint.importAccount(javax.servlet.http.HttpServletRequest) "
   owner: "org.apereo.cas.gauth.credential.GoogleAuthenticatorTokenCredentialRepositoryEndpoint"
   returnType: "HttpStatus"

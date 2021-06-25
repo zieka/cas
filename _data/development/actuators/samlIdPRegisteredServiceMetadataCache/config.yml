@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "samlIdPRegisteredServiceMetadataCache"
+  name: "samlIdPRegisteredServiceMetadataCache"
+  endpointType: "Endpoint"
   signature: "SamlRegisteredServiceCachedMetadataEndpoint.getCachedMetadataObject(java.lang.String,java.lang.String)"
   owner: "org.apereo.cas.support.saml.web.idp.metadata.SamlRegisteredServiceCachedMetadataEndpoint"
   returnType: "Map"
@@ -17,6 +19,8 @@
     name: "entityId"
 - method: "DELETE"
   path: "samlIdPRegisteredServiceMetadataCache"
+  name: "samlIdPRegisteredServiceMetadataCache"
+  endpointType: "Endpoint"
   signature: "SamlRegisteredServiceCachedMetadataEndpoint.invalidate(java.lang.String)"
   owner: "org.apereo.cas.support.saml.web.idp.metadata.SamlRegisteredServiceCachedMetadataEndpoint"
   casEndpoint: true

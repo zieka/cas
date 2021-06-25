@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "authenticationPolicies"
+  name: "authenticationPolicies"
+  endpointType: "Endpoint"
   signature: "RegisteredAuthenticationPoliciesEndpoint.handle()"
   owner: "org.apereo.cas.web.report.RegisteredAuthenticationPoliciesEndpoint"
   returnType: "Collection"
@@ -12,6 +14,8 @@
   - "application/json"
 - method: "GET"
   path: "authenticationPolicies/${name}"
+  name: "authenticationPolicies"
+  endpointType: "Endpoint"
   signature: "RegisteredAuthenticationPoliciesEndpoint.fetchPolicy(java.lang.String)"
   owner: "org.apereo.cas.web.report.RegisteredAuthenticationPoliciesEndpoint"
   returnType: "AuthenticationPolicyDetails"

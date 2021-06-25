@@ -1,12 +1,16 @@
 ---
 - method: "GET"
   path: "threaddump"
+  name: "threaddump"
+  endpointType: "Endpoint"
   signature: "ThreadDumpEndpoint.threadDump()"
   owner: "org.springframework.boot.actuate.management.ThreadDumpEndpoint"
   returnType: "ThreadDumpDescriptor"
   casEndpoint: false
 - method: "GET"
   path: "threaddump"
+  name: "threaddump"
+  endpointType: "Endpoint"
   signature: "ThreadDumpEndpoint.textThreadDump()"
   owner: "org.springframework.boot.actuate.management.ThreadDumpEndpoint"
   returnType: "String"

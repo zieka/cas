@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "authenticationHandlers"
+  name: "authenticationHandlers"
+  endpointType: "Endpoint"
   signature: "RegisteredAuthenticationHandlersEndpoint.handle()"
   owner: "org.apereo.cas.web.report.RegisteredAuthenticationHandlersEndpoint"
   returnType: "Collection"
@@ -12,6 +14,8 @@
   - "application/json"
 - method: "GET"
   path: "authenticationHandlers/${name}"
+  name: "authenticationHandlers"
+  endpointType: "Endpoint"
   signature: "RegisteredAuthenticationHandlersEndpoint.fetchAuthnHandler(java.lang.String)"
   owner: "org.apereo.cas.web.report.RegisteredAuthenticationHandlersEndpoint"
   returnType: "AuthenticationHandlerDetails"

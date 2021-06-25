@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "conditions"
+  name: "conditions"
+  endpointType: "Endpoint"
   signature: "ConditionsReportEndpoint.applicationConditionEvaluation()"
   owner: "org.springframework.boot.actuate.autoconfigure.condition.ConditionsReportEndpoint"
   returnType: "ApplicationConditionEvaluation"
