@@ -1,0 +1,7 @@
+---
+- method: "GET"
+  path: "beans"
+  signature: "BeansEndpoint.beans()"
+  owner: "org.springframework.boot.actuate.beans.BeansEndpoint"
+  returnType: "ApplicationBeans"
+  casEndpoint: false

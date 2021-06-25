@@ -1,0 +1,13 @@
+---
+- method: "GET"
+  path: "resolveAttributes/${uid}"
+  signature: "CasResolveAttributesReportEndpoint.resolvePrincipalAttributes(java.lang.String)"
+  owner: "org.apereo.cas.web.report.CasResolveAttributesReportEndpoint"
+  returnType: "Map"
+  casEndpoint: true
+  summary: "Resolve principal attributes for user."
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+    name: "uid"

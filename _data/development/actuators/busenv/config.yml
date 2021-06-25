@@ -1,0 +1,28 @@
+---
+- method: "POST"
+  path: "busenv/${destinations}"
+  signature: "EnvironmentBusEndpoint.busEnvWithDestination(java.lang.String,java.lang.String,java.lang.String[])"
+  owner: "org.springframework.cloud.bus.endpoint.EnvironmentBusEndpoint"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+  - required: true
+    type: "String"
+    selector: false
+  - required: true
+    type: "String[]"
+    selector: true
+- method: "POST"
+  path: "busenv"
+  signature: "EnvironmentBusEndpoint.busEnv(java.lang.String,java.lang.String)"
+  owner: "org.springframework.cloud.bus.endpoint.EnvironmentBusEndpoint"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+  - required: true
+    type: "String"
+    selector: false

@@ -1,0 +1,41 @@
+---
+- method: "GET"
+  path: "releaseAttributes"
+  signature: "CasReleaseAttributesReportEndpoint.releasePrincipalAttributes(java.lang.String,java.lang.String,java.lang.String)"
+  owner: "org.apereo.cas.web.report.CasReleaseAttributesReportEndpoint"
+  returnType: "Map"
+  casEndpoint: true
+  summary: "Get collection of released attributes for the user and application."
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+    name: "username"
+  - required: true
+    type: "String"
+    selector: false
+    name: "password"
+  - required: true
+    type: "String"
+    selector: false
+    name: "service"
+- method: "POST"
+  path: "releaseAttributes"
+  signature: "CasReleaseAttributesReportEndpoint.releaseAttributes(java.lang.String,java.lang.String,java.lang.String)"
+  owner: "org.apereo.cas.web.report.CasReleaseAttributesReportEndpoint"
+  returnType: "Map"
+  casEndpoint: true
+  summary: "Get collection of released attributes for the user and application."
+  parameters:
+  - required: true
+    type: "String"
+    selector: false
+    name: "username"
+  - required: true
+    type: "String"
+    selector: false
+    name: "password"
+  - required: true
+    type: "String"
+    selector: false
+    name: "service"

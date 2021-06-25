@@ -1,0 +1,7 @@
+---
+- method: "GET"
+  path: "mappings"
+  signature: "MappingsEndpoint.mappings()"
+  owner: "org.springframework.boot.actuate.web.mappings.MappingsEndpoint"
+  returnType: "ApplicationMappings"
+  casEndpoint: false

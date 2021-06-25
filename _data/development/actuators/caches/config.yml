@@ -1,0 +1,38 @@
+---
+- method: "GET"
+  path: "caches"
+  signature: "CachesEndpoint.caches()"
+  owner: "org.springframework.boot.actuate.cache.CachesEndpoint"
+  returnType: "CachesReport"
+  casEndpoint: false
+- method: "GET"
+  path: "caches/${cache}"
+  signature: "CachesEndpoint.cache(java.lang.String,java.lang.String)"
+  owner: "org.springframework.boot.actuate.cache.CachesEndpoint"
+  returnType: "CacheEntry"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+  - required: false
+    type: "String"
+    selector: false
+- method: "DELETE"
+  path: "caches/${cache}"
+  signature: "CachesEndpoint.clearCache(java.lang.String,java.lang.String)"
+  owner: "org.springframework.boot.actuate.cache.CachesEndpoint"
+  returnType: "boolean"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+  - required: false
+    type: "String"
+    selector: false
+- method: "DELETE"
+  path: "caches"
+  signature: "CachesEndpoint.clearCaches()"
+  owner: "org.springframework.boot.actuate.cache.CachesEndpoint"
+  casEndpoint: false

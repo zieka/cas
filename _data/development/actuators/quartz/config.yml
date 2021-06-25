@@ -1,0 +1,7 @@
+---
+- method: "GET"
+  path: "quartz"
+  signature: "QuartzEndpoint.quartzReport() "
+  owner: "org.springframework.boot.actuate.quartz.QuartzEndpoint"
+  returnType: "QuartzReport"
+  casEndpoint: false

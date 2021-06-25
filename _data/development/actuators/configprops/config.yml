@@ -1,0 +1,17 @@
+---
+- method: "GET"
+  path: "configprops"
+  signature: "ConfigurationPropertiesReportEndpoint.configurationProperties()"
+  owner: "org.springframework.boot.actuate.context.properties.ConfigurationPropertiesReportEndpoint"
+  returnType: "ApplicationConfigurationProperties"
+  casEndpoint: false
+- method: "GET"
+  path: "configprops/${prefix}"
+  signature: "ConfigurationPropertiesReportEndpoint.configurationPropertiesWithPrefix(java.lang.String)"
+  owner: "org.springframework.boot.actuate.context.properties.ConfigurationPropertiesReportEndpoint"
+  returnType: "ApplicationConfigurationProperties"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String"
+    selector: true

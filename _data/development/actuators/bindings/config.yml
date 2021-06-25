@@ -1,0 +1,29 @@
+---
+- method: "GET"
+  path: "bindings"
+  signature: "BindingsEndpoint.queryStates()"
+  owner: "org.springframework.cloud.stream.endpoint.BindingsEndpoint"
+  returnType: "List"
+  casEndpoint: false
+- method: "GET"
+  path: "bindings/${name}"
+  signature: "BindingsEndpoint.queryState(java.lang.String)"
+  owner: "org.springframework.cloud.stream.endpoint.BindingsEndpoint"
+  returnType: "Binding"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+- method: "POST"
+  path: "bindings/${name}"
+  signature: "BindingsEndpoint.changeState(java.lang.String,org.springframework.cloud.stream.binding.BindingsLifecycleController$State)"
+  owner: "org.springframework.cloud.stream.endpoint.BindingsEndpoint"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String"
+    selector: true
+  - required: true
+    type: "State"
+    selector: false

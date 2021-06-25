@@ -893,9 +893,9 @@
   type: "org.apereo.cas.configuration.model.support.ldap.AbstractLdapAuthenticationProperties.AuthenticationTypes"
   description: "The authentication type.\n<ul>\n<li>{@code AD} - Users authenticate\
     \ with {@code sAMAccountName}. </li>\n\n<li>{@code AUTHENTICATED} - Manager bind/search\
-    \ type of authentication.\nIf {@code }principalAttributePassword}\nis empty then\
+    \ type of authentication.\nIf {@code} principalAttributePassword}\nis empty then\
     \ a user simple bind is done to validate credentials. Otherwise the given\nattribute\
-    \ is compared with the given {@code rincipalAttributePassword} using\nthe {@code\
+    \ is compared with the given {@code principalAttributePassword} using\nthe {@code\
     \ SHA} encrypted value of it.</li>\n\n<li>{@code ANONYMOUS}: Similar semantics\
     \ as {@code AUTHENTICATED} except no {@code bindDn}\nand {@code bindCredential}\
     \ may be specified to initialize the connection.\nIf {@code principalAttributePassword}\

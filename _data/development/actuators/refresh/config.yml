@@ -1,0 +1,7 @@
+---
+- method: "POST"
+  path: "refresh"
+  signature: "RefreshEndpoint.refresh()"
+  owner: "org.springframework.cloud.endpoint.RefreshEndpoint"
+  returnType: "Collection"
+  casEndpoint: false

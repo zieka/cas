@@ -1,0 +1,15 @@
+---
+- method: "POST"
+  path: "busrefresh"
+  signature: "RefreshBusEndpoint.busRefresh()"
+  owner: "org.springframework.cloud.bus.endpoint.RefreshBusEndpoint"
+  casEndpoint: false
+- method: "POST"
+  path: "busrefresh/${destinations}"
+  signature: "RefreshBusEndpoint.busRefreshWithDestination(java.lang.String[])"
+  owner: "org.springframework.cloud.bus.endpoint.RefreshBusEndpoint"
+  casEndpoint: false
+  parameters:
+  - required: true
+    type: "String[]"
+    selector: true

@@ -1,0 +1,9 @@
+---
+- method: "GET"
+  path: "status"
+  signature: "StatusEndpoint.handle()"
+  owner: "org.apereo.cas.web.report.StatusEndpoint"
+  returnType: "Map"
+  casEndpoint: true
+  deprecated: true
+  summary: "Provides CAS server's health status."
