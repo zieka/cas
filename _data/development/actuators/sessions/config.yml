@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "sessions/${sessionId}"
+  name: "sessions"
+  endpointType: "Endpoint"
   signature: "SessionsEndpoint.getSession(java.lang.String)"
   owner: "org.springframework.boot.actuate.session.SessionsEndpoint"
   returnType: "SessionDescriptor"
@@ -11,6 +13,8 @@
     selector: true
 - method: "GET"
   path: "sessions"
+  name: "sessions"
+  endpointType: "Endpoint"
   signature: "SessionsEndpoint.sessionsForUsername(java.lang.String)"
   owner: "org.springframework.boot.actuate.session.SessionsEndpoint"
   returnType: "SessionsReport"
@@ -21,6 +25,8 @@
     selector: false
 - method: "DELETE"
   path: "sessions/${sessionId}"
+  name: "sessions"
+  endpointType: "Endpoint"
   signature: "SessionsEndpoint.deleteSession(java.lang.String)"
   owner: "org.springframework.boot.actuate.session.SessionsEndpoint"
   casEndpoint: false

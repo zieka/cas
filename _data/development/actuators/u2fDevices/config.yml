@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "u2fDevices"
+  name: "u2fDevices"
+  endpointType: "Endpoint"
   signature: "U2FRegisteredDevicesEndpoint.fetchAll()"
   owner: "org.apereo.cas.adaptors.u2f.web.U2FRegisteredDevicesEndpoint"
   returnType: "Collection"
@@ -10,6 +12,8 @@
   - "application/json"
 - method: "GET"
   path: "u2fDevices/${username}"
+  name: "u2fDevices"
+  endpointType: "Endpoint"
   signature: "U2FRegisteredDevicesEndpoint.fetchBy(java.lang.String)"
   owner: "org.apereo.cas.adaptors.u2f.web.U2FRegisteredDevicesEndpoint"
   returnType: "Collection"
@@ -24,6 +28,8 @@
   - "application/json"
 - method: "DELETE"
   path: "u2fDevices/${username}/${id}"
+  name: "u2fDevices"
+  endpointType: "Endpoint"
   signature: "U2FRegisteredDevicesEndpoint.delete(java.lang.String,java.lang.Long)"
   owner: "org.apereo.cas.adaptors.u2f.web.U2FRegisteredDevicesEndpoint"
   casEndpoint: true
@@ -39,6 +45,8 @@
     name: "id"
 - method: "DELETE"
   path: "u2fDevices/${username}"
+  name: "u2fDevices"
+  endpointType: "Endpoint"
   signature: "U2FRegisteredDevicesEndpoint.delete(java.lang.String)"
   owner: "org.apereo.cas.adaptors.u2f.web.U2FRegisteredDevicesEndpoint"
   casEndpoint: true

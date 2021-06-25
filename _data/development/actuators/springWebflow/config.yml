@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "springWebflow"
+  name: "springWebflow"
+  endpointType: "Endpoint"
   signature: "SpringWebflowEndpoint.getReport(java.lang.String)"
   owner: "org.apereo.cas.web.report.SpringWebflowEndpoint"
   returnType: "Map"

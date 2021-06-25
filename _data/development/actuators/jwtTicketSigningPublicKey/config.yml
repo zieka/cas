@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "jwtTicketSigningPublicKey"
+  name: "jwtTicketSigningPublicKey"
+  endpointType: "Endpoint"
   signature: "JwtTokenCipherSigningPublicKeyEndpoint.fetchPublicKey(java.lang.String) "
   owner: "org.apereo.cas.token.JwtTokenCipherSigningPublicKeyEndpoint"
   returnType: "String"

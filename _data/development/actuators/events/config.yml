@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "events"
+  name: "events"
+  endpointType: "Endpoint"
   signature: "CasEventsReportEndpoint.events()"
   owner: "org.apereo.cas.support.events.web.CasEventsReportEndpoint"
   returnType: "Collection"

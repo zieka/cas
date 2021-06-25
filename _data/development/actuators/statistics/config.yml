@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "statistics"
+  name: "statistics"
+  endpointType: "Endpoint"
   signature: "StatisticsEndpoint.handle()"
   owner: "org.apereo.cas.web.report.StatisticsEndpoint"
   returnType: "Map"

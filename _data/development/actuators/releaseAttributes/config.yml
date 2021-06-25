@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "releaseAttributes"
+  name: "releaseAttributes"
+  endpointType: "Endpoint"
   signature: "CasReleaseAttributesReportEndpoint.releasePrincipalAttributes(java.lang.String,java.lang.String,java.lang.String)"
   owner: "org.apereo.cas.web.report.CasReleaseAttributesReportEndpoint"
   returnType: "Map"
@@ -21,6 +23,8 @@
     name: "service"
 - method: "POST"
   path: "releaseAttributes"
+  name: "releaseAttributes"
+  endpointType: "Endpoint"
   signature: "CasReleaseAttributesReportEndpoint.releaseAttributes(java.lang.String,java.lang.String,java.lang.String)"
   owner: "org.apereo.cas.web.report.CasReleaseAttributesReportEndpoint"
   returnType: "Map"

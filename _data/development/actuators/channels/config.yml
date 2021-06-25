@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "channels"
+  name: "channels"
+  endpointType: "Endpoint"
   signature: "ChannelsEndpoint.channels()"
   owner: "org.springframework.cloud.stream.endpoint.ChannelsEndpoint"
   returnType: "Map"

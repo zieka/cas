@@ -1,6 +1,8 @@
 ---
 - method: "GET"
   path: "resolveAttributes/${uid}"
+  name: "resolveAttributes"
+  endpointType: "Endpoint"
   signature: "CasResolveAttributesReportEndpoint.resolvePrincipalAttributes(java.lang.String)"
   owner: "org.apereo.cas.web.report.CasResolveAttributesReportEndpoint"
   returnType: "Map"
