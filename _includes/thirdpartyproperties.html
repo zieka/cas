@@ -6,11 +6,10 @@
 
 {% assign textAreaThirdPartyProperties = blank %}
 
-{% capture copyTarget %}#copyAreaThirdPartyProperties{{ randomNumber }}{% endcapture %}
-{% capture searchTarget %}tableThirdPartyProperties{{ randomNumber }}{% endcapture %}
-
 {% unless include.disableSearch == "true" %} 
-{% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
+    {% capture copyTarget %}#copyAreaThirdPartyProperties{{ randomNumber }}{% endcapture %}
+    {% capture searchTarget %}tableThirdPartyProperties{{ randomNumber }}{% endcapture %}
+    {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
 {% endunless %}
 
 <p/>

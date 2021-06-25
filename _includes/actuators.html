@@ -158,15 +158,56 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {{ endpointprops | markdownify }}
 
-                                    <script>
-                                        setTimeout(function() {
-                                            $('#tableThirdPartyProperties{{ randomNumber }} tr').show();
-                                        }, 1100);
-                                    </script>
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                          <a class="nav-link active" data-bs-toggle='tab' href="#casendppointprops{{ key }}">CAS</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" data-bs-toggle='tab' href="#thirdpartyendpointprops{{ key }}">Third Party</a>
+                                        </li>
+                                        <li class="nav-item">
+                                          <a class="nav-link" data-bs-toggle='tab' href="#endpointsecurity{{ key }}">Security</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class='tab-content'>
+                                        <div class='tab-pane fade active show' id='casendppointprops{{ key }}'>
+                                            test
+                                        </div>
+                                        
+                                        <div class="tab-pane fade" id="thirdpartyendpointprops{{ key }}">
+                                            {{ endpointprops | markdownify }}
+                                        </div>
+
+                                        <div class='tab-pane fade' id='endpointsecurity{{ key }}'>
+                                            test2
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary copy-button" 
+                                            data-clipboard-target="#copyAreaThirdPartyProperties{{ randomNumber }}"
+                                            data-bs-dismiss="modal" id="{{key}}CopyButton">Copy</button>
+
+                                    <script type="text/javascript">
+                                        setTimeout(function() {
+                                            new ClipboardJS('#{{key}}CopyButton', {
+                                                container: document.getElementById('{{key}}ModalConfig'),
+                                    
+                                                text: function(trigger) {
+                                                    let txt = $("#copyAreaThirdPartyProperties{{ randomNumber }}").val()
+                                                    console.log("Copying text: " + txt);
+                                                    return txt;
+                                                }
+                                            })
+                                            .on('success', function(e) {
+                                                $("#{{key}}CloseButton").click();
+                                            });
+                                    
+                                        }, 500);
+                                    </script>
+
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="{{key}}CloseButton">Close</button>
                                 </div>
                                 </div>
