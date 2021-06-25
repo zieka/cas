@@ -1,5 +1,7 @@
 ---
 - method: "GET"
   path: "flyway"
-  signature: "FlywayEndpoint$ApplicationFlywayBeans org.springframework.boot.actuate.flyway.FlywayEndpoint.flywayBeans()"
+  signature: "FlywayEndpoint.flywayBeans()"
+  owner: "org.springframework.boot.actuate.flyway.FlywayEndpoint"
   returnType: "ApplicationFlywayBeans"
+  casEndpoint: false

@@ -2,8 +2,11 @@
 - method: "GET"
   path: "integrationgraph"
   signature: "IntegrationGraphEndpoint.graph()"
+  owner: "org.springframework.boot.actuate.integration.IntegrationGraphEndpoint"
   returnType: "Graph"
+  casEndpoint: false
 - method: "POST"
   path: "integrationgraph"
   signature: "IntegrationGraphEndpoint.rebuild()"
-  returnType: "void"
+  owner: "org.springframework.boot.actuate.integration.IntegrationGraphEndpoint"
+  casEndpoint: false

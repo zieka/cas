@@ -2,7 +2,9 @@
 - method: "GET"
   path: "auditLog/${interval}"
   signature: "AuditLogEndpoint.getAuditLog(java.lang.String)"
+  owner: "org.apereo.cas.web.report.AuditLogEndpoint"
   returnType: "Set"
+  casEndpoint: true
   summary: "Provide a report of the audit log using a given interval."
   parameters:
   - required: true
@@ -12,7 +14,9 @@
 - method: "POST"
   path: "auditLog"
   signature: "AuditLogEndpoint.getAuditLog(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)"
+  owner: "org.apereo.cas.web.report.AuditLogEndpoint"
   returnType: "Set"
+  casEndpoint: true
   summary: "Provide a report of the audit log."
   parameters:
   - required: false

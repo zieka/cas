@@ -1,8 +1,10 @@
 ---
 - method: "GET"
   path: "ticketExpirationPolicies"
-  signature: "TicketExpirationPoliciesEndpoint.handle(java.lang.String) throws java.lang.Exception"
+  signature: "TicketExpirationPoliciesEndpoint.handle(java.lang.String) "
+  owner: "org.apereo.cas.web.report.TicketExpirationPoliciesEndpoint"
   returnType: "Map"
+  casEndpoint: true
   summary: "Produce expiration policies given an optional service id."
   parameters:
   - required: false

@@ -1,17 +1,11 @@
 ---
 - method: "GET"
   path:
-  - "yubikeyAccountRepository/export"
-  signature: "YubiKeyAccountRegistryEndpoint.export()"
-  returnType: "ResponseEntity"
-  summary: "Export all Yubikey accounts as a zip file."
-  produces:
-  - "application/octet-stream"
-- method: "GET"
-  path:
   - "yubikeyAccountRepository/{username}"
   signature: "YubiKeyAccountRegistryEndpoint.get(java.lang.String)"
+  owner: "org.apereo.cas.adaptors.yubikey.registry.YubiKeyAccountRegistryEndpoint"
   returnType: "YubiKeyAccount"
+  casEndpoint: true
   summary: "Get Yubikey account for username."
   parameters:
   - required: true
@@ -23,22 +17,28 @@
 - method: "GET"
   path: "yubikeyAccountRepository"
   signature: "YubiKeyAccountRegistryEndpoint.load()"
+  owner: "org.apereo.cas.adaptors.yubikey.registry.YubiKeyAccountRegistryEndpoint"
   returnType: "Collection"
+  casEndpoint: true
   summary: "Get all Yubikey accounts."
   produces:
   - "application/json"
-- method: "DELETE"
-  path: "yubikeyAccountRepository"
-  signature: "YubiKeyAccountRegistryEndpoint.deleteAll()"
-  returnType: "void"
-  summary: "Delete all Yubikey accounts."
+- method: "GET"
+  path:
+  - "yubikeyAccountRepository/export"
+  signature: "YubiKeyAccountRegistryEndpoint.export()"
+  owner: "org.apereo.cas.adaptors.yubikey.registry.YubiKeyAccountRegistryEndpoint"
+  returnType: "ResponseEntity"
+  casEndpoint: true
+  summary: "Export all Yubikey accounts as a zip file."
   produces:
-  - "application/json"
+  - "application/octet-stream"
 - method: "DELETE"
   path:
   - "yubikeyAccountRepository/{username}"
   signature: "YubiKeyAccountRegistryEndpoint.delete(java.lang.String)"
-  returnType: "void"
+  owner: "org.apereo.cas.adaptors.yubikey.registry.YubiKeyAccountRegistryEndpoint"
+  casEndpoint: true
   summary: "Delete Yubikey account for username."
   parameters:
   - required: true
@@ -47,12 +47,21 @@
     name: "username"
   produces:
   - "application/json"
+- method: "DELETE"
+  path: "yubikeyAccountRepository"
+  signature: "YubiKeyAccountRegistryEndpoint.deleteAll()"
+  owner: "org.apereo.cas.adaptors.yubikey.registry.YubiKeyAccountRegistryEndpoint"
+  casEndpoint: true
+  summary: "Delete all Yubikey accounts."
+  produces:
+  - "application/json"
 - method: "POST"
   path:
   - "yubikeyAccountRepository/import"
-  signature: "YubiKeyAccountRegistryEndpoint.importAccount(javax.servlet.http.HttpServletRequest)\
-    \ throws java.lang.Exception"
+  signature: "YubiKeyAccountRegistryEndpoint.importAccount(javax.servlet.http.HttpServletRequest) "
+  owner: "org.apereo.cas.adaptors.yubikey.registry.YubiKeyAccountRegistryEndpoint"
   returnType: "HttpStatus"
+  casEndpoint: true
   summary: "Import a Yubikey account as a JSON document."
   parameters:
   - required: true

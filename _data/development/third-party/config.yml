@@ -10854,9 +10854,9 @@
   defaultValue: ""
 - owner: "org.springframework.boot.autoconfigure.jdbc.DataSourceProperties"
   type: "java.lang.String"
-  description: "Name of the datasource. Default to \"testdb\" when using an embedded\
-    \ database."
-  shortDescription: "Name of the datasource."
+  description: "Datasource name to use if \"generate-unique-name\" is false. Defaults\
+    \ to \"testdb\" when using an embedded database, otherwise null."
+  shortDescription: "Datasource name to use if \"generate-unique-name\" is false."
   name: "spring.datasource.name"
   defaultValue: ""
 - owner: "oracle.ucp.jdbc.PoolDataSourceImpl"

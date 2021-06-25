@@ -2,7 +2,9 @@
 - method: "GET"
   path: "discoveryProfile"
   signature: "CasServerDiscoveryProfileEndpoint.discovery()"
+  owner: "org.apereo.cas.discovery.CasServerDiscoveryProfileEndpoint"
   returnType: "Map"
+  casEndpoint: true
   summary: "Produce CAS discovery profile."
   produces:
   - "application/json"

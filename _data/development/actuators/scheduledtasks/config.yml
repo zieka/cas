@@ -1,5 +1,7 @@
 ---
 - method: "GET"
   path: "scheduledtasks"
-  signature: "ScheduledTasksEndpoint$ScheduledTasksReport org.springframework.boot.actuate.scheduling.ScheduledTasksEndpoint.scheduledTasks()"
+  signature: "ScheduledTasksEndpoint.scheduledTasks()"
+  owner: "org.springframework.boot.actuate.scheduling.ScheduledTasksEndpoint"
   returnType: "ScheduledTasksReport"
+  casEndpoint: false

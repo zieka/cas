@@ -1,5 +1,7 @@
 ---
 - method: "GET"
   path: "httptrace"
-  signature: "HttpTraceEndpoint$HttpTraceDescriptor org.springframework.boot.actuate.trace.http.HttpTraceEndpoint.traces()"
+  signature: "HttpTraceEndpoint.traces()"
+  owner: "org.springframework.boot.actuate.trace.http.HttpTraceEndpoint"
   returnType: "HttpTraceDescriptor"
+  casEndpoint: false

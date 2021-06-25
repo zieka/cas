@@ -1,9 +1,10 @@
 ---
 - method: "GET"
   path: "jwtTicketSigningPublicKey"
-  signature: "JwtTokenCipherSigningPublicKeyEndpoint.fetchPublicKey(java.lang.String)\
-    \ throws java.lang.Exception"
+  signature: "JwtTokenCipherSigningPublicKeyEndpoint.fetchPublicKey(java.lang.String) "
+  owner: "org.apereo.cas.token.JwtTokenCipherSigningPublicKeyEndpoint"
   returnType: "String"
+  casEndpoint: true
   summary: "Get public key for signing operations."
   parameters:
   - required: false

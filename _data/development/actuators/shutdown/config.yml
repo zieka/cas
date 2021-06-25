@@ -2,4 +2,6 @@
 - method: "POST"
   path: "shutdown"
   signature: "ShutdownEndpoint.shutdown()"
+  owner: "org.springframework.boot.actuate.context.ShutdownEndpoint"
   returnType: "Map"
+  casEndpoint: false

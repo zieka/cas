@@ -1,11 +1,15 @@
 ---
 - method: "GET"
   path: "threaddump"
-  signature: "ThreadDumpEndpoint$ThreadDumpDescriptor org.springframework.boot.actuate.management.ThreadDumpEndpoint.threadDump()"
+  signature: "ThreadDumpEndpoint.threadDump()"
+  owner: "org.springframework.boot.actuate.management.ThreadDumpEndpoint"
   returnType: "ThreadDumpDescriptor"
+  casEndpoint: false
 - method: "GET"
   path: "threaddump"
   signature: "ThreadDumpEndpoint.textThreadDump()"
+  owner: "org.springframework.boot.actuate.management.ThreadDumpEndpoint"
   returnType: "String"
+  casEndpoint: false
   produces:
   - "text/plain;charset=UTF-8"

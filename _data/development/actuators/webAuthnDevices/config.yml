@@ -3,7 +3,9 @@
   path:
   - "webAuthnDevices/export"
   signature: "WebAuthnRegisteredDevicesEndpoint.export()"
+  owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   returnType: "ResponseEntity"
+  casEndpoint: true
   summary: "Export device registrations as a zip file."
   produces:
   - "application/octet-stream"
@@ -11,7 +13,9 @@
   path:
   - "webAuthnDevices/{username}"
   signature: "WebAuthnRegisteredDevicesEndpoint.fetch(java.lang.String)"
+  owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   returnType: "Collection"
+  casEndpoint: true
   summary: "Fetch registered devices for username."
   parameters:
   - required: true
@@ -22,23 +26,10 @@
   - "application/json"
 - method: "DELETE"
   path:
-  - "webAuthnDevices/{username}"
-  signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String)"
-  returnType: "void"
-  summary: "Remove device registrations for username."
-  parameters:
-  - required: true
-    type: "String"
-    selector: true
-    name: "username"
-  produces:
-  - "application/json"
-- method: "DELETE"
-  path:
   - "webAuthnDevices/{username}/{credentialId}"
-  signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String,java.lang.String)\
-    \ throws java.lang.Exception"
-  returnType: "void"
+  signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String,java.lang.String) "
+  owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
+  casEndpoint: true
   summary: "Remove device registration for username and credential id."
   parameters:
   - required: true
@@ -51,25 +42,27 @@
     name: "credentialId"
   produces:
   - "application/json"
-- method: "POST"
+- method: "DELETE"
   path:
-  - "webAuthnDevices/import"
-  signature: "WebAuthnRegisteredDevicesEndpoint.importAccount(javax.servlet.http.HttpServletRequest)\
-    \ throws java.lang.Exception"
-  returnType: "HttpStatus"
-  summary: "Import a device registration as a JSON document."
+  - "webAuthnDevices/{username}"
+  signature: "WebAuthnRegisteredDevicesEndpoint.delete(java.lang.String)"
+  owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
+  casEndpoint: true
+  summary: "Remove device registrations for username."
   parameters:
   - required: true
-    type: "HttpServletRequest"
-    selector: false
-  consumes:
+    type: "String"
+    selector: true
+    name: "username"
+  produces:
   - "application/json"
 - method: "POST"
   path:
   - "webAuthnDevices/{username}"
-  signature: "WebAuthnRegisteredDevicesEndpoint.write(java.lang.String,java.lang.String)\
-    \ throws java.lang.Exception"
+  signature: "WebAuthnRegisteredDevicesEndpoint.write(java.lang.String,java.lang.String) "
+  owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
   returnType: "boolean"
+  casEndpoint: true
   summary: "Add device registration for username."
   parameters:
   - required: true
@@ -81,4 +74,18 @@
     selector: false
     name: "record"
   produces:
+  - "application/json"
+- method: "POST"
+  path:
+  - "webAuthnDevices/import"
+  signature: "WebAuthnRegisteredDevicesEndpoint.importAccount(javax.servlet.http.HttpServletRequest) "
+  owner: "org.apereo.cas.webauthn.web.WebAuthnRegisteredDevicesEndpoint"
+  returnType: "HttpStatus"
+  casEndpoint: true
+  summary: "Import a device registration as a JSON document."
+  parameters:
+  - required: true
+    type: "HttpServletRequest"
+    selector: false
+  consumes:
   - "application/json"

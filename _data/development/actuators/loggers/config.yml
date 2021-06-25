@@ -2,11 +2,15 @@
 - method: "GET"
   path: "loggers"
   signature: "LoggersEndpoint.loggers()"
+  owner: "org.springframework.boot.actuate.logging.LoggersEndpoint"
   returnType: "Map"
+  casEndpoint: false
 - method: "GET"
   path: "loggers/${name}"
-  signature: "LoggersEndpoint$LoggerLevels org.springframework.boot.actuate.logging.LoggersEndpoint.loggerLevels(java.lang.String)"
+  signature: "LoggersEndpoint.loggerLevels(java.lang.String)"
+  owner: "org.springframework.boot.actuate.logging.LoggersEndpoint"
   returnType: "LoggerLevels"
+  casEndpoint: false
   parameters:
   - required: true
     type: "String"
@@ -14,7 +18,8 @@
 - method: "POST"
   path: "loggers/${name}"
   signature: "LoggersEndpoint.configureLogLevel(java.lang.String,org.springframework.boot.logging.LogLevel)"
-  returnType: "void"
+  owner: "org.springframework.boot.actuate.logging.LoggersEndpoint"
+  casEndpoint: false
   parameters:
   - required: true
     type: "String"

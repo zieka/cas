@@ -1,5 +1,7 @@
 ---
 - method: "GET"
   path: "features"
-  signature: "FeaturesEndpoint$Features org.springframework.cloud.client.actuator.FeaturesEndpoint.features()"
+  signature: "FeaturesEndpoint.features()"
+  owner: "org.springframework.cloud.client.actuator.FeaturesEndpoint"
   returnType: "Features"
+  casEndpoint: false

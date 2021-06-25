@@ -1,9 +1,13 @@
 ---
 - method: "GET"
   path: "startup"
-  signature: "StartupEndpoint$StartupResponse org.springframework.boot.actuate.startup.StartupEndpoint.startupSnapshot()"
+  signature: "StartupEndpoint.startupSnapshot()"
+  owner: "org.springframework.boot.actuate.startup.StartupEndpoint"
   returnType: "StartupResponse"
+  casEndpoint: false
 - method: "POST"
   path: "startup"
-  signature: "StartupEndpoint$StartupResponse org.springframework.boot.actuate.startup.StartupEndpoint.startup()"
+  signature: "StartupEndpoint.startup()"
+  owner: "org.springframework.boot.actuate.startup.StartupEndpoint"
   returnType: "StartupResponse"
+  casEndpoint: false

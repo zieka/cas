@@ -2,4 +2,6 @@
 - method: "GET"
   path: "info"
   signature: "InfoEndpoint.info()"
+  owner: "org.springframework.boot.actuate.info.InfoEndpoint"
   returnType: "Map"
+  casEndpoint: false

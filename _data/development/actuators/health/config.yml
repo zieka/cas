@@ -2,11 +2,15 @@
 - method: "GET"
   path: "health"
   signature: "HealthEndpoint.health()"
+  owner: "org.springframework.boot.actuate.health.HealthEndpoint"
   returnType: "HealthComponent"
+  casEndpoint: false
 - method: "GET"
   path: "health/${path}"
   signature: "HealthEndpoint.healthForPath(java.lang.String...)"
+  owner: "org.springframework.boot.actuate.health.HealthEndpoint"
   returnType: "HealthComponent"
+  casEndpoint: false
   parameters:
   - required: true
     type: "String[]"

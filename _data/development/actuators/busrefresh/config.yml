@@ -2,11 +2,13 @@
 - method: "POST"
   path: "busrefresh"
   signature: "RefreshBusEndpoint.busRefresh()"
-  returnType: "void"
+  owner: "org.springframework.cloud.bus.endpoint.RefreshBusEndpoint"
+  casEndpoint: false
 - method: "POST"
   path: "busrefresh/${destinations}"
   signature: "RefreshBusEndpoint.busRefreshWithDestination(java.lang.String[])"
-  returnType: "void"
+  owner: "org.springframework.cloud.bus.endpoint.RefreshBusEndpoint"
+  casEndpoint: false
   parameters:
   - required: true
     type: "String[]"
