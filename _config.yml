@@ -16,6 +16,7 @@ markdown: kramdown
 plugins:
   - jekyll-sitemap
   - jekyll-relative-links
+  - jekyll-include-cache
   # - jekyll-feed
 relative_links:
   enabled:     true

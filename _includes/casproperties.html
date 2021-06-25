@@ -127,7 +127,6 @@
 
 {% assign textAreaRequiredProperties = blank %}
 {% assign textAreaOptionalProperties = blank %}
-{% assign textAreaThirdPartyProperties = blank %}
 {% assign textAreaCryptoProperties = blank %}
 
 <div class='tab-content clearfix'>
@@ -571,155 +570,16 @@
     </sub>
     <br><p />
 
-    {% capture copyTarget %}#copyAreaThirdPartyProperties{{ randomNumber }}{% endcapture %}
-    {% capture searchTarget %}tableThirdPartyProperties{{ randomNumber }}{% endcapture %}
-    {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
+    {% assign tpsw = include.thirdPartyStartsWith %}
+    {% assign tp = include.thirdParty %}
+    {% assign tpem = include.thirdPartyExactMatch %}
 
-    <p/>
-    <nav id="navThirdPartyProperties{{ randomNumber }}">
-        <ul class="pagination pagination-sm justify-content-end">
-            <li class="page-item">
-                <a class="page-link" href="javascript:previous('tableThirdPartyProperties{{ randomNumber }}')" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span> Previous
-                </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link active" href="javascript:next('tableThirdPartyProperties{{ randomNumber }}')">
-                    Next <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <table class="properties paginated-table" id='tableThirdPartyProperties{{ randomNumber }}'>
-        <tbody>
-
-        {% for cfg in site.data[version]["third-party"] %}
-            {% assign configBlock = cfg[1] %}
-
-            {% for config in configBlock %}
-
-                {% for tp in thirdParty %}
-                    {% if config.name contains tp %}
-                        {% assign foundExcluded = false %}
-                        {% for ex in excludes %}
-                            {% if config.name contains ex %}
-                                {% assign foundExcluded = true %}
-                            {% endif %}
-                        {% endfor %}
-                        {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties
-                                | append: "# "
-                                | append: config.shortDescription | strip_html
-                                | append: "&#13;&#10;"
-                                | append: "# "
-                                | append: config.name | replace: "[]", "[0]"
-                                | append: "="
-                                | append: config.defaultValue
-                                | append: "&#13;&#10;"
-                                | append: "&#13;&#10;" %}
-
-                            {% capture renderedProperties %}{% include casproperty.html
-                                name=config.name
-                                owner=config.owner
-                                defaultValue=config.defaultValue
-                                description=config.description
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
-                                deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
-                            {{ renderedProperties | markdownify }}
-                            {% if signingEncryptionCollected == true %}
-                            {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
-                            {% endif %}
-                        {% endunless %}
-                    {% endif %}
-                {% endfor %}
-
-                {% for exm in thirdPartyExactMatch %}
-                    {% if config.name == exm %}
-                        {% assign foundExcluded = false %}
-                        {% for ex in excludes %}
-                            {% if config.name contains ex %}
-                                {% assign foundExcluded = true %}
-                            {% endif %}
-                        {% endfor %}
-                        {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties
-                                | append: "# "
-                                | append: config.shortDescription | strip_html
-                                | append: "&#13;&#10;"
-                                | append: "# "
-                                | append: config.name | replace: "[]", "[0]"
-                                | append: "="
-                                | append: config.defaultValue
-                                | append: "&#13;&#10;"
-                                | append: "&#13;&#10;" %}
-
-                            {% capture renderedProperties %}{% include casproperty.html
-                                name=config.name
-                                owner=config.owner
-                                defaultValue=config.defaultValue
-                                description=config.description
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
-                                deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
-                            {{ renderedProperties | markdownify }}
-                            {% if signingEncryptionCollected == true %}
-                            {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
-                            {% endif %}
-                        {% endunless %}
-                    {% endif %}
-                {% endfor %}
-
-                {% for exm in thirdPartyStartsWith %}
-                    {% assign startsWithResults = config.name | split:exm %}
-
-                    {% if startsWithResults[0].size == 0 or config.name == exm %}
-                        {% assign foundExcluded = false %}
-                        {% for ex in excludes %}
-                            {% if config.name contains ex %}
-                                {% assign foundExcluded = true %}
-                            {% endif %}
-                        {% endfor %}
-                        {% unless foundExcluded == true %}
-                            {% assign textAreaThirdPartyProperties = textAreaThirdPartyProperties
-                                | append: "# "
-                                | append: config.shortDescription | strip_html
-                                | append: "&#13;&#10;"
-                                | append: "# "
-                                | append: config.name | replace: "[]", "[0]"
-                                | append: "="
-                                | append: config.defaultValue
-                                | append: "&#13;&#10;"
-                                | append: "&#13;&#10;" %}
-                            {% capture renderedProperties %}{% include casproperty.html
-                                name=config.name
-                                owner=config.owner
-                                defaultValue=config.defaultValue
-                                description=config.description
-                                duration=config.duration
-                                expressionLanguage=config.expressionLanguage
-                                deprecationLevel=config.deprecationLevel
-                                deprecationReplacement=config.deprecationReplacement %}{% endcapture %}
-                            {{ renderedProperties | markdownify }}
-                            {% if signingEncryptionCollected == true %}
-                            {% assign textAreaCryptoProperties = textAreaCryptoProperties | append: renderedProperties %}
-                            {% endif %}
-                        {% endunless %}
-                    {% endif %}
-
-                {% endfor %}
-
-            {% endfor %}
-
-        {% endfor %}
-
-        </tbody>
-    </table>
-
-    <textarea style="position:absolute; left: -10000px;"
-    id="copyAreaThirdPartyProperties{{ randomNumber }}">{{ textAreaThirdPartyProperties }}</textarea>
+    {% include thirdpartyproperties.html 
+        id=randomNumber 
+        thirdPartyStartsWith=tpsw
+        thirdParty=tp 
+        thirdPartyExactMatch=tpem 
+    %}
 </div>
 {% endif %}
 
@@ -855,7 +715,7 @@
         }
         c = $("#tableThirdPartyProperties{{ randomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navThirdPartyProperties{{ randomNumber }}").closest("table").remove()
+            $("#navThirdPartyProperties{{ randomNumber }}").hide();
         }
     });
 </script>

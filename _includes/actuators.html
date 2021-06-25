@@ -9,6 +9,12 @@
 {% assign endpoints = include.endpoints | split: "," %}
 
 
+{% capture endpointprops%}{% include thirdpartyproperties.html 
+    disableSearch="true"
+    disablePagination="true"
+    id=randomNumber 
+    thirdPartyStartsWith="management.endpoints" %}{%endcapture%} 
+
 <div class="accordion" id="{{ randomNumber }}">
     {% assign showClass = "" %}
 
@@ -145,54 +151,23 @@
                                 data-bs-target="#{{key}}ModalConfig">Configuration</button>
 
                         <div class="modal fade" id="{{key}}ModalConfig" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
                                 <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Endpoint Configuration</h4>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    {% capture endpointProps %}
-```properties
-cas.monitor.endpoints.endpoint.{{endpoint}}.access=ANONYMOUS
+                                    {{ endpointprops | markdownify }}
 
-management.endpoint.{{endpoint}}.enabled=true
-management.endpoints.web.exposure.include={{endpoint}}
-```                                    
-                                    {% endcapture %}
-
-                                    <span id="{{key}}EndpointProperties">
-                                    {{ endpointProps | markdownify }}
-                                    </span>
-
-                                    <div>
-                                        {% include casproperties.html thirdPartyStartsWith="management.endpoints" %}
-                                    </div>
+                                    <script>
+                                        setTimeout(function() {
+                                            $('#tableThirdPartyProperties{{ randomNumber }} tr').show();
+                                        }, 1100);
+                                    </script>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" 
-                                        data-clipboard-target="#{{key}}EndpointProperties" 
-                                        id="{{key}}CopyButton">Copy</button>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="{{key}}CloseButton">Close</button>
-
-                                    <script type="text/javascript">
-                                        setTimeout(function() {
-                                            new ClipboardJS('#{{key}}CopyButton', {
-                                                container: document.getElementById('{{key}}ModalConfig'),
-
-                                                text: function(trigger) {
-                                                    let txt = $("#{{key}}EndpointProperties table td.rouge-code").text();
-                                                    console.log("Copying text: " + txt);
-                                                    return txt;
-                                                }
-                                            })
-                                            .on('success', function(e) {
-                                                $("#{{key}}CloseButton").click();
-                                            });
-
-                                        }, 500);
-                                        
-                                    </script>
                                 </div>
                                 </div>
                             </div>
@@ -209,5 +184,7 @@ management.endpoints.web.exposure.include={{endpoint}}
 </div>
 
 <br/>
+
+
 
 

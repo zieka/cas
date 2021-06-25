@@ -40,7 +40,8 @@
             {% endif %}
 
             {% if include.owner.size > 0 %}
-            <p/><p class="small text-left"><i class="fas fa-code"></i> This setting is owned by <code>{{ include.owner }}.</code></p>
+            <p/><p class="small text-left"><i class="fas fa-code" 
+                data-bs-toggle="tooltip" data-bs-placment="top" data-bs-html="true" title="Owner"></i> <code>{{ include.owner }}.</code></p>
             {% endif %}
         </div>
 
