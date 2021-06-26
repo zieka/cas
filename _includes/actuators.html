@@ -1,5 +1,3 @@
-<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
-
 {% assign min = 1 %}
 {% assign max = 999999 %}
 {% assign diff = max | minus: min %}
@@ -73,6 +71,15 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
 <div style="display:none" id="jaasauthpropReference">
     {{ jaasauthprops | markdownify }}
 </div>
+
+{% capture casendpointsconfigprops %}{% include casproperties.html 
+    disableSearch="true" 
+    id=actuatorEndpointRandomNumber
+    disablePagination="true"
+    disableNotes="true"
+    properties="cas.monitor.endpoints.form-login-enabled,cas.monitor.endpoints.endpoint" %}
+{%endcapture%}
+
 
 
 {% if include.casModule.size > 0 %}
@@ -220,15 +227,14 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
                                         href="#endpointintro{{ key }}">Overview</a>
                                 </li>
 
-                                {% if cfg.casEndpoint == true %}
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle='tab' href="#casendppointprops{{ key }}">Configuration</a>
                                 </li>
-                                {% endif %}
-
+                                
                                 <li class="nav-item">
                                     <a class="nav-link" data-bs-toggle='tab'
-                                        href="#thirdpartyendpointprops{{ key }}">Properties Catalog</a>
+                                        href="#thirdpartyendpointprops{{ key }}">Third Party</a>
                                 </li>
                                 {% if cfg.name == "health" %}
                                 <li class="nav-item">
@@ -295,7 +301,7 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
 
                                 </div>
 
-                                {% if cfg.casEndpoint == true %}
+                                
                                 <div class='tab-pane fade' id='casendppointprops{{ key }}'>
                                     <br />
 
@@ -318,11 +324,14 @@ management.endpoints.web.exposure.include={{ cfg.name }}
 cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
 ```
 {% endcapture %}
-<span>
+<div>
   {{ epc | markdownify }}
-</span>
+</div>
 
+<div id="casEndpointConfigPropsDiv">
+    {{ casendpointsconfigprops | markdownify }}
 
+</div>
 
 <p>
     Endpoints may be mapped to custom arbitrary endpoints. For example,
@@ -340,7 +349,7 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
 </p>
 
                                 </div>
-                                {% endif %}
+                               
 
                                 <div class="tab-pane fade" id="thirdpartyendpointprops{{ key }}">
                                     {{ endpointprops | markdownify }}
@@ -373,6 +382,8 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
                                                         $(elementId).click();
                                                     });
                                             }
+
+                                            
                                         </script>
 
 
@@ -508,6 +519,11 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
 
                     content = $("#jaasauthpropReference").html();
                     $("#placeholderSecurityJaas{{ key }}").html(content);
+
+                    let elementId = "#casEndpointConfigPropsDiv .nav-item a.nav-link:first";
+                    console.log("Selecting configuration tab via " + elementId);
+                    $(elementId).addClass("active")
+                    $(elementId).click();
                 })
             </script>
             </p>

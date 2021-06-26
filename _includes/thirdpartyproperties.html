@@ -1,4 +1,4 @@
-{% assign randomNumber = include.id %}
+{% assign thirdPartyPropertiesRandomNumber = include.id %}
 {% assign thirdParty = include.thirdParty | split: "," %}
 {% assign thirdPartyExactMatch = include.thirdPartyExactMatch | split: "," %}
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
@@ -7,8 +7,8 @@
 {% assign textAreaThirdPartyProperties = blank %}
 
 {% unless include.disableSearch == "true" %} 
-    {% capture copyTarget %}#copyAreaThirdPartyProperties{{ randomNumber }}{% endcapture %}
-    {% capture searchTarget %}tableThirdPartyProperties{{ randomNumber }}{% endcapture %}
+    {% capture copyTarget %}#copyAreaThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}{% endcapture %}
+    {% capture searchTarget %}tableThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}{% endcapture %}
     {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
 {% endunless %}
 
@@ -16,15 +16,15 @@
 {% assign paginatedClass = "" %}
 {% unless include.disablePagination == "true" %} 
     {% assign paginatedClass = "paginated-table" %}
-    <nav id="navThirdPartyProperties{{ randomNumber }}">
+    <nav id="navThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}">
         <ul class="pagination pagination-sm justify-content-end">
             <li class="page-item">
-                <a class="page-link" href="javascript:previous('tableThirdPartyProperties{{ randomNumber }}')" aria-label="Previous">
+                <a class="page-link" href="javascript:previous('tableThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}')" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span> Previous
                 </a>
             </li>
             <li class="page-item">
-                <a class="page-link active" href="javascript:next('tableThirdPartyProperties{{ randomNumber }}')">
+                <a class="page-link active" href="javascript:next('tableThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}')">
                     Next <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
@@ -32,7 +32,7 @@
     </nav>
 {% endunless %}
 
-<table class="properties {{ paginatedClass }}" id='tableThirdPartyProperties{{ randomNumber }}'>
+<table class="properties {{ paginatedClass }}" id='tableThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}'>
     <tbody>
 
     {% for cfg in site.data[version]["third-party"] %}
@@ -158,15 +158,15 @@
 </table>
 
 <textarea style="position:absolute; left: -10000px;"
-id="copyAreaThirdPartyProperties{{ randomNumber }}">{{ textAreaThirdPartyProperties }}</textarea>
+id="copyAreaThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}">{{ textAreaThirdPartyProperties }}</textarea>
 
 {% unless include.disablePagination == "true" %} 
 <script>
     setTimeout(function(){ 
-        next('tableThirdPartyProperties{{ randomNumber }}');
-        let c = $("#tableThirdPartyProperties{{ randomNumber }} li.property-name code").length;
+        next('tableThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}');
+        let c = $("#tableThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navThirdPartyProperties{{ randomNumber }}").closest("table").remove()
+            $("#navThirdPartyProperties{{ thirdPartyPropertiesRandomNumber }}").closest("table").remove()
         }
     }, 1000);
 </script>
