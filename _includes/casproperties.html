@@ -13,7 +13,8 @@
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
 {% assign includeRsaKeys = include.includeRsaKeys %}
 
-{% assign randomNumber = include.properties
+{% assign casPropertiesRandomNumber = include.properties
+    | append: include.id 
     | default: include.modules
     | default: include.thirdParty
     | default: include.thirdPartyStartsWith
@@ -26,92 +27,116 @@
 
 <p>The following settings and properties are available from the CAS configuration catalog:</p>
 
-<ul class='nav nav-tabs' id="navPillsMenus{{ randomNumber }}">
+<script>
+    function enablePropertiesTab{{ casPropertiesRandomNumber }}(link) {
+        // console.log(link);
+        let id = new URL(link.href).hash;
+        console.log("Tab link selected " + id);
+        $(".properties-tab").removeClass("show").removeClass("active");
+        $(".modal-body " +id).addClass("show").addClass("active");
+        $(".modal-body " + id + " table tr").css("display", "block");
+    }
+</script>
+
+<ul class='nav nav-tabs' id="navPillsMenus{{ casPropertiesRandomNumber }}">
     <li class='nav-item'>
         <a class='nav-link active'
-            id="linkRequiredProperties{{ randomNumber }}"
+            id="linkRequiredProperties{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#requiredProperties{{ randomNumber }}'>Required</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#requiredProperties{{ casPropertiesRandomNumber }}'>Required</a>
     </li>
     <li class='nav-item'>
         <a class='nav-link'
-            id="linkOptionalProperties{{ randomNumber }}"
+            id="linkOptionalProperties{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#optionalProperties{{ randomNumber }}'>Optional</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#optionalProperties{{ casPropertiesRandomNumber }}'>Optional</a>
     </li>
 
-    <li class='nav-item' id='navSigningEncryptionProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navSigningEncryptionProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkSigningEncryption{{ randomNumber }}"
+            id="linkSigningEncryption{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#signingEncryptionProperties{{ randomNumber }}'>Signing & Encryption</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#signingEncryptionProperties{{ casPropertiesRandomNumber }}'>Signing & Encryption</a>
     </li>
 
-    <li class='nav-item' id='navRdbmsProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navRdbmsProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkRdbms{{ randomNumber }}"
+            id="linkRdbms{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#rdbmsProperties{{ randomNumber }}'>Hibernate & JDBC</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#rdbmsProperties{{ casPropertiesRandomNumber }}'>Hibernate & JDBC</a>
     </li>
 
-    <li class='nav-item' id='navEmailProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navEmailProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkEmail{{ randomNumber }}"
+            id="linkEmail{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#emailProperties{{ randomNumber }}'>Email Servers</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#emailProperties{{ casPropertiesRandomNumber }}'>Email Servers</a>
     </li>
 
-    <li class='nav-item' id='navLdapProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navLdapProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkLdap{{ randomNumber }}"
+            id="linkLdap{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#ldapProperties{{ randomNumber }}'>LDAP & Active Directory</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#ldapProperties{{ casPropertiesRandomNumber }}'>LDAP & Active Directory</a>
     </li>
 
-    <li class='nav-item' id='navAuthnPredicateProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navAuthnPredicateProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkAuthnPredicate{{ randomNumber }}"
+            id="linkAuthnPredicate{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#authnPredicateProperties{{ randomNumber }}'>Authentication</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#authnPredicateProperties{{ casPropertiesRandomNumber }}'>Authentication</a>
     </li>
 
-    <li class='nav-item' id='navPasswordEncoderProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navPasswordEncoderProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkPasswordEncoder{{ randomNumber }}"
+            id="linkPasswordEncoder{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#passwordEncoderProperties{{ randomNumber }}'>Password Encoding</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#passwordEncoderProperties{{ casPropertiesRandomNumber }}'>Password Encoding</a>
     </li>
 
-    <li class='nav-item' id='navPrincipalTransformationProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navPrincipalTransformationProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkPrincipalTransformation{{ randomNumber }}"
+            id="linkPrincipalTransformation{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#principalTransformationProperties{{ randomNumber }}'>Principal Transformation</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#principalTransformationProperties{{ casPropertiesRandomNumber }}'>Principal Transformation</a>
     </li>
 
-    <li class='nav-item' id='navPasswordPolicyProperties{{ randomNumber }}'>
+    <li class='nav-item' id='navPasswordPolicyProperties{{ casPropertiesRandomNumber }}'>
         <a class='nav-link'
-            id="linkPasswordPolicy{{ randomNumber }}"
+            id="linkPasswordPolicy{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#passwordPolicyProperties{{ randomNumber }}'>Password Policy</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#passwordPolicyProperties{{ casPropertiesRandomNumber }}'>Password Policy</a>
     </li>
 
     {% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
     <li class='nav-item'>
         <a class='nav-link'
-            id="linkThirdPartyProperties{{ randomNumber }}"
+            id="linkThirdPartyProperties{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#thirdPartyProperties{{ randomNumber }}'>Third Party</a>
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            href='#thirdPartyProperties{{ casPropertiesRandomNumber }}'>Third Party</a>
     </li>
     {% endif %}
 
+    {% unless include.disableNotes == "true" %} 
     <li class='nav-item'>
         <a class='nav-link'
-
-            id="linkNotes{{ randomNumber }}"
+            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            id="linkNotes{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            href='#notes{{ randomNumber }}'>Notes</a>
+            href='#notes{{ casPropertiesRandomNumber }}'>Notes</a>
     </li>
+    {% endunless %}
 </ul>
 
 {% assign signingEncryptionEnabled = false %}
@@ -132,30 +157,34 @@
 <div class='tab-content clearfix'>
 
 
-<div class='tab-pane fade in active show' id='requiredProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in active show' id='requiredProperties{{ casPropertiesRandomNumber }}'>
     <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
     <sub>
         The configuration settings listed below are tagged as <u><i>Required</i></u> in the CAS configuration metadata. This flag indicates that the presence of the setting may be needed to activate or affect the behavior of the CAS feature and generally should be reviewed, possibly owned and adjusted. If the setting is assigned a default value, you do not need to strictly put the setting in your copy of the configuration, but should review it nonetheless to make sure it matches your deployment expectations.
     </sub>
     <br><p />
 
-    {% capture copyTarget %}#copyAreaRequiredProperties{{ randomNumber }}{% endcapture %}
-    {% capture searchTarget %}tableRequiredProperties{{ randomNumber }}{% endcapture %}
+    {% unless include.disableSearch == "true" %} 
+    {% capture copyTarget %}#copyAreaRequiredProperties{{ casPropertiesRandomNumber }}{% endcapture %}
+    {% capture searchTarget %}tableRequiredProperties{{ casPropertiesRandomNumber }}{% endcapture %}
     {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
+    {% endunless %}
 
     <p/>
+    {% unless include.disablePagination == "true" %} 
+    {% assign paginatedClass = "paginated-table" %}
     <table style="margin-bottom: 0px;">
         <tr>
             <td>
-                <nav id="navRequiredPropertiesLeft{{ randomNumber }}">
+                <nav id="navRequiredPropertiesLeft{{ casPropertiesRandomNumber }}">
                     <ul class="pagination pagination-sm justify-content-left">
                         <li class="page-item">
-                            <a class="page-link" href="javascript:previous('tableRequiredProperties{{ randomNumber }}')" aria-label="Previous">
+                            <a class="page-link" href="javascript:previous('tableRequiredProperties{{ casPropertiesRandomNumber }}')" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span> Previous
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link active" href="javascript:next('tableRequiredProperties{{ randomNumber }}')">
+                            <a class="page-link active" href="javascript:next('tableRequiredProperties{{ casPropertiesRandomNumber }}')">
                                 Next <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -163,15 +192,15 @@
                 </nav>
             </td>
             <td>
-                <nav id="navRequiredProperties{{ randomNumber }}">
+                <nav id="navRequiredProperties{{ casPropertiesRandomNumber }}">
                     <ul class="pagination pagination-sm justify-content-end">
                         <li class="page-item">
-                            <a class="page-link" href="javascript:previous('tableRequiredProperties{{ randomNumber }}')" aria-label="Previous">
+                            <a class="page-link" href="javascript:previous('tableRequiredProperties{{ casPropertiesRandomNumber }}')" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span> Previous
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link active" href="javascript:next('tableRequiredProperties{{ randomNumber }}')">
+                            <a class="page-link active" href="javascript:next('tableRequiredProperties{{ casPropertiesRandomNumber }}')">
                                 Next <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -180,9 +209,10 @@
             </td>
         </tr>
     </table>
+    {% endunless %}
     
     
-    <table class="properties paginated-table" id='tableRequiredProperties{{ randomNumber }}'>
+    <table class="properties {{ paginatedClass }}" id='tableRequiredProperties{{ casPropertiesRandomNumber }}'>
     <tbody>
 
         {% for module in modules %}
@@ -343,10 +373,10 @@
     </table>
 
     <textarea style="position:absolute; left: -10000px;"
-        id="copyAreaRequiredProperties{{ randomNumber }}">{{ textAreaRequiredProperties }}</textarea>
+        id="copyAreaRequiredProperties{{ casPropertiesRandomNumber }}">{{ textAreaRequiredProperties }}</textarea>
 </div>
 
-<div class='tab-pane fade in' id='optionalProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='optionalProperties{{ casPropertiesRandomNumber }}'>
 
     <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
     <sub>
@@ -354,24 +384,26 @@
     </sub>
     <br><p />
 
-    {% capture copyTarget %}#copyAreaOptionalProperties{{ randomNumber }}{% endcapture %}
-    {% capture searchTarget %}tableOptionalProperties{{ randomNumber }}{% endcapture %}
+    {% unless include.disableSearch == "true" %} 
+    {% capture copyTarget %}#copyAreaOptionalProperties{{ casPropertiesRandomNumber }}{% endcapture %}
+    {% capture searchTarget %}tableOptionalProperties{{ casPropertiesRandomNumber }}{% endcapture %}
     {% include propertiestoolbar.html copyTarget=copyTarget searchTarget=searchTarget %}
+    {% endunless %}
 
-
+    {% unless include.disablePagination == "true" %} 
     <p/>
     <table style="margin-bottom: 0px;">
         <tr>
             <td>
-                <nav id="navOptionalPropertiesLeft{{ randomNumber }}">
+                <nav id="navOptionalPropertiesLeft{{ casPropertiesRandomNumber }}">
                     <ul class="pagination pagination-sm justify-content-left">
                         <li class="page-item">
-                            <a class="page-link" href="javascript:previous('tableOptionalProperties{{ randomNumber }}')" aria-label="Previous">
+                            <a class="page-link" href="javascript:previous('tableOptionalProperties{{ casPropertiesRandomNumber }}')" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span> Previous
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link active" href="javascript:next('tableOptionalProperties{{ randomNumber }}')">
+                            <a class="page-link active" href="javascript:next('tableOptionalProperties{{ casPropertiesRandomNumber }}')">
                                 Next <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -379,15 +411,15 @@
                 </nav>
             </td>
             <td>
-                <nav id="navOptionalProperties{{ randomNumber }}">
+                <nav id="navOptionalProperties{{ casPropertiesRandomNumber }}">
                     <ul class="pagination pagination-sm justify-content-end">
                         <li class="page-item">
-                            <a class="page-link" href="javascript:previous('tableOptionalProperties{{ randomNumber }}')" aria-label="Previous">
+                            <a class="page-link" href="javascript:previous('tableOptionalProperties{{ casPropertiesRandomNumber }}')" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span> Previous
                             </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link active" href="javascript:next('tableOptionalProperties{{ randomNumber }}')">
+                            <a class="page-link active" href="javascript:next('tableOptionalProperties{{ casPropertiesRandomNumber }}')">
                                 Next <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
@@ -396,8 +428,9 @@
             </td>
         </tr>
     </table>
+    {% endunless %}
 
-    <table class="properties paginated-table" id='tableOptionalProperties{{ randomNumber }}'>
+    <table class="properties {{ paginatedClass }}" id='tableOptionalProperties{{ casPropertiesRandomNumber }}'>
     <tbody>
 
         {% for module in modules %}
@@ -558,12 +591,12 @@
     </tbody>
     </table>
 
-    <textarea style="position:absolute; left: -10000px;" id="copyAreaOptionalProperties{{ randomNumber }}">{{ textAreaOptionalProperties }}</textarea>
+    <textarea style="position:absolute; left: -10000px;" id="copyAreaOptionalProperties{{ casPropertiesRandomNumber }}">{{ textAreaOptionalProperties }}</textarea>
 </div>
 
 
 {% if thirdParty.size > 0 or thirdPartyExactMatch.size > 0 or thirdPartyStartsWith.size > 0 %}
-<div class='tab-pane fade in' id='thirdPartyProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='thirdPartyProperties{{ casPropertiesRandomNumber }}'>
     <i style="vertical-align: sub;" class="fas fa-info-circle"></i>
     <sub>
         The configuration settings listed below are tagged as <i>Third Party</i> in the CAS configuration metadata. This flag indicates that the configuration setting is not controlled, owned or managed by the CAS ecosystem, and affects functionality that is offered by a third-party library, such as Spring Boot or Spring Cloud to CAS. For additional info, you might have to visit the third-party source to find more details.
@@ -575,7 +608,7 @@
     {% assign tpem = include.thirdPartyExactMatch %}
 
     {% include thirdpartyproperties.html 
-        id=randomNumber 
+        id=casPropertiesRandomNumber 
         thirdPartyStartsWith=tpsw
         thirdParty=tp 
         thirdPartyExactMatch=tpem 
@@ -584,9 +617,9 @@
 {% endif %}
 
 {% if signingEncryptionEnabled == true %}
-<div class='tab-pane fade in' id='signingEncryptionProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='signingEncryptionProperties{{ casPropertiesRandomNumber }}'>
 
-    <table class="properties" id='tableSigningEncryptionProperties{{ randomNumber }}'>
+    <table class="properties" id='tableSigningEncryptionProperties{{ casPropertiesRandomNumber }}'>
         <tbody>{{ textAreaCryptoProperties }} </tbody>
     </table>
 
@@ -596,21 +629,21 @@
 {% endif %}
 
 {% if rdbmsSettingsFound == true %}
-<div class='tab-pane fade in' id='rdbmsProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='rdbmsProperties{{ casPropertiesRandomNumber }}'>
     {% capture rdbmsConfig %}{% include {{ version }}/rdbms-configuration.md %}{% endcapture %}
     {{ rdbmsConfig | markdownify }}
 </div>
 {% endif %}
 
 {% if emailSettingsFound == true %}
-<div class='tab-pane fade in' id='emailProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='emailProperties{{ casPropertiesRandomNumber }}'>
     {% capture emailConfig %}{% include {{ version }}/email-notifications-configuration.md %}{% endcapture %}
     {{ emailConfig | markdownify }}
 </div>
 {% endif %}
 
 {% if ldapSettingsFound == true %}
-<div class='tab-pane fade in' id='ldapProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='ldapProperties{{ casPropertiesRandomNumber }}'>
     {% capture ldapConfig %}{% include {{ version }}/ldap-configuration.md %}{% endcapture %}
     {{ ldapConfig | markdownify }}
 </div>
@@ -618,21 +651,21 @@
 
 
 {% if passwordEncoderSettingsFound == true %}
-<div class='tab-pane fade in' id='passwordEncoderProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='passwordEncoderProperties{{ casPropertiesRandomNumber }}'>
     {% capture passwordEncoderConfig %}{% include {{ version }}/password-encoding-configuration.md %}{% endcapture %}
     {{ passwordEncoderConfig | markdownify }}
 </div>
 {% endif %}
 
 {% if passwordPolicySettingsFound == true %}
-<div class='tab-pane fade in' id='passwordPolicyProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='passwordPolicyProperties{{ casPropertiesRandomNumber }}'>
     {% capture passwordPolicyConfig %}{% include {{ version }}/password-policy-configuration.md %}{% endcapture %}
     {{ passwordPolicyConfig | markdownify }}
 </div>
 {% endif %}
 
 {% if principalTransformationSettingsFound == true %}
-<div class='tab-pane fade in' id='principalTransformationProperties{{ randomNumber }}'>
+<div class='tab-pane properties-tab fade in' id='principalTransformationProperties{{ casPropertiesRandomNumber }}'>
     {% capture principalTransformationConfig %}{% include {{ version }}/principal-transformation-configuration.md %}{% endcapture %}
     {{ principalTransformationConfig | markdownify }}
 </div>
@@ -640,82 +673,92 @@
 
 
 {% if authnPredicateSettingsFound == true %}
-<div class="tab-pane fade in" id="authnPredicateProperties{{ randomNumber }}">
+<div class="tab-pane properties-tab fade in" id="authnPredicateProperties{{ casPropertiesRandomNumber }}">
     {% capture authnConfig %}{% include {{ version }}/authentication-credential-selection-configuration.md %}{% endcapture %}
     {{ authnConfig | markdownify }}
 </div>
 {% endif %}
 
-<div class='tab-pane fade in' id='notes{{ randomNumber }}'>
+{% unless include.disableNotes == "true" %} 
+<div class='tab-pane properties-tab fade in' id='notes{{ casPropertiesRandomNumber }}'>
     {% capture notesConfig %}{% include config-guidelines.md %}{% endcapture %}
     {{ notesConfig | markdownify }}
 </div>
+{% endunless %}
 
 
 <script>
 
-    function defer{{ randomNumber }}(toWaitFor, method) {
+    function defer{{ casPropertiesRandomNumber }}(toWaitFor, method) {
         if (window[toWaitFor]) {
             method();
         } else {
-            setTimeout(function () { defer{{ randomNumber }}(toWaitFor, method) }, 300);
+            setTimeout(function () { defer{{ casPropertiesRandomNumber }}(toWaitFor, method) }, 600);
         }
     }
 
-    defer{{ randomNumber }}('jQuery', () => {
+    console.log("Random ID for CAS properties {{casPropertiesRandomNumber}}");
+    defer{{ casPropertiesRandomNumber }}('jQuery', () => {
         {% unless optionalSettingsFound %}
-            $("#linkOptionalProperties{{ randomNumber }}").css("display", "none");
+            $("#linkOptionalProperties{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless rdbmsSettingsFound %}
-            $("#linkRdbms{{ randomNumber }}").css("display", "none");
+            $("#linkRdbms{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless emailSettingsFound %}
-            $("#linkEmail{{ randomNumber }}").css("display", "none");
+            $("#linkEmail{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless signingEncryptionEnabled %}
-            $("#linkSigningEncryption{{ randomNumber }}").css("display", "none");
+            $("#linkSigningEncryption{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless requiredSettingsFound %}
-            $("#linkRequiredProperties{{ randomNumber }}").css("display", "none");
+            $("#linkRequiredProperties{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless passwordPolicySettingsFound %}
-            $("#linkPasswordPolicy{{ randomNumber }}").css("display", "none");
+            $("#linkPasswordPolicy{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless principalTransformationSettingsFound %}
-            $("#linkPrincipalTransformation{{ randomNumber }}").css("display", "none");
+            $("#linkPrincipalTransformation{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless passwordEncoderSettingsFound %}
-            $("#linkPasswordEncoder{{ randomNumber }}").css("display", "none");
+            $("#linkPasswordEncoder{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless authnPredicateSettingsFound %}
-            $("#linkAuthnPredicate{{ randomNumber }}").css("display", "none");
+            $("#linkAuthnPredicate{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
         {% unless ldapSettingsFound %}
-            $("#linkLdap{{ randomNumber }}").css("display", "none");
+            $("#linkLdap{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
 
-        var id="#" + $("#navPillsMenus{{ randomNumber }} a:visible:first").prop('id');
-        var firstTabEl = document.querySelector(id);
-        var firstTab = new bootstrap.Tab(firstTabEl);
-        firstTab.show()
+        {% unless include.disablePagination == "true" %} 
+        next('tableRequiredProperties{{ casPropertiesRandomNumber }}');
+        next('tableOptionalProperties{{ casPropertiesRandomNumber }}');
+        next('tableThirdPartyProperties{{ casPropertiesRandomNumber }}');
+        {% endunless %}
+        console.log("Checking for visible link menu in navPillsMenus{{ casPropertiesRandomNumber }}");
 
-        next('tableRequiredProperties{{ randomNumber }}');
-        next('tableOptionalProperties{{ randomNumber }}');
-        next('tableThirdPartyProperties{{ randomNumber }}');
+        var id=$("#navPillsMenus{{ casPropertiesRandomNumber }} a:visible:first").prop('id');
+        if (id != undefined && id != null) {
+            console.log("Selecting first tab with link id " + id);
+            var firstTabEl = document.querySelector("#" + id);
+            var firstTab = new bootstrap.Tab(firstTabEl);
+            firstTab.show();
+            console.log("Selected tab with link id " + id);
+        }
 
-        let c = $("#tableRequiredProperties{{ randomNumber }} li.property-name code").length;
+        let c = $("#tableRequiredProperties{{ casPropertiesRandomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navRequiredProperties{{ randomNumber }}").closest("table").remove()
-            $("#navRequiredPropertiesLeft{{ randomNumber }}").closest("table").remove()
+            $("#navRequiredProperties{{ casPropertiesRandomNumber }}").closest("table").remove()
+            $("#navRequiredPropertiesLeft{{ casPropertiesRandomNumber }}").closest("table").remove()
         }
-        c = $("#tableOptionalProperties{{ randomNumber }} li.property-name code").length;
+        c = $("#tableOptionalProperties{{ casPropertiesRandomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navOptionalProperties{{ randomNumber }}").closest("table").remove()
-            $("#navOptionalPropertiesLeft{{ randomNumber }}").closest("table").remove()
+            $("#navOptionalProperties{{ casPropertiesRandomNumber }}").closest("table").remove()
+            $("#navOptionalPropertiesLeft{{ casPropertiesRandomNumber }}").closest("table").remove()
         }
-        c = $("#tableThirdPartyProperties{{ randomNumber }} li.property-name code").length;
+        c = $("#tableThirdPartyProperties{{ casPropertiesRandomNumber }} li.property-name code").length;
         if (c <= ROWS) {
-            $("#navThirdPartyProperties{{ randomNumber }}").hide();
+            $("#navThirdPartyProperties{{ casPropertiesRandomNumber }}").hide();
         }
     });
 </script>
