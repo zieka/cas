@@ -1,4 +1,4 @@
-<div class="btn-toolbar justify-content-between" role="toolbar">
+<div id="propertiesToolbarDiv{{ include.searchTarget }}" style="display:none;" class="btn-toolbar justify-content-between" role="toolbar">
 	<div class="input-group search-properties-group" style="width: 94%">
         <div class="input-group-prepend">
             <div class="input-group-text" style="display: block;"><i class="fas fa-search"> </i></div>
@@ -14,6 +14,11 @@
 </div>
 
 <script type="text/javascript">
+    window.addEventListener('load', (event) => {
+        console.log('Loaded page');
+        $("#propertiesToolbarDiv{{ include.searchTarget }}").show();
+    });
+    
     function search{{ include.searchTarget  }}(input) {
         let filter = input.value.toUpperCase();
         if (filter === "") {

@@ -321,7 +321,8 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
 management.endpoint.{{ cfg.name }}.enabled=true
 management.endpoints.web.exposure.include={{ cfg.name }}
 
-cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
+# Choose the property security access level...
+# cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=PERMIT
 ```
 {% endcapture %}
 <div>
@@ -369,7 +370,7 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
                                 {% endif %}
 
                                 <div class='tab-pane fade' id='endpointsecurity{{ key }}'>
-                                    <br/>
+                                    <br/> 
                                     <div id="endpointsecurityInner{{ key }}">
 
                                         <script>
@@ -382,10 +383,7 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
                                                         $(elementId).click();
                                                     });
                                             }
-
-                                            
                                         </script>
-
 
                 <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" 
                         data-bs-target="#collapseSecurityBasicAuth{{ key}}" 
@@ -411,8 +409,10 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
                         aria-expanded="false" aria-controls="collapseSecurityJdbc{{ key }}">
                     JDBC Authentication
                 </button>
+                <br />
                                     </div>
-
+                                    <br/>
+                                    
                                     <div id="collapseSecurityDiv{{ key }}">
                                       <div class="collapse" id="collapseSecurityBasicAuth{{ key }}">
                                         <div class="card card-body">
@@ -437,7 +437,7 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
                                         </div>
                                       </div>
                                     </div>  
-                                      
+                                    
 
                                     <p>
                                         Once endpoints are enabled and exposed, the security of all provided endpoints
@@ -472,6 +472,7 @@ cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=ANONYMOUS
                                 </div>
 
                                 <div class="tab-pane fade" id="endpointtroubleshooting{{ key }}">
+                                    <br/>
                                     <p>To enable additional logging, configure the log4j configuration file to add the
                                         following levels:</p>
                                     {{ troubleshooting | markdownify }}

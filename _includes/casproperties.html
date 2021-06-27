@@ -32,13 +32,19 @@
         // console.log(link);
         let id = new URL(link.href).hash;
         console.log("Tab link selected " + id);
-        $(".properties-tab").removeClass("show").removeClass("active");
-        $(".modal-body " +id).addClass("show").addClass("active");
+        $("#casPropertiesTabContent{{casPropertiesRandomNumber}} .properties-tab").removeClass("show").removeClass("active");
+        $(".modal-body " + id).addClass("show").addClass("active");
         $(".modal-body " + id + " table tr").css("display", "block");
     }
+
+    window.addEventListener('load', (event) => {
+        console.log('Loaded page');
+        $("#navPillsMenus{{ casPropertiesRandomNumber }}").show();
+    });
 </script>
 
-<ul class='nav nav-tabs' id="navPillsMenus{{ casPropertiesRandomNumber }}">
+<ul style="display:none;" class='nav nav-tabs' id="navPillsMenus{{ casPropertiesRandomNumber }}">
+
     <li class='nav-item'>
         <a class='nav-link active'
             id="linkRequiredProperties{{ casPropertiesRandomNumber }}"
@@ -154,7 +160,7 @@
 {% assign textAreaOptionalProperties = blank %}
 {% assign textAreaCryptoProperties = blank %}
 
-<div class='tab-content clearfix'>
+<div class='tab-content clearfix' id="casPropertiesTabContent{{casPropertiesRandomNumber}}">
 
 
 <div class='tab-pane properties-tab fade in active show' id='requiredProperties{{ casPropertiesRandomNumber }}'>
@@ -689,16 +695,7 @@
 
 <script>
 
-    function defer{{ casPropertiesRandomNumber }}(toWaitFor, method) {
-        if (window[toWaitFor]) {
-            method();
-        } else {
-            setTimeout(function () { defer{{ casPropertiesRandomNumber }}(toWaitFor, method) }, 600);
-        }
-    }
-
-    console.log("Random ID for CAS properties {{casPropertiesRandomNumber}}");
-    defer{{ casPropertiesRandomNumber }}('jQuery', () => {
+    window.addEventListener('load', (event) => {
         {% unless optionalSettingsFound %}
             $("#linkOptionalProperties{{ casPropertiesRandomNumber }}").remove()
         {% endunless %}
@@ -735,9 +732,11 @@
         next('tableOptionalProperties{{ casPropertiesRandomNumber }}');
         next('tableThirdPartyProperties{{ casPropertiesRandomNumber }}');
         {% endunless %}
-        console.log("Checking for visible link menu in navPillsMenus{{ casPropertiesRandomNumber }}");
 
+
+        console.log("Checking for visible link menu in: navPillsMenus{{ casPropertiesRandomNumber }}");
         var id=$("#navPillsMenus{{ casPropertiesRandomNumber }} a:visible:first").prop('id');
+        console.log("Attempting to select tab with id " + id);
         if (id != undefined && id != null) {
             console.log("Selecting first tab with link id " + id);
             var firstTabEl = document.querySelector("#" + id);
@@ -760,6 +759,7 @@
         if (c <= ROWS) {
             $("#navThirdPartyProperties{{ casPropertiesRandomNumber }}").hide();
         }
+        
     });
 </script>
 
