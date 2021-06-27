@@ -38,8 +38,9 @@
     }
 
     window.addEventListener('load', (event) => {
-        console.log('Loaded page');
-        $("#navPillsMenus{{ casPropertiesRandomNumber }}").show();
+        console.log('Loaded page for configuration properties {{ casPropertiesRandomNumber }} ');
+        $("ul#navPillsMenus{{ casPropertiesRandomNumber }}").css("display", "")
+            .show().addClass("show").addClass("active");
     });
 </script>
 

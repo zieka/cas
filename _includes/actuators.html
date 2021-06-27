@@ -256,6 +256,31 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
                                 <div class="tab-pane fade active show" id="endpointintro{{key}}">
                                     <br />
 
+                                    {% if cfg.parameters.size > 0 %}
+                                    <p>Endpoint Parameters:</p>
+                                    <ul>
+                                    {% for param in cfg.parameters %} 
+                                    <li>
+                                        {% if param.required %}
+                                        {% assign paramTitle = "Parameter is required." %}
+                                        {% else %}
+                                        {% assign paramTitle = "Parameter is optional." %}
+                                        {% endif %}
+
+                                        {% if param.selector %}
+                                        {% assign paramTitle = paramTitle | append: " This parameter can be specified as a path variable." %}
+                                        {% else %}
+                                        {% assign paramTitle = paramTitle | append: " This parameter can be specified as a query parameter." %}
+                                        {% endif %}
+                                        <i class="fas fa-info-circle" data-bs-toggle="tooltip" 
+                                        data-bs-placment="top" data-bs-html="true"
+                                        title="{{ paramTitle }}"></i>
+                                        <code>{{param.type}} {{ param.name }}</code>
+                                    </li>        
+                                    {% endfor %}    
+                                    </ul>
+                                    {% endif %}
+
                                     <p>CAS, being a Spring-Boot application at heart, includes a number of endpoints to help you monitor and manage the server when it’s pushed to production. You can choose to manage and monitor the deployment using HTTP endpoints, referred to as actuators.</p>
                                     <p>
                                         In essence, actuator endpoints bring production-ready features to CAS. Monitoring a running CAS instance, gathering metrics, understanding traffic or the state of our database becomes trivial with such endpoints. The main benefit of these endpoints is that we can get production grade tools without having to actually implement these features ourselves. Actuators are mainly used to expose operational information about the running application – <code>health</code>, <code>metrics</code>, etc. These are HTTP endpoints or JMX beans to enable us to interact with it.
@@ -321,7 +346,7 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
 management.endpoint.{{ cfg.name }}.enabled=true
 management.endpoints.web.exposure.include={{ cfg.name }}
 
-# Choose the property security access level...
+# Choose the proper security access level...
 # cas.monitor.endpoints.endpoint.{{ cfg.name }}.access=PERMIT
 ```
 {% endcapture %}
