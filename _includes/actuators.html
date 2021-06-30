@@ -275,7 +275,7 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
                                         <i class="fas fa-info-circle" data-bs-toggle="tooltip" 
                                         data-bs-placment="top" data-bs-html="true"
                                         title="{{ paramTitle }}"></i>
-                                        <code>{{param.type}} {{ param.name }}</code>
+                                        <code>{{param.type}} {{ param.name }}</code>{% if param.description.size > 0 %} - <sub>{{ param.description }}</sub>{% endif %}
                                     </li>        
                                     {% endfor %}    
                                     </ul>
