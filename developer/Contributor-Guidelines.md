@@ -140,6 +140,10 @@ Typically, `SNAPSHOT` releases are published by the automatic [CI process](https
 
 This practically involves running the build with a `-U` or `--refresh-dependencies` command for Apache Maven and Gradle respectively.
 
+## Can you cut a release this week?
+
+No. The CAS project generally follows a somewhat fixed release schedule, and the schedule cannot change it per customer/client/project demands. Release dates are always subject to change, but only if more time is needed to fix an issue or test a scenario based on the feedback received from community users and testers. Of course, this is all based on a best-effort basis, and depends on how much funding and energy is available to work out fixes or test various scenarios. If you are planning to go to production and cannot wait for the CAS release schedule, you can build the project from sources and publish artifacts to your own artifact repositories to take control of the release schedule yourself.
+
 ## Why isn't my proposal accepted and merged yet?
 
 Patches submitted to the codebase in form of pull requests are generally reviewed as quickly as possible and most are often accepted. If you find your contribution to take longer
