@@ -1,9 +1,0 @@
----
-- method: "POST"
-  path: "restart"
-  name: "restart"
-  endpointType: "Endpoint"
-  signature: "RestartEndpoint.restart()"
-  owner: "org.springframework.cloud.context.restart.RestartEndpoint"
-  returnType: "Object"
-  casEndpoint: false

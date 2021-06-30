@@ -1,9 +1,0 @@
----
-- method: "POST"
-  path: "pause"
-  name: "pause"
-  endpointType: "Endpoint"
-  signature: "PauseEndpoint.pause()"
-  owner: "org.springframework.cloud.context.restart.RestartEndpoint$PauseEndpoint"
-  returnType: "Boolean"
-  casEndpoint: false
