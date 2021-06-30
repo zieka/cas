@@ -41,6 +41,12 @@
         console.log('Loaded page for configuration properties {{ casPropertiesRandomNumber }} ');
         $("ul#navPillsMenus{{ casPropertiesRandomNumber }}").css("display", "")
             .show().addClass("show").addClass("active");
+
+        setTimeout(function() {
+            let selector = "ul#navPillsMenus{{ casPropertiesRandomNumber }} li a:visible:first";
+            console.log("Activating link " + selector + ": " + $(selector));
+            $(selector).show().addClass("show").addClass("active");
+        }, 1000);
     });
 </script>
 
