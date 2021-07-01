@@ -142,7 +142,7 @@ This practically involves running the build with a `-U` or `--refresh-dependenci
 
 ## Can you cut a release this week?
 
-No. The CAS project generally follows a somewhat fixed release schedule, and the schedule cannot change it per customer/client/project demands. Release dates are always subject to change, but only if more time is needed to fix an issue or test a scenario based on the feedback received from community users and testers. Of course, this is all based on a best-effort basis, and depends on how much funding and energy is available to work out fixes or test various scenarios. If you are planning to go to production and cannot wait for the CAS release schedule, you can build the project from sources and publish artifacts to your own artifact repositories to take control of the release schedule yourself.
+No. The CAS project generally follows a somewhat fixed release schedule, and the schedule cannot change per customer/client/project/user/vendor demands at random as publishing a release generally requires quite a bit of management, scheduling and coordination. Remember that release dates are always *subject to change*, but only if more time is needed to fix an issue or test a scenario based on the feedback received from community users and testers. Of course, this is all based on a best-effort basis and depends on how much funding and energy is available to work out fixes or test various scenarios. If you are planning to go to production and cannot wait for the CAS release schedule, you can build the project from sources and publish artifacts to your own artifact repositories to take control of the release schedule yourself. For additional guarantees, please see the project license.
 
 ## Why isn't my proposal accepted and merged yet?
 
