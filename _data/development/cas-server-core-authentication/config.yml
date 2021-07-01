@@ -1763,13 +1763,13 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "Whether attribute repositories should be contacted\nto fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.authn.jaas[].principal.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: "UNDEFINED"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -1798,26 +1798,26 @@
   defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\n\
     has failed and no principal can be found based on the authentication requirements.\n\
     Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.authn.jaas[].principal.principal-resolution-failure-fatal"
-  defaultValue: ""
+  defaultValue: "UNDEFINED"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.authn.jaas[].principal.return-null"
-  defaultValue: ""
+  defaultValue: "UNDEFINED"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "Uses an existing principal id that may have already\nbeen established\
     \ in order to run person directory queries.\nThis is generally useful in situations\
     \ where\nauthentication is delegated to an external identity provider\nand a principal\
@@ -1825,7 +1825,7 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.authn.jaas[].principal.use-existing-principal-id"
-  defaultValue: ""
+  defaultValue: "UNDEFINED"
 - required: true
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.jaas.JaasAuthenticationProperties"
@@ -4725,13 +4725,13 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Whether attribute repositories should be contacted to fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.authn.openid.principal.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -4760,26 +4760,26 @@
   defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
     \ Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.authn.openid.principal.principal-resolution-failure-fatal"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.authn.openid.principal.return-null"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries. This is generally useful in situations\
     \ where authentication is delegated to an external identity provider and a principal\
@@ -4787,7 +4787,7 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.authn.openid.principal.use-existing-principal-id"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.passwordsync.PasswordSynchronizationProperties"
   type: "java.lang.Boolean"
@@ -5727,13 +5727,13 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Whether attribute repositories should be contacted to fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.authn.spnego.principal.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -5762,26 +5762,26 @@
   defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
     \ Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.authn.spnego.principal.principal-resolution-failure-fatal"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.authn.spnego.principal.return-null"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries. This is generally useful in situations\
     \ where authentication is delegated to an external identity provider and a principal\
@@ -5789,7 +5789,7 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.authn.spnego.principal.use-existing-principal-id"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -5802,13 +5802,13 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Whether attribute repositories should be contacted to fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.authn.surrogate.principal.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -5837,26 +5837,26 @@
   defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
     \ Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.authn.surrogate.principal.principal-resolution-failure-fatal"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.authn.surrogate.principal.return-null"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries. This is generally useful in situations\
     \ where authentication is delegated to an external identity provider and a principal\
@@ -5864,7 +5864,7 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.authn.surrogate.principal.use-existing-principal-id"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PasswordEncoderProperties"
   type: "java.lang.String"
@@ -6055,13 +6055,13 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "Whether attribute repositories should be contacted\nto fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.authn.wsfed[].principal.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: "UNDEFINED"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -6090,26 +6090,26 @@
   defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\n\
     has failed and no principal can be found based on the authentication requirements.\n\
     Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.authn.wsfed[].principal.principal-resolution-failure-fatal"
-  defaultValue: ""
+  defaultValue: "UNDEFINED"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.authn.wsfed[].principal.return-null"
-  defaultValue: ""
+  defaultValue: "UNDEFINED"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "boolean"
+  type: "TriStateBoolean"
   description: "Uses an existing principal id that may have already\nbeen established\
     \ in order to run person directory queries.\nThis is generally useful in situations\
     \ where\nauthentication is delegated to an external identity provider\nand a principal\
@@ -6117,7 +6117,7 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.authn.wsfed[].principal.use-existing-principal-id"
-  defaultValue: ""
+  defaultValue: "UNDEFINED"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PrincipalTransformationProperties"
   type: "java.lang.String"
@@ -6184,13 +6184,13 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Whether attribute repositories should be contacted to fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.authn.x509.principal.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -6219,26 +6219,26 @@
   defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
     \ Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.authn.x509.principal.principal-resolution-failure-fatal"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.authn.x509.principal.return-null"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries. This is generally useful in situations\
     \ where authentication is delegated to an external identity provider and a principal\
@@ -6246,7 +6246,7 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.authn.x509.principal.use-existing-principal-id"
-  defaultValue: false
+  defaultValue: ""
 - required: true
   module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.support.clearpass.ClearpassProperties"
@@ -6438,13 +6438,13 @@
   defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Whether attribute repositories should be contacted to fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.person-directory.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
   type: "java.lang.String"
@@ -6473,26 +6473,26 @@
   defaultValue: "last"
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
     \ Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.person-directory.principal-resolution-failure-fatal"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.person-directory.return-null"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.authentication.PersonDirectoryPrincipalResolverProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries. This is generally useful in situations\
     \ where authentication is delegated to an external identity provider and a principal\
@@ -6500,7 +6500,7 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.person-directory.use-existing-principal-id"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-core-authentication"
   owner: "org.apereo.cas.configuration.model.core.slo.SingleLogOutProperties"
   type: "java.lang.Boolean"

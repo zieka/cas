@@ -11,13 +11,13 @@
   defaultValue: ""
 - module: "cas-server-support-trusted-webflow"
   owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Whether attribute repositories should be contacted to fetch person\
-    \ attributes."
+    \ attributes. Defaults to true if not set."
   shortDescription: "Whether attribute repositories should be contacted to fetch person\
     \ attributes."
   name: "cas.authn.trusted.attribute-resolution-enabled"
-  defaultValue: true
+  defaultValue: ""
 - module: "cas-server-support-trusted-webflow"
   owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
   type: "java.lang.String"
@@ -60,14 +60,14 @@
   defaultValue: "last"
 - module: "cas-server-support-trusted-webflow"
   owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements.\
     \ Otherwise, logs the condition as an error without raising a catastrophic error."
   shortDescription: "When true, throws an error back indicating that principal resolution\
     \ has failed and no principal can be found based on the authentication requirements."
   name: "cas.authn.trusted.principal-resolution-failure-fatal"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-support-trusted-webflow"
   owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
   type: "java.lang.String"
@@ -80,16 +80,16 @@
   defaultValue: ""
 - module: "cas-server-support-trusted-webflow"
   owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Return a null principal object if no attributes can be found for the\
     \ principal."
   shortDescription: "Return a null principal object if no attributes can be found\
     \ for the principal."
   name: "cas.authn.trusted.return-null"
-  defaultValue: false
+  defaultValue: ""
 - module: "cas-server-support-trusted-webflow"
   owner: "org.apereo.cas.configuration.model.support.trusted.TrustedAuthenticationProperties"
-  type: "java.lang.Boolean"
+  type: "org.apereo.cas.util.model.TriStateBoolean"
   description: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries. This is generally useful in situations\
     \ where authentication is delegated to an external identity provider and a principal\
@@ -97,4 +97,4 @@
   shortDescription: "Uses an existing principal id that may have already been established\
     \ in order to run person directory queries."
   name: "cas.authn.trusted.use-existing-principal-id"
-  defaultValue: false
+  defaultValue: ""
