@@ -107,7 +107,7 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
     | remove: rbrace
     | remove: lbrace %}
 
-    <h7 class="accordion-header" id="heading{{key}}">
+    <span class="accordion-header" id="heading{{key}}">
         <button {% if showClass contains "show" %} class="accordion-button" {% else %}
             class="accordion-button collapsed" {% endif %} type="button" data-bs-toggle="collapse"
             data-bs-target="#collapse{{key}}" {% if showClass contains "show" %}aria-expanded="true" {% endif %}
@@ -151,7 +151,7 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
                 </tr>
             </table>
         </button>
-    </h7>
+    </span>
 
     <div id="collapse{{key}}" class="accordion-collapse collapse {{ showClass }}" aria-labelledby="heading{{key}}"
         data-bs-parent="#{{ actuatorEndpointRandomNumber }}">
@@ -200,7 +200,7 @@ thirdPartyStartsWith="management.endpoints,management.health,management.endpoint
 
                 <tr>
                     <td><i data-bs-toggle="tooltip" data-bs-placment="top" data-bs-html="true" title="Method Signature"
-                            class="fas fa-signature"></i> <code>{{cfg.signature}}</code></td>
+                            class="fas fa-signature"></i> <code>{{ cfg.signature | markdownify }}</code></td>
                 </tr>
                 <tr>
                     <td><i data-bs-toggle="tooltip" data-bs-placment="top" data-bs-html="true" title="Endpoint Owner"
@@ -535,7 +535,7 @@ management.endpoints.web.exposure.include={{ cfg.name }}
                 </div>
             </div>
 
-            <script>
+            <!-- <script>
                 document.getElementById('{{key}}ModalConfig').addEventListener('shown.bs.modal', function (event) {
                     let content = $("#jdbcauthpropReference").html();
                     $("#placeholderSecurityJdbc{{ key }}").html(content);
@@ -551,7 +551,7 @@ management.endpoints.web.exposure.include={{ cfg.name }}
                     $(elementId).addClass("active")
                     $(elementId).click();
                 })
-            </script>
+            </script> -->
             </p>
         </div>
     </div>

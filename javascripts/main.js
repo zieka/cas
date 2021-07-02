@@ -130,7 +130,7 @@ function loadSidebarForActiveVersion() {
 
       setTimeout(function(){
         let top = $(element).offset().top;
-        console.log("Element top position: " + top);
+        // console.log("Element top position: " + top);
         let offset = top <= 200 ? 30 : 130;
         $("#sidebar").animate({scrollTop: offset }, 1000);
       }, 100);
@@ -415,7 +415,7 @@ function next(id) {
 
 
   rows.hide().slice(s, e).show();
-  console.log("start " + s + " end " + e);
+  // console.log("start " + s + " end " + e);
 
   rows.attr("start", s);
   rows.attr("end", e);
@@ -430,7 +430,7 @@ function previous(id) {
   let start = parseInt(rows.attr("start"));
   let end = parseInt(rows.attr("end"));
 
-  console.log("current start " + start + " current end " + end);
+  // console.log("current start " + start + " current end " + end);
 
   start = start - ROWS;
   if (start < 0) start = 0;
@@ -439,7 +439,7 @@ function previous(id) {
   if (end - start < ROWS) end = start + ROWS;
 
   rows.hide().slice(start, end).show();
-  console.log("start " + start + " end " + end);
+  // console.log("start " + start + " end " + end);
 
   rows.attr("start", start);
   rows.attr("end", end);
