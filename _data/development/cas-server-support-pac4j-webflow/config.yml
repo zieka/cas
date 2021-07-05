@@ -1372,6 +1372,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAppleOidcClientProperties"
+  type: "java.util.List<String>"
+  description: "List arbitrary mappings of claims when fetching user profiles.\nUses\
+    \ a \"directed list\" where the allowed\nsyntax would be {@code claim->attribute}."
+  shortDescription: "List arbitrary mappings of claims when fetching user profiles."
+  name: "cas.authn.pac4j.oidc[].apple.mapped-claims"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAppleOidcClientProperties"
   type: "int"
   description: "Clock skew in order to account for drift, when validating id tokens."
   shortDescription: "Clock skew in order to account for drift, when validating id\
@@ -1614,6 +1622,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAzureOidcClientProperties"
+  type: "java.util.List<String>"
+  description: "List arbitrary mappings of claims when fetching user profiles.\nUses\
+    \ a \"directed list\" where the allowed\nsyntax would be {@code claim->attribute}."
+  shortDescription: "List arbitrary mappings of claims when fetching user profiles."
+  name: "cas.authn.pac4j.oidc[].azure.mapped-claims"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jAzureOidcClientProperties"
   type: "int"
   description: "Clock skew in order to account for drift, when validating id tokens."
   shortDescription: "Clock skew in order to account for drift, when validating id\
@@ -1838,6 +1854,14 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
+  type: "java.util.List<String>"
+  description: "List arbitrary mappings of claims when fetching user profiles.\nUses\
+    \ a \"directed list\" where the allowed\nsyntax would be {@code claim->attribute}."
+  shortDescription: "List arbitrary mappings of claims when fetching user profiles."
+  name: "cas.authn.pac4j.oidc[].generic.mapped-claims"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
   type: "int"
   description: "Clock skew in order to account for drift, when validating id tokens."
   shortDescription: "Clock skew in order to account for drift, when validating id\
@@ -2045,6 +2069,14 @@
   description: "Logout url used for this provider."
   shortDescription: "Logout url used for this provider."
   name: "cas.authn.pac4j.oidc[].google.logout-url"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
+  type: "java.util.List<String>"
+  description: "List arbitrary mappings of claims when fetching user profiles.\nUses\
+    \ a \"directed list\" where the allowed\nsyntax would be {@code claim->attribute}."
+  shortDescription: "List arbitrary mappings of claims when fetching user profiles."
+  name: "cas.authn.pac4j.oidc[].google.mapped-claims"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.BasePac4jOidcClientProperties"
@@ -2263,6 +2295,14 @@
   description: "Logout url used for this provider."
   shortDescription: "Logout url used for this provider."
   name: "cas.authn.pac4j.oidc[].keycloak.logout-url"
+  defaultValue: ""
+- module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jKeyCloakOidcClientProperties"
+  type: "java.util.List<String>"
+  description: "List arbitrary mappings of claims when fetching user profiles.\nUses\
+    \ a \"directed list\" where the allowed\nsyntax would be {@code claim->attribute}."
+  shortDescription: "List arbitrary mappings of claims when fetching user profiles."
+  name: "cas.authn.pac4j.oidc[].keycloak.mapped-claims"
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.oidc.Pac4jKeyCloakOidcClientProperties"
@@ -2734,23 +2774,18 @@
   defaultValue: ""
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "java.util.List<ServiceProviderMappedAttribute>"
+  type: "java.util.List<String>"
   description: "Describes the map of attributes that are to be fetched from the credential\
     \ (map keys)\nand then transformed/renamed using map values before they are put\
     \ into a profile.\nAn example might be to fetch {@code givenName} from credential\
     \ and rename it to {@code urn:oid:2.5.4.42} or vice versa.\nNote that this setting\
-    \ only applies to attribute names, and not friendly-names."
+    \ only applies to attribute names, and not friendly-names.\nList arbitrary mappings\
+    \ of claims. Uses a \"directed list\" where the allowed\nsyntax would be {@code\
+    \ givenName->urn:oid:2.5.4.42}."
   shortDescription: "Describes the map of attributes that are to be fetched from the\
     \ credential (map keys) and then transformed/renamed using map values before they\
     \ are put into a profile."
   name: "cas.authn.pac4j.saml[].mapped-attributes"
-  defaultValue: ""
-- module: "cas-server-support-pac4j-webflow"
-  owner: "org.apereo.cas.configuration.model.support.pac4j.saml.Pac4jSamlClientProperties"
-  type: "java.lang.String"
-  description: "The name that should be used to rename {@link #name}."
-  shortDescription: "The name that should be used to rename {@link #name}."
-  name: "cas.authn.pac4j.saml[].mapped-to"
   defaultValue: ""
 - duration: true
   module: "cas-server-support-pac4j-webflow"
