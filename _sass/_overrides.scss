@@ -1,6 +1,24 @@
 /**
  * CSS overrides for the default Pygment files
  */
+
+.div-code-button {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.btn-copy-code {
+  color: #FFF;
+  background-color: #09679a;
+  position: absolute;
+  border: 0;
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.btn-copy-code:hover{
+  background-color: rgba(92, 185, 228, 0.774);
+}
+
 .highlight pre, .highlight code {
   color: white;
   font-size: 12pt;
