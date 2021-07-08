@@ -2513,6 +2513,16 @@
     \ the username for authentication."
   name: "cas.authn.pac4j.rest.basic-auth-username"
   defaultValue: ""
+- duration: true
+  module: "cas-server-support-pac4j-webflow"
+  owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationRestfulProperties"
+  type: "java.lang.String"
+  description: "Control the expiration policy of the cache that holds on the results\
+    \ from the rest api."
+  shortDescription: "Control the expiration policy of the cache that holds on the\
+    \ results from the rest api."
+  name: "cas.authn.pac4j.rest.cache-duration"
+  defaultValue: "PT8H"
 - module: "cas-server-support-pac4j-webflow"
   owner: "org.apereo.cas.configuration.model.support.pac4j.Pac4jDelegatedAuthenticationRestfulProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
