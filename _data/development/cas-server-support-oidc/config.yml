@@ -24,13 +24,14 @@
   shortDescription: "OIDC issuer."
   name: "cas.authn.oidc.core.issuer"
   defaultValue: "http://localhost:8080/cas/oidc"
-- module: "cas-server-support-oidc"
+- duration: true
+  module: "cas-server-support-oidc"
   owner: "org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties"
-  type: "java.lang.Integer"
+  type: "java.lang.String"
   description: "Skew value used to massage the authentication issue instance."
   shortDescription: "Skew value used to massage the authentication issue instance."
   name: "cas.authn.oidc.core.skew"
-  defaultValue: 5
+  defaultValue: "PT5M"
 - module: "cas-server-support-oidc"
   owner: "org.apereo.cas.configuration.model.support.oidc.OidcCoreProperties"
   type: "java.util.Map<java.lang.String,java.lang.String>"
