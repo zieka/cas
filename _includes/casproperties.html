@@ -12,6 +12,7 @@
 {% assign thirdPartyExactMatch = include.thirdPartyExactMatch | split: "," %}
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
 {% assign includeRsaKeys = include.includeRsaKeys %}
+{% assign forcePropertyTabsOnClick = include.forcePropertyTabsOnClick | default: "false" %}
 
 {% assign casPropertiesRandomNumber = include.properties
     | append: include.id 
@@ -27,11 +28,12 @@
 
 <p>The following settings and properties are available from the CAS configuration catalog:</p>
 
+{% if forcePropertyTabsOnClick == "true" %}
 <script>
     function enablePropertiesTab{{ casPropertiesRandomNumber }}(link) {
         // console.log(link);
         let id = new URL(link.href).hash;
-        // console.log("Tab link selected " + id);
+        console.log("Tab link selected " + id);
         $("#casPropertiesTabContent{{casPropertiesRandomNumber}} .properties-tab").removeClass("show").removeClass("active");
         $(".modal-body " + id).addClass("show").addClass("active");
         $(".modal-body " + id + " table tr").css("display", "block");
@@ -49,21 +51,23 @@
         }, 1000);
     });
 </script>
+{% endif %}
 
-<ul style="display:none;" class='nav nav-tabs' id="navPillsMenus{{ casPropertiesRandomNumber }}">
+<ul {% if forcePropertyTabsOnClick == "true" %} style="display:none;"  {% endif %}
+    class='nav nav-tabs' id="navPillsMenus{{ casPropertiesRandomNumber }}">
 
     <li class='nav-item'>
         <a class='nav-link active'
             id="linkRequiredProperties{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#requiredProperties{{ casPropertiesRandomNumber }}'>Required</a>
     </li>
     <li class='nav-item'>
         <a class='nav-link'
             id="linkOptionalProperties{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#optionalProperties{{ casPropertiesRandomNumber }}'>Optional</a>
     </li>
 
@@ -71,7 +75,7 @@
         <a class='nav-link'
             id="linkSigningEncryption{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#signingEncryptionProperties{{ casPropertiesRandomNumber }}'>Signing & Encryption</a>
     </li>
 
@@ -79,7 +83,7 @@
         <a class='nav-link'
             id="linkRdbms{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#rdbmsProperties{{ casPropertiesRandomNumber }}'>Hibernate & JDBC</a>
     </li>
 
@@ -87,7 +91,7 @@
         <a class='nav-link'
             id="linkEmail{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#emailProperties{{ casPropertiesRandomNumber }}'>Email Servers</a>
     </li>
 
@@ -95,7 +99,7 @@
         <a class='nav-link'
             id="linkLdap{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#ldapProperties{{ casPropertiesRandomNumber }}'>LDAP & Active Directory</a>
     </li>
 
@@ -103,7 +107,7 @@
         <a class='nav-link'
             id="linkAuthnPredicate{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#authnPredicateProperties{{ casPropertiesRandomNumber }}'>Authentication</a>
     </li>
 
@@ -111,7 +115,7 @@
         <a class='nav-link'
             id="linkPasswordEncoder{{ casPropertiesRandomNumber }}"
             data-bs-toggle='tab'
-            onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);"
+            {% if forcePropertyTabsOnClick == "true" %}onclick="javascript:enablePropertiesTab{{ casPropertiesRandomNumber }}(this);" {% endif %}
             href='#passwordEncoderProperties{{ casPropertiesRandomNumber }}'>Password Encoding</a>
     </li>
 

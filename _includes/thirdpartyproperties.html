@@ -3,6 +3,7 @@
 {% assign thirdPartyExactMatch = include.thirdPartyExactMatch | split: "," %}
 {% assign thirdPartyStartsWith = include.thirdPartyStartsWith | split: "," %}
 {% assign excludes = include.excludes | split: "," %}
+{% assign forcePropertyTabsOnClick = include.forcePropertyTabsOnClick | default: "false" %}
 
 {% assign textAreaThirdPartyProperties = blank %}
 
