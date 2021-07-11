@@ -382,15 +382,16 @@
   shortDescription: "Whether error responses should be signed."
   name: "cas.authn.saml-idp.response.sign-error"
   defaultValue: false
-- module: "cas-server-support-saml-idp"
+- duration: true
+  module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPResponseProperties"
-  type: "java.lang.Integer"
+  type: "java.lang.String"
   description: "Time unit in seconds used to skew authentication dates such as valid-from\
     \ and valid-until elements."
   shortDescription: "Time unit in seconds used to skew authentication dates such as\
     \ valid-from and valid-until elements."
   name: "cas.authn.saml-idp.response.skew-allowance"
-  defaultValue: 15
+  defaultValue: "PT30S"
 - module: "cas-server-support-saml-idp"
   owner: "org.apereo.cas.configuration.model.support.saml.idp.SamlIdPTicketProperties"
   type: "java.lang.String"

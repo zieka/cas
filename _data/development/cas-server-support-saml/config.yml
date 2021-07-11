@@ -29,13 +29,14 @@
     \ a SAML parser pool."
   name: "cas.saml-core.security-manager"
   defaultValue: "org.apache.xerces.util.SecurityManager"
-- module: "cas-server-support-saml"
+- duration: true
+  module: "cas-server-support-saml"
   owner: "org.apereo.cas.configuration.model.support.saml.SamlCoreProperties"
-  type: "java.lang.Integer"
+  type: "java.lang.String"
   description: "Skew allowance that controls the issue instance of the authentication."
   shortDescription: "Skew allowance that controls the issue instance of the authentication."
   name: "cas.saml-core.skew-allowance"
-  defaultValue: 5
+  defaultValue: "PT30S"
 - module: "cas-server-support-saml"
   owner: "org.apereo.cas.configuration.model.support.saml.SamlCoreProperties"
   type: "java.lang.Boolean"
